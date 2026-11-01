@@ -24,7 +24,8 @@ apt-get "${aptopts[@]}" download curl libcurl4 libnghttp2-14 libpsl5 libssh-4 \
  libnettle8 libhogweed6 libp11-kit0 libtasn1-6 libgmp10 libcom-err2 \
  libvulkan1 vulkan-tools libegl1 libgl1 libglvnd0 \
  libglx0 libopengl0 libxext6 libx11-6 libx11-xcb1 libxcb1 libxau6 libxdmcp6 \
- libxrender1 libsm6 libice6 libglib2.0-0 libgomp1 libxrandr2 libxfixes3 \
+ libxrender1 libsm6 libice6 libbsd0 libmd0 libc++1-14 libc++abi1-14 libunwind-14 \
+ libglib2.0-0 libgomp1 libxrandr2 libxfixes3 \
  libxcursor1 libxi6 libxinerama1 libxkbcommon0 libwayland-client0 \
  libwayland-cursor0 libwayland-egl1 libdrm2 libexpat1 libffi8 libfontconfig1
 for deb in ./*.deb; do dpkg-deb -x "$deb" "$r/sysroot"; done

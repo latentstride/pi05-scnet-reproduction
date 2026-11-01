@@ -1,8 +1,24 @@
-# 异构机器人数据集比较与接入决策
+# 数据选型：优先 RoboTwin 2.0
+
+更新：2026-11-01。第二阶段主线调整为 **RoboTwin 同任务、不同本体的数据与控制适配比较**。DROID、Bridge、ALOHA 的早期调研保留作接口参考，暂不安排将三者拼接为训练集或成功率对照。
+
+当前实验设计及固定源码审计见 [robotwin_feasibility.md](robotwin_feasibility.md)，机器可读证据见 [research/robotwin_source_audit.json](research/robotwin_source_audit.json)。第一阶段 [冻结点](baseline_freeze.md) 不变。
+
+| 数据/平台 | 当前用途 | 接入结论 |
+| --- | --- | --- |
+| RoboTwin 官方多本体数据与仿真 | 主候选：共同任务的 qpos/ee 和专家轨迹迁移 | 先核对两本体数据、世界系工具位姿及规划接口；尚未实际加载/回放 |
+| `lerobot/robotwin_unified` | ALOHA 风格数据读取参考 | 当前 metadata 为 14 维状态/动作、30 fps，不能视为五本体全集 |
+| DROID、BridgeData V2、ALOHA Sim | 下文保留的早期调研 | 降为备选，不替代 RoboTwin 内的受控对照 |
+
+RoboTwin 及 XPolicyLab 提供适配基础设施，但所审计 `Pi_05` 默认 ALOHA 输出只取 14 维，不能据此认定双 Panda 16 维 joint 或双臂 16 维 ee 已可直接运行。现有单臂 `pi05_libero` 的双臂闭环仍未通过兼容性验证。近期先比较专家数据及控制适配，专家回放成功率与模型自主成功率分别报告。
+
+依据：[RoboTwin 控制接口](https://robotwin-platform.github.io/doc/usage/control-robot.html)、[统一数据 metadata](https://huggingface.co/datasets/lerobot/robotwin_unified/blob/main/meta/info.json)、[固定 Pi_05 输出适配器](https://github.com/XPolicyLab/XPolicyLab/blob/0075cc96a1bf24c5d66a4a3a5e29eae6d739fef3/policy/Pi_05/openpi/src/openpi/policies/aloha_policy.py)。
+
+## 早期三个候选的调研记录（供参考）
 
 调研日期：2026-11-01。阶段一已通过功能性验收，固定点见 [baseline_freeze.md](baseline_freeze.md)。本报告核对公开说明、元数据和官方控制代码；尚未下载轨迹、运行候选数据加载器或验证候选仿真。本阶段没有提交 GPU 作业。
 
-## 选型结论
+## 早期候选结论
 
 选取 **DROID、BridgeData V2、ALOHA Sim Transfer Cube Human**，分别覆盖同本体不同接口、异构单臂和异构双臂。ALOHA 选择有对应仿真任务的搬方块数据，便于后续验证接口。
 
@@ -85,7 +101,7 @@ OpenPI 基线固定旧 LeRobot 提交，不能凭名称相同认定可以读取 
 
 ALOHA 客户端为 50 Hz，官方默认权重是 `pi0_aloha_sim`，并非已经验收的 π₀.₅ LIBERO 权重。[仿真客户端](https://github.com/Physical-Intelligence/openpi/blob/215abfb217dbac7d5f1273282331b9b1866c0479/examples/aloha_sim/main.py)、[默认权重映射](https://github.com/Physical-Intelligence/openpi/blob/215abfb217dbac7d5f1273282331b9b1866c0479/scripts/serve_policy.py)
 
-下一步先以 CPU 小样本核验：DROID 做同本体接口审计，Bridge 做跨本体几何审计，ALOHA Sim 做原生仿真接口验证。每个候选读取 1—3 个 episode，保存实际 schema、revision、文件哈希、时间戳统计、相机可用率及动作范围；这一步不做全量下载、训练或 GPU 闭环。
+原候选的后续核验方案为：DROID 做同本体接口审计，Bridge 做跨本体几何审计，ALOHA Sim 做原生仿真接口验证；当前优先级已调整为先执行 RoboTwin 可行性报告中的步骤。每个候选读取 1—3 个 episode，保存实际 schema、revision、文件哈希、时间戳统计、相机可用率及动作范围；这一步不做全量下载、训练或 GPU 闭环。
 
 统一记录保留：数据 revision、本体和左右臂标识、关节名、状态/动作类型、单位、参考系、旋转表示、时间戳/控制周期、夹爪约定、相机标定和缺失 mask、原始/重标注标签及归一化来源。保留原生维度，由适配层转换，不强制压成 8 维状态和 7 维动作。
 

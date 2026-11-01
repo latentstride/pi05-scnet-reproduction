@@ -7,6 +7,7 @@ a=${APPTAINER_BIN:-/public/software/apps/apptainer/1.3.4/bin/apptainer}
 options=(--writable --cleanenv --bind /public:/public --pwd /opt/robotwin/src/RoboTwin)
 if [[ ${ROBOTWIN_GPU:-0} == 1 ]]; then options+=(--nv); fi
 exec "$a" exec "${options[@]}" "$image" env \
+ OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 \
  PI05_ROOT="$root" XDG_CACHE_HOME=/opt/robotwin/cache/xdg \
  TORCH_EXTENSIONS_DIR=/opt/robotwin/cache/torch_extensions CUDA_CACHE_PATH=/opt/robotwin/cache/cuda \
  TMPDIR=/opt/robotwin/tmp \

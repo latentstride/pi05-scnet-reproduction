@@ -8,7 +8,7 @@
 - [RoboTwin 可行性审计与实验方案](robotwin_feasibility.md)：优先做同任务跨本体的专家轨迹和 qpos/ee 控制适配，区分回放与模型自主控制。
 - [SCNet Vulkan/graphics 实测预检查](docs/robotwin_graphics_preflight.md)：登录节点和现有容器已检查，GPU 图形透传仍待目标节点验证。
 
-当前不新增 GPU 实验。下一步先核查 RoboTwin 两种本体的共同任务、少量示范及坐标/工具点语义。现有 `pi05_libero` 的单臂 7 维动作不能直接用于双臂控制；XPolicyLab 适配器的存在也不等于 checkpoint 已兼容。轨迹回放和模型兼容性均须实测后验收。
+已完成 handover_block 的 Aloha-AgileX 与 ARX-X5 各 3 条官方示范读取、完整静态检查及 SCNet CPU 复验，见 [数据抽样报告](robotwin_data_probe.md)。发现原始 HDF5 没有显式时间戳或单独动作命令字段，回放前须解决时间与工具点语义。当前不新增 GPU 实验；现有 `pi05_libero` 的双臂模型兼容性独立验收。
 
 ## 基线版本
 

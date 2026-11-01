@@ -1,0 +1,447 @@
+{
+  "date": "2026-11-02",
+  "decision": "conditional_continue",
+  "gate_scope": "source/weight accessibility/interface/normalization audit; not runtime acceptance",
+  "selected": {
+    "repo": "niejunnan25/pi05-robotwin",
+    "revision": "17ef545270cf26ed81169893b60f845f80ce6557",
+    "checkpoint": "handover_block",
+    "source_embodiment_evidence": "project demo_clean.yml = aloha-agilex; per-checkpoint card does not separately name embodiment",
+    "target": "ARX-X5",
+    "configuration": "pi05_robotwin_handover_block",
+    "state_dim": 14,
+    "action_horizon": 50,
+    "external_action_dim": 14,
+    "external_action_space": "absolute_joint_and_gripper",
+    "internal_joint_actions": "delta relative to query state; grippers absolute",
+    "adapt_to_pi": false,
+    "asset_id": "robotwin",
+    "norm_sha256": "8a1f114a8873dfa0788c7f512851ee3063224ef2b8af270421076a2e4e544960",
+    "file_count": 27,
+    "bytes": 12441552737,
+    "manifest_and_hf_tree_paths_sizes_match": true
+  },
+  "weight_access": {
+    "source": "https://huggingface.co/niejunnan25/pi05-robotwin/resolve/17ef545270cf26ed81169893b60f845f80ce6557/handover_block/params/ocdbt.process_0/d/0e807a327c35df3e799565ecfaf9d595",
+    "status": 206,
+    "content_range": "bytes 0-4095/70041649",
+    "bytes_read": 4096,
+    "full_weight_downloaded": false
+  },
+  "stats_probe": {
+    "date": "2026-11-02",
+    "stats_sha256_matches_release_manifest": true,
+    "stats_checks": {
+      "state": {
+        "dimensions": 14,
+        "finite": true,
+        "positive_quantile_spans": true
+      },
+      "actions": {
+        "dimensions": 14,
+        "finite": true,
+        "positive_quantile_spans": true
+      }
+    },
+    "samples": [
+      {
+        "robot": "aloha-agilex",
+        "episodes": 3,
+        "frames": 854,
+        "state_shape": [
+          854,
+          14
+        ],
+        "fraction_scalar_values_outside_source_q01_q99": 0.09919705587152894,
+        "fraction_frames_any_channel_outside": 0.8770491803278688,
+        "fraction_joint_scalar_values_outside": 0.02537080405932865,
+        "outside_fraction_by_channel": [
+          0.01288056206088993,
+          0.04800936768149883,
+          0.02576112412177986,
+          0.0,
+          0.04449648711943794,
+          0.059718969555035126,
+          0.4847775175644028,
+          0.03278688524590164,
+          0.0,
+          0.0,
+          0.0,
+          0.00936768149882904,
+          0.07142857142857142,
+          0.5995316159250585
+        ]
+      },
+      {
+        "robot": "arx-x5",
+        "episodes": 3,
+        "frames": 581,
+        "state_shape": [
+          581,
+          14
+        ],
+        "fraction_scalar_values_outside_source_q01_q99": 0.11249077944430784,
+        "fraction_frames_any_channel_outside": 0.9397590361445783,
+        "fraction_joint_scalar_values_outside": 0.04819277108433735,
+        "outside_fraction_by_channel": [
+          0.01721170395869191,
+          0.0,
+          0.16006884681583478,
+          0.0,
+          0.0068846815834767644,
+          0.0017211703958691911,
+          0.4509466437177281,
+          0.2547332185886403,
+          0.0,
+          0.0,
+          0.13769363166953527,
+          0.0,
+          0.0,
+          0.5456110154905336
+        ]
+      }
+    ],
+    "gpu_used": false,
+    "weights_loaded": false,
+    "not_a_capability_or_safety_test": true,
+    "note": "No clipping, target statistics substitution, or action relabeling was performed."
+  },
+  "sources": [
+    {
+      "source": "niejunnan25/Openpi-PACE/README.md",
+      "blob_sha": "e148eda631e30b95f11d6c6c6c9e4ea4f8c1834a",
+      "file": "niejunnan25__Openpi-PACE__README.md",
+      "commit": "f4e52e6de4cc487a11585a3a7414d610b2883dae",
+      "pinned_blob_matches": true
+    },
+    {
+      "source": "niejunnan25/Openpi-PACE/pace/src/openpi_pace/configs.py",
+      "blob_sha": "1bbcc993980b88b6f90e29204acc2feccdfdedbe",
+      "file": "niejunnan25__Openpi-PACE__pace__src__openpi_pace__configs.py",
+      "commit": "f4e52e6de4cc487a11585a3a7414d610b2883dae",
+      "pinned_blob_matches": true
+    },
+    {
+      "source": "niejunnan25/Openpi-PACE/src/openpi/training/config.py",
+      "blob_sha": "b3da63e59b2e795efcdeb2821834b96a4d4ce0ab",
+      "file": "niejunnan25__Openpi-PACE__src__openpi__training__config.py",
+      "commit": "f4e52e6de4cc487a11585a3a7414d610b2883dae",
+      "pinned_blob_matches": true
+    },
+    {
+      "source": "niejunnan25/Openpi-PACE/src/openpi/policies/aloha_policy.py",
+      "blob_sha": "f16be3334584692ba505553220ab20ff7b2719c5",
+      "file": "niejunnan25__Openpi-PACE__src__openpi__policies__aloha_policy.py",
+      "commit": "f4e52e6de4cc487a11585a3a7414d610b2883dae",
+      "pinned_blob_matches": true
+    },
+    {
+      "source": "niejunnan25/Openpi-PACE/src/openpi/policies/policy_config.py",
+      "blob_sha": "6570df05ed068f297d48326990a1cd10ee68ac5a",
+      "file": "niejunnan25__Openpi-PACE__src__openpi__policies__policy_config.py",
+      "commit": "f4e52e6de4cc487a11585a3a7414d610b2883dae",
+      "pinned_blob_matches": true
+    },
+    {
+      "source": "niejunnan25/PACE/README.md",
+      "blob_sha": "ef04eceab2c3a0257b39d1db1fad0949ecc92b83",
+      "file": "niejunnan25__PACE__README.md",
+      "commit": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+      "pinned_blob_matches": true
+    },
+    {
+      "source": "niejunnan25/PACE/task_config/demo_clean.yml",
+      "blob_sha": "7e0de0aec1ad1b151570486120c7d25050be01c4",
+      "file": "niejunnan25__PACE__task_config__demo_clean.yml",
+      "commit": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+      "pinned_blob_matches": true
+    },
+    {
+      "source": "niejunnan25/PACE/pace/scripts/evaluate.py",
+      "blob_sha": "c3f33d5898599de1b9d276499bd933b7ae6a5ec2",
+      "file": "niejunnan25__PACE__pace__scripts__evaluate.py",
+      "commit": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+      "pinned_blob_matches": true
+    },
+    {
+      "source": "niejunnan25/PACE/pace/src/pace/robotwin.py",
+      "blob_sha": "33ab183c3df3d8ac04b1829d9e201603100bcec7",
+      "file": "niejunnan25__PACE__pace__src__pace__robotwin.py",
+      "commit": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+      "pinned_blob_matches": true
+    },
+    {
+      "source": "niejunnan25/PACE/pace/src/pace/rollout.py",
+      "blob_sha": "df2776d0083187d1cf309cc711d9d6b540e1c548",
+      "file": "niejunnan25__PACE__pace__src__pace__rollout.py",
+      "commit": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+      "pinned_blob_matches": true
+    },
+    {
+      "source": "z-lab/flashvla/sim_eval/robotwin/README.md",
+      "blob_sha": "9b27bd9f3971634883b35b0f01a89eb54955513e",
+      "file": "z-lab__flashvla__sim_eval__robotwin__README.md",
+      "commit": "8539f1cdfcf878e3a93c39f3d6c885c19ede6af8",
+      "pinned_blob_matches": true
+    },
+    {
+      "source": "z-lab/flashvla/sim_eval/robotwin/policy/pi05_flashvla/deploy_policy.py",
+      "blob_sha": "192b4d55f09f7506a7baaf925b8452092ca13939",
+      "file": "z-lab__flashvla__sim_eval__robotwin__policy__pi05_flashvla__deploy_policy.py",
+      "commit": "8539f1cdfcf878e3a93c39f3d6c885c19ede6af8",
+      "pinned_blob_matches": true
+    },
+    {
+      "source": "Physical-Intelligence/openpi/src/openpi/policies/droid_policy.py",
+      "blob_sha": "55bdb419dd552daa9dd2943638b91c7d580e26fc",
+      "file": "Physical-Intelligence__openpi__src__openpi__policies__droid_policy.py"
+    },
+    {
+      "source": "Physical-Intelligence/openpi/src/openpi/training/config.py",
+      "commit": "215abfb217dbac7d5f1273282331b9b1866c0479",
+      "blob_sha": "4ca47e1286534c4ee7a919ccc38462f8f38bdd60"
+    },
+    {
+      "source": "Physical-Intelligence/openpi/src/openpi/policies/aloha_policy.py",
+      "commit": "215abfb217dbac7d5f1273282331b9b1866c0479",
+      "blob_sha": "f16be3334584692ba505553220ab20ff7b2719c5"
+    },
+    {
+      "source": "Physical-Intelligence/openpi/src/openpi/transforms.py",
+      "commit": "215abfb217dbac7d5f1273282331b9b1866c0479",
+      "blob_sha": "272375ea95a5e43a42a6c0ff14cf89d34da76a45"
+    },
+    {
+      "source": "Physical-Intelligence/openpi/examples/droid/main.py",
+      "commit": "215abfb217dbac7d5f1273282331b9b1866c0479",
+      "blob_sha": "93b76546cedb58e51487431a8ebe83cc87caee5a"
+    },
+    {
+      "source": "Physical-Intelligence/openpi/examples/droid/README.md",
+      "commit": "215abfb217dbac7d5f1273282331b9b1866c0479",
+      "blob_sha": "6a7edeee7d75eb0d45c87c6c8ef31c46da6f595d"
+    }
+  ],
+  "flashvla_backup": {
+    "revision": "47c90d4fd00f36f68bee30c5f8e68c35f4a65e0b",
+    "weight_bytes": 16573735272,
+    "normalization_fields": {
+      "flash_policy_preprocessor_step_2_normalizer_processor.safetensors": {
+        "action.q01": {
+          "shape": [
+            14
+          ],
+          "values": [
+            -1.0135005712509155,
+            -5.257390398583084e-07,
+            -2.8215323254698887e-05,
+            -1.5651129484176636,
+            -0.6479259729385376,
+            -2.237139940261841,
+            0.0,
+            -0.16974861919879913,
+            0.0,
+            -2.81171942333458e-05,
+            -1.6423569917678833,
+            -1.0227360725402832,
+            -1.6463173627853394,
+            0.0
+          ]
+        },
+        "action.q99": {
+          "shape": [
+            14
+          ],
+          "values": [
+            0.17478367686271667,
+            2.6027607917785645,
+            2.451279878616333,
+            1.3530560731887817,
+            1.2373547554016113,
+            1.6045727729797363,
+            1.0,
+            0.9978563189506531,
+            2.6201953887939453,
+            2.4545745849609375,
+            1.293002963066101,
+            0.8762657642364502,
+            2.2697784900665283,
+            1.0
+          ]
+        },
+        "observation.state.q01": {
+          "shape": [
+            14
+          ],
+          "values": [
+            -1.0126575231552124,
+            -5.257390398583084e-07,
+            -2.8215323254698887e-05,
+            -1.5635130405426025,
+            -0.6461567878723145,
+            -2.2244577407836914,
+            0.0,
+            -0.1690114438533783,
+            0.0,
+            -2.81171942333458e-05,
+            -1.6413878202438354,
+            -1.022003173828125,
+            -1.6422083377838135,
+            0.0
+          ]
+        },
+        "observation.state.q99": {
+          "shape": [
+            14
+          ],
+          "values": [
+            0.17374198138713837,
+            2.602391481399536,
+            2.4499924182891846,
+            1.351163625717163,
+            1.2348779439926147,
+            1.6033015251159668,
+            1.0,
+            0.9967232346534729,
+            2.618670701980591,
+            2.4520905017852783,
+            1.291067123413086,
+            0.8747973442077637,
+            2.267019510269165,
+            1.0
+          ]
+        }
+      },
+      "flash_policy_postprocessor_step_0_unnormalizer_processor.safetensors": {
+        "action.q01": {
+          "shape": [
+            14
+          ],
+          "values": [
+            -1.0135005712509155,
+            -5.257390398583084e-07,
+            -2.8215323254698887e-05,
+            -1.5651129484176636,
+            -0.6479259729385376,
+            -2.237139940261841,
+            0.0,
+            -0.16974861919879913,
+            0.0,
+            -2.81171942333458e-05,
+            -1.6423569917678833,
+            -1.0227360725402832,
+            -1.6463173627853394,
+            0.0
+          ]
+        },
+        "action.q99": {
+          "shape": [
+            14
+          ],
+          "values": [
+            0.17478367686271667,
+            2.6027607917785645,
+            2.451279878616333,
+            1.3530560731887817,
+            1.2373547554016113,
+            1.6045727729797363,
+            1.0,
+            0.9978563189506531,
+            2.6201953887939453,
+            2.4545745849609375,
+            1.293002963066101,
+            0.8762657642364502,
+            2.2697784900665283,
+            1.0
+          ]
+        },
+        "observation.state.q01": {
+          "shape": [
+            14
+          ],
+          "values": [
+            -1.0126575231552124,
+            -5.257390398583084e-07,
+            -2.8215323254698887e-05,
+            -1.5635130405426025,
+            -0.6461567878723145,
+            -2.2244577407836914,
+            0.0,
+            -0.1690114438533783,
+            0.0,
+            -2.81171942333458e-05,
+            -1.6413878202438354,
+            -1.022003173828125,
+            -1.6422083377838135,
+            0.0
+          ]
+        },
+        "observation.state.q99": {
+          "shape": [
+            14
+          ],
+          "values": [
+            0.17374198138713837,
+            2.602391481399536,
+            2.4499924182891846,
+            1.351163625717163,
+            1.2348779439926147,
+            1.6033015251159668,
+            1.0,
+            0.9967232346534729,
+            2.618670701980591,
+            2.4520905017852783,
+            1.291067123413086,
+            0.8747973442077637,
+            2.267019510269165,
+            1.0
+          ]
+        }
+      }
+    }
+  },
+  "full_weights_downloaded": false,
+  "model_loaded": false,
+  "gpu_used": false,
+  "simulation_run": false,
+  "cross_embodiment_validated": false,
+  "local_evidence_hashes": {
+    "niejunnan25__Openpi-PACE__pace__src__openpi_pace__configs.py": "5bfceaabd17cf3e5b4096139100a673f15f480abbaabb245a56f7c0eb728e09b",
+    "flash_tree.json": "7202f0306cfbbf9c642d04eec8dc93a587296e6d0caa57a470fb145e9f66e233",
+    "openpi_libero_stats.json": "b3a44bb2810436fb62917decaea58bd4d9110255df527dea21e8fd40c960bd84",
+    "Physical-Intelligence__openpi__src__openpi__policies__droid_policy.py": "4f2cc10421e9f1266244ec7a4cee106ee1c464dd1f7afa70609a425058efb7fc",
+    "pace_card.md": "83be10953a5396b9050c615e5db9d4a9d46ef30321cde2ead3886cd35e8830a0",
+    "openpi_base_stats.json": "417c7dc8ee9598b28dc2f0b545e371338be9f4611b255975ba7ea07eb21e46c1",
+    "niejunnan25__PACE__task_config__demo_clean.yml": "430325681b8fb81833aa8d4758583fab5fcad509b3868093d2e1fabef0ab3c8a",
+    "flash_policy_preprocessor_step_2_normalizer_processor.safetensors": "4029ab45a55c6f57edd5ac14effc6790dabfedaebe5ebb1593ac44356c1996e1",
+    "flash_policy_postprocessor.json": "7e721aeab8736709ba60948f4c96ea9b14a88bb4c7baaf20afd7ba1eada8ed0d",
+    "niejunnan25__PACE__README.md": "1324b40ba81174890a4a9af78bd1062591069eef9c7ed21744e0ba7edfd3ce0c",
+    "niejunnan25__PACE__pace__scripts__evaluate.py": "75695f9773ed55638bb9571ccf3c74a0951175fb8eb6486e213c267c9a0e980e",
+    "pace_tree.json": "c2a80f064f6caa9a72cf7aaefc92dc1340979630fcdd8379eca68fb0c71047c5",
+    "weight_access_check.json": "3406239a9f217b92e60159eb6348384ea62c34af758645a85c072855801da976",
+    "niejunnan25__PACE__pace__src__pace__rollout.py": "e3666f83e492265f219f3ec3ce38b67199e5dee2a7e90b2f71d11dd88e291da2",
+    "flash_policy_preprocessor.json": "5fa473d60ddb402ecc0c0fda0e2c3f49ba3e6bc892a50f6d8f1577dd80158115",
+    "pace_hf.json": "edac8eead7019d28ac5837ce39f7eb72925a2719c06d0bb2e5defa47d9dfd876",
+    "stats_probe.json": "cdcc2bb1c2169a3bf599db970e3740cd1e00114cbf3330f033b3a0b9ac4c683e",
+    "pace_manifest.json": "2337bd9e7244fc3f6d51b0b830a9cdfc8d6e683decf2c398a431bc5800696c41",
+    "pace_handover_block_assets_robotwin_norm_stats.json": "8a1f114a8873dfa0788c7f512851ee3063224ef2b8af270421076a2e4e544960",
+    "gate25_source_refs.json": "a2c7b97c1308328684f0a59e524204f1dba4a73e95f13c4e13826fd1a89d7372",
+    "openpi_droid_stats.json": "403b3a22f897e9ae5dd617966a3c8f7d1835ac79dfd5a8993179514be26a3b8b",
+    "z-lab__flashvla__sim_eval__robotwin__README.md": "9f8756d7a2ed4050066e8d1a35ad9da2e1438f4f7dbe35496015ff3b0911a226",
+    "niejunnan25__Openpi-PACE__src__openpi__policies__aloha_policy.py": "8f94178c9e75558d15a76a54cc37fdb4af3081f86d75d2457702e430e3b7d593",
+    "pace_handover_block_params__METADATA": "f27d21952e602528615298c668b588ba14ae8268e03e94598ea0235eaea52a5f",
+    "z-lab__flashvla__sim_eval__robotwin__policy__pi05_flashvla__deploy_policy.py": "2206ed9a3cf19f9dbbaa9cf610b3a536bf5e5118048407d15954eba3aeaa1d67",
+    "openpi_base_listing.json": "ea575797757ffdf151f388258ea012fed1f5eb43705d39985a082a704871ae28",
+    "flash_hf.json": "aa8f581d1070c0b03ec7246d76e0eb634fa17f784dd77d87b841f14786bd408d",
+    "pace_handover_manifest.json": "117ad10110d70e3c7f4e4e94c9bbcf1b816f8756d5e333c119cb4b3398a70b8b",
+    "flash_train_config.json": "8c2d975e6ae31b3eafd09db582082ea60b5cac860efcb5017dd059d281ecd035",
+    "flash_policy_postprocessor_step_0_unnormalizer_processor.safetensors": "eee8ccec6bf0c6ad901f9380fa3abf30f7247a1345c8d785fe9dd0b2956f3ceb",
+    "niejunnan25__Openpi-PACE__src__openpi__training__config.py": "74e7ccff60d9e79aaad097c57fef5bbdad8664b30d0ea5a483e337100234430a",
+    "pace_weight_range.bin": "396abc3cde48d8a56a2682c61188095cbe4afba6fa963ed54cc92db857c1b30e",
+    "flash_config.json": "1abbefd0908296b468e6de4f1727f6f1a6b5e8d5162ea403632079b9be65cbe6",
+    "source_index.json": "b2b251ba614410084443bb9c80234b392ae75303d9431aa60b0d370300be5bfd",
+    "niejunnan25__Openpi-PACE__src__openpi__policies__policy_config.py": "187708d4c3423fdf949058af3bca593c67246616eb445cadcc037679c9f3d982",
+    "niejunnan25__PACE__pace__src__pace__robotwin.py": "f10e3c43f5c18ece4f2c43a4d26236187238fa38459f22d6d72331e6d30f2dbb",
+    "niejunnan25__Openpi-PACE__README.md": "4733ce180e6a1d9b521de104744f55263a13288e0360a165d92be8259826d5bc"
+  }
+}

@@ -6,6 +6,8 @@ import hashlib
 import json
 import math
 import pathlib
+import subprocess
+import sys
 import time
 import traceback
 
@@ -136,6 +138,7 @@ def main():
                'per_task': {str(i): {'episodes': 5, 'successful': sum(int(r['success']) for r in rows if r['task_id'] == i)} for i in [0, 1, 2]}}
     assert len(rows) == 15 and all(r['termination'] in ('success', 'step_limit') for r in rows)
     atomic_json(out / 'summary.json', summary)
+    subprocess.run([sys.executable, 'scripts/summarize_evaluation.py', str(out)], check=True)
     print('EVALUATION_COMPLETE', json.dumps(summary), flush=True)
 
 

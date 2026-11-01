@@ -19,6 +19,7 @@ assert versions['sapien'] == '3.0.0b1'
 assert versions['torch'].split('+')[0] == '2.4.1'
 assert versions['nvidia-curobo'] == '0.7.8'
 modules = ['torch','torchvision','sapien','sapien.core','mplib','open3d','pytorch3d',
+           'cv2','h5py','zarr','av','transforms3d','gymnasium','trimesh','quaternion',
            'curobo.wrap.reacher.motion_gen','curobo.curobolib.kinematics_fused_cu',
            'curobo.curobolib.geom_cu','curobo.curobolib.lbfgs_step_cu',
            'curobo.curobolib.line_search_cu','curobo.curobolib.tensor_step_cu','warp']

@@ -26,7 +26,13 @@ modules = ['torch','torchvision','sapien','sapien.core','mplib','open3d','pytorc
 for name in modules:
     importlib.import_module(name)
 ctypes.CDLL('libvulkan.so.1')
-subprocess.run(['vulkaninfo','--help'],check=True,stdout=subprocess.DEVNULL)
+help_result = subprocess.run(['vulkaninfo','--help'], capture_output=True, text=True, timeout=15)
+# Jammy vulkan-tools prints valid help with exit 1. This checks the tool,
+# not device enumeration; require its documented help text as well as the code.
+help_text = help_result.stdout.lower()
+assert help_result.returncode in (0, 1)
+assert 'usage: vulkaninfo' in help_text and '--summary' in help_text
+assert 'vk_error' not in (help_result.stdout+help_result.stderr).lower()
 import torch
 import sapien
 from pytorch3d.ops import knn_points
@@ -45,6 +51,7 @@ assert robot.is_file()
 assert 'robot_cfg' in load_yaml(str(robot))
 result = {'cpu_imports_passed':True,'native_vulkan_loader_passed':True,
  'vulkan_tool_present':True,'cpu_physx_scene_passed':True,'curobo_config_present':True,
+ 'vulkan_help_exit_code':help_result.returncode,
  'pytorch3d_cpu_native_op_passed':True,
  'versions':versions,'python':sys.version,'cuda_build':torch.version.cuda,
  'compiled_arch_list':os.environ.get('TORCH_CUDA_ARCH_LIST','8.9+PTX'),

@@ -32,6 +32,8 @@ LIBERO 和 ALOHA 的精确版本归档均已下载并解压。官方 checkpoint 
 
 第一次权重传输下载了部分文件后遇到 curl 56 连接中断，已启动断点续传重试。尚未有完整权重验收结果。
 
+最后检查：续传也以 curl 56 结束，权重仍不完整；CUDA devel 镜像流程仍在后台运行。共享文件系统剩余约 146 GB。未提交新的 GPU 作业。
+
 备用安装解析了 199 个依赖，但在构建 `evdev` 时因缺少 Linux 头文件而失败。已将 SIF 转为可写 sandbox，尝试在容器内补齐系统依赖；集群拒绝 fakeroot：当前用户不在 `/etc/subuid` 中，且运行时没有可用的 fakeroot 支持。未修改宿主机权限或安装系统包。
 
 当前阻碍是 runtime 镜像缺少编译依赖，而此节点无法在容器内通过 fakeroot 安装系统包。已启动预装编译工具和头文件的官方 NVIDIA CUDA devel 镜像方案：`scripts/install_devel.sh`，远端日志为 `logs/install_devel.log`，结果尚未验收。本次仍未达到 OpenPI 环境验收标准。

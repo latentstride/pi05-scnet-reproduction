@@ -1,0 +1,16 @@
+.venv/
+source/
+cache/
+containers/
+tools/
+logs/
+results/
+videos/
+*.sif
+*.tar.gz
+*.safetensors
+*.pt
+*.npz
+.env
+.env.*
+__pycache__/

@@ -1,0 +1,2475 @@
+{
+  "dataset_repository": "TianxingChen/RoboTwin2.0",
+  "dataset_revision": "3dc3b798668feb99ac61cc9086d84cbcc3d79186",
+  "decoder_git_blob": "32ac399ef585a1ee6dea34eb35cb53c2814007b4",
+  "episodes": [
+    {
+      "robot": "aloha-agilex",
+      "episode": "episode0",
+      "sha256": "419abe95f2ad2910b19aef1de61c2374e76cbfe5e7a9eb5c26f137ee4f144ee2",
+      "seed_by_archive_order": 0,
+      "schema": {
+        "endpose/left_endpose": {
+          "shape": [
+            295,
+            7
+          ],
+          "dtype": "float64"
+        },
+        "endpose/left_gripper": {
+          "shape": [
+            295
+          ],
+          "dtype": "float64"
+        },
+        "endpose/right_endpose": {
+          "shape": [
+            295,
+            7
+          ],
+          "dtype": "float64"
+        },
+        "endpose/right_gripper": {
+          "shape": [
+            295
+          ],
+          "dtype": "float64"
+        },
+        "joint_action/left_arm": {
+          "shape": [
+            295,
+            6
+          ],
+          "dtype": "float64"
+        },
+        "joint_action/left_gripper": {
+          "shape": [
+            295
+          ],
+          "dtype": "float64"
+        },
+        "joint_action/right_arm": {
+          "shape": [
+            295,
+            6
+          ],
+          "dtype": "float64"
+        },
+        "joint_action/right_gripper": {
+          "shape": [
+            295
+          ],
+          "dtype": "float64"
+        },
+        "joint_action/vector": {
+          "shape": [
+            295,
+            14
+          ],
+          "dtype": "float64"
+        },
+        "observation/front_camera/cam2world_gl": {
+          "shape": [
+            295,
+            4,
+            4
+          ],
+          "dtype": "float32"
+        },
+        "observation/front_camera/extrinsic_cv": {
+          "shape": [
+            295,
+            3,
+            4
+          ],
+          "dtype": "float32"
+        },
+        "observation/front_camera/intrinsic_cv": {
+          "shape": [
+            295,
+            3,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "observation/front_camera/rgb": {
+          "shape": [
+            295
+          ],
+          "dtype": "|S15060"
+        },
+        "observation/head_camera/cam2world_gl": {
+          "shape": [
+            295,
+            4,
+            4
+          ],
+          "dtype": "float32"
+        },
+        "observation/head_camera/extrinsic_cv": {
+          "shape": [
+            295,
+            3,
+            4
+          ],
+          "dtype": "float32"
+        },
+        "observation/head_camera/intrinsic_cv": {
+          "shape": [
+            295,
+            3,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "observation/head_camera/rgb": {
+          "shape": [
+            295
+          ],
+          "dtype": "|S18582"
+        },
+        "observation/left_camera/cam2world_gl": {
+          "shape": [
+            295,
+            4,
+            4
+          ],
+          "dtype": "float32"
+        },
+        "observation/left_camera/extrinsic_cv": {
+          "shape": [
+            295,
+            3,
+            4
+          ],
+          "dtype": "float32"
+        },
+        "observation/left_camera/intrinsic_cv": {
+          "shape": [
+            295,
+            3,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "observation/left_camera/rgb": {
+          "shape": [
+            295
+          ],
+          "dtype": "|S12984"
+        },
+        "observation/right_camera/cam2world_gl": {
+          "shape": [
+            295,
+            4,
+            4
+          ],
+          "dtype": "float32"
+        },
+        "observation/right_camera/extrinsic_cv": {
+          "shape": [
+            295,
+            3,
+            4
+          ],
+          "dtype": "float32"
+        },
+        "observation/right_camera/intrinsic_cv": {
+          "shape": [
+            295,
+            3,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "observation/right_camera/rgb": {
+          "shape": [
+            295
+          ],
+          "dtype": "|S9244"
+        },
+        "pointcloud": {
+          "shape": [
+            295,
+            0
+          ],
+          "dtype": "float64"
+        }
+      },
+      "images": {
+        "observation/front_camera/rgb": {
+          "frames_decoded": 295,
+          "decoded_shapes_hwc": [
+            [
+              240,
+              320,
+              3
+            ]
+          ],
+          "dtype": "uint8",
+          "marked_standard_frames": 0,
+          "legacy_frames": 295,
+          "minimum_pixel_std": 39.30430164145791
+        },
+        "observation/head_camera/rgb": {
+          "frames_decoded": 295,
+          "decoded_shapes_hwc": [
+            [
+              240,
+              320,
+              3
+            ]
+          ],
+          "dtype": "uint8",
+          "marked_standard_frames": 0,
+          "legacy_frames": 295,
+          "minimum_pixel_std": 33.33747052331781
+        },
+        "observation/left_camera/rgb": {
+          "frames_decoded": 295,
+          "decoded_shapes_hwc": [
+            [
+              240,
+              320,
+              3
+            ]
+          ],
+          "dtype": "uint8",
+          "marked_standard_frames": 0,
+          "legacy_frames": 295,
+          "minimum_pixel_std": 23.38329254535302
+        },
+        "observation/right_camera/rgb": {
+          "frames_decoded": 295,
+          "decoded_shapes_hwc": [
+            [
+              240,
+              320,
+              3
+            ]
+          ],
+          "dtype": "uint8",
+          "marked_standard_frames": 0,
+          "legacy_frames": 295,
+          "minimum_pixel_std": 24.48026784416155
+        }
+      },
+      "quaternions": {
+        "left": {
+          "shape": [
+            295,
+            4
+          ],
+          "norm_min": 0.9999999999999993,
+          "norm_max": 1.0000000000000007,
+          "max_abs_norm_error": 6.661338147750939e-16
+        },
+        "right": {
+          "shape": [
+            295,
+            4
+          ],
+          "norm_min": 0.9999999999999994,
+          "norm_max": 1.0000000000000007,
+          "max_abs_norm_error": 6.661338147750939e-16
+        }
+      },
+      "camera_frame_checks": {
+        "observation/front_camera": {
+          "max_abs_cv_world_times_world_gl_minus_axis_flip": 1.8007731572566854e-07
+        },
+        "observation/head_camera": {
+          "max_abs_cv_world_times_world_gl_minus_axis_flip": 8.344650481717508e-08
+        },
+        "observation/left_camera": {
+          "max_abs_cv_world_times_world_gl_minus_axis_flip": 3.907901131583458e-07
+        },
+        "observation/right_camera": {
+          "max_abs_cv_world_times_world_gl_minus_axis_flip": 3.3235545282561674e-07
+        }
+      },
+      "root_attributes": {},
+      "time_fields": [],
+      "frames": 295,
+      "all_dataset_lengths_match": true,
+      "all_numeric_values_finite": true,
+      "joint_state": {
+        "shape": [
+          295,
+          14
+        ],
+        "dtype": "float64",
+        "finite": true,
+        "min": [
+          -0.3620203733444214,
+          -5.257390398583084e-07,
+          -2.296771708643064e-05,
+          -1.3280065104481764e-05,
+          -1.0583291441434994e-05,
+          -0.07654018700122833,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          -0.006375670898705721,
+          0.0
+        ],
+        "max": [
+          0.14656586945056915,
+          2.7799904346466064,
+          2.5513100624084473,
+          0.4901749789714813,
+          1.5266478061676025,
+          0.10774252563714981,
+          1.0,
+          0.8725932240486145,
+          2.696326971054077,
+          1.4151090383529663,
+          1.272997260093689,
+          0.620965838432312,
+          0.020483363419771194,
+          1.0
+        ]
+      },
+      "ee_state": {
+        "shape": [
+          295,
+          16
+        ],
+        "dtype": "float64",
+        "finite": true,
+        "min": [
+          -0.366595059633255,
+          -0.31384170055389404,
+          0.9079726934432983,
+          0.6928867487945246,
+          -0.039999240282169085,
+          -0.023530609097373922,
+          0.11803464931480197,
+          0.0,
+          0.018563037738204002,
+          -0.31280264258384705,
+          0.7767854928970337,
+          0.5989706646723864,
+          -0.01951914378244285,
+          -0.013684848967667862,
+          0.7036391853881497,
+          0.0
+        ],
+        "max": [
+          -0.1365625560283661,
+          0.17565441131591797,
+          1.1525870561599731,
+          0.9930044667871932,
+          0.05183821715225554,
+          0.005223720855748515,
+          0.7210464283467228,
+          1.0,
+          0.3064345121383667,
+          0.035432085394859314,
+          1.0186063051223755,
+          0.7105068925124743,
+          0.019234699904726246,
+          0.0016088961124312018,
+          0.8007695253260314,
+          1.0
+        ]
+      },
+      "joint_vector_max_abs_difference": 0.0,
+      "first_joint_state": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "first_ee_state": [
+        -0.2979237139225006,
+        -0.31380388140678406,
+        0.9419986009597778,
+        0.7000007075698663,
+        -7.093281273444641e-06,
+        -3.7938358494749025e-06,
+        0.714142149251099,
+        1.0,
+        0.30643314123153687,
+        -0.31279975175857544,
+        0.940998375415802,
+        0.7035625829175198,
+        -7.077809104143358e-06,
+        -3.793729455803252e-06,
+        0.7106333033667505,
+        1.0
+      ],
+      "left_gripper": {
+        "min": 0.0,
+        "max": 1.0,
+        "within_0_1": true,
+        "joint_vs_endpose_max_abs_difference": 0.0
+      },
+      "right_gripper": {
+        "min": 0.0,
+        "max": 1.0,
+        "within_0_1": true,
+        "joint_vs_endpose_max_abs_difference": 0.0
+      }
+    },
+    {
+      "robot": "aloha-agilex",
+      "episode": "episode1",
+      "sha256": "0b46329e6cef1f36627f23fdfdaf56c1b53bfcdd6807e23a2267e3c968396202",
+      "seed_by_archive_order": 1,
+      "schema": {
+        "endpose/left_endpose": {
+          "shape": [
+            277,
+            7
+          ],
+          "dtype": "float64"
+        },
+        "endpose/left_gripper": {
+          "shape": [
+            277
+          ],
+          "dtype": "float64"
+        },
+        "endpose/right_endpose": {
+          "shape": [
+            277,
+            7
+          ],
+          "dtype": "float64"
+        },
+        "endpose/right_gripper": {
+          "shape": [
+            277
+          ],
+          "dtype": "float64"
+        },
+        "joint_action/left_arm": {
+          "shape": [
+            277,
+            6
+          ],
+          "dtype": "float64"
+        },
+        "joint_action/left_gripper": {
+          "shape": [
+            277
+          ],
+          "dtype": "float64"
+        },
+        "joint_action/right_arm": {
+          "shape": [
+            277,
+            6
+          ],
+          "dtype": "float64"
+        },
+        "joint_action/right_gripper": {
+          "shape": [
+            277
+          ],
+          "dtype": "float64"
+        },
+        "joint_action/vector": {
+          "shape": [
+            277,
+            14
+          ],
+          "dtype": "float64"
+        },
+        "observation/front_camera/cam2world_gl": {
+          "shape": [
+            277,
+            4,
+            4
+          ],
+          "dtype": "float32"
+        },
+        "observation/front_camera/extrinsic_cv": {
+          "shape": [
+            277,
+            3,
+            4
+          ],
+          "dtype": "float32"
+        },
+        "observation/front_camera/intrinsic_cv": {
+          "shape": [
+            277,
+            3,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "observation/front_camera/rgb": {
+          "shape": [
+            277
+          ],
+          "dtype": "|S14712"
+        },
+        "observation/head_camera/cam2world_gl": {
+          "shape": [
+            277,
+            4,
+            4
+          ],
+          "dtype": "float32"
+        },
+        "observation/head_camera/extrinsic_cv": {
+          "shape": [
+            277,
+            3,
+            4
+          ],
+          "dtype": "float32"
+        },
+        "observation/head_camera/intrinsic_cv": {
+          "shape": [
+            277,
+            3,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "observation/head_camera/rgb": {
+          "shape": [
+            277
+          ],
+          "dtype": "|S18975"
+        },
+        "observation/left_camera/cam2world_gl": {
+          "shape": [
+            277,
+            4,
+            4
+          ],
+          "dtype": "float32"
+        },
+        "observation/left_camera/extrinsic_cv": {
+          "shape": [
+            277,
+            3,
+            4
+          ],
+          "dtype": "float32"
+        },
+        "observation/left_camera/intrinsic_cv": {
+          "shape": [
+            277,
+            3,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "observation/left_camera/rgb": {
+          "shape": [
+            277
+          ],
+          "dtype": "|S14418"
+        },
+        "observation/right_camera/cam2world_gl": {
+          "shape": [
+            277,
+            4,
+            4
+          ],
+          "dtype": "float32"
+        },
+        "observation/right_camera/extrinsic_cv": {
+          "shape": [
+            277,
+            3,
+            4
+          ],
+          "dtype": "float32"
+        },
+        "observation/right_camera/intrinsic_cv": {
+          "shape": [
+            277,
+            3,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "observation/right_camera/rgb": {
+          "shape": [
+            277
+          ],
+          "dtype": "|S9683"
+        },
+        "pointcloud": {
+          "shape": [
+            277,
+            0
+          ],
+          "dtype": "float64"
+        }
+      },
+      "images": {
+        "observation/front_camera/rgb": {
+          "frames_decoded": 277,
+          "decoded_shapes_hwc": [
+            [
+              240,
+              320,
+              3
+            ]
+          ],
+          "dtype": "uint8",
+          "marked_standard_frames": 0,
+          "legacy_frames": 277,
+          "minimum_pixel_std": 40.28245790499873
+        },
+        "observation/head_camera/rgb": {
+          "frames_decoded": 277,
+          "decoded_shapes_hwc": [
+            [
+              240,
+              320,
+              3
+            ]
+          ],
+          "dtype": "uint8",
+          "marked_standard_frames": 0,
+          "legacy_frames": 277,
+          "minimum_pixel_std": 51.51851095484255
+        },
+        "observation/left_camera/rgb": {
+          "frames_decoded": 277,
+          "decoded_shapes_hwc": [
+            [
+              240,
+              320,
+              3
+            ]
+          ],
+          "dtype": "uint8",
+          "marked_standard_frames": 0,
+          "legacy_frames": 277,
+          "minimum_pixel_std": 25.608996809349463
+        },
+        "observation/right_camera/rgb": {
+          "frames_decoded": 277,
+          "decoded_shapes_hwc": [
+            [
+              240,
+              320,
+              3
+            ]
+          ],
+          "dtype": "uint8",
+          "marked_standard_frames": 0,
+          "legacy_frames": 277,
+          "minimum_pixel_std": 24.31493480727546
+        }
+      },
+      "quaternions": {
+        "left": {
+          "shape": [
+            277,
+            4
+          ],
+          "norm_min": 0.9999999999999994,
+          "norm_max": 1.0000000000000007,
+          "max_abs_norm_error": 6.661338147750939e-16
+        },
+        "right": {
+          "shape": [
+            277,
+            4
+          ],
+          "norm_min": 0.9999999999999994,
+          "norm_max": 1.0000000000000007,
+          "max_abs_norm_error": 6.661338147750939e-16
+        }
+      },
+      "camera_frame_checks": {
+        "observation/front_camera": {
+          "max_abs_cv_world_times_world_gl_minus_axis_flip": 1.8007731572566854e-07
+        },
+        "observation/head_camera": {
+          "max_abs_cv_world_times_world_gl_minus_axis_flip": 8.344650481717508e-08
+        },
+        "observation/left_camera": {
+          "max_abs_cv_world_times_world_gl_minus_axis_flip": 2.9884534313850963e-07
+        },
+        "observation/right_camera": {
+          "max_abs_cv_world_times_world_gl_minus_axis_flip": 3.9433536791477763e-07
+        }
+      },
+      "root_attributes": {},
+      "time_fields": [],
+      "frames": 277,
+      "all_dataset_lengths_match": true,
+      "all_numeric_values_finite": true,
+      "joint_state": {
+        "shape": [
+          277,
+          14
+        ],
+        "dtype": "float64",
+        "finite": true,
+        "min": [
+          -0.37900644540786743,
+          -5.257390398583084e-07,
+          -2.296771708643064e-05,
+          -1.3280065104481764e-05,
+          -1.0583291441434994e-05,
+          -0.033899594098329544,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          -0.013269590213894844,
+          0.0
+        ],
+        "max": [
+          0.01999334618449211,
+          2.132349967956543,
+          1.3096263408660889,
+          1.1055340766906738,
+          1.3155568838119507,
+          0.05233106017112732,
+          1.0,
+          0.8528960347175598,
+          2.750654697418213,
+          1.5808087587356567,
+          1.1518659591674805,
+          0.563522458076477,
+          0.02118576318025589,
+          1.0
+        ]
+      },
+      "ee_state": {
+        "shape": [
+          277,
+          16
+        ],
+        "dtype": "float64",
+        "finite": true,
+        "min": [
+          -0.3000299632549286,
+          -0.31384173035621643,
+          0.9093964099884033,
+          0.692880699700189,
+          -0.03434878175587528,
+          -0.028954601762351206,
+          0.1348892293773884,
+          0.0,
+          0.022722767665982246,
+          -0.31280282139778137,
+          0.7781807780265808,
+          0.5838165166501124,
+          -0.016713119561208703,
+          -0.021504381618047796,
+          0.7024213570303836,
+          0.0
+        ],
+        "max": [
+          -0.13059528172016144,
+          -0.016228478401899338,
+          1.087756633758545,
+          0.9908591355931478,
+          0.021587146071031613,
+          0.005406527148611895,
+          0.7210522418206886,
+          1.0,
+          0.30643466114997864,
+          0.07182386517524719,
+          1.01876962184906,
+          0.7115774655777108,
+          0.027763796428724685,
+          0.002320932836744949,
+          0.8118841122608998,
+          1.0
+        ]
+      },
+      "joint_vector_max_abs_difference": 0.0,
+      "first_joint_state": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "first_ee_state": [
+        -0.2979237139225006,
+        -0.31380388140678406,
+        0.9419986009597778,
+        0.7000007075698663,
+        -7.093281273444641e-06,
+        -3.7938358494749025e-06,
+        0.714142149251099,
+        1.0,
+        0.30643314123153687,
+        -0.31279975175857544,
+        0.940998375415802,
+        0.7035625829175198,
+        -7.077809104143358e-06,
+        -3.793729455803252e-06,
+        0.7106333033667505,
+        1.0
+      ],
+      "left_gripper": {
+        "min": 0.0,
+        "max": 1.0,
+        "within_0_1": true,
+        "joint_vs_endpose_max_abs_difference": 0.0
+      },
+      "right_gripper": {
+        "min": 0.0,
+        "max": 1.0,
+        "within_0_1": true,
+        "joint_vs_endpose_max_abs_difference": 0.0
+      }
+    },
+    {
+      "robot": "aloha-agilex",
+      "episode": "episode2",
+      "sha256": "e4de42700f3d4f66f9ac0e875760b099aa11bce240482e99a21f1cf0254d283b",
+      "seed_by_archive_order": 2,
+      "schema": {
+        "endpose/left_endpose": {
+          "shape": [
+            282,
+            7
+          ],
+          "dtype": "float64"
+        },
+        "endpose/left_gripper": {
+          "shape": [
+            282
+          ],
+          "dtype": "float64"
+        },
+        "endpose/right_endpose": {
+          "shape": [
+            282,
+            7
+          ],
+          "dtype": "float64"
+        },
+        "endpose/right_gripper": {
+          "shape": [
+            282
+          ],
+          "dtype": "float64"
+        },
+        "joint_action/left_arm": {
+          "shape": [
+            282,
+            6
+          ],
+          "dtype": "float64"
+        },
+        "joint_action/left_gripper": {
+          "shape": [
+            282
+          ],
+          "dtype": "float64"
+        },
+        "joint_action/right_arm": {
+          "shape": [
+            282,
+            6
+          ],
+          "dtype": "float64"
+        },
+        "joint_action/right_gripper": {
+          "shape": [
+            282
+          ],
+          "dtype": "float64"
+        },
+        "joint_action/vector": {
+          "shape": [
+            282,
+            14
+          ],
+          "dtype": "float64"
+        },
+        "observation/front_camera/cam2world_gl": {
+          "shape": [
+            282,
+            4,
+            4
+          ],
+          "dtype": "float32"
+        },
+        "observation/front_camera/extrinsic_cv": {
+          "shape": [
+            282,
+            3,
+            4
+          ],
+          "dtype": "float32"
+        },
+        "observation/front_camera/intrinsic_cv": {
+          "shape": [
+            282,
+            3,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "observation/front_camera/rgb": {
+          "shape": [
+            282
+          ],
+          "dtype": "|S13730"
+        },
+        "observation/head_camera/cam2world_gl": {
+          "shape": [
+            282,
+            4,
+            4
+          ],
+          "dtype": "float32"
+        },
+        "observation/head_camera/extrinsic_cv": {
+          "shape": [
+            282,
+            3,
+            4
+          ],
+          "dtype": "float32"
+        },
+        "observation/head_camera/intrinsic_cv": {
+          "shape": [
+            282,
+            3,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "observation/head_camera/rgb": {
+          "shape": [
+            282
+          ],
+          "dtype": "|S19283"
+        },
+        "observation/left_camera/cam2world_gl": {
+          "shape": [
+            282,
+            4,
+            4
+          ],
+          "dtype": "float32"
+        },
+        "observation/left_camera/extrinsic_cv": {
+          "shape": [
+            282,
+            3,
+            4
+          ],
+          "dtype": "float32"
+        },
+        "observation/left_camera/intrinsic_cv": {
+          "shape": [
+            282,
+            3,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "observation/left_camera/rgb": {
+          "shape": [
+            282
+          ],
+          "dtype": "|S13169"
+        },
+        "observation/right_camera/cam2world_gl": {
+          "shape": [
+            282,
+            4,
+            4
+          ],
+          "dtype": "float32"
+        },
+        "observation/right_camera/extrinsic_cv": {
+          "shape": [
+            282,
+            3,
+            4
+          ],
+          "dtype": "float32"
+        },
+        "observation/right_camera/intrinsic_cv": {
+          "shape": [
+            282,
+            3,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "observation/right_camera/rgb": {
+          "shape": [
+            282
+          ],
+          "dtype": "|S9358"
+        },
+        "pointcloud": {
+          "shape": [
+            282,
+            0
+          ],
+          "dtype": "float64"
+        }
+      },
+      "images": {
+        "observation/front_camera/rgb": {
+          "frames_decoded": 282,
+          "decoded_shapes_hwc": [
+            [
+              240,
+              320,
+              3
+            ]
+          ],
+          "dtype": "uint8",
+          "marked_standard_frames": 0,
+          "legacy_frames": 282,
+          "minimum_pixel_std": 39.65833858412416
+        },
+        "observation/head_camera/rgb": {
+          "frames_decoded": 282,
+          "decoded_shapes_hwc": [
+            [
+              240,
+              320,
+              3
+            ]
+          ],
+          "dtype": "uint8",
+          "marked_standard_frames": 0,
+          "legacy_frames": 282,
+          "minimum_pixel_std": 36.54980604309024
+        },
+        "observation/left_camera/rgb": {
+          "frames_decoded": 282,
+          "decoded_shapes_hwc": [
+            [
+              240,
+              320,
+              3
+            ]
+          ],
+          "dtype": "uint8",
+          "marked_standard_frames": 0,
+          "legacy_frames": 282,
+          "minimum_pixel_std": 25.419798749198993
+        },
+        "observation/right_camera/rgb": {
+          "frames_decoded": 282,
+          "decoded_shapes_hwc": [
+            [
+              240,
+              320,
+              3
+            ]
+          ],
+          "dtype": "uint8",
+          "marked_standard_frames": 0,
+          "legacy_frames": 282,
+          "minimum_pixel_std": 24.25195254095954
+        }
+      },
+      "quaternions": {
+        "left": {
+          "shape": [
+            282,
+            4
+          ],
+          "norm_min": 0.9999999999999994,
+          "norm_max": 1.0000000000000009,
+          "max_abs_norm_error": 8.881784197001252e-16
+        },
+        "right": {
+          "shape": [
+            282,
+            4
+          ],
+          "norm_min": 0.9999999999999993,
+          "norm_max": 1.0000000000000007,
+          "max_abs_norm_error": 6.661338147750939e-16
+        }
+      },
+      "camera_frame_checks": {
+        "observation/front_camera": {
+          "max_abs_cv_world_times_world_gl_minus_axis_flip": 1.8007731572566854e-07
+        },
+        "observation/head_camera": {
+          "max_abs_cv_world_times_world_gl_minus_axis_flip": 8.344650481717508e-08
+        },
+        "observation/left_camera": {
+          "max_abs_cv_world_times_world_gl_minus_axis_flip": 3.152524903349274e-07
+        },
+        "observation/right_camera": {
+          "max_abs_cv_world_times_world_gl_minus_axis_flip": 3.636694427822107e-07
+        }
+      },
+      "root_attributes": {},
+      "time_fields": [],
+      "frames": 282,
+      "all_dataset_lengths_match": true,
+      "all_numeric_values_finite": true,
+      "joint_state": {
+        "shape": [
+          282,
+          14
+        ],
+        "dtype": "float64",
+        "finite": true,
+        "min": [
+          -0.37484902143478394,
+          -5.257390398583084e-07,
+          -2.296771708643064e-05,
+          -1.3280065104481764e-05,
+          -1.0583291441434994e-05,
+          -0.09430476278066635,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          -0.012968763709068298,
+          0.0
+        ],
+        "max": [
+          0.20300717651844025,
+          2.550170660018921,
+          1.9834935665130615,
+          0.6662076115608215,
+          1.535447359085083,
+          0.18542392551898956,
+          1.0,
+          0.8445929288864136,
+          2.6909704208374023,
+          1.440739393234253,
+          1.2232084274291992,
+          0.5430845022201538,
+          0.01849575713276863,
+          1.0
+        ]
+      },
+      "ee_state": {
+        "shape": [
+          282,
+          16
+        ],
+        "dtype": "float64",
+        "finite": true,
+        "min": [
+          -0.3870902359485626,
+          -0.3138419985771179,
+          0.9087340235710144,
+          0.6928831621016561,
+          -0.04744751703459424,
+          -0.03538686548839154,
+          0.14065232868929475,
+          0.0,
+          0.0244254469871521,
+          -0.31280282139778137,
+          0.77938312292099,
+          0.5788992732074663,
+          -0.01946232729387456,
+          -0.023186663847332922,
+          0.69993294296044,
+          0.0
+        ],
+        "max": [
+          -0.13394834101200104,
+          0.12592868506908417,
+          1.107033133506775,
+          0.9900543090842164,
+          0.026581102824755773,
+          0.02240597963448454,
+          0.7210498745789863,
+          1.0,
+          0.306434690952301,
+          0.07263025641441345,
+          1.0185267925262451,
+          0.7139514203660103,
+          0.030547766662816733,
+          0.0017040286367683288,
+          0.8153981691391761,
+          1.0
+        ]
+      },
+      "joint_vector_max_abs_difference": 0.0,
+      "first_joint_state": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "first_ee_state": [
+        -0.2979237139225006,
+        -0.31380388140678406,
+        0.9419986009597778,
+        0.7000007075698663,
+        -7.093281273444641e-06,
+        -3.7938358494749025e-06,
+        0.714142149251099,
+        1.0,
+        0.30643314123153687,
+        -0.31279975175857544,
+        0.940998375415802,
+        0.7035625829175198,
+        -7.077809104143358e-06,
+        -3.793729455803252e-06,
+        0.7106333033667505,
+        1.0
+      ],
+      "left_gripper": {
+        "min": 0.0,
+        "max": 1.0,
+        "within_0_1": true,
+        "joint_vs_endpose_max_abs_difference": 0.0
+      },
+      "right_gripper": {
+        "min": 0.0,
+        "max": 1.0,
+        "within_0_1": true,
+        "joint_vs_endpose_max_abs_difference": 0.0
+      }
+    },
+    {
+      "robot": "arx-x5",
+      "episode": "episode0",
+      "sha256": "571b005be6ce62842f8d7a498f1eae5c327955d7835da6289b9c944a85113b02",
+      "seed_by_archive_order": 0,
+      "schema": {
+        "endpose/left_endpose": {
+          "shape": [
+            195,
+            7
+          ],
+          "dtype": "float64"
+        },
+        "endpose/left_gripper": {
+          "shape": [
+            195
+          ],
+          "dtype": "float64"
+        },
+        "endpose/right_endpose": {
+          "shape": [
+            195,
+            7
+          ],
+          "dtype": "float64"
+        },
+        "endpose/right_gripper": {
+          "shape": [
+            195
+          ],
+          "dtype": "float64"
+        },
+        "joint_action/left_arm": {
+          "shape": [
+            195,
+            6
+          ],
+          "dtype": "float64"
+        },
+        "joint_action/left_gripper": {
+          "shape": [
+            195
+          ],
+          "dtype": "float64"
+        },
+        "joint_action/right_arm": {
+          "shape": [
+            195,
+            6
+          ],
+          "dtype": "float64"
+        },
+        "joint_action/right_gripper": {
+          "shape": [
+            195
+          ],
+          "dtype": "float64"
+        },
+        "joint_action/vector": {
+          "shape": [
+            195,
+            14
+          ],
+          "dtype": "float64"
+        },
+        "observation/head_camera/cam2world_gl": {
+          "shape": [
+            195,
+            4,
+            4
+          ],
+          "dtype": "float32"
+        },
+        "observation/head_camera/extrinsic_cv": {
+          "shape": [
+            195,
+            3,
+            4
+          ],
+          "dtype": "float32"
+        },
+        "observation/head_camera/intrinsic_cv": {
+          "shape": [
+            195,
+            3,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "observation/head_camera/rgb": {
+          "shape": [
+            195
+          ],
+          "dtype": "|S17774"
+        },
+        "observation/left_camera/cam2world_gl": {
+          "shape": [
+            195,
+            4,
+            4
+          ],
+          "dtype": "float32"
+        },
+        "observation/left_camera/extrinsic_cv": {
+          "shape": [
+            195,
+            3,
+            4
+          ],
+          "dtype": "float32"
+        },
+        "observation/left_camera/intrinsic_cv": {
+          "shape": [
+            195,
+            3,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "observation/left_camera/rgb": {
+          "shape": [
+            195
+          ],
+          "dtype": "|S10940"
+        },
+        "observation/right_camera/cam2world_gl": {
+          "shape": [
+            195,
+            4,
+            4
+          ],
+          "dtype": "float32"
+        },
+        "observation/right_camera/extrinsic_cv": {
+          "shape": [
+            195,
+            3,
+            4
+          ],
+          "dtype": "float32"
+        },
+        "observation/right_camera/intrinsic_cv": {
+          "shape": [
+            195,
+            3,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "observation/right_camera/rgb": {
+          "shape": [
+            195
+          ],
+          "dtype": "|S8892"
+        },
+        "pointcloud": {
+          "shape": [
+            195,
+            0
+          ],
+          "dtype": "float64"
+        },
+        "third_view_rgb": {
+          "shape": [
+            195
+          ],
+          "dtype": "|S15834"
+        }
+      },
+      "images": {
+        "observation/head_camera/rgb": {
+          "frames_decoded": 195,
+          "decoded_shapes_hwc": [
+            [
+              240,
+              320,
+              3
+            ]
+          ],
+          "dtype": "uint8",
+          "marked_standard_frames": 0,
+          "legacy_frames": 195,
+          "minimum_pixel_std": 32.79135872342122
+        },
+        "observation/left_camera/rgb": {
+          "frames_decoded": 195,
+          "decoded_shapes_hwc": [
+            [
+              240,
+              320,
+              3
+            ]
+          ],
+          "dtype": "uint8",
+          "marked_standard_frames": 0,
+          "legacy_frames": 195,
+          "minimum_pixel_std": 10.642281470323356
+        },
+        "observation/right_camera/rgb": {
+          "frames_decoded": 195,
+          "decoded_shapes_hwc": [
+            [
+              240,
+              320,
+              3
+            ]
+          ],
+          "dtype": "uint8",
+          "marked_standard_frames": 0,
+          "legacy_frames": 195,
+          "minimum_pixel_std": 11.861676927958262
+        },
+        "third_view_rgb": {
+          "frames_decoded": 195,
+          "decoded_shapes_hwc": [
+            [
+              240,
+              320,
+              3
+            ]
+          ],
+          "dtype": "uint8",
+          "marked_standard_frames": 0,
+          "legacy_frames": 195,
+          "minimum_pixel_std": 44.355732748479106
+        }
+      },
+      "quaternions": {
+        "left": {
+          "shape": [
+            195,
+            4
+          ],
+          "norm_min": 0.9999999999999996,
+          "norm_max": 1.0000000000000004,
+          "max_abs_norm_error": 4.440892098500626e-16
+        },
+        "right": {
+          "shape": [
+            195,
+            4
+          ],
+          "norm_min": 0.9999999999999994,
+          "norm_max": 1.0000000000000004,
+          "max_abs_norm_error": 5.551115123125783e-16
+        }
+      },
+      "camera_frame_checks": {
+        "observation/head_camera": {
+          "max_abs_cv_world_times_world_gl_minus_axis_flip": 8.344650481717508e-08
+        },
+        "observation/left_camera": {
+          "max_abs_cv_world_times_world_gl_minus_axis_flip": 3.348774053613113e-07
+        },
+        "observation/right_camera": {
+          "max_abs_cv_world_times_world_gl_minus_axis_flip": 3.0684682883475034e-07
+        }
+      },
+      "root_attributes": {},
+      "time_fields": [],
+      "frames": 195,
+      "all_dataset_lengths_match": true,
+      "all_numeric_values_finite": true,
+      "joint_state": {
+        "shape": [
+          195,
+          14
+        ],
+        "dtype": "float64",
+        "finite": true,
+        "min": [
+          -0.5067344307899475,
+          0.0,
+          -4.7403431381098926e-05,
+          -1.029619943437865e-05,
+          -8.599252396379597e-06,
+          -0.011346623301506042,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          -0.004783146549016237,
+          0.0
+        ],
+        "max": [
+          0.13133443892002106,
+          2.505491018295288,
+          1.858428955078125,
+          0.8508068323135376,
+          1.298128604888916,
+          0.008396605029702187,
+          1.0,
+          0.9683257937431335,
+          2.645514488220215,
+          1.2251462936401367,
+          1.4196958541870117,
+          0.5657415390014648,
+          0.005179999861866236,
+          1.0
+        ]
+      },
+      "ee_state": {
+        "shape": [
+          195,
+          16
+        ],
+        "dtype": "float64",
+        "finite": true,
+        "min": [
+          -0.3345833420753479,
+          -0.25230225920677185,
+          0.902388334274292,
+          0.7070853231654621,
+          -0.020695953451874912,
+          -0.019330211578296952,
+          0.19993787353856504,
+          0.0,
+          0.04775400459766388,
+          -0.25230470299720764,
+          0.7768127918243408,
+          0.5498823580594739,
+          -0.017848818483650043,
+          -0.01308248536387746,
+          0.6801210468021099,
+          0.0
+        ],
+        "max": [
+          -0.11168643087148666,
+          0.17890001833438873,
+          1.0908113718032837,
+          0.9797430911997744,
+          0.029204843161663094,
+          0.0038328804776183167,
+          0.7071282385067962,
+          1.0,
+          0.30050382018089294,
+          0.0912528857588768,
+          0.990581750869751,
+          0.7330818584939262,
+          0.02027809302374086,
+          0.00450966787214413,
+          0.8351760284069589,
+          1.0
+        ]
+      },
+      "joint_vector_max_abs_difference": 0.0,
+      "first_joint_state": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "first_ee_state": [
+        -0.29949963092803955,
+        -0.2522988021373749,
+        0.9404931664466858,
+        0.7071067811485624,
+        -7.390975342465994e-06,
+        7.267164130797532e-06,
+        0.7071067811485624,
+        1.0,
+        0.30050042271614075,
+        -0.2522988021373749,
+        0.9404931664466858,
+        0.707106751346387,
+        -7.361173075772463e-06,
+        7.268829721907011e-06,
+        0.7071068109510303,
+        1.0
+      ],
+      "left_gripper": {
+        "min": 0.0,
+        "max": 1.0,
+        "within_0_1": true,
+        "joint_vs_endpose_max_abs_difference": 0.0
+      },
+      "right_gripper": {
+        "min": 0.0,
+        "max": 1.0,
+        "within_0_1": true,
+        "joint_vs_endpose_max_abs_difference": 0.0
+      }
+    },
+    {
+      "robot": "arx-x5",
+      "episode": "episode1",
+      "sha256": "e3967f5c3fdda5e78d669a21e6a6dc49715a3f1203aafbda3bc41a398d28de08",
+      "seed_by_archive_order": 1,
+      "schema": {
+        "endpose/left_endpose": {
+          "shape": [
+            192,
+            7
+          ],
+          "dtype": "float64"
+        },
+        "endpose/left_gripper": {
+          "shape": [
+            192
+          ],
+          "dtype": "float64"
+        },
+        "endpose/right_endpose": {
+          "shape": [
+            192,
+            7
+          ],
+          "dtype": "float64"
+        },
+        "endpose/right_gripper": {
+          "shape": [
+            192
+          ],
+          "dtype": "float64"
+        },
+        "joint_action/left_arm": {
+          "shape": [
+            192,
+            6
+          ],
+          "dtype": "float64"
+        },
+        "joint_action/left_gripper": {
+          "shape": [
+            192
+          ],
+          "dtype": "float64"
+        },
+        "joint_action/right_arm": {
+          "shape": [
+            192,
+            6
+          ],
+          "dtype": "float64"
+        },
+        "joint_action/right_gripper": {
+          "shape": [
+            192
+          ],
+          "dtype": "float64"
+        },
+        "joint_action/vector": {
+          "shape": [
+            192,
+            14
+          ],
+          "dtype": "float64"
+        },
+        "observation/head_camera/cam2world_gl": {
+          "shape": [
+            192,
+            4,
+            4
+          ],
+          "dtype": "float32"
+        },
+        "observation/head_camera/extrinsic_cv": {
+          "shape": [
+            192,
+            3,
+            4
+          ],
+          "dtype": "float32"
+        },
+        "observation/head_camera/intrinsic_cv": {
+          "shape": [
+            192,
+            3,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "observation/head_camera/rgb": {
+          "shape": [
+            192
+          ],
+          "dtype": "|S17787"
+        },
+        "observation/left_camera/cam2world_gl": {
+          "shape": [
+            192,
+            4,
+            4
+          ],
+          "dtype": "float32"
+        },
+        "observation/left_camera/extrinsic_cv": {
+          "shape": [
+            192,
+            3,
+            4
+          ],
+          "dtype": "float32"
+        },
+        "observation/left_camera/intrinsic_cv": {
+          "shape": [
+            192,
+            3,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "observation/left_camera/rgb": {
+          "shape": [
+            192
+          ],
+          "dtype": "|S13420"
+        },
+        "observation/right_camera/cam2world_gl": {
+          "shape": [
+            192,
+            4,
+            4
+          ],
+          "dtype": "float32"
+        },
+        "observation/right_camera/extrinsic_cv": {
+          "shape": [
+            192,
+            3,
+            4
+          ],
+          "dtype": "float32"
+        },
+        "observation/right_camera/intrinsic_cv": {
+          "shape": [
+            192,
+            3,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "observation/right_camera/rgb": {
+          "shape": [
+            192
+          ],
+          "dtype": "|S8746"
+        },
+        "pointcloud": {
+          "shape": [
+            192,
+            0
+          ],
+          "dtype": "float64"
+        },
+        "third_view_rgb": {
+          "shape": [
+            192
+          ],
+          "dtype": "|S15146"
+        }
+      },
+      "images": {
+        "observation/head_camera/rgb": {
+          "frames_decoded": 192,
+          "decoded_shapes_hwc": [
+            [
+              240,
+              320,
+              3
+            ]
+          ],
+          "dtype": "uint8",
+          "marked_standard_frames": 0,
+          "legacy_frames": 192,
+          "minimum_pixel_std": 39.04850950277497
+        },
+        "observation/left_camera/rgb": {
+          "frames_decoded": 192,
+          "decoded_shapes_hwc": [
+            [
+              240,
+              320,
+              3
+            ]
+          ],
+          "dtype": "uint8",
+          "marked_standard_frames": 0,
+          "legacy_frames": 192,
+          "minimum_pixel_std": 14.780194315471888
+        },
+        "observation/right_camera/rgb": {
+          "frames_decoded": 192,
+          "decoded_shapes_hwc": [
+            [
+              240,
+              320,
+              3
+            ]
+          ],
+          "dtype": "uint8",
+          "marked_standard_frames": 0,
+          "legacy_frames": 192,
+          "minimum_pixel_std": 11.254963365067512
+        },
+        "third_view_rgb": {
+          "frames_decoded": 192,
+          "decoded_shapes_hwc": [
+            [
+              240,
+              320,
+              3
+            ]
+          ],
+          "dtype": "uint8",
+          "marked_standard_frames": 0,
+          "legacy_frames": 192,
+          "minimum_pixel_std": 42.984231829593334
+        }
+      },
+      "quaternions": {
+        "left": {
+          "shape": [
+            192,
+            4
+          ],
+          "norm_min": 0.9999999999999996,
+          "norm_max": 1.0000000000000007,
+          "max_abs_norm_error": 6.661338147750939e-16
+        },
+        "right": {
+          "shape": [
+            192,
+            4
+          ],
+          "norm_min": 0.9999999999999996,
+          "norm_max": 1.0000000000000004,
+          "max_abs_norm_error": 4.440892098500626e-16
+        }
+      },
+      "camera_frame_checks": {
+        "observation/head_camera": {
+          "max_abs_cv_world_times_world_gl_minus_axis_flip": 8.344650481717508e-08
+        },
+        "observation/left_camera": {
+          "max_abs_cv_world_times_world_gl_minus_axis_flip": 3.2073998390558245e-07
+        },
+        "observation/right_camera": {
+          "max_abs_cv_world_times_world_gl_minus_axis_flip": 3.7894534088422915e-07
+        }
+      },
+      "root_attributes": {},
+      "time_fields": [],
+      "frames": 192,
+      "all_dataset_lengths_match": true,
+      "all_numeric_values_finite": true,
+      "joint_state": {
+        "shape": [
+          192,
+          14
+        ],
+        "dtype": "float64",
+        "finite": true,
+        "min": [
+          -0.5286062955856323,
+          0.0,
+          -5.819892612635158e-05,
+          0.0,
+          0.0,
+          -0.06074747443199158,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          -0.0038331563118845224,
+          0.0
+        ],
+        "max": [
+          0.14704905450344086,
+          2.3213040828704834,
+          1.4811983108520508,
+          1.0240120887756348,
+          1.2572153806686401,
+          0.0075325872749090195,
+          1.0,
+          0.9179567694664001,
+          2.6286771297454834,
+          1.171720266342163,
+          1.4560277462005615,
+          0.45129480957984924,
+          0.003120000008493662,
+          1.0
+        ]
+      },
+      "ee_state": {
+        "shape": [
+          192,
+          16
+        ],
+        "dtype": "float64",
+        "finite": true,
+        "min": [
+          -0.33403417468070984,
+          -0.2523026466369629,
+          0.9052205681800842,
+          0.7070856807399731,
+          -0.04732885356045577,
+          -0.020539457009790874,
+          0.2274632093287756,
+          0.0,
+          0.05301281437277794,
+          -0.25230467319488525,
+          0.7771225571632385,
+          0.5229863141430161,
+          -0.00979176044827253,
+          -0.01871696456542582,
+          0.6783375314472531,
+          0.0
+        ],
+        "max": [
+          -0.10809162259101868,
+          0.12098298221826553,
+          1.075087547302246,
+          0.9737803030053733,
+          0.023031145025532607,
+          0.007461150793384497,
+          0.707127880825615,
+          1.0,
+          0.300503671169281,
+          0.07245386391878128,
+          0.9888895153999329,
+          0.7346997396154273,
+          0.025088722520332934,
+          0.003726438688465672,
+          0.8523393841239371,
+          1.0
+        ]
+      },
+      "joint_vector_max_abs_difference": 0.0,
+      "first_joint_state": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "first_ee_state": [
+        -0.29949963092803955,
+        -0.2522988021373749,
+        0.9404931664466858,
+        0.7071067811485624,
+        -7.390975342465994e-06,
+        7.267164130797532e-06,
+        0.7071067811485624,
+        1.0,
+        0.30050042271614075,
+        -0.2522988021373749,
+        0.9404931664466858,
+        0.707106751346387,
+        -7.361173075772463e-06,
+        7.268829721907011e-06,
+        0.7071068109510303,
+        1.0
+      ],
+      "left_gripper": {
+        "min": 0.0,
+        "max": 1.0,
+        "within_0_1": true,
+        "joint_vs_endpose_max_abs_difference": 0.0
+      },
+      "right_gripper": {
+        "min": 0.0,
+        "max": 1.0,
+        "within_0_1": true,
+        "joint_vs_endpose_max_abs_difference": 0.0
+      }
+    },
+    {
+      "robot": "arx-x5",
+      "episode": "episode2",
+      "sha256": "8062c35e64799092203cfe8cdfbd3581ffe6cfa8d5f0ab7b059123a0570cf6a7",
+      "seed_by_archive_order": 2,
+      "schema": {
+        "endpose/left_endpose": {
+          "shape": [
+            194,
+            7
+          ],
+          "dtype": "float64"
+        },
+        "endpose/left_gripper": {
+          "shape": [
+            194
+          ],
+          "dtype": "float64"
+        },
+        "endpose/right_endpose": {
+          "shape": [
+            194,
+            7
+          ],
+          "dtype": "float64"
+        },
+        "endpose/right_gripper": {
+          "shape": [
+            194
+          ],
+          "dtype": "float64"
+        },
+        "joint_action/left_arm": {
+          "shape": [
+            194,
+            6
+          ],
+          "dtype": "float64"
+        },
+        "joint_action/left_gripper": {
+          "shape": [
+            194
+          ],
+          "dtype": "float64"
+        },
+        "joint_action/right_arm": {
+          "shape": [
+            194,
+            6
+          ],
+          "dtype": "float64"
+        },
+        "joint_action/right_gripper": {
+          "shape": [
+            194
+          ],
+          "dtype": "float64"
+        },
+        "joint_action/vector": {
+          "shape": [
+            194,
+            14
+          ],
+          "dtype": "float64"
+        },
+        "observation/head_camera/cam2world_gl": {
+          "shape": [
+            194,
+            4,
+            4
+          ],
+          "dtype": "float32"
+        },
+        "observation/head_camera/extrinsic_cv": {
+          "shape": [
+            194,
+            3,
+            4
+          ],
+          "dtype": "float32"
+        },
+        "observation/head_camera/intrinsic_cv": {
+          "shape": [
+            194,
+            3,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "observation/head_camera/rgb": {
+          "shape": [
+            194
+          ],
+          "dtype": "|S17484"
+        },
+        "observation/left_camera/cam2world_gl": {
+          "shape": [
+            194,
+            4,
+            4
+          ],
+          "dtype": "float32"
+        },
+        "observation/left_camera/extrinsic_cv": {
+          "shape": [
+            194,
+            3,
+            4
+          ],
+          "dtype": "float32"
+        },
+        "observation/left_camera/intrinsic_cv": {
+          "shape": [
+            194,
+            3,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "observation/left_camera/rgb": {
+          "shape": [
+            194
+          ],
+          "dtype": "|S10814"
+        },
+        "observation/right_camera/cam2world_gl": {
+          "shape": [
+            194,
+            4,
+            4
+          ],
+          "dtype": "float32"
+        },
+        "observation/right_camera/extrinsic_cv": {
+          "shape": [
+            194,
+            3,
+            4
+          ],
+          "dtype": "float32"
+        },
+        "observation/right_camera/intrinsic_cv": {
+          "shape": [
+            194,
+            3,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "observation/right_camera/rgb": {
+          "shape": [
+            194
+          ],
+          "dtype": "|S9023"
+        },
+        "pointcloud": {
+          "shape": [
+            194,
+            0
+          ],
+          "dtype": "float64"
+        },
+        "third_view_rgb": {
+          "shape": [
+            194
+          ],
+          "dtype": "|S15185"
+        }
+      },
+      "images": {
+        "observation/head_camera/rgb": {
+          "frames_decoded": 194,
+          "decoded_shapes_hwc": [
+            [
+              240,
+              320,
+              3
+            ]
+          ],
+          "dtype": "uint8",
+          "marked_standard_frames": 0,
+          "legacy_frames": 194,
+          "minimum_pixel_std": 37.917293507413866
+        },
+        "observation/left_camera/rgb": {
+          "frames_decoded": 194,
+          "decoded_shapes_hwc": [
+            [
+              240,
+              320,
+              3
+            ]
+          ],
+          "dtype": "uint8",
+          "marked_standard_frames": 0,
+          "legacy_frames": 194,
+          "minimum_pixel_std": 12.640820306055405
+        },
+        "observation/right_camera/rgb": {
+          "frames_decoded": 194,
+          "decoded_shapes_hwc": [
+            [
+              240,
+              320,
+              3
+            ]
+          ],
+          "dtype": "uint8",
+          "marked_standard_frames": 0,
+          "legacy_frames": 194,
+          "minimum_pixel_std": 11.350185400757024
+        },
+        "third_view_rgb": {
+          "frames_decoded": 194,
+          "decoded_shapes_hwc": [
+            [
+              240,
+              320,
+              3
+            ]
+          ],
+          "dtype": "uint8",
+          "marked_standard_frames": 0,
+          "legacy_frames": 194,
+          "minimum_pixel_std": 41.831333990526
+        }
+      },
+      "quaternions": {
+        "left": {
+          "shape": [
+            194,
+            4
+          ],
+          "norm_min": 0.9999999999999996,
+          "norm_max": 1.0000000000000004,
+          "max_abs_norm_error": 4.440892098500626e-16
+        },
+        "right": {
+          "shape": [
+            194,
+            4
+          ],
+          "norm_min": 0.9999999999999996,
+          "norm_max": 1.0000000000000004,
+          "max_abs_norm_error": 4.440892098500626e-16
+        }
+      },
+      "camera_frame_checks": {
+        "observation/head_camera": {
+          "max_abs_cv_world_times_world_gl_minus_axis_flip": 8.344650481717508e-08
+        },
+        "observation/left_camera": {
+          "max_abs_cv_world_times_world_gl_minus_axis_flip": 2.9571166715314234e-07
+        },
+        "observation/right_camera": {
+          "max_abs_cv_world_times_world_gl_minus_axis_flip": 3.4535816695324684e-07
+        }
+      },
+      "root_attributes": {},
+      "time_fields": [],
+      "frames": 194,
+      "all_dataset_lengths_match": true,
+      "all_numeric_values_finite": true,
+      "joint_state": {
+        "shape": [
+          194,
+          14
+        ],
+        "dtype": "float64",
+        "finite": true,
+        "min": [
+          -0.5083500146865845,
+          0.0,
+          -5.412715836428106e-05,
+          0.0,
+          -1.867203081928892e-06,
+          -0.004545783158391714,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          -0.004905786365270615,
+          0.0
+        ],
+        "max": [
+          0.25891923904418945,
+          2.3031723499298096,
+          1.4455726146697998,
+          1.0125948190689087,
+          1.425609827041626,
+          0.011514789424836636,
+          1.0,
+          0.9643382430076599,
+          2.6506876945495605,
+          1.2426197528839111,
+          1.4107654094696045,
+          0.5598061084747314,
+          0.001500000013038516,
+          1.0
+        ]
+      },
+      "ee_state": {
+        "shape": [
+          194,
+          16
+        ],
+        "dtype": "float64",
+        "finite": true,
+        "min": [
+          -0.38177770376205444,
+          -0.2523025870323181,
+          0.9045701622962952,
+          0.7070835945172889,
+          -0.01964566354649905,
+          -0.02123890108627946,
+          0.1994617660006483,
+          0.0,
+          0.04638785123825073,
+          -0.25230470299720764,
+          0.7767912149429321,
+          0.549100128229643,
+          -0.012292892039048632,
+          -0.01670402084386491,
+          0.6813526194353824,
+          0.0
+        ],
+        "max": [
+          -0.11059006303548813,
+          0.11057639122009277,
+          1.0781224966049194,
+          0.9798863644493369,
+          0.028207151722757447,
+          0.001972448382476899,
+          0.7071299669277783,
+          1.0,
+          0.3005036413669586,
+          0.07369294762611389,
+          0.9913275241851807,
+          0.7319418191472328,
+          0.022886275513550138,
+          0.0012102318892809327,
+          0.8357433780100577,
+          1.0
+        ]
+      },
+      "joint_vector_max_abs_difference": 0.0,
+      "first_joint_state": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "first_ee_state": [
+        -0.29949963092803955,
+        -0.2522988021373749,
+        0.9404931664466858,
+        0.7071067811485624,
+        -7.390975342465994e-06,
+        7.267164130797532e-06,
+        0.7071067811485624,
+        1.0,
+        0.30050042271614075,
+        -0.2522988021373749,
+        0.9404931664466858,
+        0.707106751346387,
+        -7.361173075772463e-06,
+        7.268829721907011e-06,
+        0.7071068109510303,
+        1.0
+      ],
+      "left_gripper": {
+        "min": 0.0,
+        "max": 1.0,
+        "within_0_1": true,
+        "joint_vs_endpose_max_abs_difference": 0.0
+      },
+      "right_gripper": {
+        "min": 0.0,
+        "max": 1.0,
+        "within_0_1": true,
+        "joint_vs_endpose_max_abs_difference": 0.0
+      }
+    }
+  ],
+  "gpu_used": false,
+  "simulation_executed": false,
+  "policy_executed": false,
+  "reader_versions": {
+    "numpy": "2.5.4",
+    "h5py": "3.16.0"
+  },
+  "all_static_numeric_checks_pass": true,
+  "scnet_cpu_recheck": {
+    "passed": true,
+    "episodes": 6,
+    "sample_and_metadata_hashes_verified": 16,
+    "numpy": "1.22.4",
+    "h5py": "3.11.0",
+    "gpu_used": false,
+    "scope": "qpos/ee shapes, finiteness and quaternion norm; full image decoding performed in local isolated CPU environment"
+  }
+}

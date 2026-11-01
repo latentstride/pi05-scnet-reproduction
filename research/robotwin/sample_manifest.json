@@ -1,0 +1,154 @@
+{
+  "repository": "TianxingChen/RoboTwin2.0",
+  "revision": "3dc3b798668feb99ac61cc9086d84cbcc3d79186",
+  "archives": [
+    {
+      "robot": "aloha-agilex",
+      "archive_path": "dataset/handover_block/aloha-agilex_clean_50.zip",
+      "archive_bytes": 546033461,
+      "archive_lfs_sha256_metadata": "7e9e7145c3f1a4093d7a24a44dc5c0b1af2ccc551c3bc8e50d7bdde824da4947",
+      "full_archive_sha256_verified": false,
+      "hdf5_members": 50,
+      "http_bytes_received": 32490104,
+      "http_range_requests": 9,
+      "selected": [
+        {
+          "member": "aloha-agilex_clean_50/data/episode0.hdf5",
+          "file": "aloha-agilex/episode0.hdf5",
+          "bytes": 16777930,
+          "sha256": "419abe95f2ad2910b19aef1de61c2374e76cbfe5e7a9eb5c26f137ee4f144ee2",
+          "zip_crc32": "2942ac01",
+          "crc_verified": true
+        },
+        {
+          "member": "aloha-agilex_clean_50/data/episode1.hdf5",
+          "file": "aloha-agilex/episode1.hdf5",
+          "bytes": 16286564,
+          "sha256": "0b46329e6cef1f36627f23fdfdaf56c1b53bfcdd6807e23a2267e3c968396202",
+          "zip_crc32": "0d65fcc2",
+          "crc_verified": true
+        },
+        {
+          "member": "aloha-agilex_clean_50/data/episode2.hdf5",
+          "file": "aloha-agilex/episode2.hdf5",
+          "bytes": 15946288,
+          "sha256": "e4de42700f3d4f66f9ac0e875760b099aa11bce240482e99a21f1cf0254d283b",
+          "zip_crc32": "235f61f1",
+          "crc_verified": true
+        }
+      ],
+      "metadata_selected": [
+        {
+          "member": "aloha-agilex_clean_50/seed.txt",
+          "file": "aloha-agilex/metadata/seed.txt",
+          "bytes": 141,
+          "sha256": "b989f0d6533be35fc0193843cb22acd04213ee4b2865641d75c9afc0b5a66ec5",
+          "crc_verified": true
+        },
+        {
+          "member": "aloha-agilex_clean_50/scene_info.json",
+          "file": "aloha-agilex/metadata/scene_info.json",
+          "bytes": 9342,
+          "sha256": "2ba6984a1b6a4fd65da155c5972cbbd8d72adabb30eb1c00ab8dd5a0e6dcd179",
+          "crc_verified": true
+        },
+        {
+          "member": "aloha-agilex_clean_50/instructions/episode0.json",
+          "file": "aloha-agilex/metadata/episode0.json",
+          "bytes": 14744,
+          "sha256": "cc607aced327521e5e27f766ff688c4a7de6f3c76072e52a56071bd87df1c0b5",
+          "crc_verified": true
+        },
+        {
+          "member": "aloha-agilex_clean_50/instructions/episode1.json",
+          "file": "aloha-agilex/metadata/episode1.json",
+          "bytes": 14744,
+          "sha256": "45e0da12713c2d3e4d6299c258ad3eaf1363e9f19d5d7e1e46b93714b82ed56d",
+          "crc_verified": true
+        },
+        {
+          "member": "aloha-agilex_clean_50/instructions/episode2.json",
+          "file": "aloha-agilex/metadata/episode2.json",
+          "bytes": 14744,
+          "sha256": "6b09d62d3c170930271245fbba7c7c7c8638346af1002246ea338332b9758145",
+          "crc_verified": true
+        }
+      ],
+      "metadata_http_bytes_received": 154670
+    },
+    {
+      "robot": "arx-x5",
+      "archive_path": "dataset/handover_block/arx-x5_clean_50.zip",
+      "archive_bytes": 332395804,
+      "archive_lfs_sha256_metadata": "29958cc1583aa16bdf29ff7fb3a5b0e3f1bea9df6d412783f9be2dc71f49d559",
+      "full_archive_sha256_verified": false,
+      "hdf5_members": 50,
+      "http_bytes_received": 19759401,
+      "http_range_requests": 9,
+      "selected": [
+        {
+          "member": "arx-x5_clean_50/data/episode0.hdf5",
+          "file": "arx-x5/episode0.hdf5",
+          "bytes": 10591772,
+          "sha256": "571b005be6ce62842f8d7a498f1eae5c327955d7835da6289b9c944a85113b02",
+          "zip_crc32": "6c5157d7",
+          "crc_verified": true
+        },
+        {
+          "member": "arx-x5_clean_50/data/episode1.hdf5",
+          "file": "arx-x5/episode1.hdf5",
+          "bytes": 10747592,
+          "sha256": "e3967f5c3fdda5e78d669a21e6a6dc49715a3f1203aafbda3bc41a398d28de08",
+          "zip_crc32": "ddeebbb3",
+          "crc_verified": true
+        },
+        {
+          "member": "arx-x5_clean_50/data/episode2.hdf5",
+          "file": "arx-x5/episode2.hdf5",
+          "bytes": 10356340,
+          "sha256": "8062c35e64799092203cfe8cdfbd3581ffe6cfa8d5f0ab7b059123a0570cf6a7",
+          "zip_crc32": "a0ac0a5f",
+          "crc_verified": true
+        }
+      ],
+      "metadata_selected": [
+        {
+          "member": "arx-x5_clean_50/seed.txt",
+          "file": "arx-x5/metadata/seed.txt",
+          "bytes": 141,
+          "sha256": "df07ba86f6a0adf64e96e480d03d157afb0efaea7d43cd4e33ec18ed2bec814f",
+          "crc_verified": true
+        },
+        {
+          "member": "arx-x5_clean_50/scene_info.json",
+          "file": "arx-x5/metadata/scene_info.json",
+          "bytes": 9342,
+          "sha256": "2ba6984a1b6a4fd65da155c5972cbbd8d72adabb30eb1c00ab8dd5a0e6dcd179",
+          "crc_verified": true
+        },
+        {
+          "member": "arx-x5_clean_50/instructions/episode0.json",
+          "file": "arx-x5/metadata/episode0.json",
+          "bytes": 14744,
+          "sha256": "23d95af75851342c9f274ca1d89e30b878e1551a3c6e221cef9cc47de0553b6e",
+          "crc_verified": true
+        },
+        {
+          "member": "arx-x5_clean_50/instructions/episode2.json",
+          "file": "arx-x5/metadata/episode2.json",
+          "bytes": 14744,
+          "sha256": "dfe4a1f1f81f73110278415c05477d7f15e53b394e23c0de420ee5d7a8f12845",
+          "crc_verified": true
+        },
+        {
+          "member": "arx-x5_clean_50/instructions/episode1.json",
+          "file": "arx-x5/metadata/episode1.json",
+          "bytes": 14744,
+          "sha256": "82dcc4cdc4e6402aedce3fccd8a2b612a4373e1993c0114a365167452b6af575",
+          "crc_verified": true
+        }
+      ],
+      "metadata_http_bytes_received": 82579
+    }
+  ]
+}

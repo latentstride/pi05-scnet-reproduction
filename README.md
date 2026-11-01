@@ -6,6 +6,7 @@
 - [基线冻结记录](baseline_freeze.md)：固定第一阶段版本与证据，不重复安装或重跑相同 15 轮。
 - [数据集比较与选型](dataset_comparison.md)：RoboTwin 为主候选，保留 DROID、BridgeData V2、ALOHA Sim 的早期接口调研。
 - [RoboTwin 可行性审计与实验方案](robotwin_feasibility.md)：优先做同任务跨本体的专家轨迹和 qpos/ee 控制适配，区分回放与模型自主控制。
+- [SCNet Vulkan/graphics 实测预检查](docs/robotwin_graphics_preflight.md)：登录节点和现有容器已检查，GPU 图形透传仍待目标节点验证。
 
 当前不新增 GPU 实验。下一步先核查 RoboTwin 两种本体的共同任务、少量示范及坐标/工具点语义。现有 `pi05_libero` 的单臂 7 维动作不能直接用于双臂控制；XPolicyLab 适配器的存在也不等于 checkpoint 已兼容。轨迹回放和模型兼容性均须实测后验收。
 

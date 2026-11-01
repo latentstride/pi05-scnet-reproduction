@@ -1,8 +1,11 @@
 .venv/
+.venv-libero/
 source/
 cache/
 containers/
 tools/
+sysroot/
+config/libero/config.yaml
 logs/
 results/
 videos/

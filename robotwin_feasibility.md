@@ -86,6 +86,8 @@ RoboTwin 的动作调用可能包含多个物理步及重新定时，不能按�
 
 ## 资源与下一步
 
+已补充 [SCNet 图形条件实测预检查](docs/robotwin_graphics_preflight.md)：登录节点 Vulkan 实例创建失败，现有 CUDA 容器缺少标准 Vulkan 工具/loader/ICD；当前没有 GPU 分配，计算节点 graphics 透传尚未验收。本次没有新增 GPU 作业。先完成该检查，再安排仿真。
+
 现在先做源码、metadata、少量轨迹及离线数学核验。官方推荐 Linux / Python 3.10，并涉及 SAPIEN、渲染、Vulkan 和 CuRobo；已通过 LIBERO 的 CUDA 推理环境不等于已通过 RoboTwin 图形/规划栈。不能承诺完整仿真可在本机 Mac 或无 GPU 条件下直接运行。[官方安装与硬件要求](https://robotwin-platform.github.io/doc/usage/robotwin-install.html)
 
 后续环境放在个人项目的独立研究目录，不改基线或课题组共享环境。当前不租 GPU、不下载全量、不训练。完成小样本审计后，再根据最小仿真所需资源、实际剩余预算和模型兼容性证据安排验证。

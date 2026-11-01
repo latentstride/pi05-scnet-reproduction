@@ -71,12 +71,24 @@ unset SETUPTOOLS_SCM_PRETEND_VERSION
 stage pytorch3d-build
 FORCE_CUDA=1 "$u" --no-config pip install --python "$p" --no-build-isolation --no-deps "$r/src/pytorch3d"
 stage validation
+cat > /.singularity.d/env/99-robotwin.sh <<'ENV'
+export PATH=/opt/robotwin/venv/bin:/opt/robotwin/sysroot/usr/bin:/usr/local/cuda/bin:$PATH
+export LD_LIBRARY_PATH=/opt/robotwin/sysroot/usr/lib/x86_64-linux-gnu:/opt/robotwin/sysroot/lib/x86_64-linux-gnu:/usr/local/cuda/lib64:${LD_LIBRARY_PATH:-}
+export VK_ICD_FILENAMES=/opt/robotwin/sysroot/etc/vulkan/icd.d/nvidia_icd.json
+export XDG_CACHE_HOME=/opt/robotwin/cache/xdg
+export TORCH_EXTENSIONS_DIR=/opt/robotwin/cache/torch_extensions
+export CUDA_CACHE_PATH=/opt/robotwin/cache/cuda
+export PYTHONPYCACHEPREFIX=/opt/robotwin/cache/pycache
+export TMPDIR=/opt/robotwin/tmp
+ENV
 mkdir -p "$r/sysroot/etc/vulkan/icd.d"
 # Vendor library is supplied later by Apptainer --nv. This is discovery
 # configuration, not a bundled driver and not graphics acceptance.
 cat > "$r/sysroot/etc/vulkan/icd.d/nvidia_icd.json" <<'JSON'
 {"file_format_version":"1.0.0","ICD":{"library_path":"libGLX_nvidia.so.0","api_version":"1.0.0"}}
 JSON
+mkdir -p /etc/vulkan/icd.d
+cp "$r/sysroot/etc/vulkan/icd.d/nvidia_icd.json" /etc/vulkan/icd.d/nvidia_icd.json
 "$p" - <<'PY'
 from pathlib import Path
 import sapien

@@ -1,0 +1,102 @@
+{
+  "date": "2026-11-01",
+  "scope": "Read-only source review; independently inspected repository versions are not an integration-tested pair.",
+  "files": [
+    {
+      "repository": "RoboTwin-Platform/RoboTwin",
+      "path": "env_cfg/task_config/_embodiment_config.yml",
+      "commit": "ea8b21121ebb3cd201ff5b3fe361944ac94eda3f",
+      "git_blob_sha1": "672c88e1c1e17cc51ac806261d77bfc793bf5baa"
+    },
+    {
+      "repository": "RoboTwin-Platform/RoboTwin",
+      "path": "env_cfg/task_config/demo_clean.yml",
+      "commit": "ea8b21121ebb3cd201ff5b3fe361944ac94eda3f",
+      "git_blob_sha1": "52e621390c81d1e0afdd67ae7c605fa54775aa25"
+    },
+    {
+      "repository": "RoboTwin-Platform/RoboTwin",
+      "path": "envs/_base_task.py",
+      "commit": "ea8b21121ebb3cd201ff5b3fe361944ac94eda3f",
+      "git_blob_sha1": "ace13e6c80f911ac32fb05332ac2e9896e37547c"
+    },
+    {
+      "repository": "RoboTwin-Platform/RoboTwin",
+      "path": "envs/robot/robot.py",
+      "commit": "ea8b21121ebb3cd201ff5b3fe361944ac94eda3f",
+      "git_blob_sha1": "9dfc08f5485d659abe65b0f6c7045457fafef788"
+    },
+    {
+      "repository": "RoboTwin-Platform/RoboTwin",
+      "path": "envs/handover_block.py",
+      "commit": "ea8b21121ebb3cd201ff5b3fe361944ac94eda3f",
+      "git_blob_sha1": "219e3d53c59f7eda6ffc9cbc33370de97bf7d253"
+    },
+    {
+      "repository": "XPolicyLab/XPolicyLab",
+      "path": "policy/Pi_05/deploy.yml",
+      "commit": "0075cc96a1bf24c5d66a4a3a5e29eae6d739fef3",
+      "git_blob_sha1": "7c2f1cd2171618eeb6a766d7ac52f80a1e762b83"
+    },
+    {
+      "repository": "XPolicyLab/XPolicyLab",
+      "path": "policy/Pi_05/model.py",
+      "commit": "0075cc96a1bf24c5d66a4a3a5e29eae6d739fef3",
+      "git_blob_sha1": "b7ffe70ec1b732a6f54f7f712fe4af0e8b13f59e"
+    },
+    {
+      "repository": "XPolicyLab/XPolicyLab",
+      "path": "policy/Pi_05/openpi/src/openpi/training/config.py",
+      "commit": "0075cc96a1bf24c5d66a4a3a5e29eae6d739fef3",
+      "git_blob_sha1": "c6babbc0983f96e868c0aa8d631fc2682b99b504"
+    },
+    {
+      "repository": "XPolicyLab/XPolicyLab",
+      "path": "policy/Pi_05/openpi/src/openpi/policies/aloha_policy.py",
+      "commit": "0075cc96a1bf24c5d66a4a3a5e29eae6d739fef3",
+      "git_blob_sha1": "94d7064332345c73fd603eace21dc5bed3418b4f"
+    },
+    {
+      "repository": "XPolicyLab/XPolicyLab",
+      "path": "policy/Pi_05/openpi/scripts/process_data.py",
+      "commit": "0075cc96a1bf24c5d66a4a3a5e29eae6d739fef3",
+      "git_blob_sha1": "fa166f57f023f8b3034a9567e641920ea3eda70c"
+    },
+    {
+      "repository": "XPolicyLab/XPolicyLab",
+      "path": "utils/process_data.py",
+      "commit": "0075cc96a1bf24c5d66a4a3a5e29eae6d739fef3",
+      "git_blob_sha1": "53d14cea7eb3562216008e3c331b69462c920a8f"
+    },
+    {
+      "repository": "XPolicyLab/XPolicyLab",
+      "path": "utils/robot/_robot_info.json",
+      "commit": "0075cc96a1bf24c5d66a4a3a5e29eae6d739fef3",
+      "git_blob_sha1": "332f089195437891966bdc9c10270a9c7751a01b"
+    }
+  ],
+  "findings": {
+    "robotwin_ee": "Absolute world-frame bimanual pose targets, WXYZ quaternions and per-arm gripper; planned execution.",
+    "robotwin_tool_frame": "Recorded ee pose includes global_trans_matrix, delta_matrix and gripper_bias minus 0.12 offset; distinct from raw link pose and TCP.",
+    "pi05_adapter_default": "ARX-X5/ALOHA joint training configuration and per-checkpoint normalization.",
+    "pi05_aloha_output_dim": 14,
+    "pi05_converter_action": "Next-frame joint state; action_type is used in naming, not an EE conversion.",
+    "pi05_converter_declared_fps": 50,
+    "lerobot_unified_metadata": {
+      "robot_type": "aloha",
+      "state_dim": 14,
+      "action_dim": 14,
+      "fps": 30,
+      "coverage_of_five_embodiments_verified": false
+    }
+  },
+  "execution": {
+    "trajectories_downloaded": false,
+    "simulator_installed": false,
+    "task_loaded_on_two_robots": false,
+    "expert_replay_completed": false,
+    "pi05_robotwin_closed_loop_completed": false,
+    "gpu_job_submitted": false
+  },
+  "decision": "Prioritize RoboTwin expert trajectory and control adaptation comparison; gate fixed-weight Pi0.5 autonomy on checkpoint/interface compatibility."
+}

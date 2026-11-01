@@ -10,4 +10,4 @@ Environment setup and inference from a real LIBERO observation have passed. The 
 
 The first inference attempt failed before model loading because the writable sandbox lacked the nvidia-smi command mount point. The runtime now binds that executable explicitly and the successful retry exits with code 0:0.
 
-See [the inference validation report](docs/inference_validation.md) for inputs, outputs and archive locations. Full closed-loop control and the 15-episode evaluation remain pending.
+See [the inference validation report](docs/inference_validation.md) for inputs, outputs and archive locations. Full closed-loop control and the restricted 15-episode evaluation have passed: tasks 0–2, initial states 0–4, all 15 successful. The job completed with exit code 0:0 in 17 minutes 4 seconds. All saved trajectories and video frame counts passed validation. See [the evaluation report](evaluation_report.md). This is a restricted functional baseline, not the full official benchmark.

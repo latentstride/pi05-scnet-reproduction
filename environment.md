@@ -26,6 +26,16 @@ CentOS 7 的宿主机环境与官方 Ubuntu 运行环境不同，因此使用 Ub
 
 LIBERO 和 ALOHA 的精确版本归档均已下载并解压。官方 checkpoint 清单共 16 个文件，合计 12,439,085,481 字节，清单没有分页；已启动断点续传下载，但尚未完成，不能进行模型加载验收。
 
+容器 SHA256：`c6690adbbcccd0c19a31b6d25fe22dcb9e28984b27d700fb7dda7e03a11454a7`。
+
+官方 `uv sync --frozen` 已实测因镜像内缺少 Git 而失败。备用安装保留官方锁文件的依赖版本，以精确 commit `0cf864870cf29f4738d3ade893e6fd13fbd7cdb5` 的 LeRobot 源码归档代替 Git 下载；已导出依赖并启动备用安装，导入验收尚未通过。
+
+第一次权重传输下载了部分文件后遇到 curl 56 连接中断，已启动断点续传重试。尚未有完整权重验收结果。
+
+备用安装解析了 199 个依赖，但在构建 `evdev` 时因缺少 Linux 头文件而失败。已将 SIF 转为可写 sandbox，尝试在容器内补齐系统依赖；集群拒绝 fakeroot：当前用户不在 `/etc/subuid` 中，且运行时没有可用的 fakeroot 支持。未修改宿主机权限或安装系统包。
+
+当前阻碍是 runtime 镜像缺少编译依赖，而此节点无法在容器内通过 fakeroot 安装系统包。已启动预装编译工具和头文件的官方 NVIDIA CUDA devel 镜像方案：`scripts/install_devel.sh`，远端日志为 `logs/install_devel.log`，结果尚未验收。本次仍未达到 OpenPI 环境验收标准。
+
 ## 验收状态
 
 - [x] 登录节点、存储、调度器和软件运行时初查

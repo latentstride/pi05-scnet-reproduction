@@ -20,7 +20,7 @@ assert versions['torch'].split('+')[0] == '2.4.1'
 assert versions['nvidia-curobo'] == '0.7.8'
 modules = ['torch','torchvision','sapien','sapien.core','mplib','open3d','pytorch3d',
            'cv2','h5py','zarr','av','transforms3d','gymnasium','trimesh','quaternion',
-           'curobo.wrap.reacher.motion_gen','curobo.curobolib.kinematics_fused_cu',
+           'curobo.curobolib.kinematics_fused_cu',
            'curobo.curobolib.geom_cu','curobo.curobolib.lbfgs_step_cu',
            'curobo.curobolib.line_search_cu','curobo.curobolib.tensor_step_cu','warp']
 for name in modules:
@@ -48,7 +48,8 @@ result = {'cpu_imports_passed':True,'native_vulkan_loader_passed':True,
  'pytorch3d_cpu_native_op_passed':True,
  'versions':versions,'python':sys.version,'cuda_build':torch.version.cuda,
  'compiled_arch_list':os.environ.get('TORCH_CUDA_ARCH_LIST','8.9+PTX'),
- 'gpu_runtime_validated':False,'rendering_validated':False,'planning_validated':False}
+ 'gpu_runtime_validated':False,'rendering_validated':False,'planning_validated':False,
+ 'motion_gen_import_deferred': 'CuRobo 0.7.8 allocates a CUDA Pose in a class default at import; requires the later GPU allocation'}
 import curobo
 import pytorch3d
 native = [*Path(curobo.__file__).parent.rglob('*.so'), *Path(pytorch3d.__file__).parent.glob('*.so')]

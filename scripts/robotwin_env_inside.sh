@@ -72,6 +72,19 @@ export SETUPTOOLS_SCM_PRETEND_VERSION=0.7.8
 unset SETUPTOOLS_SCM_PRETEND_VERSION
 stage pytorch3d-build
 FORCE_CUDA=1 "$u" --no-config pip install --python "$p" --no-build-isolation --no-deps "$r/src/pytorch3d"
+stage trim-regenerable-build-files
+"$u" --no-config cache clean --cache-dir "$r/cache/uv"
+"$p" - <<'PY'
+from pathlib import Path
+import shutil
+r = Path('/opt/robotwin')
+for name in ('curobo', 'pytorch3d'):
+    p = r/'src'/name/'build'
+    if p.is_dir():
+        shutil.rmtree(p)
+for p in (r/'apt/archives').glob('*.deb'):
+    p.unlink()
+PY
 stage validation
 cat > /.singularity.d/env/99-robotwin.sh <<'ENV'
 export PATH=/opt/robotwin/venv/bin:/opt/robotwin/sysroot/usr/bin:/usr/local/cuda/bin:$PATH

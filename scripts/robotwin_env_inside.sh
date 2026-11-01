@@ -10,6 +10,7 @@ export PIP_CACHE_DIR="$r/cache/pip" TMPDIR="$r/tmp"
 export XDG_CACHE_HOME="$r/cache/xdg" TORCH_EXTENSIONS_DIR="$r/cache/torch_extensions"
 export CUDA_CACHE_PATH="$r/cache/cuda" CUDA_HOME=/usr/local/cuda
 export MAX_JOBS=1 TORCH_CUDA_ARCH_LIST='8.9+PTX'
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
 export PATH="$CUDA_HOME/bin:$PATH"
 u="$PI05_ROOT/tools/uv/bin/uv"
 stage() { printf '\n[%s] %s\n' "$(date -u +%FT%TZ)" "$1"; }
@@ -81,6 +82,9 @@ export TORCH_EXTENSIONS_DIR=/opt/robotwin/cache/torch_extensions
 export CUDA_CACHE_PATH=/opt/robotwin/cache/cuda
 export PYTHONPYCACHEPREFIX=/opt/robotwin/cache/pycache
 export TMPDIR=/opt/robotwin/tmp
+export OMP_NUM_THREADS=1
+export OPENBLAS_NUM_THREADS=1
+export MKL_NUM_THREADS=1
 ENV
 mkdir -p "$r/sysroot/etc/vulkan/icd.d"
 # Vendor library is supplied later by Apptainer --nv. This is discovery

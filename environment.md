@@ -1,17 +1,13 @@
 # Environment reproduction status
 
-The project uses a shared research account. All project assets have been moved into the owner's personal project directory. Public examples use `<PROJECT_ROOT>`; concrete account paths, host details and billing records are kept in private deployment notes.
-
-Validated components:
+Environment setup and inference from a real LIBERO observation have passed. The project uses a shared research account; all assets, Python installations and persistent caches reside in the project owner's personal directory. Public examples use `<PROJECT_ROOT>`. Concrete account paths and infrastructure records remain private.
 
 - OpenPI commit: `215abfb217dbac7d5f1273282331b9b1866c0479`.
-- Python 3.11.18; JAX 0.5.3; PyTorch 2.7.1+cu126.
-- Main environment: 202 packages pass dependency compatibility checks; core configuration import passed again after relocation.
-- Official pi05_libero checkpoint: all 16 files pass CRC32C checks; available MD5 checks also pass.
-- Tokenizer loads from local cache and encodes successfully.
-- Separate Python 3.8.20 simulation environment: all 125 packages pass compatibility checks after dependency repair.
-- A real LIBERO spatial task observation has been captured using software offscreen rendering after relocation: state shape `(8,)`, two uint8 images shaped `(224, 224, 3)`, ten settling actions, fixed initial state and seed.
+- Main environment: Python 3.11.18, JAX/JAXLIB 0.5.3, PyTorch 2.7.1, NumPy 1.26.4; 202 packages pass compatibility checks and core imports pass after relocation.
+- Official pi05_libero checkpoint: all 16 files pass CRC32C verification; available MD5 checks pass. The tokenizer loads and encodes from local cache.
+- Separate Python 3.8.20 simulation environment: all 125 packages pass compatibility checks. A real LIBERO scene loads with software offscreen rendering, accepts ten settling actions and produces two 224×224 RGB images and an 8-element robot state.
+- Official policy loads in 12.4185 seconds and produces a finite 10×7 action sequence. First inference takes 42.2381 seconds including compilation; the second call with the same observation takes 0.100954 seconds. These are two measured calls, not a latency benchmark.
 
-Migration repairs include interpreter links, editable installation paths and simulator configuration. Python installations and persistent package/framework caches are explicitly scoped to the personal project directory. See the scripts for relative project layout; adapt platform-specific scheduler settings privately.
+The first inference attempt failed before model loading because the writable sandbox lacked the nvidia-smi command mount point. The runtime now binds that executable explicitly and the successful retry exits with code 0:0.
 
-Model inference, full closed-loop control and the 15-episode evaluation are still pending. GPU hardware probing alone does not establish pi0.5 inference success. Synthetic examples must be recorded separately from real simulator observations.
+See [the inference validation report](docs/inference_validation.md) for inputs, outputs and archive locations. Full closed-loop control and the 15-episode evaluation remain pending.

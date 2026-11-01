@@ -67,7 +67,7 @@
 
 四元数排列 `[qw,qx,qy,qz]`、世界系绝对末端目标及夹爪 0 闭合/1 张开的含义来自官方源码；范数检查本身无法判别四元数排列或参考系。关节旋转量按仿真惯例为 rad，xyz 按仿真长度约定为 m，HDF5 本身没有单位属性，后续须结合固定资产和运动学复核，不能宣称已独立标定单位。
 
-官方末端读取包含 `global_trans_matrix`、`delta_matrix` 和工具偏移。`get_ee_pose` 与 TCP、URDF 原始末端链节并非同一工具点；本体配置和该数据的采集源码需匹配。本次尚未取得归档对应的完整采集环境版本及两种本体配置，不把“已读当前固定源码”写成“历史数据已通过 FK 对应验证”。[位姿与工具点源码](https://github.com/RoboTwin-Platform/RoboTwin/blob/ea8b21121ebb3cd201ff5b3fe361944ac94eda3f/envs/robot/robot.py)
+官方末端读取包含 `global_trans_matrix`、`delta_matrix` 和工具偏移。`get_ee_pose` 与 TCP、URDF 原始末端链节并非同一工具点；本体配置和该数据的采集源码需匹配。已补读同一数据 revision 中的两种本体配置与 URDF，关节及链节结构核验通过，见下方补充记录；归档对应的完整采集源码版本和历史轨迹 FK 对应仍未验证。[位姿与工具点源码](https://github.com/RoboTwin-Platform/RoboTwin/blob/ea8b21121ebb3cd201ff5b3fe361944ac94eda3f/envs/robot/robot.py)
 
 同一零关节向量不代表同一末端位姿：两种本体 episode0 首帧关节向量均为两组六个 0 加夹爪 1，但左末端 xyz 分别约为 `[-0.297924,-0.313804,0.941999]`、`[-0.299500,-0.252299,0.940493]`。这直接说明跨本体不能复制 qpos 作为同一物理目标。
 
@@ -85,4 +85,26 @@ seed 文件及场景摘要已读取，但本次 `scene_info.json` 的对应 `inf
 
 SCNet 原始样本、seed/场景/语言元数据、哈希及 CPU 复验 JSON 放在个人项目的 `research/robotwin/data_probe/`。本机独立 CPU 环境完成官方图像解码和完整静态检查；SCNet 沿用既有环境仅做只读数据复验，没有安装新包。公开仓库保存报告、提取/核验脚本、样本清单和数值结果，不上传整条 HDF5。
 
-补读官方本体配置文件的网络操作未执行：自动审批服务因额度限制未能完成审查，这不是对动作安全性的否定；本报告将相应的资产/FK 验证保留为待完成项。
+## 7. 本体配置补读（已完成）
+
+先前自动审批服务的额度故障已解除，本次下载获准并执行。独立路径最初返回 404，因为该固定 revision 的本体资产仅存在于 `embodiments.zip` 内。本次使用 HTTP Range 从官方 ZIP 提取两种本体的配置、URDF 及相关小型 YAML，传输共 128,459 bytes，没有下载完整约 220 MB 资产包。成员读取通过 ZIP CRC，配置和 URDF 分别记录 SHA-256；完整 ZIP 的哈希仍仅为官方元数据。
+
+| 项目 | Aloha-AgileX | ARX-X5 |
+| --- | --- | --- |
+| 配置成员 | `embodiments/aloha-agilex/config.yml` | `embodiments/ARX-X5/config.yml` |
+| URDF | `urdf/arx5_description_isaac.urdf` | `X5A.urdf` |
+| 本体结构 | `dual_arm: True`，一个双臂 URDF | `dual_arm: False`，单臂 URDF 由环境组成双臂 |
+| 左/右关节名 | `fl_joint1…6` / `fr_joint1…6` | 两个实例分别使用 `joint1…6` |
+| 末端关节 | `fl_joint6` / `fr_joint6` | 两个实例的 `joint6` |
+| move_group | `fl_link6` / `fr_link6` | 两个实例的 `link6` |
+| gripper_scale | `[-0.01,0.045]` | `[-0.01,0.045]` |
+| gripper_bias | `0.12` | `0.12` |
+| delta_matrix | 单位矩阵 | 单位矩阵 |
+| global_trans_matrix | `diag(1,-1,-1)` | `diag(1,-1,-1)` |
+| 规划器 | `curobo` | `curobo` |
+| URDF 名称/结构检查 | 通过 | 通过 |
+
+结合已审计 `_trans_endpose(is_endpose=False)`，上述 `gripper_bias - 0.12` 在这两个配置中为零；TCP 路径使用的偏移仍不同。方向校准矩阵依然需要保留，不能因为位置偏移为零就省略姿态转换。`robot_pose` 的默认平移和高度也不同，任务初始化可能调整基座位置；不能仅拿配置默认值当作归档采集时的实际双臂基座变换。
+
+完整配置原文、关节顺序、矩阵、配置和 URDF 哈希见 [embodiment_config_audit.json](research/robotwin/embodiment_config_audit.json)。来源为 [固定 revision 的官方 embodiments.zip](https://huggingface.co/datasets/TianxingChen/RoboTwin2.0/blob/3dc3b798668feb99ac61cc9086d84cbcc3d79186/embodiments.zip)。配置读取和结构核验现在已完成；FK 对应、采样时间恢复及仿真回放仍分别待验证。
+

@@ -6,7 +6,7 @@ Validated components:
 
 - OpenPI commit: `215abfb217dbac7d5f1273282331b9b1866c0479`.
 - Python 3.11.18; JAX 0.5.3; PyTorch 2.7.1+cu126.
-- Main environment: 202 packages pass dependency compatibility checks; core configuration import passed before relocation and is being rechecked after relocation.
+- Main environment: 202 packages pass dependency compatibility checks; core configuration import passed again after relocation.
 - Official pi05_libero checkpoint: all 16 files pass CRC32C checks; available MD5 checks also pass.
 - Tokenizer loads from local cache and encodes successfully.
 - Separate Python 3.8.20 simulation environment: all 125 packages pass compatibility checks after dependency repair.

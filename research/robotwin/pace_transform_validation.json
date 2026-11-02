@@ -1,0 +1,11 @@
+{
+  "tests_run": 4,
+  "passed": true,
+  "failures": 0,
+  "errors": 0,
+  "parameters_loaded": false,
+  "model_inference_tested": false,
+  "scope": "AST-selected upstream definitions; no JAX/model/tokenizer runtime imports; Normalize arithmetic tested directly",
+  "transforms_revision": "ba9876639cb7a4bf0c7db00ec39eeb9c8efd8b12",
+  "aloha_config_revision": "ba9876639cb7a4bf0c7db00ec39eeb9c8efd8b12"
+}

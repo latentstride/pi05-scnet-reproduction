@@ -46,3 +46,9 @@
 在独立 SAPIEN 研究环境中加载同一 URDF（数学检查可移除 mesh visual/collision 依赖），对明确给定的 qpos 同时导出实际 qpos、drive target、root pose、末端 child-link pose、joint global pose、pose_in_parent 和 pose_in_child。先比较独立 URDF FK 与 SAPIEN child-link FK，再用导出的 joint-frame 关系验证 RoboTwin 的端点转换。固定关节顺序和基座后，记录实际 qpos 与 endpose 的同一物理步快照。
 
 只有上述独立几何对应通过，才能把控制器跟踪误差与坐标适配误差分开。旧轨迹缺实际 qpos 的情况应保留为数据限制，不强求用 drive target 重现每帧实际末端位置。
+
+## 后续独立检查结果（2026-11-02）
+
+已在新建的独立 SAPIEN CPU 环境完成同状态静态几何对应：两种本体 9 个快照、12 次末端 FK 对照与 219 次关节坐标系对照全部通过，最大 child-link FK 位置残差约 0.000347 mm。确认 `joint.global_pose` 需通过 child-link 的 `pose_in_child` 转换后对应，详见 [SAPIEN FK 报告](docs/robotwin_sapien_fk_smoke.md) 与 [导出脚本](scripts/robotwin_sapien_fk_smoke.py)。
+
+这使独立运动学对应的下一项验证完成；上文历史 HDF5 的控制目标/实际状态缺失问题及其旧残差仍保留，不改写为历史轨迹验收通过。未申请 GPU，未下载 PACE 权重。

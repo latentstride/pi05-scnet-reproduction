@@ -1,0 +1,15 @@
+WARNING: Skipping mount /etc/localtime [binds]: /etc/localtime doesn't exist in container
+{
+  "status": "passed",
+  "snapshots": 9,
+  "arm_state_checks": 12,
+  "joint_frame_checks": 219,
+  "child_fk_passed": true,
+  "joint_axis_closure_passed": true,
+  "consistent_ee_joint_frame_conventions": [
+    "child"
+  ],
+  "drive_target_qpos_separation_observed": true,
+  "child_fk_position_max_mm": 0.0003467704812937238,
+  "child_fk_angle_max_deg": 0.0
+}

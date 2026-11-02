@@ -2,7 +2,7 @@
 
 构建日期：2026-11-02。用途：SAPIEN 运动学排错、后续 Vulkan 离屏渲染与 CuRobo 最小规划。本文记录独立依赖环境，不改变 LIBERO 冻结基线，不加载 PACE 权重。
 
-状态：构建中；最终状态以 CPU 验证 JSON 和下方验收记录为准。
+状态：**独立研究镜像已建立，CPU 依赖与最小物理运行验收通过。** GPU 图形/规划验收尚未执行。原始版本及六个原生扩展的大小、SHA-256 记录在 [cpu_validation.json](../research/robotwin/env-build/evidence-20261102/cpu_validation.json)，完整包清单见 [requirements.installed.txt](../research/robotwin/env-build/evidence-20261102/requirements.installed.txt)。
 
 ## 环境布局
 
@@ -53,14 +53,28 @@ bash scripts/build_robotwin_env.sh
 
 | 检查 | 当前结果 |
 | --- | --- |
-| Python 包兼容检查 | 已通过；当前已装 272 个包 |
+| Python 包兼容检查 | 已通过；273 个包全部兼容 |
 | CuRobo 五个 CUDA 扩展 | 编译、安装及实际导入通过 |
-| SAPIEN CPU PhysX 场景 | 已通过创建、步进 |
+| SAPIEN CPU PhysX 场景 | 已通过创建、带碰撞盒刚体、步进与位姿读取 |
 | Vulkan loader | `ctypes.CDLL('libvulkan.so.1')` 已通过 |
 | Open3D / MPLib | 实际导入通过 |
-| PyTorch3D | CUDA/CPU 扩展编译中，尚未验收 |
-| 完整验证 JSON、依赖冻结清单 | 等待 PyTorch3D 安装完成后生成 |
+| Vulkan 工具 | 已核实帮助文本；该版本帮助命令正常返回退出码 1，单独记录，不作为设备枚举 |
+| PyTorch3D | 0.7.8 扩展已编译安装；CPU KNN 原生算子通过 |
+| CuRobo 配置 | 内置 UR5e 配置存在且可读取 |
+| 完整验证 JSON、依赖冻结清单 | 已生成；记录六个原生扩展 SHA-256 |
+
+最终日志见 [cpu-final.log](../research/robotwin/env-build/evidence-20261102/cpu-final.log)。随后在同一镜像中完成两种本体的无渲染静态 FK 检查，见 [SAPIEN FK 报告](robotwin_sapien_fk_smoke.md)。
 
 GPU 可见性、NVIDIA Vulkan 枚举、SAPIEN RGB 渲染和 CuRobo 实际 CUDA 规划属于后续短时 GPU 验收，本次不标为通过。既有 GPU Slurm 模板还需与本镜像的可写运行方式、库路径及设备选择核对后再提交。
 
 CuRobo 0.7.8 的 `MotionGen` 在类方法默认参数中调用 `Pose.from_list()`，导入模块时便尝试创建 CUDA tensor。登录节点实际导入到此处报 `Found no NVIDIA driver`；因此 CPU 验证单独导入五个已编译 CUDA 扩展，并检查配置文件，`MotionGen` 模块及其运行行为留待 GPU 分配后验收。这项边界记录在验证 JSON 中，未通过更改上游实现或模拟 GPU 来跳过。
+
+## 存储控制
+
+本次实测研究 sandbox 在构建阶段约 18 GiB，包含展开后的 CUDA 开发系统、已安装依赖、硬链接缓存及编译对象；不是下载了 18 GiB 的机器人数据。没有下载 PACE 权重或 RoboTwin 全量资产。
+
+按用户提出的课题组共享存储约束，已用 Apptainer 自带命令清理个人项目 `cache/apptainer` 中 12.51 GiB 的旧 OCI 下载缓存。实际容器、LIBERO 虚拟环境、12 GiB 的既有 checkpoint 缓存和实验结果保留。共享盘可用空间由约 95 GiB 回升到约 107 GiB；个人项目根目录去重后的 `du` 总量复核约 62 GiB。该数值包含此前 LIBERO 基线，不是本次新增量。
+
+Python 安装缓存与虚拟环境使用硬链接（实际检查大型 Torch 动态库链接数为 2），故不能将缓存与虚拟环境的目录大小相加，也不能把整份缓存大小当作可释放量。构建器已加入完成安装后清理私有 uv 下载缓存、CuRobo/PyTorch3D 编译目录及 apt 下载包，再进行最终 CPU 验收的流程。清理不触及课题组其他目录。
+
+最终清理已执行：uv 报告删除 65,364 个缓存项、169 MiB 可回收数据，已安装的硬链接文件保留；CuRobo/PyTorch3D 的 build 目录和 apt 下载包也已清理。随后 CPU 验收及两种本体 FK 实测均通过。最新共享盘剩余约 108 GiB，未把整份 Python 缓存的显示大小计作释放量。

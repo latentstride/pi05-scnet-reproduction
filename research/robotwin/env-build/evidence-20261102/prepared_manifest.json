@@ -1,0 +1,38 @@
+{
+  "generated_utc": "2026-11-01T19:44:17.639799+00:00",
+  "status": "prepared",
+  "gpu_used": false,
+  "renderer_created": false,
+  "physics_stepped": false,
+  "full_assets_downloaded": false,
+  "position_tolerance_m": 0.001,
+  "angle_tolerance_deg": 0.1,
+  "robots": [
+    {
+      "robot": "aloha-agilex",
+      "urdf_sha256": "097c59fb19a7b482249c6097df8319586ea7cfd268c015516f103b289a7e761a",
+      "config_sha256": "a4f043d2d4b44cca5ec47fb498a3194da3f87ff9530dcbfdcee1539a44423d57",
+      "kinematics_urdf": "aloha-agilex-kinematics.urdf",
+      "kinematics_urdf_sha256": "e6853214e9857666bfa567fe23008ba7253611b6ca0bc6bdb9a813fa68c0f1ac",
+      "removed_geometry_elements": {
+        "visual": 52,
+        "collision": 43,
+        "material": 0
+      },
+      "urdf_joint_elements_unchanged": true
+    },
+    {
+      "robot": "ARX-X5",
+      "urdf_sha256": "7aaa308a1a5b6a213d914db86ba09ddd6252f25cb498ac9a148bfa6c7166a423",
+      "config_sha256": "0687270bb70652fb80072acbded5f134da4e930463024c856dd4f45aa5f35d03",
+      "kinematics_urdf": "arx-x5-kinematics.urdf",
+      "kinematics_urdf_sha256": "85e1a1fd7a75baa47a1ba6c50befdff7c67f8a2794a142205493401d8f8103fc",
+      "removed_geometry_elements": {
+        "visual": 11,
+        "collision": 9,
+        "material": 0
+      },
+      "urdf_joint_elements_unchanged": true
+    }
+  ]
+}

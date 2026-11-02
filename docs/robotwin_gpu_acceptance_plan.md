@@ -1,6 +1,6 @@
 # 短时 GPU 图形与规划验收准备
 
-日期：2026-11-02。状态：**脚本和验收流程已准备，尚未提交 GPU 作业，独立研究镜像及其依赖尚未建立/验收。** 本文不标为“运行通过”或“已经可直接提交”。PACE 大权重下载保持等待：FK 运动学对应和 GPU 图形/规划条件均通过后再获取单任务权重。
+日期：2026-11-02。状态：**独立研究镜像与 CPU 依赖验收已完成，SAPIEN 静态 FK 检查通过；GPU 验收尚未提交，按用户要求暂不执行第三步。** 见 [环境记录](robotwin_environment.md) 与 [FK 报告](robotwin_sapien_fk_smoke.md)。GPU 模板仍需与实际镜像入口、设备和计费规则核对，不能直接视为已可提交。PACE 大权重继续暂缓。
 
 ## 作业范围
 
@@ -21,8 +21,8 @@
 ## 不占 GPU 时先准备的条件
 
 - 独立镜像内准备 Vulkan loader、`vulkaninfo`、NVIDIA ICD 发现路径；宿主驱动库由 Apptainer `--nv` 绑定。可显式绑定已审核的 ICD 目录，但不修改管理员或共享账号配置。
-- 匹配 RoboTwin stable_2.0 的依赖：`sapien==3.0.0b1`、`torch==2.4.1`、CuRobo `v0.7.8`，另需 NumPy、Pillow。镜像和实际包版本在运行前记录；当前未安装这些研究依赖。
-- CuRobo 自带 UR5e 配置与所需资产应预置；扩展编译缓存放在个人项目 `cache/robotwin/`，避免付费作业内下载或安装。若首次 CUDA 编译超时，记录失败并调整后续方案，不自动续租。
+- 匹配 RoboTwin stable_2.0 的依赖已安装：`sapien==3.0.0b1`、`torch==2.4.1`、CuRobo `v0.7.8`，NumPy、Pillow 等核心依赖 CPU 导入通过；镜像与实际包版本已记录。
+- CuRobo 五个 CUDA 扩展及 PyTorch3D 扩展已在 CPU 节点提前编译，内置 UR5e 配置已检查。运行缓存位于研究镜像 `/opt/robotwin/cache/`，物理上属于个人项目目录；构建缓存已清理。付费作业内不安排下载或安装；若目标 GPU 需要重编译，应先记录并调整方案，不自动续租。
 - 日志、RGB 和规划轨迹保存在个人 `research/robotwin/graphics-<JOB_ID>/`；提交前先创建项目 `logs/`。硬件和环境验收不加载 π₀.₅，不下载 RoboTwin 全量资产。
 
 渲染/规划程序见 [robotwin_gpu_smoke.py](../scripts/robotwin_gpu_smoke.py)。本地已做 Python 语法及 Slurm shell 语法检查；Mac 上没有运行 SAPIEN/CuRobo，运行兼容性仍待目标环境验证。UR5e 测试仅证明 CuRobo 软件栈可规划，不验收 Aloha/ARX 的机器人资产和碰撞模型。

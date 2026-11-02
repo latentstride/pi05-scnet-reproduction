@@ -1,0 +1,27 @@
+[
+  {
+    "file": "RoboTwin.tar.gz",
+    "bytes": 8729638,
+    "sha256": "efb9a91fc1b382594cfa22883e63415df136a9bb01e9b5f0871feaf527aa8c39"
+  },
+  {
+    "file": "curobo-pinned.tar.gz",
+    "bytes": 58905946,
+    "sha256": "2d3e9e795494c914c64ded090545cfd4d1108944e91a00495b5c0d968587626f"
+  },
+  {
+    "file": "curobo.tar.gz",
+    "bytes": 58905946,
+    "sha256": "2d3e9e795494c914c64ded090545cfd4d1108944e91a00495b5c0d968587626f"
+  },
+  {
+    "file": "pytorch3d-pinned.tar.gz",
+    "bytes": 36380402,
+    "sha256": "09378f154554ccdf02a8a0373ff715edb44ddfc3814d2cfdc308f4f49af67ab9"
+  },
+  {
+    "file": "robotwin-pinned.tar.gz",
+    "bytes": 8729638,
+    "sha256": "efb9a91fc1b382594cfa22883e63415df136a9bb01e9b5f0871feaf527aa8c39"
+  }
+]

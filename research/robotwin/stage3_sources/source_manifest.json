@@ -1,0 +1,36 @@
+{
+  "openpi_pace_revision": "ba9876639cb7a4bf0c7db00ec39eeb9c8efd8b12",
+  "decoder_revision": "ea8b21121ebb3cd201ff5b3fe361944ac94eda3f",
+  "files": [
+    {
+      "file": "decode_image_bit.py",
+      "sha256": "90df99c52d3f127a09f5960680113f17e8b3e25b2e3cb9117abdeb249d7a337e",
+      "git_blob": "32ac399ef585a1ee6dea34eb35cb53c2814007b4"
+    },
+    {
+      "file": "openpi_pace_configs.py",
+      "sha256": "4f4678269417c7a9760ed7b2f37f77498af7d4e7791db29fb23e7d69f70257d1",
+      "git_blob": "1bbcc993980b88b6f90e29204acc2feccdfdedbe"
+    },
+    {
+      "file": "policies_aloha_policy.py",
+      "sha256": "50d7ad972d80142ecb0f03b0780dacfd3af212946f4c9aac31a204b02db4543d",
+      "git_blob": "f16be3334584692ba505553220ab20ff7b2719c5"
+    },
+    {
+      "file": "policies_policy_config.py",
+      "sha256": "aaf42ab04a33b6c91d2447926211646c33ebd8ebfa427f026d7b6c4f7c45ec52",
+      "git_blob": "6570df05ed068f297d48326990a1cd10ee68ac5a"
+    },
+    {
+      "file": "training_config.py",
+      "sha256": "408150f2618ad53925f40b166ff89dcf9215c3f328024a6acac5f1cd6cc29505",
+      "git_blob": "b3da63e59b2e795efcdeb2821834b96a4d4ce0ab"
+    },
+    {
+      "file": "transforms.py",
+      "sha256": "a1b94e9e72849a18834778f229c6bb389a495eb7fbe0aa800edea728b9424ff4",
+      "git_blob": "272375ea95a5e43a42a6c0ff14cf89d34da76a45"
+    }
+  ]
+}

@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 #SBATCH --job-name=cpf-rw-graphics
+#SBATCH --partition=ksagnormal01
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
@@ -8,67 +9,131 @@
 #SBATCH --time=00:10:00
 #SBATCH --output=logs/robotwin-graphics-%j.out
 set -euo pipefail
+ulimit -c 0
 cd "${SLURM_SUBMIT_DIR:?Submit from personal project root}"
 test "$PWD" = "$HOME/code_cpf/pi05"
 : "${SLURM_JOB_ID:?Must be an allocated Slurm GPU job}"
-: "${ROBOTWIN_IMAGE:?Set isolated research image path}"
-: "${ROBOTWIN_PYTHON:?Set Python path INSIDE that image}"
-: "${APPTAINER_BIN:=/public/software/apps/apptainer/1.3.4/bin/apptainer}"
-case "$ROBOTWIN_IMAGE" in "$PWD"/research/robotwin/*) ;; *) echo 'Research image must be inside personal research directory'; exit 2;; esac
-test -e "$ROBOTWIN_IMAGE"
-out="$PWD/research/robotwin/graphics-${SLURM_JOB_ID}"
-mkdir -p "$out" "$PWD/cache/robotwin/torch_extensions" "$PWD/cache/robotwin/xdg"
-export TORCH_EXTENSIONS_DIR="$PWD/cache/robotwin/torch_extensions"
-export XDG_CACHE_HOME="$PWD/cache/robotwin/xdg"
-export CUDA_CACHE_PATH="$PWD/cache/robotwin/cuda"
-options=(--nv --cleanenv --bind "$PWD:$PWD" --pwd "$PWD")
-# Explicit optional ICD bind directory: prepared ahead of time, not administrator changes.
-if [[ -n ${ROBOTWIN_ICD_DIR:-} ]]; then
-  test -d "$ROBOTWIN_ICD_DIR"
-  options+=(--bind "$ROBOTWIN_ICD_DIR:/etc/vulkan/icd.d:ro")
-fi
-inside() {
-  local seconds=$1
-  shift
-  timeout "$seconds" "$APPTAINER_BIN" exec "${options[@]}" "$ROBOTWIN_IMAGE" env \
-    TORCH_EXTENSIONS_DIR="$TORCH_EXTENSIONS_DIR" XDG_CACHE_HOME="$XDG_CACHE_HOME" \
-    CUDA_CACHE_PATH="$CUDA_CACHE_PATH" "$@"
-}
-failed_stage=initialization
-trap 'code=$?; if ((code)); then printf "%s\n" "$failed_stage exit=$code" > "$out/FAILED"; fi' EXIT
-failed_stage=nvidia_visibility
-timeout 20 nvidia-smi --query-gpu=uuid,name --format=csv,noheader > "$out/host_nvidia.csv"
-failed_stage=host_vulkan
+root=$PWD
+image="$root/research/robotwin/robotwin-cu122"
+a=${APPTAINER_BIN:-/public/software/apps/apptainer/1.3.4/bin/apptainer}
+test -f "$image/opt/robotwin/logs/BUILD_COMPLETE"
+out="$root/research/robotwin/graphics-${SLURM_JOB_ID}"
+mkdir -p "$out"
+failed_stage=allocation
+trap 'code=$?; if ((code)); then printf "%s exit=%s\n" "$failed_stage" "$code" > "$out/FAILED"; fi' EXIT
+stage() { failed_stage=$1; printf '[%s] %s\n' "$(date -u +%FT%TZ)" "$1"; }
+stage nvidia_visibility
+gpu_id=${SLURM_STEP_GPUS:-${SLURM_JOB_GPUS:-${CUDA_VISIBLE_DEVICES:-}}}
+[[ "$gpu_id" =~ ^([0-9]+|GPU-[0-9a-fA-F-]+)$ ]]
+timeout 20 nvidia-smi -i "$gpu_id" --query-gpu=uuid,index,name,pci.bus_id,driver_version \
+ --format=csv,noheader > "$out/allocated_nvidia.csv"
+read -r gpu_uuid < <(cut -d, -f1 "$out/allocated_nvidia.csv")
+test "$(wc -l < "$out/allocated_nvidia.csv")" -eq 1
+stage host_vulkan
 timeout 45 vulkaninfo > "$out/host_vulkan.txt" 2>&1
-failed_stage=container_vulkan
+stage graphics_driver_discovery
+# Only bind installed host NVIDIA libraries, read-only; never install a driver.
+python3 - "$out" "$image" <<'PY'
+from pathlib import Path
+import csv,json,os,re,shutil,subprocess,sys
+out,image=map(Path,sys.argv[1:])
+row=next(csv.reader((out/'allocated_nvidia.csv').read_text().splitlines()))
+uuid,index,name,bus,driver=[x.strip() for x in row]
+domain,bus_id,rest=bus.lower().split(':')
+pci='%04x:%s:%s'%(int(domain,16),bus_id,rest)
+(out/'allocation.json').write_text(json.dumps({
+ 'gpu_uuid':uuid,'index':index,'name':name,'pci_bus_id':pci,'driver_version':driver,
+ 'slurm_job_gpus':os.environ.get('SLURM_JOB_GPUS'),
+ 'cuda_visible_original':os.environ.get('CUDA_VISIBLE_DEVICES')},indent=2))
+icds=[]
+candidates=[]
+for directory in ['/etc/vulkan/icd.d','/usr/share/vulkan/icd.d','/usr/local/share/vulkan/icd.d']:
+ candidates.extend(sorted(Path(directory).glob('*.json')))
+for variable in ['VK_ICD_FILENAMES','VK_DRIVER_FILES']:
+ candidates.extend(Path(x) for x in os.environ.get(variable,'').split(':') if x)
+for p in candidates:
+ try:
+  doc=json.loads(p.read_text()); lib=doc.get('ICD',{}).get('library_path','')
+  if 'nvidia' in lib.lower() and doc['ICD'].get('library_arch') != '32': icds.append((p,doc))
+ except (ValueError,OSError): pass
+assert icds, 'GPU host has no NVIDIA Vulkan ICD; administrator graphics setup required'
+icd,doc=icds[0]
+ldconfig=shutil.which('ldconfig') or '/sbin/ldconfig'
+listing=subprocess.check_output([ldconfig,'-p'],universal_newlines=True)
+libraries={}
+for line in listing.splitlines():
+ if 'x86-64' not in line or '=>' not in line: continue
+ soname=line.split()[0]; source=line.rsplit('=>',1)[1].strip()
+ if re.match(r'lib(?:GLX_nvidia|EGL_nvidia|nvidia-[A-Za-z0-9_-]+)\.so',soname) and Path(source).is_file():
+  libraries.setdefault(soname,source)
+icd_library=doc['ICD']['library_path']; key=Path(icd_library).name
+if Path(icd_library).is_absolute() and Path(icd_library).is_file(): libraries[key]=icd_library
+assert key in libraries, 'NVIDIA ICD library missing from host linker cache'
+inside='/opt/robotwin/host-driver-'+out.name
+destination=image/inside.lstrip('/')
+destination.mkdir(parents=True,exist_ok=True)
+bindings=[]
+for soname,source in sorted(libraries.items()):
+ (destination/soname).touch(exist_ok=True)
+ bindings.append(source+'\t'+inside+'/'+soname)
+(out/'driver_binds.tsv').write_text('\n'.join(bindings)+'\n')
+(out/'host_icd_path.txt').write_text(str(icd)+'\n')
+(out/'driver_inside_path.txt').write_text(inside+'\n')
+doc['ICD']['library_path']=inside+'/'+key
+(out/'container_nvidia_icd.json').write_text(json.dumps(doc,indent=2))
+print('allocated_gpu',name,'driver',driver,'graphics_libraries',len(bindings),flush=True)
+PY
+driver_inside=$(cat "$out/driver_inside_path.txt")
+gpu_pci=$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1]))["pci_bus_id"])' "$out/allocation.json")
+options=(--writable --nv --cleanenv --bind /public:/public --pwd "$root")
+while IFS=$'\t' read -r source destination; do
+ options+=(--bind "$source:$destination:ro")
+done < "$out/driver_binds.tsv"
+inside() {
+ local seconds=$1
+ shift
+ timeout --kill-after=5 "$seconds" "$a" exec "${options[@]}" "$image" env \
+  PATH=/opt/robotwin/venv/bin:/opt/robotwin/sysroot/usr/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin \
+  LD_LIBRARY_PATH="$driver_inside:/opt/robotwin/sysroot/usr/lib/x86_64-linux-gnu:/opt/robotwin/sysroot/lib/x86_64-linux-gnu:/usr/local/cuda/lib64:/.singularity.d/libs" \
+  PI05_ROOT="$root" CUDA_VISIBLE_DEVICES="$gpu_uuid" CUDA_DEVICE_ORDER=PCI_BUS_ID \
+  ROBOTWIN_EXPECTED_PCI="$gpu_pci" DISPLAY= OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 \
+  VK_ICD_FILENAMES="$out/container_nvidia_icd.json" PYTHONUNBUFFERED=1 \
+  XDG_CACHE_HOME=/opt/robotwin/cache/xdg TORCH_EXTENSIONS_DIR=/opt/robotwin/cache/torch_extensions \
+  CUDA_CACHE_PATH=/opt/robotwin/cache/cuda TMPDIR=/opt/robotwin/tmp \
+  PYTHONPYCACHEPREFIX=/opt/robotwin/cache/pycache "$@"
+}
+stage container_vulkan
 inside 45 vulkaninfo > "$out/container_vulkan.txt" 2>&1
-failed_stage=vulkan_identity
+stage vulkan_identity
 python3 - "$out" <<'PY'
 from pathlib import Path
 import sys,re,json
-p=Path(sys.argv[1])
-expected={line.split(',')[0].strip().lower()[4:].replace('-','')
-          for line in (p/'host_nvidia.csv').read_text().splitlines()}
+p=Path(sys.argv[1]); allocation=json.loads((p/'allocation.json').read_text())
+expected=allocation['gpu_uuid'][4:].lower().replace('-','')
 seen=[]
 for name in ['host','container']:
- text=(p/f'{name}_vulkan.txt').read_text()
- uuids={x.lower().replace('-','') for x in re.findall(r'deviceUUID\s*=\s*([0-9a-fA-F-]+)',text)}
- matches=expected & uuids
- assert matches, f'{name}: no Vulkan device UUID matching NVIDIA management UUID; inspect raw log'
- seen.append(matches)
-assert seen[0] & seen[1], 'Host/container do not expose the same allocated NVIDIA GPU'
-(p/'vulkan_identity.json').write_text(json.dumps({'pass':True,'matching_uuids':sorted(seen[0]&seen[1])},indent=2))
+ text=(p/(name+'_vulkan.txt')).read_text(); uuids=set()
+ for line in text.splitlines():
+  if re.search(r'\bdeviceUUID\s*=',line):
+   value=re.sub('0x','',line.split('=',1)[1],flags=re.I)
+   value=re.sub('[^0-9a-f]','',value.lower())
+   if len(value)==32: uuids.add(value)
+ assert expected in uuids, name+': Vulkan does not enumerate the allocated NVIDIA UUID'
+ seen.append(expected)
+(p/'vulkan_identity.json').write_text(json.dumps({'pass':True,'allocated_uuid':allocation['gpu_uuid'],
+ 'host_and_container_same_allocated_gpu':seen[0]==seen[1]},indent=2))
 PY
-failed_stage=sapien_render
-inside 150 "$ROBOTWIN_PYTHON" scripts/robotwin_gpu_smoke.py --stage render --output "$out" > "$out/sapien.log" 2>&1
-failed_stage=curobo_plan
-inside 240 "$ROBOTWIN_PYTHON" scripts/robotwin_gpu_smoke.py --stage plan --output "$out" > "$out/curobo.log" 2>&1
-failed_stage=summary
+stage sapien_render
+inside 150 python scripts/robotwin_gpu_smoke.py --stage render --output "$out" > "$out/sapien.log" 2>&1
+stage curobo_plan
+inside 240 python scripts/robotwin_gpu_smoke.py --stage plan --output "$out" > "$out/curobo.log" 2>&1
+stage summary
 python3 - "$out" <<'PY'
 import json,sys
 from pathlib import Path
-p=Path(sys.argv[1]); result={k:json.loads((p/f'{k}.json').read_text()) for k in ['vulkan_identity','render','plan']}
+p=Path(sys.argv[1]); result={k:json.loads((p/(k+'.json')).read_text()) for k in ['vulkan_identity','render','plan']}
 assert all(x['pass'] for x in result.values())
-(p/'acceptance.json').write_text(json.dumps({'passed':True,'job_id':p.name.split('-')[-1],'checks':result},indent=2))
-print('ROBOTWIN_GRAPHICS_GATE_PASS')
+(p/'acceptance.json').write_text(json.dumps({'passed':True,'job_id':p.name.split('-')[-1],
+ 'checks':result,'policy_weights_loaded':False},indent=2))
+print('ROBOTWIN_GRAPHICS_GATE_PASS',flush=True)
 PY

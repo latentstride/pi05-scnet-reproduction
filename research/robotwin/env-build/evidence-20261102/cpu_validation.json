@@ -1,0 +1,61 @@
+{
+  "cpu_imports_passed": true,
+  "native_vulkan_loader_passed": true,
+  "vulkan_tool_present": true,
+  "cpu_physx_scene_passed": true,
+  "curobo_config_present": true,
+  "vulkan_help_exit_code": 1,
+  "pytorch3d_cpu_native_op_passed": true,
+  "versions": {
+    "numpy": "1.26.4",
+    "scipy": "1.10.1",
+    "torch": "2.4.1+cu121",
+    "torchvision": "0.19.1+cu121",
+    "sapien": "3.0.0b1",
+    "mplib": "0.2.1",
+    "trimesh": "4.4.3",
+    "open3d": "0.18.0",
+    "nvidia-curobo": "0.7.8",
+    "pytorch3d": "0.7.8",
+    "warp-lang": "1.12.0"
+  },
+  "python": "3.10.19 (main, Feb 12 2026, 00:42:18) [Clang 21.1.4 ]",
+  "cuda_build": "12.1",
+  "compiled_arch_list": "8.9+PTX",
+  "gpu_runtime_validated": false,
+  "rendering_validated": false,
+  "planning_validated": false,
+  "motion_gen_import_deferred": "CuRobo 0.7.8 allocates a CUDA Pose in a class default at import; requires the later GPU allocation",
+  "native_extensions": [
+    {
+      "path": "/opt/robotwin/venv/lib/python3.10/site-packages/curobo/curobolib/geom_cu.cpython-310-x86_64-linux-gnu.so",
+      "bytes": 14381368,
+      "sha256": "ecf3aecb0f2912f151dec37a19904e98d5e95167e8578a9a4c1a9cf8e76634a3"
+    },
+    {
+      "path": "/opt/robotwin/venv/lib/python3.10/site-packages/curobo/curobolib/lbfgs_step_cu.cpython-310-x86_64-linux-gnu.so",
+      "bytes": 14089824,
+      "sha256": "bddc3d83739982cd88de86a579844bef17175f092e07d11e16dba6d4a91dee60"
+    },
+    {
+      "path": "/opt/robotwin/venv/lib/python3.10/site-packages/curobo/curobolib/kinematics_fused_cu.cpython-310-x86_64-linux-gnu.so",
+      "bytes": 10081392,
+      "sha256": "e35c8bd259c4f1357fa91b0b54839bf5f863040523a0721900ee1962035b1ab7"
+    },
+    {
+      "path": "/opt/robotwin/venv/lib/python3.10/site-packages/curobo/curobolib/line_search_cu.cpython-310-x86_64-linux-gnu.so",
+      "bytes": 9886016,
+      "sha256": "5c36549f628fb7dd6f905241fbe2a53fc51ad8686f4495f183ef24fb4ca9d42d"
+    },
+    {
+      "path": "/opt/robotwin/venv/lib/python3.10/site-packages/curobo/curobolib/tensor_step_cu.cpython-310-x86_64-linux-gnu.so",
+      "bytes": 10811576,
+      "sha256": "977ed262174676f1b9c79afb75e9b9c0295ada4320c0b187d3f61d38b3cdc99a"
+    },
+    {
+      "path": "/opt/robotwin/venv/lib/python3.10/site-packages/pytorch3d/_C.cpython-310-x86_64-linux-gnu.so",
+      "bytes": 147979480,
+      "sha256": "f04002aefe38f413594c6a2ee5c53baf14bb2ca1805220e2834ab4e759fa418a"
+    }
+  ]
+}

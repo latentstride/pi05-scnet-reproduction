@@ -7,6 +7,8 @@
 - [数据集比较与选型](dataset_comparison.md)：RoboTwin 为主候选，保留 DROID、BridgeData V2、ALOHA Sim 的早期接口调研。
 - [RoboTwin 可行性审计与实验方案](robotwin_feasibility.md)：优先做同任务跨本体的专家轨迹和 qpos/ee 控制适配，区分回放与模型自主控制。
 - [SCNet Vulkan/graphics 实测预检查](docs/robotwin_graphics_preflight.md)：登录节点和现有容器已检查，GPU 图形透传仍待目标节点验证。
+- [独立 RoboTwin 研究环境](docs/robotwin_environment.md)：镜像已建立，273 个包兼容、六个原生扩展及 CPU 最小物理验收通过，LIBERO 基线保留。
+- [SAPIEN 静态 FK 与关节坐标系验证](docs/robotwin_sapien_fk_smoke.md)：两种本体 9 个快照、12 次末端和 219 次关节坐标系检查通过。按用户要求暂不执行 GPU 验收，不下载 PACE 权重。
 
 已完成 handover_block 的 Aloha-AgileX 与 ARX-X5 各 3 条官方示范读取、完整静态检查及 SCNet CPU 复验，见 [数据抽样报告](robotwin_data_probe.md)。发现原始 HDF5 没有显式时间戳或单独动作命令字段，回放前须解决时间与工具点语义。当前不新增 GPU 实验；现有 `pi05_libero` 的双臂模型兼容性独立验收。
 

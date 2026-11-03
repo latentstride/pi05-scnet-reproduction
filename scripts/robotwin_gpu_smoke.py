@@ -64,7 +64,6 @@ def render(out):
 
 def plan(out):
     import torch
-    from curobo.types.math import Pose
     from curobo.types.robot import JointState
     from curobo.wrap.reacher.motion_gen import MotionGen, MotionGenConfig, MotionGenPlanConfig
     assert torch.cuda.is_available() and torch.cuda.device_count() == 1
@@ -72,19 +71,22 @@ def plan(out):
     world = {'cuboid':{'table':{'dims':[5,5,0.2],'pose':[0,0,-0.1,1,0,0,0]}}}
     cfg = MotionGenConfig.load_from_robot_config(
         'ur5e.yml',world,interpolation_dt=0.01,use_cuda_graph=False)
+    print('CuRobo: initialize MotionGen', flush=True)
     motion = MotionGen(cfg)
-    motion.warmup(enable_graph=False,warmup_js_trajopt=False,parallel_finetune=False)
     names = ['shoulder_pan_joint','shoulder_lift_joint','elbow_joint',
              'wrist_1_joint','wrist_2_joint','wrist_3_joint']
     # Use the stock robot's safe retract configuration and a small base rotation,
     # following the pinned v0.7.8 example rather than assuming zero is collision-free.
     retract = motion.get_retract_config().view(1,-1).clone()
-    state = motion.compute_kinematics(JointState.from_position(retract,joint_names=names))
-    goal = Pose(state.ee_pos_seq.squeeze(),quaternion=state.ee_quat_seq.squeeze())
+    goal = JointState.from_position(retract, joint_names=names)
+    state = motion.compute_kinematics(goal)
     start_q = retract.clone()
     start_q[0,0] += 0.15
     start = JointState.from_position(start_q,joint_names=names)
-    result = motion.plan_single(start,goal,MotionGenPlanConfig(
+    # The warmup calls the Cartesian planner even with CUDA graphs disabled.
+    # Use the joint-space API for this known joint goal and check endpoint FK.
+    print('CuRobo: plan_single_js', flush=True)
+    result = motion.plan_single_js(start,goal,MotionGenPlanConfig(
         max_attempts=1,enable_graph=False,parallel_finetune=False))
     assert bool(result.success.item()), 'CuRobo planner returned failure'
     traj = result.get_interpolated_plan().position.detach().cpu().numpy()
@@ -104,7 +106,7 @@ def plan(out):
     return {'pass':True,'shape':list(traj.shape),'goal_position_error_m':position_error,
             'goal_angle_error_rad':angle_error,'cuda_device_count':torch.cuda.device_count(),
             'cuda_gpu_name':torch.cuda.get_device_name(0),
-            'robot':'stock ur5e; not target-embodiment acceptance'}
+            'robot':'stock ur5e; not target-embodiment acceptance', 'planner':'plan_single_js'}
 
 
 if __name__ == '__main__':

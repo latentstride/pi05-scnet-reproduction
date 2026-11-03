@@ -30,7 +30,11 @@ host_vulkaninfo() {
   "$sysroot/usr/bin/vulkaninfo" "$@"
 }
 if [[ ${1:-} == --host-tool-check ]]; then
- host_vulkaninfo --help
+ # This vulkaninfo release prints usage and exits with status 1 for --help.
+ help_status=0
+ help_output=$(host_vulkaninfo --help 2>&1) || help_status=$?
+ printf '%s\n' "$help_output"
+ [[ "$help_status" -le 1 && "$help_output" == *"USAGE:"* && "$help_output" == *"--summary"* ]]
  exit
 fi
 
@@ -122,7 +126,8 @@ inside() {
   LD_LIBRARY_PATH="$driver_inside:/opt/robotwin/sysroot/usr/lib/x86_64-linux-gnu:/opt/robotwin/sysroot/lib/x86_64-linux-gnu:/usr/local/cuda/lib64:/.singularity.d/libs" \
   PI05_ROOT="$root" CUDA_VISIBLE_DEVICES="$gpu_uuid" CUDA_DEVICE_ORDER=PCI_BUS_ID \
   ROBOTWIN_EXPECTED_PCI="$gpu_pci" DISPLAY= OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 \
-  VK_ICD_FILENAMES="$out/container_nvidia_icd.json" PYTHONUNBUFFERED=1 \
+  VK_DRIVER_FILES="$out/container_nvidia_icd.json" VK_ICD_FILENAMES="$out/container_nvidia_icd.json" \
+  PYTHONUNBUFFERED=1 \
   XDG_CACHE_HOME=/opt/robotwin/cache/xdg TORCH_EXTENSIONS_DIR=/opt/robotwin/cache/torch_extensions \
   CUDA_CACHE_PATH=/opt/robotwin/cache/cuda TMPDIR=/opt/robotwin/tmp \
   PYTHONPYCACHEPREFIX=/opt/robotwin/cache/pycache "$@"

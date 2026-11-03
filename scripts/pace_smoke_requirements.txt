@@ -1,0 +1,5 @@
+# Also expose packages/openpi-client/src from the pinned OpenPI-PACE checkout.
+numpy==1.26.4
+msgpack==1.1.1
+websockets==15.0.1
+imageio-ffmpeg==0.6.0

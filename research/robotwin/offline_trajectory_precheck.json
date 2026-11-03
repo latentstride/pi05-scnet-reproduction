@@ -1,0 +1,218 @@
+{
+  "unique_frames": 1435,
+  "joint_target_values": 17220,
+  "outside_urdf_limit_values": 0,
+  "largest_joint_step": {
+    "robot": "arx-x5",
+    "episode": "episode0",
+    "arm": "left",
+    "frames": 195,
+    "outside_urdf_limit_values": 0,
+    "max_limit_excess_rad": 0.0,
+    "max_adjacent_joint_delta_rad": 0.28070056438446045,
+    "joint_at_max_delta": "joint2",
+    "zero_based_from_frame": 8,
+    "max_adjacent_ee_delta_mm": 65.1591947694629,
+    "urdf_velocity_rad_s": [
+      1000.0
+    ]
+  },
+  "largest_ee_step": {
+    "robot": "arx-x5",
+    "episode": "episode0",
+    "arm": "left",
+    "frames": 195,
+    "outside_urdf_limit_values": 0,
+    "max_limit_excess_rad": 0.0,
+    "max_adjacent_joint_delta_rad": 0.28070056438446045,
+    "joint_at_max_delta": "joint2",
+    "zero_based_from_frame": 8,
+    "max_adjacent_ee_delta_mm": 65.1591947694629,
+    "urdf_velocity_rad_s": [
+      1000.0
+    ]
+  },
+  "scope": "Offline recorded targets vs simulation URDF limits. No actual qpos, original time, replay, dynamics or collision check.",
+  "rows": [
+    {
+      "robot": "aloha-agilex",
+      "episode": "episode0",
+      "arm": "left",
+      "frames": 295,
+      "outside_urdf_limit_values": 0,
+      "max_limit_excess_rad": 0.0,
+      "max_adjacent_joint_delta_rad": 0.1166921854019165,
+      "joint_at_max_delta": "fl_joint2",
+      "zero_based_from_frame": 21,
+      "max_adjacent_ee_delta_mm": 31.542422997214896,
+      "urdf_velocity_rad_s": [
+        1000.0
+      ]
+    },
+    {
+      "robot": "aloha-agilex",
+      "episode": "episode0",
+      "arm": "right",
+      "frames": 295,
+      "outside_urdf_limit_values": 0,
+      "max_limit_excess_rad": 0.0,
+      "max_adjacent_joint_delta_rad": 0.10568052530288696,
+      "joint_at_max_delta": "fr_joint2",
+      "zero_based_from_frame": 138,
+      "max_adjacent_ee_delta_mm": 21.42368948768772,
+      "urdf_velocity_rad_s": [
+        1000.0
+      ]
+    },
+    {
+      "robot": "aloha-agilex",
+      "episode": "episode1",
+      "arm": "left",
+      "frames": 277,
+      "outside_urdf_limit_values": 0,
+      "max_limit_excess_rad": 0.0,
+      "max_adjacent_joint_delta_rad": 0.110568106174469,
+      "joint_at_max_delta": "fl_joint2",
+      "zero_based_from_frame": 16,
+      "max_adjacent_ee_delta_mm": 20.37928808749017,
+      "urdf_velocity_rad_s": [
+        1000.0
+      ]
+    },
+    {
+      "robot": "aloha-agilex",
+      "episode": "episode1",
+      "arm": "right",
+      "frames": 277,
+      "outside_urdf_limit_values": 0,
+      "max_limit_excess_rad": 0.0,
+      "max_adjacent_joint_delta_rad": 0.10921287536621094,
+      "joint_at_max_delta": "fr_joint2",
+      "zero_based_from_frame": 121,
+      "max_adjacent_ee_delta_mm": 21.655621576929928,
+      "urdf_velocity_rad_s": [
+        1000.0
+      ]
+    },
+    {
+      "robot": "aloha-agilex",
+      "episode": "episode2",
+      "arm": "left",
+      "frames": 282,
+      "outside_urdf_limit_values": 0,
+      "max_limit_excess_rad": 0.0,
+      "max_adjacent_joint_delta_rad": 0.11854064464569092,
+      "joint_at_max_delta": "fl_joint2",
+      "zero_based_from_frame": 18,
+      "max_adjacent_ee_delta_mm": 29.0866528310896,
+      "urdf_velocity_rad_s": [
+        1000.0
+      ]
+    },
+    {
+      "robot": "aloha-agilex",
+      "episode": "episode2",
+      "arm": "right",
+      "frames": 282,
+      "outside_urdf_limit_values": 0,
+      "max_limit_excess_rad": 0.0,
+      "max_adjacent_joint_delta_rad": 0.10953700542449951,
+      "joint_at_max_delta": "fr_joint2",
+      "zero_based_from_frame": 128,
+      "max_adjacent_ee_delta_mm": 21.654371301538873,
+      "urdf_velocity_rad_s": [
+        1000.0
+      ]
+    },
+    {
+      "robot": "arx-x5",
+      "episode": "episode0",
+      "arm": "left",
+      "frames": 195,
+      "outside_urdf_limit_values": 0,
+      "max_limit_excess_rad": 0.0,
+      "max_adjacent_joint_delta_rad": 0.28070056438446045,
+      "joint_at_max_delta": "joint2",
+      "zero_based_from_frame": 8,
+      "max_adjacent_ee_delta_mm": 65.1591947694629,
+      "urdf_velocity_rad_s": [
+        1000.0
+      ]
+    },
+    {
+      "robot": "arx-x5",
+      "episode": "episode0",
+      "arm": "right",
+      "frames": 195,
+      "outside_urdf_limit_values": 0,
+      "max_limit_excess_rad": 0.0,
+      "max_adjacent_joint_delta_rad": 0.23180615901947021,
+      "joint_at_max_delta": "joint2",
+      "zero_based_from_frame": 80,
+      "max_adjacent_ee_delta_mm": 46.56119392353866,
+      "urdf_velocity_rad_s": [
+        1000.0
+      ]
+    },
+    {
+      "robot": "arx-x5",
+      "episode": "episode1",
+      "arm": "left",
+      "frames": 192,
+      "outside_urdf_limit_values": 0,
+      "max_limit_excess_rad": 0.0,
+      "max_adjacent_joint_delta_rad": 0.26111429929733276,
+      "joint_at_max_delta": "joint2",
+      "zero_based_from_frame": 7,
+      "max_adjacent_ee_delta_mm": 53.56285167329657,
+      "urdf_velocity_rad_s": [
+        1000.0
+      ]
+    },
+    {
+      "robot": "arx-x5",
+      "episode": "episode1",
+      "arm": "right",
+      "frames": 192,
+      "outside_urdf_limit_values": 0,
+      "max_limit_excess_rad": 0.0,
+      "max_adjacent_joint_delta_rad": 0.2407684326171875,
+      "joint_at_max_delta": "joint2",
+      "zero_based_from_frame": 78,
+      "max_adjacent_ee_delta_mm": 40.438354795714595,
+      "urdf_velocity_rad_s": [
+        1000.0
+      ]
+    },
+    {
+      "robot": "arx-x5",
+      "episode": "episode2",
+      "arm": "left",
+      "frames": 194,
+      "outside_urdf_limit_values": 0,
+      "max_limit_excess_rad": 0.0,
+      "max_adjacent_joint_delta_rad": 0.2663325071334839,
+      "joint_at_max_delta": "joint2",
+      "zero_based_from_frame": 7,
+      "max_adjacent_ee_delta_mm": 55.1313353481937,
+      "urdf_velocity_rad_s": [
+        1000.0
+      ]
+    },
+    {
+      "robot": "arx-x5",
+      "episode": "episode2",
+      "arm": "right",
+      "frames": 194,
+      "outside_urdf_limit_values": 0,
+      "max_limit_excess_rad": 0.0,
+      "max_adjacent_joint_delta_rad": 0.23546582460403442,
+      "joint_at_max_delta": "joint2",
+      "zero_based_from_frame": 78,
+      "max_adjacent_ee_delta_mm": 38.01985624297162,
+      "urdf_velocity_rad_s": [
+        1000.0
+      ]
+    }
+  ]
+}

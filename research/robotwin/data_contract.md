@@ -22,7 +22,7 @@
 |aloha-agilex|fl_joint1…fl_joint6|fr_joint1…fr_joint6|observation/front_camera/rgb，及其相机矩阵|295 / 277 / 282|
 |arx-x5|左实例 joint1…joint6|右实例 joint1…joint6|third_view_rgb|195 / 192 / 194|
 
-左右指机器人左右臂，不按图像左右判断；夹爪索引为 6、13。关节名来自同 revision 的 `embodiment_assets/embodiments/*/config.yml`，校验向量拼接和固定配置顺序；HDF5 不含关节名称，不能仅靠数值证明采集器物理接线。旋转关节采用 rad；末端位置采用仿真 m，四元数无量纲。HDF5 未存单位属性，单位依据已审计源码/资产约定。末端记录是世界参考下经 RoboTwin 方向矩阵和工具定义转换的位姿，不可直接等同 URDF link/TCP；契约不重新标定坐标，不声明轨迹 FK 已通过。CV/GL 轴变换为 diag(1,-1,-1,1)。
+左右指机器人左右臂，不按图像左右判断；夹爪索引为 6、13。关节名来自同 revision 的 `embodiments.zip` 中的 `embodiments/*/config.yml`（原文与哈希见 [配置审计](embodiment_config_audit.json)），校验向量拼接和固定配置顺序；HDF5 不含关节名称，不能仅靠数值证明采集器物理接线。旋转关节采用 rad；末端位置采用仿真 m，四元数无量纲。HDF5 未存单位属性，单位依据已审计源码/资产约定。末端记录是世界参考下经 RoboTwin 方向矩阵和工具定义转换的位姿，不可直接等同 URDF link/TCP；契约不重新标定坐标，不声明轨迹 FK 已通过。CV/GL 轴变换为 diag(1,-1,-1,1)。
 
 ## 策略输入及责任边界
 
@@ -48,4 +48,4 @@
 
 PACE 配置 adapt_to_pi=False，use_delta_joint_actions=True。输入 AlohaInputs → 关节 delta（训练有 actions 时，掩码 6真/1假/6真/1假）→ 源统计 Normalize → 模型 transforms。输出模型 transforms → Unnormalize → AbsoluteActions（加回原始当前 state 的关节部分，夹爪保持绝对量）→ AlohaOutputs 截取 14 维。adapter 保留物理值，归一化仅在策略变换层一次。统计来自源 handover_block/assets/robotwin/norm_stats.json，不用 ARX 样本重估；跨本体统计适用性属于后续实验问题。
 
-源版本：Openpi-PACE checkpoint manifest 指向 ba9876639cb7a4bf0c7db00ec39eeb9c8efd8b12；已有审计文件来自 f4e52e6de4cc487a11585a3a7414d610b2883dae。测试固定前者的 transforms.py，并记录已有配置/策略文件 blob；不把版本不同隐藏为同一源码。
+源版本：Openpi-PACE checkpoint manifest 指向 ba9876639cb7a4bf0c7db00ec39eeb9c8efd8b12；已有审计文件来自 f4e52e6de4cc487a11585a3a7414d610b2883dae。本阶段重新取得前者的 transforms、aloha_policy、policy_config 和配置文件，均固定同一 revision，逐文件 blob 与 SHA-256 见 stage3_sources/source_manifest.json；旧审计目录保持原样。

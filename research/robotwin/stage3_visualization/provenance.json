@@ -1,0 +1,60 @@
+{
+  "robot": "aloha-agilex",
+  "episode": "episode0",
+  "hdf5": "aloha-agilex/episode0.hdf5",
+  "hdf5_sha256": "419abe95f2ad2910b19aef1de61c2374e76cbfe5e7a9eb5c26f137ee4f144ee2",
+  "dataset_revision": "3dc3b798668feb99ac61cc9086d84cbcc3d79186",
+  "language": {
+    "file": "aloha-agilex/metadata/episode0.json",
+    "sha256": "cc607aced327521e5e27f766ff688c4a7de6f3c76072e52a56071bd87df1c0b5",
+    "split": "seen",
+    "index": 0,
+    "text": "Grab the red block with the left arm, pass it to the right hand, and drop it on the blue pad."
+  },
+  "state_source": "recorded_joint_target",
+  "fps": null,
+  "timestamps": null,
+  "actual_qpos": null,
+  "derived_next_state_action": null,
+  "policy_predicted_action": null,
+  "image_frame_indices": [
+    0,
+    147,
+    294
+  ],
+  "curve_frame_indices": [
+    0,
+    294
+  ],
+  "all_curve_frames": 295,
+  "downsampling": false,
+  "time_axis": "frame index",
+  "image_operations": "official RGB decode, no contrast changes; thumbnails only in plate",
+  "source_fields": [
+    "joint_action/vector",
+    "endpose/left_endpose",
+    "endpose/right_endpose"
+  ],
+  "files": {
+    "figure_qa.md": "a45dfa50daac2301e5b8ff4c8ba87ed6b684ff3e5a75c372a96630e988be90b3",
+    "frame_0000_cam_high.png": "306b78f7f7471075d55060047da32d0f275455c1c64bce2d3cd98748f001c6e1",
+    "frame_0000_cam_left_wrist.png": "93941a29d173b21d089fdbcd292541156acc41806cd4fa01e6b31678db47d921",
+    "frame_0000_cam_right_wrist.png": "2548b684adc78e8982e9db086c22a738da29fa4a0a62289b84e26b8ba8b88a5b",
+    "frame_0147_cam_high.png": "ef2032ce214c68fbd7c711cc72b8a9a642264b224c6df525f665236adf2e7e4b",
+    "frame_0147_cam_left_wrist.png": "326ed91afd109d15d7bb983616cd6fffdaf94be587a4086f6cefadb874e29640",
+    "frame_0147_cam_right_wrist.png": "8bd881df6dfdf5af922be88df6fcb1755946996e238d3931a6b5857d9c8c88f7",
+    "frame_0294_cam_high.png": "cd6abbb559a5b7d4f3039de4d2281e47fee43530ac7d035a08f3dc1d221c643e",
+    "frame_0294_cam_left_wrist.png": "d5a6171ed5f0bb6675fe9f61fea2c263d98dd41b56d4c7bf69abe521b0be5a71",
+    "frame_0294_cam_right_wrist.png": "02ae5f036c973ab76c883a5fee568885610a6c17a4ec4de423c5b6d12ec4c9f1",
+    "plotted_values.csv": "2589b208b732014b15632c5404a00d59cfdcb6321684905e0e4df9ed6b729ddd",
+    "recorded_endpose.pdf": "db1a5767549aa1cfaa376ee57a0d14e5b411651a2001173440044a07568ed0c2",
+    "recorded_endpose.png": "332cde503c79f2a78c7e6e2c1789afb9d5fe84dc9a4a7af652ec4b1035ede585",
+    "recorded_endpose.svg": "f80433604589a00d22e9937267ad8d5a19e2b43b833349265bfb4a3b092dae0c",
+    "recorded_joint_target.pdf": "5ca708404bf9f24f361143e40583d997208f2c584758f9f83876396586bfdebb",
+    "recorded_joint_target.png": "527538f2a0f0beb581e098cf29f2eaa5729ef3774f22eec126a6499ad2fe85e4",
+    "recorded_joint_target.svg": "334ab94f54ae4f833e761e556abb52e3131ac35ae38ec89828327ef8cd82afa4",
+    "three_view_frames.pdf": "2ddf9815865e3d66cf7d73a5252588323aa752d3ef51c77d98caff280976892c",
+    "three_view_frames.png": "0606e0eecb8709fb7bcca04a02103dce6b7fd42671dca6ec4fc5045476bc06b6",
+    "three_view_frames.svg": "0bb6328f46613ed2f9c3957bbd1bcfd7b87071f2df1317865bec826ca4cd70e6"
+  }
+}

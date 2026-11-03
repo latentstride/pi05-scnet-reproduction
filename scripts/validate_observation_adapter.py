@@ -1,5 +1,6 @@
 """Six-episode CPU schema gate, reusing archived complete image decode evidence."""
 import argparse
+import hashlib
 import json
 import re
 from pathlib import Path
@@ -19,19 +20,19 @@ def main(root=None):
     rows = []
     for archive in manifest['archives']:
         robot = archive['robot']
-        config_path = DATA / 'embodiment_assets/embodiments' / (
-            'aloha-agilex' if robot == 'aloha-agilex' else 'ARX-X5') / 'config.yml'
-        config_text = config_path.read_text()
+        audit = json.loads((DATA / 'embodiment_config_audit.json').read_text())
+        require(audit['revision'] == manifest['revision'], 'Embodiment config revision')
+        config = next(c for c in audit['robots'] if c['robot'].lower() == robot)
+        config_text = config['config_text']
         names = ([['fl_joint'+str(i) for i in range(1, 7)],
                   ['fr_joint'+str(i) for i in range(1, 7)]] if robot == 'aloha-agilex'
                  else [['joint'+str(i) for i in range(1, 7)]] * 2)
-        # Parse only the audited, single-line YAML list with Python's literal parser.
+        # Parse only the audited, YAML flow-style list with Python's literal parser.
         import ast
         config_names = ast.literal_eval(re.search(r'^arm_joints_name:\s*(.*?)(?=^\w|\Z)', config_text, re.M | re.S)[1].strip())
         require(config_names == names, 'Config joint order')
-        asset_manifest = json.loads((DATA / 'embodiment_assets/manifest.json').read_text())
-        # Manifest entries pin the exact config bytes, not just a matching name list.
-        require(sha256(config_path) in json.dumps(asset_manifest), 'Config SHA-256')
+        config_hash = hashlib.sha256(config_text.encode()).hexdigest()
+        require(config_hash == config['config_sha256'], 'Config SHA-256')
         for member in archive['selected']:
             episode = Path(member['file']).stem
             with EpisodeAdapter(robot, episode, root) as adapter:
@@ -70,7 +71,7 @@ def main(root=None):
                 rows.append({**adapter.provenance,'frames':t,'all_schema_assertions_passed':True,
                              'all_state_frames_checked':t,'fresh_adapter_frames':frames,
                              'fresh_rgb_decodes':len(frames)*3,'joint_names':names,
-                             'config_sha256':sha256(config_path),'quaternion_max_norm_error':quat_errors,
+                             'config_sha256':config_hash,'quaternion_max_norm_error':quat_errors,
                              'reused_rgb_decodes':sum(i['frames_decoded'] for i in old['images'].values())})
                 print('PASS',robot,episode,t,flush=True)
     report = {'schema_version':1,'all_schema_assertions_passed':len(rows)==6,

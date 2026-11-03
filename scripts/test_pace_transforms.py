@@ -71,8 +71,9 @@ class TransformTests(unittest.TestCase):
 
     def test_source_statistics_once(self):
         stats_path=ROOT/'research/gate25/pace_handover_block_assets_robotwin_norm_stats.json'
-        manifest=json.loads((ROOT/'research/gate25/pace_manifest.json').read_text())
-        expected=next(m for m in manifest['models'] if m['task']=='handover_block')['norm_stats_sha256']
+        manifest=json.loads((ROOT/'research/gate25/pace_handover_manifest.json').read_text())
+        self.assertEqual(manifest['task'],'handover_block')
+        expected=manifest['norm_stats_sha256']
         self.assertEqual(sha256(stats_path),expected)
         stats=json.loads(stats_path.read_text())['norm_stats']
         norm=self.tr.Normalize(None,use_quantiles=True)

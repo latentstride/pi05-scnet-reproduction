@@ -1,0 +1,3 @@
+-r probe_requirements.txt
+einops==0.8.1
+matplotlib==3.10.8

@@ -168,6 +168,8 @@ for line in listing.splitlines():
 icd_library=doc['ICD']['library_path']; key=Path(icd_library).name
 if Path(icd_library).is_absolute() and Path(icd_library).is_file(): libraries[key]=icd_library
 assert key in libraries, 'NVIDIA ICD library missing from host linker cache'
+egl_key='libEGL_nvidia.so.0'
+assert egl_key in libraries, 'NVIDIA EGL vendor library missing from host linker cache'
 inside='/opt/robotwin/host-driver-'+out.name
 destination=image/inside.lstrip('/')
 destination.mkdir(parents=True,exist_ok=True)
@@ -181,8 +183,13 @@ for soname,source in sorted(libraries.items()):
 (out/'driver_inside_path.txt').write_text(inside+'\n')
 doc['ICD']['library_path']=libraries[key]
 (out/'host_nvidia_icd.json').write_text(json.dumps(doc,indent=2))
-doc['ICD']['library_path']=inside+'/'+key
+# Keep the host's working ICD for the host probe. NVIDIA documents the EGL
+# ICD for headless environments where the GLX path cannot initialize.
+doc['ICD']['library_path']=inside+'/'+egl_key
 (out/'container_nvidia_icd.json').write_text(json.dumps(doc,indent=2))
+(out/'container_nvidia_egl.json').write_text(json.dumps({
+ 'file_format_version':'1.0.0','ICD':{'library_path':inside+'/'+egl_key},
+},indent=2))
 print('NVIDIA graphics libraries:',len(bindings),flush=True)
 PY
 }
@@ -210,12 +217,19 @@ if run_check graphics_driver_discovery discover_graphics > "$out/graphics_driver
  host_icd_library=$(cat "$out/host_icd_library.txt")
  VK_DRIVER_FILES="$out/host_nvidia_icd.json" VK_ICD_FILENAMES="$out/host_nvidia_icd.json" \
   run_check host_vulkan host_vulkaninfo > "$out/host_vulkan.txt" 2>&1 || true
- driver_libs="$(cat "$out/driver_inside_path.txt"):$driver_libs"
- graphics_env=(DISPLAY= "VK_DRIVER_FILES=$out/container_nvidia_icd.json" "VK_ICD_FILENAMES=$out/container_nvidia_icd.json")
+ driver_inside=$(cat "$out/driver_inside_path.txt")
+ driver_libs="$driver_inside:$driver_libs"
+ graphics_env=(DISPLAY= WAYLAND_DISPLAY= "VK_DRIVER_FILES=$out/container_nvidia_icd.json"
+  "VK_ICD_FILENAMES=$out/container_nvidia_icd.json"
+  "__EGL_VENDOR_LIBRARY_FILENAMES=$out/container_nvidia_egl.json")
  while IFS=$'\t' read -r driver_source destination; do
   options+=(--bind "$driver_source:$destination:ro")
  done < "$out/driver_binds.tsv"
- run_check container_vulkan inside 45 vulkaninfo > "$out/container_vulkan.txt" 2>&1 || true
+ if ! run_check container_vulkan inside 45 env VK_LOADER_DEBUG=error,warn vulkaninfo \
+  > "$out/container_vulkan.txt" 2>&1; then
+  # Show unresolved dependencies separately from Vulkan instance failures.
+  inside 10 ldd -r "$driver_inside/libEGL_nvidia.so.0" > "$out/container_icd_linker.log" 2>&1 || true
+ fi
  run_check vulkan_identity check_vulkan_identity > "$out/vulkan_identity.log" 2>&1 || true
  run_check sapien_render inside 150 python scripts/robotwin_gpu_smoke.py --stage render --output "$out" \
   > "$out/sapien.log" 2>&1 || true

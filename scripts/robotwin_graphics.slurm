@@ -10,13 +10,33 @@
 #SBATCH --output=logs/robotwin-graphics-%j.out
 set -euo pipefail
 ulimit -c 0
-cd "${SLURM_SUBMIT_DIR:?Submit from personal project root}"
-test "$PWD" = "$HOME/code_cpf/pi05"
-: "${SLURM_JOB_ID:?Must be an allocated Slurm GPU job}"
-root=$PWD
+root="$HOME/code_cpf/pi05"
 image="$root/research/robotwin/robotwin-cu122"
 a=${APPTAINER_BIN:-/public/software/apps/apptainer/1.3.4/bin/apptainer}
 test -f "$image/opt/robotwin/logs/BUILD_COMPLETE"
+
+# Run the image's userspace tool as a native host process. The explicit
+# interpreter and library paths keep it independent of the host's glibc
+# version and of vulkaninfo availability on the compute node.
+host_vulkaninfo() {
+ local sysroot="$image/opt/robotwin/sysroot"
+ local arch=x86_64-linux-gnu
+ local libs="$sysroot/usr/lib/$arch:$sysroot/lib/$arch:$image/usr/lib/$arch:$image/lib/$arch"
+ if [[ -n ${host_icd_library:-} ]]; then
+  libs="$libs:$(dirname "$host_icd_library")"
+ fi
+ timeout --kill-after=5 45 env -u DISPLAY -u WAYLAND_DISPLAY -u LD_PRELOAD -u LD_LIBRARY_PATH \
+  "$image/lib/$arch/ld-linux-x86-64.so.2" --library-path "$libs" \
+  "$sysroot/usr/bin/vulkaninfo" "$@"
+}
+if [[ ${1:-} == --host-tool-check ]]; then
+ host_vulkaninfo --help
+ exit
+fi
+
+cd "${SLURM_SUBMIT_DIR:?Submit from personal project root}"
+test "$PWD" = "$root"
+: "${SLURM_JOB_ID:?Must be an allocated Slurm GPU job}"
 out="$root/research/robotwin/graphics-${SLURM_JOB_ID}"
 mkdir -p "$out"
 failed_stage=allocation
@@ -29,8 +49,6 @@ timeout 20 nvidia-smi -i "$gpu_id" --query-gpu=uuid,index,name,pci.bus_id,driver
  --format=csv,noheader > "$out/allocated_nvidia.csv"
 read -r gpu_uuid < <(cut -d, -f1 "$out/allocated_nvidia.csv")
 test "$(wc -l < "$out/allocated_nvidia.csv")" -eq 1
-stage host_vulkan
-timeout 45 vulkaninfo > "$out/host_vulkan.txt" 2>&1
 stage graphics_driver_discovery
 # Only bind installed host NVIDIA libraries, read-only; never install a driver.
 python3 - "$out" "$image" <<'PY'
@@ -78,11 +96,18 @@ for soname,source in sorted(libraries.items()):
  bindings.append(source+'\t'+inside+'/'+soname)
 (out/'driver_binds.tsv').write_text('\n'.join(bindings)+'\n')
 (out/'host_icd_path.txt').write_text(str(icd)+'\n')
+(out/'host_icd_library.txt').write_text(libraries[key]+'\n')
 (out/'driver_inside_path.txt').write_text(inside+'\n')
+doc['ICD']['library_path']=libraries[key]
+(out/'host_nvidia_icd.json').write_text(json.dumps(doc,indent=2))
 doc['ICD']['library_path']=inside+'/'+key
 (out/'container_nvidia_icd.json').write_text(json.dumps(doc,indent=2))
 print('allocated_gpu',name,'driver',driver,'graphics_libraries',len(bindings),flush=True)
 PY
+stage host_vulkan
+host_icd_library=$(cat "$out/host_icd_library.txt")
+VK_DRIVER_FILES="$out/host_nvidia_icd.json" VK_ICD_FILENAMES="$out/host_nvidia_icd.json" \
+ host_vulkaninfo > "$out/host_vulkan.txt" 2>&1
 driver_inside=$(cat "$out/driver_inside_path.txt")
 gpu_pci=$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1]))["pci_bus_id"])' "$out/allocation.json")
 options=(--writable --nv --cleanenv --bind /public:/public --pwd "$root")

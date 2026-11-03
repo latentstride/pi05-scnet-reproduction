@@ -47,12 +47,58 @@ failed_stage=allocation
 trap 'code=$?; if ((code)); then printf "%s exit=%s\n" "$failed_stage" "$code" > "$out/FAILED"; fi' EXIT
 stage() { failed_stage=$1; printf '[%s] %s\n' "$(date -u +%FT%TZ)" "$1"; }
 stage nvidia_visibility
-gpu_id=${SLURM_STEP_GPUS:-${SLURM_JOB_GPUS:-${CUDA_VISIBLE_DEVICES:-}}}
-[[ "$gpu_id" =~ ^([0-9]+|GPU-[0-9a-fA-F-]+)$ ]]
-timeout 20 nvidia-smi -i "$gpu_id" --query-gpu=uuid,index,name,pci.bus_id,driver_version \
- --format=csv,noheader > "$out/allocated_nvidia.csv"
+{
+ printf 'SLURM_STEP_GPUS=%s\n' "${SLURM_STEP_GPUS:-}"
+ printf 'SLURM_JOB_GPUS=%s\n' "${SLURM_JOB_GPUS:-}"
+ printf 'CUDA_VISIBLE_DEVICES=%s\n' "${CUDA_VISIBLE_DEVICES:-}"
+} > "$out/gpu_visibility.txt"
+# CUDA honors the job's visibility mask. Use the visible device's PCI address
+# because Slurm, CUDA and NVML numeric indices can refer to different devices.
+if ! gpu_pci=$(timeout 15 python3 - 2>> "$out/gpu_visibility.txt" <<'PY'
+import ctypes as c
+
+cuda = c.CDLL("libcuda.so.1")
+
+
+def check(operation, *args):
+    code = getattr(cuda, operation)(*args)
+    if code:
+        raise RuntimeError(f"{operation} failed with CUDA status {code}")
+
+
+check("cuInit", 0)
+count = c.c_int()
+check("cuDeviceGetCount", c.byref(count))
+if count.value != 1:
+    raise RuntimeError(f"Expected one visible CUDA GPU, found {count.value}")
+device = c.c_int()
+check("cuDeviceGet", c.byref(device), 0)
+pci = c.create_string_buffer(32)
+check("cuDeviceGetPCIBusId", pci, len(pci), device)
+print(pci.value.decode("ascii"))
+PY
+); then
+ timeout 10 nvidia-smi -L >> "$out/gpu_visibility.txt" 2>&1 || true
+ cat "$out/gpu_visibility.txt" >&2
+ exit 1
+fi
+printf 'CUDA_PCI=%s\n' "$gpu_pci" >> "$out/gpu_visibility.txt"
+if ! timeout 20 nvidia-smi -i "$gpu_pci" --query-gpu=uuid,index,name,pci.bus_id,driver_version \
+ --format=csv,noheader > "$out/allocated_nvidia.csv" 2>> "$out/gpu_visibility.txt"; then
+ cat "$out/allocated_nvidia.csv" >> "$out/gpu_visibility.txt"
+ timeout 10 nvidia-smi -L >> "$out/gpu_visibility.txt" 2>&1 || true
+ cat "$out/gpu_visibility.txt" >&2
+ exit 1
+fi
 read -r gpu_uuid < <(cut -d, -f1 "$out/allocated_nvidia.csv")
 test "$(wc -l < "$out/allocated_nvidia.csv")" -eq 1
+[[ "$gpu_uuid" =~ ^GPU-[0-9a-fA-F-]+$ ]]
+for assigned in "${SLURM_STEP_GPUS:-}" "${SLURM_JOB_GPUS:-}" "${CUDA_VISIBLE_DEVICES:-}"; do
+ if [[ "$assigned" == GPU-* && "${assigned,,}" != "${gpu_uuid,,}" ]]; then
+  echo "CUDA device UUID disagrees with the scheduler-provided UUID" >&2
+  exit 1
+ fi
+done
 stage graphics_driver_discovery
 # Only bind installed host NVIDIA libraries, read-only; never install a driver.
 python3 - "$out" "$image" <<'PY'

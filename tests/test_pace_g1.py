@@ -68,6 +68,10 @@ class G1IntegrationTest(unittest.TestCase):
                     "g1_3": consumer("print('same model process is still alive')"),
                     "timeouts": {"G1.1": 2, "model_ready": 2, "G1.2": 0.1 if scenario == "timeout" else 2,
                                  "G1.3": 2}}
+            if scenario == "memory":
+                plan.update(monitor=child("import time; print('now,GPU-fixture,100,24000',flush=True); "
+                                          "time.sleep(60)"),
+                            memory_probe=child("print('23900,24000')"), memory_margin_mib=1024)
             rc = orchestrate(plan, output)
             result = json.loads((output / "g1_acceptance.json").read_text())
             if pid.is_file():
@@ -107,6 +111,14 @@ class G1IntegrationTest(unittest.TestCase):
                     self.assertEqual(report["model_server_starts"], 0)
                 if scenario == "timeout":
                     self.assertEqual(report["stages"][stage]["exit_code"], 124)
+
+    def test_insufficient_headroom_prevents_checkpoint_control(self):
+        rc, report, logs = self.run_fixture("memory")
+        self.assertEqual(rc, 1)
+        self.assertEqual(report["stages"]["G1.2"]["status"], "passed")
+        self.assertEqual(report["stages"]["G1.3"]["exit_code"], 78)
+        self.assertNotIn("G1.3.log", logs)
+        self.assertIn("memory headroom", logs["G1.3-exception.log"])
 
 
 if __name__ == "__main__":

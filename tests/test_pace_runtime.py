@@ -22,6 +22,7 @@ from pace_model_smoke import FakePolicy, handler
 from pace_runtime import (
     ACTION_SHAPE, TASK, msgpack_numpy, open_policy, validate_request, validate_response,
 )
+from verify_pace_smoke import verify
 
 
 @contextmanager
@@ -95,16 +96,17 @@ class RuntimeTest(unittest.TestCase):
     def test_bounded_loop_artifacts_and_abort(self):
         class Counting:
             calls = 0
+            camera_samples = []
 
             def infer(self, request):
                 self.calls += 1
                 if self.calls == 4:
                     raise RuntimeError("injected")
-                actions = FakePolicy().infer(request)["actions"]
-                actions[:, 0] = np.arange(50)
-                return {"actions": actions}
+                self.camera_samples.append(int(request["images"]["cam_high"][0, 0, 0]))
+                return FakePolicy().infer(request)
 
-        with tempfile.TemporaryDirectory() as temp, service(handler(Counting(), "fake")) as uri:
+        policy = Counting()
+        with tempfile.TemporaryDirectory() as temp, service(handler(policy, "fake")) as uri:
             root = Path(temp)
             args = Namespace(uri=uri, backend="fake", timeout=2, pace_root=None,
                              output=root / "complete", max_steps=5, max_queries=2, prefix=3)
@@ -118,6 +120,8 @@ class RuntimeTest(unittest.TestCase):
             self.assertEqual([int(row["chunk_index"]) for row in rows], [0, 1, 2, 0, 1])
             self.assertEqual(np.load(args.output / "chunk_002.npy").shape, ACTION_SHAPE)
             self.assertIn(b"ftyp", (args.output / "head.mp4").read_bytes()[:32])
+            self.assertEqual(policy.camera_samples, [0, 30])
+            self.assertEqual(verify(args.output)["frames"], 6)
 
             args.output = root / "query_limit"
             args.max_queries = 1

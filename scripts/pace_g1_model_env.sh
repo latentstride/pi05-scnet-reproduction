@@ -9,7 +9,7 @@ a=${APPTAINER_BIN:-/public/software/apps/apptainer/1.3.4/bin/apptainer}
 image="$root/containers/openpi-ubuntu"
 python="$root/tools/pace-model-venv/bin/python"
 test -r "$image" && test -x "$python"
-options=(--cleanenv --bind /public:/public --pwd "$root")
+options=(--writable --cleanenv --bind /public:/public --pwd "$root")
 settings=(JAX_PLATFORMS=cpu CUDA_VISIBLE_DEVICES=)
 if [[ "$mode" != cpu ]]; then
  [[ "$mode" == GPU-* ]]

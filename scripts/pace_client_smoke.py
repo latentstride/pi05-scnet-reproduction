@@ -17,6 +17,7 @@ from time import monotonic
 
 import numpy as np
 
+from pace_diagnostics import Diagnostics
 from pace_runtime import (
     CAMERAS, PACE_REVISION, TASK, finite_array, open_policy, require_checkout,
     validate_request, validate_response,
@@ -68,17 +69,18 @@ class SyntheticEnv:
 
 
 @contextmanager
-def environment(pace_root, summary):
+def environment(pace_root, summary, diagnostics, preflight_only=False):
     if pace_root is None:
         yield SyntheticEnv(), PROMPT
         return
 
-    require_checkout(pace_root, PACE_REVISION)
+    with diagnostics.phase("checkout"):
+        require_checkout(pace_root, PACE_REVISION)
     cwd, path = Path.cwd(), sys.path[:]
     try:
         os.chdir(pace_root)  # RoboTwin resolves assets relative to the workspace.
         sys.path[:0] = [str(pace_root), str(pace_root / "pace/src"), str(pace_root / "description/utils")]
-        with native_environment(summary) as result:
+        with native_environment(summary, diagnostics, preflight_only) as result:
             yield result
     finally:
         os.chdir(cwd)
@@ -86,23 +88,65 @@ def environment(pace_root, summary):
 
 
 @contextmanager
-def native_environment(summary):
-    from pace.robotwin import (
-        load_cached_scenes, load_environment, restore_cached_scene_state, sample_instruction,
-    )
+def native_environment(summary, diagnostics, preflight_only):
+    with diagnostics.phase("pace_module_import"):
+        from pace.robotwin import (
+            load_cached_scenes, load_environment, restore_cached_scene_state, sample_instruction,
+        )
 
-    scenes, cache = load_cached_scenes(TASK, seed=0, count=1)
+    with diagnostics.phase("expert_cache"):
+        scenes, cache = load_cached_scenes(TASK, seed=0, count=1)
     scene = scenes[0]
     summary.update(scene_seed=scene["scene_seed"], scene_cache=cache, cache_split_seed=0,
                    cache_index=0, pace_revision=PACE_REVISION)
-    env, settings = load_environment(TASK)
-    if settings["embodiment"] != ["aloha-agilex"] or not settings["dual_arm_embodied"]:
-        raise ValueError("expected native dual-arm Aloha")
-    settings.update(collect_data=False, save_data=False, render_freq=0)
-    try:
-        env.setup_demo(now_ep_num=0, seed=scene["scene_seed"], is_test=True, **settings)
-        restore_cached_scene_state(TASK, env, scene["episode_info"])
-        summary["initial_poses"] = scene_poses(env)
+    with diagnostics.phase("load_environment"):
+        env, settings = load_environment(TASK)
+        if settings["embodiment"] != ["aloha-agilex"] or not settings["dual_arm_embodied"]:
+            raise ValueError("expected native dual-arm Aloha")
+        settings.update(collect_data=False, save_data=False, render_freq=0)
+    if preflight_only:
+        with diagnostics.phase("native_asset_files"):
+            import xml.etree.ElementTree as ET
+
+            robot = Path(settings["left_robot_file"])
+            config = settings["left_embodiment_config"]
+            urdf = robot / config["urdf_path"]
+            srdf = robot / config["srdf_path"]
+            meshes = {urdf.parent / node.attrib["filename"]
+                      for node in ET.parse(urdf).getroot().iter("mesh")}
+            required = meshes | {srdf, robot / "curobo_left.yml", robot / "curobo_right.yml"}
+            if not meshes or any(not p.is_file() or p.stat().st_size == 0 for p in required):
+                raise ValueError("incomplete Aloha URDF, SRDF, meshes or planner configuration")
+            summary["aloha_mesh_files"] = len(meshes)
+    with diagnostics.phase("planner_imports"):
+        # The upstream module catches some CuRobo import failures and omits the class.
+        from envs.robot import planner
+
+        if not callable(planner.MplibPlanner):
+            raise TypeError("expected callable MPlib planner")
+        if not callable(getattr(planner, "CuroboPlanner", None)):
+            import traceback
+
+            try:
+                # Reproduce the swallowed error and check the actual CUDA call site.
+                from curobo.wrap.reacher.motion_gen import MotionGen
+            except RuntimeError as exc:
+                frames = traceback.extract_tb(exc.__traceback__)
+                expected = (
+                    preflight_only and "Found no NVIDIA driver on your system" in str(exc)
+                    and any(f.filename.endswith("/curobo/wrap/reacher/motion_gen.py") for f in frames)
+                    and any(f.filename.endswith("/torch/cuda/__init__.py") and f.name == "_lazy_init"
+                            for f in frames)
+                )
+                if not expected:
+                    raise
+                traceback.print_exc(file=diagnostics.stacks)
+                diagnostics.stacks.flush()
+                summary["gpu_only_checks"] = ["curobo_motion_gen_import"]
+                diagnostics.record("planner_imports", "deferred_to_gpu", detail=str(exc))
+            else:
+                raise ImportError("PACE did not register CuroboPlanner despite importing MotionGen")
+    with diagnostics.phase("task_instruction"):
         # The upstream instruction generator uses both Python and NumPy RNGs.
         py_rng, np_rng = random.getstate(), np.random.get_state()
         try:
@@ -112,10 +156,28 @@ def native_environment(summary):
         finally:
             random.setstate(py_rng)
             np.random.set_state(np_rng)
-        env.set_instruction(instruction)
+        if not instruction.strip():
+            raise ValueError("empty PACE task instruction")
+    if preflight_only:
+        with diagnostics.phase("ffmpeg_probe"):
+            from imageio_ffmpeg import get_ffmpeg_exe
+            import subprocess
+
+            subprocess.run([get_ffmpeg_exe(), "-version"], check=True, timeout=10,
+                           stdout=subprocess.DEVNULL)
+        yield env, instruction
+        return
+    try:
+        with diagnostics.phase("setup_demo"):
+            env.setup_demo(now_ep_num=0, seed=scene["scene_seed"], is_test=True, **settings)
+        with diagnostics.phase("restore_scene"):
+            restore_cached_scene_state(TASK, env, scene["episode_info"])
+            summary["initial_poses"] = scene_poses(env)
+            env.set_instruction(instruction)
         yield env, env.get_instruction()
     finally:
-        env.close_env(clear_cache=True)
+        with diagnostics.phase("close_environment"):
+            env.close_env(clear_cache=True)
 
 
 def scene_poses(env):
@@ -198,7 +260,7 @@ class Video:
                 raise RuntimeError("MP4 encoder produced no video")
 
 
-def run(env, policy, prompt, args, summary, step_log, query_log, obs_log, video):
+def run(env, policy, prompt, args, summary, step_log, query_log, obs_log, video, diagnostics):
     native = NativeState(env.robot) if args.pace_root else None
     initial_counter = env.take_action_cnt
     limit = min(args.max_steps, env.step_lim - initial_counter)
@@ -210,9 +272,15 @@ def run(env, policy, prompt, args, summary, step_log, query_log, obs_log, video)
     camera_hashes = {name: set() for name in CAMERAS}
 
     def observe():
-        obs = env.get_obs()
+        with diagnostics.phase(f"get_obs_{summary['control_steps']:03d}"):
+            obs = env.get_obs()
         payload = encode(obs, prompt)
         state, images = payload["state"], payload["images"]
+        reference = getattr(args, "reference_run", None)
+        if reference and summary["observations"] == 0:
+            with np.load(reference / "initial_observation.npz", allow_pickle=False) as data:
+                if not np.allclose(state, data["state"], rtol=0, atol=1e-3):
+                    raise ValueError("initial state differs from the G1.1 reference")
         actual = native.measured(obs, state) if native else state.tolist()
         cameras = {}
         for name, image in images.items():
@@ -231,7 +299,8 @@ def run(env, policy, prompt, args, summary, step_log, query_log, obs_log, video)
             np.savez_compressed(args.output / "initial_observation.npz", state=state, **images)
         summary["observations"] += 1
         summary["distinct_frames"] = {name: len(hashes) for name, hashes in camera_hashes.items()}
-        video.frame(obs)
+        with diagnostics.phase(f"video_frame_{summary['control_steps']:03d}"):
+            video.frame(obs)
         return payload
 
     payload = observe()
@@ -241,7 +310,10 @@ def run(env, policy, prompt, args, summary, step_log, query_log, obs_log, video)
         query = summary["queries_attempted"]
         start = monotonic()
         try:
-            chunk = validate_response(policy.infer(payload))
+            np.savez_compressed(args.output / f"query_{query:03d}_observation.npz",
+                                state=payload["state"], **payload["images"])
+            with diagnostics.phase(f"policy_query_{query:03d}"):
+                chunk = validate_response(policy.infer(payload))
         except Exception:
             query_log.writerow([query, executed, monotonic() - start, "", 0, "error"])
             raise
@@ -264,12 +336,13 @@ def run(env, policy, prompt, args, summary, step_log, query_log, obs_log, video)
                 before = env.take_action_cnt
                 if native:
                     native.check_limits(action, "requested qpos")
-                try:
-                    env.take_action(action.copy(), action_type="qpos")
-                finally:
-                    summary["take_action_cnt"] = env.take_action_cnt
-                if env.take_action_cnt != before + 1:
-                    raise RuntimeError("RoboTwin did not advance by one control action")
+                with diagnostics.phase(f"take_action_{executed + 1:03d}"):
+                    try:
+                        env.take_action(action.copy(), action_type="qpos")
+                    finally:
+                        summary["take_action_cnt"] = env.take_action_cnt
+                    if env.take_action_cnt != before + 1:
+                        raise RuntimeError("RoboTwin did not advance by one control action")
                 executed += 1
                 used += 1
                 summary["control_steps"] = executed
@@ -287,8 +360,9 @@ def run(env, policy, prompt, args, summary, step_log, query_log, obs_log, video)
 def execute(args):
     args.output = args.output.resolve()
     args.output.mkdir(parents=True, exist_ok=False)
+    preflight = getattr(args, "preflight_only", False)
     summary = {
-        "kind": "interface_smoke",
+        "kind": "cpu_preflight" if preflight else "interface_smoke",
         "score_eligible": False,
         "task": TASK,
         "backend": args.backend,
@@ -301,21 +375,52 @@ def execute(args):
     }
     try:
         with ExitStack() as stack:
+            events = stack.enter_context((args.output / "phases.jsonl").open("w", buffering=1))
+            stacks = stack.enter_context((args.output / "stacks.log").open("w", buffering=1))
+            diagnostics = Diagnostics(events, stacks, summary, getattr(args, "stall_seconds", 30))
+            if preflight:
+                _, summary["prompt"] = stack.enter_context(
+                    environment(args.pace_root, summary, diagnostics, preflight_only=True)
+                )
+                summary.update(status="complete", stop_reason="cpu_preflight_complete")
+                return 0
             step_file = stack.enter_context((args.output / "steps.csv").open("w", newline="", buffering=1))
             query_file = stack.enter_context((args.output / "queries.csv").open("w", newline="", buffering=1))
             obs_file = stack.enter_context((args.output / "observations.jsonl").open("w", buffering=1))
             step_log, query_log = csv.writer(step_file), csv.writer(query_file)
             step_log.writerow(["step", "query", "chunk_index", *[f"qpos_{i}" for i in range(14)]])
             query_log.writerow(["query", "step_before", "inference_s", "chunk_file", "used", "status"])
-            policy = stack.enter_context(open_policy(args.uri, args.backend, args.timeout))
-            env, prompt = stack.enter_context(environment(args.pace_root, summary))
+            with diagnostics.phase("websocket_connect"):
+                policy = stack.enter_context(open_policy(args.uri, args.backend, args.timeout))
+            env, prompt = stack.enter_context(environment(args.pace_root, summary, diagnostics))
             summary["prompt"] = prompt
+            if getattr(args, "reference_run", None):
+                reference = json.loads((args.reference_run / "summary.json").read_text())
+                for key in ("scene_seed", "pace_revision", "prompt"):
+                    if reference[key] != summary[key]:
+                        raise ValueError(f"G1.1 reference mismatch: {key}")
+                for name, pose in summary["initial_poses"].items():
+                    for field, values in pose.items():
+                        if not np.allclose(values, reference["initial_poses"][name][field],
+                                           rtol=0, atol=1e-4):
+                            raise ValueError(f"G1.1 reference pose mismatch: {name}/{field}")
             video = Video(args.output / "head.mp4")
-            stack.callback(video.close)
-            reason = run(env, policy, prompt, args, summary, step_log, query_log, obs_file, video)
+            def close_video():
+                with diagnostics.phase("close_video"):
+                    video.close()
+
+            stack.callback(close_video)
+            reason = run(env, policy, prompt, args, summary, step_log, query_log, obs_file, video,
+                         diagnostics)
         summary.update(status="complete", stop_reason=reason)
         return 0
     except (Exception, KeyboardInterrupt) as exc:
+        if "failed_phase" not in summary:
+            import traceback
+
+            summary["failed_phase"] = "contract_or_artifact"
+            with (args.output / "stacks.log").open("a") as stack_log:
+                traceback.print_exc(file=stack_log)
         summary.update(status="aborted", stop_reason="interrupted" if isinstance(exc, KeyboardInterrupt)
                        else "error", error=f"{type(exc).__name__}: {exc}")
         print(summary["error"], file=sys.stderr)
@@ -336,13 +441,27 @@ def main():
     parser.add_argument("--max-queries", type=int, default=2, choices=range(1, 6), metavar="1..5")
     parser.add_argument("--prefix", type=int, default=4, choices=range(1, 9), metavar="1..8")
     parser.add_argument("--timeout", type=float, default=30)
+    parser.add_argument("--stall-seconds", type=float, default=30,
+                        help="write all Python stacks every N seconds within a stalled phase")
+    parser.add_argument("--preflight-only", action="store_true",
+                        help="check the pinned native loader, planners, cache, prompt and FFmpeg on CPU")
+    parser.add_argument("--reference-run", type=Path,
+                        help="require the same native initial scene as a verified G1.1 run")
     args = parser.parse_args()
     if not math.isfinite(args.timeout) or args.timeout <= 0:
         parser.error("--timeout must be positive and finite")
+    if not math.isfinite(args.stall_seconds) or args.stall_seconds <= 0:
+        parser.error("--stall-seconds must be positive and finite")
+    if args.preflight_only and (args.pace_root is None or args.backend != "fake"):
+        parser.error("--preflight-only requires --pace-root with the fake backend")
     if args.backend == "checkpoint" and args.pace_root is None:
         parser.error("checkpoint smoke requires the pinned native --pace-root")
     if args.pace_root:
         args.pace_root = args.pace_root.resolve()
+    if args.reference_run:
+        if args.backend != "checkpoint" or not args.pace_root:
+            parser.error("--reference-run requires a native checkpoint rollout")
+        args.reference_run = args.reference_run.resolve()
 
     def interrupt(signum, frame):
         raise KeyboardInterrupt(f"received signal {signum}")

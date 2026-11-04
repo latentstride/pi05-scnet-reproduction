@@ -11,7 +11,9 @@ import re
 import subprocess
 from urllib.parse import quote
 
-MANIFEST = Path(__file__).resolve().parents[1] / "pace_download_manifest.json"
+_RELEASE_MANIFEST = Path(__file__).resolve().with_name("pace_download_manifest.json")
+MANIFEST = (_RELEASE_MANIFEST if _RELEASE_MANIFEST.is_file()
+            else Path(__file__).resolve().parents[1] / "pace_download_manifest.json")
 
 
 def load_manifest():

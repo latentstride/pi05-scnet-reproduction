@@ -39,13 +39,18 @@ if [[ ${1:-} == --host-tool-check ]]; then
  exit
 fi
 mode=${1:-}
-[[ -z "$mode" || "$mode" == --pace-native ]]
+[[ -z "$mode" || "$mode" == --g1 ]]
+if [[ "$mode" == --g1 ]]; then
+ release=${2:?Expected fixed release directory}
+ preflight=${3:?Expected free preflight result directory}
+ [[ "$release" == /* && "$preflight" == /* ]]
+fi
 
 cd "${SLURM_SUBMIT_DIR:?Submit from personal project root}"
 test "$PWD" = "$root"
 : "${SLURM_JOB_ID:?Must be an allocated Slurm GPU job}"
 out="$root/research/robotwin/graphics-${SLURM_JOB_ID}"
-if [[ "$mode" == --pace-native ]]; then out="$root/results/pace-native-${SLURM_JOB_ID}"; fi
+if [[ "$mode" == --g1 ]]; then out="$root/results/pace-g1-${SLURM_JOB_ID}"; fi
 mkdir -p "$out"
 failed_stage=allocation
 trap 'code=$?; if ((code)); then printf "%s exit=%s\n" "$failed_stage" "$code" > "$out/FAILED"; fi' EXIT
@@ -67,17 +72,21 @@ if [[ ${CUDA_VISIBLE_DEVICES+x} ]]; then gpu_env+=("CUDA_VISIBLE_DEVICES=$CUDA_V
 if [[ ${CUDA_DEVICE_ORDER+x} ]]; then gpu_env+=("CUDA_DEVICE_ORDER=$CUDA_DEVICE_ORDER"); fi
 graphics_env=(DISPLAY=)
 driver_libs=/opt/robotwin/sysroot/usr/lib/x86_64-linux-gnu:/opt/robotwin/sysroot/lib/x86_64-linux-gnu:/usr/local/cuda/lib64:/.singularity.d/libs
-inside() {
- local seconds=$1
- shift
- timeout --kill-after=5 "$seconds" "$a" exec "${options[@]}" "$image" env \
+make_sim_command() {
+ sim_cmd=("$a" exec "${options[@]}" "$image" env \
   PATH=/opt/robotwin/venv/bin:/opt/robotwin/sysroot/usr/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin \
   LD_LIBRARY_PATH="$driver_libs" PI05_ROOT="$root" \
   OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 \
   XDG_CACHE_HOME=/opt/robotwin/cache/xdg TORCH_EXTENSIONS_DIR=/opt/robotwin/cache/torch_extensions \
   CUDA_CACHE_PATH=/opt/robotwin/cache/cuda TMPDIR=/opt/robotwin/tmp \
   PYTHONPYCACHEPREFIX=/opt/robotwin/cache/pycache \
-  "${gpu_env[@]}" "${graphics_env[@]}" "$@"
+  "${gpu_env[@]}" "${graphics_env[@]}")
+}
+inside() {
+ local seconds=$1
+ shift
+ make_sim_command
+ timeout --kill-after=5 "$seconds" "${sim_cmd[@]}" "$@"
 }
 stage nvidia_visibility
 {
@@ -236,18 +245,19 @@ if run_check graphics_driver_discovery discover_graphics > "$out/graphics_driver
   inside 10 ldd -r "$driver_inside/libEGL_nvidia.so.0" > "$out/container_icd_linker.log" 2>&1 || true
  fi
  run_check vulkan_identity check_vulkan_identity > "$out/vulkan_identity.log" 2>&1 || true
- if [[ "$mode" == --pace-native ]]; then
+ if [[ "$mode" == --g1 ]]; then
+  stage g1_graphics_gate
   test -f "$out/vulkan_identity.json"
-  run_check pace_native inside 420 env "SLURM_JOB_ID=$SLURM_JOB_ID" PYTHONFAULTHANDLER=1 \
-   bash scripts/run_pace_native_smoke.sh "$out" \
-   > "$out/pace.log" 2>&1
-  echo 'PACE_NATIVE_FAKE_SMOKE_PASS'
+  make_sim_command
+  python3 "$release/pace_g1_plan.py" "$root" "$release" "$preflight" "$out" \
+   "$SLURM_JOB_ID" "$gpu_uuid" "${sim_cmd[@]}" > "$out/launch-plan.json"
+  run_check g1 python3 "$release/pace_g1_orchestrate.py" "$out/launch-plan.json" "$out"
   exit
  fi
  run_check sapien_render inside 150 python scripts/robotwin_gpu_smoke.py --stage render --output "$out" \
   > "$out/sapien.log" 2>&1 || true
 fi
-if [[ "$mode" == --pace-native ]]; then exit 1; fi
+if [[ "$mode" == --g1 ]]; then exit 1; fi
 stage summary
 python3 - "$out" <<'PY'
 import json,sys

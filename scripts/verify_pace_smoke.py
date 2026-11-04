@@ -17,7 +17,7 @@ def require(condition, message):
         raise ValueError(message)
 
 
-def verify(root, native=False):
+def verify(root, native=False, backend="fake"):
     def rows(name):
         with (root / name).open(newline="") as stream:
             return list(csv.DictReader(stream))
@@ -25,7 +25,7 @@ def verify(root, native=False):
     summary = json.loads((root / "summary.json").read_text())
     steps, queries = rows("steps.csv"), rows("queries.csv")
     observations = [json.loads(line) for line in (root / "observations.jsonl").read_text().splitlines()]
-    require(summary["status"] == "complete" and summary["backend"] == "fake", "incomplete fake run")
+    require(summary["status"] == "complete" and summary["backend"] == backend, "incomplete rollout")
     if native:
         require(summary["environment"] == "robotwin" and summary["pace_revision"] == PACE_REVISION
                 and len(summary["initial_poses"]) == 5, "missing native scene evidence")
@@ -73,7 +73,8 @@ def verify(root, native=False):
         actions = validate_response({"actions": np.load(root / name, allow_pickle=False)})
         expected = np.array(observations[step_index]["state"], dtype=np.float32)
         expected[[6, 13]] = expected[[6, 13]].clip(0, 1)
-        require(np.all(actions == expected), "chunk does not match queried state")
+        if backend == "fake":
+            require(np.all(actions == expected), "chunk does not match queried state")
         used = int(query["used"])
         planned = min(summary["prefix"], summary["effective_step_limit"] - step_index)
         early_success = index == len(queries) and summary["stop_reason"] == "task_predicate"
@@ -101,5 +102,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("output", type=Path)
     parser.add_argument("--native", action="store_true")
+    parser.add_argument("--backend", choices=("fake", "checkpoint"), default="fake")
     args = parser.parse_args()
-    print(json.dumps(verify(args.output, native=args.native), indent=2))
+    print(json.dumps(verify(args.output, native=args.native, backend=args.backend), indent=2))

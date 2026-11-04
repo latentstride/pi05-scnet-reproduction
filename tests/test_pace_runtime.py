@@ -5,6 +5,7 @@ import csv
 import hashlib
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import json
+import threading
 from pathlib import Path
 import sys
 import tempfile
@@ -17,6 +18,7 @@ from websockets.sync.server import serve
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 from pace_client_smoke import PROMPT, SyntheticEnv, encode, execute
+from pace_diagnostics import Diagnostics
 from pace_download import download_one, load_manifest, verify_file
 from pace_model_smoke import FakePolicy, handler
 from pace_runtime import (
@@ -137,6 +139,20 @@ class RuntimeTest(unittest.TestCase):
             self.assertEqual(result["control_steps"], 0)
             self.assertEqual(result["queries_attempted"], 1)
             self.assertFalse(list(args.output.glob("chunk_*.npy")))
+            self.assertEqual(result["failed_phase"], "policy_query_001")
+            self.assertIn("injected", (args.output / "stacks.log").read_text())
+
+    def test_phase_watchdog_records_stack_before_phase_finishes(self):
+        with tempfile.TemporaryFile(mode="w+") as events, tempfile.TemporaryFile(mode="w+") as stacks:
+            diagnostics = Diagnostics(events, stacks, {}, stall_seconds=0.02)
+            with diagnostics.phase("load_environment"):
+                threading.Event().wait(0.12)
+            events.seek(0)
+            records = [json.loads(line) for line in events]
+            self.assertEqual([event["event"] for event in records], ["start", "end"])
+            self.assertEqual(records[1]["stage"], "load_environment")
+            stacks.seek(0)
+            self.assertIn("test_phase_watchdog_records_stack_before_phase_finishes", stacks.read())
 
 
 class ManifestTest(unittest.TestCase):

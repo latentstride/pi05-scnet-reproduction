@@ -68,7 +68,18 @@ cp "$PI05_ROOT/cache/pace-handover/tokenizer.model" \
 
 首选同一节点的独立进程与同一网络命名空间，使用 `ws://127.0.0.1:8000`。模型服务只绑定回环地址。同一 GPU 上的模型和图形进程有独立显存分配，需实测合计峰值。多卡时可分别映射设备。分节点时使用受控隧道把客户端回环端口转发到模型节点，沿用同一 WebSocket 协议。传输只含观测与动作数组，两个环境无需共享 JAX、CuRobo 或 SAPIEN 包。
 
-通过图形 Gate 后，先在仿真环境给客户端加 `--pace-root "$PACE_ROOT"` 做原生假策略冒烟。随后用核验过的模型目录和 tokenizer，按以下方式启动真实模型烟测。这里的 `$PACE_ROOT` 是含所需 RoboTwin 资产的固定 PACE checkout。`$PI05_ROOT`、`$PACE_ROOT`、`$OPENPI_ROOT` 需要在对应进程或容器中可读。
+通过图形检查后，先运行原生假策略烟测。SCNet 的 RoboTwin 容器已有 NumPy 和 imageio-ffmpeg；用该容器的 Python 将 `msgpack==1.1.1`、`websockets==15.0.1` 安装到项目的 `tools/pace-smoke-deps`。源代码和资产使用 [CPU 准备步骤](docs/pace_cpu_preparation.md) 固定的版本。获得单次 GPU 作业授权后，从项目根目录提交：
+
+```bash
+sbatch --job-name=cpf-pace-native-fake --output=logs/pace-native-%j.out \
+  scripts/robotwin_graphics.slurm --pace-native
+```
+
+作业校验容器 Vulkan 枚举到所分配的 GPU，然后在同一节点启动不带 checkpoint 参数的 WebSocket 服务。场景取专家缓存 split 0 的第 0 条，用 PACE 的指令生成器选取固定的 `unseen` 任务指令。策略收到的 14 维向量沿用 PACE 的训练约定：左臂六个关节驱动目标、左夹爪、右臂六个关节驱动目标、右夹爪。另记录仿真实测关节角，以便检查控制后的物理状态。假策略仅用于接口烟测。
+
+结果位于 `results/pace-native-<job-id>/rollout/`，包含视频、初始三路 RGB、每次观测的关节及帧摘要、完整动作块、查询及动作日志、运行摘要。作业退出前回读这些产物，核对动作、观测、计数、停止原因和视频帧数；校验成功才写出 `artifact-verification.json` 中的通过结果。单路图像在保持姿态时可以不变，三路全程逐字节不变则无法通过原生验收。若作业失败，查看同目录下的 `FAILED`、`pace.log` 和 `fake-policy.log`。
+
+随后用核验过的模型目录和 tokenizer，按以下方式启动真实模型烟测。这里的 `$PACE_ROOT` 是含所需 RoboTwin 资产的固定 PACE checkout。`$PI05_ROOT`、`$PACE_ROOT`、`$OPENPI_ROOT` 需要在对应进程或容器中可读。
 
 ```bash
 # 模型节点。用固定 checkout 和 submodule gitlinks 创建独立环境。

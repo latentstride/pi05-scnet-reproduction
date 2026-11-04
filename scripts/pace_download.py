@@ -81,6 +81,11 @@ def download_one(root, base_url, item):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--dest", type=Path)
+    parser.add_argument(
+        "--endpoint", choices=("https://huggingface.co", "https://hf-mirror.com"),
+        default="https://huggingface.co",
+        help="download endpoint; the revision and SHA-256 checks apply to both",
+    )
     mode = parser.add_mutually_exclusive_group()
     mode.add_argument("--verify", action="store_true")
     mode.add_argument("--download", action="store_true")
@@ -95,7 +100,7 @@ def main():
     root = args.dest.resolve()
     if args.download:
         root.mkdir(parents=True, exist_ok=True)
-        base = f'https://huggingface.co/{manifest["repo"]}/resolve/{manifest["revision"]}/'
+        base = f'{args.endpoint}/{manifest["repo"]}/resolve/{manifest["revision"]}/'
         with local_path(root, ".pace-download.lock").open("a") as lock:
             fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
             for item in manifest["files"]:

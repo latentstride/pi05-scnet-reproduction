@@ -11,11 +11,16 @@ mkdir "$out/simulator"
 revision=f4e52e6de4cc487a11585a3a7414d610b2883dae
 set +e
 timeout -k 10 720 bash "$root/scripts/run_robotwin_env.sh" bash "$release/run_pace_native_smoke.sh" \
- --cpu-preflight "$out/simulator" > "$out/simulator.log" 2>&1
-sim_rc=$?
-timeout -k 10 600 bash "$release/pace_g1_model_env.sh" cpu -X importtime "$release/pace_model_smoke.py" \
+ --cpu-preflight "$out/simulator" > "$out/simulator.log" 2>&1 &
+sim_pid=$!
+timeout -k 10 1200 bash "$release/pace_g1_model_env.sh" cpu -X importtime "$release/pace_model_smoke.py" \
  --preflight-only --openpi-root "$root/source/Openpi-PACE-$revision" \
- --download-dir "$root/cache/pace-handover" --diagnostics-dir "$out/model" > "$out/model.log" 2>&1
+ --download-dir "$root/cache/pace-handover" --diagnostics-dir "$out/model" > "$out/model.log" 2>&1 &
+model_pid=$!
+trap 'kill "$sim_pid" "$model_pid" 2>/dev/null || true' INT TERM
+wait "$sim_pid"
+sim_rc=$?
+wait "$model_pid"
 model_rc=$?
 set -e
 printf 'simulator\t%s\nmodel\t%s\n' "$sim_rc" "$model_rc" > "$out/exit-codes.tsv"

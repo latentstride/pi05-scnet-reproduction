@@ -3,6 +3,8 @@ from contextlib import contextmanager
 from datetime import datetime, timezone
 import faulthandler
 import json
+import sys
+from threading import Event, Thread
 from time import monotonic
 import traceback
 
@@ -13,6 +15,7 @@ class Diagnostics:
         self.stacks = stacks
         self.summary = summary
         self.stall_seconds = stall_seconds
+        faulthandler.enable(file=stacks)
 
     def record(self, stage, event, **details):
         timestamp = datetime.now(timezone.utc).isoformat(timespec="milliseconds")
@@ -26,7 +29,18 @@ class Diagnostics:
         self.record(stage, "start")
         self.stacks.write(f"\n[{stage}] watchdog every {self.stall_seconds:g}s\n")
         self.stacks.flush()
-        faulthandler.dump_traceback_later(self.stall_seconds, repeat=True, file=self.stacks)
+        stopped = Event()
+
+        def watchdog():
+            while not stopped.wait(self.stall_seconds):
+                self.stacks.write(f"\n[{stage}] stalled Python thread snapshots\n")
+                for identifier, frame in sys._current_frames().items():
+                    self.stacks.write(f"Thread {identifier}:\n")
+                    traceback.print_stack(frame, file=self.stacks)
+                self.stacks.flush()
+
+        watcher = Thread(target=watchdog, daemon=True)
+        watcher.start()
         try:
             yield
         except BaseException as exc:
@@ -39,4 +53,5 @@ class Diagnostics:
         else:
             self.record(stage, "end", elapsed_s=monotonic() - start)
         finally:
-            faulthandler.cancel_dump_traceback_later()
+            stopped.set()
+            watcher.join(timeout=1)

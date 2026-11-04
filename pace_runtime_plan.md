@@ -68,30 +68,10 @@ cp "$PI05_ROOT/cache/pace-handover/tokenizer.model" \
 
 首选同一节点的独立进程与同一网络命名空间，使用 `ws://127.0.0.1:8000`。模型服务只绑定回环地址。同一 GPU 上的模型和图形进程有独立显存分配，需实测合计峰值。多卡时可分别映射设备。分节点时使用受控隧道把客户端回环端口转发到模型节点，沿用同一 WebSocket 协议。传输只含观测与动作数组，两个环境无需共享 JAX、CuRobo 或 SAPIEN 包。
 
-通过图形检查后，先运行原生假策略烟测。SCNet 的 RoboTwin 容器已有 NumPy 和 imageio-ffmpeg；用该容器的 Python 将 `msgpack==1.1.1`、`websockets==15.0.1` 安装到项目的 `tools/pace-smoke-deps`。源代码和资产使用 [CPU 准备步骤](docs/pace_cpu_preparation.md) 固定的版本。获得单次 GPU 作业授权后，从项目根目录提交：
+G1 只使用一个 Slurm 作业，按 G1.1 → G1.2 → G1.3 执行。SCNet 复用已通过图形检查的 RoboTwin 容器和独立 OpenPI 模型容器，冻结的 LIBERO 基线不参与。
 
-```bash
-sbatch --job-name=cpf-pace-native-fake --output=logs/pace-native-%j.out \
-  scripts/robotwin_graphics.slurm --pace-native
-```
+- G1.1：固定 PACE 源码、专家缓存 split 0 第 0 条、Aloha 双臂。Fake Policy 在默认上限内完成 2 次查询、8 次控制，并回读视频、观测和动作。
+- G1.2：G1.1 退出释放仿真显存后，启动独立 OpenPI 服务，确认同一分配中的 GPU、Orbax 恢复、归一化统计和 tokenizer。使用 G1.1 保存的真实初始观测推理，记录 JAX 编译日志、首次端到端延迟及动作语义检查。
+- G1.3：保持 G1.2 的同一个模型服务，验证同一缓存初态与实际关节状态，再执行有界闭环。若当前可用显存低于 G1.1 实测峰值加 1 GiB，停止在动作下发之前。保留原始模型动作，夹爪归一化按原生控制器规则处理。
 
-作业校验容器 Vulkan 枚举到所分配的 GPU，然后在同一节点启动不带 checkpoint 参数的 WebSocket 服务。场景取专家缓存 split 0 的第 0 条，用 PACE 的指令生成器选取固定的 `unseen` 任务指令。策略收到的 14 维向量沿用 PACE 的训练约定：左臂六个关节驱动目标、左夹爪、右臂六个关节驱动目标、右夹爪。另记录仿真实测关节角，以便检查控制后的物理状态。假策略仅用于接口烟测。
-
-结果位于 `results/pace-native-<job-id>/rollout/`，包含视频、初始三路 RGB、每次观测的关节及帧摘要、完整动作块、查询及动作日志、运行摘要。作业退出前回读这些产物，核对动作、观测、计数、停止原因和视频帧数；校验成功才写出 `artifact-verification.json` 中的通过结果。单路图像在保持姿态时可以不变，三路全程逐字节不变则无法通过原生验收。若作业失败，查看同目录下的 `FAILED`、`pace.log` 和 `fake-policy.log`。
-
-随后用核验过的模型目录和 tokenizer，按以下方式启动真实模型烟测。这里的 `$PACE_ROOT` 是含所需 RoboTwin 资产的固定 PACE checkout。`$PI05_ROOT`、`$PACE_ROOT`、`$OPENPI_ROOT` 需要在对应进程或容器中可读。
-
-```bash
-# 模型节点。用固定 checkout 和 submodule gitlinks 创建独立环境。
-(cd "$OPENPI_ROOT" && GIT_LFS_SKIP_SMUDGE=1 uv sync --locked --python 3.11)
-# 在该 venv 中，按实际设备编号执行。
-CUDA_VISIBLE_DEVICES=0 XLA_PYTHON_CLIENT_PREALLOCATE=false \
-  python "$PI05_ROOT/scripts/pace_model_smoke.py" --openpi-root "$OPENPI_ROOT" \
-  --download-dir "$PI05_ROOT/cache/pace-handover"
-
-# 仿真节点或同节点的仿真环境，先装入 smoke 依赖并暴露 openpi-client 源路径。
-python "$PI05_ROOT/scripts/pace_client_smoke.py" --pace-root "$PACE_ROOT" \
-  --backend checkpoint --timeout 180 --output "$PI05_ROOT/results/pace5/native-checkpoint"
-```
-
-通过标准为固定初态下收到有效 `(50,14)`、推进有界的 `qpos` 控制循环并生成诊断文件。首次加载和首轮编译时限以实际作业资源为准。
+免费预检和待审批资源见 [G1 一次性验收](docs/pace_g1_acceptance.md)。所有阶段、日志、调用栈和 2 秒粒度的显存采样位于 `results/pace-g1-<job-id>/`，统一状态为 `g1_acceptance.json`。依赖失败时将后续实验标为跳过，不自动重排或提交。

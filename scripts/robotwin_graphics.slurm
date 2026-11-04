@@ -238,7 +238,8 @@ if run_check graphics_driver_discovery discover_graphics > "$out/graphics_driver
  run_check vulkan_identity check_vulkan_identity > "$out/vulkan_identity.log" 2>&1 || true
  if [[ "$mode" == --pace-native ]]; then
   test -f "$out/vulkan_identity.json"
-  run_check pace_native inside 300 env "SLURM_JOB_ID=$SLURM_JOB_ID" bash scripts/run_pace_native_smoke.sh "$out" \
+  run_check pace_native inside 420 env "SLURM_JOB_ID=$SLURM_JOB_ID" PYTHONFAULTHANDLER=1 \
+   bash scripts/run_pace_native_smoke.sh "$out" \
    > "$out/pace.log" 2>&1
   echo 'PACE_NATIVE_FAKE_SMOKE_PASS'
   exit

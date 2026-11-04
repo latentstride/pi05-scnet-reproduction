@@ -38,11 +38,14 @@ if [[ ${1:-} == --host-tool-check ]]; then
  [[ "$help_status" -le 1 && "$help_output" == *"USAGE:"* && "$help_output" == *"--summary"* ]]
  exit
 fi
+mode=${1:-}
+[[ -z "$mode" || "$mode" == --pace-native ]]
 
 cd "${SLURM_SUBMIT_DIR:?Submit from personal project root}"
 test "$PWD" = "$root"
 : "${SLURM_JOB_ID:?Must be an allocated Slurm GPU job}"
 out="$root/research/robotwin/graphics-${SLURM_JOB_ID}"
+if [[ "$mode" == --pace-native ]]; then out="$root/results/pace-native-${SLURM_JOB_ID}"; fi
 mkdir -p "$out"
 failed_stage=allocation
 trap 'code=$?; if ((code)); then printf "%s exit=%s\n" "$failed_stage" "$code" > "$out/FAILED"; fi' EXIT
@@ -135,8 +138,10 @@ printf '{"gpu_uuid":"%s","pci_bus_id":"%s","identity_source":"%s"}\n' \
 gpu_env=(PYTHONUNBUFFERED=1 "CUDA_VISIBLE_DEVICES=$gpu_uuid" CUDA_DEVICE_ORDER=PCI_BUS_ID "ROBOTWIN_EXPECTED_PCI=$gpu_pci")
 
 # CUDA planning does not require a Vulkan ICD. Capture its outcome first.
-run_check curobo_plan inside 240 python scripts/robotwin_gpu_smoke.py --stage plan --output "$out" \
- > "$out/curobo.log" 2>&1 || true
+if [[ -z "$mode" ]]; then
+ run_check curobo_plan inside 240 python scripts/robotwin_gpu_smoke.py --stage plan --output "$out" \
+  > "$out/curobo.log" 2>&1 || true
+fi
 
 discover_graphics() {
 # Only bind installed host NVIDIA libraries, read-only; never install a driver.
@@ -231,9 +236,17 @@ if run_check graphics_driver_discovery discover_graphics > "$out/graphics_driver
   inside 10 ldd -r "$driver_inside/libEGL_nvidia.so.0" > "$out/container_icd_linker.log" 2>&1 || true
  fi
  run_check vulkan_identity check_vulkan_identity > "$out/vulkan_identity.log" 2>&1 || true
+ if [[ "$mode" == --pace-native ]]; then
+  test -f "$out/vulkan_identity.json"
+  run_check pace_native inside 300 env "SLURM_JOB_ID=$SLURM_JOB_ID" bash scripts/run_pace_native_smoke.sh "$out" \
+   > "$out/pace.log" 2>&1
+  echo 'PACE_NATIVE_FAKE_SMOKE_PASS'
+  exit
+ fi
  run_check sapien_render inside 150 python scripts/robotwin_gpu_smoke.py --stage render --output "$out" \
   > "$out/sapien.log" 2>&1 || true
 fi
+if [[ "$mode" == --pace-native ]]; then exit 1; fi
 stage summary
 python3 - "$out" <<'PY'
 import json,sys

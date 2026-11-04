@@ -18,7 +18,7 @@ bash "$release/pace_g1_preflight.sh" "$preflight"
 
 预检要求实际检查固定源码、场景缓存、Aloha 的 URDF/SRDF、mesh、规划器配置及任务指令，并在 RoboTwin 容器内运行一次真实 WebSocket 合成闭环。模型容器单独核对 Git 版本、子模块 gitlink、28 个模型文件、归一化统计、缓存 tokenizer 的 SHA-256、OpenPI 配置和 CPU JAX。GPU 模型启动使用该预检的文件身份记录，并重新核对较小的 tokenizer 和归一化文件。
 
-固定版 CuRobo 的 `MotionGen` 在导入时创建 CUDA tensor。只有栈精确包含 `motion_gen.py` 和 PyTorch CUDA 初始化、且异常明确为登录节点无 NVIDIA 驱动时，CPU 预检才把此项记为 GPU 待验。其他导入错误均失败。阶段耗时见 `phases.jsonl`，模块耗时见 `importtime.log`，超过 30 秒的阶段定期将调用栈写入 `stacks.log`。
+固定版 CuRobo 的 `MotionGen` 在导入时创建 CUDA tensor。只有栈精确包含 `motion_gen.py` 和 PyTorch CUDA 初始化、且异常明确为登录节点无 NVIDIA 驱动时，CPU 预检才把此项记为 GPU 待验。CPU 进程临时提供一个一经构造就会报错的规划器符号，仅用于完成其余模块的导入；GPU 作业使用未修改的真实规划器。其他导入错误均失败。阶段耗时见 `phases.jsonl`，模块耗时见 `importtime.log`，超过 30 秒的阶段定期将调用栈写入 `stacks.log`。
 
 ## 待审批作业
 

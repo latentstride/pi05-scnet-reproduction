@@ -6,6 +6,8 @@ G1.1、G1.2、G1.3 由同一份 [Slurm 入口](../scripts/pace_g1.slurm) 顺序�
 
 复用现有 Ubuntu 22.04 模型容器、RoboTwin 容器、固定 PACE/OpenPI-PACE checkout 及已下载资产。RoboTwin 容器 Python 3.10 使用项目目录 `tools/pace-smoke-deps` 中的固定 msgpack、WebSockets wheel；两容器需能执行 Git。模型容器从 `tools/pace-git/bin` 查找项目自备 Git。
 
+模型使用已有 `containers/openpi-ubuntu` sandbox，以 `--writable` 启动以兼容 SCNet 的挂载方式。该目录内需存在空的 `public/` 挂载点，供项目路径的 `/public:/public` 绑定使用；这不重建模型环境，也不修改冻结基线。修复挂载配置后可只复验此前失败的模型侧，保留同一发布包已通过的仿真侧记录。
+
 先从已提交的 Git 版本打包一份只读发布目录。以下命令只运行 CPU 检查；本地打包后也可将同一目录传到 SCNet 的项目路径。
 
 ```bash

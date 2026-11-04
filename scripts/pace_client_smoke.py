@@ -100,7 +100,7 @@ def native_environment(summary, diagnostics, preflight_only):
     summary.update(scene_seed=scene["scene_seed"], scene_cache=cache, cache_split_seed=0,
                    cache_index=0, pace_revision=PACE_REVISION)
     with diagnostics.phase("load_environment"):
-        env, settings = load_environment(TASK)
+        env, settings = load_native_task(load_environment, diagnostics, preflight_only)
         if settings["embodiment"] != ["aloha-agilex"] or not settings["dual_arm_embodied"]:
             raise ValueError("expected native dual-arm Aloha")
         settings.update(collect_data=False, save_data=False, render_freq=0)
@@ -119,33 +119,12 @@ def native_environment(summary, diagnostics, preflight_only):
                 raise ValueError("incomplete Aloha URDF, SRDF, meshes or planner configuration")
             summary["aloha_mesh_files"] = len(meshes)
     with diagnostics.phase("planner_imports"):
-        # The upstream module catches some CuRobo import failures and omits the class.
         from envs.robot import planner
 
         if not callable(planner.MplibPlanner):
             raise TypeError("expected callable MPlib planner")
-        if not callable(getattr(planner, "CuroboPlanner", None)):
-            import traceback
-
-            try:
-                # Reproduce the swallowed error and check the actual CUDA call site.
-                from curobo.wrap.reacher.motion_gen import MotionGen
-            except RuntimeError as exc:
-                frames = traceback.extract_tb(exc.__traceback__)
-                expected = (
-                    preflight_only and "Found no NVIDIA driver on your system" in str(exc)
-                    and any(f.filename.endswith("/curobo/wrap/reacher/motion_gen.py") for f in frames)
-                    and any(f.filename.endswith("/torch/cuda/__init__.py") and f.name == "_lazy_init"
-                            for f in frames)
-                )
-                if not expected:
-                    raise
-                traceback.print_exc(file=diagnostics.stacks)
-                diagnostics.stacks.flush()
-                summary["gpu_only_checks"] = ["curobo_motion_gen_import"]
-                diagnostics.record("planner_imports", "deferred_to_gpu", detail=str(exc))
-            else:
-                raise ImportError("PACE did not register CuroboPlanner despite importing MotionGen")
+        if not summary.get("gpu_only_checks") and not callable(getattr(planner, "CuroboPlanner", None)):
+            raise ImportError("PACE did not register CuroboPlanner")
     with diagnostics.phase("task_instruction"):
         # The upstream instruction generator uses both Python and NumPy RNGs.
         py_rng, np_rng = random.getstate(), np.random.get_state()
@@ -178,6 +157,47 @@ def native_environment(summary, diagnostics, preflight_only):
     finally:
         with diagnostics.phase("close_environment"):
             env.close_env(clear_cache=True)
+
+
+def load_native_task(loader, diagnostics, preflight_only):
+    """On a CPU login node, finish import-only checks after the known CUDA-only import."""
+    import traceback
+
+    try:
+        return loader(TASK)
+    except ImportError as error:
+        planner = sys.modules.get("envs.robot.planner")
+        if (not preflight_only or error.name != "envs.robot.planner"
+                or "cannot import name 'CuroboPlanner'" not in str(error)
+                or planner is None or hasattr(planner, "CuroboPlanner")):
+            raise
+        try:
+            # Reproduce the exception swallowed by the upstream planner module.
+            from curobo.wrap.reacher.motion_gen import MotionGen
+        except RuntimeError as exc:
+            frames = traceback.extract_tb(exc.__traceback__)
+            if not ("Found no NVIDIA driver on your system" in str(exc)
+                    and any(f.filename.endswith("/curobo/wrap/reacher/motion_gen.py") for f in frames)
+                    and any(f.filename.endswith("/torch/cuda/__init__.py") and f.name == "_lazy_init"
+                            for f in frames)):
+                raise
+            traceback.print_exc(file=diagnostics.stacks)
+            diagnostics.stacks.flush()
+            diagnostics.summary["gpu_only_checks"] = ["curobo_motion_gen_import"]
+            diagnostics.record("load_environment", "deferred_to_gpu", detail=str(exc))
+        else:
+            raise error
+
+        def gpu_only(*args, **kwargs):
+            raise RuntimeError("CPU preflight cannot construct a CUDA planner")
+
+        # Only the CPU probe executes this branch, and it never calls setup_demo().
+        # Satisfy the import of the symbol so unrelated simulator imports can finish.
+        planner.CuroboPlanner = gpu_only
+        try:
+            return loader(TASK)
+        finally:
+            del planner.CuroboPlanner
 
 
 def scene_poses(env):

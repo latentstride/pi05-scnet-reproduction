@@ -5,7 +5,8 @@ mode=${1:?Expected cpu or GPU UUID}
 shift
 root="${PI05_ROOT:?}"
 a=${APPTAINER_BIN:-/public/software/apps/apptainer/1.3.4/bin/apptainer}
-image="$root/containers/cuda12-ubuntu22.sif"
+# Reuse the existing extracted Ubuntu image to avoid expanding the SIF on each launch.
+image="$root/containers/openpi-ubuntu"
 python="$root/tools/pace-model-venv/bin/python"
 test -r "$image" && test -x "$python"
 options=(--cleanenv --bind /public:/public --pwd "$root")

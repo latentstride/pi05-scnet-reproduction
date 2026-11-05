@@ -61,6 +61,15 @@ class DriverDiscoveryTest(unittest.TestCase):
                 discover(out, root / "image", [], listing, lambda p: p in libs.values())
             self.assertIn("error", json.loads((out / "driver_discovery.json").read_text()))
 
+    def test_malformed_icd_keeps_diagnostic_evidence(self):
+        temporary, root, out, icd, libs, listing = self.fixture(True, True)
+        with temporary:
+            icd.write_text('{"ICD": []}')
+            with self.assertRaisesRegex(RuntimeError, "No NVIDIA"):
+                discover(out, root / "image", [icd], listing, lambda p: p in libs.values())
+            evidence = json.loads((out / "driver_discovery.json").read_text())
+            self.assertIn("ICD object", evidence["icd_candidates"][0]["error"])
+
 
 if __name__ == "__main__":
     unittest.main()

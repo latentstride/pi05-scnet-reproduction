@@ -3,15 +3,33 @@ import json
 import os
 from pathlib import Path
 import sys
+import threading
+import time
+from types import SimpleNamespace
 from tempfile import TemporaryDirectory
 import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
-from pace_g1_orchestrate import orchestrate
+from pace_g1_orchestrate import orchestrate, wait_ready
 from pace_g1_plan import build
 
 
 class G1IntegrationTest(unittest.TestCase):
+    def test_readiness_handles_invalid_utf8_and_split_markers(self):
+        with TemporaryDirectory() as directory:
+            log = Path(directory) / "server.log"
+            log.write_bytes(b"native log: \xff\nrea")
+            def finish():
+                time.sleep(0.1)
+                with log.open("ab") as stream:
+                    stream.write(b"dy\n")
+            writer = threading.Thread(target=finish)
+            writer.start()
+            try:
+                wait_ready(SimpleNamespace(poll=lambda: None), log, "ready", 2)
+            finally:
+                writer.join()
+
     def test_fixed_launch_plan_uses_one_model_service_and_distinct_runtimes(self):
         with TemporaryDirectory() as directory:
             out = Path(directory)

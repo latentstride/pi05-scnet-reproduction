@@ -20,7 +20,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 from pace_client_smoke import PROMPT, SyntheticEnv, encode, execute
 from pace_diagnostics import Diagnostics
 from pace_download import download_one, load_manifest, verify_file
-from pace_model_smoke import FakePolicy, handler
+from pace_model_smoke import FakePolicy, handler, require_orbax_checkpoint
 from pace_runtime import (
     ACTION_SHAPE, TASK, msgpack_numpy, open_policy, validate_request, validate_response,
 )
@@ -40,6 +40,14 @@ def service(handle):
 
 
 class RuntimeTest(unittest.TestCase):
+    def test_orbax_mode_rejects_an_alternate_model_file(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            require_orbax_checkpoint(root)
+            (root / "model.safetensors").write_bytes(b"alternate model")
+            with self.assertRaisesRegex(ValueError, "alternate PyTorch"):
+                require_orbax_checkpoint(root)
+
     def setUp(self):
         self.request = encode(SyntheticEnv().get_obs(), PROMPT)
 

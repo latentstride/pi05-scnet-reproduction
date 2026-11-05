@@ -5,6 +5,8 @@ import csv
 import hashlib
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import json
+import signal
+import subprocess
 import threading
 from pathlib import Path
 import sys
@@ -40,6 +42,42 @@ def service(handle):
 
 
 class RuntimeTest(unittest.TestCase):
+    def test_model_sigterm_preserves_failed_phase_and_startup_summary(self):
+        scripts = Path(__file__).resolve().parents[1] / "scripts"
+        with tempfile.TemporaryDirectory() as directory:
+            output = Path(directory) / "model"
+            code = (
+                "import sys,time; from pathlib import Path; sys.path.insert(0, sys.argv[1]); import pace_model_smoke as model\n"
+                "def slow(root, download, diagnostics, *args):\n"
+                "    with diagnostics.phase('openpi_import'):\n"
+                "        Path(diagnostics.events.name).with_name('loading').touch()\n"
+                "        time.sleep(30)\n"
+                "model.load_model=slow\n"
+                "sys.argv=['model', '--openpi-root', '.', '--download-dir', '.', "
+                "'--diagnostics-dir', sys.argv[2], '--preflight-only']\n"
+                "model.main()\n"
+            )
+            process = subprocess.Popen([sys.executable, "-c", code, str(scripts), str(output)],
+                                       stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
+            try:
+                deadline = time.monotonic() + 10
+                while not (output / "loading").exists() and time.monotonic() < deadline:
+                    if process.poll() is not None:
+                        self.fail(process.communicate()[0])
+                    time.sleep(0.02)
+                self.assertTrue((output / "loading").exists())
+                process.send_signal(signal.SIGTERM)
+                process.communicate(timeout=5)
+                self.assertEqual(process.returncode, 143)
+                summary = json.loads((output / "startup.json").read_text())
+                self.assertEqual(summary["status"], "failed")
+                self.assertEqual(summary["failed_phase"], "openpi_import")
+                self.assertIn("SystemExit: 143", (output / "stacks.log").read_text())
+            finally:
+                if process.poll() is None:
+                    process.kill()
+                process.communicate()
+
     def test_orbax_mode_rejects_an_alternate_model_file(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

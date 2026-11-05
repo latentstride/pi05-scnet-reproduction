@@ -9,6 +9,16 @@ from robotwin_graphics_driver import discover
 
 
 class DriverDiscoveryTest(unittest.TestCase):
+    def test_absolute_icd_path_uses_the_installed_soname(self):
+        temporary, root, out, icd, libs, listing = self.fixture(True, True)
+        with temporary:
+            doc = json.loads(icd.read_text())
+            doc["ICD"]["library_path"] = "/lib64/libGLX_nvidia.so.0"
+            icd.write_text(json.dumps(doc))
+            result = discover(out, root / "image", [icd], listing, lambda p: p in libs.values())
+            self.assertEqual(result["selection"]["host_library"], libs["libGLX_nvidia.so.0"])
+            self.assertEqual(result["icd_candidates"][0]["document"], doc)
+
     def fixture(self, glx, egl):
         temporary = TemporaryDirectory()
         root = Path(temporary.name)

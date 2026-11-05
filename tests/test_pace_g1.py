@@ -8,6 +8,7 @@ import time
 from types import SimpleNamespace
 from tempfile import TemporaryDirectory
 import unittest
+from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 from pace_g1_orchestrate import orchestrate, wait_ready
@@ -36,7 +37,8 @@ class G1IntegrationTest(unittest.TestCase):
             release = out / "release"
             release.mkdir()
             (release / "RELEASE_COMMIT").write_text("fixture")
-            plan = build(out, release, out / "preflight", out, "42", "GPU-fixture", ["sim-container"])
+            with patch.dict(os.environ, PI05_G1_DEADLINE_EPOCH="3000"):
+                plan = build(out, release, out / "preflight", out, "42", "GPU-fixture", ["sim-container"])
             self.assertEqual(plan["g1_1"][0], "sim-container")
             self.assertEqual(plan["g1_2_query"][0], "sim-container")
             self.assertEqual(plan["g1_3"][0], "sim-container")
@@ -46,7 +48,10 @@ class G1IntegrationTest(unittest.TestCase):
             self.assertIn(uri, plan["g1_3"])
             self.assertIn(str(out / "g1_1" / "rollout"), plan["g1_2_query"])
             self.assertIn(str(out / "g1_1" / "rollout"), plan["g1_3"])
-            self.assertLess(sum(plan["timeouts"].values()), 50 * 60)
+            self.assertEqual(plan["deadline_epoch"], 3000)
+            self.assertEqual(plan["timeouts"]["model_ready"], 30 * 60)
+            self.assertEqual(plan["model_phase_timeouts"]["container_startup"], 180)
+            self.assertEqual(plan["model_phase_timeouts"]["orbax_restore_and_policy_create"], 600)
 
     def run_fixture(self, scenario):
         with TemporaryDirectory() as directory:
@@ -81,11 +86,25 @@ class G1IntegrationTest(unittest.TestCase):
                 query = "raise ValueError('expected finite (50, 14)')"
             if scenario == "timeout":
                 query = "time.sleep(30)"
+            if scenario == "deadline":
+                query = "time.sleep(30)"
+            if scenario == "restore_timeout":
+                def server():
+                    return child("import json,time; from pathlib import Path; "
+                                 "Path({!r}).write_text(json.dumps({{'stage': "
+                                 "'orbax_restore_and_policy_create', 'event': 'start'}})+'\\n'); "
+                                 "time.sleep(30)".format(str(output / "model-phases.jsonl")))
             plan = {"job_id": "offline", "release_commit": "fixture", "ready_line": "ready",
                     "g1_1": stage1(), "model_server": server(), "g1_2_query": consumer(query),
                     "g1_3": consumer("print('same model process is still alive')"),
                     "timeouts": {"G1.1": 2, "model_ready": 2, "G1.2": 0.1 if scenario == "timeout" else 2,
                                  "G1.3": 2}}
+            if scenario == "deadline":
+                plan["deadline_epoch"] = time.time() + 0.8
+            if scenario == "restore_timeout":
+                plan.update(model_phases_file=str(output / "model-phases.jsonl"),
+                            model_phase_timeouts={"container_startup": 1,
+                                                  "orbax_restore_and_policy_create": 0.1})
             if scenario == "memory":
                 plan.update(monitor=child("import time; print('now,GPU-fixture,100,24000',flush=True); "
                                           "time.sleep(60)"),
@@ -137,6 +156,21 @@ class G1IntegrationTest(unittest.TestCase):
         self.assertEqual(report["stages"]["G1.3"]["exit_code"], 78)
         self.assertNotIn("G1.3.log", logs)
         self.assertIn("memory headroom", logs["G1.3-exception.log"])
+
+    def test_allocation_deadline_caps_query_and_preserves_evidence(self):
+        rc, report, logs = self.run_fixture("deadline")
+        self.assertEqual(rc, 1)
+        self.assertEqual(report["stages"]["G1.2"]["exit_code"], 124)
+        self.assertEqual(report["stages"]["G1.3"]["status"], "skipped")
+        self.assertLess(report["effective_timeouts_s"]["G1.2"], 0.8)
+        self.assertIn("timed out", logs["G1.2-exception.log"])
+
+    def test_restore_timeout_names_the_phase_and_skips_control(self):
+        rc, report, logs = self.run_fixture("restore_timeout")
+        self.assertEqual(rc, 1)
+        self.assertEqual(report["stages"]["G1.2"]["exit_code"], 124)
+        self.assertEqual(report["stages"]["G1.3"]["status"], "skipped")
+        self.assertIn("orbax_restore_and_policy_create timed out", logs["G1.2-exception.log"])
 
 
 if __name__ == "__main__":

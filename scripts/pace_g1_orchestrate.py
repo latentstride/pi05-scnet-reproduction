@@ -61,15 +61,34 @@ def command(argv, log, seconds):
             terminate(proc)
 
 
-def wait_ready(proc, log, marker, seconds):
+def wait_ready(proc, log, marker, seconds, phases_file=None, phase_timeouts=None):
     deadline = time.monotonic() + seconds
     offset = 0
     marker = marker.encode("utf-8")
+    phase = "container_startup"
+    phase_started = time.monotonic()
+    phases_seen = 0
     with log.open("rb") as stream:
         while time.monotonic() < deadline:
             rc = proc.poll()
             if rc is not None:
                 raise StageError("checkpoint server exited before ready; see model-server.log", rc or 1)
+            if phases_file and Path(phases_file).is_file():
+                records = Path(phases_file).read_text().splitlines(keepends=True)
+                for record in records[phases_seen:]:
+                    if not record.endswith("\n"):
+                        break
+                    event = json.loads(record)
+                    phases_seen += 1
+                    if event["event"] == "start":
+                        phase, phase_started = event["stage"], time.monotonic()
+                    elif event["event"] == "error":
+                        raise StageError("model phase {} failed: {}; see model-server.log".format(
+                            event["stage"], event.get("error", "unknown error")))
+            if phase_timeouts and phase in phase_timeouts:
+                if time.monotonic() - phase_started >= phase_timeouts[phase]:
+                    raise StageError("model phase {} timed out after {}s; see model-server.log "
+                                     "and model/stacks.log".format(phase, phase_timeouts[phase]), 124)
             stream.seek(offset)
             while True:
                 line = stream.readline()
@@ -79,7 +98,8 @@ def wait_ready(proc, log, marker, seconds):
                     return
                 offset = stream.tell()
             time.sleep(0.25)
-    raise StageError("checkpoint server did not reach readiness within {}s".format(seconds), 124)
+    raise StageError("checkpoint server did not reach readiness within {}s; active phase {}".format(
+        seconds, phase), 124)
 
 
 def orchestrate(plan, output):
@@ -89,10 +109,28 @@ def orchestrate(plan, output):
               "started_at": utc(), "stages": {name: {"status": "skipped", "reason": "not reached"}
                                               for name in STAGES}, "model_server_starts": 0}
     acceptance = output / "g1_acceptance.json"
+    # Convert once so wall-clock adjustments cannot extend the allocation budget.
+    deadline = None
+    if "deadline_epoch" in plan:
+        report["deadline_epoch"] = plan["deadline_epoch"]
+        deadline = time.monotonic() + max(0, plan["deadline_epoch"] - time.time())
+    if "model_phase_timeouts" in plan:
+        report["model_phase_timeouts_s"] = plan["model_phase_timeouts"]
     persist(acceptance, report)
     model = monitor = None
     monitor_file = None
     model_file = None
+
+    def budget(stage):
+        seconds = plan["timeouts"][stage]
+        if deadline is not None:
+            remaining = deadline - time.monotonic()
+            if remaining <= 0:
+                raise StageError("allocation execution budget exhausted before " + stage, 124)
+            seconds = min(seconds, remaining)
+        report.setdefault("effective_timeouts_s", {})[stage] = seconds
+        persist(acceptance, report)
+        return seconds
 
     def run_stage(name, fn):
         entry = report["stages"][name]
@@ -118,10 +156,11 @@ def orchestrate(plan, output):
             persist(acceptance, report)
 
     def one():
-        command(plan["g1_1"], output / "G1.1.log", plan["timeouts"]["G1.1"])
+        command(plan["g1_1"], output / "G1.1.log", budget("G1.1"))
 
     def two():
         nonlocal model, model_file
+        readiness_seconds = budget("model_ready")
         model_log = output / "model-server.log"
         model_file = model_log.open("w")
         model = subprocess.Popen(plan["model_server"], stdin=subprocess.DEVNULL, stdout=model_file,
@@ -129,8 +168,9 @@ def orchestrate(plan, output):
         report["model_server_starts"] += 1
         report["model_server_pid"] = model.pid
         persist(acceptance, report)
-        wait_ready(model, model_log, plan["ready_line"], plan["timeouts"]["model_ready"])
-        command(plan["g1_2_query"], output / "G1.2-query.log", plan["timeouts"]["G1.2"])
+        wait_ready(model, model_log, plan["ready_line"], readiness_seconds,
+                   plan.get("model_phases_file"), plan.get("model_phase_timeouts"))
+        command(plan["g1_2_query"], output / "G1.2-query.log", budget("G1.2"))
         if model.poll() is not None:
             raise StageError("checkpoint server exited after G1.2")
 
@@ -149,7 +189,7 @@ def orchestrate(plan, output):
             if total - used < needed:
                 raise StageError("joint GPU memory headroom {} MiB is below {} MiB; "
                                  "closed loop was not started".format(total - used, needed), 78)
-        command(plan["g1_3"], output / "G1.3.log", plan["timeouts"]["G1.3"])
+        command(plan["g1_3"], output / "G1.3.log", budget("G1.3"))
 
     try:
         if plan.get("monitor"):

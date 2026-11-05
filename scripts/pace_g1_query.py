@@ -9,6 +9,7 @@ from time import monotonic
 import numpy as np
 
 from pace_client_smoke import ARM_INDICES, GRIPPERS, JOINT_LIMIT_TOLERANCE_RAD
+from pace_diagnostics import Diagnostics
 from pace_runtime import CAMERAS, open_policy, validate_request, validate_response
 
 
@@ -51,4 +52,13 @@ if __name__ == "__main__":
     parser.add_argument("--uri", required=True)
     parser.add_argument("--timeout", required=True, type=float)
     args = parser.parse_args()
-    run(args.source, args.output, args.uri, args.timeout)
+    status = {"passed": False, "timeout_s": args.timeout}
+    try:
+        with (args.output / "query-phases.jsonl").open("w") as events, \
+                (args.output / "query-stacks.log").open("w") as stacks:
+            diagnostics = Diagnostics(events, stacks, status, 30)
+            with diagnostics.phase("first_jax_compile_and_inference"):
+                run(args.source, args.output, args.uri, args.timeout)
+            status["passed"] = True
+    finally:
+        (args.output / "query-status.json").write_text(json.dumps(status, indent=2) + "\n")

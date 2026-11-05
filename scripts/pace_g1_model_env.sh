@@ -9,6 +9,7 @@ a=${APPTAINER_BIN:-/public/software/apps/apptainer/1.3.4/bin/apptainer}
 image="$root/containers/openpi-ubuntu"
 python="$root/tools/pace-model-venv/bin/python"
 test -r "$image" && test -x "$python"
+printf '[%s] model_container_launch mode=%s\n' "$(date -u +%FT%TZ)" "$mode"
 options=(--writable --cleanenv --bind /public:/public --pwd "$root")
 settings=(JAX_PLATFORMS=cpu CUDA_VISIBLE_DEVICES=)
 if [[ "$mode" != cpu ]]; then

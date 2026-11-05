@@ -7,6 +7,7 @@ from contextlib import ExitStack, nullcontext
 import json
 import logging
 import os
+import signal
 from pathlib import Path
 import subprocess
 from time import monotonic
@@ -36,7 +37,10 @@ def require_orbax_checkpoint(path):
 
 
 def handler(policy, backend, diagnostics=None):
+    first_inference = True
+
     def handle(socket):
+        nonlocal first_inference
         try:
             socket.send(msgpack_numpy.packb({"backend": backend, "task": TASK, "protocol": 1}))
             for frame in socket:
@@ -44,10 +48,13 @@ def handler(policy, backend, diagnostics=None):
                     request = decode(frame)
                     validate_request(request)
                     start = monotonic()
-                    phase = diagnostics.phase("inference") if diagnostics else nullcontext()
+                    name = ("first_jax_compile_and_inference" if backend == "checkpoint" and first_inference
+                            else "inference")
+                    phase = diagnostics.phase(name) if diagnostics else nullcontext()
                     with phase:
                         response = policy.infer(request)
                         validate_response(response)
+                    first_inference = False
                     response["service_inference_s"] = monotonic() - start
                     socket.send(msgpack_numpy.packb(response))
                 except ConnectionClosed:
@@ -130,6 +137,11 @@ def load_model(root, download_dir, diagnostics, require_gpu=False, preflight=Fal
 
 
 def main():
+    def terminate(signum, frame):
+        # Unwind phase contexts so timeout evidence reaches startup.json and stacks.log.
+        raise SystemExit(128 + signum)
+
+    signal.signal(signal.SIGTERM, terminate)
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--port", type=int, default=8000)
     parser.add_argument("--openpi-root", type=Path)

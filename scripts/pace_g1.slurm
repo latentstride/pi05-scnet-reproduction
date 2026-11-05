@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 #SBATCH --job-name=cpf-pace-g1
 #SBATCH --partition=ksagnormal01
+#SBATCH --nodelist=gnode39
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
@@ -10,6 +11,8 @@
 #SBATCH --no-requeue
 #SBATCH --output=logs/pace-g1-%j.out
 set -euo pipefail
+# Leave a minute for child termination and evidence before Slurm's hard limit.
+export PI05_G1_DEADLINE_EPOCH=$(( $(date +%s) + 49 * 60 ))
 release=${1:?Expected fixed release directory}
 preflight=${2:?Expected successful G1 CPU preflight result directory}
 [[ "$release" == /* && "$preflight" == /* ]]

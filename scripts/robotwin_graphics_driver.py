@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """Resolve installed NVIDIA ICD libraries; preserve discovery evidence before failing."""
 import json
+import os
 from pathlib import Path
+import platform
 import re
 import subprocess
 import sys
@@ -27,6 +29,7 @@ def discover(out, image, candidates, listing, is_file=None):
         record = {"file": str(path)}
         try:
             doc = json.loads(Path(path).read_text())
+            record["document"] = doc
             if not isinstance(doc, dict) or not isinstance(doc.get("ICD"), dict):
                 raise ValueError("ICD document must contain an ICD object")
             info = doc["ICD"]
@@ -100,18 +103,29 @@ def discover(out, image, candidates, listing, is_file=None):
 
 
 def main():
-    import os
     import shutil
 
     out, image = map(Path, sys.argv[1:])
     out.mkdir(parents=True, exist_ok=True)
+    version = Path("/proc/driver/nvidia/version")
+    (out / "node_diagnostics.json").write_text(json.dumps({
+        "hostname": platform.node(), "platform": platform.platform(), "python": sys.version,
+        "nvidia_driver_version": version.read_text() if version.is_file() else None,
+        "environment": {key: os.environ.get(key) for key in (
+            "SLURM_JOB_ID", "SLURM_JOB_NODELIST", "CUDA_VISIBLE_DEVICES",
+            "VK_ICD_FILENAMES", "VK_DRIVER_FILES", "LD_LIBRARY_PATH")},
+    }, indent=2) + "\n")
     candidates = []
     for directory in ("/etc/vulkan/icd.d", "/usr/share/vulkan/icd.d", "/usr/local/share/vulkan/icd.d"):
         candidates.extend(sorted(Path(directory).glob("*.json")))
     for variable in ("VK_ICD_FILENAMES", "VK_DRIVER_FILES"):
         candidates.extend(Path(p) for p in os.environ.get(variable, "").split(":") if p)
-    listing = subprocess.check_output([shutil.which("ldconfig") or "/sbin/ldconfig", "-p"],
-                                     universal_newlines=True)
+    result = subprocess.run([shutil.which("ldconfig") or "/sbin/ldconfig", "-p"],
+                            stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True)
+    listing = result.stdout
+    (out / "ldconfig-stderr.txt").write_text(result.stderr)
+    (out / "ldconfig-status.json").write_text(json.dumps({"exit_code": result.returncode}) + "\n")
+    # Continue checking absolute ICD paths even if ldconfig failed.
     discover(out, image, candidates, listing)
 
 

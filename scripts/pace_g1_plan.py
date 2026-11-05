@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Build fixed launch commands without invoking Slurm."""
 import json
+import os
 from pathlib import Path
 import sys
 
@@ -22,7 +23,12 @@ def build(root, release, preflight, out, job, gpu, sim):
     model = ["env", "PI05_ROOT=" + str(root), "bash", str(release / "pace_g1_model_env.sh"), gpu]
     return {
         "job_id": job, "allocated_gpu_uuid": gpu, "release_commit": (release / "RELEASE_COMMIT").read_text().strip(),
-        "timeouts": {"G1.1": 720, "model_ready": 780, "G1.2": 420, "G1.3": 720},
+        "deadline_epoch": int(os.environ["PI05_G1_DEADLINE_EPOCH"]),
+        "timeouts": {"G1.1": 720, "model_ready": 1800, "G1.2": 420, "G1.3": 720},
+        "model_phase_timeouts": {"container_startup": 180, "checkpoint_and_tokenizer_sha256": 180,
+                                 "openpi_import": 1200, "jax_device": 120,
+                                 "orbax_restore_and_policy_create": 600},
+        "model_phases_file": str(probe / "model/phases.jsonl"),
         "g1_1": sim + ["bash", str(release / "run_pace_native_smoke.sh"), "--native", str(fake),
                        str(preflight / "simulator")],
         "model_server": model + [str(release / "pace_model_smoke.py"), "--port", str(checkpoint_port),

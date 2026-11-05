@@ -1,0 +1,50 @@
+{
+  "passed": true,
+  "job_id": "126905534",
+  "release_commit": "02ff7dd0fa8108c2e70fe990dfe3576982139807",
+  "started_at": "2026-11-05T07:17:39.275+00:00",
+  "stages": {
+    "G1.1": {
+      "status": "passed",
+      "started_at": "2026-11-05T07:17:39.316+00:00",
+      "exit_code": 0,
+      "ended_at": "2026-11-05T07:23:38.932+00:00",
+      "elapsed_s": 359.6156823411584
+    },
+    "G1.2": {
+      "status": "passed",
+      "started_at": "2026-11-05T07:23:38.941+00:00",
+      "exit_code": 0,
+      "ended_at": "2026-11-05T07:30:15.779+00:00",
+      "elapsed_s": 396.8378087952733
+    },
+    "G1.3": {
+      "status": "passed",
+      "started_at": "2026-11-05T07:30:15.893+00:00",
+      "exit_code": 0,
+      "ended_at": "2026-11-05T07:36:39.213+00:00",
+      "elapsed_s": 383.3199894577265
+    }
+  },
+  "model_server_starts": 1,
+  "deadline_epoch": 1793865989,
+  "model_phase_timeouts_s": {
+    "container_startup": 180,
+    "checkpoint_and_tokenizer_sha256": 180,
+    "openpi_import": 1200,
+    "jax_device": 120,
+    "orbax_restore_and_policy_create": 600
+  },
+  "effective_timeouts_s": {
+    "G1.1": 720,
+    "model_ready": 1800,
+    "G1.2": 420,
+    "G1.3": 720
+  },
+  "simulator_peak_mib": 5696,
+  "model_server_pid": 223243,
+  "checkpoint_idle_mib": 8794,
+  "memory_total_mib": 24564,
+  "ended_at": "2026-11-05T07:36:47.911+00:00",
+  "observed_gpu_peak_mib": 14488
+}

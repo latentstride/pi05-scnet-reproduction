@@ -27,8 +27,12 @@ def discover(out, image, candidates, listing, is_file=None):
         record = {"file": str(path)}
         try:
             doc = json.loads(Path(path).read_text())
+            if not isinstance(doc, dict) or not isinstance(doc.get("ICD"), dict):
+                raise ValueError("ICD document must contain an ICD object")
             info = doc["ICD"]
             lib = info.get("library_path", "")
+            if not isinstance(lib, str):
+                raise ValueError("ICD library_path must be a string")
             record.update(library_path=lib, library_arch=info.get("library_arch"))
             if "nvidia" in lib.lower() and str(info.get("library_arch")) != "32":
                 source = lib if Path(lib).is_absolute() and is_file(lib) else libraries.get(Path(lib).name)

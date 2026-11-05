@@ -64,18 +64,20 @@ def command(argv, log, seconds):
 def wait_ready(proc, log, marker, seconds):
     deadline = time.monotonic() + seconds
     offset = 0
-    with log.open() as stream:
+    marker = marker.encode("utf-8")
+    with log.open("rb") as stream:
         while time.monotonic() < deadline:
             rc = proc.poll()
             if rc is not None:
                 raise StageError("checkpoint server exited before ready; see model-server.log", rc or 1)
             stream.seek(offset)
-            for line in stream:
-                if not line.endswith("\n"):
+            while True:
+                line = stream.readline()
+                if not line or not line.endswith(b"\n"):
                     break
                 if line.rstrip() == marker:
                     return
-                offset += len(line.encode("utf-8", errors="replace"))
+                offset = stream.tell()
             time.sleep(0.25)
     raise StageError("checkpoint server did not reach readiness within {}s".format(seconds), 124)
 

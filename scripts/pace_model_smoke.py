@@ -30,6 +30,11 @@ class FakePolicy:
         return {"actions": actions}
 
 
+def require_orbax_checkpoint(path):
+    if (path / "model.safetensors").exists():
+        raise ValueError("unexpected alternate PyTorch checkpoint")
+
+
 def handler(policy, backend, diagnostics=None):
     def handle(socket):
         try:
@@ -60,6 +65,7 @@ def load_model(root, download_dir, diagnostics, require_gpu=False, preflight=Fal
     from pace_download import load_manifest, local_path, verify_all, verify_file
 
     with diagnostics.phase("checkpoint_and_tokenizer_sha256"):
+        require_orbax_checkpoint(download_dir / TASK)
         require_checkout(root, OPENPI_REVISION)
         for name, revision in (
             ("aloha", "d1dc83afd89ded4379851257fe5d85632d31d5ec"),
@@ -99,8 +105,6 @@ def load_model(root, download_dir, diagnostics, require_gpu=False, preflight=Fal
         verify_file(download_dir / norm["path"], norm)
         cache = Path(os.environ["OPENPI_DATA_HOME"]) / "big_vision/paligemma_tokenizer.model"
         verify_file(cache, tokenizer)
-        if (download_dir / TASK / "model.safensors").exists():
-            raise ValueError("unexpected alternate PyTorch checkpoint")
 
     with diagnostics.phase("openpi_import"):
         import jax

@@ -13,7 +13,11 @@ mkdir "$out"
 for file in "${files[@]}"; do
  git -C "$repo" show "$commit:scripts/$file" > "$out/$file"
 done
+tests=(test_pace_g1.py test_robotwin_graphics_driver.py)
+for file in "${tests[@]}"; do
+ git -C "$repo" show "$commit:tests/$file" > "$out/$file"
+done
 printf '%s\n' "$commit" > "$out/RELEASE_COMMIT"
 git -C "$repo" show "$commit:pace_download_manifest.json" > "$out/pace_download_manifest.json"
-(cd "$out" && sha256sum RELEASE_COMMIT "${files[@]}" pace_download_manifest.json > SHA256SUMS)
+(cd "$out" && sha256sum RELEASE_COMMIT "${files[@]}" "${tests[@]}" pace_download_manifest.json > SHA256SUMS)
 chmod a-w "$out" "$out"/*

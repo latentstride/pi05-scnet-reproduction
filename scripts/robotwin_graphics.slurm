@@ -154,58 +154,9 @@ fi
 
 discover_graphics() {
 # Only bind installed host NVIDIA libraries, read-only; never install a driver.
-timeout --kill-after=5 15 python3 - "$out" "$image" <<'PY'
-from pathlib import Path
-import json,os,re,shutil,subprocess,sys
-out,image=map(Path,sys.argv[1:])
-icds=[]
-candidates=[]
-for directory in ['/etc/vulkan/icd.d','/usr/share/vulkan/icd.d','/usr/local/share/vulkan/icd.d']:
- candidates.extend(sorted(Path(directory).glob('*.json')))
-for variable in ['VK_ICD_FILENAMES','VK_DRIVER_FILES']:
- candidates.extend(Path(x) for x in os.environ.get(variable,'').split(':') if x)
-for p in candidates:
- try:
-  doc=json.loads(p.read_text()); lib=doc.get('ICD',{}).get('library_path','')
-  if 'nvidia' in lib.lower() and doc['ICD'].get('library_arch') != '32': icds.append((p,doc))
- except (ValueError,OSError): pass
-assert icds, 'GPU host has no NVIDIA Vulkan ICD; administrator graphics setup required'
-icd,doc=icds[0]
-ldconfig=shutil.which('ldconfig') or '/sbin/ldconfig'
-listing=subprocess.check_output([ldconfig,'-p'],universal_newlines=True)
-libraries={}
-for line in listing.splitlines():
- if 'x86-64' not in line or '=>' not in line: continue
- soname=line.split()[0]; source=line.rsplit('=>',1)[1].strip()
- if re.match(r'lib(?:GLX_nvidia|EGL_nvidia|nvidia-[A-Za-z0-9_-]+)\.so',soname) and Path(source).is_file():
-  libraries.setdefault(soname,source)
-icd_library=doc['ICD']['library_path']; key=Path(icd_library).name
-if Path(icd_library).is_absolute() and Path(icd_library).is_file(): libraries[key]=icd_library
-assert key in libraries, 'NVIDIA ICD library missing from host linker cache'
-egl_key='libEGL_nvidia.so.0'
-assert egl_key in libraries, 'NVIDIA EGL vendor library missing from host linker cache'
-inside='/opt/robotwin/host-driver-'+out.name
-destination=image/inside.lstrip('/')
-destination.mkdir(parents=True,exist_ok=True)
-bindings=[]
-for soname,source in sorted(libraries.items()):
- (destination/soname).touch(exist_ok=True)
- bindings.append(source+'\t'+inside+'/'+soname)
-(out/'driver_binds.tsv').write_text('\n'.join(bindings)+'\n')
-(out/'host_icd_path.txt').write_text(str(icd)+'\n')
-(out/'host_icd_library.txt').write_text(libraries[key]+'\n')
-(out/'driver_inside_path.txt').write_text(inside+'\n')
-doc['ICD']['library_path']=libraries[key]
-(out/'host_nvidia_icd.json').write_text(json.dumps(doc,indent=2))
-# Keep the host's working ICD for the host probe. NVIDIA documents the EGL
-# ICD for headless environments where the GLX path cannot initialize.
-doc['ICD']['library_path']=inside+'/'+egl_key
-(out/'container_nvidia_icd.json').write_text(json.dumps(doc,indent=2))
-(out/'container_nvidia_egl.json').write_text(json.dumps({
- 'file_format_version':'1.0.0','ICD':{'library_path':inside+'/'+egl_key},
-},indent=2))
-print('NVIDIA graphics libraries:',len(bindings),flush=True)
-PY
+local probe="$root/scripts/robotwin_graphics_driver.py"
+if [[ "$mode" == --g1 ]]; then probe="$release/robotwin_graphics_driver.py"; fi
+timeout --kill-after=5 15 python3 "$probe" "$out" "$image"
 }
 check_vulkan_identity() {
 python3 - "$out" <<'PY'

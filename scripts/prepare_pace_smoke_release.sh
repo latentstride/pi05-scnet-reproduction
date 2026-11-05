@@ -6,7 +6,7 @@ ref=${2:?Expected Git commit}
 out=${3:?Expected new release directory}
 commit=$(git -C "$repo" rev-parse --verify "$ref^{commit}")
 files=(pace_client_smoke.py pace_diagnostics.py pace_model_smoke.py pace_runtime.py
- verify_pace_smoke.py run_pace_native_smoke.sh robotwin_graphics.slurm pace_download.py
+ verify_pace_smoke.py run_pace_native_smoke.sh robotwin_graphics.slurm robotwin_graphics_driver.py pace_download.py
  pace_g1.slurm pace_g1_orchestrate.py pace_g1_plan.py pace_g1_model_env.sh
  pace_g1_preflight.sh pace_g1_query.py pace_g1_rollout.sh)
 mkdir "$out"

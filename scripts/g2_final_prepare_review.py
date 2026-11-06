@@ -5,6 +5,7 @@ from hashlib import sha256
 import json
 from pathlib import Path
 import shutil
+import tarfile
 
 from g2_final_expert import expert_prefix
 from g2_remaining_conditions import configure
@@ -27,6 +28,18 @@ robotwin_gpu_smoke robotwin_graphics_driver summarize_experiments verify_robotwi
 
 def digest(path):
     return sha256(path.read_bytes()).hexdigest()
+
+
+def archive_candidate(output, destination):
+    """Archive exactly the manifest files without operating-system metadata."""
+    manifest = output / "SHA256SUMS"
+    names = [line.split("  ", 1)[1] for line in manifest.read_text().splitlines()]
+    with tarfile.open(destination, "x:gz") as archive:
+        for name in ["SHA256SUMS", *names]:
+            path = output / name
+            if path.is_symlink() or not path.is_file() or ".." in Path(name).parts:
+                raise ValueError("invalid candidate archive member")
+            archive.add(path, arcname=str(Path(output.name) / name), recursive=False)
 
 
 def prepare(project, output):
@@ -142,5 +155,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("project", type=Path)
     parser.add_argument("output", type=Path)
+    parser.add_argument("--archive", type=Path)
     args = parser.parse_args()
     prepare(args.project.resolve(), args.output.resolve())
+    if args.archive:
+        archive_candidate(args.output.resolve(), args.archive.resolve())

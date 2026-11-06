@@ -30,3 +30,5 @@ Aloha 和 ARX 按本体、种子分别核对真实资产、初态读回、当前
 - CPU 审阅可用 `python3 -B scripts/g2_final_deploy.py <candidate> --verify` 校验完整包。未来获批后，allocation 内的 `pace_g2_final.slurm` 使用 `G2_FINAL_RELEASE` 和 `G2_FINAL_APPROVAL`。批准文件绑定候选清单、节点、有效报价证据，首次成功准入后仅能使用一次。候选始终记录 `submission_allowed=false`。
 
 CPU 回归和模拟服务证明配置、状态隔离与异常停止。真实渲染和模型首次推理、Aloha 长窗实测、ARX 恢复及两份专家轨迹的现场闭环仍需同一次分配内验证。历史 G2-E 维持 0/8。
+
+启动复核发现旧 macOS 压缩包在 Linux 解包后生成额外元数据文件，严格清单校验会立即拒绝。新包按清单逐文件归档，并向干净模型容器显式传递禁写字节码设置。集群六项 CPU 部署检查和运行后再次验包均通过，完整证据见 `research/g2/final-cpu-review/startup-verification-20261107.json`。后续采用 `candidate-release-startup-final-20261107`。

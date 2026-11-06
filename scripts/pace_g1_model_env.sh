@@ -23,4 +23,4 @@ exec "$a" exec "${options[@]}" "$image" env \
  "OPENPI_DATA_HOME=$root/cache/openpi-pace" "XDG_CACHE_HOME=$root/cache/openpi-pace/xdg" \
  "HF_HOME=$root/cache/openpi-pace/hf" "CUDA_CACHE_PATH=$root/cache/openpi-pace/cuda" \
  OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 PYTHONUNBUFFERED=1 PYTHONFAULTHANDLER=1 \
- XLA_PYTHON_CLIENT_PREALLOCATE=false "${settings[@]}" "$python" "$@"
+ PYTHONDONTWRITEBYTECODE=1 XLA_PYTHON_CLIENT_PREALLOCATE=false "${settings[@]}" "$python" "$@"

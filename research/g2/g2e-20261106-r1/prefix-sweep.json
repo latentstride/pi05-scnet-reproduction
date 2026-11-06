@@ -1,0 +1,826 @@
+{
+  "seed0-A-native-w1": {
+    "saved_plans_exactly_reproduced": 300,
+    "prefix_sweep": {
+      "1": {
+        "valid_prefixes": 300,
+        "prefixes_with_left_closure": 0
+      },
+      "2": {
+        "valid_prefixes": 300,
+        "prefixes_with_left_closure": 0
+      },
+      "3": {
+        "valid_prefixes": 300,
+        "prefixes_with_left_closure": 0
+      },
+      "4": {
+        "valid_prefixes": 300,
+        "prefixes_with_left_closure": 0
+      },
+      "5": {
+        "valid_prefixes": 300,
+        "prefixes_with_left_closure": 0
+      },
+      "6": {
+        "valid_prefixes": 300,
+        "prefixes_with_left_closure": 0
+      },
+      "7": {
+        "valid_prefixes": 300,
+        "prefixes_with_left_closure": 0
+      },
+      "8": {
+        "valid_prefixes": 300,
+        "prefixes_with_left_closure": 0
+      },
+      "9": {
+        "valid_prefixes": 300,
+        "prefixes_with_left_closure": 0
+      },
+      "10": {
+        "valid_prefixes": 300,
+        "prefixes_with_left_closure": 2
+      },
+      "11": {
+        "valid_prefixes": 300,
+        "prefixes_with_left_closure": 6
+      },
+      "12": {
+        "valid_prefixes": 300,
+        "prefixes_with_left_closure": 14
+      },
+      "13": {
+        "valid_prefixes": 299,
+        "prefixes_with_left_closure": 18
+      },
+      "14": {
+        "valid_prefixes": 299,
+        "prefixes_with_left_closure": 22
+      },
+      "15": {
+        "valid_prefixes": 299,
+        "prefixes_with_left_closure": 30
+      },
+      "16": {
+        "valid_prefixes": 299,
+        "prefixes_with_left_closure": 35
+      },
+      "17": {
+        "valid_prefixes": 299,
+        "prefixes_with_left_closure": 42
+      },
+      "18": {
+        "valid_prefixes": 299,
+        "prefixes_with_left_closure": 52
+      },
+      "19": {
+        "valid_prefixes": 299,
+        "prefixes_with_left_closure": 56
+      },
+      "20": {
+        "valid_prefixes": 299,
+        "prefixes_with_left_closure": 58
+      },
+      "21": {
+        "valid_prefixes": 299,
+        "prefixes_with_left_closure": 61
+      },
+      "22": {
+        "valid_prefixes": 299,
+        "prefixes_with_left_closure": 73
+      },
+      "23": {
+        "valid_prefixes": 299,
+        "prefixes_with_left_closure": 84
+      },
+      "24": {
+        "valid_prefixes": 299,
+        "prefixes_with_left_closure": 116
+      },
+      "25": {
+        "valid_prefixes": 299,
+        "prefixes_with_left_closure": 167
+      },
+      "26": {
+        "valid_prefixes": 299,
+        "prefixes_with_left_closure": 208
+      },
+      "27": {
+        "valid_prefixes": 299,
+        "prefixes_with_left_closure": 233
+      },
+      "28": {
+        "valid_prefixes": 299,
+        "prefixes_with_left_closure": 247
+      },
+      "29": {
+        "valid_prefixes": 299,
+        "prefixes_with_left_closure": 256
+      },
+      "30": {
+        "valid_prefixes": 299,
+        "prefixes_with_left_closure": 263
+      },
+      "31": {
+        "valid_prefixes": 299,
+        "prefixes_with_left_closure": 269
+      },
+      "32": {
+        "valid_prefixes": 299,
+        "prefixes_with_left_closure": 270
+      },
+      "33": {
+        "valid_prefixes": 299,
+        "prefixes_with_left_closure": 271
+      },
+      "34": {
+        "valid_prefixes": 299,
+        "prefixes_with_left_closure": 272
+      },
+      "35": {
+        "valid_prefixes": 299,
+        "prefixes_with_left_closure": 274
+      },
+      "36": {
+        "valid_prefixes": 299,
+        "prefixes_with_left_closure": 275
+      },
+      "37": {
+        "valid_prefixes": 299,
+        "prefixes_with_left_closure": 276
+      },
+      "38": {
+        "valid_prefixes": 299,
+        "prefixes_with_left_closure": 277
+      },
+      "39": {
+        "valid_prefixes": 299,
+        "prefixes_with_left_closure": 278
+      },
+      "40": {
+        "valid_prefixes": 299,
+        "prefixes_with_left_closure": 279
+      },
+      "41": {
+        "valid_prefixes": 299,
+        "prefixes_with_left_closure": 280
+      },
+      "42": {
+        "valid_prefixes": 299,
+        "prefixes_with_left_closure": 281
+      },
+      "43": {
+        "valid_prefixes": 299,
+        "prefixes_with_left_closure": 282
+      },
+      "44": {
+        "valid_prefixes": 299,
+        "prefixes_with_left_closure": 283
+      },
+      "45": {
+        "valid_prefixes": 299,
+        "prefixes_with_left_closure": 285
+      },
+      "46": {
+        "valid_prefixes": 299,
+        "prefixes_with_left_closure": 286
+      },
+      "47": {
+        "valid_prefixes": 299,
+        "prefixes_with_left_closure": 287
+      },
+      "48": {
+        "valid_prefixes": 299,
+        "prefixes_with_left_closure": 287
+      },
+      "49": {
+        "valid_prefixes": 299,
+        "prefixes_with_left_closure": 288
+      },
+      "50": {
+        "valid_prefixes": 299,
+        "prefixes_with_left_closure": 290
+      }
+    },
+    "scope": "fixed saved chunks; raw limits/clipping only, not a dynamic rollout"
+  },
+  "seed0-A-native-w4": {
+    "saved_plans_exactly_reproduced": 75,
+    "prefix_sweep": {
+      "1": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 20
+      },
+      "2": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 20
+      },
+      "3": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 22
+      },
+      "4": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 22
+      },
+      "5": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 23
+      },
+      "6": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 23
+      },
+      "7": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 24
+      },
+      "8": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 24
+      },
+      "9": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 24
+      },
+      "10": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 25
+      },
+      "11": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 25
+      },
+      "12": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 26
+      },
+      "13": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 26
+      },
+      "14": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 28
+      },
+      "15": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 28
+      },
+      "16": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 28
+      },
+      "17": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 28
+      },
+      "18": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 29
+      },
+      "19": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 29
+      },
+      "20": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 30
+      },
+      "21": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 31
+      },
+      "22": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 32
+      },
+      "23": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 33
+      },
+      "24": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 34
+      },
+      "25": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 35
+      },
+      "26": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 40
+      },
+      "27": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 45
+      },
+      "28": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 57
+      },
+      "29": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 60
+      },
+      "30": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 63
+      },
+      "31": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 66
+      },
+      "32": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 67
+      },
+      "33": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 67
+      },
+      "34": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 68
+      },
+      "35": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 68
+      },
+      "36": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 68
+      },
+      "37": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 68
+      },
+      "38": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 69
+      },
+      "39": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 69
+      },
+      "40": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 69
+      },
+      "41": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 69
+      },
+      "42": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 70
+      },
+      "43": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 70
+      },
+      "44": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 70
+      },
+      "45": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 71
+      },
+      "46": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 71
+      },
+      "47": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 71
+      },
+      "48": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 71
+      },
+      "49": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 72
+      },
+      "50": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 72
+      }
+    },
+    "scope": "fixed saved chunks; raw limits/clipping only, not a dynamic rollout"
+  },
+  "seed1-A-native-w1": {
+    "saved_plans_exactly_reproduced": 300,
+    "prefix_sweep": {
+      "1": {
+        "valid_prefixes": 300,
+        "prefixes_with_left_closure": 0
+      },
+      "2": {
+        "valid_prefixes": 300,
+        "prefixes_with_left_closure": 0
+      },
+      "3": {
+        "valid_prefixes": 300,
+        "prefixes_with_left_closure": 0
+      },
+      "4": {
+        "valid_prefixes": 300,
+        "prefixes_with_left_closure": 0
+      },
+      "5": {
+        "valid_prefixes": 300,
+        "prefixes_with_left_closure": 0
+      },
+      "6": {
+        "valid_prefixes": 300,
+        "prefixes_with_left_closure": 0
+      },
+      "7": {
+        "valid_prefixes": 300,
+        "prefixes_with_left_closure": 0
+      },
+      "8": {
+        "valid_prefixes": 300,
+        "prefixes_with_left_closure": 1
+      },
+      "9": {
+        "valid_prefixes": 300,
+        "prefixes_with_left_closure": 6
+      },
+      "10": {
+        "valid_prefixes": 300,
+        "prefixes_with_left_closure": 17
+      },
+      "11": {
+        "valid_prefixes": 300,
+        "prefixes_with_left_closure": 50
+      },
+      "12": {
+        "valid_prefixes": 299,
+        "prefixes_with_left_closure": 90
+      },
+      "13": {
+        "valid_prefixes": 298,
+        "prefixes_with_left_closure": 123
+      },
+      "14": {
+        "valid_prefixes": 298,
+        "prefixes_with_left_closure": 138
+      },
+      "15": {
+        "valid_prefixes": 298,
+        "prefixes_with_left_closure": 158
+      },
+      "16": {
+        "valid_prefixes": 297,
+        "prefixes_with_left_closure": 168
+      },
+      "17": {
+        "valid_prefixes": 297,
+        "prefixes_with_left_closure": 179
+      },
+      "18": {
+        "valid_prefixes": 297,
+        "prefixes_with_left_closure": 182
+      },
+      "19": {
+        "valid_prefixes": 297,
+        "prefixes_with_left_closure": 191
+      },
+      "20": {
+        "valid_prefixes": 297,
+        "prefixes_with_left_closure": 205
+      },
+      "21": {
+        "valid_prefixes": 297,
+        "prefixes_with_left_closure": 211
+      },
+      "22": {
+        "valid_prefixes": 297,
+        "prefixes_with_left_closure": 220
+      },
+      "23": {
+        "valid_prefixes": 297,
+        "prefixes_with_left_closure": 226
+      },
+      "24": {
+        "valid_prefixes": 297,
+        "prefixes_with_left_closure": 231
+      },
+      "25": {
+        "valid_prefixes": 297,
+        "prefixes_with_left_closure": 235
+      },
+      "26": {
+        "valid_prefixes": 297,
+        "prefixes_with_left_closure": 250
+      },
+      "27": {
+        "valid_prefixes": 297,
+        "prefixes_with_left_closure": 259
+      },
+      "28": {
+        "valid_prefixes": 297,
+        "prefixes_with_left_closure": 263
+      },
+      "29": {
+        "valid_prefixes": 297,
+        "prefixes_with_left_closure": 267
+      },
+      "30": {
+        "valid_prefixes": 297,
+        "prefixes_with_left_closure": 269
+      },
+      "31": {
+        "valid_prefixes": 297,
+        "prefixes_with_left_closure": 271
+      },
+      "32": {
+        "valid_prefixes": 297,
+        "prefixes_with_left_closure": 272
+      },
+      "33": {
+        "valid_prefixes": 297,
+        "prefixes_with_left_closure": 273
+      },
+      "34": {
+        "valid_prefixes": 297,
+        "prefixes_with_left_closure": 273
+      },
+      "35": {
+        "valid_prefixes": 297,
+        "prefixes_with_left_closure": 274
+      },
+      "36": {
+        "valid_prefixes": 297,
+        "prefixes_with_left_closure": 276
+      },
+      "37": {
+        "valid_prefixes": 297,
+        "prefixes_with_left_closure": 276
+      },
+      "38": {
+        "valid_prefixes": 297,
+        "prefixes_with_left_closure": 277
+      },
+      "39": {
+        "valid_prefixes": 297,
+        "prefixes_with_left_closure": 278
+      },
+      "40": {
+        "valid_prefixes": 297,
+        "prefixes_with_left_closure": 280
+      },
+      "41": {
+        "valid_prefixes": 297,
+        "prefixes_with_left_closure": 281
+      },
+      "42": {
+        "valid_prefixes": 297,
+        "prefixes_with_left_closure": 282
+      },
+      "43": {
+        "valid_prefixes": 297,
+        "prefixes_with_left_closure": 282
+      },
+      "44": {
+        "valid_prefixes": 297,
+        "prefixes_with_left_closure": 284
+      },
+      "45": {
+        "valid_prefixes": 297,
+        "prefixes_with_left_closure": 284
+      },
+      "46": {
+        "valid_prefixes": 297,
+        "prefixes_with_left_closure": 285
+      },
+      "47": {
+        "valid_prefixes": 297,
+        "prefixes_with_left_closure": 286
+      },
+      "48": {
+        "valid_prefixes": 297,
+        "prefixes_with_left_closure": 287
+      },
+      "49": {
+        "valid_prefixes": 297,
+        "prefixes_with_left_closure": 288
+      },
+      "50": {
+        "valid_prefixes": 297,
+        "prefixes_with_left_closure": 289
+      }
+    },
+    "scope": "fixed saved chunks; raw limits/clipping only, not a dynamic rollout"
+  },
+  "seed1-A-native-w4": {
+    "saved_plans_exactly_reproduced": 75,
+    "prefix_sweep": {
+      "1": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 0
+      },
+      "2": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 0
+      },
+      "3": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 0
+      },
+      "4": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 0
+      },
+      "5": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 0
+      },
+      "6": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 0
+      },
+      "7": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 0
+      },
+      "8": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 0
+      },
+      "9": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 0
+      },
+      "10": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 0
+      },
+      "11": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 0
+      },
+      "12": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 0
+      },
+      "13": {
+        "valid_prefixes": 74,
+        "prefixes_with_left_closure": 1
+      },
+      "14": {
+        "valid_prefixes": 74,
+        "prefixes_with_left_closure": 2
+      },
+      "15": {
+        "valid_prefixes": 74,
+        "prefixes_with_left_closure": 7
+      },
+      "16": {
+        "valid_prefixes": 73,
+        "prefixes_with_left_closure": 11
+      },
+      "17": {
+        "valid_prefixes": 73,
+        "prefixes_with_left_closure": 13
+      },
+      "18": {
+        "valid_prefixes": 73,
+        "prefixes_with_left_closure": 18
+      },
+      "19": {
+        "valid_prefixes": 73,
+        "prefixes_with_left_closure": 20
+      },
+      "20": {
+        "valid_prefixes": 73,
+        "prefixes_with_left_closure": 23
+      },
+      "21": {
+        "valid_prefixes": 73,
+        "prefixes_with_left_closure": 25
+      },
+      "22": {
+        "valid_prefixes": 73,
+        "prefixes_with_left_closure": 28
+      },
+      "23": {
+        "valid_prefixes": 73,
+        "prefixes_with_left_closure": 31
+      },
+      "24": {
+        "valid_prefixes": 73,
+        "prefixes_with_left_closure": 31
+      },
+      "25": {
+        "valid_prefixes": 73,
+        "prefixes_with_left_closure": 34
+      },
+      "26": {
+        "valid_prefixes": 73,
+        "prefixes_with_left_closure": 40
+      },
+      "27": {
+        "valid_prefixes": 73,
+        "prefixes_with_left_closure": 53
+      },
+      "28": {
+        "valid_prefixes": 73,
+        "prefixes_with_left_closure": 62
+      },
+      "29": {
+        "valid_prefixes": 73,
+        "prefixes_with_left_closure": 63
+      },
+      "30": {
+        "valid_prefixes": 73,
+        "prefixes_with_left_closure": 66
+      },
+      "31": {
+        "valid_prefixes": 73,
+        "prefixes_with_left_closure": 66
+      },
+      "32": {
+        "valid_prefixes": 73,
+        "prefixes_with_left_closure": 66
+      },
+      "33": {
+        "valid_prefixes": 73,
+        "prefixes_with_left_closure": 67
+      },
+      "34": {
+        "valid_prefixes": 73,
+        "prefixes_with_left_closure": 67
+      },
+      "35": {
+        "valid_prefixes": 73,
+        "prefixes_with_left_closure": 67
+      },
+      "36": {
+        "valid_prefixes": 73,
+        "prefixes_with_left_closure": 67
+      },
+      "37": {
+        "valid_prefixes": 73,
+        "prefixes_with_left_closure": 68
+      },
+      "38": {
+        "valid_prefixes": 73,
+        "prefixes_with_left_closure": 68
+      },
+      "39": {
+        "valid_prefixes": 73,
+        "prefixes_with_left_closure": 68
+      },
+      "40": {
+        "valid_prefixes": 73,
+        "prefixes_with_left_closure": 68
+      },
+      "41": {
+        "valid_prefixes": 73,
+        "prefixes_with_left_closure": 69
+      },
+      "42": {
+        "valid_prefixes": 73,
+        "prefixes_with_left_closure": 69
+      },
+      "43": {
+        "valid_prefixes": 73,
+        "prefixes_with_left_closure": 69
+      },
+      "44": {
+        "valid_prefixes": 73,
+        "prefixes_with_left_closure": 69
+      },
+      "45": {
+        "valid_prefixes": 73,
+        "prefixes_with_left_closure": 70
+      },
+      "46": {
+        "valid_prefixes": 73,
+        "prefixes_with_left_closure": 70
+      },
+      "47": {
+        "valid_prefixes": 73,
+        "prefixes_with_left_closure": 70
+      },
+      "48": {
+        "valid_prefixes": 73,
+        "prefixes_with_left_closure": 70
+      },
+      "49": {
+        "valid_prefixes": 73,
+        "prefixes_with_left_closure": 71
+      },
+      "50": {
+        "valid_prefixes": 73,
+        "prefixes_with_left_closure": 71
+      }
+    },
+    "scope": "fixed saved chunks; raw limits/clipping only, not a dynamic rollout"
+  }
+}

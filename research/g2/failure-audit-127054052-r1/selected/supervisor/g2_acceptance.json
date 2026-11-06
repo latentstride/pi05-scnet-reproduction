@@ -1,0 +1,55 @@
+{
+  "data_kind": "diagnostic",
+  "formal_score_eligible": false,
+  "passed": true,
+  "started_at": "2026-11-06T10:23:34.011+00:00",
+  "model_server_starts": 1,
+  "stages": {
+    "dynamic": {
+      "status": "passed",
+      "started_at": "2026-11-06T10:23:34.037+00:00",
+      "exit_code": 0,
+      "ended_at": "2026-11-06T10:40:44.834+00:00",
+      "wall_s": 1030.797165647149
+    },
+    "aloha": {
+      "status": "passed",
+      "started_at": "2026-11-06T10:40:44.853+00:00",
+      "exit_code": 0,
+      "ended_at": "2026-11-06T10:58:55.199+00:00",
+      "wall_s": 1090.3467766568065
+    },
+    "arx": {
+      "status": "passed",
+      "started_at": "2026-11-06T10:58:55.214+00:00",
+      "exit_code": 0,
+      "ended_at": "2026-11-06T11:07:16.065+00:00",
+      "wall_s": 500.8517551571131
+    },
+    "ablation": {
+      "status": "passed",
+      "started_at": "2026-11-06T11:07:16.086+00:00",
+      "exit_code": 0,
+      "ended_at": "2026-11-06T11:26:18.179+00:00",
+      "wall_s": 1142.0938906222582
+    },
+    "expert": {
+      "status": "passed",
+      "started_at": "2026-11-06T11:26:18.193+00:00",
+      "exit_code": 0,
+      "ended_at": "2026-11-06T11:27:40.027+00:00",
+      "wall_s": 81.8345649689436
+    },
+    "statistics": {
+      "status": "passed",
+      "started_at": "2026-11-06T11:27:40.048+00:00",
+      "exit_code": 0,
+      "ended_at": "2026-11-06T11:27:43.259+00:00",
+      "wall_s": 3.211158834397793
+    }
+  },
+  "model_server_pid": 150770,
+  "complete": true,
+  "observed_gpu_peak_mib": 14314,
+  "ended_at": "2026-11-06T11:27:45.968+00:00"
+}

@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "no_process_launched": true,
+  "commands_per_stage": {
+    "dynamic": 2,
+    "aloha": 2,
+    "arx": 2,
+    "ablation": 4,
+    "expert": 1,
+    "statistics": 1
+  },
+  "bounded_s": 17810,
+  "allocation_s": 18000
+}

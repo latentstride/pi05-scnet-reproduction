@@ -1,0 +1,365 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RoboTwin PACE episode record v1",
+  "type": "object",
+  "properties": {
+    "schema_version": {"const": 1},
+    "data_kind": {"enum": ["synthetic", "diagnostic", "formal"]},
+    "run_lock_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "episode_id": {"type": "string", "minLength": 1},
+    "task": {"type": "string", "minLength": 1},
+    "seed": {"type": "integer", "minimum": 0},
+    "comparison_id": {"anyOf": [{"type": "string", "minLength": 1}, {"type": "null"}]},
+    "pair_id": {"anyOf": [{"type": "string", "minLength": 1}, {"type": "null"}]},
+    "condition": {
+      "type": "object",
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "embodiment": {"enum": ["aloha-agilex", "arx-x5"]},
+        "action_source": {"enum": ["source_policy", "target_policy", "expert_replay"]},
+        "checkpoint": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "id": {"type": "string", "minLength": 1},
+                "revision": {"type": "string", "minLength": 1},
+                "manifest_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+                "norm_stats_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+              },
+              "required": ["id", "revision", "manifest_sha256", "norm_stats_sha256"],
+              "additionalProperties": false
+            },
+            {"type": "null"}
+          ]
+        },
+        "expert_representation": {"anyOf": [{"enum": ["expert_qpos", "expert_ee"]}, {"type": "null"}]},
+        "execution": {"enum": ["qpos", "ee"]},
+        "window_actions": {"type": "integer", "minimum": 1},
+        "config_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "observation_mapping": {"type": "string", "minLength": 1},
+        "action_mapping": {"type": "string", "minLength": 1}
+      },
+      "required": [
+        "id",
+        "embodiment",
+        "action_source",
+        "checkpoint",
+        "expert_representation",
+        "execution",
+        "window_actions",
+        "config_sha256",
+        "observation_mapping",
+        "action_mapping"
+      ],
+      "additionalProperties": false
+    },
+    "environment": {
+      "type": "object",
+      "properties": {
+        "runtime_id": {"type": "string", "minLength": 1},
+        "robotwin_revision": {"type": "string", "minLength": 1},
+        "pace_revision": {"type": "string", "minLength": 1},
+        "assets_revision": {"type": "string", "minLength": 1},
+        "scene_config_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "embodiment_config_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      },
+      "required": [
+        "runtime_id",
+        "robotwin_revision",
+        "pace_revision",
+        "assets_revision",
+        "scene_config_sha256",
+        "embodiment_config_sha256"
+      ],
+      "additionalProperties": false
+    },
+    "initial": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "robot_base_world": {
+              "type": "object",
+              "properties": {
+                "left": {"type": "array", "items": {"type": "number"}, "minItems": 7, "maxItems": 7},
+                "right": {"type": "array", "items": {"type": "number"}, "minItems": 7, "maxItems": 7}
+              },
+              "required": ["left", "right"],
+              "additionalProperties": false
+            },
+            "task_frame_world": {"type": "array", "items": {"type": "number"}, "minItems": 7, "maxItems": 7},
+            "actual_arm_qpos_rad": {
+              "type": "object",
+              "properties": {
+                "left": {"type": "array", "items": {"type": "number"}, "minItems": 6, "maxItems": 6},
+                "right": {"type": "array", "items": {"type": "number"}, "minItems": 6, "maxItems": 6}
+              },
+              "required": ["left", "right"],
+              "additionalProperties": false
+            },
+            "actual_gripper": {
+              "type": "object",
+              "properties": {
+                "left": {"type": "number", "minimum": 0, "maximum": 1},
+                "right": {"type": "number", "minimum": 0, "maximum": 1}
+              },
+              "required": ["left", "right"],
+              "additionalProperties": false
+            },
+            "objects_task": {
+              "type": "object",
+              "minProperties": 1,
+              "additionalProperties": {"type": "array", "items": {"type": "number"}, "minItems": 7, "maxItems": 7}
+            },
+            "reset_fixture_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+            "workspace_check_id": {"type": "string", "minLength": 1},
+            "common_workspace_pass": {"type": "boolean"}
+          },
+          "required": [
+            "robot_base_world",
+            "task_frame_world",
+            "actual_arm_qpos_rad",
+            "actual_gripper",
+            "objects_task",
+            "reset_fixture_sha256",
+            "workspace_check_id",
+            "common_workspace_pass"
+          ],
+          "additionalProperties": false
+        },
+        {"type": "null"}
+      ]
+    },
+    "match_status": {"enum": ["matched", "unmatched", "unverified", "not_applicable"]},
+    "outcome": {
+      "enum": ["success", "initial_state_mismatch", "environment_error", "interrupted", "ik_unreachable", "ik_failed", "planning_failed", "joint_limit", "adapter_error", "control_error", "policy_failed", "task_unsuccessful"]
+    },
+    "failure": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "stage": {
+              "enum": ["reset", "match", "observation", "inference", "ik", "planning", "control", "termination", "infrastructure"]
+            },
+            "code": {"type": "string", "minLength": 1},
+            "detail": {"type": "string", "minLength": 1},
+            "step": {"anyOf": [{"type": "integer", "minimum": 0}, {"type": "null"}]},
+            "artifact": {"type": "string", "minLength": 1}
+          },
+          "required": ["stage", "code", "detail", "step", "artifact"],
+          "additionalProperties": false
+        },
+        {"type": "null"}
+      ]
+    },
+    "metrics": {
+      "type": "object",
+      "properties": {
+        "trajectory": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "reference_id": {"type": "string", "minLength": 1},
+                "n": {"type": "integer", "minimum": 1},
+                "position_rmse_m": {"type": "number", "minimum": 0},
+                "position_p95_m": {"type": "number", "minimum": 0},
+                "orientation_mean_deg": {"type": "number", "minimum": 0, "maximum": 180},
+                "orientation_p95_deg": {"type": "number", "minimum": 0, "maximum": 180}
+              },
+              "required": [
+                "reference_id",
+                "n",
+                "position_rmse_m",
+                "position_p95_m",
+                "orientation_mean_deg",
+                "orientation_p95_deg"
+              ],
+              "additionalProperties": false
+            },
+            {"type": "null"}
+          ]
+        },
+        "planning": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "attempts": {"type": "integer", "minimum": 0},
+                "failures": {"type": "integer", "minimum": 0}
+              },
+              "required": ["attempts", "failures"],
+              "additionalProperties": false
+            },
+            {"type": "null"}
+          ]
+        },
+        "limits": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "checks": {"type": "integer", "minimum": 0},
+                "violations": {"type": "integer", "minimum": 0}
+              },
+              "required": ["checks", "violations"],
+              "additionalProperties": false
+            },
+            {"type": "null"}
+          ]
+        },
+        "gripper": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "samples": {"type": "integer", "minimum": 1},
+                "state_mismatches": {"type": "integer", "minimum": 0},
+                "final_left_actual": {"type": "number", "minimum": 0, "maximum": 1},
+                "final_right_actual": {"type": "number", "minimum": 0, "maximum": 1}
+              },
+              "required": ["samples", "state_mismatches", "final_left_actual", "final_right_actual"],
+              "additionalProperties": false
+            },
+            {"type": "null"}
+          ]
+        },
+        "inference": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {"calls": {"type": "integer", "minimum": 0}, "wall_s": {"type": "number", "minimum": 0}},
+              "required": ["calls", "wall_s"],
+              "additionalProperties": false
+            },
+            {"type": "null"}
+          ]
+        },
+        "control": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {"calls": {"type": "integer", "minimum": 0}, "wall_s": {"type": "number", "minimum": 0}},
+              "required": ["calls", "wall_s"],
+              "additionalProperties": false
+            },
+            {"type": "null"}
+          ]
+        },
+        "actions": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "windows": {"type": "integer", "minimum": 0},
+                "requested": {"type": "integer", "minimum": 0},
+                "executed": {"type": "integer", "minimum": 0},
+                "sim_elapsed_s": {"type": "number", "minimum": 0}
+              },
+              "required": ["windows", "requested", "executed", "sim_elapsed_s"],
+              "additionalProperties": false
+            },
+            {"type": "null"}
+          ]
+        }
+      },
+      "required": ["trajectory", "planning", "limits", "gripper", "inference", "control", "actions"],
+      "additionalProperties": false
+    },
+    "episode_artifact": {"type": "string", "minLength": 1}
+  },
+  "required": [
+    "schema_version",
+    "data_kind",
+    "run_lock_sha256",
+    "episode_id",
+    "task",
+    "seed",
+    "comparison_id",
+    "pair_id",
+    "condition",
+    "environment",
+    "initial",
+    "match_status",
+    "outcome",
+    "failure",
+    "metrics",
+    "episode_artifact"
+  ],
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {"properties": {"condition": {"properties": {"action_source": {"const": "expert_replay"}}}}},
+      "then": {
+        "properties": {
+          "condition": {"properties": {"checkpoint": {"type": "null"}, "expert_representation": {"type": "string"}}}
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {"condition": {"properties": {"action_source": {"enum": ["source_policy", "target_policy"]}}}}
+      },
+      "then": {
+        "properties": {
+          "condition": {"properties": {"checkpoint": {"type": "object"}, "expert_representation": {"type": "null"}}}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"condition": {"properties": {"action_source": {"const": "source_policy"}}}}},
+      "then": {"properties": {"condition": {"properties": {"embodiment": {"const": "aloha-agilex"}}}}}
+    },
+    {
+      "if": {"properties": {"condition": {"properties": {"action_source": {"const": "target_policy"}}}}},
+      "then": {"properties": {"condition": {"properties": {"embodiment": {"const": "arx-x5"}}}}}
+    },
+    {
+      "if": {"properties": {"comparison_id": {"type": "null"}}},
+      "then": {"properties": {"pair_id": {"type": "null"}, "match_status": {"const": "not_applicable"}}}
+    },
+    {
+      "if": {"properties": {"comparison_id": {"type": "string"}}},
+      "then": {
+        "properties": {"pair_id": {"type": "string"}, "match_status": {"enum": ["matched", "unmatched", "unverified"]}}
+      }
+    },
+    {
+      "if": {"properties": {"match_status": {"const": "matched"}}},
+      "then": {"properties": {"initial": {"type": "object"}}}
+    },
+    {
+      "if": {"properties": {"outcome": {"const": "initial_state_mismatch"}}},
+      "then": {"properties": {"match_status": {"const": "unmatched"}}}
+    },
+    {
+      "if": {"properties": {"outcome": {"const": "success"}}},
+      "then": {"properties": {"failure": {"type": "null"}, "initial": {"type": "object"}}}
+    },
+    {
+      "if": {"properties": {"outcome": {"not": {"const": "success"}}}},
+      "then": {"properties": {"failure": {"type": "object"}}}
+    },
+    {
+      "if": {
+        "properties": {
+          "data_kind": {"const": "formal"},
+          "comparison_id": {"type": "string"},
+          "outcome": {"not": {"enum": ["environment_error", "interrupted", "initial_state_mismatch"]}}
+        }
+      },
+      "then": {"properties": {"match_status": {"const": "matched"}}}
+    },
+    {
+      "if": {
+        "properties": {
+          "data_kind": {"const": "formal"},
+          "outcome": {"not": {"enum": ["environment_error", "interrupted", "initial_state_mismatch"]}}
+        }
+      },
+      "then": {"properties": {"initial": {"type": "object"}}}
+    }
+  ]
+}

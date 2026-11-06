@@ -1,0 +1,3 @@
+query,step_before,inference_s,chunk_file,used,status
+1,0,3.18754331022501,chunk_001.npy,4,ok
+2,4,2.749115936458111,chunk_002.npy,4,ok

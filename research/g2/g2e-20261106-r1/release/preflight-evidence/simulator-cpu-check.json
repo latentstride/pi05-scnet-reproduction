@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "scope": "CPU only; assets, roster and model receipt",
+  "run_lock_sha256": "49281639cfcc7375e8f37be556b8c0d9349aeab1ebc969d1d7ca5638be759d67",
+  "trial_count": 8,
+  "model_files_bound_to_prior_sha256_receipt": 28
+}

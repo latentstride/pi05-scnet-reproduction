@@ -1,0 +1,121 @@
+[
+  {
+    "check_id": "AP-0",
+    "pass_": true,
+    "category": "PASS",
+    "message": "Typography baseline present",
+    "line": null
+  },
+  {
+    "check_id": "AP-0",
+    "pass_": false,
+    "category": "FAIL",
+    "message": "Missing CNS color palette (CATEGORICAL/DIVERGING)",
+    "line": null
+  },
+  {
+    "check_id": "AP-0",
+    "pass_": true,
+    "category": "PASS",
+    "message": "Export baseline (pdf.fonttype=42, svg.fonttype='none') present",
+    "line": null
+  },
+  {
+    "check_id": "AP-1",
+    "pass_": true,
+    "category": "PASS",
+    "message": "No default palette detected",
+    "line": null
+  },
+  {
+    "check_id": "AP-2",
+    "pass_": true,
+    "category": "PASS",
+    "message": "No jet/rainbow colormap",
+    "line": null
+  },
+  {
+    "check_id": "AP-3",
+    "pass_": true,
+    "category": "PASS",
+    "message": "Top/right spines removed",
+    "line": null
+  },
+  {
+    "check_id": "AP-4",
+    "pass_": false,
+    "category": "WARN",
+    "message": "Legend may occlude data \u2014 no bbox_to_anchor or external placement found",
+    "line": null
+  },
+  {
+    "check_id": "AP-5",
+    "pass_": true,
+    "category": "PASS",
+    "message": "Vector export present",
+    "line": null
+  },
+  {
+    "check_id": "AP-6",
+    "pass_": false,
+    "category": "WARN",
+    "message": "Bar/box without individual points \u2014 add stripplot or geom_jitter",
+    "line": null
+  },
+  {
+    "check_id": "AP-7",
+    "pass_": true,
+    "category": "PASS",
+    "message": "Arial/Helvetica font set",
+    "line": null
+  },
+  {
+    "check_id": "CL-1",
+    "pass_": true,
+    "category": "PASS",
+    "message": "All font sizes >= 5pt (min: 7pt)",
+    "line": null
+  },
+  {
+    "check_id": "CL-2",
+    "pass_": true,
+    "category": "WARN",
+    "message": "No explicit dimension declaration \u2014 verify matches 89/183mm column",
+    "line": null
+  },
+  {
+    "check_id": "CL-3",
+    "pass_": true,
+    "category": "PASS",
+    "message": "All DPI values >= 300",
+    "line": null
+  },
+  {
+    "check_id": "CL-4",
+    "pass_": true,
+    "category": "PASS",
+    "message": "Font embedding configured",
+    "line": null
+  },
+  {
+    "check_id": "CL-5",
+    "pass_": true,
+    "category": "PASS",
+    "message": "Spine linewidth 0.6pt in range",
+    "line": null
+  },
+  {
+    "check_id": "CL-6",
+    "pass_": true,
+    "category": "PASS",
+    "message": "Ticks outward",
+    "line": null
+  },
+  {
+    "check_id": "CL-7",
+    "pass_": true,
+    "category": "PASS",
+    "message": "Vector + raster both exported",
+    "line": null
+  }
+]

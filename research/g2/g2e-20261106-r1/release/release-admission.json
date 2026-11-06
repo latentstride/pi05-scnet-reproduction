@@ -1,0 +1,19 @@
+{
+  "status": "ready",
+  "gpu_release_ready": true,
+  "cpu_release_validated": true,
+  "formal_score_eligible": false,
+  "approved_allocation_s": 12600,
+  "approved_node": "gnode39",
+  "run_lock_sha256": "f054d1495ec048ca9b0035eab110a1ce092390d63c7bbb3b5eeea39833aa61f0",
+  "launch_spec_sha256": "f332d4a17a0d3ff1cdb2c81150266ae4dc761d925799b158e15bbf28ce033bdb",
+  "cpu_evidence": {
+    "unit_tests": 174,
+    "synthetic_episodes": 13,
+    "real_static_native_seeds": 2,
+    "zero_physics_steps": true,
+    "model_files_receipt_bound": 28
+  },
+  "user_authorization": "2026-11-06 user explicitly: 提交作业吧",
+  "authorization_scope": "one native Aloha job; max 8 trials; 12600s; 1 GPU; historical cap CNY12.60"
+}

@@ -1,0 +1,24 @@
+{
+  "supervisor_timeout_s": 11620,
+  "graphics_timeout_s": 300,
+  "stage_timeout_s": {
+    "dynamic": 1900,
+    "aloha": 9600,
+    "statistics": 120
+  },
+  "trial_timeout_s": {
+    "E-native-w1": 1150,
+    "E-native-w4": 1150,
+    "E-native-w26": 1150,
+    "E-native-w31": 1150
+  },
+  "approved_allocation_s": 12600,
+  "approved_node": "gnode39",
+  "model_cpu_receipt": "<PROJECT_ROOT>/results/pace-preflight-02ff7dd/model/startup.json",
+  "model_cpu_receipt_sha256": "3d719b524ec6848897b17e71b16411e2fa2c221143c342dd127e24cf73c14e1a",
+  "seed_selection": "first two prequalified archive episodes in source order, before policy evaluation",
+  "expert_scope": "no ARX or expert stages in native timing experiment",
+  "approval_status": "approved_by_user",
+  "pilot_trials": 8,
+  "proposed_budget_at_historical_rate_yuan": 12.6
+}

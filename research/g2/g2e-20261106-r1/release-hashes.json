@@ -1,0 +1,8 @@
+{
+  "manifest_sha256": "fb24a4c727a45945ebe46faaa036f26837c1ab79c3e4d7590433c9f84ef6bfe5",
+  "run_lock_sha256": "f054d1495ec048ca9b0035eab110a1ce092390d63c7bbb3b5eeea39833aa61f0",
+  "cpu_release_validated": true,
+  "gpu_authorized": true,
+  "gpu_submitted": true,
+  "job_id": "127081074"
+}

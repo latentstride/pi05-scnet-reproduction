@@ -1,0 +1,169 @@
+{
+  "kind": "interface_smoke",
+  "score_eligible": false,
+  "task": "handover_block",
+  "backend": "checkpoint",
+  "environment": "robotwin",
+  "max_steps": 8,
+  "max_queries": 2,
+  "prefix": 4,
+  "control_steps": 8,
+  "queries_attempted": 2,
+  "scene_seed": 100000,
+  "scene_cache": {
+    "file": "/SCNET_PROJECT/source/PACE-fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/pace/configs/expert_scenes.json",
+    "sha256": "12ac49e3913308901113cc8ddd9f71f0987ce8c9ebd83f03c308c759bdbeb939"
+  },
+  "cache_split_seed": 0,
+  "cache_index": 0,
+  "pace_revision": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+  "initial_poses": {
+    "left_robot_base": {
+      "position": [
+        0.0,
+        -0.6499999761581421,
+        0.0
+      ],
+      "quaternion_wxyz": [
+        0.7071068286895752,
+        0.0,
+        0.0,
+        0.7071068286895752
+      ]
+    },
+    "right_robot_base": {
+      "position": [
+        0.0,
+        -0.6499999761581421,
+        0.0
+      ],
+      "quaternion_wxyz": [
+        0.7071068286895752,
+        0.0,
+        0.0,
+        0.7071068286895752
+      ]
+    },
+    "block": {
+      "position": [
+        -0.1521603763103485,
+        0.2279314547777176,
+        0.8400001525878906
+      ],
+      "quaternion_wxyz": [
+        0.9719521403312683,
+        2.1625764645705203e-07,
+        -3.435390226513846e-06,
+        0.23517878353595734
+      ]
+    },
+    "target": {
+      "position": [
+        0.16532817482948303,
+        0.16106395423412323,
+        0.7409999966621399
+      ],
+      "quaternion_wxyz": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "table": {
+      "position": [
+        0.0,
+        0.0,
+        0.7400000095367432
+      ],
+      "quaternion_wxyz": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "prompt": "Grab the red block with the left arm.",
+  "initial_take_action_cnt": 0,
+  "take_action_cnt": 8,
+  "effective_step_limit": 8,
+  "observations": 9,
+  "queries_received": 2,
+  "arm_joint_names": [
+    [
+      "fl_joint1",
+      "fl_joint2",
+      "fl_joint3",
+      "fl_joint4",
+      "fl_joint5",
+      "fl_joint6"
+    ],
+    [
+      "fr_joint1",
+      "fr_joint2",
+      "fr_joint3",
+      "fr_joint4",
+      "fr_joint5",
+      "fr_joint6"
+    ]
+  ],
+  "arm_joint_limits_rad": [
+    [
+      -10.0,
+      10.0
+    ],
+    [
+      -10.0,
+      10.0
+    ],
+    [
+      -10.0,
+      10.0
+    ],
+    [
+      -10.0,
+      10.0
+    ],
+    [
+      -10.0,
+      10.0
+    ],
+    [
+      -10.0,
+      10.0
+    ],
+    [
+      -10.0,
+      10.0
+    ],
+    [
+      -10.0,
+      10.0
+    ],
+    [
+      -10.0,
+      10.0
+    ],
+    [
+      -10.0,
+      10.0
+    ],
+    [
+      -10.0,
+      10.0
+    ],
+    [
+      -10.0,
+      10.0
+    ]
+  ],
+  "joint_limit_tolerance_rad": 0.02,
+  "distinct_frames": {
+    "cam_high": 9,
+    "cam_left_wrist": 9,
+    "cam_right_wrist": 9
+  },
+  "status": "complete",
+  "stop_reason": "control_step_limit"
+}

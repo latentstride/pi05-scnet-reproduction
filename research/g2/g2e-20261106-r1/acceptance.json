@@ -1,0 +1,40 @@
+{
+  "status": "cpu_preparation_accepted",
+  "gpu_submitted": false,
+  "gpu_authorized": false,
+  "formal_score_eligible": false,
+  "complete_prediction_blocks": 840,
+  "native_blocks": 750,
+  "tracking_physics_steps": 72123,
+  "selected_windows": [
+    26,
+    31
+  ],
+  "control_windows": [
+    1,
+    4
+  ],
+  "unit_tests_passed": 174,
+  "synthetic_episodes_passed": 13,
+  "final_package_tests_passed": 16,
+  "release_files_verified_locally_and_remotely": 82,
+  "original_files_sha256_unchanged": 2712,
+  "gpu_deferred": [
+    "native guarded TOPP dynamics",
+    "true model inference with trial RNG reset",
+    "complete physical handover/place",
+    "new on-node throughput and GPU peak"
+  ],
+  "proposed_one_allocation": {
+    "max_trials": 8,
+    "native_only": true,
+    "time_cap_s": 12600,
+    "historical_cost_scenario_yuan": 12.6
+  },
+  "release_hashes": {
+    "manifest_sha256": "42c5f51650d7be602bef143101bbda485c0ec42090c752febab2b80fb8bb21a1",
+    "run_lock_sha256": "f054d1495ec048ca9b0035eab110a1ce092390d63c7bbb3b5eeea39833aa61f0",
+    "cpu_release_validated": true,
+    "gpu_authorized": false
+  }
+}

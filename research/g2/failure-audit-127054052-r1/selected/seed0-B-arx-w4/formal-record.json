@@ -1,0 +1,160 @@
+{
+  "run_lock_sha256": "49281639cfcc7375e8f37be556b8c0d9349aeab1ebc969d1d7ca5638be759d67",
+  "episode_id": "seed0-B-arx-w4",
+  "task": "handover_block",
+  "seed": 0,
+  "comparison_id": "transfer-w4",
+  "pair_id": "paired-10g-00",
+  "condition": {
+    "id": "B-arx-w4",
+    "embodiment": "arx-x5",
+    "action_source": "target_policy",
+    "checkpoint": {
+      "id": "pi05_robotwin_handover_block",
+      "revision": "17ef545270cf26ed81169893b60f845f80ce6557",
+      "manifest_sha256": "835d60676236e69276032f7bc1ea4837eb6fcda6d4f3dbab2043965063a3d97b",
+      "norm_stats_sha256": "8a1f114a8873dfa0788c7f512851ee3063224ef2b8af270421076a2e4e544960"
+    },
+    "expert_representation": null,
+    "execution": "qpos",
+    "window_actions": 4,
+    "config_sha256": "f85fcae27c62c7c2aff5115e37880d718bdc3fa8597f384c9f303ddc185b2788",
+    "observation_mapping": "arx_proxy_v1",
+    "action_mapping": "arx_quintic_contact_v1"
+  },
+  "environment": {
+    "runtime_id": "robotwin-cu122-scnet",
+    "robotwin_revision": "PACE-vendored-fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+    "pace_revision": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+    "assets_revision": "5ebfc07c82814757168bdb3f2b7ad4a9bec18f58afc28318f49e61af117122f2",
+    "scene_config_sha256": "5439712296d7e143d41f8e78b4ab86cd4fad7fb98f40f5f5abb067a462d17650",
+    "embodiment_config_sha256": "0687270bb70652fb80072acbded5f134da4e930463024c856dd4f45aa5f35d03"
+  },
+  "match_status": "matched",
+  "schema_version": 1,
+  "data_kind": "formal",
+  "initial": {
+    "robot_base_world": {
+      "left": [
+        -0.30000001192092896,
+        -0.3499999940395355,
+        0.7839999794960022,
+        0.7071067811865476,
+        0.0,
+        0.0,
+        0.7071067811865475
+      ],
+      "right": [
+        0.30000001192092896,
+        -0.3499999940395355,
+        0.7839999794960022,
+        0.7071067811865476,
+        0.0,
+        0.0,
+        0.7071067811865475
+      ]
+    },
+    "task_frame_world": [
+      0.0,
+      0.0,
+      0.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "actual_arm_qpos_rad": {
+      "left": [
+        -0.26346591114997864,
+        -0.6305378675460815,
+        0.1571831852197647,
+        -0.7877228260040283,
+        -0.28336942195892334,
+        -1.3242606655694544e-05
+      ],
+      "right": [
+        -0.6324052214622498,
+        -0.6228002905845642,
+        0.1452883630990982,
+        -0.7680932283401489,
+        -0.6423773765563965,
+        -1.4833736713626422e-05
+      ]
+    },
+    "actual_gripper": {
+      "left": 0.999999994581396,
+      "right": 0.999999994581396
+    },
+    "objects_task": {
+      "block": [
+        -0.17331258952617645,
+        0.19793014228343964,
+        0.840000569820404,
+        0.9939092006006811,
+        5.213939510099557e-06,
+        -5.030996466065737e-06,
+        0.11020209121799367
+      ],
+      "target": [
+        0.11306939274072647,
+        0.1510109156370163,
+        0.7409999966621399,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "table": [
+        0.0,
+        0.0,
+        0.7400000095367432,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "reset_fixture_sha256": "77629daa82a44c540ab08e35e25ec7f124167a909ff5c9251280c2bbabae2a43",
+    "workspace_check_id": "locked_initial_real_scene_fcl_v1",
+    "common_workspace_pass": true
+  },
+  "outcome": "planning_failed",
+  "failure": {
+    "stage": "planning",
+    "code": "collision",
+    "detail": "all temporally admissible IK pairs collide",
+    "step": 24,
+    "artifact": "<PROJECT_ROOT>/results/pace-g2-127054052/trials/seed0-B-arx-w4/events.jsonl"
+  },
+  "episode_artifact": "<PROJECT_ROOT>/results/pace-g2-127054052/trials/seed0-B-arx-w4",
+  "metrics": {
+    "trajectory": {
+      "reference_id": "per_tick_drive_tracking_v1",
+      "n": 9370,
+      "position_rmse_m": 0.0015437065286566765,
+      "position_p95_m": 0.0031423085915139736,
+      "orientation_mean_deg": 0.11147247394585066,
+      "orientation_p95_deg": 0.33951573256909556
+    },
+    "planning": {
+      "attempts": 7,
+      "failures": 1
+    },
+    "limits": null,
+    "gripper": null,
+    "inference": {
+      "calls": 7,
+      "wall_s": 5.3145412504673
+    },
+    "control": {
+      "calls": 937,
+      "wall_s": 26.854300431907177
+    },
+    "actions": {
+      "windows": 7,
+      "requested": 28,
+      "executed": 24,
+      "sim_elapsed_s": 18.740000890102237
+    }
+  }
+}

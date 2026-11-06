@@ -1,0 +1,691 @@
+{
+  "data_kind": "diagnostic",
+  "task": "handover_block",
+  "scene_seed": 1,
+  "episode_info": {},
+  "prompt": "Pick up the red block with the left arm, hand it to the right arm, and place it on the target.",
+  "window": 31,
+  "max_actions": 300,
+  "timeout_s": 1150,
+  "budget_scope": "common 1150s cooperative / 1200s process / 25000 physics-step ceilings",
+  "calibration": {
+    "aloha-agilex": {
+      "left": {
+        "finger_names": [
+          "fl_joint7",
+          "fl_joint8"
+        ],
+        "closed_m": [
+          0.0,
+          0.0
+        ],
+        "opened_m": [
+          0.045,
+          0.045
+        ],
+        "grip_source": "g2_URDF_endpoint_intersection_v1:666db42545eee002accf051d7452e7dab10cf85c89595e84d961d2f561b38eaa",
+        "instance": "bound_to_actual_articulation_after_setup",
+        "child_joint": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "tcp_tool": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "id": "nominal_RoboTwin_TCP_v1:097c59fb19a7b482249c6097df8319586ea7cfd268c015516f103b289a7e761a",
+        "geometry_only": true,
+        "contact_dynamics_verified": false
+      },
+      "right": {
+        "finger_names": [
+          "fr_joint7",
+          "fr_joint8"
+        ],
+        "closed_m": [
+          0.0,
+          0.0
+        ],
+        "opened_m": [
+          0.045,
+          0.045
+        ],
+        "grip_source": "g2_URDF_endpoint_intersection_v1:666db42545eee002accf051d7452e7dab10cf85c89595e84d961d2f561b38eaa",
+        "instance": "bound_to_actual_articulation_after_setup",
+        "child_joint": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "tcp_tool": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "id": "nominal_RoboTwin_TCP_v1:097c59fb19a7b482249c6097df8319586ea7cfd268c015516f103b289a7e761a",
+        "geometry_only": true,
+        "contact_dynamics_verified": false
+      }
+    },
+    "ARX-X5": {
+      "left": {
+        "finger_names": [
+          "joint7",
+          "joint8"
+        ],
+        "closed_m": [
+          0.0,
+          0.0
+        ],
+        "opened_m": [
+          0.044,
+          0.044
+        ],
+        "grip_source": "g2_URDF_endpoint_intersection_v1:8756caa09448b92e2d21e22e6ceb3b7a3eddff918d699ed5e331172bebc89ba8",
+        "instance": "bound_to_actual_articulation_after_setup",
+        "child_joint": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "tcp_tool": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "id": "nominal_RoboTwin_TCP_v1:7aaa308a1a5b6a213d914db86ba09ddd6252f25cb498ac9a148bfa6c7166a423",
+        "geometry_only": true,
+        "contact_dynamics_verified": false
+      },
+      "right": {
+        "finger_names": [
+          "joint7",
+          "joint8"
+        ],
+        "closed_m": [
+          0.0,
+          0.0
+        ],
+        "opened_m": [
+          0.044,
+          0.044
+        ],
+        "grip_source": "g2_URDF_endpoint_intersection_v1:8756caa09448b92e2d21e22e6ceb3b7a3eddff918d699ed5e331172bebc89ba8",
+        "instance": "bound_to_actual_articulation_after_setup",
+        "child_joint": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "tcp_tool": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "id": "nominal_RoboTwin_TCP_v1:7aaa308a1a5b6a213d914db86ba09ddd6252f25cb498ac9a148bfa6c7166a423",
+        "geometry_only": true,
+        "contact_dynamics_verified": false
+      }
+    }
+  },
+  "endpoint_evidence": {
+    "aloha-agilex": {
+      "left": {
+        "urdf_sha256": "097c59fb19a7b482249c6097df8319586ea7cfd268c015516f103b289a7e761a",
+        "configured_closed_m": -0.01,
+        "configured_open_m": 0.045,
+        "urdf_finger_limits_m": [
+          [
+            0.0,
+            0.04765
+          ],
+          [
+            0.0,
+            0.04765
+          ]
+        ],
+        "rule": "intersect configured endpoint with each URDF prismatic interval",
+        "final_closed_m": [
+          0.0,
+          0.0
+        ],
+        "final_opened_m": [
+          0.045,
+          0.045
+        ],
+        "calibration_scope": "nominal simulation geometry; contact dynamics unverified"
+      },
+      "right": {
+        "urdf_sha256": "097c59fb19a7b482249c6097df8319586ea7cfd268c015516f103b289a7e761a",
+        "configured_closed_m": -0.01,
+        "configured_open_m": 0.045,
+        "urdf_finger_limits_m": [
+          [
+            0.0,
+            0.04765
+          ],
+          [
+            0.0,
+            0.04765
+          ]
+        ],
+        "rule": "intersect configured endpoint with each URDF prismatic interval",
+        "final_closed_m": [
+          0.0,
+          0.0
+        ],
+        "final_opened_m": [
+          0.045,
+          0.045
+        ],
+        "calibration_scope": "nominal simulation geometry; contact dynamics unverified"
+      }
+    },
+    "ARX-X5": {
+      "left": {
+        "urdf_sha256": "7aaa308a1a5b6a213d914db86ba09ddd6252f25cb498ac9a148bfa6c7166a423",
+        "configured_closed_m": -0.01,
+        "configured_open_m": 0.045,
+        "urdf_finger_limits_m": [
+          [
+            0.0,
+            0.044
+          ],
+          [
+            0.0,
+            0.044
+          ]
+        ],
+        "rule": "intersect configured endpoint with each URDF prismatic interval",
+        "final_closed_m": [
+          0.0,
+          0.0
+        ],
+        "final_opened_m": [
+          0.044,
+          0.044
+        ],
+        "calibration_scope": "nominal simulation geometry; contact dynamics unverified"
+      },
+      "right": {
+        "urdf_sha256": "7aaa308a1a5b6a213d914db86ba09ddd6252f25cb498ac9a148bfa6c7166a423",
+        "configured_closed_m": -0.01,
+        "configured_open_m": 0.045,
+        "urdf_finger_limits_m": [
+          [
+            0.0,
+            0.044
+          ],
+          [
+            0.0,
+            0.044
+          ]
+        ],
+        "rule": "intersect configured endpoint with each URDF prismatic interval",
+        "final_closed_m": [
+          0.0,
+          0.0
+        ],
+        "final_opened_m": [
+          0.044,
+          0.044
+        ],
+        "calibration_scope": "nominal simulation geometry; contact dynamics unverified"
+      }
+    }
+  },
+  "world_task": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0
+  ],
+  "source_world_task": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0
+  ],
+  "source_base_world": [
+    [
+      0.0,
+      -0.6499999761581421,
+      0.0,
+      0.7071068286895752,
+      0.0,
+      0.0,
+      0.7071068286895752
+    ],
+    [
+      0.0,
+      -0.6499999761581421,
+      0.0,
+      0.7071068286895752,
+      0.0,
+      0.0,
+      0.7071068286895752
+    ]
+  ],
+  "source_proxy_seed_rad": [
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  ],
+  "source_proxy_velocity_rad_s": [
+    [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ]
+  ],
+  "arx_base_distance_m": 0.6,
+  "control_period_s": 0.02,
+  "collision_joint_step_rad": 0.02,
+  "collision_finger_step_m": 0.001,
+  "max_plan_ticks": 2000,
+  "control_limits": {
+    "source": "G2 experiment-imposed simulation command bounds v1; not manufacturer ratings",
+    "arm_velocity_rad_s": [
+      [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5
+      ],
+      [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5
+      ]
+    ],
+    "arm_acceleration_rad_s2": [
+      [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    ],
+    "finger_velocity_m_s": [
+      [
+        0.03,
+        0.03
+      ],
+      [
+        0.03,
+        0.03
+      ]
+    ],
+    "finger_acceleration_m_s2": [
+      [
+        0.1,
+        0.1
+      ],
+      [
+        0.1,
+        0.1
+      ]
+    ]
+  },
+  "tracking_position_limit_m": 0.03,
+  "tracking_angle_limit_deg": 10,
+  "grip_rule": "clip",
+  "grip_max_clip": 0.01,
+  "native_grip_max_clip": 0.01,
+  "contact_mode": "g2e_native_measured_contact_v1",
+  "reset_fixture": {
+    "task": "handover_block",
+    "candidate_id": "expert-reset-1",
+    "formal_pair_id": "paired-10g-01",
+    "source_reference_sha256": "94b389c9ffe2fe9c1a612e5f3524a0d44416ccfdd063296881c783356cd8c8c0",
+    "block_mass_kg": 0.009999999776482582,
+    "objects_world": {
+      "block": [
+        -0.07437734305858612,
+        0.006845563184469938,
+        0.8400006890296936,
+        0.9922851920127869,
+        6.059396582713816e-06,
+        -4.955274107487639e-06,
+        0.12397672981023788
+      ],
+      "target": [
+        0.1297152191400528,
+        0.19003723561763763,
+        0.7409999966621399,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "table": [
+        0,
+        0,
+        0.74,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    "robots": {
+      "aloha-agilex": {
+        "left": {
+          "base_world": [
+            0.0,
+            -0.6499999761581421,
+            0.0,
+            0.7071068286895752,
+            0.0,
+            0.0,
+            0.7071068286895752
+          ],
+          "q_rad": [
+            -3.016260308186247e-08,
+            -5.668539984071685e-07,
+            -4.835977051698137e-06,
+            7.702591631186806e-08,
+            4.6315946633512795e-07,
+            -8.158984883266385e-07
+          ],
+          "fingers_m": [
+            0.044236842542886734,
+            0.044238295406103134
+          ]
+        },
+        "right": {
+          "base_world": [
+            0.0,
+            -0.6499999761581421,
+            0.0,
+            0.7071068286895752,
+            0.0,
+            0.0,
+            0.7071068286895752
+          ],
+          "q_rad": [
+            -3.258066882949606e-08,
+            -5.65274206110189e-07,
+            -4.838918357563671e-06,
+            7.693390813301448e-08,
+            4.6469963876916154e-07,
+            -8.163781899384048e-07
+          ],
+          "fingers_m": [
+            0.04423683509230614,
+            0.044238295406103134
+          ]
+        }
+      },
+      "ARX-X5": {
+        "left": {
+          "base_world": [
+            -0.30000001192092896,
+            -0.3499999940395355,
+            0.7839999794960022,
+            0.7071068286895752,
+            0.0,
+            0.0,
+            0.7071068286895752
+          ],
+          "q_rad": [
+            -0.26346591114997864,
+            -0.6305378675460815,
+            0.1571831852197647,
+            -0.7877228260040283,
+            -0.28336942195892334,
+            -1.3242606655694544e-05
+          ],
+          "fingers_m": [
+            0.04399999976158142,
+            0.04399999976158142
+          ]
+        },
+        "right": {
+          "base_world": [
+            0.30000001192092896,
+            -0.3499999940395355,
+            0.7839999794960022,
+            0.7071068286895752,
+            0.0,
+            0.0,
+            0.7071068286895752
+          ],
+          "q_rad": [
+            -0.6324052214622498,
+            -0.6228002905845642,
+            0.1452883630990982,
+            -0.7680932283401489,
+            -0.6423773765563965,
+            -1.4833736713626422e-05
+          ],
+          "fingers_m": [
+            0.04399999976158142,
+            0.04399999976158142
+          ]
+        }
+      }
+    }
+  },
+  "formal_release_ready": false,
+  "embodiment": "aloha-agilex",
+  "condition": "E-native-w31",
+  "episode_id": "g2e-seed1-native-w31",
+  "execution_protocol": "g2e_native_guarded_prefix_v1",
+  "policy_rng_seed": 20261107
+}

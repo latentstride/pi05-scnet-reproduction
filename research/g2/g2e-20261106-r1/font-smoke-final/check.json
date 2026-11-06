@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "font": {
+    "path": "/System/Library/Fonts/STHeiti Light.ttc",
+    "family": "Heiti SC",
+    "glyphs_checked": "中文测量单位预测残差模型基线改进值"
+  },
+  "png": {
+    "path": "research/g2/g2e-20261106-r1/font-smoke-final/chinese_font_smoke.png",
+    "ok": true,
+    "size": [
+      1204,
+      888
+    ],
+    "variance": 1800.5907242737771,
+    "margin": 27,
+    "checks": {
+      "nonblank": true,
+      "scaling": true,
+      "clipping": true,
+      "grayscale": true,
+      "overlap": "manual_visual_review_required"
+    }
+  },
+  "pdf": {
+    "path": "research/g2/g2e-20261106-r1/font-smoke-final/chinese_font_smoke.pdf",
+    "ok": true
+  },
+  "glyph_warnings": []
+}

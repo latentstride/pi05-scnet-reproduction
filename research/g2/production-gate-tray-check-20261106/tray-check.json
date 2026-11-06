@@ -1,0 +1,376 @@
+{
+  "first_impulse_tick": 28157,
+  "scope": "archived poses and drive targets checked with real FCL; no dynamic replay",
+  "records": [
+    {
+      "tick": 28000,
+      "actual_fingers": [
+        [
+          0.043900132179260254,
+          0.04399997368454933
+        ],
+        [
+          0.02933209016919136,
+          0.029801497235894203
+        ]
+      ],
+      "drive_fingers": [
+        [
+          0.04399999976158142,
+          0.04399999976158142
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "requested_right_gripper": 0.0,
+      "measured_clear": true,
+      "measured_blocked": [],
+      "projected_fingers": [
+        [
+          0.04399999976158142,
+          0.04399999976158142
+        ],
+        [
+          0.02885020412566064,
+          0.029360768306435147
+        ]
+      ],
+      "command_clear": true,
+      "command_blocked": []
+    },
+    {
+      "tick": 28080,
+      "actual_fingers": [
+        [
+          0.043907612562179565,
+          0.04399997368454933
+        ],
+        [
+          0.02932271920144558,
+          0.02981083281338215
+        ]
+      ],
+      "drive_fingers": [
+        [
+          0.04399999976158142,
+          0.04399999976158142
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "requested_right_gripper": 0.0,
+      "measured_clear": true,
+      "measured_blocked": [],
+      "projected_fingers": [
+        [
+          0.04399999976158142,
+          0.04399999976158142
+        ],
+        [
+          0.02884086779562267,
+          0.029370087122352593
+        ]
+      ],
+      "command_clear": true,
+      "command_blocked": []
+    },
+    {
+      "tick": 28140,
+      "actual_fingers": [
+        [
+          0.04391242563724518,
+          0.043999966233968735
+        ],
+        [
+          0.029332643374800682,
+          0.029801419004797935
+        ]
+      ],
+      "drive_fingers": [
+        [
+          0.04399999976158142,
+          0.04399999976158142
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "requested_right_gripper": 0.0,
+      "measured_clear": true,
+      "measured_blocked": [],
+      "projected_fingers": [
+        [
+          0.04399999976158142,
+          0.04399999976158142
+        ],
+        [
+          0.028850688565444215,
+          0.029360206183146904
+        ]
+      ],
+      "command_clear": true,
+      "command_blocked": []
+    },
+    {
+      "tick": 28160,
+      "actual_fingers": [
+        [
+          0.04391385242342949,
+          0.043999966233968735
+        ],
+        [
+          0.02925933711230755,
+          0.029857926070690155
+        ]
+      ],
+      "drive_fingers": [
+        [
+          0.04399999976158142,
+          0.04399999976158142
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "requested_right_gripper": 0.0,
+      "measured_clear": false,
+      "measured_blocked": [
+        {
+          "collision_type": "self_sceneobject",
+          "object_name1": "arx_right_15",
+          "link_name1": "link7",
+          "object_name2": "target_box_27",
+          "link_name2": "target_box_27",
+          "max_penetration_m": 9.186236979985551e-07
+        }
+      ],
+      "projected_fingers": [
+        [
+          0.04399999976158142,
+          0.04399999976158142
+        ],
+        [
+          0.028783527620244817,
+          0.029433250042939108
+        ]
+      ],
+      "command_clear": false,
+      "command_blocked": [
+        {
+          "collision_type": "self_sceneobject",
+          "object_name1": "arx_right_15",
+          "link_name1": "link7",
+          "object_name2": "target_box_27",
+          "link_name2": "target_box_27",
+          "max_penetration_m": 0.0014029520098119974
+        },
+        {
+          "collision_type": "self_sceneobject",
+          "object_name1": "arx_right_15",
+          "link_name1": "link8",
+          "object_name2": "target_box_27",
+          "link_name2": "target_box_27",
+          "max_penetration_m": 3.510714304866269e-05
+        }
+      ]
+    },
+    {
+      "tick": 28180,
+      "actual_fingers": [
+        [
+          0.04391523450613022,
+          0.043999966233968735
+        ],
+        [
+          0.029083196073770523,
+          0.030058272182941437
+        ]
+      ],
+      "drive_fingers": [
+        [
+          0.04399999976158142,
+          0.04399999976158142
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "requested_right_gripper": 0.0,
+      "measured_clear": false,
+      "measured_blocked": [
+        {
+          "collision_type": "self_sceneobject",
+          "object_name1": "arx_right_15",
+          "link_name1": "link7",
+          "object_name2": "target_box_27",
+          "link_name2": "target_box_27",
+          "max_penetration_m": 5.818466775053821e-07
+        }
+      ],
+      "projected_fingers": [
+        [
+          0.04399999976158142,
+          0.04399999976158142
+        ],
+        [
+          0.028583861170477575,
+          0.029623706019573284
+        ]
+      ],
+      "command_clear": false,
+      "command_blocked": [
+        {
+          "collision_type": "self_sceneobject",
+          "object_name1": "arx_right_15",
+          "link_name1": "link7",
+          "object_name2": "target_box_27",
+          "link_name2": "target_box_27",
+          "max_penetration_m": 0.002153466921299696
+        },
+        {
+          "collision_type": "self_sceneobject",
+          "object_name1": "arx_right_15",
+          "link_name1": "link8",
+          "object_name2": "target_box_27",
+          "link_name2": "target_box_27",
+          "max_penetration_m": 0.0007946491241455078
+        }
+      ]
+    },
+    {
+      "tick": 28240,
+      "actual_fingers": [
+        [
+          0.04391908273100853,
+          0.043999966233968735
+        ],
+        [
+          0.02874726802110672,
+          0.03039555437862873
+        ]
+      ],
+      "drive_fingers": [
+        [
+          0.04399999976158142,
+          0.04399999976158142
+        ],
+        [
+          0.0007110295700840652,
+          0.0007110295700840652
+        ]
+      ],
+      "requested_right_gripper": 0.01615976336220347,
+      "measured_clear": false,
+      "measured_blocked": [
+        {
+          "collision_type": "self_sceneobject",
+          "object_name1": "arx_right_15",
+          "link_name1": "link7",
+          "object_name2": "target_box_27",
+          "link_name2": "target_box_27",
+          "max_penetration_m": 2.923440831636981e-07
+        }
+      ],
+      "projected_fingers": [
+        [
+          0.04399999976158142,
+          0.04399999976158142
+        ],
+        [
+          0.028247362705245443,
+          0.029962051125300822
+        ]
+      ],
+      "command_clear": false,
+      "command_blocked": [
+        {
+          "collision_type": "self_sceneobject",
+          "object_name1": "arx_right_15",
+          "link_name1": "link7",
+          "object_name2": "target_box_27",
+          "link_name2": "target_box_27",
+          "max_penetration_m": 0.00241145514883101
+        },
+        {
+          "collision_type": "self_sceneobject",
+          "object_name1": "arx_right_15",
+          "link_name1": "link8",
+          "object_name2": "target_box_27",
+          "link_name2": "target_box_27",
+          "max_penetration_m": 0.001053452491760254
+        }
+      ]
+    },
+    {
+      "tick": 28320,
+      "actual_fingers": [
+        [
+          0.04392332583665848,
+          0.043999966233968735
+        ],
+        [
+          0.02844659425318241,
+          0.030696986243128777
+        ]
+      ],
+      "drive_fingers": [
+        [
+          0.04399999976158142,
+          0.04399999976158142
+        ],
+        [
+          0.003324334742501378,
+          0.003324334742501378
+        ]
+      ],
+      "requested_right_gripper": 0.07555306160547352,
+      "measured_clear": false,
+      "measured_blocked": [
+        {
+          "collision_type": "self_sceneobject",
+          "object_name1": "arx_right_15",
+          "link_name1": "link7",
+          "object_name2": "target_box_27",
+          "link_name2": "target_box_27",
+          "max_penetration_m": 3.009756710525835e-07
+        }
+      ],
+      "projected_fingers": [
+        [
+          0.04399999976158142,
+          0.04399999976158142
+        ],
+        [
+          0.027946901999872428,
+          0.030262605787186203
+        ]
+      ],
+      "command_clear": false,
+      "command_blocked": [
+        {
+          "collision_type": "self_sceneobject",
+          "object_name1": "arx_right_15",
+          "link_name1": "link7",
+          "object_name2": "target_box_27",
+          "link_name2": "target_box_27",
+          "max_penetration_m": 0.0024114958941936493
+        },
+        {
+          "collision_type": "self_sceneobject",
+          "object_name1": "arx_right_15",
+          "link_name1": "link8",
+          "object_name2": "target_box_27",
+          "link_name2": "target_box_27",
+          "max_penetration_m": 0.0010486245155334473
+        }
+      ]
+    }
+  ]
+}

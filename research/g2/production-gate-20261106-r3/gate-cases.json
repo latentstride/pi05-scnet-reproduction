@@ -1,0 +1,788 @@
+[
+  {
+    "name": "original_10g_initial_matches_record",
+    "passed": true,
+    "joint_max_error": 0.0,
+    "block_pose_max_error": 0.0,
+    "actual_mass_kg": 0.009999999776482582
+  },
+  {
+    "name": "initial_measured_geometry_clear",
+    "passed": true,
+    "blocked": []
+  },
+  {
+    "name": "cross_arm_collision_rejected",
+    "passed": true,
+    "blocked": [
+      {
+        "collision_type": "self_self",
+        "object_name1": "arx_left_4",
+        "link_name1": "base_link",
+        "object_name2": "arx_right_15",
+        "link_name2": "base_link",
+        "max_penetration_m": 0.07647877931594849
+      },
+      {
+        "collision_type": "self_self",
+        "object_name1": "arx_left_4",
+        "link_name1": "base_link",
+        "object_name2": "arx_right_15",
+        "link_name2": "link1",
+        "max_penetration_m": 0.0016984499525278807
+      },
+      {
+        "collision_type": "self_self",
+        "object_name1": "arx_left_4",
+        "link_name1": "base_link",
+        "object_name2": "arx_right_15",
+        "link_name2": "link2",
+        "max_penetration_m": 0.02558036893606186
+      },
+      {
+        "collision_type": "self_self",
+        "object_name1": "arx_left_4",
+        "link_name1": "link1",
+        "object_name2": "arx_right_15",
+        "link_name2": "base_link",
+        "max_penetration_m": 0.0018362690461799502
+      },
+      {
+        "collision_type": "self_self",
+        "object_name1": "arx_left_4",
+        "link_name1": "link1",
+        "object_name2": "arx_right_15",
+        "link_name2": "link1",
+        "max_penetration_m": 0.08501482009887695
+      },
+      {
+        "collision_type": "self_self",
+        "object_name1": "arx_left_4",
+        "link_name1": "link1",
+        "object_name2": "arx_right_15",
+        "link_name2": "link2",
+        "max_penetration_m": 0.09030605852603912
+      },
+      {
+        "collision_type": "self_self",
+        "object_name1": "arx_left_4",
+        "link_name1": "link2",
+        "object_name2": "arx_right_15",
+        "link_name2": "base_link",
+        "max_penetration_m": 0.02368456870317459
+      },
+      {
+        "collision_type": "self_self",
+        "object_name1": "arx_left_4",
+        "link_name1": "link2",
+        "object_name2": "arx_right_15",
+        "link_name2": "link1",
+        "max_penetration_m": 0.08663218468427658
+      },
+      {
+        "collision_type": "self_self",
+        "object_name1": "arx_left_4",
+        "link_name1": "link2",
+        "object_name2": "arx_right_15",
+        "link_name2": "link2",
+        "max_penetration_m": 0.07571060210466385
+      },
+      {
+        "collision_type": "self_self",
+        "object_name1": "arx_left_4",
+        "link_name1": "link2",
+        "object_name2": "arx_right_15",
+        "link_name2": "link3",
+        "max_penetration_m": 0.018525395542383194
+      },
+      {
+        "collision_type": "self_self",
+        "object_name1": "arx_left_4",
+        "link_name1": "link3",
+        "object_name2": "arx_right_15",
+        "link_name2": "link2",
+        "max_penetration_m": 0.018741244450211525
+      },
+      {
+        "collision_type": "self_self",
+        "object_name1": "arx_left_4",
+        "link_name1": "link3",
+        "object_name2": "arx_right_15",
+        "link_name2": "link3",
+        "max_penetration_m": 0.03540351241827011
+      },
+      {
+        "collision_type": "self_self",
+        "object_name1": "arx_left_4",
+        "link_name1": "link3",
+        "object_name2": "arx_right_15",
+        "link_name2": "link4",
+        "max_penetration_m": 0.04827854409813881
+      },
+      {
+        "collision_type": "self_self",
+        "object_name1": "arx_left_4",
+        "link_name1": "link4",
+        "object_name2": "arx_right_15",
+        "link_name2": "link3",
+        "max_penetration_m": 0.04843558371067047
+      },
+      {
+        "collision_type": "self_self",
+        "object_name1": "arx_left_4",
+        "link_name1": "link4",
+        "object_name2": "arx_right_15",
+        "link_name2": "link4",
+        "max_penetration_m": 0.1163584440946579
+      },
+      {
+        "collision_type": "self_self",
+        "object_name1": "arx_left_4",
+        "link_name1": "link4",
+        "object_name2": "arx_right_15",
+        "link_name2": "link5",
+        "max_penetration_m": 0.0681731179356575
+      },
+      {
+        "collision_type": "self_self",
+        "object_name1": "arx_left_4",
+        "link_name1": "link5",
+        "object_name2": "arx_right_15",
+        "link_name2": "link4",
+        "max_penetration_m": 0.07171951979398727
+      },
+      {
+        "collision_type": "self_self",
+        "object_name1": "arx_left_4",
+        "link_name1": "link5",
+        "object_name2": "arx_right_15",
+        "link_name2": "link5",
+        "max_penetration_m": 0.10712897777557373
+      },
+      {
+        "collision_type": "self_self",
+        "object_name1": "arx_left_4",
+        "link_name1": "link5",
+        "object_name2": "arx_right_15",
+        "link_name2": "link6",
+        "max_penetration_m": 0.0011851071612909436
+      },
+      {
+        "collision_type": "self_self",
+        "object_name1": "arx_left_4",
+        "link_name1": "link6",
+        "object_name2": "arx_right_15",
+        "link_name2": "link5",
+        "max_penetration_m": 0.0023858798667788506
+      },
+      {
+        "collision_type": "self_self",
+        "object_name1": "arx_left_4",
+        "link_name1": "link6",
+        "object_name2": "arx_right_15",
+        "link_name2": "link6",
+        "max_penetration_m": 0.1680518388748169
+      },
+      {
+        "collision_type": "self_self",
+        "object_name1": "arx_left_4",
+        "link_name1": "link6",
+        "object_name2": "arx_right_15",
+        "link_name2": "link7",
+        "max_penetration_m": 0.007398658432066441
+      },
+      {
+        "collision_type": "self_self",
+        "object_name1": "arx_left_4",
+        "link_name1": "link6",
+        "object_name2": "arx_right_15",
+        "link_name2": "link8",
+        "max_penetration_m": 0.007792890537530184
+      },
+      {
+        "collision_type": "self_self",
+        "object_name1": "arx_left_4",
+        "link_name1": "link7",
+        "object_name2": "arx_right_15",
+        "link_name2": "link6",
+        "max_penetration_m": 0.00995995569974184
+      },
+      {
+        "collision_type": "self_self",
+        "object_name1": "arx_left_4",
+        "link_name1": "link7",
+        "object_name2": "arx_right_15",
+        "link_name2": "link7",
+        "max_penetration_m": 0.02504034712910652
+      },
+      {
+        "collision_type": "self_self",
+        "object_name1": "arx_left_4",
+        "link_name1": "link8",
+        "object_name2": "arx_right_15",
+        "link_name2": "link6",
+        "max_penetration_m": 0.009294235147535801
+      },
+      {
+        "collision_type": "self_self",
+        "object_name1": "arx_left_4",
+        "link_name1": "link8",
+        "object_name2": "arx_right_15",
+        "link_name2": "link8",
+        "max_penetration_m": 0.02482646517455578
+      },
+      {
+        "collision_type": "self_self",
+        "object_name1": "arx_right_15",
+        "link_name1": "base_link",
+        "object_name2": "arx_left_4",
+        "link_name2": "base_link",
+        "max_penetration_m": 0.07647877931594849
+      },
+      {
+        "collision_type": "self_self",
+        "object_name1": "arx_right_15",
+        "link_name1": "base_link",
+        "object_name2": "arx_left_4",
+        "link_name2": "link1",
+        "max_penetration_m": 0.0018362690461799502
+      },
+      {
+        "collision_type": "self_self",
+        "object_name1": "arx_right_15",
+        "link_name1": "base_link",
+        "object_name2": "arx_left_4",
+        "link_name2": "link2",
+        "max_penetration_m": 0.023684576153755188
+      },
+      {
+        "collision_type": "self_self",
+        "object_name1": "arx_right_15",
+        "link_name1": "link1",
+        "object_name2": "arx_left_4",
+        "link_name2": "base_link",
+        "max_penetration_m": 0.0016984499525278807
+      },
+      {
+        "collision_type": "self_self",
+        "object_name1": "arx_right_15",
+        "link_name1": "link1",
+        "object_name2": "arx_left_4",
+        "link_name2": "link1",
+        "max_penetration_m": 0.08501482009887695
+      },
+      {
+        "collision_type": "self_self",
+        "object_name1": "arx_right_15",
+        "link_name1": "link1",
+        "object_name2": "arx_left_4",
+        "link_name2": "link2",
+        "max_penetration_m": 0.08663218468427658
+      },
+      {
+        "collision_type": "self_self",
+        "object_name1": "arx_right_15",
+        "link_name1": "link2",
+        "object_name2": "arx_left_4",
+        "link_name2": "base_link",
+        "max_penetration_m": 0.025580374523997307
+      },
+      {
+        "collision_type": "self_self",
+        "object_name1": "arx_right_15",
+        "link_name1": "link2",
+        "object_name2": "arx_left_4",
+        "link_name2": "link1",
+        "max_penetration_m": 0.09030605852603912
+      },
+      {
+        "collision_type": "self_self",
+        "object_name1": "arx_right_15",
+        "link_name1": "link2",
+        "object_name2": "arx_left_4",
+        "link_name2": "link2",
+        "max_penetration_m": 0.07571059465408325
+      },
+      {
+        "collision_type": "self_self",
+        "object_name1": "arx_right_15",
+        "link_name1": "link2",
+        "object_name2": "arx_left_4",
+        "link_name2": "link3",
+        "max_penetration_m": 0.018741238862276077
+      },
+      {
+        "collision_type": "self_self",
+        "object_name1": "arx_right_15",
+        "link_name1": "link3",
+        "object_name2": "arx_left_4",
+        "link_name2": "link2",
+        "max_penetration_m": 0.018525393679738045
+      },
+      {
+        "collision_type": "self_self",
+        "object_name1": "arx_right_15",
+        "link_name1": "link3",
+        "object_name2": "arx_left_4",
+        "link_name2": "link3",
+        "max_penetration_m": 0.03540351241827011
+      },
+      {
+        "collision_type": "self_self",
+        "object_name1": "arx_right_15",
+        "link_name1": "link3",
+        "object_name2": "arx_left_4",
+        "link_name2": "link4",
+        "max_penetration_m": 0.04843558371067047
+      },
+      {
+        "collision_type": "self_self",
+        "object_name1": "arx_right_15",
+        "link_name1": "link4",
+        "object_name2": "arx_left_4",
+        "link_name2": "link3",
+        "max_penetration_m": 0.04827854409813881
+      },
+      {
+        "collision_type": "self_self",
+        "object_name1": "arx_right_15",
+        "link_name1": "link4",
+        "object_name2": "arx_left_4",
+        "link_name2": "link4",
+        "max_penetration_m": 0.1163584440946579
+      },
+      {
+        "collision_type": "self_self",
+        "object_name1": "arx_right_15",
+        "link_name1": "link4",
+        "object_name2": "arx_left_4",
+        "link_name2": "link5",
+        "max_penetration_m": 0.07168052345514297
+      },
+      {
+        "collision_type": "self_self",
+        "object_name1": "arx_right_15",
+        "link_name1": "link5",
+        "object_name2": "arx_left_4",
+        "link_name2": "link4",
+        "max_penetration_m": 0.0681731179356575
+      },
+      {
+        "collision_type": "self_self",
+        "object_name1": "arx_right_15",
+        "link_name1": "link5",
+        "object_name2": "arx_left_4",
+        "link_name2": "link5",
+        "max_penetration_m": 0.10712897777557373
+      },
+      {
+        "collision_type": "self_self",
+        "object_name1": "arx_right_15",
+        "link_name1": "link5",
+        "object_name2": "arx_left_4",
+        "link_name2": "link6",
+        "max_penetration_m": 0.003474391298368573
+      },
+      {
+        "collision_type": "self_self",
+        "object_name1": "arx_right_15",
+        "link_name1": "link6",
+        "object_name2": "arx_left_4",
+        "link_name2": "link5",
+        "max_penetration_m": 0.0011851072777062654
+      },
+      {
+        "collision_type": "self_self",
+        "object_name1": "arx_right_15",
+        "link_name1": "link6",
+        "object_name2": "arx_left_4",
+        "link_name2": "link6",
+        "max_penetration_m": 0.1680518388748169
+      },
+      {
+        "collision_type": "self_self",
+        "object_name1": "arx_right_15",
+        "link_name1": "link6",
+        "object_name2": "arx_left_4",
+        "link_name2": "link7",
+        "max_penetration_m": 0.00995995569974184
+      },
+      {
+        "collision_type": "self_self",
+        "object_name1": "arx_right_15",
+        "link_name1": "link6",
+        "object_name2": "arx_left_4",
+        "link_name2": "link8",
+        "max_penetration_m": 0.009294235147535801
+      },
+      {
+        "collision_type": "self_self",
+        "object_name1": "arx_right_15",
+        "link_name1": "link7",
+        "object_name2": "arx_left_4",
+        "link_name2": "link6",
+        "max_penetration_m": 0.007398658897727728
+      },
+      {
+        "collision_type": "self_self",
+        "object_name1": "arx_right_15",
+        "link_name1": "link7",
+        "object_name2": "arx_left_4",
+        "link_name2": "link7",
+        "max_penetration_m": 0.02504034899175167
+      },
+      {
+        "collision_type": "self_self",
+        "object_name1": "arx_right_15",
+        "link_name1": "link8",
+        "object_name2": "arx_left_4",
+        "link_name2": "link6",
+        "max_penetration_m": 0.007792890537530184
+      },
+      {
+        "collision_type": "self_self",
+        "object_name1": "arx_right_15",
+        "link_name1": "link8",
+        "object_name2": "arx_left_4",
+        "link_name2": "link8",
+        "max_penetration_m": 0.02482646517455578
+      }
+    ]
+  },
+  {
+    "name": "robot_tray_collision_rejected",
+    "passed": true,
+    "blocked": [
+      {
+        "collision_type": "self_sceneobject",
+        "object_name1": "arx_left_4",
+        "link_name1": "link6",
+        "object_name2": "target_box_27",
+        "link_name2": "target_box_27",
+        "max_penetration_m": 0.03743881359696388
+      },
+      {
+        "collision_type": "self_sceneobject",
+        "object_name1": "arx_left_4",
+        "link_name1": "link7",
+        "object_name2": "target_box_27",
+        "link_name2": "target_box_27",
+        "max_penetration_m": 0.09599284827709198
+      }
+    ]
+  },
+  {
+    "name": "projection_equivalent_single_holder",
+    "passed": true,
+    "optimized_fingers": [
+      [
+        0.029088318152025748,
+        0.029110526176793883
+      ],
+      [
+        0.04399999976158142,
+        0.04399999976158142
+      ]
+    ],
+    "legacy_fingers": [
+      [
+        0.029088318152025748,
+        0.029110526176793883
+      ],
+      [
+        0.04399999976158142,
+        0.04399999976158142
+      ]
+    ],
+    "optimized_object_contexts": 1,
+    "legacy_object_contexts": 36,
+    "optimized_s": 0.01039964472874999,
+    "legacy_s": 0.22153890505433083
+  },
+  {
+    "name": "closing_intent_separated_from_geometry",
+    "passed": true,
+    "checkpoint_tick": 9563,
+    "raw_drive": [
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.04399999976158142,
+        0.04399999976158142
+      ]
+    ],
+    "predicted_fingers": [
+      [
+        0.029088318152025748,
+        0.029110526176793883
+      ],
+      [
+        0.04399999976158142,
+        0.04399999976158142
+      ]
+    ],
+    "changes": [
+      {
+        "side": "left",
+        "finger": 0,
+        "requested_native_m": 0.0,
+        "predicted_contact_native_m": 0.029088318152025748,
+        "rule": "first_bounded_finger_block_contact",
+        "profile": "g2_contact_v1:bfc086ce3f2621e6914b226e791e6e8895de1a9560d6ef696c5055525f8ae8ef"
+      },
+      {
+        "side": "left",
+        "finger": 1,
+        "requested_native_m": 0.0,
+        "predicted_contact_native_m": 0.029110526176793883,
+        "rule": "first_bounded_finger_block_contact",
+        "profile": "g2_contact_v1:bfc086ce3f2621e6914b226e791e6e8895de1a9560d6ef696c5055525f8ae8ef"
+      }
+    ],
+    "raw_blocked": [
+      {
+        "collision_type": "self_sceneobject",
+        "object_name1": "arx_left_4",
+        "link_name1": "link7",
+        "object_name2": "box_26",
+        "link_name2": "box_26"
+      },
+      {
+        "collision_type": "self_sceneobject",
+        "object_name1": "arx_left_4",
+        "link_name1": "link8",
+        "object_name2": "box_26",
+        "link_name2": "box_26"
+      }
+    ],
+    "projected_blocked": []
+  },
+  {
+    "name": "carried_object_obstacle_rejected",
+    "passed": true,
+    "blocked": [
+      {
+        "collision_type": "held_object_environment",
+        "object_name1": "box_26",
+        "link_name1": "box_26",
+        "object_name2": "gate_probe_28",
+        "link_name2": "gate_probe_28",
+        "max_penetration_m": 0.040391296230123525
+      }
+    ]
+  },
+  {
+    "name": "candidate_object_pose_restored",
+    "passed": true
+  },
+  {
+    "name": "premature_donor_release_rejected",
+    "passed": true
+  },
+  {
+    "name": "projection_equivalent_two_holders",
+    "passed": true,
+    "optimized_fingers": [
+      [
+        0.02922025947897661,
+        0.02902079817907482
+      ],
+      [
+        0.02956460325505407,
+        0.029608958099845862
+      ]
+    ],
+    "legacy_fingers": [
+      [
+        0.02922025947897661,
+        0.02902079817907482
+      ],
+      [
+        0.02956460325505407,
+        0.029608958099845862
+      ]
+    ],
+    "optimized_object_contexts": 1,
+    "legacy_object_contexts": 64,
+    "optimized_s": 0.034859935753047466,
+    "legacy_s": 0.4408318609930575
+  },
+  {
+    "name": "release_before_withdrawal_barrier",
+    "passed": true
+  },
+  {
+    "name": "inconsistent_two_holder_chain_rejected",
+    "passed": true,
+    "blocked": [
+      {
+        "reason": "two holders imply inconsistent object poses"
+      }
+    ]
+  },
+  {
+    "name": "changed_scene_rejected_before_actuation",
+    "passed": true,
+    "result": {
+      "data_kind": "diagnostic",
+      "formal_score_eligible": false,
+      "episode_id": "gate-scene-change",
+      "condition": "B-arx-w1",
+      "window": 1,
+      "success": false,
+      "outcome": "control_error",
+      "requested": 1,
+      "executed": 0,
+      "queries": 1,
+      "inference_s": 0.0,
+      "planning_s": 0.04266208037734032,
+      "control_s": 0.00814079400151968,
+      "plan_calls": 1,
+      "plan_failures": 0,
+      "initial": {
+        "robot_base_world": {
+          "left": [
+            -0.30000001192092896,
+            -0.3499999940395355,
+            0.7839999794960022,
+            0.7071067811865476,
+            0.0,
+            0.0,
+            0.7071067811865475
+          ],
+          "right": [
+            0.30000001192092896,
+            -0.3499999940395355,
+            0.7839999794960022,
+            0.7071067811865476,
+            0.0,
+            0.0,
+            0.7071067811865475
+          ]
+        },
+        "actual_arm_qpos_rad": {
+          "left": [
+            -0.26346591114997864,
+            -0.6305378675460815,
+            0.1571831852197647,
+            -0.7877228260040283,
+            -0.28336942195892334,
+            -1.3242606655694544e-05
+          ],
+          "right": [
+            -0.6324052214622498,
+            -0.6228002905845642,
+            0.1452883630990982,
+            -0.7680932283401489,
+            -0.6423773765563965,
+            -1.4833736713626422e-05
+          ]
+        },
+        "actual_gripper": {
+          "left": 0.999999994581396,
+          "right": 0.999999994581396
+        },
+        "block_pose": [
+          -0.17331258952617645,
+          0.19793014228343964,
+          0.840000569820404,
+          0.9939092397689819,
+          5.21393940289272e-06,
+          -5.030996362620499e-06,
+          0.11020209640264511
+        ],
+        "actual_block_mass_kg": 0.009999999776482582,
+        "synthetic_cameras": true
+      },
+      "failure": {
+        "phase": "control",
+        "code": "collision",
+        "detail": "scene changed after planning"
+      },
+      "video": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r3/changed-scene/no-render-video",
+      "control_calls": 0,
+      "initial_sim_s": 0.0,
+      "elapsed_s": 3.784626955166459
+    },
+    "physics_ticks": 0
+  },
+  {
+    "name": "rejection_collision_rows_saved",
+    "passed": true,
+    "rejection_events": [
+      {
+        "phase": "control",
+        "elapsed_s": 3.7724786191247404,
+        "kind": "planning_gate_rejection",
+        "tick": 0,
+        "trajectory_tick": 1,
+        "sim_s": 0.0,
+        "target_arm": [
+          [
+            -0.26346591114997864,
+            -0.6305378675460815,
+            0.1571831852197647,
+            -0.7877228260040283,
+            -0.28336942195892334,
+            -1.3242606655694544e-05
+          ],
+          [
+            -0.6324052214622498,
+            -0.6228002905845642,
+            0.1452883630990982,
+            -0.7680932283401489,
+            -0.6423773765563965,
+            -1.4833736713626422e-05
+          ]
+        ],
+        "target_fingers": [
+          [
+            0.044,
+            0.044
+          ],
+          [
+            0.044,
+            0.044
+          ]
+        ],
+        "predicted_fingers": [
+          [
+            0.044,
+            0.044
+          ],
+          [
+            0.044,
+            0.044
+          ]
+        ],
+        "collisions": [
+          {
+            "collision_type": "self_sceneobject",
+            "object_name1": "arx_left_4",
+            "link_name1": "link7",
+            "object_name2": "gate_probe_28",
+            "link_name2": "gate_probe_28",
+            "max_penetration_m": 0.04775526747107506
+          }
+        ],
+        "control_call_count": 0,
+        "physics_step_count": 0
+      }
+    ]
+  },
+  {
+    "name": "rejection_dual_hold_and_cleanup",
+    "passed": true,
+    "hold_calls": 1,
+    "zero_velocity_targets": true
+  },
+  {
+    "name": "valid_production_prefix_advanced",
+    "passed": true,
+    "executed_actions": 250,
+    "physics_ticks": 27524,
+    "outcome": "timeout"
+  }
+]

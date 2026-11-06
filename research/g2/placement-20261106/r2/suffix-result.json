@@ -1,0 +1,260 @@
+{
+  "outcome": "passed",
+  "checkpoint_tick": 27524,
+  "checkpoint_scope": "archived joint/drive positions, block pose and velocity; joint velocities reset; contact rebuilt from actual physics",
+  "original_slip_anchor_preserved": true,
+  "approach_plan_s": 1.750303375069052,
+  "task_success": true,
+  "footprint_inside": true,
+  "block_delta_m": [
+    0.00016252211062237065,
+    -0.004046827321872115,
+    0.0002211821079254328
+  ],
+  "block_velocity_m_s": [
+    0.008359545841813087,
+    -0.0058127399533987045,
+    -0.00030461186543107033
+  ],
+  "angular_velocity_rad_s": [
+    0.057992443442344666,
+    0.083403080701828,
+    -6.769789615646005e-05
+  ],
+  "holder_state": {
+    "phase": "free_after_hold",
+    "holders": [],
+    "contact_fingers": {
+      "left": [],
+      "right": []
+    },
+    "stable_counts": {
+      "left": 0,
+      "right": 0
+    },
+    "saw_shared_hold": false,
+    "releasing": [],
+    "block_pose_task": [
+      [
+        0.9936272389418456,
+        -0.11271376654588774,
+        -0.0007189324333656587,
+        0.11316002160310745
+      ],
+      [
+        0.11270735577166949,
+        0.993609566089555,
+        -0.006089509855866497,
+        0.14635513722896576
+      ],
+      [
+        0.001400709735437179,
+        0.005969673891050648,
+        0.999981200326222,
+        0.8462193012237549
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "tool_block": {},
+    "tool_block_measured": {}
+  },
+  "phases": [
+    {
+      "phase": "approach",
+      "physics_steps": 270,
+      "wall_s": 10.291288947220892,
+      "control_calls": 54
+    },
+    {
+      "phase": "descent",
+      "physics_steps": 340,
+      "wall_s": 13.663906536065042,
+      "control_calls": 68
+    },
+    {
+      "phase": "release-0",
+      "physics_steps": 412,
+      "wall_s": 15.138216031715274,
+      "control_calls": 83
+    },
+    {
+      "phase": "release-1",
+      "physics_steps": 225,
+      "wall_s": 7.761285320855677,
+      "control_calls": 45
+    },
+    {
+      "phase": "retreat",
+      "physics_steps": 220,
+      "wall_s": 6.897074037697166,
+      "control_calls": 44
+    },
+    {
+      "phase": "hold-0",
+      "physics_steps": 5,
+      "wall_s": 0.1498426808975637,
+      "control_calls": 1
+    },
+    {
+      "phase": "hold-1",
+      "physics_steps": 5,
+      "wall_s": 0.147640909999609,
+      "control_calls": 1
+    },
+    {
+      "phase": "hold-2",
+      "physics_steps": 5,
+      "wall_s": 0.1483022109605372,
+      "control_calls": 1
+    },
+    {
+      "phase": "hold-3",
+      "physics_steps": 5,
+      "wall_s": 0.150575271807611,
+      "control_calls": 1
+    },
+    {
+      "phase": "hold-4",
+      "physics_steps": 5,
+      "wall_s": 0.17945363512262702,
+      "control_calls": 1
+    },
+    {
+      "phase": "hold-5",
+      "physics_steps": 5,
+      "wall_s": 0.15215451223775744,
+      "control_calls": 1
+    },
+    {
+      "phase": "hold-6",
+      "physics_steps": 5,
+      "wall_s": 0.17554191313683987,
+      "control_calls": 1
+    },
+    {
+      "phase": "hold-7",
+      "physics_steps": 5,
+      "wall_s": 0.18461535824462771,
+      "control_calls": 1
+    },
+    {
+      "phase": "hold-8",
+      "physics_steps": 5,
+      "wall_s": 0.18711734004318714,
+      "control_calls": 1
+    },
+    {
+      "phase": "hold-9",
+      "physics_steps": 5,
+      "wall_s": 0.1402184870094061,
+      "control_calls": 1
+    },
+    {
+      "phase": "hold-10",
+      "physics_steps": 5,
+      "wall_s": 0.18539792811498046,
+      "control_calls": 1
+    },
+    {
+      "phase": "hold-11",
+      "physics_steps": 5,
+      "wall_s": 0.15350661287084222,
+      "control_calls": 1
+    },
+    {
+      "phase": "hold-12",
+      "physics_steps": 5,
+      "wall_s": 0.1879549389705062,
+      "control_calls": 1
+    },
+    {
+      "phase": "hold-13",
+      "physics_steps": 5,
+      "wall_s": 0.14058174658566713,
+      "control_calls": 1
+    },
+    {
+      "phase": "hold-14",
+      "physics_steps": 5,
+      "wall_s": 0.11984386667609215,
+      "control_calls": 1
+    },
+    {
+      "phase": "hold-15",
+      "physics_steps": 5,
+      "wall_s": 0.12819311069324613,
+      "control_calls": 1
+    },
+    {
+      "phase": "hold-16",
+      "physics_steps": 5,
+      "wall_s": 0.18561707809567451,
+      "control_calls": 1
+    },
+    {
+      "phase": "hold-17",
+      "physics_steps": 5,
+      "wall_s": 0.1591309760697186,
+      "control_calls": 1
+    },
+    {
+      "phase": "hold-18",
+      "physics_steps": 5,
+      "wall_s": 0.14187106676399708,
+      "control_calls": 1
+    },
+    {
+      "phase": "hold-19",
+      "physics_steps": 5,
+      "wall_s": 0.14309647865593433,
+      "control_calls": 1
+    }
+  ],
+  "candidates": [
+    {
+      "height_m": 0.005,
+      "accepted": true,
+      "planning_s": 5.479735342785716
+    }
+  ],
+  "physics_steps": 1570,
+  "collision_checks": 2417,
+  "physical_tray_contacts": [
+    {
+      "tick": 1035,
+      "pair": [
+        "box",
+        "target_box"
+      ],
+      "body_ids": [
+        26,
+        27
+      ],
+      "points": [
+        {
+          "position": [
+            0.08024786412715912,
+            0.17343614995479584,
+            0.7459999918937683
+          ],
+          "normal": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "separation_m": 0.0004739859141409397,
+          "impulse": [
+            0.0,
+            0.0,
+            0.0026390799321234226
+          ]
+        }
+      ]
+    }
+  ]
+}

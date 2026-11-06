@@ -1,0 +1,7 @@
+{
+  "reason": "agent_superseded_slow_projection_with_exact_same_q_object_pose_context_optimization",
+  "pid": 44176,
+  "not_task_failure": true,
+  "signal": "SIGTERM_handled_by_episode_cleanup",
+  "time_utc": "2026-11-06T06:06:17.077397"
+}

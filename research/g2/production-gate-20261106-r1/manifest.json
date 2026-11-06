@@ -1,0 +1,1057 @@
+{
+  "gate-cases.json": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/gate-cases.json",
+    "bytes": 20812,
+    "sha256": "b649c1727ba319cdbfc350b71ce6a02c0fc60490de3e3002e0a800666dd88c55"
+  },
+  "acceptance.json": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/acceptance.json",
+    "bytes": 35230,
+    "sha256": "a54eae8cc73c840401735d6aac4307dcb5dc474955d369fa002bac4246e639af"
+  },
+  "live-episode/action-00001.npy": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/action-00001.npy",
+    "bytes": 240,
+    "sha256": "82463bda81e510925f163c24b7138fe7c8f4d93b29fd93624339569181770344"
+  },
+  "live-episode/action-00002.npy": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/action-00002.npy",
+    "bytes": 240,
+    "sha256": "82463bda81e510925f163c24b7138fe7c8f4d93b29fd93624339569181770344"
+  },
+  "live-episode/action-00003.npy": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/action-00003.npy",
+    "bytes": 240,
+    "sha256": "82463bda81e510925f163c24b7138fe7c8f4d93b29fd93624339569181770344"
+  },
+  "live-episode/plan-00004.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/plan-00004.npz",
+    "bytes": 3137,
+    "sha256": "7d7c784d62c5572a10d71ed89b12bc840ed2b24c02610fa16787f6c051a16eaa"
+  },
+  "live-episode/plan-00005.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/plan-00005.npz",
+    "bytes": 3867,
+    "sha256": "8d58604f2f79c960dd6454a4ed95decd22ee279cb6d8faf440ca1ca51a51539d"
+  },
+  "live-episode/plan-00006.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/plan-00006.npz",
+    "bytes": 4240,
+    "sha256": "a21e6e47c148aa29a698c4f89ee1e09615edc40ac4db9e06dc7f0227767ce88b"
+  },
+  "live-episode/plan-00007.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/plan-00007.npz",
+    "bytes": 4568,
+    "sha256": "6bf2a22c5f7baf340094571504953df05ad60a33b322b3a27cba48e4bdb7c8b9"
+  },
+  "live-episode/action-00008.npy": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/action-00008.npy",
+    "bytes": 240,
+    "sha256": "52ccc39fddbb0f4ad8d09af9fb214630aabb3b4b0ee10d874ee1823ba263f519"
+  },
+  "live-episode/action-00009.npy": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/action-00009.npy",
+    "bytes": 240,
+    "sha256": "66fa259313e31f9e824d97be0e66d02560459cec7f814938274df6b38230abd5"
+  },
+  "live-episode/plan-00010.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/plan-00010.npz",
+    "bytes": 5093,
+    "sha256": "934a58bd6888340f9f66aa3f4b8bf7ab7f1a333c5470176e437b1c0b6791baa7"
+  },
+  "live-episode/plan-00011.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/plan-00011.npz",
+    "bytes": 5231,
+    "sha256": "a2b20404b9e2cf0cce78f664e1271e180586cccd70ddb5275e0e6c578db92b4f"
+  },
+  "live-episode/plan-00012.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/plan-00012.npz",
+    "bytes": 5275,
+    "sha256": "0820bc9fec3379d6051b9b9277be5606764911eaaae4e18ffd8436bd21d4ff47"
+  },
+  "live-episode/plan-00013.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/plan-00013.npz",
+    "bytes": 5371,
+    "sha256": "7961ef72b8f305d523e3724f4e86178596c16e6c01a5c1b6fef40ec3ecfc5416"
+  },
+  "live-episode/action-00014.npy": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/action-00014.npy",
+    "bytes": 240,
+    "sha256": "59c492199253e311e3ce269e72b3113fbd3098aba73b395406167e59ac7dcd3c"
+  },
+  "live-episode/action-00015.npy": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/action-00015.npy",
+    "bytes": 240,
+    "sha256": "be80e48b8afe7c1f429adc52566b3aff756f88d5c796e3b95d79740d97034e5e"
+  },
+  "live-episode/action-00016.npy": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/action-00016.npy",
+    "bytes": 240,
+    "sha256": "b3b1cfca6f1620d914d062e0e2a771131fe20c38c7642582cf99fb8df490f7d9"
+  },
+  "live-episode/action-00017.npy": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/action-00017.npy",
+    "bytes": 240,
+    "sha256": "211eb737fbaf178157206b33747f9a5130bf0140c781006d60f9a0a9b251d784"
+  },
+  "live-episode/plan-00018.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/plan-00018.npz",
+    "bytes": 5442,
+    "sha256": "d3f78f423fdddc9b4ba43aa79ba07e1831f4b8e0625c26cda674ce2bcfc045e1"
+  },
+  "live-episode/plan-00019.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/plan-00019.npz",
+    "bytes": 5433,
+    "sha256": "288952292877ebaf837ec65b681b51761c20ba9828d229845dea6cc53c91c8e4"
+  },
+  "live-episode/action-00020.npy": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/action-00020.npy",
+    "bytes": 240,
+    "sha256": "4144a339b48925cc2462d345c4051bd202416b6a008f3f1c56004b962a562267"
+  },
+  "live-episode/action-00021.npy": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/action-00021.npy",
+    "bytes": 240,
+    "sha256": "eb5c8d998be44a7a858e325eb487c8e7f38eaf36238da6116a5172fc6a92e11b"
+  },
+  "live-episode/action-00022.npy": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/action-00022.npy",
+    "bytes": 240,
+    "sha256": "fdae506062bd080ffe5480348621e9df370ec0517f83f069e8dc2033527a2a7e"
+  },
+  "live-episode/action-00023.npy": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/action-00023.npy",
+    "bytes": 240,
+    "sha256": "a86363ee86872df4e98ae93a0428c2d021a03ab29daaf08a8dbcf354cb4092c6"
+  },
+  "live-episode/plan-00024.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/plan-00024.npz",
+    "bytes": 5435,
+    "sha256": "66007912f19694909d1afa4f3d9868204b93e6206b4f87ed6807a63efb70acbf"
+  },
+  "live-episode/plan-00025.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/plan-00025.npz",
+    "bytes": 5333,
+    "sha256": "3f9124477e710f92da2d53ee29cd7ab2f33b0377d3a1c313f6905e6d0f57c834"
+  },
+  "live-episode/plan-00026.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/plan-00026.npz",
+    "bytes": 5320,
+    "sha256": "52150528fab87655eb9c951f0d4b03138729f72d651f735e204564f304e202d0"
+  },
+  "live-episode/plan-00027.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/plan-00027.npz",
+    "bytes": 5229,
+    "sha256": "a3750b587ffcac43d6f1cd54103db8bc378f7ac6ee43416513df7145a19aae33"
+  },
+  "live-episode/action-00028.npy": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/action-00028.npy",
+    "bytes": 240,
+    "sha256": "983cc76f4fadcb7979f77403a0bdf0b82c445029476636f10a0a60fe56a65975"
+  },
+  "live-episode/action-00029.npy": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/action-00029.npy",
+    "bytes": 240,
+    "sha256": "4d259c4b27d35bb9eb0a00f1be8ae32435038ec68d55bc3a034ab9a67e9033c5"
+  },
+  "live-episode/plan-00030.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/plan-00030.npz",
+    "bytes": 5028,
+    "sha256": "d8de758899400493e63fa71f96b9b383f39eeaac5ca10a6b9be3e2425ae557aa"
+  },
+  "live-episode/plan-00031.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/plan-00031.npz",
+    "bytes": 4836,
+    "sha256": "8b57d3699df1a933be9e75d267ea9d565d03947ab6966005d9696c6b94e34e41"
+  },
+  "live-episode/plan-00032.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/plan-00032.npz",
+    "bytes": 4658,
+    "sha256": "7ea9f7b551c38727e72fc5948aea889f9b0ead32b304a1924aa12d3870b47198"
+  },
+  "live-episode/plan-00033.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/plan-00033.npz",
+    "bytes": 4308,
+    "sha256": "8254e506c363971f21d033de88a794c8f1cc724ee120f8932f2c1c922247306a"
+  },
+  "live-episode/action-00034.npy": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/action-00034.npy",
+    "bytes": 240,
+    "sha256": "6bcf088dcc3c1ab4614a961cb4af10e9251ab6b829a9b2f0e8697a9939d764ca"
+  },
+  "live-episode/action-00035.npy": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/action-00035.npy",
+    "bytes": 240,
+    "sha256": "d3d2da3a76a74fb7a43f34dd31a8e5b81702645a38037288b8cedfcf039328b9"
+  },
+  "live-episode/action-00036.npy": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/action-00036.npy",
+    "bytes": 240,
+    "sha256": "38fc70aecfd2da1fc0288eda4eee602a838093d6d23fd3131926c8ab379e5739"
+  },
+  "live-episode/action-00037.npy": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/action-00037.npy",
+    "bytes": 240,
+    "sha256": "0745f2dfecf4614fc7bd247cc52767d3fae7c229b84840b1abd699b9c7847702"
+  },
+  "live-episode/plan-00038.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/plan-00038.npz",
+    "bytes": 2996,
+    "sha256": "d89bef2be2f859fcd5b3e6a17fc50494da1ca2bc62568a4a33753d8e9766a01a"
+  },
+  "live-episode/plan-00039.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/plan-00039.npz",
+    "bytes": 2421,
+    "sha256": "5fb7becf7fc4ba1d076c193486d4412b136adb489efc2923de9ac97502889fcc"
+  },
+  "live-episode/plan-00040.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/plan-00040.npz",
+    "bytes": 2311,
+    "sha256": "6674680caf8681263874fffb5d890024a371f316117c294e0808fa32c4c5fc3b"
+  },
+  "live-episode/plan-00041.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/plan-00041.npz",
+    "bytes": 2229,
+    "sha256": "35928b81706cdc4b1a463cafa2af2a529bfc5a2f91385e2814646f7074f2598c"
+  },
+  "live-episode/plan-00042.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/plan-00042.npz",
+    "bytes": 2232,
+    "sha256": "d699743921ef4b1b3ef27ddaaf15842e0c9212779d894b188debe4fdd7783d89"
+  },
+  "live-episode/plan-00043.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/plan-00043.npz",
+    "bytes": 2727,
+    "sha256": "bedffabfde8879c970a43209684cbe77da7750f784def69990c0465656bb2043"
+  },
+  "live-episode/action-00044.npy": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/action-00044.npy",
+    "bytes": 240,
+    "sha256": "fd43af12487c3e4c5de73f3f8c382df6b10810c1c51211c8248269e83663a6e8"
+  },
+  "live-episode/action-00045.npy": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/action-00045.npy",
+    "bytes": 240,
+    "sha256": "a7efab7bc7f66c131796d5699acb04270b2e0929faa57e966b757baa9a0f2d17"
+  },
+  "live-episode/action-00046.npy": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/action-00046.npy",
+    "bytes": 240,
+    "sha256": "ab2f610bced94f55b27aecdac04435d4830aa2b91b97c852928365a7da247ec9"
+  },
+  "live-episode/action-00047.npy": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/action-00047.npy",
+    "bytes": 240,
+    "sha256": "ad7f746b570533628825c80ebe588ef27ea7630ec08af52756b069a39de96bc3"
+  },
+  "live-episode/plan-00048.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/plan-00048.npz",
+    "bytes": 3424,
+    "sha256": "1902dbdec89eccab9f344eabaf2e6673902b5630952685cbcfabd9a32500ab89"
+  },
+  "live-episode/plan-00049.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/plan-00049.npz",
+    "bytes": 3445,
+    "sha256": "e1e17d576d22fc8ca165b8f6c0d5d439ecc4afc30464f0ae831026ef97b64eed"
+  },
+  "live-episode/action-00050.npy": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/action-00050.npy",
+    "bytes": 240,
+    "sha256": "4b12a609f1bb1fdd7516a5ae984f014adc018b854b5b018fe736622e7bb65d85"
+  },
+  "live-episode/result.json": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/result.json",
+    "bytes": 1956,
+    "sha256": "31e8af38276e85749cdf986ae5e247094c3de09388e860d92c67a7456728f880"
+  },
+  "live-episode/plan-00001.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/plan-00001.npz",
+    "bytes": 1613,
+    "sha256": "173707145dbdc8f5148c4d5c6d2de214ffba8db76d17f12813e621ada6e05259"
+  },
+  "live-episode/plan-00002.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/plan-00002.npz",
+    "bytes": 1613,
+    "sha256": "aeadd3774d484478a120f3093890c6c516e42e72be37793ef5029dbf107491b9"
+  },
+  "live-episode/plan-00003.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/plan-00003.npz",
+    "bytes": 1611,
+    "sha256": "760de3d8b29ad54af2582df6da59e4e3693b77103f184c57ab91166ada64365c"
+  },
+  "live-episode/action-00004.npy": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/action-00004.npy",
+    "bytes": 240,
+    "sha256": "38d85fc67d55553a51fe45a2a59aba9275ca073c82104c0230615ebdf4f3ef73"
+  },
+  "live-episode/action-00005.npy": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/action-00005.npy",
+    "bytes": 240,
+    "sha256": "03ba17497cb8abe5eeeb40533e129caa344365bfb301c4615edb356c838c74bd"
+  },
+  "live-episode/action-00006.npy": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/action-00006.npy",
+    "bytes": 240,
+    "sha256": "4ddc6f86e333a605096f826350af4924aadab9920367a517f3c876f6910b951a"
+  },
+  "live-episode/action-00007.npy": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/action-00007.npy",
+    "bytes": 240,
+    "sha256": "5d1e83bcd6ae4d884ba1aad72fafb54da04a7549fe201a1d66527add9b8b58c8"
+  },
+  "live-episode/plan-00008.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/plan-00008.npz",
+    "bytes": 4858,
+    "sha256": "e87bd098ad0c6f83e1b8cdf0121953a2ba5e8e90498e9dfe553494fd4a06576e"
+  },
+  "live-episode/plan-00009.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/plan-00009.npz",
+    "bytes": 5056,
+    "sha256": "652f0d753edaf8cdde5838bebff9e7b25d5d9c215b73b6c6dc69cebc3991bba3"
+  },
+  "live-episode/action-00010.npy": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/action-00010.npy",
+    "bytes": 240,
+    "sha256": "e23151c9d9de294df7dd5fb4020d39b9136611b880eb0277c0a4d22284988126"
+  },
+  "live-episode/action-00011.npy": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/action-00011.npy",
+    "bytes": 240,
+    "sha256": "720514c353d022bdacb6a418dee78336decd4c483063d32232c45830516bc419"
+  },
+  "live-episode/action-00012.npy": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/action-00012.npy",
+    "bytes": 240,
+    "sha256": "5aaacd3489805bc95326399f98c1b8573f27cb8a79fe4b8bc9620b1b23b13fbe"
+  },
+  "live-episode/action-00013.npy": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/action-00013.npy",
+    "bytes": 240,
+    "sha256": "1b3ba979367a8580450d17a8403321582ea1f3a1a8099ff9c284b76916995729"
+  },
+  "live-episode/plan-00014.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/plan-00014.npz",
+    "bytes": 5463,
+    "sha256": "6ae1d39d7ac325281d1dac5deeed12f2e8ec2099db280d81aadda5c1a6276418"
+  },
+  "live-episode/plan-00015.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/plan-00015.npz",
+    "bytes": 5453,
+    "sha256": "6cc7351c3210979bd5f70d9a3851767d5df2f030a9b41bb66724860406e66881"
+  },
+  "live-episode/plan-00016.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/plan-00016.npz",
+    "bytes": 5451,
+    "sha256": "129e6877e10c786e4408626d95b4928ffbc3a101e956026f9e14cd70655ee981"
+  },
+  "live-episode/plan-00017.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/plan-00017.npz",
+    "bytes": 5462,
+    "sha256": "0116f903eafe7cdbacd0b56873fdace907276eea7755bc3545fd8f493576ce3b"
+  },
+  "live-episode/action-00018.npy": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/action-00018.npy",
+    "bytes": 240,
+    "sha256": "fc2bbd26bd95e2d6ae3400d99b22bb4f51f35e943a481e7266ece3e3a0077f79"
+  },
+  "live-episode/action-00019.npy": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/action-00019.npy",
+    "bytes": 240,
+    "sha256": "8f138570d7790fc17f818dcdd7400f7e6a84e424fabe2b6225c413172d36322e"
+  },
+  "live-episode/plan-00020.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/plan-00020.npz",
+    "bytes": 5429,
+    "sha256": "85d433e449f2ec4b05feda0d56b41e8d60ae1b5725f0b438fb9bdb426fa7d7af"
+  },
+  "live-episode/plan-00021.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/plan-00021.npz",
+    "bytes": 5435,
+    "sha256": "0318d9ffaf30dbbfa5f6f11bcca5d1830b69edcbcef0d134168d31cac53e6cdc"
+  },
+  "live-episode/plan-00022.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/plan-00022.npz",
+    "bytes": 5436,
+    "sha256": "946659d5947fc8f29d4a5d998bbf17a93d3d0a6859bdfb503f59bafa7648efbe"
+  },
+  "live-episode/plan-00023.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/plan-00023.npz",
+    "bytes": 5430,
+    "sha256": "6ec988e2c027d89780df0f660a2924782b5d482b3b6806c997590122bec8cada"
+  },
+  "live-episode/action-00024.npy": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/action-00024.npy",
+    "bytes": 240,
+    "sha256": "a73962c9c1b949d6d3f68c8261dd3daa8f51342376529b4af7c5415261afeac2"
+  },
+  "live-episode/action-00025.npy": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/action-00025.npy",
+    "bytes": 240,
+    "sha256": "01110982082a95239818234fc87ad3f101c4bd525dea259464e59102c45fcd48"
+  },
+  "live-episode/action-00026.npy": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/action-00026.npy",
+    "bytes": 240,
+    "sha256": "3609244afbdabeeac91838855467f28b86d4adcd4575e1d570d41c946d3b4c1f"
+  },
+  "live-episode/action-00027.npy": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/action-00027.npy",
+    "bytes": 240,
+    "sha256": "7b4357297adc40874f82fa707527c60384929a103ad8d12a610eac93d89d60a2"
+  },
+  "live-episode/plan-00028.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/plan-00028.npz",
+    "bytes": 5178,
+    "sha256": "dc083d09aa1a41a8031dc66479cd2d5bfe220a9f03926541a776ea009dc9ac92"
+  },
+  "live-episode/plan-00029.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/plan-00029.npz",
+    "bytes": 5037,
+    "sha256": "7236554bdc8ffef2773d44c5a96fa245c314b201ca5781a71e087b3d8c56ab73"
+  },
+  "live-episode/action-00030.npy": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/action-00030.npy",
+    "bytes": 240,
+    "sha256": "4fda9857b717843849f785a9786f75a960d376cd57cbd7833b1f2b71125c79ff"
+  },
+  "live-episode/action-00031.npy": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/action-00031.npy",
+    "bytes": 240,
+    "sha256": "bd946ed4e1ed16f4e1acc21d96e64c4379517d49cdaaa3399b97da372592b05a"
+  },
+  "live-episode/action-00032.npy": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/action-00032.npy",
+    "bytes": 240,
+    "sha256": "3f1b69bd29db1a149c4a4d325148240c86f6a364fafc59438f2f7b989909bf73"
+  },
+  "live-episode/action-00033.npy": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/action-00033.npy",
+    "bytes": 240,
+    "sha256": "246eb851ac4a530dc5d94a05ad024e3c7c214b096b331f0f6e658183d23173d4"
+  },
+  "live-episode/plan-00034.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/plan-00034.npz",
+    "bytes": 4227,
+    "sha256": "3f3f629996fe3983414b2665d2f30e465d14f4a3f506a60beef9933e71958354"
+  },
+  "live-episode/plan-00035.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/plan-00035.npz",
+    "bytes": 3989,
+    "sha256": "f97010ba9e67932c489712d0739d1c169b4c487977a55b550ff0f80b0276b423"
+  },
+  "live-episode/plan-00036.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/plan-00036.npz",
+    "bytes": 3693,
+    "sha256": "ec0057cad2b99c471a98eca9fa2d417baecd2f6eecc3141e5c6477a60635a7f6"
+  },
+  "live-episode/plan-00037.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/plan-00037.npz",
+    "bytes": 3469,
+    "sha256": "b147498303c097f3d49a25b40feab8ec0d563712da21e6b2898faa129420c815"
+  },
+  "live-episode/action-00038.npy": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/action-00038.npy",
+    "bytes": 240,
+    "sha256": "6ef4f3718de7ae4b02e476e5980105d9afeb3e4ee6a87d305d80192c4c9a5450"
+  },
+  "live-episode/action-00039.npy": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/action-00039.npy",
+    "bytes": 240,
+    "sha256": "6ef4f3718de7ae4b02e476e5980105d9afeb3e4ee6a87d305d80192c4c9a5450"
+  },
+  "live-episode/action-00040.npy": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/action-00040.npy",
+    "bytes": 240,
+    "sha256": "6ef4f3718de7ae4b02e476e5980105d9afeb3e4ee6a87d305d80192c4c9a5450"
+  },
+  "live-episode/action-00041.npy": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/action-00041.npy",
+    "bytes": 240,
+    "sha256": "6ef4f3718de7ae4b02e476e5980105d9afeb3e4ee6a87d305d80192c4c9a5450"
+  },
+  "live-episode/action-00042.npy": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/action-00042.npy",
+    "bytes": 240,
+    "sha256": "6ef4f3718de7ae4b02e476e5980105d9afeb3e4ee6a87d305d80192c4c9a5450"
+  },
+  "live-episode/action-00043.npy": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/action-00043.npy",
+    "bytes": 240,
+    "sha256": "bb6e5904bd2f688167e93025fd8ebfb9dd6fc246e5b72922a9b95144d9ac070a"
+  },
+  "live-episode/plan-00044.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/plan-00044.npz",
+    "bytes": 2557,
+    "sha256": "1ed2eccffeba6ccbade8edbb3117df178e7010dcb82298610c92f2a346d3cc57"
+  },
+  "live-episode/plan-00045.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/plan-00045.npz",
+    "bytes": 2961,
+    "sha256": "8da63cd1437d019f264cd755d9a724ba132dd612379ce017c9bf94c2335e4fb4"
+  },
+  "live-episode/plan-00046.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/plan-00046.npz",
+    "bytes": 3322,
+    "sha256": "d3e6b399b310378552cd097fc39b3ac85a45194134a0f6bda70f98fa0d87cd7e"
+  },
+  "live-episode/plan-00047.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/plan-00047.npz",
+    "bytes": 3423,
+    "sha256": "8c0e3ed9e241ba61b966bf594bccc0fded28d4614eca07085c877270ac397fe2"
+  },
+  "live-episode/action-00048.npy": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/action-00048.npy",
+    "bytes": 240,
+    "sha256": "46dcd89f1faae300c3454c8f3b1c2d94b3165b8b1679a3c4d51afa12f17c9adb"
+  },
+  "live-episode/action-00049.npy": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/action-00049.npy",
+    "bytes": 240,
+    "sha256": "93c7e4443cbbe2714d88c2b883f2a44caaf96f647fc36635fdd27c2be095dcc5"
+  },
+  "live-episode/plan-00050.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/plan-00050.npz",
+    "bytes": 3336,
+    "sha256": "402dd81841a6d722e91a8b973ce4e2d84dec4c31e0a3efc80771bde4f51d3cd3"
+  },
+  "live-episode/events.jsonl": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/events.jsonl",
+    "bytes": 23933695,
+    "sha256": "fe1eb6db3875783fdaa69cfe03c9994aa671447d59472d91c6bf01bf372d79e9"
+  },
+  "live-episode/initial.json": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/initial.json",
+    "bytes": 1150,
+    "sha256": "7ba0021cac93a3bff1d73528d3d3a781b78ebb7b87205135f1f87863305abe2f"
+  },
+  "live-episode/observation-00004.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/observation-00004.npz",
+    "bytes": 633,
+    "sha256": "29d00270a497cae2365c088d33957519211ccb842798dcc63aba713e4a50bec4"
+  },
+  "live-episode/observation-00005.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/observation-00005.npz",
+    "bytes": 633,
+    "sha256": "29d00270a497cae2365c088d33957519211ccb842798dcc63aba713e4a50bec4"
+  },
+  "live-episode/observation-00006.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/observation-00006.npz",
+    "bytes": 633,
+    "sha256": "29d00270a497cae2365c088d33957519211ccb842798dcc63aba713e4a50bec4"
+  },
+  "live-episode/observation-00007.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/observation-00007.npz",
+    "bytes": 633,
+    "sha256": "29d00270a497cae2365c088d33957519211ccb842798dcc63aba713e4a50bec4"
+  },
+  "live-episode/observation-00010.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/observation-00010.npz",
+    "bytes": 633,
+    "sha256": "29d00270a497cae2365c088d33957519211ccb842798dcc63aba713e4a50bec4"
+  },
+  "live-episode/observation-00011.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/observation-00011.npz",
+    "bytes": 633,
+    "sha256": "29d00270a497cae2365c088d33957519211ccb842798dcc63aba713e4a50bec4"
+  },
+  "live-episode/observation-00012.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/observation-00012.npz",
+    "bytes": 633,
+    "sha256": "29d00270a497cae2365c088d33957519211ccb842798dcc63aba713e4a50bec4"
+  },
+  "live-episode/observation-00013.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/observation-00013.npz",
+    "bytes": 633,
+    "sha256": "29d00270a497cae2365c088d33957519211ccb842798dcc63aba713e4a50bec4"
+  },
+  "live-episode/observation-00018.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/observation-00018.npz",
+    "bytes": 633,
+    "sha256": "29d00270a497cae2365c088d33957519211ccb842798dcc63aba713e4a50bec4"
+  },
+  "live-episode/observation-00019.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/observation-00019.npz",
+    "bytes": 633,
+    "sha256": "29d00270a497cae2365c088d33957519211ccb842798dcc63aba713e4a50bec4"
+  },
+  "live-episode/observation-00024.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/observation-00024.npz",
+    "bytes": 633,
+    "sha256": "29d00270a497cae2365c088d33957519211ccb842798dcc63aba713e4a50bec4"
+  },
+  "live-episode/observation-00025.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/observation-00025.npz",
+    "bytes": 633,
+    "sha256": "29d00270a497cae2365c088d33957519211ccb842798dcc63aba713e4a50bec4"
+  },
+  "live-episode/observation-00026.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/observation-00026.npz",
+    "bytes": 633,
+    "sha256": "29d00270a497cae2365c088d33957519211ccb842798dcc63aba713e4a50bec4"
+  },
+  "live-episode/observation-00027.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/observation-00027.npz",
+    "bytes": 633,
+    "sha256": "29d00270a497cae2365c088d33957519211ccb842798dcc63aba713e4a50bec4"
+  },
+  "live-episode/observation-00030.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/observation-00030.npz",
+    "bytes": 633,
+    "sha256": "29d00270a497cae2365c088d33957519211ccb842798dcc63aba713e4a50bec4"
+  },
+  "live-episode/observation-00031.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/observation-00031.npz",
+    "bytes": 633,
+    "sha256": "29d00270a497cae2365c088d33957519211ccb842798dcc63aba713e4a50bec4"
+  },
+  "live-episode/observation-00032.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/observation-00032.npz",
+    "bytes": 633,
+    "sha256": "29d00270a497cae2365c088d33957519211ccb842798dcc63aba713e4a50bec4"
+  },
+  "live-episode/observation-00033.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/observation-00033.npz",
+    "bytes": 633,
+    "sha256": "29d00270a497cae2365c088d33957519211ccb842798dcc63aba713e4a50bec4"
+  },
+  "live-episode/observation-00038.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/observation-00038.npz",
+    "bytes": 633,
+    "sha256": "29d00270a497cae2365c088d33957519211ccb842798dcc63aba713e4a50bec4"
+  },
+  "live-episode/observation-00039.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/observation-00039.npz",
+    "bytes": 633,
+    "sha256": "29d00270a497cae2365c088d33957519211ccb842798dcc63aba713e4a50bec4"
+  },
+  "live-episode/observation-00040.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/observation-00040.npz",
+    "bytes": 633,
+    "sha256": "29d00270a497cae2365c088d33957519211ccb842798dcc63aba713e4a50bec4"
+  },
+  "live-episode/observation-00041.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/observation-00041.npz",
+    "bytes": 633,
+    "sha256": "29d00270a497cae2365c088d33957519211ccb842798dcc63aba713e4a50bec4"
+  },
+  "live-episode/observation-00042.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/observation-00042.npz",
+    "bytes": 633,
+    "sha256": "29d00270a497cae2365c088d33957519211ccb842798dcc63aba713e4a50bec4"
+  },
+  "live-episode/observation-00043.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/observation-00043.npz",
+    "bytes": 633,
+    "sha256": "29d00270a497cae2365c088d33957519211ccb842798dcc63aba713e4a50bec4"
+  },
+  "live-episode/observation-00048.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/observation-00048.npz",
+    "bytes": 633,
+    "sha256": "29d00270a497cae2365c088d33957519211ccb842798dcc63aba713e4a50bec4"
+  },
+  "live-episode/observation-00049.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/observation-00049.npz",
+    "bytes": 633,
+    "sha256": "29d00270a497cae2365c088d33957519211ccb842798dcc63aba713e4a50bec4"
+  },
+  "live-episode/observation-00001.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/observation-00001.npz",
+    "bytes": 633,
+    "sha256": "29d00270a497cae2365c088d33957519211ccb842798dcc63aba713e4a50bec4"
+  },
+  "live-episode/observation-00002.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/observation-00002.npz",
+    "bytes": 633,
+    "sha256": "29d00270a497cae2365c088d33957519211ccb842798dcc63aba713e4a50bec4"
+  },
+  "live-episode/observation-00003.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/observation-00003.npz",
+    "bytes": 633,
+    "sha256": "29d00270a497cae2365c088d33957519211ccb842798dcc63aba713e4a50bec4"
+  },
+  "live-episode/observation-00008.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/observation-00008.npz",
+    "bytes": 633,
+    "sha256": "29d00270a497cae2365c088d33957519211ccb842798dcc63aba713e4a50bec4"
+  },
+  "live-episode/observation-00009.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/observation-00009.npz",
+    "bytes": 633,
+    "sha256": "29d00270a497cae2365c088d33957519211ccb842798dcc63aba713e4a50bec4"
+  },
+  "live-episode/observation-00014.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/observation-00014.npz",
+    "bytes": 633,
+    "sha256": "29d00270a497cae2365c088d33957519211ccb842798dcc63aba713e4a50bec4"
+  },
+  "live-episode/observation-00015.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/observation-00015.npz",
+    "bytes": 633,
+    "sha256": "29d00270a497cae2365c088d33957519211ccb842798dcc63aba713e4a50bec4"
+  },
+  "live-episode/observation-00016.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/observation-00016.npz",
+    "bytes": 633,
+    "sha256": "29d00270a497cae2365c088d33957519211ccb842798dcc63aba713e4a50bec4"
+  },
+  "live-episode/observation-00017.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/observation-00017.npz",
+    "bytes": 633,
+    "sha256": "29d00270a497cae2365c088d33957519211ccb842798dcc63aba713e4a50bec4"
+  },
+  "live-episode/observation-00020.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/observation-00020.npz",
+    "bytes": 633,
+    "sha256": "29d00270a497cae2365c088d33957519211ccb842798dcc63aba713e4a50bec4"
+  },
+  "live-episode/observation-00021.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/observation-00021.npz",
+    "bytes": 633,
+    "sha256": "29d00270a497cae2365c088d33957519211ccb842798dcc63aba713e4a50bec4"
+  },
+  "live-episode/observation-00022.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/observation-00022.npz",
+    "bytes": 633,
+    "sha256": "29d00270a497cae2365c088d33957519211ccb842798dcc63aba713e4a50bec4"
+  },
+  "live-episode/observation-00023.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/observation-00023.npz",
+    "bytes": 633,
+    "sha256": "29d00270a497cae2365c088d33957519211ccb842798dcc63aba713e4a50bec4"
+  },
+  "live-episode/observation-00028.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/observation-00028.npz",
+    "bytes": 633,
+    "sha256": "29d00270a497cae2365c088d33957519211ccb842798dcc63aba713e4a50bec4"
+  },
+  "live-episode/observation-00029.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/observation-00029.npz",
+    "bytes": 633,
+    "sha256": "29d00270a497cae2365c088d33957519211ccb842798dcc63aba713e4a50bec4"
+  },
+  "live-episode/observation-00034.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/observation-00034.npz",
+    "bytes": 633,
+    "sha256": "29d00270a497cae2365c088d33957519211ccb842798dcc63aba713e4a50bec4"
+  },
+  "live-episode/observation-00035.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/observation-00035.npz",
+    "bytes": 633,
+    "sha256": "29d00270a497cae2365c088d33957519211ccb842798dcc63aba713e4a50bec4"
+  },
+  "live-episode/observation-00036.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/observation-00036.npz",
+    "bytes": 633,
+    "sha256": "29d00270a497cae2365c088d33957519211ccb842798dcc63aba713e4a50bec4"
+  },
+  "live-episode/observation-00037.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/observation-00037.npz",
+    "bytes": 633,
+    "sha256": "29d00270a497cae2365c088d33957519211ccb842798dcc63aba713e4a50bec4"
+  },
+  "live-episode/observation-00044.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/observation-00044.npz",
+    "bytes": 633,
+    "sha256": "29d00270a497cae2365c088d33957519211ccb842798dcc63aba713e4a50bec4"
+  },
+  "live-episode/observation-00045.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/observation-00045.npz",
+    "bytes": 633,
+    "sha256": "29d00270a497cae2365c088d33957519211ccb842798dcc63aba713e4a50bec4"
+  },
+  "live-episode/observation-00046.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/observation-00046.npz",
+    "bytes": 633,
+    "sha256": "29d00270a497cae2365c088d33957519211ccb842798dcc63aba713e4a50bec4"
+  },
+  "live-episode/observation-00047.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/observation-00047.npz",
+    "bytes": 633,
+    "sha256": "29d00270a497cae2365c088d33957519211ccb842798dcc63aba713e4a50bec4"
+  },
+  "live-episode/observation-00050.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live-episode/observation-00050.npz",
+    "bytes": 633,
+    "sha256": "29d00270a497cae2365c088d33957519211ccb842798dcc63aba713e4a50bec4"
+  },
+  "live/proxy.urdf": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live/proxy.urdf",
+    "bytes": 45600,
+    "sha256": "933b788a0b649f96e29d2bdb72c669ff82611e4ae1ea10bf059ea347458a936f"
+  },
+  "live/collision-checks.jsonl": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live/collision-checks.jsonl",
+    "bytes": 5209373,
+    "sha256": "2cc8e5493cd40b2b579aa898606635242f4bb917b45a9370f1c159a04b64ebbf"
+  },
+  "live/robot.urdf": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/live/robot.urdf",
+    "bytes": 7283,
+    "sha256": "78bbf5aa5fa258542eba4c101226ca813c0609b07d5867552cc22a217a86ce98"
+  },
+  "geometry/collision-checks.jsonl": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/geometry/collision-checks.jsonl",
+    "bytes": 26690,
+    "sha256": "c6b9354fe074a91a030455014e4beb767fcc1a21f291a5d5027a4b01cf91d0fd"
+  },
+  "geometry/robot.urdf": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/geometry/robot.urdf",
+    "bytes": 7283,
+    "sha256": "78bbf5aa5fa258542eba4c101226ca813c0609b07d5867552cc22a217a86ce98"
+  },
+  "geometry/proxy.urdf": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/geometry/proxy.urdf",
+    "bytes": 45600,
+    "sha256": "933b788a0b649f96e29d2bdb72c669ff82611e4ae1ea10bf059ea347458a936f"
+  },
+  "changed-scene-episode/result.json": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/changed-scene-episode/result.json",
+    "bytes": 1970,
+    "sha256": "5ca7c8e8bf1f407c83e8d15373254e15f0c3be38fb14ef4f4db97801b47d2f0d"
+  },
+  "changed-scene-episode/initial.json": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/changed-scene-episode/initial.json",
+    "bytes": 1150,
+    "sha256": "7ba0021cac93a3bff1d73528d3d3a781b78ebb7b87205135f1f87863305abe2f"
+  },
+  "changed-scene-episode/plan-00001.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/changed-scene-episode/plan-00001.npz",
+    "bytes": 1613,
+    "sha256": "173707145dbdc8f5148c4d5c6d2de214ffba8db76d17f12813e621ada6e05259"
+  },
+  "changed-scene-episode/observation-00001.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/changed-scene-episode/observation-00001.npz",
+    "bytes": 633,
+    "sha256": "29d00270a497cae2365c088d33957519211ccb842798dcc63aba713e4a50bec4"
+  },
+  "changed-scene-episode/events.jsonl": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/changed-scene-episode/events.jsonl",
+    "bytes": 6431,
+    "sha256": "1553d8482433e459838739e9a36938fdf58b6f7406437eefa7dffd9bd3146d02"
+  },
+  "changed-scene-episode/action-00001.npy": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/changed-scene-episode/action-00001.npy",
+    "bytes": 240,
+    "sha256": "82463bda81e510925f163c24b7138fe7c8f4d93b29fd93624339569181770344"
+  },
+  "changed-scene/proxy.urdf": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/changed-scene/proxy.urdf",
+    "bytes": 45600,
+    "sha256": "933b788a0b649f96e29d2bdb72c669ff82611e4ae1ea10bf059ea347458a936f"
+  },
+  "changed-scene/robot.urdf": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/changed-scene/robot.urdf",
+    "bytes": 7283,
+    "sha256": "78bbf5aa5fa258542eba4c101226ca813c0609b07d5867552cc22a217a86ce98"
+  },
+  "changed-scene/collision-checks.jsonl": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1/changed-scene/collision-checks.jsonl",
+    "bytes": 2806,
+    "sha256": "1f91370651b98df10aae469299da06041b5c95992b750dd43709c993604e0c14"
+  },
+  "runtime-sources/robotwin_control_geometry.py": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-production-gate-20261106-r1/robotwin_control_geometry.py",
+    "bytes": 5539,
+    "sha256": "e3ede0d095ee30558451f14fe12789e8778b6caecd7c9edcd3d0925c07a2d788"
+  },
+  "runtime-sources/g2_kinematics.py": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-production-gate-20261106-r1/g2_kinematics.py",
+    "bytes": 5560,
+    "sha256": "bb21f17ffacd0ee603f79ab36f393ee4b8fda2efe44fdb2786a430233365a546"
+  },
+  "runtime-sources/verify_robotwin_fk.py": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-production-gate-20261106-r1/verify_robotwin_fk.py",
+    "bytes": 8503,
+    "sha256": "4af616a6ae263f48e88e28a91c64dfb809a6d245698a0b7e432febd974188428"
+  },
+  "runtime-sources/g2_collision.py": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-production-gate-20261106-r1/g2_collision.py",
+    "bytes": 10730,
+    "sha256": "3047aec1d3c0c4cd221a2bc860aada89cb91de151d6abc8eb155186010d2ec0e"
+  },
+  "runtime-sources/g2_adapter.py": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-production-gate-20261106-r1/g2_adapter.py",
+    "bytes": 18840,
+    "sha256": "7b73f351b9886d4ba5d14431bc53ed36e5c366f31f72ed096acf04609f930427"
+  },
+  "runtime-sources/g2_finger_force.py": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-production-gate-20261106-r1/g2_finger_force.py",
+    "bytes": 990,
+    "sha256": "9c9565f50bb65478303a46d27d536d35080668f10c49f3fc89cc47ea05b42934"
+  },
+  "runtime-sources/g2_robotwin_backend.py": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-production-gate-20261106-r1/g2_robotwin_backend.py",
+    "bytes": 22026,
+    "sha256": "804763004e8aec73731c1283a7df7dc013664887a2fcf1edd7be5c8f93a02db9"
+  },
+  "runtime-sources/g2_arx_reference.py": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-production-gate-20261106-r1/g2_arx_reference.py",
+    "bytes": 2487,
+    "sha256": "62ec7b239bb5b8194564ab0342b4db956bc03e47ea976bcbac9777210258a70c"
+  },
+  "runtime-sources/g2_run_task.py": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-production-gate-20261106-r1/g2_run_task.py",
+    "bytes": 3661,
+    "sha256": "ea6d317909dcbf4dcee5459f1ba4f745973130203a806c8b26f1226024932edf"
+  },
+  "runtime-sources/pace_runtime.py": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-production-gate-20261106-r1/pace_runtime.py",
+    "bytes": 3466,
+    "sha256": "e59e501fe291e079bd86a50da74b23a3825554fcbf7ecc9942f2561dd0f13ddb"
+  },
+  "runtime-sources/pace_diagnostics.py": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-production-gate-20261106-r1/pace_diagnostics.py",
+    "bytes": 2127,
+    "sha256": "9302e6b332691f272d4f0dab06e326902afa97e63d402d92f614ccba2c69a50e"
+  },
+  "runtime-sources/g2_episode.py": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-production-gate-20261106-r1/g2_episode.py",
+    "bytes": 13528,
+    "sha256": "5d878874bcb2ddf7891e087919ebb0c317548af8c96d24731cb07a3dcf6f6903"
+  },
+  "runtime-sources/g2_orchestrator.py": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-production-gate-20261106-r1/g2_orchestrator.py",
+    "bytes": 8848,
+    "sha256": "2fcbe9487d61040ef0d1fad568222f34244d28991d06d4e52db52979326d97d4"
+  },
+  "runtime-sources/pace_g1_orchestrate.py": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-production-gate-20261106-r1/pace_g1_orchestrate.py",
+    "bytes": 10359,
+    "sha256": "07d2921434db7d389464daa7cb7ab442baa74a5491f56d65280f270531e68e3d"
+  },
+  "runtime-sources/pack.py": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-production-gate-20261106-r1/pack.py",
+    "bytes": 1826,
+    "sha256": "6503c80629f44f22b7100168166af4e2be050ddb171d2f27b5a9d4647657bb9b"
+  },
+  "runtime-sources/g2_gate_accept_cpu.py": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-production-gate-20261106-r1/g2_gate_accept_cpu.py",
+    "bytes": 11929,
+    "sha256": "7ce65feea723111a6c1c0d8669dd002fc757cb270f38582b8654c2f173ae2954"
+  },
+  "runtime-sources/g2_arx_expert_monitor_cpu_v5.py": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-production-gate-20261106-r1/g2_arx_expert_monitor_cpu_v5.py",
+    "bytes": 16992,
+    "sha256": "e3c06859249a8b64ec64d5458391e4e651175e1c28c68dd293d52992db4fec01"
+  },
+  "runtime-sources/g2_proxy_collision.py": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-production-gate-20261106-r1/g2_proxy_collision.py",
+    "bytes": 3207,
+    "sha256": "636ff63de9be6b3f49cfceda5fe9c101cfaf3b28645569f6f38634e5c0879af2"
+  },
+  "runtime-sources/g2_contact.py": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-production-gate-20261106-r1/g2_contact.py",
+    "bytes": 22372,
+    "sha256": "a86dc58fccef78196e0aea285111f19b3ec501ed2ec933c52fed505757f7a080"
+  },
+  "runtime-sources/g2_motion.py": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-production-gate-20261106-r1/g2_motion.py",
+    "bytes": 4260,
+    "sha256": "aaa3f36cb8b44479006da2adb210e2437548a659a564b64ac949549ea531121c"
+  },
+  "runtime-sources/g2_capture.py": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-production-gate-20261106-r1/g2_capture.py",
+    "bytes": 1862,
+    "sha256": "86321da264488df47dce20781cc59acc7a81f0bd8cce25b4d7afecf5ebc37563"
+  },
+  "runtime-sources/g2_assets.py": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-production-gate-20261106-r1/g2_assets.py",
+    "bytes": 2706,
+    "sha256": "ef712349bc246de2259da0f009eac7cee785ab1b439e484e291c697c0a4c1907"
+  },
+  "runtime-sources/g2_task_runtime.py": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-production-gate-20261106-r1/g2_task_runtime.py",
+    "bytes": 14703,
+    "sha256": "5cb8e8dcd0b776deebd1f570ccbeab13269828b2bf94f7a37f51befe33bfe032"
+  },
+  "runtime-sources/pace_client_smoke.py": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-production-gate-20261106-r1/pace_client_smoke.py",
+    "bytes": 23173,
+    "sha256": "d99d53e80fa84e477c51d86955ee288db2d1fb891d9f1273298c2840e91f8363"
+  },
+  "runtime-sources/g2_native_backend.py": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-production-gate-20261106-r1/g2_native_backend.py",
+    "bytes": 6659,
+    "sha256": "effa471c070394125195c7a02e7b0cfa908e9b40d88f96fb6dd4f4b294bd279d"
+  },
+  "runtime-sources/g2_initial.py": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-production-gate-20261106-r1/g2_initial.py",
+    "bytes": 6967,
+    "sha256": "3ba24573566334ad66b030ca939ac1d8f69a47a84e9a5ed1837df2cbf5e2b980"
+  },
+  "runtime-sources/g2_gate_scene_cpu.py": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-production-gate-20261106-r1/g2_gate_scene_cpu.py",
+    "bytes": 8813,
+    "sha256": "7109401a9f0c14dc6c8e91c4b459decb581d8bf5a632b5676c53e44b5fc685f1"
+  },
+  "runtime-sources/source-manifest.json": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-production-gate-20261106-r1/source-manifest.json",
+    "bytes": 2478,
+    "sha256": "f26568bbddb418cb6d172ac152276386faa5161a05cd51f8eefbbbb17122e6c7"
+  },
+  "runtime-sources/config.json": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-production-gate-20261106-r1/config.json",
+    "bytes": 15492,
+    "sha256": "5fde18f32434d4123e7fc5c708086f293e1787ccfa938f3719b948edbbaa50e7"
+  },
+  "runtime-sources/run.sh": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-production-gate-20261106-r1/run.sh",
+    "bytes": 1133,
+    "sha256": "46625a4ba97ad8a0a6c462837e760e672393aaebb72e0752bb997c87c7d48fa3"
+  },
+  "inputs/input.json": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-native-expert-20261106/input.json",
+    "bytes": 2211,
+    "sha256": "cb1dc1a5bb00f0ee60ebe53155392a8a6be8e1a764052f16813d89c33050a7b1"
+  },
+  "inputs/input-trace.npz": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-native-expert-20261106/trace.npz",
+    "bytes": 97819,
+    "sha256": "749c82d3d4ccca01a8eba522848b04856ed98ca504e97f1f6f1c55f12b3ebcd7"
+  },
+  "inputs/reference-q.npz": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-settle-expert-20261106/workspace-q.npz",
+    "bytes": 30502,
+    "sha256": "e3c734e7796cb963788d10a0f3476b16636328d5a3b2b3da8bfda095662971b2"
+  },
+  "inputs/asset-audit.json": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-runtime-stage3-final-20261105/asset-audit.json",
+    "bytes": 6665,
+    "sha256": "5ebfc07c82814757168bdb3f2b7ad4a9bec18f58afc28318f49e61af117122f2"
+  },
+  "inputs/original-run.log": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1.log",
+    "bytes": 922,
+    "sha256": "e37e68b5ef551a1f22a8bfb18c77998f19c2c94b790fb3ef87f6f63271102ea3"
+  },
+  "inputs/outer-exit.txt": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r1-control/exit",
+    "bytes": 2,
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+  },
+  "inputs/measured/physics-trace.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-v2-episode0-2N-centered-20261106/physics-trace.npz",
+    "bytes": 1773274,
+    "sha256": "c0dcc14dac4e94c6364fe6a3e374c246c4a8dff4d6a6e60d9569235d20830881"
+  },
+  "inputs/measured/initial.json": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-v2-episode0-2N-centered-20261106/initial.json",
+    "bytes": 1641,
+    "sha256": "adc3815b85466245a96e9ab638907050a70b98c26f9477da97952d39f6631e3d"
+  },
+  "inputs/measured/stages.json": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-v2-episode0-2N-centered-20261106/stages.json",
+    "bytes": 10396,
+    "sha256": "f0b262b18d077e05f8d3f39369c1c542d15796c5493ad18c47ea8e1ed4cc652d"
+  },
+  "inputs/measured/contact-monitor.json": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-v2-episode0-2N-centered-20261106/contact-monitor.json",
+    "bytes": 2083,
+    "sha256": "43f67f1eaea87ae49290de11ec296ac842d1864a7f279f08eff7738fb465e2d1"
+  },
+  "inputs/measured/replay.json": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-v2-episode0-2N-centered-20261106/replay.json",
+    "bytes": 12279,
+    "sha256": "bace1154405542b34f8c27f74525ac1ea1fcbc95301faafbc8514887028ae8d4"
+  }
+}

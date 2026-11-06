@@ -1,0 +1,152 @@
+[
+  {
+    "phase": "approach",
+    "physics_steps": 270,
+    "wall_s": 10.291288947220892,
+    "control_calls": 54
+  },
+  {
+    "phase": "descent",
+    "physics_steps": 340,
+    "wall_s": 13.663906536065042,
+    "control_calls": 68
+  },
+  {
+    "phase": "release-0",
+    "physics_steps": 412,
+    "wall_s": 15.138216031715274,
+    "control_calls": 83
+  },
+  {
+    "phase": "release-1",
+    "physics_steps": 225,
+    "wall_s": 7.761285320855677,
+    "control_calls": 45
+  },
+  {
+    "phase": "retreat",
+    "physics_steps": 220,
+    "wall_s": 6.897074037697166,
+    "control_calls": 44
+  },
+  {
+    "phase": "hold-0",
+    "physics_steps": 5,
+    "wall_s": 0.1498426808975637,
+    "control_calls": 1
+  },
+  {
+    "phase": "hold-1",
+    "physics_steps": 5,
+    "wall_s": 0.147640909999609,
+    "control_calls": 1
+  },
+  {
+    "phase": "hold-2",
+    "physics_steps": 5,
+    "wall_s": 0.1483022109605372,
+    "control_calls": 1
+  },
+  {
+    "phase": "hold-3",
+    "physics_steps": 5,
+    "wall_s": 0.150575271807611,
+    "control_calls": 1
+  },
+  {
+    "phase": "hold-4",
+    "physics_steps": 5,
+    "wall_s": 0.17945363512262702,
+    "control_calls": 1
+  },
+  {
+    "phase": "hold-5",
+    "physics_steps": 5,
+    "wall_s": 0.15215451223775744,
+    "control_calls": 1
+  },
+  {
+    "phase": "hold-6",
+    "physics_steps": 5,
+    "wall_s": 0.17554191313683987,
+    "control_calls": 1
+  },
+  {
+    "phase": "hold-7",
+    "physics_steps": 5,
+    "wall_s": 0.18461535824462771,
+    "control_calls": 1
+  },
+  {
+    "phase": "hold-8",
+    "physics_steps": 5,
+    "wall_s": 0.18711734004318714,
+    "control_calls": 1
+  },
+  {
+    "phase": "hold-9",
+    "physics_steps": 5,
+    "wall_s": 0.1402184870094061,
+    "control_calls": 1
+  },
+  {
+    "phase": "hold-10",
+    "physics_steps": 5,
+    "wall_s": 0.18539792811498046,
+    "control_calls": 1
+  },
+  {
+    "phase": "hold-11",
+    "physics_steps": 5,
+    "wall_s": 0.15350661287084222,
+    "control_calls": 1
+  },
+  {
+    "phase": "hold-12",
+    "physics_steps": 5,
+    "wall_s": 0.1879549389705062,
+    "control_calls": 1
+  },
+  {
+    "phase": "hold-13",
+    "physics_steps": 5,
+    "wall_s": 0.14058174658566713,
+    "control_calls": 1
+  },
+  {
+    "phase": "hold-14",
+    "physics_steps": 5,
+    "wall_s": 0.11984386667609215,
+    "control_calls": 1
+  },
+  {
+    "phase": "hold-15",
+    "physics_steps": 5,
+    "wall_s": 0.12819311069324613,
+    "control_calls": 1
+  },
+  {
+    "phase": "hold-16",
+    "physics_steps": 5,
+    "wall_s": 0.18561707809567451,
+    "control_calls": 1
+  },
+  {
+    "phase": "hold-17",
+    "physics_steps": 5,
+    "wall_s": 0.1591309760697186,
+    "control_calls": 1
+  },
+  {
+    "phase": "hold-18",
+    "physics_steps": 5,
+    "wall_s": 0.14187106676399708,
+    "control_calls": 1
+  },
+  {
+    "phase": "hold-19",
+    "physics_steps": 5,
+    "wall_s": 0.14309647865593433,
+    "control_calls": 1
+  }
+]

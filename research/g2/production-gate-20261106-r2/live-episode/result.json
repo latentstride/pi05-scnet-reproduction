@@ -1,0 +1,81 @@
+{
+  "data_kind": "diagnostic",
+  "formal_score_eligible": false,
+  "episode_id": "gate-live-expert",
+  "condition": "B-arx-w1",
+  "window": 1,
+  "success": false,
+  "outcome": "interrupted",
+  "requested": 114,
+  "executed": 113,
+  "queries": 114,
+  "inference_s": 0.0,
+  "planning_s": 304.73755654040724,
+  "control_s": 674.1648291042075,
+  "plan_calls": 114,
+  "plan_failures": 0,
+  "initial": {
+    "robot_base_world": {
+      "left": [
+        -0.30000001192092896,
+        -0.3499999940395355,
+        0.7839999794960022,
+        0.7071067811865476,
+        0.0,
+        0.0,
+        0.7071067811865475
+      ],
+      "right": [
+        0.30000001192092896,
+        -0.3499999940395355,
+        0.7839999794960022,
+        0.7071067811865476,
+        0.0,
+        0.0,
+        0.7071067811865475
+      ]
+    },
+    "actual_arm_qpos_rad": {
+      "left": [
+        -0.26346591114997864,
+        -0.6305378675460815,
+        0.1571831852197647,
+        -0.7877228260040283,
+        -0.28336942195892334,
+        -1.3242606655694544e-05
+      ],
+      "right": [
+        -0.6324052214622498,
+        -0.6228002905845642,
+        0.1452883630990982,
+        -0.7680932283401489,
+        -0.6423773765563965,
+        -1.4833736713626422e-05
+      ]
+    },
+    "actual_gripper": {
+      "left": 0.999999994581396,
+      "right": 0.999999994581396
+    },
+    "block_pose": [
+      -0.17331258952617645,
+      0.19793014228343964,
+      0.840000569820404,
+      0.9939092397689819,
+      5.21393940289272e-06,
+      -5.030996362620499e-06,
+      0.11020209640264511
+    ],
+    "actual_block_mass_kg": 0.009999999776482582,
+    "synthetic_cameras": true
+  },
+  "failure": {
+    "phase": "planning",
+    "code": "KeyboardInterrupt",
+    "detail": "termination requested"
+  },
+  "video": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r2/live/no-render-video",
+  "control_calls": 2583,
+  "initial_sim_s": 0.0,
+  "elapsed_s": 993.2730979886837
+}

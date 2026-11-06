@@ -1,0 +1,253 @@
+test_analytic_jacobian (test_g2_adapter.AdapterTests.test_analytic_jacobian) ... ok
+test_atomic_failures_and_no_seed_advance (test_g2_adapter.AdapterTests.test_atomic_failures_and_no_seed_advance) ... ok
+test_duplicate_joint_and_mimic_mismatch (test_g2_adapter.AdapterTests.test_duplicate_joint_and_mimic_mismatch) ... ok
+test_fk_matches_independent_sapien_archive (test_g2_adapter.AdapterTests.test_fk_matches_independent_sapien_archive) ... ok
+test_gripper_audit_and_illegal_chunk (test_g2_adapter.AdapterTests.test_gripper_audit_and_illegal_chunk) ... ok
+test_known_pose_ik_with_perturbed_seed (test_g2_adapter.AdapterTests.test_known_pose_ik_with_perturbed_seed) ... ok
+test_limits_and_calibration_rejected (test_g2_adapter.AdapterTests.test_limits_and_calibration_rejected) ... ok
+test_no_solution_timeout_and_collision (test_g2_adapter.AdapterTests.test_no_solution_timeout_and_collision) ... ok
+test_observe_and_actions_roundtrip_with_real_urdfs (test_g2_adapter.AdapterTests.test_observe_and_actions_roundtrip_with_real_urdfs) ... ok
+test_retiming_and_midpath_collision (test_g2_adapter.AdapterTests.test_retiming_and_midpath_collision) ... ok
+test_stale_and_discontinuous_states (test_g2_adapter.AdapterTests.test_stale_and_discontinuous_states) ... ok
+test_stale_image_is_rejected (test_g2_adapter.AdapterTests.test_stale_image_is_rejected) ... ok
+test_task_frame_change_preserves_mapping (test_g2_adapter.AdapterTests.test_task_frame_change_preserves_mapping) ... ok
+test_archived_bytes_and_shadow_observer_preserve_physics (test_g2_arx_expert_evidence.ARXExpertEvidenceTests.test_archived_bytes_and_shadow_observer_preserve_physics) ... ok
+test_higher_force_failure_precedes_tray_contact (test_g2_arx_expert_evidence.ARXExpertEvidenceTests.test_higher_force_failure_precedes_tray_contact) ... ok
+test_three_real_replays_keep_slip_failure_separate_from_task_success (test_g2_arx_expert_evidence.ARXExpertEvidenceTests.test_three_real_replays_keep_slip_failure_separate_from_task_success) ... ok
+test_all_three_retimed_paths_preserve_targets_and_analytic_command_limits (test_g2_arx_reference.ARXReferenceTests.test_all_three_retimed_paths_preserve_targets_and_analytic_command_limits) ... ok
+test_bad_gripper_or_clock_rejected (test_g2_arx_reference.ARXReferenceTests.test_bad_gripper_or_clock_rejected) ... ok
+test_lower_acceleration_preserves_every_waypoint_and_common_clock (test_g2_arx_reference.ARXReferenceTests.test_lower_acceleration_preserves_every_waypoint_and_common_clock) ... ok
+test_measured_positions_are_read_from_articulation (test_g2_capture.CaptureTests.test_measured_positions_are_read_from_articulation) ... ok
+test_failed_force_and_acceleration_attempts_stay_in_the_record (test_g2_centered_evidence.CenteredEvidenceTests.test_failed_force_and_acceleration_attempts_stay_in_the_record) ... ok
+test_fix_preserves_commands_and_reduces_measured_exclusive_holder_center_drift (test_g2_centered_evidence.CenteredEvidenceTests.test_fix_preserves_commands_and_reduces_measured_exclusive_holder_center_drift) ... ok
+test_monitor_contract_tracks_thresholds_separately_from_planning_implementation (test_g2_centered_evidence.CenteredEvidenceTests.test_monitor_contract_tracks_thresholds_separately_from_planning_implementation) ... ok
+test_three_real_cases_verify_force_bounds_task_and_continuous_guard (test_g2_centered_evidence.CenteredEvidenceTests.test_three_real_cases_verify_force_bounds_task_and_continuous_guard) ... ok
+test_bilateral_stability_clock_and_impulse_required (test_g2_contact.ContactTests.test_bilateral_stability_clock_and_impulse_required) ... ok
+test_carried_pose_converts_task_to_world_and_checks_both_holders (test_g2_contact.ContactTests.test_carried_pose_converts_task_to_world_and_checks_both_holders) ... ok
+test_confirmed_holder_preserves_intent_and_full_collision_checks (test_g2_contact.ContactTests.test_confirmed_holder_preserves_intent_and_full_collision_checks) ... ok
+test_confirmed_slip_is_explicit_failure (test_g2_contact.ContactTests.test_confirmed_slip_is_explicit_failure) ... ok
+test_donor_release_needs_receiver_and_unexpected_loss_fails (test_g2_contact.ContactTests.test_donor_release_needs_receiver_and_unexpected_loss_fails) ... ok
+test_donor_release_phase_holds_arms_before_withdrawal (test_g2_contact.ContactTests.test_donor_release_phase_holds_arms_before_withdrawal) ... ok
+test_dynamic_lift_finger_asymmetry_is_not_silently_hidden (test_g2_contact.ContactTests.test_dynamic_lift_finger_asymmetry_is_not_silently_hidden) ... ok
+test_episode_contact_barrier_requeries_instead_of_replaying_suffix (test_g2_contact.ContactTests.test_episode_contact_barrier_requeries_instead_of_replaying_suffix) ... ok
+test_execution_interrupt_on_measured_contact_does_not_apply_suffix (test_g2_contact.ContactTests.test_execution_interrupt_on_measured_contact_does_not_apply_suffix) ... ok
+test_explicit_diagnostic_config_has_no_formal_or_implicit_default_path (test_g2_contact.ContactTests.test_explicit_diagnostic_config_has_no_formal_or_implicit_default_path) ... ok
+test_force_calibration_checks_actual_mass_not_primitive_density (test_g2_contact.ContactTests.test_force_calibration_checks_actual_mass_not_primitive_density) ... ok
+test_force_limited_backend_drives_intent_and_logs_actual (test_g2_contact.ContactTests.test_force_limited_backend_drives_intent_and_logs_actual) ... ok
+test_moving_object_does_not_accumulate_stability_and_gaps_reset_count (test_g2_contact.ContactTests.test_moving_object_does_not_accumulate_stability_and_gaps_reset_count) ... ok
+test_per_side_force_limits_reach_both_native_fingers (test_g2_contact.ContactTests.test_per_side_force_limits_reach_both_native_fingers) ... ok
+test_prediction_keeps_intent_and_measured_start_separate (test_g2_contact.ContactTests.test_prediction_keeps_intent_and_measured_start_separate) ... ok
+test_prediction_uses_current_attachment_without_resetting_slip_reference (test_g2_contact.ContactTests.test_prediction_uses_current_attachment_without_resetting_slip_reference) ... ok
+test_projection_context_is_restored_when_deadline_interrupts_scan (test_g2_contact.ContactTests.test_projection_context_is_restored_when_deadline_interrupts_scan) ... ok
+test_unknown_depth_is_rejected_and_json_serializable (test_g2_contact.ContactTests.test_unknown_depth_is_rejected_and_json_serializable) ... ok
+test_measured_slip_stops_after_first_step_holds_and_saves_prefix (test_g2_contact_abort.ContactAbortTests.test_measured_slip_stops_after_first_step_holds_and_saves_prefix) ... ok
+test_every_dense_trace_agrees_with_all_saved_commands_and_velocity_paths (test_g2_expert_dense.ExpertDenseTests.test_every_dense_trace_agrees_with_all_saved_commands_and_velocity_paths) ... ok
+test_gripper_updates_match_pinned_original_function (test_g2_expert_dense.ExpertDenseTests.test_gripper_updates_match_pinned_original_function) ... ok
+test_source_actor_wrapper_mass_is_ten_grams (test_g2_expert_dense.ExpertDenseTests.test_source_actor_wrapper_mass_is_ten_grams) ... ok
+test_seed_reconstruction_does_not_mutate_global_rng (test_g2_expert_metadata.ExpertMetadataTests.test_seed_reconstruction_does_not_mutate_global_rng) ... ok
+test_three_official_episodes_match_every_target (test_g2_expert_metadata.ExpertMetadataTests.test_three_official_episodes_match_every_target) ... ok
+test_unexpected_pickle_global_rejected_without_execution (test_g2_expert_metadata.ExpertMetadataTests.test_unexpected_pickle_global_rejected_without_execution) ... ok
+test_all_854_selected_solutions_reproduce_goals_within_frozen_tolerance (test_g2_expert_workspace.ExpertWorkspaceTests.test_all_854_selected_solutions_reproduce_goals_within_frozen_tolerance) ... ok
+test_runtime_solver_independently_rejects_invalid_backend_candidate (test_g2_expert_workspace.ExpertWorkspaceTests.test_runtime_solver_independently_rejects_invalid_backend_candidate) ... ok
+test_runtime_solver_refines_terminal_solution_that_misses_tool_tolerance (test_g2_expert_workspace.ExpertWorkspaceTests.test_runtime_solver_refines_terminal_solution_that_misses_tool_tolerance) ... ok
+test_summary_does_not_claim_collision_or_task_acceptance (test_g2_expert_workspace.ExpertWorkspaceTests.test_summary_does_not_claim_collision_or_task_acceptance) ... ok
+test_no_promoting_synthetic_to_formal (test_g2_export.ExportTests.test_no_promoting_synthetic_to_formal) ... ok
+test_real_episode_evidence_through_existing_summarizer (test_g2_export.ExportTests.test_real_episode_evidence_through_existing_summarizer) ... ok
+test_timeout_and_infrastructure_failure_are_preserved (test_g2_export.ExportTests.test_timeout_and_infrastructure_failure_are_preserved) ... ok
+test_unknown_metrics_remain_null_and_metadata_cannot_relabel (test_g2_export.ExportTests.test_unknown_metrics_remain_null_and_metadata_cannot_relabel) ... ok
+test_all_stages_complete_does_not_count_as_any_task_success (test_g2_failure_repair.FailureRepairTests.test_all_stages_complete_does_not_count_as_any_task_success) ... ok
+test_diagnostic_collection_preserves_locked_roster_and_missing_detection (test_g2_failure_repair.FailureRepairTests.test_diagnostic_collection_preserves_locked_roster_and_missing_detection) ... ok
+test_diagnostic_configuration_does_not_promote_terminal_record (test_g2_failure_repair.FailureRepairTests.test_diagnostic_configuration_does_not_promote_terminal_record) ... ok
+test_inventory_reports_missing_events_and_retains_input_bytes (test_g2_failure_repair.FailureRepairTests.test_inventory_reports_missing_events_and_retains_input_bytes) ... ok
+test_legacy_statistics_refuses_writing_into_original_evidence (test_g2_failure_repair.FailureRepairTests.test_legacy_statistics_refuses_writing_into_original_evidence) ... ok
+test_original_formal_labels_contradict_actual_diagnostic_supervisor (test_g2_failure_repair.FailureRepairTests.test_original_formal_labels_contradict_actual_diagnostic_supervisor) ... ok
+test_repeated_future_closure_is_outside_recorded_executed_prefix (test_g2_failure_repair.FailureRepairTests.test_repeated_future_closure_is_outside_recorded_executed_prefix) ... ok
+test_static_cpu_replay_reproduces_all_four_real_failures (test_g2_failure_repair.FailureRepairTests.test_static_cpu_replay_reproduces_all_four_real_failures) ... ok
+test_task_object_capture_uses_actual_actor_pose_in_task_frame (test_g2_failure_repair.FailureRepairTests.test_task_object_capture_uses_actual_actor_pose_in_task_frame) ... ok
+test_real_backend_disables_duplicate_drive_and_applies_named_bounded_effort (test_g2_finger_force.FingerForceTests.test_real_backend_disables_duplicate_drive_and_applies_named_bounded_effort) ... ok
+test_saturated_closure_has_restoring_center_effort_with_same_force_cap (test_g2_finger_force.FingerForceTests.test_saturated_closure_has_restoring_center_effort_with_same_force_cap) ... ok
+test_swapping_fingers_swaps_allocation_and_opening_still_works (test_g2_finger_force.FingerForceTests.test_swapping_fingers_swaps_allocation_and_opening_still_works) ... ok
+test_asymmetric_equal_aperture_preserves_center_and_residual (test_g2_grip_aperture.ApertureTests.test_asymmetric_equal_aperture_preserves_center_and_residual) ... ok
+test_explicit_profile_and_hashed_urdf_load (test_g2_grip_aperture.ApertureTests.test_explicit_profile_and_hashed_urdf_load) ... ok
+test_next_policy_observation_uses_measured_aperture (test_g2_grip_aperture.ApertureTests.test_next_policy_observation_uses_measured_aperture) ... ok
+test_unequal_calibrated_travel_uses_total_aperture (test_g2_grip_aperture.ApertureTests.test_unequal_calibrated_travel_uses_total_aperture) ... ok
+test_cleanup_precedes_final_evidence_write_on_disk_failure (test_g2_integration.IntegrationTests.test_cleanup_precedes_final_evidence_write_on_disk_failure) ... ok
+test_expert_is_geometry_retimed_and_exhaustion_recorded (test_g2_integration.IntegrationTests.test_expert_is_geometry_retimed_and_exhaustion_recorded) ... ok
+test_failure_cleanup_evidence_and_termination (test_g2_integration.IntegrationTests.test_failure_cleanup_evidence_and_termination) ... ok
+test_malformed_remote_action_preserved_before_validation (test_g2_integration.IntegrationTests.test_malformed_remote_action_preserved_before_validation) ... ok
+test_reported_zero_actuation_is_preserved_when_gate_rejects (test_g2_integration.IntegrationTests.test_reported_zero_actuation_is_preserved_when_gate_rejects) ... ok
+test_two_robots_two_windows_one_real_websocket_service (test_g2_integration.IntegrationTests.test_two_robots_two_windows_one_real_websocket_service) ... ok
+test_changed_config_and_missing_results_fail_closed (test_g2_locked_task.LockedTrialTests.test_changed_config_and_missing_results_fail_closed) ... ok
+test_locked_reset_gate_precedes_policy_and_no_synthetic_formal_file (test_g2_locked_task.LockedTrialTests.test_locked_reset_gate_precedes_policy_and_no_synthetic_formal_file) ... ok
+test_scoring_schema_and_model_receipt_reject_drift (test_g2_locked_task.LockedTrialTests.test_scoring_schema_and_model_receipt_reject_drift) ... ok
+test_complete_native_episodes_keep_qpos_and_true_scene_clock (test_g2_native_backend.NativeBackendTests.test_complete_native_episodes_keep_qpos_and_true_scene_clock) ... ok
+test_invalid_native_prefix_is_rejected_before_any_physics_step (test_g2_native_backend.NativeBackendTests.test_invalid_native_prefix_is_rejected_before_any_physics_step) ... ok
+test_native_partial_fault_holds_and_closes (test_g2_native_backend.NativeBackendTests.test_native_partial_fault_holds_and_closes) ... ok
+test_complete_physics_and_original_success_predicate (test_g2_native_replay.NativeReplayTests.test_complete_physics_and_original_success_predicate) ... ok
+test_native_arm_drive_targets_match_dense_source_and_archived_measured_poses (test_g2_native_replay.NativeReplayTests.test_native_arm_drive_targets_match_dense_source_and_archived_measured_poses) ... ok
+test_three_actual_replays_pass_independent_verification (test_g2_native_replay.NativeReplayTests.test_three_actual_replays_pass_independent_verification) ... ok
+test_dynamic_failure_allows_aloha_and_statistics_but_skips_arx (test_g2_orchestrator.OrchestratorTests.test_dynamic_failure_allows_aloha_and_statistics_but_skips_arx) ... ok
+test_model_failure_never_restarts (test_g2_orchestrator.OrchestratorTests.test_model_failure_never_restarts) ... ok
+test_no_resource_allocation_or_formal_mode (test_g2_orchestrator.OrchestratorTests.test_no_resource_allocation_or_formal_mode) ... ok
+test_one_model_and_all_stages (test_g2_orchestrator.OrchestratorTests.test_one_model_and_all_stages) ... ok
+test_sigterm_writes_final_report_and_reaps_model (test_g2_orchestrator.OrchestratorTests.test_sigterm_writes_final_report_and_reaps_model) ... ok
+test_stage_and_shared_deadlines (test_g2_orchestrator.OrchestratorTests.test_stage_and_shared_deadlines) ... ok
+test_existing_physical_profile_rejected_before_any_mutation (test_g2_physics_filter.PhysicsFilterTests.test_existing_physical_profile_rejected_before_any_mutation) ... ok
+test_missing_articulation_rejected (test_g2_physics_filter.PhysicsFilterTests.test_missing_articulation_rejected) ... ok
+test_native_pairs_only_same_arm_and_external_groups_preserved (test_g2_physics_filter.PhysicsFilterTests.test_native_pairs_only_same_arm_and_external_groups_preserved) ... ok
+test_partial_write_failure_restores_all_groups (test_g2_physics_filter.PhysicsFilterTests.test_partial_write_failure_restores_all_groups) ... ok
+test_unrequested_robot_filters_unchanged (test_g2_physics_filter.PhysicsFilterTests.test_unrequested_robot_filters_unchanged) ... ok
+test_atomic_dual_arm_submission_native_fingers_and_hold (test_g2_robotwin_backend.BackendTests.test_atomic_dual_arm_submission_native_fingers_and_hold) ... ok
+test_changed_scene_rejection_logs_zero_actuation_and_collision_rows (test_g2_robotwin_backend.BackendTests.test_changed_scene_rejection_logs_zero_actuation_and_collision_rows) ... ok
+test_invalid_plan_or_stale_initial_state_cannot_partially_submit (test_g2_robotwin_backend.BackendTests.test_invalid_plan_or_stale_initial_state_cannot_partially_submit) ... ok
+test_scoped_warmup_bypass_restores_class (test_g2_robotwin_backend.BackendTests.test_scoped_warmup_bypass_restores_class) ... ok
+test_fixed_self_profile_does_not_exempt_other_arm_or_environment (test_g2_runtime.CollisionPolicyTests.test_fixed_self_profile_does_not_exempt_other_arm_or_environment) ... ok
+test_bootstrap_gripper_path_uses_declared_native_endpoints (test_g2_runtime.RuntimeTests.test_bootstrap_gripper_path_uses_declared_native_endpoints) ... ok
+test_diagnostic_configuration_cannot_enable_untested_contact_exemptions (test_g2_runtime.RuntimeTests.test_diagnostic_configuration_cannot_enable_untested_contact_exemptions) ... ok
+test_expert_never_requires_policy_proxy_ik (test_g2_runtime.RuntimeTests.test_expert_never_requires_policy_proxy_ik) ... ok
+test_initial_matching_compares_actual_objects_and_quaternion_equivalence (test_g2_runtime.RuntimeTests.test_initial_matching_compares_actual_objects_and_quaternion_equivalence) ... ok
+test_mechanical_endpoint_configuration_is_derived_not_fixture_copied (test_g2_runtime.RuntimeTests.test_mechanical_endpoint_configuration_is_derived_not_fixture_copied) ... ok
+test_same_entry_factory_for_two_embodiments_and_windows (test_g2_runtime.RuntimeTests.test_same_entry_factory_for_two_embodiments_and_windows) ... ok
+test_scene_setup_failure_is_a_complete_episode_record (test_g2_runtime.RuntimeTests.test_scene_setup_failure_is_a_complete_episode_record) ... ok
+test_shared_collision_model_is_updated_atomically_and_restored (test_g2_runtime.RuntimeTests.test_shared_collision_model_is_updated_atomically_and_restored) ... ok
+test_mismatched_objects_are_rejected (test_g2_settled_candidates.SettledCandidateTests.test_mismatched_objects_are_rejected) ... ok
+test_moving_object_is_rejected (test_g2_settled_candidates.SettledCandidateTests.test_moving_object_is_rejected) ... ok
+test_real_fcl_evidence_clears_initial_gate_and_keeps_tray_path_failure (test_g2_settled_candidates.SettledCandidateTests.test_real_fcl_evidence_clears_initial_gate_and_keeps_tray_path_failure) ... ok
+test_robot_supported_object_is_rejected (test_g2_settled_candidates.SettledCandidateTests.test_robot_supported_object_is_rejected) ... ok
+test_three_real_pairs_are_stable_but_excluded_from_formal_roster (test_g2_settled_candidates.SettledCandidateTests.test_three_real_pairs_are_stable_but_excluded_from_formal_roster) ... ok
+test_allocation_deadline_caps_query_and_preserves_evidence (test_pace_g1.G1IntegrationTest.test_allocation_deadline_caps_query_and_preserves_evidence) ... ok
+test_failed_prerequisites_skip_dependents_and_keep_logs (test_pace_g1.G1IntegrationTest.test_failed_prerequisites_skip_dependents_and_keep_logs) ... ok
+test_fixed_launch_plan_uses_one_model_service_and_distinct_runtimes (test_pace_g1.G1IntegrationTest.test_fixed_launch_plan_uses_one_model_service_and_distinct_runtimes) ... ok
+test_insufficient_headroom_prevents_checkpoint_control (test_pace_g1.G1IntegrationTest.test_insufficient_headroom_prevents_checkpoint_control) ... ok
+test_one_model_child_spans_three_ordered_stages (test_pace_g1.G1IntegrationTest.test_one_model_child_spans_three_ordered_stages) ... ok
+test_readiness_handles_invalid_utf8_and_split_markers (test_pace_g1.G1IntegrationTest.test_readiness_handles_invalid_utf8_and_split_markers) ... ok
+test_restore_timeout_names_the_phase_and_skips_control (test_pace_g1.G1IntegrationTest.test_restore_timeout_names_the_phase_and_skips_control) ... ok
+test_download_resume_and_checksum (test_pace_runtime.ManifestTest.test_download_resume_and_checksum) ... ** Resuming transfer from byte position 4
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    11  100    11    0     0   6186      0 --:--:-- --:--:-- --:--:-- 11000
+ok
+test_manifest_scope_and_checksum (test_pace_runtime.ManifestTest.test_manifest_scope_and_checksum) ... ok
+test_backend_exception (test_pace_runtime.RuntimeTest.test_backend_exception) ... ok
+test_bounded_loop_artifacts_and_abort (test_pace_runtime.RuntimeTest.test_bounded_loop_artifacts_and_abort) ... [2026-11-06T12:56:15.151+00:00] start websocket_connect
+[2026-11-06T12:56:15.151+00:00] end websocket_connect
+[2026-11-06T12:56:15.152+00:00] start get_obs_000
+[2026-11-06T12:56:15.152+00:00] end get_obs_000
+[2026-11-06T12:56:15.153+00:00] start video_frame_000
+[2026-11-06T12:56:15.158+00:00] end video_frame_000
+[2026-11-06T12:56:15.159+00:00] start policy_query_001
+[2026-11-06T12:56:15.160+00:00] end policy_query_001
+[2026-11-06T12:56:15.160+00:00] start take_action_001
+[2026-11-06T12:56:15.160+00:00] end take_action_001
+[2026-11-06T12:56:15.160+00:00] start get_obs_001
+[2026-11-06T12:56:15.160+00:00] end get_obs_001
+[2026-11-06T12:56:15.160+00:00] start video_frame_001
+[2026-11-06T12:56:15.160+00:00] end video_frame_001
+[2026-11-06T12:56:15.160+00:00] start take_action_002
+[2026-11-06T12:56:15.160+00:00] end take_action_002
+[2026-11-06T12:56:15.160+00:00] start get_obs_002
+[2026-11-06T12:56:15.160+00:00] end get_obs_002
+[2026-11-06T12:56:15.161+00:00] start video_frame_002
+[2026-11-06T12:56:15.161+00:00] end video_frame_002
+[2026-11-06T12:56:15.161+00:00] start take_action_003
+[2026-11-06T12:56:15.161+00:00] end take_action_003
+[2026-11-06T12:56:15.161+00:00] start get_obs_003
+[2026-11-06T12:56:15.161+00:00] end get_obs_003
+[2026-11-06T12:56:15.161+00:00] start video_frame_003
+[2026-11-06T12:56:15.161+00:00] end video_frame_003
+[2026-11-06T12:56:15.162+00:00] start policy_query_002
+[2026-11-06T12:56:15.162+00:00] end policy_query_002
+[2026-11-06T12:56:15.162+00:00] start take_action_004
+[2026-11-06T12:56:15.162+00:00] end take_action_004
+[2026-11-06T12:56:15.162+00:00] start get_obs_004
+[2026-11-06T12:56:15.162+00:00] end get_obs_004
+[2026-11-06T12:56:15.162+00:00] start video_frame_004
+[2026-11-06T12:56:15.162+00:00] end video_frame_004
+[2026-11-06T12:56:15.163+00:00] start take_action_005
+[2026-11-06T12:56:15.163+00:00] end take_action_005
+[2026-11-06T12:56:15.163+00:00] start get_obs_005
+[2026-11-06T12:56:15.163+00:00] end get_obs_005
+[2026-11-06T12:56:15.163+00:00] start video_frame_005
+[2026-11-06T12:56:15.163+00:00] end video_frame_005
+[2026-11-06T12:56:15.163+00:00] start close_video
+[2026-11-06T12:56:15.180+00:00] end close_video
+[2026-11-06T12:56:15.210+00:00] start websocket_connect
+[2026-11-06T12:56:15.211+00:00] end websocket_connect
+[2026-11-06T12:56:15.211+00:00] start get_obs_000
+[2026-11-06T12:56:15.211+00:00] end get_obs_000
+[2026-11-06T12:56:15.212+00:00] start video_frame_000
+[2026-11-06T12:56:15.215+00:00] end video_frame_000
+[2026-11-06T12:56:15.216+00:00] start policy_query_001
+[2026-11-06T12:56:15.217+00:00] end policy_query_001
+[2026-11-06T12:56:15.217+00:00] start take_action_001
+[2026-11-06T12:56:15.217+00:00] end take_action_001
+[2026-11-06T12:56:15.217+00:00] start get_obs_001
+[2026-11-06T12:56:15.218+00:00] end get_obs_001
+[2026-11-06T12:56:15.218+00:00] start video_frame_001
+[2026-11-06T12:56:15.218+00:00] end video_frame_001
+[2026-11-06T12:56:15.218+00:00] start take_action_002
+[2026-11-06T12:56:15.218+00:00] end take_action_002
+[2026-11-06T12:56:15.218+00:00] start get_obs_002
+[2026-11-06T12:56:15.218+00:00] end get_obs_002
+[2026-11-06T12:56:15.218+00:00] start video_frame_002
+[2026-11-06T12:56:15.218+00:00] end video_frame_002
+[2026-11-06T12:56:15.218+00:00] start take_action_003
+[2026-11-06T12:56:15.218+00:00] end take_action_003
+[2026-11-06T12:56:15.218+00:00] start get_obs_003
+[2026-11-06T12:56:15.218+00:00] end get_obs_003
+[2026-11-06T12:56:15.218+00:00] start video_frame_003
+[2026-11-06T12:56:15.218+00:00] end video_frame_003
+[2026-11-06T12:56:15.218+00:00] start close_video
+[2026-11-06T12:56:15.234+00:00] end close_video
+[2026-11-06T12:56:15.236+00:00] start websocket_connect
+[2026-11-06T12:56:15.237+00:00] end websocket_connect
+[2026-11-06T12:56:15.237+00:00] start get_obs_000
+[2026-11-06T12:56:15.237+00:00] end get_obs_000
+[2026-11-06T12:56:15.238+00:00] start video_frame_000
+[2026-11-06T12:56:15.241+00:00] end video_frame_000
+[2026-11-06T12:56:15.242+00:00] start policy_query_001
+[2026-11-06T12:56:15.245+00:00] error policy_query_001
+[2026-11-06T12:56:15.245+00:00] start close_video
+[2026-11-06T12:56:15.259+00:00] end close_video
+RuntimeError: policy service error: RuntimeError: injected
+ok
+test_client_rejects_bad_response_and_times_out (test_pace_runtime.RuntimeTest.test_client_rejects_bad_response_and_times_out) ... ok
+test_contract (test_pace_runtime.RuntimeTest.test_contract) ... ok
+test_model_sigterm_preserves_failed_phase_and_startup_summary (test_pace_runtime.RuntimeTest.test_model_sigterm_preserves_failed_phase_and_startup_summary) ... ok
+test_orbax_mode_rejects_an_alternate_model_file (test_pace_runtime.RuntimeTest.test_orbax_mode_rejects_an_alternate_model_file) ... ok
+test_phase_watchdog_records_stack_before_phase_finishes (test_pace_runtime.RuntimeTest.test_phase_watchdog_records_stack_before_phase_finishes) ... [2026-11-06T12:56:15.747+00:00] start load_environment
+[2026-11-06T12:56:15.875+00:00] end load_environment
+ok
+test_roundtrip_and_reject_backend_mismatch (test_pace_runtime.RuntimeTest.test_roundtrip_and_reject_backend_mismatch) ... ok
+test_server_rejects_bad_frame (test_pace_runtime.RuntimeTest.test_server_rejects_bad_frame) ... ok
+test_composition_and_inverse (test_robotwin_control_geometry.GeometryTests.test_composition_and_inverse) ... ok
+test_gripper_scale_and_range (test_robotwin_control_geometry.GeometryTests.test_gripper_scale_and_range) ... ok
+test_joint_order_and_action_layout (test_robotwin_control_geometry.GeometryTests.test_joint_order_and_action_layout) ... ok
+test_segment_status (test_robotwin_control_geometry.GeometryTests.test_segment_status) ... ok
+test_tool_offset_order_and_sign (test_robotwin_control_geometry.GeometryTests.test_tool_offset_order_and_sign) ... ok
+test_transfer_preserves_task_tool_pose (test_robotwin_control_geometry.GeometryTests.test_transfer_preserves_task_tool_pose) ... ok
+test_wxyz_and_sign (test_robotwin_control_geometry.GeometryTests.test_wxyz_and_sign) ... ok
+test_configured_gripper_endpoints_vs_urdf (test_robotwin_control_geometry.SapienRegressionTests.test_configured_gripper_endpoints_vs_urdf) ... ok
+test_same_actual_qpos_fk_and_tools (test_robotwin_control_geometry.SapienRegressionTests.test_same_actual_qpos_fk_and_tools) ... ok
+test_absolute_icd_path_uses_the_installed_soname (test_robotwin_graphics_driver.DriverDiscoveryTest.test_absolute_icd_path_uses_the_installed_soname) ... NVIDIA graphics libraries: 2; selection=resolved_installed_icd
+ok
+test_malformed_icd_keeps_diagnostic_evidence (test_robotwin_graphics_driver.DriverDiscoveryTest.test_malformed_icd_keeps_diagnostic_evidence) ... ok
+test_missing_egl_fails_with_diagnostics (test_robotwin_graphics_driver.DriverDiscoveryTest.test_missing_egl_fails_with_diagnostics) ... ok
+test_missing_original_icd_uses_only_installed_nvidia_egl (test_robotwin_graphics_driver.DriverDiscoveryTest.test_missing_original_icd_uses_only_installed_nvidia_egl) ... NVIDIA graphics libraries: 1; selection=original_icd_library_unresolved_using_installed_nvidia_egl
+ok
+test_no_nvidia_icd_fails_with_diagnostics (test_robotwin_graphics_driver.DriverDiscoveryTest.test_no_nvidia_icd_fails_with_diagnostics) ... ok
+test_successful_prior_layout_is_preserved (test_robotwin_graphics_driver.DriverDiscoveryTest.test_successful_prior_layout_is_preserved) ... NVIDIA graphics libraries: 2; selection=resolved_installed_icd
+ok
+test_fixed_checkpoint_and_drift (test_summarize_experiments.SummarizerTests.test_fixed_checkpoint_and_drift) ... ok
+test_formal_mode_enforces_locked_roster (test_summarize_experiments.SummarizerTests.test_formal_mode_enforces_locked_roster) ... ok
+test_incomplete_and_unverified_pairs (test_summarize_experiments.SummarizerTests.test_incomplete_and_unverified_pairs) ... ok
+test_mixed_file_formats_sources_and_metrics (test_summarize_experiments.SummarizerTests.test_mixed_file_formats_sources_and_metrics) ... ok
+test_reject_invalid_mixed_or_duplicate_records (test_summarize_experiments.SummarizerTests.test_reject_invalid_mixed_or_duplicate_records) ... ok
+test_same_robot_ablation_requires_matching_gripper (test_summarize_experiments.SummarizerTests.test_same_robot_ablation_requires_matching_gripper) ... ok
+test_schema_is_valid (test_summarize_experiments.SummarizerTests.test_schema_is_valid) ... ok
+test_seed_does_not_establish_pair (test_summarize_experiments.SummarizerTests.test_seed_does_not_establish_pair) ... ok
+
+----------------------------------------------------------------------
+Ran 158 tests in 15.380s
+
+OK

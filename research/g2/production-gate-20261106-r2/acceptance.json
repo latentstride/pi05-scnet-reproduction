@@ -1,0 +1,1556 @@
+{
+  "data_kind": "diagnostic",
+  "gpu_used": false,
+  "renderer_created": false,
+  "model_used": false,
+  "synthetic_cameras": true,
+  "functional_gate_passed": true,
+  "expert_full_accepted": false,
+  "passed": false,
+  "checks": {
+    "original_10g_initial_matches_record": true,
+    "initial_measured_geometry_clear": true,
+    "cross_arm_collision_rejected": true,
+    "robot_tray_collision_rejected": true,
+    "closing_intent_separated_from_geometry": true,
+    "carried_object_obstacle_rejected": true,
+    "candidate_object_pose_restored": true,
+    "premature_donor_release_rejected": true,
+    "release_before_withdrawal_barrier": true,
+    "inconsistent_two_holder_chain_rejected": true,
+    "changed_scene_rejected_before_actuation": true,
+    "rejection_collision_rows_saved": true,
+    "rejection_dual_hold_and_cleanup": true,
+    "valid_production_prefix_advanced": true
+  },
+  "cases": [
+    {
+      "name": "original_10g_initial_matches_record",
+      "passed": true,
+      "joint_max_error": 0.0,
+      "block_pose_max_error": 0.0,
+      "actual_mass_kg": 0.009999999776482582
+    },
+    {
+      "name": "initial_measured_geometry_clear",
+      "passed": true,
+      "blocked": []
+    },
+    {
+      "name": "cross_arm_collision_rejected",
+      "passed": true,
+      "blocked": [
+        {
+          "collision_type": "self_self",
+          "object_name1": "arx_left_4",
+          "link_name1": "base_link",
+          "object_name2": "arx_right_15",
+          "link_name2": "base_link",
+          "max_penetration_m": 0.07647877931594849
+        },
+        {
+          "collision_type": "self_self",
+          "object_name1": "arx_left_4",
+          "link_name1": "base_link",
+          "object_name2": "arx_right_15",
+          "link_name2": "link1",
+          "max_penetration_m": 0.0016984499525278807
+        },
+        {
+          "collision_type": "self_self",
+          "object_name1": "arx_left_4",
+          "link_name1": "base_link",
+          "object_name2": "arx_right_15",
+          "link_name2": "link2",
+          "max_penetration_m": 0.02558036893606186
+        },
+        {
+          "collision_type": "self_self",
+          "object_name1": "arx_left_4",
+          "link_name1": "link1",
+          "object_name2": "arx_right_15",
+          "link_name2": "base_link",
+          "max_penetration_m": 0.0018362690461799502
+        },
+        {
+          "collision_type": "self_self",
+          "object_name1": "arx_left_4",
+          "link_name1": "link1",
+          "object_name2": "arx_right_15",
+          "link_name2": "link1",
+          "max_penetration_m": 0.08501482009887695
+        },
+        {
+          "collision_type": "self_self",
+          "object_name1": "arx_left_4",
+          "link_name1": "link1",
+          "object_name2": "arx_right_15",
+          "link_name2": "link2",
+          "max_penetration_m": 0.09030605852603912
+        },
+        {
+          "collision_type": "self_self",
+          "object_name1": "arx_left_4",
+          "link_name1": "link2",
+          "object_name2": "arx_right_15",
+          "link_name2": "base_link",
+          "max_penetration_m": 0.02368456870317459
+        },
+        {
+          "collision_type": "self_self",
+          "object_name1": "arx_left_4",
+          "link_name1": "link2",
+          "object_name2": "arx_right_15",
+          "link_name2": "link1",
+          "max_penetration_m": 0.08663218468427658
+        },
+        {
+          "collision_type": "self_self",
+          "object_name1": "arx_left_4",
+          "link_name1": "link2",
+          "object_name2": "arx_right_15",
+          "link_name2": "link2",
+          "max_penetration_m": 0.07571060210466385
+        },
+        {
+          "collision_type": "self_self",
+          "object_name1": "arx_left_4",
+          "link_name1": "link2",
+          "object_name2": "arx_right_15",
+          "link_name2": "link3",
+          "max_penetration_m": 0.018525395542383194
+        },
+        {
+          "collision_type": "self_self",
+          "object_name1": "arx_left_4",
+          "link_name1": "link3",
+          "object_name2": "arx_right_15",
+          "link_name2": "link2",
+          "max_penetration_m": 0.018741244450211525
+        },
+        {
+          "collision_type": "self_self",
+          "object_name1": "arx_left_4",
+          "link_name1": "link3",
+          "object_name2": "arx_right_15",
+          "link_name2": "link3",
+          "max_penetration_m": 0.03540351241827011
+        },
+        {
+          "collision_type": "self_self",
+          "object_name1": "arx_left_4",
+          "link_name1": "link3",
+          "object_name2": "arx_right_15",
+          "link_name2": "link4",
+          "max_penetration_m": 0.04827854409813881
+        },
+        {
+          "collision_type": "self_self",
+          "object_name1": "arx_left_4",
+          "link_name1": "link4",
+          "object_name2": "arx_right_15",
+          "link_name2": "link3",
+          "max_penetration_m": 0.04843558371067047
+        },
+        {
+          "collision_type": "self_self",
+          "object_name1": "arx_left_4",
+          "link_name1": "link4",
+          "object_name2": "arx_right_15",
+          "link_name2": "link4",
+          "max_penetration_m": 0.1163584440946579
+        },
+        {
+          "collision_type": "self_self",
+          "object_name1": "arx_left_4",
+          "link_name1": "link4",
+          "object_name2": "arx_right_15",
+          "link_name2": "link5",
+          "max_penetration_m": 0.0681731179356575
+        },
+        {
+          "collision_type": "self_self",
+          "object_name1": "arx_left_4",
+          "link_name1": "link5",
+          "object_name2": "arx_right_15",
+          "link_name2": "link4",
+          "max_penetration_m": 0.07171951979398727
+        },
+        {
+          "collision_type": "self_self",
+          "object_name1": "arx_left_4",
+          "link_name1": "link5",
+          "object_name2": "arx_right_15",
+          "link_name2": "link5",
+          "max_penetration_m": 0.10712897777557373
+        },
+        {
+          "collision_type": "self_self",
+          "object_name1": "arx_left_4",
+          "link_name1": "link5",
+          "object_name2": "arx_right_15",
+          "link_name2": "link6",
+          "max_penetration_m": 0.0011851071612909436
+        },
+        {
+          "collision_type": "self_self",
+          "object_name1": "arx_left_4",
+          "link_name1": "link6",
+          "object_name2": "arx_right_15",
+          "link_name2": "link5",
+          "max_penetration_m": 0.0023858798667788506
+        },
+        {
+          "collision_type": "self_self",
+          "object_name1": "arx_left_4",
+          "link_name1": "link6",
+          "object_name2": "arx_right_15",
+          "link_name2": "link6",
+          "max_penetration_m": 0.1680518388748169
+        },
+        {
+          "collision_type": "self_self",
+          "object_name1": "arx_left_4",
+          "link_name1": "link6",
+          "object_name2": "arx_right_15",
+          "link_name2": "link7",
+          "max_penetration_m": 0.007398658432066441
+        },
+        {
+          "collision_type": "self_self",
+          "object_name1": "arx_left_4",
+          "link_name1": "link6",
+          "object_name2": "arx_right_15",
+          "link_name2": "link8",
+          "max_penetration_m": 0.007792890537530184
+        },
+        {
+          "collision_type": "self_self",
+          "object_name1": "arx_left_4",
+          "link_name1": "link7",
+          "object_name2": "arx_right_15",
+          "link_name2": "link6",
+          "max_penetration_m": 0.00995995569974184
+        },
+        {
+          "collision_type": "self_self",
+          "object_name1": "arx_left_4",
+          "link_name1": "link7",
+          "object_name2": "arx_right_15",
+          "link_name2": "link7",
+          "max_penetration_m": 0.02504034712910652
+        },
+        {
+          "collision_type": "self_self",
+          "object_name1": "arx_left_4",
+          "link_name1": "link8",
+          "object_name2": "arx_right_15",
+          "link_name2": "link6",
+          "max_penetration_m": 0.009294235147535801
+        },
+        {
+          "collision_type": "self_self",
+          "object_name1": "arx_left_4",
+          "link_name1": "link8",
+          "object_name2": "arx_right_15",
+          "link_name2": "link8",
+          "max_penetration_m": 0.02482646517455578
+        },
+        {
+          "collision_type": "self_self",
+          "object_name1": "arx_right_15",
+          "link_name1": "base_link",
+          "object_name2": "arx_left_4",
+          "link_name2": "base_link",
+          "max_penetration_m": 0.07647877931594849
+        },
+        {
+          "collision_type": "self_self",
+          "object_name1": "arx_right_15",
+          "link_name1": "base_link",
+          "object_name2": "arx_left_4",
+          "link_name2": "link1",
+          "max_penetration_m": 0.0018362690461799502
+        },
+        {
+          "collision_type": "self_self",
+          "object_name1": "arx_right_15",
+          "link_name1": "base_link",
+          "object_name2": "arx_left_4",
+          "link_name2": "link2",
+          "max_penetration_m": 0.023684576153755188
+        },
+        {
+          "collision_type": "self_self",
+          "object_name1": "arx_right_15",
+          "link_name1": "link1",
+          "object_name2": "arx_left_4",
+          "link_name2": "base_link",
+          "max_penetration_m": 0.0016984499525278807
+        },
+        {
+          "collision_type": "self_self",
+          "object_name1": "arx_right_15",
+          "link_name1": "link1",
+          "object_name2": "arx_left_4",
+          "link_name2": "link1",
+          "max_penetration_m": 0.08501482009887695
+        },
+        {
+          "collision_type": "self_self",
+          "object_name1": "arx_right_15",
+          "link_name1": "link1",
+          "object_name2": "arx_left_4",
+          "link_name2": "link2",
+          "max_penetration_m": 0.08663218468427658
+        },
+        {
+          "collision_type": "self_self",
+          "object_name1": "arx_right_15",
+          "link_name1": "link2",
+          "object_name2": "arx_left_4",
+          "link_name2": "base_link",
+          "max_penetration_m": 0.025580374523997307
+        },
+        {
+          "collision_type": "self_self",
+          "object_name1": "arx_right_15",
+          "link_name1": "link2",
+          "object_name2": "arx_left_4",
+          "link_name2": "link1",
+          "max_penetration_m": 0.09030605852603912
+        },
+        {
+          "collision_type": "self_self",
+          "object_name1": "arx_right_15",
+          "link_name1": "link2",
+          "object_name2": "arx_left_4",
+          "link_name2": "link2",
+          "max_penetration_m": 0.07571059465408325
+        },
+        {
+          "collision_type": "self_self",
+          "object_name1": "arx_right_15",
+          "link_name1": "link2",
+          "object_name2": "arx_left_4",
+          "link_name2": "link3",
+          "max_penetration_m": 0.018741238862276077
+        },
+        {
+          "collision_type": "self_self",
+          "object_name1": "arx_right_15",
+          "link_name1": "link3",
+          "object_name2": "arx_left_4",
+          "link_name2": "link2",
+          "max_penetration_m": 0.018525393679738045
+        },
+        {
+          "collision_type": "self_self",
+          "object_name1": "arx_right_15",
+          "link_name1": "link3",
+          "object_name2": "arx_left_4",
+          "link_name2": "link3",
+          "max_penetration_m": 0.03540351241827011
+        },
+        {
+          "collision_type": "self_self",
+          "object_name1": "arx_right_15",
+          "link_name1": "link3",
+          "object_name2": "arx_left_4",
+          "link_name2": "link4",
+          "max_penetration_m": 0.04843558371067047
+        },
+        {
+          "collision_type": "self_self",
+          "object_name1": "arx_right_15",
+          "link_name1": "link4",
+          "object_name2": "arx_left_4",
+          "link_name2": "link3",
+          "max_penetration_m": 0.04827854409813881
+        },
+        {
+          "collision_type": "self_self",
+          "object_name1": "arx_right_15",
+          "link_name1": "link4",
+          "object_name2": "arx_left_4",
+          "link_name2": "link4",
+          "max_penetration_m": 0.1163584440946579
+        },
+        {
+          "collision_type": "self_self",
+          "object_name1": "arx_right_15",
+          "link_name1": "link4",
+          "object_name2": "arx_left_4",
+          "link_name2": "link5",
+          "max_penetration_m": 0.07168052345514297
+        },
+        {
+          "collision_type": "self_self",
+          "object_name1": "arx_right_15",
+          "link_name1": "link5",
+          "object_name2": "arx_left_4",
+          "link_name2": "link4",
+          "max_penetration_m": 0.0681731179356575
+        },
+        {
+          "collision_type": "self_self",
+          "object_name1": "arx_right_15",
+          "link_name1": "link5",
+          "object_name2": "arx_left_4",
+          "link_name2": "link5",
+          "max_penetration_m": 0.10712897777557373
+        },
+        {
+          "collision_type": "self_self",
+          "object_name1": "arx_right_15",
+          "link_name1": "link5",
+          "object_name2": "arx_left_4",
+          "link_name2": "link6",
+          "max_penetration_m": 0.003474391298368573
+        },
+        {
+          "collision_type": "self_self",
+          "object_name1": "arx_right_15",
+          "link_name1": "link6",
+          "object_name2": "arx_left_4",
+          "link_name2": "link5",
+          "max_penetration_m": 0.0011851072777062654
+        },
+        {
+          "collision_type": "self_self",
+          "object_name1": "arx_right_15",
+          "link_name1": "link6",
+          "object_name2": "arx_left_4",
+          "link_name2": "link6",
+          "max_penetration_m": 0.1680518388748169
+        },
+        {
+          "collision_type": "self_self",
+          "object_name1": "arx_right_15",
+          "link_name1": "link6",
+          "object_name2": "arx_left_4",
+          "link_name2": "link7",
+          "max_penetration_m": 0.00995995569974184
+        },
+        {
+          "collision_type": "self_self",
+          "object_name1": "arx_right_15",
+          "link_name1": "link6",
+          "object_name2": "arx_left_4",
+          "link_name2": "link8",
+          "max_penetration_m": 0.009294235147535801
+        },
+        {
+          "collision_type": "self_self",
+          "object_name1": "arx_right_15",
+          "link_name1": "link7",
+          "object_name2": "arx_left_4",
+          "link_name2": "link6",
+          "max_penetration_m": 0.007398658897727728
+        },
+        {
+          "collision_type": "self_self",
+          "object_name1": "arx_right_15",
+          "link_name1": "link7",
+          "object_name2": "arx_left_4",
+          "link_name2": "link7",
+          "max_penetration_m": 0.02504034899175167
+        },
+        {
+          "collision_type": "self_self",
+          "object_name1": "arx_right_15",
+          "link_name1": "link8",
+          "object_name2": "arx_left_4",
+          "link_name2": "link6",
+          "max_penetration_m": 0.007792890537530184
+        },
+        {
+          "collision_type": "self_self",
+          "object_name1": "arx_right_15",
+          "link_name1": "link8",
+          "object_name2": "arx_left_4",
+          "link_name2": "link8",
+          "max_penetration_m": 0.02482646517455578
+        }
+      ]
+    },
+    {
+      "name": "robot_tray_collision_rejected",
+      "passed": true,
+      "blocked": [
+        {
+          "collision_type": "self_sceneobject",
+          "object_name1": "arx_left_4",
+          "link_name1": "link6",
+          "object_name2": "target_box_27",
+          "link_name2": "target_box_27",
+          "max_penetration_m": 0.03743881359696388
+        },
+        {
+          "collision_type": "self_sceneobject",
+          "object_name1": "arx_left_4",
+          "link_name1": "link7",
+          "object_name2": "target_box_27",
+          "link_name2": "target_box_27",
+          "max_penetration_m": 0.09599284827709198
+        }
+      ]
+    },
+    {
+      "name": "closing_intent_separated_from_geometry",
+      "passed": true,
+      "checkpoint_tick": 9563,
+      "raw_drive": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.04399999976158142,
+          0.04399999976158142
+        ]
+      ],
+      "predicted_fingers": [
+        [
+          0.029088318152025748,
+          0.029110526176793883
+        ],
+        [
+          0.04399999976158142,
+          0.04399999976158142
+        ]
+      ],
+      "changes": [
+        {
+          "side": "left",
+          "finger": 0,
+          "requested_native_m": 0.0,
+          "predicted_contact_native_m": 0.029088318152025748,
+          "rule": "first_bounded_finger_block_contact",
+          "profile": "g2_contact_v1:bfc086ce3f2621e6914b226e791e6e8895de1a9560d6ef696c5055525f8ae8ef"
+        },
+        {
+          "side": "left",
+          "finger": 1,
+          "requested_native_m": 0.0,
+          "predicted_contact_native_m": 0.029110526176793883,
+          "rule": "first_bounded_finger_block_contact",
+          "profile": "g2_contact_v1:bfc086ce3f2621e6914b226e791e6e8895de1a9560d6ef696c5055525f8ae8ef"
+        }
+      ],
+      "raw_blocked": [
+        {
+          "collision_type": "self_sceneobject",
+          "object_name1": "arx_left_4",
+          "link_name1": "link7",
+          "object_name2": "box_26",
+          "link_name2": "box_26"
+        },
+        {
+          "collision_type": "self_sceneobject",
+          "object_name1": "arx_left_4",
+          "link_name1": "link8",
+          "object_name2": "box_26",
+          "link_name2": "box_26"
+        }
+      ],
+      "projected_blocked": []
+    },
+    {
+      "name": "carried_object_obstacle_rejected",
+      "passed": true,
+      "blocked": [
+        {
+          "collision_type": "held_object_environment",
+          "object_name1": "box_26",
+          "link_name1": "box_26",
+          "object_name2": "gate_probe_28",
+          "link_name2": "gate_probe_28",
+          "max_penetration_m": 0.040391296230123525
+        }
+      ]
+    },
+    {
+      "name": "candidate_object_pose_restored",
+      "passed": true
+    },
+    {
+      "name": "premature_donor_release_rejected",
+      "passed": true
+    },
+    {
+      "name": "release_before_withdrawal_barrier",
+      "passed": true
+    },
+    {
+      "name": "inconsistent_two_holder_chain_rejected",
+      "passed": true,
+      "blocked": [
+        {
+          "reason": "two holders imply inconsistent object poses"
+        }
+      ]
+    },
+    {
+      "name": "changed_scene_rejected_before_actuation",
+      "passed": true,
+      "result": {
+        "data_kind": "diagnostic",
+        "formal_score_eligible": false,
+        "episode_id": "gate-scene-change",
+        "condition": "B-arx-w1",
+        "window": 1,
+        "success": false,
+        "outcome": "control_error",
+        "requested": 1,
+        "executed": 0,
+        "queries": 1,
+        "inference_s": 0.0,
+        "planning_s": 0.06098721921443939,
+        "control_s": 0.019514249172061682,
+        "plan_calls": 1,
+        "plan_failures": 0,
+        "initial": {
+          "robot_base_world": {
+            "left": [
+              -0.30000001192092896,
+              -0.3499999940395355,
+              0.7839999794960022,
+              0.7071067811865476,
+              0.0,
+              0.0,
+              0.7071067811865475
+            ],
+            "right": [
+              0.30000001192092896,
+              -0.3499999940395355,
+              0.7839999794960022,
+              0.7071067811865476,
+              0.0,
+              0.0,
+              0.7071067811865475
+            ]
+          },
+          "actual_arm_qpos_rad": {
+            "left": [
+              -0.26346591114997864,
+              -0.6305378675460815,
+              0.1571831852197647,
+              -0.7877228260040283,
+              -0.28336942195892334,
+              -1.3242606655694544e-05
+            ],
+            "right": [
+              -0.6324052214622498,
+              -0.6228002905845642,
+              0.1452883630990982,
+              -0.7680932283401489,
+              -0.6423773765563965,
+              -1.4833736713626422e-05
+            ]
+          },
+          "actual_gripper": {
+            "left": 0.999999994581396,
+            "right": 0.999999994581396
+          },
+          "block_pose": [
+            -0.17331258952617645,
+            0.19793014228343964,
+            0.840000569820404,
+            0.9939092397689819,
+            5.21393940289272e-06,
+            -5.030996362620499e-06,
+            0.11020209640264511
+          ],
+          "actual_block_mass_kg": 0.009999999776482582,
+          "synthetic_cameras": true
+        },
+        "failure": {
+          "phase": "control",
+          "code": "collision",
+          "detail": "scene changed after planning"
+        },
+        "video": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r2/changed-scene/no-render-video",
+        "control_calls": 0,
+        "initial_sim_s": 0.0,
+        "elapsed_s": 3.8647834518924356
+      },
+      "physics_ticks": 0
+    },
+    {
+      "name": "rejection_collision_rows_saved",
+      "passed": true,
+      "rejection_events": [
+        {
+          "phase": "control",
+          "elapsed_s": 3.854003107175231,
+          "kind": "planning_gate_rejection",
+          "tick": 0,
+          "trajectory_tick": 1,
+          "sim_s": 0.0,
+          "target_arm": [
+            [
+              -0.26346591114997864,
+              -0.6305378675460815,
+              0.1571831852197647,
+              -0.7877228260040283,
+              -0.28336942195892334,
+              -1.3242606655694544e-05
+            ],
+            [
+              -0.6324052214622498,
+              -0.6228002905845642,
+              0.1452883630990982,
+              -0.7680932283401489,
+              -0.6423773765563965,
+              -1.4833736713626422e-05
+            ]
+          ],
+          "target_fingers": [
+            [
+              0.044,
+              0.044
+            ],
+            [
+              0.044,
+              0.044
+            ]
+          ],
+          "predicted_fingers": [
+            [
+              0.044,
+              0.044
+            ],
+            [
+              0.044,
+              0.044
+            ]
+          ],
+          "collisions": [
+            {
+              "collision_type": "self_sceneobject",
+              "object_name1": "arx_left_4",
+              "link_name1": "link7",
+              "object_name2": "gate_probe_28",
+              "link_name2": "gate_probe_28",
+              "max_penetration_m": 0.04775526747107506
+            }
+          ],
+          "control_call_count": 0,
+          "physics_step_count": 0
+        }
+      ]
+    },
+    {
+      "name": "rejection_dual_hold_and_cleanup",
+      "passed": true,
+      "hold_calls": 1,
+      "zero_velocity_targets": true
+    },
+    {
+      "name": "valid_production_prefix_advanced",
+      "passed": true,
+      "executed_actions": 113,
+      "physics_ticks": 12913,
+      "outcome": "interrupted"
+    }
+  ],
+  "live_result": {
+    "data_kind": "diagnostic",
+    "formal_score_eligible": false,
+    "episode_id": "gate-live-expert",
+    "condition": "B-arx-w1",
+    "window": 1,
+    "success": false,
+    "outcome": "interrupted",
+    "requested": 114,
+    "executed": 113,
+    "queries": 114,
+    "inference_s": 0.0,
+    "planning_s": 304.73755654040724,
+    "control_s": 674.1648291042075,
+    "plan_calls": 114,
+    "plan_failures": 0,
+    "initial": {
+      "robot_base_world": {
+        "left": [
+          -0.30000001192092896,
+          -0.3499999940395355,
+          0.7839999794960022,
+          0.7071067811865476,
+          0.0,
+          0.0,
+          0.7071067811865475
+        ],
+        "right": [
+          0.30000001192092896,
+          -0.3499999940395355,
+          0.7839999794960022,
+          0.7071067811865476,
+          0.0,
+          0.0,
+          0.7071067811865475
+        ]
+      },
+      "actual_arm_qpos_rad": {
+        "left": [
+          -0.26346591114997864,
+          -0.6305378675460815,
+          0.1571831852197647,
+          -0.7877228260040283,
+          -0.28336942195892334,
+          -1.3242606655694544e-05
+        ],
+        "right": [
+          -0.6324052214622498,
+          -0.6228002905845642,
+          0.1452883630990982,
+          -0.7680932283401489,
+          -0.6423773765563965,
+          -1.4833736713626422e-05
+        ]
+      },
+      "actual_gripper": {
+        "left": 0.999999994581396,
+        "right": 0.999999994581396
+      },
+      "block_pose": [
+        -0.17331258952617645,
+        0.19793014228343964,
+        0.840000569820404,
+        0.9939092397689819,
+        5.21393940289272e-06,
+        -5.030996362620499e-06,
+        0.11020209640264511
+      ],
+      "actual_block_mass_kg": 0.009999999776482582,
+      "synthetic_cameras": true
+    },
+    "failure": {
+      "phase": "planning",
+      "code": "KeyboardInterrupt",
+      "detail": "termination requested"
+    },
+    "video": "<PROJECT_ROOT>/results/g2/production-gate-20261106-r2/live/no-render-video",
+    "control_calls": 2583,
+    "initial_sim_s": 0.0,
+    "elapsed_s": 993.2730979886837
+  },
+  "live_physics_steps": 12913,
+  "contact_state": {
+    "phase": "left_holding",
+    "holders": [
+      "left"
+    ],
+    "contact_fingers": {
+      "left": [
+        13,
+        14
+      ],
+      "right": []
+    },
+    "stable_counts": {
+      "left": 3,
+      "right": 0
+    },
+    "saw_shared_hold": false,
+    "releasing": [],
+    "block_pose_task": [
+      [
+        0.9602988244078694,
+        -0.278965594391999,
+        -0.002089254982711371,
+        -0.013649221509695053
+      ],
+      [
+        0.2789675832665283,
+        0.9602033753463469,
+        0.013658896731253608,
+        0.016221681609749794
+      ],
+      [
+        -0.0018042525590144642,
+        -0.013699456887085874,
+        0.9999045302196116,
+        0.9990612268447876
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "tool_block": {
+      "left": [
+        [
+          0.9997825411523924,
+          0.020840593089517814,
+          0.0007349058044409618,
+          0.012412095015622529
+        ],
+        [
+          0.020853545339979695,
+          -0.9991738220309391,
+          -0.034882703662967376,
+          0.002105739369379439
+        ],
+        [
+          7.3224085538518614e-06,
+          0.03489044350194086,
+          -0.9993911430959455,
+          0.06906031722587325
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    "tool_block_measured": {
+      "left": [
+        [
+          0.9999965522456566,
+          -0.00035514542621250525,
+          -0.002601801015794559,
+          0.013052524744699001
+        ],
+        [
+          -0.0003590234694499933,
+          -0.9999988251916153,
+          -0.0014902072130020857,
+          0.00029154927456845336
+        ],
+        [
+          -0.002601268718901079,
+          0.001491136182761216,
+          -0.9999955049468655,
+          0.06985840523205211
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    }
+  },
+  "scope": "real mesh FCL and production adapter/motion/backend/episode on CPU; no rendering or policy evaluation",
+  "geometry_fixture_kind": "archived actual joint/object states restored kinematically; holder assumptions from recorded handover phases",
+  "contact_limits": {
+    "penetration_m": 0.002,
+    "closure_penetration_m": 0.0005,
+    "scan_step_m": 0.001,
+    "position_slip_m": 0.005,
+    "angle_slip_deg": 5.0,
+    "closed_chain_position_m": 0.002,
+    "closed_chain_angle_deg": 2.0,
+    "stable_steps": 3,
+    "minimum_impulse": 1e-08,
+    "contact_cap": 256
+  },
+  "physical_filter": {
+    "profile_sha256": "07c7faf92f6c9c7e3b7c370cb4487494d236935910cf6d89333f89f0b56c0ddb",
+    "scope": "same_articulation_only",
+    "pairs": [
+      [
+        "base_link",
+        "link1"
+      ],
+      [
+        "base_link",
+        "link2"
+      ],
+      [
+        "base_link",
+        "link3"
+      ],
+      [
+        "link1",
+        "link2"
+      ],
+      [
+        "link1",
+        "link3"
+      ],
+      [
+        "link2",
+        "link3"
+      ],
+      [
+        "link2",
+        "link4"
+      ],
+      [
+        "link3",
+        "link4"
+      ],
+      [
+        "link3",
+        "link5"
+      ],
+      [
+        "link3",
+        "link6"
+      ],
+      [
+        "link4",
+        "link5"
+      ],
+      [
+        "link4",
+        "link6"
+      ],
+      [
+        "link5",
+        "link6"
+      ]
+    ],
+    "verified_scene_shape_pairs": 300,
+    "shapes_changed": 18,
+    "articulations": [
+      {
+        "link_ids": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "group_id": 1
+      },
+      {
+        "link_ids": [
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25
+        ],
+        "group_id": 2
+      }
+    ],
+    "shapes": [
+      {
+        "link": "base_link",
+        "articulation": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "before": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "after": [
+          1,
+          1,
+          7,
+          1
+        ]
+      },
+      {
+        "link": "link1",
+        "articulation": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "before": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "after": [
+          1,
+          1,
+          25,
+          1
+        ]
+      },
+      {
+        "link": "link2",
+        "articulation": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "before": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "after": [
+          1,
+          1,
+          106,
+          1
+        ]
+      },
+      {
+        "link": "link3",
+        "articulation": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "before": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "after": [
+          1,
+          1,
+          948,
+          1
+        ]
+      },
+      {
+        "link": "link4",
+        "articulation": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "before": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "after": [
+          1,
+          1,
+          3264,
+          1
+        ]
+      },
+      {
+        "link": "link5",
+        "articulation": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "before": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "after": [
+          1,
+          1,
+          5376,
+          1
+        ]
+      },
+      {
+        "link": "link6",
+        "articulation": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "before": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "after": [
+          1,
+          1,
+          6656,
+          1
+        ]
+      },
+      {
+        "link": "link7",
+        "articulation": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "before": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "after": [
+          1,
+          1,
+          0,
+          1
+        ]
+      },
+      {
+        "link": "link8",
+        "articulation": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "before": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "after": [
+          1,
+          1,
+          0,
+          1
+        ]
+      },
+      {
+        "link": "base_link",
+        "articulation": [
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25
+        ],
+        "before": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "after": [
+          1,
+          1,
+          7,
+          2
+        ]
+      },
+      {
+        "link": "link1",
+        "articulation": [
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25
+        ],
+        "before": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "after": [
+          1,
+          1,
+          25,
+          2
+        ]
+      },
+      {
+        "link": "link2",
+        "articulation": [
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25
+        ],
+        "before": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "after": [
+          1,
+          1,
+          106,
+          2
+        ]
+      },
+      {
+        "link": "link3",
+        "articulation": [
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25
+        ],
+        "before": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "after": [
+          1,
+          1,
+          948,
+          2
+        ]
+      },
+      {
+        "link": "link4",
+        "articulation": [
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25
+        ],
+        "before": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "after": [
+          1,
+          1,
+          3264,
+          2
+        ]
+      },
+      {
+        "link": "link5",
+        "articulation": [
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25
+        ],
+        "before": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "after": [
+          1,
+          1,
+          5376,
+          2
+        ]
+      },
+      {
+        "link": "link6",
+        "articulation": [
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25
+        ],
+        "before": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "after": [
+          1,
+          1,
+          6656,
+          2
+        ]
+      },
+      {
+        "link": "link7",
+        "articulation": [
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25
+        ],
+        "before": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "after": [
+          1,
+          1,
+          0,
+          2
+        ]
+      },
+      {
+        "link": "link8",
+        "articulation": [
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25
+        ],
+        "before": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "after": [
+          1,
+          1,
+          0,
+          2
+        ]
+      }
+    ]
+  },
+  "wall_s": 1005.4699067547917
+}

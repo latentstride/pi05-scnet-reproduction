@@ -1,0 +1,7 @@
+{
+  "gpu_used": false,
+  "passed": true,
+  "scope": "CPU unit/geometry/synthetic episodes",
+  "gpu_release_ready": false,
+  "formal_run_lock_frozen": false
+}

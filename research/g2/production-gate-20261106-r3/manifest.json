@@ -1,0 +1,23 @@
+{
+  "gate-cases.json": "774bd346eb469b8c0926a47405175b16a28c8fef67d3b90993e81b7346a56ad5",
+  "acceptance.json": "d29bcf2b9793b694a14233420dac457219d98638c9dacdb9335bce00ce96c4b8",
+  "changed-scene-episode/result.json": "2a1051a3f787008c2c14853450f07f78a6fea163b41a197e802956208bdda9e5",
+  "changed-scene-episode/initial.json": "7ba0021cac93a3bff1d73528d3d3a781b78ebb7b87205135f1f87863305abe2f",
+  "changed-scene-episode/plan-00001.npz": "173707145dbdc8f5148c4d5c6d2de214ffba8db76d17f12813e621ada6e05259",
+  "live-episode/initial.json": "7ba0021cac93a3bff1d73528d3d3a781b78ebb7b87205135f1f87863305abe2f",
+  "live-episode/result.json": "87281668a33fb6b2a67ac1986702b542822d7ed74e69afb03c036827e9a8a62b",
+  "live-episode/plan-00001.npz": "173707145dbdc8f5148c4d5c6d2de214ffba8db76d17f12813e621ada6e05259",
+  "live-episode/plan-00251.npz": "316b9818cf8bf8eab04b0a301c6790501d76b311fbf9397a737d5e0f438c14b3",
+  "changed-scene-episode/events.jsonl": "bd107525e0428b478c14780698b5f07a9406c4d91b9fb2d9b6e3bdf420dd48f8",
+  "outer.log": "d1589b0b1edb92e362cd1e58286bd5219cce27ea6d37b0ff168cd68c8d314cca",
+  "control/wrapper.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "control/exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+  "runtime-sources/source-manifest.json": "871e6e7ce5b56fc59ad8d13e6ccbc4fb011dbfcbd519313e14fdedde3b697501",
+  "runtime-sources/config.json": "5fde18f32434d4123e7fc5c708086f293e1787ccfa938f3719b948edbbaa50e7",
+  "runtime-sources/g2_contact.py": "68a516a48b859a5478115fdd5a9840828f73cfdaa8e185545d9c0c3f474d312e",
+  "runtime-sources/g2_gate_accept_cpu.py": "1153f6ac855c1215deee11d5cdaeec395cbcf3004da4598bbfe52132ed15f536",
+  "runtime-sources/g2_gate_scene_cpu.py": "7109401a9f0c14dc6c8e91c4b459decb581d8bf5a632b5676c53e44b5fc685f1",
+  "runtime-sources/g2_episode.py": "5d878874bcb2ddf7891e087919ebb0c317548af8c96d24731cb07a3dcf6f6903",
+  "runtime-sources/g2_robotwin_backend.py": "804763004e8aec73731c1283a7df7dc013664887a2fcf1edd7be5c8f93a02db9",
+  "runtime-sources/run.sh": "fcdacd208779d37bdf622784cd65c558798449860720102072f19c0fbaf735b7"
+}

@@ -1,0 +1,165 @@
+{
+  "live_events": {
+    "count": 13370,
+    "first": {
+      "phase": "reset",
+      "elapsed_s": 3.920080489013344,
+      "kind": "expert_source",
+      "id": "fixed official Aloha recorded-target sequence",
+      "original_sample_period_s": "unknown",
+      "geometry": "expert_qpos"
+    },
+    "last": {
+      "phase": "inference",
+      "elapsed_s": 988.19391425699,
+      "kind": "expert_window",
+      "source_frames": [
+        113
+      ]
+    },
+    "selected": [
+      {
+        "phase": "control",
+        "elapsed_s": 287.55396327888593,
+        "kind": "contact_replan",
+        "requested_actions": 1,
+        "approved_actions": 1,
+        "consumed_actions": 1,
+        "reason": {
+          "reason": "measured_contact_transition",
+          "tick": 7938,
+          "before": [],
+          "after": [
+            "left"
+          ],
+          "interrupted_waypoint": true
+        }
+      }
+    ],
+    "blocked": 0,
+    "contact_phase_transitions": [
+      {
+        "tick": 1,
+        "phase": "approach"
+      },
+      {
+        "tick": 7938,
+        "phase": "left_holding"
+      }
+    ]
+  },
+  "live_collision": {
+    "count": 18331,
+    "first": {
+      "call": 1,
+      "q": [
+        [
+          -0.26346591114997864,
+          -0.6305378675460815,
+          0.1571831852197647,
+          -0.7877228260040283,
+          -0.28336942195892334,
+          -1.3242606655694544e-05
+        ],
+        [
+          -0.6324052214622498,
+          -0.6228002905845642,
+          0.1452883630990982,
+          -0.7680932283401489,
+          -0.6423773765563965,
+          -1.4833736713626422e-05
+        ]
+      ],
+      "fingers": [
+        [
+          0.04399999976158142,
+          0.04399999976158142
+        ],
+        [
+          0.04399999976158142,
+          0.04399999976158142
+        ]
+      ],
+      "raw": [],
+      "ignored": [],
+      "blocked": [],
+      "self_profile_sha256": "07c7faf92f6c9c7e3b7c370cb4487494d236935910cf6d89333f89f0b56c0ddb"
+    },
+    "last": {
+      "call": 18331,
+      "q": [
+        [
+          -0.40190865526527014,
+          1.6277468570346967,
+          1.0906309806984282,
+          0.5337098861092952,
+          0.8909072392712888,
+          -0.0059587160706554235
+        ],
+        [
+          -0.6324052214622498,
+          -0.6228002905845642,
+          0.1452883630990982,
+          -0.7680932283401489,
+          -0.6423773765563965,
+          -1.4626648408011533e-05
+        ]
+      ],
+      "fingers": [
+        [
+          0.02892616753645901,
+          0.02929436661825351
+        ],
+        [
+          0.04399999999967926,
+          0.04399999999967926
+        ]
+      ],
+      "raw": [
+        {
+          "collision_type": "self_sceneobject",
+          "object_name1": "arx_left_4",
+          "link_name1": "link7",
+          "object_name2": "box_26",
+          "link_name2": "box_26",
+          "max_penetration_m": 0.0004999783122912049
+        },
+        {
+          "collision_type": "self_sceneobject",
+          "object_name1": "arx_left_4",
+          "link_name1": "link8",
+          "object_name2": "box_26",
+          "link_name2": "box_26",
+          "max_penetration_m": 0.0004999979864805937
+        }
+      ],
+      "ignored": [
+        {
+          "collision_type": "self_sceneobject",
+          "object_name1": "arx_left_4",
+          "link_name1": "link7",
+          "object_name2": "box_26",
+          "link_name2": "box_26",
+          "max_penetration_m": 0.0004999783122912049,
+          "rule": "bounded_task_contact",
+          "profile": "g2_contact_v1:bfc086ce3f2621e6914b226e791e6e8895de1a9560d6ef696c5055525f8ae8ef"
+        },
+        {
+          "collision_type": "self_sceneobject",
+          "object_name1": "arx_left_4",
+          "link_name1": "link8",
+          "object_name2": "box_26",
+          "link_name2": "box_26",
+          "max_penetration_m": 0.0004999979864805937,
+          "rule": "bounded_task_contact",
+          "profile": "g2_contact_v1:bfc086ce3f2621e6914b226e791e6e8895de1a9560d6ef696c5055525f8ae8ef"
+        }
+      ],
+      "blocked": [],
+      "self_profile_sha256": "07c7faf92f6c9c7e3b7c370cb4487494d236935910cf6d89333f89f0b56c0ddb"
+    },
+    "selected": [],
+    "blocked": 0,
+    "contact_phase_transitions": []
+  }
+}

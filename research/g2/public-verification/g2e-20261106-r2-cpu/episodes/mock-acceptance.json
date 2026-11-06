@@ -1,0 +1,1142 @@
+{
+  "data_kind": "synthetic",
+  "formal_score_eligible": false,
+  "gpu_used": false,
+  "simulator_run": false,
+  "episodes": [
+    {
+      "data_kind": "synthetic",
+      "formal_score_eligible": false,
+      "episode_id": "Aloha-window1",
+      "condition": "A_Aloha-window1",
+      "window": 1,
+      "success": true,
+      "outcome": "success",
+      "requested": 4,
+      "executed": 4,
+      "queries": 4,
+      "inference_s": 0.001120167988119647,
+      "planning_s": 0.0012485019833547994,
+      "control_s": 0.0001982079993467778,
+      "plan_calls": 4,
+      "plan_failures": 0,
+      "initial": {
+        "robot_base_world": {
+          "left": [
+            -0.5,
+            -0.65,
+            0.0,
+            0.7071067811865477,
+            0.0,
+            0.0,
+            0.7071067811865475
+          ],
+          "right": [
+            0.5,
+            -0.65,
+            0.0,
+            0.7071067811865477,
+            0.0,
+            0.0,
+            0.7071067811865475
+          ]
+        },
+        "task_frame_world": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "actual_arm_qpos_rad": {
+          "left": [
+            0.2,
+            0.3,
+            -0.4,
+            0.3,
+            0.4,
+            -0.2
+          ],
+          "right": [
+            -0.2,
+            0.4,
+            -0.3,
+            0.2,
+            -0.3,
+            0.2
+          ]
+        },
+        "actual_gripper": {
+          "left": 0.5,
+          "right": 0.5
+        },
+        "objects_task": {
+          "synthetic_block": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "reset_fixture_sha256": "8056313da2bafe7b572847633ce335d4642e6fdd03be7a896b9472f4b952f74e",
+        "workspace_check_id": "synthetic_aligned_fixture_only",
+        "common_workspace_pass": true
+      },
+      "failure": null,
+      "video": "/Users/chenpengfei/Documents/ChatGPT/vlm\u9879\u76ee/pi05/results/g2/g2e-20261106-r2-cpu/episodes/Aloha-window1/head.mp4",
+      "control_calls": 4,
+      "initial_sim_s": 0.0,
+      "elapsed_s": 0.043940707997535355
+    },
+    {
+      "data_kind": "synthetic",
+      "formal_score_eligible": false,
+      "episode_id": "Aloha-window4",
+      "condition": "A_Aloha-window4",
+      "window": 4,
+      "success": true,
+      "outcome": "success",
+      "requested": 4,
+      "executed": 4,
+      "queries": 1,
+      "inference_s": 0.00035829099942930043,
+      "planning_s": 0.0003983329952461645,
+      "control_s": 8.179200813174248e-05,
+      "plan_calls": 1,
+      "plan_failures": 0,
+      "initial": {
+        "robot_base_world": {
+          "left": [
+            -0.5,
+            -0.65,
+            0.0,
+            0.7071067811865477,
+            0.0,
+            0.0,
+            0.7071067811865475
+          ],
+          "right": [
+            0.5,
+            -0.65,
+            0.0,
+            0.7071067811865477,
+            0.0,
+            0.0,
+            0.7071067811865475
+          ]
+        },
+        "task_frame_world": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "actual_arm_qpos_rad": {
+          "left": [
+            0.2,
+            0.3,
+            -0.4,
+            0.3,
+            0.4,
+            -0.2
+          ],
+          "right": [
+            -0.2,
+            0.4,
+            -0.3,
+            0.2,
+            -0.3,
+            0.2
+          ]
+        },
+        "actual_gripper": {
+          "left": 0.5,
+          "right": 0.5
+        },
+        "objects_task": {
+          "synthetic_block": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "reset_fixture_sha256": "8056313da2bafe7b572847633ce335d4642e6fdd03be7a896b9472f4b952f74e",
+        "workspace_check_id": "synthetic_aligned_fixture_only",
+        "common_workspace_pass": true
+      },
+      "failure": null,
+      "video": "/Users/chenpengfei/Documents/ChatGPT/vlm\u9879\u76ee/pi05/results/g2/g2e-20261106-r2-cpu/episodes/Aloha-window4/head.mp4",
+      "control_calls": 4,
+      "initial_sim_s": 0.0,
+      "elapsed_s": 0.028391999992891215
+    },
+    {
+      "data_kind": "synthetic",
+      "formal_score_eligible": false,
+      "episode_id": "ARX-window1",
+      "condition": "B_ARX-window1",
+      "window": 1,
+      "success": true,
+      "outcome": "success",
+      "requested": 4,
+      "executed": 4,
+      "queries": 4,
+      "inference_s": 0.0019265000155428424,
+      "planning_s": 0.013728749006986618,
+      "control_s": 0.0005085830198368058,
+      "plan_calls": 4,
+      "plan_failures": 0,
+      "initial": {
+        "robot_base_world": {
+          "left": [
+            -0.7879842426728185,
+            -0.4466905880162899,
+            0.7699487079735338,
+            0.747917436801104,
+            -0.17227283553641917,
+            0.0339138917773708,
+            0.6401495339447036
+          ],
+          "right": [
+            0.795024135537383,
+            -0.4480789874101389,
+            0.7677334728567448,
+            0.760824024828891,
+            -0.10233808354398366,
+            0.10991498771796378,
+            0.6313417579842723
+          ]
+        },
+        "task_frame_world": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "actual_arm_qpos_rad": {
+          "left": [
+            0.3,
+            0.2,
+            -0.3,
+            0.4,
+            0.3,
+            -0.1
+          ],
+          "right": [
+            -0.1,
+            0.3,
+            -0.2,
+            0.3,
+            -0.4,
+            0.2
+          ]
+        },
+        "actual_gripper": {
+          "left": 0.5,
+          "right": 0.5
+        },
+        "objects_task": {
+          "synthetic_block": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "reset_fixture_sha256": "8056313da2bafe7b572847633ce335d4642e6fdd03be7a896b9472f4b952f74e",
+        "workspace_check_id": "synthetic_aligned_fixture_only",
+        "common_workspace_pass": true
+      },
+      "failure": null,
+      "video": "/Users/chenpengfei/Documents/ChatGPT/vlm\u9879\u76ee/pi05/results/g2/g2e-20261106-r2-cpu/episodes/ARX-window1/head.mp4",
+      "control_calls": 4,
+      "initial_sim_s": 0.0,
+      "elapsed_s": 0.06153274999815039
+    },
+    {
+      "data_kind": "synthetic",
+      "formal_score_eligible": false,
+      "episode_id": "ARX-window4",
+      "condition": "B_ARX-window4",
+      "window": 4,
+      "success": true,
+      "outcome": "success",
+      "requested": 4,
+      "executed": 4,
+      "queries": 1,
+      "inference_s": 0.0004888340044999495,
+      "planning_s": 0.008589791003032587,
+      "control_s": 9.866700565908104e-05,
+      "plan_calls": 1,
+      "plan_failures": 0,
+      "initial": {
+        "robot_base_world": {
+          "left": [
+            -0.7879842426728185,
+            -0.4466905880162899,
+            0.7699487079735338,
+            0.747917436801104,
+            -0.17227283553641917,
+            0.0339138917773708,
+            0.6401495339447036
+          ],
+          "right": [
+            0.795024135537383,
+            -0.4480789874101389,
+            0.7677334728567448,
+            0.760824024828891,
+            -0.10233808354398366,
+            0.10991498771796378,
+            0.6313417579842723
+          ]
+        },
+        "task_frame_world": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "actual_arm_qpos_rad": {
+          "left": [
+            0.3,
+            0.2,
+            -0.3,
+            0.4,
+            0.3,
+            -0.1
+          ],
+          "right": [
+            -0.1,
+            0.3,
+            -0.2,
+            0.3,
+            -0.4,
+            0.2
+          ]
+        },
+        "actual_gripper": {
+          "left": 0.5,
+          "right": 0.5
+        },
+        "objects_task": {
+          "synthetic_block": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "reset_fixture_sha256": "8056313da2bafe7b572847633ce335d4642e6fdd03be7a896b9472f4b952f74e",
+        "workspace_check_id": "synthetic_aligned_fixture_only",
+        "common_workspace_pass": true
+      },
+      "failure": null,
+      "video": "/Users/chenpengfei/Documents/ChatGPT/vlm\u9879\u76ee/pi05/results/g2/g2e-20261106-r2-cpu/episodes/ARX-window4/head.mp4",
+      "control_calls": 4,
+      "initial_sim_s": 0.0,
+      "elapsed_s": 0.028912124995258637
+    },
+    {
+      "data_kind": "synthetic",
+      "formal_score_eligible": false,
+      "episode_id": "failure-model",
+      "condition": "B_ARX-window1",
+      "window": 1,
+      "success": false,
+      "outcome": "policy_failed",
+      "requested": 0,
+      "executed": 0,
+      "queries": 1,
+      "inference_s": 1.2500007869675756e-05,
+      "planning_s": 0.0,
+      "control_s": 0.0,
+      "plan_calls": 0,
+      "plan_failures": 0,
+      "initial": {
+        "robot_base_world": {
+          "left": [
+            -0.7879842426728185,
+            -0.4466905880162899,
+            0.7699487079735338,
+            0.747917436801104,
+            -0.17227283553641917,
+            0.0339138917773708,
+            0.6401495339447036
+          ],
+          "right": [
+            0.795024135537383,
+            -0.4480789874101389,
+            0.7677334728567448,
+            0.760824024828891,
+            -0.10233808354398366,
+            0.10991498771796378,
+            0.6313417579842723
+          ]
+        },
+        "task_frame_world": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "actual_arm_qpos_rad": {
+          "left": [
+            0.3,
+            0.2,
+            -0.3,
+            0.4,
+            0.3,
+            -0.1
+          ],
+          "right": [
+            -0.1,
+            0.3,
+            -0.2,
+            0.3,
+            -0.4,
+            0.2
+          ]
+        },
+        "actual_gripper": {
+          "left": 0.5,
+          "right": 0.5
+        },
+        "objects_task": {
+          "synthetic_block": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "reset_fixture_sha256": "8056313da2bafe7b572847633ce335d4642e6fdd03be7a896b9472f4b952f74e",
+        "workspace_check_id": "synthetic_aligned_fixture_only",
+        "common_workspace_pass": true
+      },
+      "failure": {
+        "phase": "inference",
+        "code": "RuntimeError",
+        "detail": "injected model failure"
+      },
+      "video": "/Users/chenpengfei/Documents/ChatGPT/vlm\u9879\u76ee/pi05/results/g2/g2e-20261106-r2-cpu/episodes/failure-model/head.mp4",
+      "control_calls": 0,
+      "initial_sim_s": 0.0,
+      "elapsed_s": 0.03522125000017695
+    },
+    {
+      "data_kind": "synthetic",
+      "formal_score_eligible": false,
+      "episode_id": "failure-shape",
+      "condition": "B_ARX-window1",
+      "window": 1,
+      "success": false,
+      "outcome": "policy_failed",
+      "requested": 0,
+      "executed": 0,
+      "queries": 1,
+      "inference_s": 0.0004599579988280311,
+      "planning_s": 0.0,
+      "control_s": 0.0,
+      "plan_calls": 0,
+      "plan_failures": 0,
+      "initial": {
+        "robot_base_world": {
+          "left": [
+            -0.7879842426728185,
+            -0.4466905880162899,
+            0.7699487079735338,
+            0.747917436801104,
+            -0.17227283553641917,
+            0.0339138917773708,
+            0.6401495339447036
+          ],
+          "right": [
+            0.795024135537383,
+            -0.4480789874101389,
+            0.7677334728567448,
+            0.760824024828891,
+            -0.10233808354398366,
+            0.10991498771796378,
+            0.6313417579842723
+          ]
+        },
+        "task_frame_world": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "actual_arm_qpos_rad": {
+          "left": [
+            0.3,
+            0.2,
+            -0.3,
+            0.4,
+            0.3,
+            -0.1
+          ],
+          "right": [
+            -0.1,
+            0.3,
+            -0.2,
+            0.3,
+            -0.4,
+            0.2
+          ]
+        },
+        "actual_gripper": {
+          "left": 0.5,
+          "right": 0.5
+        },
+        "objects_task": {
+          "synthetic_block": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "reset_fixture_sha256": "8056313da2bafe7b572847633ce335d4642e6fdd03be7a896b9472f4b952f74e",
+        "workspace_check_id": "synthetic_aligned_fixture_only",
+        "common_workspace_pass": true
+      },
+      "failure": {
+        "phase": "inference",
+        "code": "ValueError",
+        "detail": "expected finite float array (50, 14)"
+      },
+      "video": "/Users/chenpengfei/Documents/ChatGPT/vlm\u9879\u76ee/pi05/results/g2/g2e-20261106-r2-cpu/episodes/failure-shape/head.mp4",
+      "control_calls": 0,
+      "initial_sim_s": 0.0,
+      "elapsed_s": 0.033069833007175475
+    },
+    {
+      "data_kind": "synthetic",
+      "formal_score_eligible": false,
+      "episode_id": "failure-task",
+      "condition": "B_ARX-window1",
+      "window": 1,
+      "success": false,
+      "outcome": "task_unsuccessful",
+      "requested": 4,
+      "executed": 4,
+      "queries": 4,
+      "inference_s": 0.001898459013318643,
+      "planning_s": 0.014023167983395979,
+      "control_s": 0.00016812499961815774,
+      "plan_calls": 4,
+      "plan_failures": 0,
+      "initial": {
+        "robot_base_world": {
+          "left": [
+            -0.7879842426728185,
+            -0.4466905880162899,
+            0.7699487079735338,
+            0.747917436801104,
+            -0.17227283553641917,
+            0.0339138917773708,
+            0.6401495339447036
+          ],
+          "right": [
+            0.795024135537383,
+            -0.4480789874101389,
+            0.7677334728567448,
+            0.760824024828891,
+            -0.10233808354398366,
+            0.10991498771796378,
+            0.6313417579842723
+          ]
+        },
+        "task_frame_world": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "actual_arm_qpos_rad": {
+          "left": [
+            0.3,
+            0.2,
+            -0.3,
+            0.4,
+            0.3,
+            -0.1
+          ],
+          "right": [
+            -0.1,
+            0.3,
+            -0.2,
+            0.3,
+            -0.4,
+            0.2
+          ]
+        },
+        "actual_gripper": {
+          "left": 0.5,
+          "right": 0.5
+        },
+        "objects_task": {
+          "synthetic_block": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "reset_fixture_sha256": "8056313da2bafe7b572847633ce335d4642e6fdd03be7a896b9472f4b952f74e",
+        "workspace_check_id": "synthetic_aligned_fixture_only",
+        "common_workspace_pass": true
+      },
+      "failure": {
+        "phase": "termination",
+        "code": "episode_budget_or_expert_exhausted",
+        "detail": "success predicate remained false"
+      },
+      "video": "/Users/chenpengfei/Documents/ChatGPT/vlm\u9879\u76ee/pi05/results/g2/g2e-20261106-r2-cpu/episodes/failure-task/head.mp4",
+      "control_calls": 4,
+      "initial_sim_s": 0.0,
+      "elapsed_s": 0.04964445899531711
+    },
+    {
+      "data_kind": "synthetic",
+      "formal_score_eligible": false,
+      "episode_id": "failure-reset",
+      "condition": "B_ARX-window1",
+      "window": 1,
+      "success": false,
+      "outcome": "environment_error",
+      "requested": 0,
+      "executed": 0,
+      "queries": 0,
+      "inference_s": 0.0,
+      "planning_s": 0.0,
+      "control_s": 0.0,
+      "plan_calls": 0,
+      "plan_failures": 0,
+      "initial": null,
+      "failure": {
+        "phase": "reset",
+        "code": "RuntimeError",
+        "detail": "injected reset failure"
+      },
+      "video": "/Users/chenpengfei/Documents/ChatGPT/vlm\u9879\u76ee/pi05/results/g2/g2e-20261106-r2-cpu/episodes/failure-reset/head.mp4",
+      "control_calls": 0,
+      "elapsed_s": 0.017111084001953714
+    },
+    {
+      "data_kind": "synthetic",
+      "formal_score_eligible": false,
+      "episode_id": "failure-control",
+      "condition": "B_ARX-window1",
+      "window": 1,
+      "success": false,
+      "outcome": "control_error",
+      "requested": 1,
+      "executed": 0,
+      "queries": 1,
+      "inference_s": 0.0007041249918984249,
+      "planning_s": 0.004064917011419311,
+      "control_s": 7.166003342717886e-06,
+      "plan_calls": 1,
+      "plan_failures": 0,
+      "initial": {
+        "robot_base_world": {
+          "left": [
+            -0.7879842426728185,
+            -0.4466905880162899,
+            0.7699487079735338,
+            0.747917436801104,
+            -0.17227283553641917,
+            0.0339138917773708,
+            0.6401495339447036
+          ],
+          "right": [
+            0.795024135537383,
+            -0.4480789874101389,
+            0.7677334728567448,
+            0.760824024828891,
+            -0.10233808354398366,
+            0.10991498771796378,
+            0.6313417579842723
+          ]
+        },
+        "task_frame_world": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "actual_arm_qpos_rad": {
+          "left": [
+            0.3,
+            0.2,
+            -0.3,
+            0.4,
+            0.3,
+            -0.1
+          ],
+          "right": [
+            -0.1,
+            0.3,
+            -0.2,
+            0.3,
+            -0.4,
+            0.2
+          ]
+        },
+        "actual_gripper": {
+          "left": 0.5,
+          "right": 0.5
+        },
+        "objects_task": {
+          "synthetic_block": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "reset_fixture_sha256": "8056313da2bafe7b572847633ce335d4642e6fdd03be7a896b9472f4b952f74e",
+        "workspace_check_id": "synthetic_aligned_fixture_only",
+        "common_workspace_pass": true
+      },
+      "failure": {
+        "phase": "control",
+        "code": "RuntimeError",
+        "detail": "injected control failure"
+      },
+      "video": "/Users/chenpengfei/Documents/ChatGPT/vlm\u9879\u76ee/pi05/results/g2/g2e-20261106-r2-cpu/episodes/failure-control/head.mp4",
+      "control_calls": null,
+      "initial_sim_s": 0.0,
+      "elapsed_s": 0.024020042008487508
+    },
+    {
+      "data_kind": "synthetic",
+      "formal_score_eligible": false,
+      "episode_id": "failure-interrupt",
+      "condition": "B_ARX-window1",
+      "window": 1,
+      "success": false,
+      "outcome": "interrupted",
+      "requested": 1,
+      "executed": 0,
+      "queries": 1,
+      "inference_s": 0.0004630839976016432,
+      "planning_s": 0.003275790993939154,
+      "control_s": 7.708003977313638e-06,
+      "plan_calls": 1,
+      "plan_failures": 0,
+      "initial": {
+        "robot_base_world": {
+          "left": [
+            -0.7879842426728185,
+            -0.4466905880162899,
+            0.7699487079735338,
+            0.747917436801104,
+            -0.17227283553641917,
+            0.0339138917773708,
+            0.6401495339447036
+          ],
+          "right": [
+            0.795024135537383,
+            -0.4480789874101389,
+            0.7677334728567448,
+            0.760824024828891,
+            -0.10233808354398366,
+            0.10991498771796378,
+            0.6313417579842723
+          ]
+        },
+        "task_frame_world": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "actual_arm_qpos_rad": {
+          "left": [
+            0.3,
+            0.2,
+            -0.3,
+            0.4,
+            0.3,
+            -0.1
+          ],
+          "right": [
+            -0.1,
+            0.3,
+            -0.2,
+            0.3,
+            -0.4,
+            0.2
+          ]
+        },
+        "actual_gripper": {
+          "left": 0.5,
+          "right": 0.5
+        },
+        "objects_task": {
+          "synthetic_block": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "reset_fixture_sha256": "8056313da2bafe7b572847633ce335d4642e6fdd03be7a896b9472f4b952f74e",
+        "workspace_check_id": "synthetic_aligned_fixture_only",
+        "common_workspace_pass": true
+      },
+      "failure": {
+        "phase": "control",
+        "code": "KeyboardInterrupt",
+        "detail": "injected interrupt"
+      },
+      "video": "/Users/chenpengfei/Documents/ChatGPT/vlm\u9879\u76ee/pi05/results/g2/g2e-20261106-r2-cpu/episodes/failure-interrupt/head.mp4",
+      "control_calls": null,
+      "initial_sim_s": 0.0,
+      "elapsed_s": 0.023254874991835095
+    },
+    {
+      "data_kind": "synthetic",
+      "formal_score_eligible": false,
+      "episode_id": "failure-timeout",
+      "condition": "B_ARX-window1",
+      "window": 1,
+      "success": false,
+      "outcome": "timeout",
+      "requested": 1,
+      "executed": 0,
+      "queries": 1,
+      "inference_s": 0.0006965829961700365,
+      "planning_s": 0.0032583749998593703,
+      "control_s": 0.08506558299995959,
+      "plan_calls": 1,
+      "plan_failures": 0,
+      "initial": {
+        "robot_base_world": {
+          "left": [
+            -0.7879842426728185,
+            -0.4466905880162899,
+            0.7699487079735338,
+            0.747917436801104,
+            -0.17227283553641917,
+            0.0339138917773708,
+            0.6401495339447036
+          ],
+          "right": [
+            0.795024135537383,
+            -0.4480789874101389,
+            0.7677334728567448,
+            0.760824024828891,
+            -0.10233808354398366,
+            0.10991498771796378,
+            0.6313417579842723
+          ]
+        },
+        "task_frame_world": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "actual_arm_qpos_rad": {
+          "left": [
+            0.3,
+            0.2,
+            -0.3,
+            0.4,
+            0.3,
+            -0.1
+          ],
+          "right": [
+            -0.1,
+            0.3,
+            -0.2,
+            0.3,
+            -0.4,
+            0.2
+          ]
+        },
+        "actual_gripper": {
+          "left": 0.5,
+          "right": 0.5
+        },
+        "objects_task": {
+          "synthetic_block": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "reset_fixture_sha256": "8056313da2bafe7b572847633ce335d4642e6fdd03be7a896b9472f4b952f74e",
+        "workspace_check_id": "synthetic_aligned_fixture_only",
+        "common_workspace_pass": true
+      },
+      "failure": {
+        "phase": "control",
+        "code": "timeout",
+        "detail": "episode timed out in control"
+      },
+      "video": "/Users/chenpengfei/Documents/ChatGPT/vlm\u9879\u76ee/pi05/results/g2/g2e-20261106-r2-cpu/episodes/failure-timeout/head.mp4",
+      "control_calls": null,
+      "initial_sim_s": 0.0,
+      "elapsed_s": 0.10894524998730049
+    },
+    {
+      "data_kind": "synthetic",
+      "formal_score_eligible": false,
+      "episode_id": "failure-planning",
+      "condition": "B_ARX-window1",
+      "window": 1,
+      "success": false,
+      "outcome": "planning_failed",
+      "requested": 1,
+      "executed": 0,
+      "queries": 1,
+      "inference_s": 0.0010426670050946996,
+      "planning_s": 0.018889040991780348,
+      "control_s": 0.0,
+      "plan_calls": 1,
+      "plan_failures": 1,
+      "initial": {
+        "robot_base_world": {
+          "left": [
+            -0.7879842426728185,
+            -0.4466905880162899,
+            0.7699487079735338,
+            0.747917436801104,
+            -0.17227283553641917,
+            0.0339138917773708,
+            0.6401495339447036
+          ],
+          "right": [
+            0.795024135537383,
+            -0.4480789874101389,
+            0.7677334728567448,
+            0.760824024828891,
+            -0.10233808354398366,
+            0.10991498771796378,
+            0.6313417579842723
+          ]
+        },
+        "task_frame_world": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "actual_arm_qpos_rad": {
+          "left": [
+            0.3,
+            0.2,
+            -0.3,
+            0.4,
+            0.3,
+            -0.1
+          ],
+          "right": [
+            -0.1,
+            0.3,
+            -0.2,
+            0.3,
+            -0.4,
+            0.2
+          ]
+        },
+        "actual_gripper": {
+          "left": 0.5,
+          "right": 0.5
+        },
+        "objects_task": {
+          "synthetic_block": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "reset_fixture_sha256": "8056313da2bafe7b572847633ce335d4642e6fdd03be7a896b9472f4b952f74e",
+        "workspace_check_id": "synthetic_aligned_fixture_only",
+        "common_workspace_pass": true
+      },
+      "failure": {
+        "phase": "planning",
+        "code": "collision",
+        "detail": "all temporally admissible IK pairs collide"
+      },
+      "video": "/Users/chenpengfei/Documents/ChatGPT/vlm\u9879\u76ee/pi05/results/g2/g2e-20261106-r2-cpu/episodes/failure-planning/head.mp4",
+      "control_calls": 0,
+      "initial_sim_s": 0.0,
+      "elapsed_s": 0.037896249996265396
+    },
+    {
+      "data_kind": "synthetic",
+      "formal_score_eligible": false,
+      "episode_id": "expert-arx",
+      "condition": "expert-arx",
+      "window": 4,
+      "success": true,
+      "outcome": "success",
+      "requested": 4,
+      "executed": 4,
+      "queries": 1,
+      "inference_s": 0.0,
+      "planning_s": 0.008305957991979085,
+      "control_s": 9.000000136438757e-05,
+      "plan_calls": 1,
+      "plan_failures": 0,
+      "initial": {
+        "robot_base_world": {
+          "left": [
+            -0.7879842426728185,
+            -0.4466905880162899,
+            0.7699487079735338,
+            0.747917436801104,
+            -0.17227283553641917,
+            0.0339138917773708,
+            0.6401495339447036
+          ],
+          "right": [
+            0.795024135537383,
+            -0.4480789874101389,
+            0.7677334728567448,
+            0.760824024828891,
+            -0.10233808354398366,
+            0.10991498771796378,
+            0.6313417579842723
+          ]
+        },
+        "task_frame_world": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "actual_arm_qpos_rad": {
+          "left": [
+            0.3,
+            0.2,
+            -0.3,
+            0.4,
+            0.3,
+            -0.1
+          ],
+          "right": [
+            -0.1,
+            0.3,
+            -0.2,
+            0.3,
+            -0.4,
+            0.2
+          ]
+        },
+        "actual_gripper": {
+          "left": 0.5,
+          "right": 0.5
+        },
+        "objects_task": {
+          "synthetic_block": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "reset_fixture_sha256": "8056313da2bafe7b572847633ce335d4642e6fdd03be7a896b9472f4b952f74e",
+        "workspace_check_id": "synthetic_aligned_fixture_only",
+        "common_workspace_pass": true
+      },
+      "failure": null,
+      "video": "/Users/chenpengfei/Documents/ChatGPT/vlm\u9879\u76ee/pi05/results/g2/g2e-20261106-r2-cpu/episodes/expert-arx/head.mp4",
+      "control_calls": 4,
+      "initial_sim_s": 0.0,
+      "elapsed_s": 0.026758916006656364
+    }
+  ],
+  "outcome_counts": {
+    "success": 5,
+    "policy_failed": 2,
+    "task_unsuccessful": 1,
+    "environment_error": 1,
+    "control_error": 1,
+    "interrupted": 1,
+    "timeout": 1,
+    "planning_failed": 1
+  },
+  "note": "Mock success exercises control flow; it is not robot task success.",
+  "passed": true
+}

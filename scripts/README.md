@@ -1,5 +1,7 @@
 # 部署脚本
 
+此文件保留早期环境部署顺序，包含已完成阶段的历史提交示例。当前阶段与推荐阅读入口见[项目首页](../README.md)、[脚本索引](../docs/script_inventory.md)和[实验索引](../docs/experiment_index.md)。本次维护不授权执行下载、安装或GPU作业；不要把下文旧“待验收”措辞当作最新状态。
+
 在 SCNet 项目根目录执行。当前实测结果见根目录 `environment.md`。
 
 1. 先运行 `python3 -m pip install --target tools/uv uv==0.13.6` 安装独立 uv。然后 `bash scripts/fetch_source.sh`，`python scripts/fetch_submodules.py`：下载固定 commit 官方源码及精确子模块归档。

@@ -1,0 +1,104 @@
+{
+  "audit_date": "2026-11-07",
+  "base_commit": "d64b0e4feba82c4a97dbbfc8c6b518c67743a0f1",
+  "branch": "chore/repository-cleanup",
+  "syntax": {
+    "python_files": 234,
+    "shell_slurm_files": 34,
+    "python_ast_pass": true,
+    "shell_syntax_pass": true
+  },
+  "tests": [
+    {
+      "modules": [
+        "test_g2_remaining",
+        "test_g2e",
+        "test_g2e_host",
+        "test_g2_failure_repair",
+        "test_g2_adapter",
+        "test_g2_integration"
+      ],
+      "count": 58,
+      "exit_code": 0,
+      "summary": [
+        "",
+        "----------------------------------------------------------------------",
+        "Ran 58 tests in 3.469s",
+        "",
+        "OK"
+      ]
+    },
+    {
+      "modules": [
+        "test_pace_g1",
+        "test_pace_runtime",
+        "test_robotwin_graphics_driver",
+        "test_robotwin_control_geometry",
+        "test_summarize_experiments"
+      ],
+      "count": 41,
+      "exit_code": 0,
+      "summary": [
+        "",
+        "----------------------------------------------------------------------",
+        "Ran 41 tests in 7.406s",
+        "",
+        "OK"
+      ]
+    }
+  ],
+  "synthetic": {
+    "entry": "scripts/g2_mock_acceptance.py",
+    "episodes": 13,
+    "exit_code": 0,
+    "scope": "synthetic only"
+  },
+  "frozen_baseline_summaries": [
+    {
+      "path": "acceptance_report.md",
+      "sha256": "c7b12b9228165126f27e3a01acb84687ca8bfb4ad4489a957687c592f1d7c73d",
+      "matches_frozen_sha256": true
+    },
+    {
+      "path": "evaluation_report.md",
+      "sha256": "83f8e8c7c3363c3a684ba2f3e2b895f32cf433ef850719349f2104d4df6b671d",
+      "matches_frozen_sha256": true
+    },
+    {
+      "path": "evaluation_results.csv",
+      "sha256": "ec400e423d69fa1700de4eaea3a8ee42f386580d7a3c20f5c78f6c88bd62c426",
+      "matches_frozen_sha256": true
+    },
+    {
+      "path": "action_space_notes.md",
+      "sha256": "f5d01589487719a27414bdf5b7cc6bb51c1987a12d189eb1b2d7e80627d8af26",
+      "matches_frozen_sha256": true
+    }
+  ],
+  "source_checkout_preservation": {
+    "modified_files": 4,
+    "untracked_files": 171,
+    "preserved": true,
+    "research_cpu_changes_kept_separate": true
+  },
+  "not_executed": [
+    "full data-dependent188-test suite",
+    "GPU/CUDA/model inference",
+    "Slurm entry execution",
+    "model/large environment installation",
+    "real physics/closed-loop evaluation",
+    "full archive payload secrets audit"
+  ],
+  "gpu_resource_operations": 0,
+  "deleted_or_moved_files": 0,
+  "github_settings_changes": 0,
+  "markdown_links": {
+    "checked": 1124,
+    "missing": [],
+    "scope": "local file links; external URLs, anchors and deployment assets not checked"
+  },
+  "diff_scope_verified": {
+    "maintenance_files": 11,
+    "baseline_or_experiment_or_tests_changed": false
+  }
+}

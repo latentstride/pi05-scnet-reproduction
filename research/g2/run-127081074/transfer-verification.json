@@ -1,0 +1,12 @@
+{
+  "archive_bytes": 704301,
+  "sha256": "668dabb85894d3b1e5337bb9ec80ecef607cc0fe7496d04242f50a3afba5781b",
+  "selected_files": 107,
+  "all_selected_hashes_match": true,
+  "remote_file_count": 642,
+  "remote_bytes": 1154548271,
+  "analysis_archive_bytes": 1177487,
+  "analysis_archive_sha256": "2b2a03b2f32cf0d92c864a9b8ac8148dbc442b9db4da408ccd4522d083e743c0",
+  "raw_prediction_files": 164,
+  "prefix_plan_files": 164
+}

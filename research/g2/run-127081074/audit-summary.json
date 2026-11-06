@@ -1,0 +1,617 @@
+{
+  "job_id": "127081074",
+  "scheduler_state": "COMPLETED",
+  "exit_code": "0:0",
+  "start_beijing": "2026-11-06 22:12:55",
+  "end_beijing": "2026-11-06 23:28:45",
+  "elapsed_s": 4550,
+  "elapsed": "01:15:50",
+  "planned_trials": 8,
+  "completed_trials": 8,
+  "task_successes": 0,
+  "full_physical_sequences": 0,
+  "completed_actions": 512,
+  "requested_action_calls": 520,
+  "policy_queries": 164,
+  "physics_steps": 42320,
+  "model_server_starts": 1,
+  "gpu_peak_mib": 14382,
+  "estimated_gpu_cost_yuan_at_previously_verified_3_60_per_hour": 4.55,
+  "billed_cost_verified": false,
+  "gpu_operations_by_this_audit": 0,
+  "dynamic_success_admission": false,
+  "future_unified_plan_submission_allowed": false,
+  "rows": [
+    {
+      "episode_id": "g2e-seed0-native-w1",
+      "window": 1,
+      "success": false,
+      "executed": 24,
+      "queries": 25,
+      "request_count": 25,
+      "physics_steps": 3435,
+      "elapsed_s": 365.92346807569265,
+      "failure": {
+        "phase": "control",
+        "code": "collision",
+        "detail": "predicted finger start intersects task block"
+      },
+      "first_closed_request": {
+        "left": null,
+        "right": null
+      },
+      "first_holder_ticks": {},
+      "left_close_blocks": 15,
+      "left_close_inside_requested_prefix": 0,
+      "left_close_truncated": 15,
+      "tcp_rmse_mm": [
+        2.472328626729885,
+        1.0541643877630749
+      ],
+      "tcp_max_mm": [
+        4.08243755496894,
+        2.0183900539321225
+      ],
+      "rejection": {
+        "phase": "control",
+        "elapsed_s": 365.70801451057196,
+        "kind": "native_guard_rejection",
+        "tick": 3435,
+        "control_call_count": 0,
+        "physics_step_count": 0,
+        "error": "predicted finger start intersects task block",
+        "side": "left",
+        "finger": 1,
+        "depth_m": 0.0020935768261551857,
+        "allowed_penetration_m": 0.002,
+        "start_native_m": 0.04487541317939758,
+        "requested_native_m": 0.04500000178813934,
+        "completed_actions": 0,
+        "interrupted_action_index": 0
+      }
+    },
+    {
+      "episode_id": "g2e-seed0-native-w26",
+      "window": 26,
+      "success": false,
+      "executed": 26,
+      "queries": 2,
+      "request_count": 27,
+      "physics_steps": 3527,
+      "elapsed_s": 423.1322878077626,
+      "failure": {
+        "phase": "control",
+        "code": "collision",
+        "detail": "predicted finger start intersects task block"
+      },
+      "first_closed_request": {
+        "left": null,
+        "right": null
+      },
+      "first_holder_ticks": {},
+      "left_close_blocks": 1,
+      "left_close_inside_requested_prefix": 0,
+      "left_close_truncated": 1,
+      "tcp_rmse_mm": [
+        2.4514293156926827,
+        0.6089842649275372
+      ],
+      "tcp_max_mm": [
+        4.021447695638819,
+        1.8384155305333723
+      ],
+      "rejection": {
+        "phase": "control",
+        "elapsed_s": 422.7429262921214,
+        "kind": "native_guard_rejection",
+        "tick": 3527,
+        "control_call_count": 0,
+        "physics_step_count": 0,
+        "error": "predicted finger start intersects task block",
+        "side": "left",
+        "finger": 1,
+        "depth_m": 0.0020701962057501078,
+        "allowed_penetration_m": 0.002,
+        "start_native_m": 0.044736944139003754,
+        "requested_native_m": 0.04488922283053398,
+        "completed_actions": 0,
+        "interrupted_action_index": 0
+      }
+    },
+    {
+      "episode_id": "g2e-seed0-native-w31",
+      "window": 31,
+      "success": false,
+      "executed": 26,
+      "queries": 1,
+      "request_count": 27,
+      "physics_steps": 3527,
+      "elapsed_s": 350.62608226388693,
+      "failure": {
+        "phase": "control",
+        "code": "collision",
+        "detail": "predicted finger start intersects task block"
+      },
+      "first_closed_request": {
+        "left": null,
+        "right": null
+      },
+      "first_holder_ticks": {},
+      "left_close_blocks": 0,
+      "left_close_inside_requested_prefix": 0,
+      "left_close_truncated": 0,
+      "tcp_rmse_mm": [
+        2.4510461250581645,
+        0.6066221298996004
+      ],
+      "tcp_max_mm": [
+        3.9743126358815832,
+        1.8384155305333723
+      ],
+      "rejection": {
+        "phase": "control",
+        "elapsed_s": 350.2240354269743,
+        "kind": "native_guard_rejection",
+        "tick": 3527,
+        "control_call_count": 0,
+        "physics_step_count": 0,
+        "error": "predicted finger start intersects task block",
+        "side": "left",
+        "finger": 1,
+        "depth_m": 0.002157685812562704,
+        "allowed_penetration_m": 0.002,
+        "start_native_m": 0.044738177210092545,
+        "requested_native_m": 0.04481392726302147,
+        "completed_actions": 26,
+        "interrupted_action_index": 26
+      }
+    },
+    {
+      "episode_id": "g2e-seed0-native-w4",
+      "window": 4,
+      "success": false,
+      "executed": 27,
+      "queries": 7,
+      "request_count": 28,
+      "physics_steps": 3581,
+      "elapsed_s": 428.9140237569809,
+      "failure": {
+        "phase": "control",
+        "code": "collision",
+        "detail": "predicted finger start intersects task block"
+      },
+      "first_closed_request": {
+        "left": null,
+        "right": null
+      },
+      "first_holder_ticks": {},
+      "left_close_blocks": 4,
+      "left_close_inside_requested_prefix": 0,
+      "left_close_truncated": 4,
+      "tcp_rmse_mm": [
+        2.4927169695770526,
+        0.5997629417386436
+      ],
+      "tcp_max_mm": [
+        4.31473916999374,
+        1.5086288154195755
+      ],
+      "rejection": {
+        "phase": "control",
+        "elapsed_s": 428.6787217631936,
+        "kind": "native_guard_rejection",
+        "tick": 3581,
+        "control_call_count": 0,
+        "physics_step_count": 0,
+        "error": "predicted finger start intersects task block",
+        "side": "left",
+        "finger": 1,
+        "depth_m": 0.0020173389930278063,
+        "allowed_penetration_m": 0.002,
+        "start_native_m": 0.044936224818229675,
+        "requested_native_m": 0.04500000178813934,
+        "completed_actions": 3,
+        "interrupted_action_index": 3
+      }
+    },
+    {
+      "episode_id": "g2e-seed1-native-w1",
+      "window": 1,
+      "success": false,
+      "executed": 66,
+      "queries": 67,
+      "request_count": 67,
+      "physics_steps": 5391,
+      "elapsed_s": 468.17627458274364,
+      "failure": {
+        "phase": "control",
+        "code": "collision",
+        "detail": "native drive candidate blocked"
+      },
+      "first_closed_request": {
+        "left": null,
+        "right": null
+      },
+      "first_holder_ticks": {},
+      "left_close_blocks": 61,
+      "left_close_inside_requested_prefix": 0,
+      "left_close_truncated": 61,
+      "tcp_rmse_mm": [
+        2.1714334082666427,
+        0.758536131387577
+      ],
+      "tcp_max_mm": [
+        3.2321726120730734,
+        1.7461473095832547
+      ],
+      "rejection": {
+        "phase": "control",
+        "elapsed_s": 467.65024061501026,
+        "kind": "native_guard_rejection",
+        "tick": 5391,
+        "control_call_count": 0,
+        "physics_step_count": 0,
+        "error": "native drive candidate blocked",
+        "geometry": "candidate",
+        "segment_fraction": 1.0,
+        "collisions": [
+          {
+            "collision_type": "self_sceneobject",
+            "object_name1": "_7",
+            "link_name1": "left_camera",
+            "object_name2": "box_68",
+            "link_name2": "box_68",
+            "max_penetration_m": 2.861921540677631e-05
+          }
+        ],
+        "completed_actions": 0,
+        "interrupted_action_index": 0
+      }
+    },
+    {
+      "episode_id": "g2e-seed1-native-w26",
+      "window": 26,
+      "success": false,
+      "executed": 57,
+      "queries": 3,
+      "request_count": 58,
+      "physics_steps": 4845,
+      "elapsed_s": 350.28883681446314,
+      "failure": {
+        "phase": "control",
+        "code": "backend_error",
+        "detail": "object slipped relative to confirmed holder"
+      },
+      "first_closed_request": {
+        "left": 56,
+        "right": null
+      },
+      "first_holder_ticks": {
+        "('left',)": 4802
+      },
+      "left_close_blocks": 2,
+      "left_close_inside_requested_prefix": 1,
+      "left_close_truncated": 1,
+      "tcp_rmse_mm": [
+        1.929206372616589,
+        0.42302210850922073
+      ],
+      "tcp_max_mm": [
+        3.1755140205018204,
+        1.3297427541382474
+      ],
+      "rejection": {
+        "phase": "control",
+        "elapsed_s": 350.041328817606,
+        "kind": "native_guard_rejection",
+        "tick": 4845,
+        "control_call_count": 0,
+        "physics_step_count": 0,
+        "error": "object slipped relative to confirmed holder",
+        "side": "left",
+        "contact_state": {
+          "phase": "left_holding",
+          "holders": [
+            "left"
+          ],
+          "contact_fingers": {
+            "left": [
+              33,
+              34
+            ],
+            "right": []
+          },
+          "stable_counts": {
+            "left": 3,
+            "right": 0
+          },
+          "saw_shared_hold": false,
+          "releasing": [],
+          "block_pose_task": [
+            [
+              0.9601214868410596,
+              -0.2782257150283741,
+              0.027516940292536426,
+              -0.07910864800214767
+            ],
+            [
+              0.27841068383633094,
+              0.9604572524254605,
+              -0.0030589849822681646,
+              0.018046241253614426
+            ],
+            [
+              -0.025577756584572366,
+              0.010598007373328335,
+              0.9996166568279138,
+              0.8416584134101868
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "tool_block": {
+            "left": [
+              [
+                0.9996279672078268,
+                0.026638515262514338,
+                0.0058580440896640615,
+                0.002268489402681609
+              ],
+              [
+                0.02697303152169099,
+                -0.9973623904338417,
+                -0.06738484784149937,
+                0.004438826796682498
+              ],
+              [
+                0.0040475605588462344,
+                0.06751778767629282,
+                -0.9977098604307874,
+                0.07368644225216137
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "tool_block_measured": {
+            "left": [
+              [
+                0.999506351649492,
+                0.00871513819808557,
+                0.03018442277913786,
+                0.0008496289760775294
+              ],
+              [
+                0.008627543544399319,
+                -0.9999581883668135,
+                0.0030310081737720137,
+                -0.0004074248862441232
+              ],
+              [
+                0.030209576374238687,
+                -0.002769094499696999,
+                -0.9995397508908491,
+                0.074216120558803
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        },
+        "completed_actions": 5,
+        "interrupted_action_index": 5
+      }
+    },
+    {
+      "episode_id": "g2e-seed1-native-w31",
+      "window": 31,
+      "success": false,
+      "executed": 61,
+      "queries": 2,
+      "request_count": 62,
+      "physics_steps": 4909,
+      "elapsed_s": 382.9813998416066,
+      "failure": {
+        "phase": "control",
+        "code": "backend_error",
+        "detail": "donor opening before receiver contact confirmation"
+      },
+      "first_closed_request": {
+        "left": 50,
+        "right": null
+      },
+      "first_holder_ticks": {
+        "('left',)": 4574
+      },
+      "left_close_blocks": 1,
+      "left_close_inside_requested_prefix": 1,
+      "left_close_truncated": 0,
+      "tcp_rmse_mm": [
+        1.9070892637610675,
+        0.41073169931239123
+      ],
+      "tcp_max_mm": [
+        3.1314642708488556,
+        1.3297427541382474
+      ],
+      "rejection": {
+        "phase": "control",
+        "elapsed_s": 382.7677681297064,
+        "kind": "native_guard_rejection",
+        "tick": 4909,
+        "control_call_count": 0,
+        "physics_step_count": 0,
+        "error": "donor opening before receiver contact confirmation",
+        "contact_state": {
+          "phase": "left_holding",
+          "holders": [
+            "left"
+          ],
+          "contact_fingers": {
+            "left": [
+              33,
+              34
+            ],
+            "right": []
+          },
+          "stable_counts": {
+            "left": 3,
+            "right": 0
+          },
+          "saw_shared_hold": false,
+          "releasing": [],
+          "block_pose_task": [
+            [
+              0.9630478897494266,
+              -0.269301011242118,
+              -0.003965777748294181,
+              -0.07644136250019073
+            ],
+            [
+              0.26930361892701504,
+              0.9630553173235574,
+              0.00012887061381607545,
+              0.01443384401500225
+            ],
+            [
+              0.0037845583611980944,
+              -0.0011921068721621369,
+              0.9999921279686236,
+              0.8406440615653992
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "tool_block": {
+            "left": [
+              [
+                0.9999858322420931,
+                0.0033096478850536547,
+                0.004169118127930784,
+                0.007132710434126832
+              ],
+              [
+                0.003487087014344882,
+                -0.9990561251739553,
+                -0.04329779413037042,
+                0.003074966135183717
+              ],
+              [
+                0.004021882549511964,
+                0.04331171877539053,
+                -0.999053511818801,
+                0.07054133969472942
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          "tool_block_measured": {
+            "left": [
+              [
+                0.9999984305841713,
+                0.0015122469458255935,
+                0.0009230050751386957,
+                0.007361600562431417
+              ],
+              [
+                0.001523057659905631,
+                -0.999928905639525,
+                -0.011826409510322019,
+                2.3029636957917765e-05
+              ],
+              [
+                0.0009050550030210982,
+                0.011827796739717539,
+                -0.999929639574568,
+                0.07127783583510583
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        },
+        "completed_actions": 30,
+        "interrupted_action_index": 30
+      }
+    },
+    {
+      "episode_id": "g2e-seed1-native-w4",
+      "window": 4,
+      "success": false,
+      "executed": 225,
+      "queries": 57,
+      "request_count": 226,
+      "physics_steps": 13105,
+      "elapsed_s": 560.2099683433771,
+      "failure": {
+        "phase": "control",
+        "code": "collision",
+        "detail": "native drive candidate blocked"
+      },
+      "first_closed_request": {
+        "left": null,
+        "right": null
+      },
+      "first_holder_ticks": {},
+      "left_close_blocks": 55,
+      "left_close_inside_requested_prefix": 0,
+      "left_close_truncated": 55,
+      "tcp_rmse_mm": [
+        1.7939831390953307,
+        1.6950799083264414
+      ],
+      "tcp_max_mm": [
+        2.77772921975854,
+        3.3497836368095832
+      ],
+      "rejection": {
+        "phase": "control",
+        "elapsed_s": 559.9501969590783,
+        "kind": "native_guard_rejection",
+        "tick": 13105,
+        "control_call_count": 0,
+        "physics_step_count": 0,
+        "error": "native drive candidate blocked",
+        "geometry": "candidate",
+        "segment_fraction": 1.0,
+        "collisions": [
+          {
+            "collision_type": "self",
+            "object_name1": "_7",
+            "link_name1": "fl_link4",
+            "object_name2": "_7",
+            "link_name2": "fl_link6",
+            "max_penetration_m": 2.023606157308677e-06
+          }
+        ],
+        "completed_actions": 1,
+        "interrupted_action_index": 1
+      }
+    }
+  ]
+}

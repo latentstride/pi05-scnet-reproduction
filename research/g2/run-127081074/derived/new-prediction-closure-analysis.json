@@ -1,0 +1,1262 @@
+{
+  "g2e-seed0-native-w1": {
+    "window": 1,
+    "blocks": 25,
+    "raw_shape": [
+      50,
+      14
+    ],
+    "closure_definition": "raw gripper < 0.5; indices zero-based",
+    "left_close_blocks": 15,
+    "left_close_inside_requested_prefix": 0,
+    "left_close_truncated": 15,
+    "blocks_detail": [
+      {
+        "file": "action-00001.npy",
+        "first_close_index": [
+          null,
+          null
+        ]
+      },
+      {
+        "file": "action-00002.npy",
+        "first_close_index": [
+          null,
+          null
+        ]
+      },
+      {
+        "file": "action-00003.npy",
+        "first_close_index": [
+          null,
+          null
+        ]
+      },
+      {
+        "file": "action-00004.npy",
+        "first_close_index": [
+          null,
+          null
+        ]
+      },
+      {
+        "file": "action-00005.npy",
+        "first_close_index": [
+          null,
+          null
+        ]
+      },
+      {
+        "file": "action-00006.npy",
+        "first_close_index": [
+          null,
+          null
+        ]
+      },
+      {
+        "file": "action-00007.npy",
+        "first_close_index": [
+          null,
+          null
+        ]
+      },
+      {
+        "file": "action-00008.npy",
+        "first_close_index": [
+          null,
+          null
+        ]
+      },
+      {
+        "file": "action-00009.npy",
+        "first_close_index": [
+          null,
+          null
+        ]
+      },
+      {
+        "file": "action-00010.npy",
+        "first_close_index": [
+          null,
+          null
+        ]
+      },
+      {
+        "file": "action-00011.npy",
+        "first_close_index": [
+          49,
+          null
+        ]
+      },
+      {
+        "file": "action-00012.npy",
+        "first_close_index": [
+          48,
+          null
+        ]
+      },
+      {
+        "file": "action-00013.npy",
+        "first_close_index": [
+          47,
+          null
+        ]
+      },
+      {
+        "file": "action-00014.npy",
+        "first_close_index": [
+          46,
+          null
+        ]
+      },
+      {
+        "file": "action-00015.npy",
+        "first_close_index": [
+          44,
+          null
+        ]
+      },
+      {
+        "file": "action-00016.npy",
+        "first_close_index": [
+          44,
+          null
+        ]
+      },
+      {
+        "file": "action-00017.npy",
+        "first_close_index": [
+          43,
+          null
+        ]
+      },
+      {
+        "file": "action-00018.npy",
+        "first_close_index": [
+          42,
+          null
+        ]
+      },
+      {
+        "file": "action-00019.npy",
+        "first_close_index": [
+          41,
+          null
+        ]
+      },
+      {
+        "file": "action-00020.npy",
+        "first_close_index": [
+          40,
+          null
+        ]
+      },
+      {
+        "file": "action-00021.npy",
+        "first_close_index": [
+          39,
+          null
+        ]
+      },
+      {
+        "file": "action-00022.npy",
+        "first_close_index": [
+          38,
+          null
+        ]
+      },
+      {
+        "file": "action-00023.npy",
+        "first_close_index": [
+          37,
+          null
+        ]
+      },
+      {
+        "file": "action-00024.npy",
+        "first_close_index": [
+          36,
+          null
+        ]
+      },
+      {
+        "file": "action-00025.npy",
+        "first_close_index": [
+          35,
+          null
+        ]
+      }
+    ]
+  },
+  "g2e-seed0-native-w26": {
+    "window": 26,
+    "blocks": 2,
+    "raw_shape": [
+      50,
+      14
+    ],
+    "closure_definition": "raw gripper < 0.5; indices zero-based",
+    "left_close_blocks": 1,
+    "left_close_inside_requested_prefix": 0,
+    "left_close_truncated": 1,
+    "blocks_detail": [
+      {
+        "file": "action-00001.npy",
+        "first_close_index": [
+          null,
+          null
+        ]
+      },
+      {
+        "file": "action-00002.npy",
+        "first_close_index": [
+          35,
+          null
+        ]
+      }
+    ]
+  },
+  "g2e-seed0-native-w31": {
+    "window": 31,
+    "blocks": 1,
+    "raw_shape": [
+      50,
+      14
+    ],
+    "closure_definition": "raw gripper < 0.5; indices zero-based",
+    "left_close_blocks": 0,
+    "left_close_inside_requested_prefix": 0,
+    "left_close_truncated": 0,
+    "blocks_detail": [
+      {
+        "file": "action-00001.npy",
+        "first_close_index": [
+          null,
+          null
+        ]
+      }
+    ]
+  },
+  "g2e-seed0-native-w4": {
+    "window": 4,
+    "blocks": 7,
+    "raw_shape": [
+      50,
+      14
+    ],
+    "closure_definition": "raw gripper < 0.5; indices zero-based",
+    "left_close_blocks": 4,
+    "left_close_inside_requested_prefix": 0,
+    "left_close_truncated": 4,
+    "blocks_detail": [
+      {
+        "file": "action-00001.npy",
+        "first_close_index": [
+          null,
+          null
+        ]
+      },
+      {
+        "file": "action-00002.npy",
+        "first_close_index": [
+          null,
+          null
+        ]
+      },
+      {
+        "file": "action-00003.npy",
+        "first_close_index": [
+          null,
+          null
+        ]
+      },
+      {
+        "file": "action-00004.npy",
+        "first_close_index": [
+          48,
+          null
+        ]
+      },
+      {
+        "file": "action-00005.npy",
+        "first_close_index": [
+          44,
+          null
+        ]
+      },
+      {
+        "file": "action-00006.npy",
+        "first_close_index": [
+          40,
+          null
+        ]
+      },
+      {
+        "file": "action-00007.npy",
+        "first_close_index": [
+          37,
+          null
+        ]
+      }
+    ]
+  },
+  "g2e-seed1-native-w1": {
+    "window": 1,
+    "blocks": 67,
+    "raw_shape": [
+      50,
+      14
+    ],
+    "closure_definition": "raw gripper < 0.5; indices zero-based",
+    "left_close_blocks": 61,
+    "left_close_inside_requested_prefix": 0,
+    "left_close_truncated": 61,
+    "blocks_detail": [
+      {
+        "file": "action-00001.npy",
+        "first_close_index": [
+          null,
+          null
+        ]
+      },
+      {
+        "file": "action-00002.npy",
+        "first_close_index": [
+          null,
+          null
+        ]
+      },
+      {
+        "file": "action-00003.npy",
+        "first_close_index": [
+          null,
+          null
+        ]
+      },
+      {
+        "file": "action-00004.npy",
+        "first_close_index": [
+          null,
+          null
+        ]
+      },
+      {
+        "file": "action-00005.npy",
+        "first_close_index": [
+          null,
+          null
+        ]
+      },
+      {
+        "file": "action-00006.npy",
+        "first_close_index": [
+          null,
+          null
+        ]
+      },
+      {
+        "file": "action-00007.npy",
+        "first_close_index": [
+          49,
+          null
+        ]
+      },
+      {
+        "file": "action-00008.npy",
+        "first_close_index": [
+          48,
+          null
+        ]
+      },
+      {
+        "file": "action-00009.npy",
+        "first_close_index": [
+          47,
+          null
+        ]
+      },
+      {
+        "file": "action-00010.npy",
+        "first_close_index": [
+          46,
+          null
+        ]
+      },
+      {
+        "file": "action-00011.npy",
+        "first_close_index": [
+          45,
+          null
+        ]
+      },
+      {
+        "file": "action-00012.npy",
+        "first_close_index": [
+          44,
+          null
+        ]
+      },
+      {
+        "file": "action-00013.npy",
+        "first_close_index": [
+          43,
+          null
+        ]
+      },
+      {
+        "file": "action-00014.npy",
+        "first_close_index": [
+          42,
+          null
+        ]
+      },
+      {
+        "file": "action-00015.npy",
+        "first_close_index": [
+          41,
+          null
+        ]
+      },
+      {
+        "file": "action-00016.npy",
+        "first_close_index": [
+          40,
+          null
+        ]
+      },
+      {
+        "file": "action-00017.npy",
+        "first_close_index": [
+          39,
+          null
+        ]
+      },
+      {
+        "file": "action-00018.npy",
+        "first_close_index": [
+          38,
+          null
+        ]
+      },
+      {
+        "file": "action-00019.npy",
+        "first_close_index": [
+          37,
+          null
+        ]
+      },
+      {
+        "file": "action-00020.npy",
+        "first_close_index": [
+          36,
+          null
+        ]
+      },
+      {
+        "file": "action-00021.npy",
+        "first_close_index": [
+          35,
+          null
+        ]
+      },
+      {
+        "file": "action-00022.npy",
+        "first_close_index": [
+          34,
+          null
+        ]
+      },
+      {
+        "file": "action-00023.npy",
+        "first_close_index": [
+          33,
+          null
+        ]
+      },
+      {
+        "file": "action-00024.npy",
+        "first_close_index": [
+          32,
+          null
+        ]
+      },
+      {
+        "file": "action-00025.npy",
+        "first_close_index": [
+          31,
+          null
+        ]
+      },
+      {
+        "file": "action-00026.npy",
+        "first_close_index": [
+          30,
+          null
+        ]
+      },
+      {
+        "file": "action-00027.npy",
+        "first_close_index": [
+          29,
+          null
+        ]
+      },
+      {
+        "file": "action-00028.npy",
+        "first_close_index": [
+          29,
+          null
+        ]
+      },
+      {
+        "file": "action-00029.npy",
+        "first_close_index": [
+          28,
+          null
+        ]
+      },
+      {
+        "file": "action-00030.npy",
+        "first_close_index": [
+          27,
+          null
+        ]
+      },
+      {
+        "file": "action-00031.npy",
+        "first_close_index": [
+          27,
+          null
+        ]
+      },
+      {
+        "file": "action-00032.npy",
+        "first_close_index": [
+          26,
+          null
+        ]
+      },
+      {
+        "file": "action-00033.npy",
+        "first_close_index": [
+          26,
+          null
+        ]
+      },
+      {
+        "file": "action-00034.npy",
+        "first_close_index": [
+          26,
+          null
+        ]
+      },
+      {
+        "file": "action-00035.npy",
+        "first_close_index": [
+          26,
+          null
+        ]
+      },
+      {
+        "file": "action-00036.npy",
+        "first_close_index": [
+          26,
+          null
+        ]
+      },
+      {
+        "file": "action-00037.npy",
+        "first_close_index": [
+          26,
+          null
+        ]
+      },
+      {
+        "file": "action-00038.npy",
+        "first_close_index": [
+          25,
+          null
+        ]
+      },
+      {
+        "file": "action-00039.npy",
+        "first_close_index": [
+          26,
+          null
+        ]
+      },
+      {
+        "file": "action-00040.npy",
+        "first_close_index": [
+          25,
+          null
+        ]
+      },
+      {
+        "file": "action-00041.npy",
+        "first_close_index": [
+          26,
+          null
+        ]
+      },
+      {
+        "file": "action-00042.npy",
+        "first_close_index": [
+          25,
+          null
+        ]
+      },
+      {
+        "file": "action-00043.npy",
+        "first_close_index": [
+          25,
+          null
+        ]
+      },
+      {
+        "file": "action-00044.npy",
+        "first_close_index": [
+          23,
+          null
+        ]
+      },
+      {
+        "file": "action-00045.npy",
+        "first_close_index": [
+          25,
+          null
+        ]
+      },
+      {
+        "file": "action-00046.npy",
+        "first_close_index": [
+          23,
+          null
+        ]
+      },
+      {
+        "file": "action-00047.npy",
+        "first_close_index": [
+          26,
+          null
+        ]
+      },
+      {
+        "file": "action-00048.npy",
+        "first_close_index": [
+          26,
+          null
+        ]
+      },
+      {
+        "file": "action-00049.npy",
+        "first_close_index": [
+          25,
+          null
+        ]
+      },
+      {
+        "file": "action-00050.npy",
+        "first_close_index": [
+          25,
+          null
+        ]
+      },
+      {
+        "file": "action-00051.npy",
+        "first_close_index": [
+          25,
+          null
+        ]
+      },
+      {
+        "file": "action-00052.npy",
+        "first_close_index": [
+          17,
+          null
+        ]
+      },
+      {
+        "file": "action-00053.npy",
+        "first_close_index": [
+          23,
+          null
+        ]
+      },
+      {
+        "file": "action-00054.npy",
+        "first_close_index": [
+          24,
+          null
+        ]
+      },
+      {
+        "file": "action-00055.npy",
+        "first_close_index": [
+          24,
+          null
+        ]
+      },
+      {
+        "file": "action-00056.npy",
+        "first_close_index": [
+          15,
+          null
+        ]
+      },
+      {
+        "file": "action-00057.npy",
+        "first_close_index": [
+          16,
+          null
+        ]
+      },
+      {
+        "file": "action-00058.npy",
+        "first_close_index": [
+          14,
+          null
+        ]
+      },
+      {
+        "file": "action-00059.npy",
+        "first_close_index": [
+          13,
+          null
+        ]
+      },
+      {
+        "file": "action-00060.npy",
+        "first_close_index": [
+          11,
+          null
+        ]
+      },
+      {
+        "file": "action-00061.npy",
+        "first_close_index": [
+          13,
+          null
+        ]
+      },
+      {
+        "file": "action-00062.npy",
+        "first_close_index": [
+          14,
+          null
+        ]
+      },
+      {
+        "file": "action-00063.npy",
+        "first_close_index": [
+          18,
+          null
+        ]
+      },
+      {
+        "file": "action-00064.npy",
+        "first_close_index": [
+          19,
+          null
+        ]
+      },
+      {
+        "file": "action-00065.npy",
+        "first_close_index": [
+          17,
+          null
+        ]
+      },
+      {
+        "file": "action-00066.npy",
+        "first_close_index": [
+          17,
+          null
+        ]
+      },
+      {
+        "file": "action-00067.npy",
+        "first_close_index": [
+          15,
+          null
+        ]
+      }
+    ]
+  },
+  "g2e-seed1-native-w26": {
+    "window": 26,
+    "blocks": 3,
+    "raw_shape": [
+      50,
+      14
+    ],
+    "closure_definition": "raw gripper < 0.5; indices zero-based",
+    "left_close_blocks": 2,
+    "left_close_inside_requested_prefix": 1,
+    "left_close_truncated": 1,
+    "blocks_detail": [
+      {
+        "file": "action-00001.npy",
+        "first_close_index": [
+          null,
+          null
+        ]
+      },
+      {
+        "file": "action-00002.npy",
+        "first_close_index": [
+          30,
+          null
+        ]
+      },
+      {
+        "file": "action-00003.npy",
+        "first_close_index": [
+          4,
+          null
+        ]
+      }
+    ]
+  },
+  "g2e-seed1-native-w31": {
+    "window": 31,
+    "blocks": 2,
+    "raw_shape": [
+      50,
+      14
+    ],
+    "closure_definition": "raw gripper < 0.5; indices zero-based",
+    "left_close_blocks": 1,
+    "left_close_inside_requested_prefix": 1,
+    "left_close_truncated": 0,
+    "blocks_detail": [
+      {
+        "file": "action-00001.npy",
+        "first_close_index": [
+          null,
+          null
+        ]
+      },
+      {
+        "file": "action-00002.npy",
+        "first_close_index": [
+          19,
+          null
+        ]
+      }
+    ]
+  },
+  "g2e-seed1-native-w4": {
+    "window": 4,
+    "blocks": 57,
+    "raw_shape": [
+      50,
+      14
+    ],
+    "closure_definition": "raw gripper < 0.5; indices zero-based",
+    "left_close_blocks": 55,
+    "left_close_inside_requested_prefix": 0,
+    "left_close_truncated": 55,
+    "blocks_detail": [
+      {
+        "file": "action-00001.npy",
+        "first_close_index": [
+          null,
+          null
+        ]
+      },
+      {
+        "file": "action-00002.npy",
+        "first_close_index": [
+          null,
+          null
+        ]
+      },
+      {
+        "file": "action-00003.npy",
+        "first_close_index": [
+          48,
+          null
+        ]
+      },
+      {
+        "file": "action-00004.npy",
+        "first_close_index": [
+          44,
+          null
+        ]
+      },
+      {
+        "file": "action-00005.npy",
+        "first_close_index": [
+          40,
+          null
+        ]
+      },
+      {
+        "file": "action-00006.npy",
+        "first_close_index": [
+          36,
+          null
+        ]
+      },
+      {
+        "file": "action-00007.npy",
+        "first_close_index": [
+          32,
+          null
+        ]
+      },
+      {
+        "file": "action-00008.npy",
+        "first_close_index": [
+          28,
+          null
+        ]
+      },
+      {
+        "file": "action-00009.npy",
+        "first_close_index": [
+          26,
+          null
+        ]
+      },
+      {
+        "file": "action-00010.npy",
+        "first_close_index": [
+          26,
+          null
+        ]
+      },
+      {
+        "file": "action-00011.npy",
+        "first_close_index": [
+          26,
+          null
+        ]
+      },
+      {
+        "file": "action-00012.npy",
+        "first_close_index": [
+          25,
+          null
+        ]
+      },
+      {
+        "file": "action-00013.npy",
+        "first_close_index": [
+          26,
+          null
+        ]
+      },
+      {
+        "file": "action-00014.npy",
+        "first_close_index": [
+          26,
+          null
+        ]
+      },
+      {
+        "file": "action-00015.npy",
+        "first_close_index": [
+          26,
+          null
+        ]
+      },
+      {
+        "file": "action-00016.npy",
+        "first_close_index": [
+          26,
+          null
+        ]
+      },
+      {
+        "file": "action-00017.npy",
+        "first_close_index": [
+          26,
+          null
+        ]
+      },
+      {
+        "file": "action-00018.npy",
+        "first_close_index": [
+          25,
+          null
+        ]
+      },
+      {
+        "file": "action-00019.npy",
+        "first_close_index": [
+          25,
+          null
+        ]
+      },
+      {
+        "file": "action-00020.npy",
+        "first_close_index": [
+          24,
+          null
+        ]
+      },
+      {
+        "file": "action-00021.npy",
+        "first_close_index": [
+          21,
+          null
+        ]
+      },
+      {
+        "file": "action-00022.npy",
+        "first_close_index": [
+          25,
+          null
+        ]
+      },
+      {
+        "file": "action-00023.npy",
+        "first_close_index": [
+          24,
+          null
+        ]
+      },
+      {
+        "file": "action-00024.npy",
+        "first_close_index": [
+          26,
+          null
+        ]
+      },
+      {
+        "file": "action-00025.npy",
+        "first_close_index": [
+          24,
+          null
+        ]
+      },
+      {
+        "file": "action-00026.npy",
+        "first_close_index": [
+          26,
+          null
+        ]
+      },
+      {
+        "file": "action-00027.npy",
+        "first_close_index": [
+          26,
+          null
+        ]
+      },
+      {
+        "file": "action-00028.npy",
+        "first_close_index": [
+          26,
+          null
+        ]
+      },
+      {
+        "file": "action-00029.npy",
+        "first_close_index": [
+          26,
+          null
+        ]
+      },
+      {
+        "file": "action-00030.npy",
+        "first_close_index": [
+          26,
+          null
+        ]
+      },
+      {
+        "file": "action-00031.npy",
+        "first_close_index": [
+          26,
+          null
+        ]
+      },
+      {
+        "file": "action-00032.npy",
+        "first_close_index": [
+          26,
+          null
+        ]
+      },
+      {
+        "file": "action-00033.npy",
+        "first_close_index": [
+          26,
+          null
+        ]
+      },
+      {
+        "file": "action-00034.npy",
+        "first_close_index": [
+          26,
+          null
+        ]
+      },
+      {
+        "file": "action-00035.npy",
+        "first_close_index": [
+          26,
+          null
+        ]
+      },
+      {
+        "file": "action-00036.npy",
+        "first_close_index": [
+          27,
+          null
+        ]
+      },
+      {
+        "file": "action-00037.npy",
+        "first_close_index": [
+          27,
+          null
+        ]
+      },
+      {
+        "file": "action-00038.npy",
+        "first_close_index": [
+          27,
+          null
+        ]
+      },
+      {
+        "file": "action-00039.npy",
+        "first_close_index": [
+          27,
+          null
+        ]
+      },
+      {
+        "file": "action-00040.npy",
+        "first_close_index": [
+          27,
+          null
+        ]
+      },
+      {
+        "file": "action-00041.npy",
+        "first_close_index": [
+          27,
+          null
+        ]
+      },
+      {
+        "file": "action-00042.npy",
+        "first_close_index": [
+          27,
+          null
+        ]
+      },
+      {
+        "file": "action-00043.npy",
+        "first_close_index": [
+          27,
+          null
+        ]
+      },
+      {
+        "file": "action-00044.npy",
+        "first_close_index": [
+          27,
+          47
+        ]
+      },
+      {
+        "file": "action-00045.npy",
+        "first_close_index": [
+          27,
+          41
+        ]
+      },
+      {
+        "file": "action-00046.npy",
+        "first_close_index": [
+          26,
+          43
+        ]
+      },
+      {
+        "file": "action-00047.npy",
+        "first_close_index": [
+          26,
+          37
+        ]
+      },
+      {
+        "file": "action-00048.npy",
+        "first_close_index": [
+          26,
+          38
+        ]
+      },
+      {
+        "file": "action-00049.npy",
+        "first_close_index": [
+          26,
+          36
+        ]
+      },
+      {
+        "file": "action-00050.npy",
+        "first_close_index": [
+          26,
+          34
+        ]
+      },
+      {
+        "file": "action-00051.npy",
+        "first_close_index": [
+          26,
+          38
+        ]
+      },
+      {
+        "file": "action-00052.npy",
+        "first_close_index": [
+          26,
+          34
+        ]
+      },
+      {
+        "file": "action-00053.npy",
+        "first_close_index": [
+          25,
+          34
+        ]
+      },
+      {
+        "file": "action-00054.npy",
+        "first_close_index": [
+          26,
+          37
+        ]
+      },
+      {
+        "file": "action-00055.npy",
+        "first_close_index": [
+          26,
+          null
+        ]
+      },
+      {
+        "file": "action-00056.npy",
+        "first_close_index": [
+          26,
+          43
+        ]
+      },
+      {
+        "file": "action-00057.npy",
+        "first_close_index": [
+          26,
+          38
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "data_kind": "diagnostic",
+  "formal_score_eligible": false,
+  "passed": true,
+  "started_at": "2026-11-06T14:13:21.974+00:00",
+  "model_server_starts": 1,
+  "execution_complete": true,
+  "stages": {
+    "dynamic": {
+      "status": "passed",
+      "started_at": "2026-11-06T14:13:21.992+00:00",
+      "exit_code": 0,
+      "ended_at": "2026-11-06T14:26:09.120+00:00",
+      "wall_s": 767.1282104477286
+    },
+    "aloha": {
+      "status": "passed",
+      "started_at": "2026-11-06T14:26:09.154+00:00",
+      "exit_code": 0,
+      "ended_at": "2026-11-06T15:27:37.556+00:00",
+      "wall_s": 3688.4021399840713
+    },
+    "statistics": {
+      "status": "passed",
+      "started_at": "2026-11-06T15:27:37.575+00:00",
+      "exit_code": 0,
+      "ended_at": "2026-11-06T15:28:41.235+00:00",
+      "wall_s": 63.66006596386433
+    }
+  },
+  "model_server_pid": 19348,
+  "evaluation": {
+    "data_kind": "diagnostic",
+    "formal_score_eligible": false,
+    "planned_trials": 8,
+    "completed_trials": 8,
+    "missing_or_not_run": [],
+    "outcomes": {
+      "control_error": 8
+    },
+    "task_success_count": 0,
+    "all_trials_complete": true,
+    "success_fraction_of_completed": "0/8",
+    "verified_native_full_task_episode_ids": [],
+    "arx_authorized": false,
+    "arx_gate": "separate review only after native full-task success with physical sequence evidence"
+  },
+  "complete": true,
+  "observed_gpu_peak_mib": 14382,
+  "ended_at": "2026-11-06T15:28:44.047+00:00"
+}

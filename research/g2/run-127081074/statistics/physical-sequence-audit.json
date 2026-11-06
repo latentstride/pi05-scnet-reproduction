@@ -1,0 +1,64 @@
+{
+  "g2e-seed0-native-w1": {
+    "complete": false,
+    "milestones": [],
+    "target_support_contact_observed": false,
+    "definition": "ordered measured left-only, shared, right-only, released holders plus target support contact; unchanged task score reported separately"
+  },
+  "g2e-seed1-native-w31": {
+    "complete": false,
+    "milestones": [
+      {
+        "tick": 4574,
+        "holders": [
+          "left"
+        ]
+      }
+    ],
+    "target_support_contact_observed": false,
+    "definition": "ordered measured left-only, shared, right-only, released holders plus target support contact; unchanged task score reported separately"
+  },
+  "g2e-seed0-native-w26": {
+    "complete": false,
+    "milestones": [],
+    "target_support_contact_observed": false,
+    "definition": "ordered measured left-only, shared, right-only, released holders plus target support contact; unchanged task score reported separately"
+  },
+  "g2e-seed1-native-w4": {
+    "complete": false,
+    "milestones": [],
+    "target_support_contact_observed": false,
+    "definition": "ordered measured left-only, shared, right-only, released holders plus target support contact; unchanged task score reported separately"
+  },
+  "g2e-seed0-native-w4": {
+    "complete": false,
+    "milestones": [],
+    "target_support_contact_observed": false,
+    "definition": "ordered measured left-only, shared, right-only, released holders plus target support contact; unchanged task score reported separately"
+  },
+  "g2e-seed1-native-w26": {
+    "complete": false,
+    "milestones": [
+      {
+        "tick": 4802,
+        "holders": [
+          "left"
+        ]
+      }
+    ],
+    "target_support_contact_observed": false,
+    "definition": "ordered measured left-only, shared, right-only, released holders plus target support contact; unchanged task score reported separately"
+  },
+  "g2e-seed0-native-w31": {
+    "complete": false,
+    "milestones": [],
+    "target_support_contact_observed": false,
+    "definition": "ordered measured left-only, shared, right-only, released holders plus target support contact; unchanged task score reported separately"
+  },
+  "g2e-seed1-native-w1": {
+    "complete": false,
+    "milestones": [],
+    "target_support_contact_observed": false,
+    "definition": "ordered measured left-only, shared, right-only, released holders plus target support contact; unchanged task score reported separately"
+  }
+}

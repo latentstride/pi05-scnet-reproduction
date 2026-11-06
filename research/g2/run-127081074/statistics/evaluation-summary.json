@@ -1,0 +1,16 @@
+{
+  "data_kind": "diagnostic",
+  "formal_score_eligible": false,
+  "planned_trials": 8,
+  "completed_trials": 8,
+  "missing_or_not_run": [],
+  "outcomes": {
+    "control_error": 8
+  },
+  "task_success_count": 0,
+  "all_trials_complete": true,
+  "success_fraction_of_completed": "0/8",
+  "verified_native_full_task_episode_ids": [],
+  "arx_authorized": false,
+  "arx_gate": "separate review only after native full-task success with physical sequence evidence"
+}

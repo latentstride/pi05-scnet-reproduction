@@ -1,0 +1,112 @@
+{
+  "data_kind": "diagnostic",
+  "formal_score_eligible": false,
+  "episode_id": "g2e-seed1-native-w1",
+  "condition": "E-native-w1",
+  "window": 1,
+  "success": false,
+  "outcome": "control_error",
+  "requested": 67,
+  "executed": 66,
+  "queries": 67,
+  "inference_s": 74.45592782646418,
+  "planning_s": 1.1998154670000076,
+  "control_s": 95.06653095036745,
+  "plan_calls": 67,
+  "plan_failures": 0,
+  "initial": {
+    "robot_base_world": {
+      "left": [
+        0.0,
+        -0.6499999761581421,
+        0.0,
+        0.7071067811865476,
+        0.0,
+        0.0,
+        0.7071067811865475
+      ],
+      "right": [
+        0.0,
+        -0.6499999761581421,
+        0.0,
+        0.7071067811865476,
+        0.0,
+        0.0,
+        0.7071067811865475
+      ]
+    },
+    "task_frame_world": [
+      0.0,
+      0.0,
+      0.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "actual_arm_qpos_rad": {
+      "left": [
+        -3.016260308186247e-08,
+        -5.668539984071685e-07,
+        -4.835977051698137e-06,
+        7.702591631186806e-08,
+        4.6315946633512795e-07,
+        -8.158984883266385e-07
+      ],
+      "right": [
+        -3.258066882949606e-08,
+        -5.65274206110189e-07,
+        -4.838918357563671e-06,
+        7.693390813301448e-08,
+        4.6469963876916154e-07,
+        -8.163781899384048e-07
+      ]
+    },
+    "actual_gripper": {
+      "left": 0.9830570883221097,
+      "right": 0.9830570055378809
+    },
+    "objects_task": {
+      "block": [
+        -0.07437734305858612,
+        0.006845563184469938,
+        0.8400006890296936,
+        0.9922851265801744,
+        6.05939609237794e-06,
+        -4.955273623636583e-06,
+        0.1239767216315074
+      ],
+      "target": [
+        0.1297152191400528,
+        0.19003723561763763,
+        0.7409999966621399,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "table": [
+        0.0,
+        0.0,
+        0.7400000095367432,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "reset_fixture_sha256": "89ef6e94fcd26f9c2b121dbe85ce75f495efe0003ae95b4abfabd8a123be9aaf",
+    "workspace_check_id": "locked_initial_real_scene_fcl_v1",
+    "common_workspace_pass": true
+  },
+  "failure": {
+    "phase": "control",
+    "code": "collision",
+    "detail": "native drive candidate blocked"
+  },
+  "video": "<PROJECT_ROOT>/results/pace-g2e-127081074/trials/g2e-seed1-native-w1/head.mp4",
+  "control_calls": 5391,
+  "execution_protocol": "g2e_native_guarded_prefix_v1",
+  "initial_sim_s": 0.0,
+  "elapsed_s": 468.17627458274364
+}

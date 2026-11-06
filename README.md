@@ -1,6 +1,6 @@
 # π₀.₅ 官方复现与异构数据接口研究
 
-G2 最新研究进展（2026-11-06）：[CPU失败归因](docs/g2_failure_root_cause_report.md)、[G2-E窗口分析](docs/g2e_window_analysis.md)、[剩余G2 CPU验收](docs/g2_remaining_cpu_acceptance.md)、[统一验收方案与预算](docs/g2_remaining_unified_acceptance_plan.md)。最新研究工作区188项回归和13个合成episode通过；四个原始ARX精确端点仍拒绝，有界恢复4/4、专家放置后缀静态3/3通过，不能记作真实策略任务成功。作业127081074仅记录其已提交及启动事实，本快照不推断其最终结果；未来剩余方案为单作业14试次，预算上限34.20元，不构成提交授权。
+G2 最新研究进展（2026-11-06）：[CPU失败归因](docs/g2_failure_root_cause_report.md)、[G2-E窗口分析](docs/g2e_window_analysis.md)、[剩余G2 CPU验收](docs/g2_remaining_cpu_acceptance.md)、[统一验收方案与预算](docs/g2_remaining_unified_acceptance_plan.md)。最新研究工作区188项回归和13个合成episode通过；四个原始ARX精确端点仍拒绝，有界恢复4/4、专家放置后缀静态3/3通过，不能记作真实策略任务成功。[作业127081074已验收](docs/g2e_run_127081074.md)：8个原生试次全部有结果，完整任务0/8，K26/K31在seed1达到左手双指接触，仍未完成交接放置；未来剩余方案为单作业14试次，预算上限34.20元，不构成提交授权。
 
 [本次同步范围与复现说明](docs/g2_chat_sync_20261106.md)。
 
@@ -28,3 +28,4 @@ G2 当前结果（2026-11-06）见 [作业 127054052 报告](docs/pace_g2_run_12
 模型加载 12.42 秒，首次推理含编译 42.24 秒，相同输入第二次推理 0.101 秒；见 [推理验证](docs/inference_validation.md)。历史进度见 [environment.md](environment.md)，最终验收状态以验收报告为准。
 
 `scripts/` 保存部署与验收脚本，`docs/官方复现工作清单.md` 为原始清单。运行源码、环境、模型、容器、缓存、日志及原始结果统一放在项目所属人的 SCNet 个人目录。公开文档以 `<PROJECT_ROOT>` 表示部署位置；原始视频、轨迹、模型和平台内部信息不纳入公开仓库。
+

@@ -1,0 +1,1282 @@
+[
+  {
+    "run_lock_sha256": "f054d1495ec048ca9b0035eab110a1ce092390d63c7bbb3b5eeea39833aa61f0",
+    "episode_id": "g2e-seed0-native-w1",
+    "task": "handover_block",
+    "seed": 0,
+    "comparison_id": "native-window-timing",
+    "pair_id": "paired-10g-00",
+    "condition": {
+      "id": "E-native-w1",
+      "embodiment": "aloha-agilex",
+      "action_source": "source_policy",
+      "checkpoint": {
+        "id": "pi05_robotwin_handover_block",
+        "revision": "17ef545270cf26ed81169893b60f845f80ce6557",
+        "manifest_sha256": "835d60676236e69276032f7bc1ea4837eb6fcda6d4f3dbab2043965063a3d97b",
+        "norm_stats_sha256": "8a1f114a8873dfa0788c7f512851ee3063224ef2b8af270421076a2e4e544960"
+      },
+      "expert_representation": null,
+      "execution": "qpos",
+      "window_actions": 1,
+      "config_sha256": "8f3a54839df12c7d064435866f3d49fdff378980c93f811a30ef26ffcc7f0d4b",
+      "observation_mapping": "native",
+      "action_mapping": "native"
+    },
+    "environment": {
+      "runtime_id": "robotwin-cu122-scnet",
+      "robotwin_revision": "PACE-vendored-fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+      "pace_revision": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+      "assets_revision": "5ebfc07c82814757168bdb3f2b7ad4a9bec18f58afc28318f49e61af117122f2",
+      "scene_config_sha256": "5439712296d7e143d41f8e78b4ab86cd4fad7fb98f40f5f5abb067a462d17650",
+      "embodiment_config_sha256": "a4f043d2d4b44cca5ec47fb498a3194da3f87ff9530dcbfdcee1539a44423d57"
+    },
+    "match_status": "matched",
+    "schema_version": 1,
+    "data_kind": "diagnostic",
+    "initial": {
+      "robot_base_world": {
+        "left": [
+          0.0,
+          -0.6499999761581421,
+          0.0,
+          0.7071067811865476,
+          0.0,
+          0.0,
+          0.7071067811865475
+        ],
+        "right": [
+          0.0,
+          -0.6499999761581421,
+          0.0,
+          0.7071067811865476,
+          0.0,
+          0.0,
+          0.7071067811865475
+        ]
+      },
+      "task_frame_world": [
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "actual_arm_qpos_rad": {
+        "left": [
+          -3.016260308186247e-08,
+          -5.668539984071685e-07,
+          -4.835977051698137e-06,
+          7.702591631186806e-08,
+          4.6315946633512795e-07,
+          -8.158984883266385e-07
+        ],
+        "right": [
+          -3.258066882949606e-08,
+          -5.65274206110189e-07,
+          -4.838918357563671e-06,
+          7.693390813301448e-08,
+          4.6469963876916154e-07,
+          -8.163781899384048e-07
+        ]
+      },
+      "actual_gripper": {
+        "left": 0.9830570883221097,
+        "right": 0.9830570055378809
+      },
+      "objects_task": {
+        "block": [
+          -0.17331258952617645,
+          0.19793014228343964,
+          0.840000569820404,
+          0.9939092006006811,
+          5.213939510099557e-06,
+          -5.030996466065737e-06,
+          0.11020209121799367
+        ],
+        "target": [
+          0.11306939274072647,
+          0.1510109156370163,
+          0.7409999966621399,
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "table": [
+          0.0,
+          0.0,
+          0.7400000095367432,
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "reset_fixture_sha256": "77629daa82a44c540ab08e35e25ec7f124167a909ff5c9251280c2bbabae2a43",
+      "workspace_check_id": "locked_initial_real_scene_fcl_v1",
+      "common_workspace_pass": true
+    },
+    "outcome": "control_error",
+    "failure": {
+      "stage": "control",
+      "code": "collision",
+      "detail": "predicted finger start intersects task block",
+      "step": 24,
+      "artifact": "<PROJECT_ROOT>/results/pace-g2e-127081074/trials/g2e-seed0-native-w1/events.jsonl"
+    },
+    "episode_artifact": "<PROJECT_ROOT>/results/pace-g2e-127081074/trials/g2e-seed0-native-w1",
+    "metrics": {
+      "trajectory": {
+        "reference_id": "per_tick_drive_tracking_v1",
+        "n": 6870,
+        "position_rmse_m": 0.0019004830168901751,
+        "position_p95_m": 0.0035398015866840537,
+        "orientation_mean_deg": 0.18223347857318925,
+        "orientation_p95_deg": 0.30958506190493634
+      },
+      "planning": {
+        "attempts": 25,
+        "failures": 0
+      },
+      "limits": null,
+      "gripper": null,
+      "inference": {
+        "calls": 25,
+        "wall_s": 24.937007509171963
+      },
+      "control": {
+        "calls": 3435,
+        "wall_s": 48.60406509041786
+      },
+      "actions": {
+        "windows": 25,
+        "requested": 25,
+        "executed": 24,
+        "sim_elapsed_s": 13.740000652614981
+      }
+    }
+  },
+  {
+    "run_lock_sha256": "f054d1495ec048ca9b0035eab110a1ce092390d63c7bbb3b5eeea39833aa61f0",
+    "episode_id": "g2e-seed1-native-w31",
+    "task": "handover_block",
+    "seed": 1,
+    "comparison_id": "native-window-timing",
+    "pair_id": "paired-10g-01",
+    "condition": {
+      "id": "E-native-w31",
+      "embodiment": "aloha-agilex",
+      "action_source": "source_policy",
+      "checkpoint": {
+        "id": "pi05_robotwin_handover_block",
+        "revision": "17ef545270cf26ed81169893b60f845f80ce6557",
+        "manifest_sha256": "835d60676236e69276032f7bc1ea4837eb6fcda6d4f3dbab2043965063a3d97b",
+        "norm_stats_sha256": "8a1f114a8873dfa0788c7f512851ee3063224ef2b8af270421076a2e4e544960"
+      },
+      "expert_representation": null,
+      "execution": "qpos",
+      "window_actions": 31,
+      "config_sha256": "44853d3c137b1c3febaaf5cb68be81963c9b7cbcbbd09c78f199f751719253c7",
+      "observation_mapping": "native",
+      "action_mapping": "native"
+    },
+    "environment": {
+      "runtime_id": "robotwin-cu122-scnet",
+      "robotwin_revision": "PACE-vendored-fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+      "pace_revision": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+      "assets_revision": "5ebfc07c82814757168bdb3f2b7ad4a9bec18f58afc28318f49e61af117122f2",
+      "scene_config_sha256": "5439712296d7e143d41f8e78b4ab86cd4fad7fb98f40f5f5abb067a462d17650",
+      "embodiment_config_sha256": "a4f043d2d4b44cca5ec47fb498a3194da3f87ff9530dcbfdcee1539a44423d57"
+    },
+    "match_status": "matched",
+    "schema_version": 1,
+    "data_kind": "diagnostic",
+    "initial": {
+      "robot_base_world": {
+        "left": [
+          0.0,
+          -0.6499999761581421,
+          0.0,
+          0.7071067811865476,
+          0.0,
+          0.0,
+          0.7071067811865475
+        ],
+        "right": [
+          0.0,
+          -0.6499999761581421,
+          0.0,
+          0.7071067811865476,
+          0.0,
+          0.0,
+          0.7071067811865475
+        ]
+      },
+      "task_frame_world": [
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "actual_arm_qpos_rad": {
+        "left": [
+          -3.016260308186247e-08,
+          -5.668539984071685e-07,
+          -4.835977051698137e-06,
+          7.702591631186806e-08,
+          4.6315946633512795e-07,
+          -8.158984883266385e-07
+        ],
+        "right": [
+          -3.258066882949606e-08,
+          -5.65274206110189e-07,
+          -4.838918357563671e-06,
+          7.693390813301448e-08,
+          4.6469963876916154e-07,
+          -8.163781899384048e-07
+        ]
+      },
+      "actual_gripper": {
+        "left": 0.9830570883221097,
+        "right": 0.9830570055378809
+      },
+      "objects_task": {
+        "block": [
+          -0.07437734305858612,
+          0.006845563184469938,
+          0.8400006890296936,
+          0.9922851265801744,
+          6.05939609237794e-06,
+          -4.955273623636583e-06,
+          0.1239767216315074
+        ],
+        "target": [
+          0.1297152191400528,
+          0.19003723561763763,
+          0.7409999966621399,
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "table": [
+          0.0,
+          0.0,
+          0.7400000095367432,
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "reset_fixture_sha256": "89ef6e94fcd26f9c2b121dbe85ce75f495efe0003ae95b4abfabd8a123be9aaf",
+      "workspace_check_id": "locked_initial_real_scene_fcl_v1",
+      "common_workspace_pass": true
+    },
+    "outcome": "control_error",
+    "failure": {
+      "stage": "control",
+      "code": "backend_error",
+      "detail": "donor opening before receiver contact confirmation",
+      "step": 61,
+      "artifact": "<PROJECT_ROOT>/results/pace-g2e-127081074/trials/g2e-seed1-native-w31/events.jsonl"
+    },
+    "episode_artifact": "<PROJECT_ROOT>/results/pace-g2e-127081074/trials/g2e-seed1-native-w31",
+    "metrics": {
+      "trajectory": {
+        "reference_id": "per_tick_drive_tracking_v1",
+        "n": 9818,
+        "position_rmse_m": 0.0013794364771117162,
+        "position_p95_m": 0.0027550305165662935,
+        "orientation_mean_deg": 0.1773443373818742,
+        "orientation_p95_deg": 0.39500856085775904
+      },
+      "planning": {
+        "attempts": 2,
+        "failures": 0
+      },
+      "limits": null,
+      "gripper": null,
+      "inference": {
+        "calls": 2,
+        "wall_s": 6.156126372516155
+      },
+      "control": {
+        "calls": 4909,
+        "wall_s": 68.2544938325882
+      },
+      "actions": {
+        "windows": 2,
+        "requested": 62,
+        "executed": 61,
+        "sim_elapsed_s": 19.636000932659954
+      }
+    }
+  },
+  {
+    "run_lock_sha256": "f054d1495ec048ca9b0035eab110a1ce092390d63c7bbb3b5eeea39833aa61f0",
+    "episode_id": "g2e-seed0-native-w26",
+    "task": "handover_block",
+    "seed": 0,
+    "comparison_id": "native-window-timing",
+    "pair_id": "paired-10g-00",
+    "condition": {
+      "id": "E-native-w26",
+      "embodiment": "aloha-agilex",
+      "action_source": "source_policy",
+      "checkpoint": {
+        "id": "pi05_robotwin_handover_block",
+        "revision": "17ef545270cf26ed81169893b60f845f80ce6557",
+        "manifest_sha256": "835d60676236e69276032f7bc1ea4837eb6fcda6d4f3dbab2043965063a3d97b",
+        "norm_stats_sha256": "8a1f114a8873dfa0788c7f512851ee3063224ef2b8af270421076a2e4e544960"
+      },
+      "expert_representation": null,
+      "execution": "qpos",
+      "window_actions": 26,
+      "config_sha256": "94bc4e1f3378401411d7db9f21ce5a6af8b95cc6991442ba751f0b88aeb7c1f5",
+      "observation_mapping": "native",
+      "action_mapping": "native"
+    },
+    "environment": {
+      "runtime_id": "robotwin-cu122-scnet",
+      "robotwin_revision": "PACE-vendored-fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+      "pace_revision": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+      "assets_revision": "5ebfc07c82814757168bdb3f2b7ad4a9bec18f58afc28318f49e61af117122f2",
+      "scene_config_sha256": "5439712296d7e143d41f8e78b4ab86cd4fad7fb98f40f5f5abb067a462d17650",
+      "embodiment_config_sha256": "a4f043d2d4b44cca5ec47fb498a3194da3f87ff9530dcbfdcee1539a44423d57"
+    },
+    "match_status": "matched",
+    "schema_version": 1,
+    "data_kind": "diagnostic",
+    "initial": {
+      "robot_base_world": {
+        "left": [
+          0.0,
+          -0.6499999761581421,
+          0.0,
+          0.7071067811865476,
+          0.0,
+          0.0,
+          0.7071067811865475
+        ],
+        "right": [
+          0.0,
+          -0.6499999761581421,
+          0.0,
+          0.7071067811865476,
+          0.0,
+          0.0,
+          0.7071067811865475
+        ]
+      },
+      "task_frame_world": [
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "actual_arm_qpos_rad": {
+        "left": [
+          -3.016260308186247e-08,
+          -5.668539984071685e-07,
+          -4.835977051698137e-06,
+          7.702591631186806e-08,
+          4.6315946633512795e-07,
+          -8.158984883266385e-07
+        ],
+        "right": [
+          -3.258066882949606e-08,
+          -5.65274206110189e-07,
+          -4.838918357563671e-06,
+          7.693390813301448e-08,
+          4.6469963876916154e-07,
+          -8.163781899384048e-07
+        ]
+      },
+      "actual_gripper": {
+        "left": 0.9830570883221097,
+        "right": 0.9830570055378809
+      },
+      "objects_task": {
+        "block": [
+          -0.17331258952617645,
+          0.19793014228343964,
+          0.840000569820404,
+          0.9939092006006811,
+          5.213939510099557e-06,
+          -5.030996466065737e-06,
+          0.11020209121799367
+        ],
+        "target": [
+          0.11306939274072647,
+          0.1510109156370163,
+          0.7409999966621399,
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "table": [
+          0.0,
+          0.0,
+          0.7400000095367432,
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "reset_fixture_sha256": "77629daa82a44c540ab08e35e25ec7f124167a909ff5c9251280c2bbabae2a43",
+      "workspace_check_id": "locked_initial_real_scene_fcl_v1",
+      "common_workspace_pass": true
+    },
+    "outcome": "control_error",
+    "failure": {
+      "stage": "control",
+      "code": "collision",
+      "detail": "predicted finger start intersects task block",
+      "step": 26,
+      "artifact": "<PROJECT_ROOT>/results/pace-g2e-127081074/trials/g2e-seed0-native-w26/events.jsonl"
+    },
+    "episode_artifact": "<PROJECT_ROOT>/results/pace-g2e-127081074/trials/g2e-seed0-native-w26",
+    "metrics": {
+      "trajectory": {
+        "reference_id": "per_tick_drive_tracking_v1",
+        "n": 7054,
+        "position_rmse_m": 0.001786108552799469,
+        "position_p95_m": 0.003472923982613442,
+        "orientation_mean_deg": 0.16774427198645833,
+        "orientation_p95_deg": 0.30397416809950045
+      },
+      "planning": {
+        "attempts": 2,
+        "failures": 0
+      },
+      "limits": null,
+      "gripper": null,
+      "inference": {
+        "calls": 2,
+        "wall_s": 6.521154314279556
+      },
+      "control": {
+        "calls": 3527,
+        "wall_s": 51.902613922953606
+      },
+      "actions": {
+        "windows": 2,
+        "requested": 52,
+        "executed": 26,
+        "sim_elapsed_s": 14.108000670094043
+      }
+    }
+  },
+  {
+    "run_lock_sha256": "f054d1495ec048ca9b0035eab110a1ce092390d63c7bbb3b5eeea39833aa61f0",
+    "episode_id": "g2e-seed1-native-w4",
+    "task": "handover_block",
+    "seed": 1,
+    "comparison_id": "native-window-timing",
+    "pair_id": "paired-10g-01",
+    "condition": {
+      "id": "E-native-w4",
+      "embodiment": "aloha-agilex",
+      "action_source": "source_policy",
+      "checkpoint": {
+        "id": "pi05_robotwin_handover_block",
+        "revision": "17ef545270cf26ed81169893b60f845f80ce6557",
+        "manifest_sha256": "835d60676236e69276032f7bc1ea4837eb6fcda6d4f3dbab2043965063a3d97b",
+        "norm_stats_sha256": "8a1f114a8873dfa0788c7f512851ee3063224ef2b8af270421076a2e4e544960"
+      },
+      "expert_representation": null,
+      "execution": "qpos",
+      "window_actions": 4,
+      "config_sha256": "17193b6a21717199cb8eb99be8370bdfbcdbd1ee271f9d52bc65394e5fb95f4a",
+      "observation_mapping": "native",
+      "action_mapping": "native"
+    },
+    "environment": {
+      "runtime_id": "robotwin-cu122-scnet",
+      "robotwin_revision": "PACE-vendored-fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+      "pace_revision": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+      "assets_revision": "5ebfc07c82814757168bdb3f2b7ad4a9bec18f58afc28318f49e61af117122f2",
+      "scene_config_sha256": "5439712296d7e143d41f8e78b4ab86cd4fad7fb98f40f5f5abb067a462d17650",
+      "embodiment_config_sha256": "a4f043d2d4b44cca5ec47fb498a3194da3f87ff9530dcbfdcee1539a44423d57"
+    },
+    "match_status": "matched",
+    "schema_version": 1,
+    "data_kind": "diagnostic",
+    "initial": {
+      "robot_base_world": {
+        "left": [
+          0.0,
+          -0.6499999761581421,
+          0.0,
+          0.7071067811865476,
+          0.0,
+          0.0,
+          0.7071067811865475
+        ],
+        "right": [
+          0.0,
+          -0.6499999761581421,
+          0.0,
+          0.7071067811865476,
+          0.0,
+          0.0,
+          0.7071067811865475
+        ]
+      },
+      "task_frame_world": [
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "actual_arm_qpos_rad": {
+        "left": [
+          -3.016260308186247e-08,
+          -5.668539984071685e-07,
+          -4.835977051698137e-06,
+          7.702591631186806e-08,
+          4.6315946633512795e-07,
+          -8.158984883266385e-07
+        ],
+        "right": [
+          -3.258066882949606e-08,
+          -5.65274206110189e-07,
+          -4.838918357563671e-06,
+          7.693390813301448e-08,
+          4.6469963876916154e-07,
+          -8.163781899384048e-07
+        ]
+      },
+      "actual_gripper": {
+        "left": 0.9830570883221097,
+        "right": 0.9830570055378809
+      },
+      "objects_task": {
+        "block": [
+          -0.07437734305858612,
+          0.006845563184469938,
+          0.8400006890296936,
+          0.9922851265801744,
+          6.05939609237794e-06,
+          -4.955273623636583e-06,
+          0.1239767216315074
+        ],
+        "target": [
+          0.1297152191400528,
+          0.19003723561763763,
+          0.7409999966621399,
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "table": [
+          0.0,
+          0.0,
+          0.7400000095367432,
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "reset_fixture_sha256": "89ef6e94fcd26f9c2b121dbe85ce75f495efe0003ae95b4abfabd8a123be9aaf",
+      "workspace_check_id": "locked_initial_real_scene_fcl_v1",
+      "common_workspace_pass": true
+    },
+    "outcome": "control_error",
+    "failure": {
+      "stage": "control",
+      "code": "collision",
+      "detail": "native drive candidate blocked",
+      "step": 225,
+      "artifact": "<PROJECT_ROOT>/results/pace-g2e-127081074/trials/g2e-seed1-native-w4/events.jsonl"
+    },
+    "episode_artifact": "<PROJECT_ROOT>/results/pace-g2e-127081074/trials/g2e-seed1-native-w4",
+    "metrics": {
+      "trajectory": {
+        "reference_id": "per_tick_drive_tracking_v1",
+        "n": 26210,
+        "position_rmse_m": 0.0017452322766569378,
+        "position_p95_m": 0.003009607396958844,
+        "orientation_mean_deg": 0.21777391123278886,
+        "orientation_p95_deg": 0.39143085041171444
+      },
+      "planning": {
+        "attempts": 57,
+        "failures": 0
+      },
+      "limits": null,
+      "gripper": null,
+      "inference": {
+        "calls": 57,
+        "wall_s": 71.36863262951374
+      },
+      "control": {
+        "calls": 13105,
+        "wall_s": 193.70759036391973
+      },
+      "actions": {
+        "windows": 57,
+        "requested": 228,
+        "executed": 225,
+        "sim_elapsed_s": 52.4200024898164
+      }
+    }
+  },
+  {
+    "run_lock_sha256": "f054d1495ec048ca9b0035eab110a1ce092390d63c7bbb3b5eeea39833aa61f0",
+    "episode_id": "g2e-seed0-native-w4",
+    "task": "handover_block",
+    "seed": 0,
+    "comparison_id": "native-window-timing",
+    "pair_id": "paired-10g-00",
+    "condition": {
+      "id": "E-native-w4",
+      "embodiment": "aloha-agilex",
+      "action_source": "source_policy",
+      "checkpoint": {
+        "id": "pi05_robotwin_handover_block",
+        "revision": "17ef545270cf26ed81169893b60f845f80ce6557",
+        "manifest_sha256": "835d60676236e69276032f7bc1ea4837eb6fcda6d4f3dbab2043965063a3d97b",
+        "norm_stats_sha256": "8a1f114a8873dfa0788c7f512851ee3063224ef2b8af270421076a2e4e544960"
+      },
+      "expert_representation": null,
+      "execution": "qpos",
+      "window_actions": 4,
+      "config_sha256": "17193b6a21717199cb8eb99be8370bdfbcdbd1ee271f9d52bc65394e5fb95f4a",
+      "observation_mapping": "native",
+      "action_mapping": "native"
+    },
+    "environment": {
+      "runtime_id": "robotwin-cu122-scnet",
+      "robotwin_revision": "PACE-vendored-fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+      "pace_revision": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+      "assets_revision": "5ebfc07c82814757168bdb3f2b7ad4a9bec18f58afc28318f49e61af117122f2",
+      "scene_config_sha256": "5439712296d7e143d41f8e78b4ab86cd4fad7fb98f40f5f5abb067a462d17650",
+      "embodiment_config_sha256": "a4f043d2d4b44cca5ec47fb498a3194da3f87ff9530dcbfdcee1539a44423d57"
+    },
+    "match_status": "matched",
+    "schema_version": 1,
+    "data_kind": "diagnostic",
+    "initial": {
+      "robot_base_world": {
+        "left": [
+          0.0,
+          -0.6499999761581421,
+          0.0,
+          0.7071067811865476,
+          0.0,
+          0.0,
+          0.7071067811865475
+        ],
+        "right": [
+          0.0,
+          -0.6499999761581421,
+          0.0,
+          0.7071067811865476,
+          0.0,
+          0.0,
+          0.7071067811865475
+        ]
+      },
+      "task_frame_world": [
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "actual_arm_qpos_rad": {
+        "left": [
+          -3.016260308186247e-08,
+          -5.668539984071685e-07,
+          -4.835977051698137e-06,
+          7.702591631186806e-08,
+          4.6315946633512795e-07,
+          -8.158984883266385e-07
+        ],
+        "right": [
+          -3.258066882949606e-08,
+          -5.65274206110189e-07,
+          -4.838918357563671e-06,
+          7.693390813301448e-08,
+          4.6469963876916154e-07,
+          -8.163781899384048e-07
+        ]
+      },
+      "actual_gripper": {
+        "left": 0.9830570883221097,
+        "right": 0.9830570055378809
+      },
+      "objects_task": {
+        "block": [
+          -0.17331258952617645,
+          0.19793014228343964,
+          0.840000569820404,
+          0.9939092006006811,
+          5.213939510099557e-06,
+          -5.030996466065737e-06,
+          0.11020209121799367
+        ],
+        "target": [
+          0.11306939274072647,
+          0.1510109156370163,
+          0.7409999966621399,
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "table": [
+          0.0,
+          0.0,
+          0.7400000095367432,
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "reset_fixture_sha256": "77629daa82a44c540ab08e35e25ec7f124167a909ff5c9251280c2bbabae2a43",
+      "workspace_check_id": "locked_initial_real_scene_fcl_v1",
+      "common_workspace_pass": true
+    },
+    "outcome": "control_error",
+    "failure": {
+      "stage": "control",
+      "code": "collision",
+      "detail": "predicted finger start intersects task block",
+      "step": 27,
+      "artifact": "<PROJECT_ROOT>/results/pace-g2e-127081074/trials/g2e-seed0-native-w4/events.jsonl"
+    },
+    "episode_artifact": "<PROJECT_ROOT>/results/pace-g2e-127081074/trials/g2e-seed0-native-w4",
+    "metrics": {
+      "trajectory": {
+        "reference_id": "per_tick_drive_tracking_v1",
+        "n": 7162,
+        "position_rmse_m": 0.00181291939653979,
+        "position_p95_m": 0.0035498476750086176,
+        "orientation_mean_deg": 0.16940030330501005,
+        "orientation_p95_deg": 0.30445763621626054
+      },
+      "planning": {
+        "attempts": 7,
+        "failures": 0
+      },
+      "limits": null,
+      "gripper": null,
+      "inference": {
+        "calls": 7,
+        "wall_s": 12.704381540417671
+      },
+      "control": {
+        "calls": 3581,
+        "wall_s": 50.95952168852091
+      },
+      "actions": {
+        "windows": 7,
+        "requested": 28,
+        "executed": 27,
+        "sim_elapsed_s": 14.324000680353492
+      }
+    }
+  },
+  {
+    "run_lock_sha256": "f054d1495ec048ca9b0035eab110a1ce092390d63c7bbb3b5eeea39833aa61f0",
+    "episode_id": "g2e-seed1-native-w26",
+    "task": "handover_block",
+    "seed": 1,
+    "comparison_id": "native-window-timing",
+    "pair_id": "paired-10g-01",
+    "condition": {
+      "id": "E-native-w26",
+      "embodiment": "aloha-agilex",
+      "action_source": "source_policy",
+      "checkpoint": {
+        "id": "pi05_robotwin_handover_block",
+        "revision": "17ef545270cf26ed81169893b60f845f80ce6557",
+        "manifest_sha256": "835d60676236e69276032f7bc1ea4837eb6fcda6d4f3dbab2043965063a3d97b",
+        "norm_stats_sha256": "8a1f114a8873dfa0788c7f512851ee3063224ef2b8af270421076a2e4e544960"
+      },
+      "expert_representation": null,
+      "execution": "qpos",
+      "window_actions": 26,
+      "config_sha256": "94bc4e1f3378401411d7db9f21ce5a6af8b95cc6991442ba751f0b88aeb7c1f5",
+      "observation_mapping": "native",
+      "action_mapping": "native"
+    },
+    "environment": {
+      "runtime_id": "robotwin-cu122-scnet",
+      "robotwin_revision": "PACE-vendored-fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+      "pace_revision": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+      "assets_revision": "5ebfc07c82814757168bdb3f2b7ad4a9bec18f58afc28318f49e61af117122f2",
+      "scene_config_sha256": "5439712296d7e143d41f8e78b4ab86cd4fad7fb98f40f5f5abb067a462d17650",
+      "embodiment_config_sha256": "a4f043d2d4b44cca5ec47fb498a3194da3f87ff9530dcbfdcee1539a44423d57"
+    },
+    "match_status": "matched",
+    "schema_version": 1,
+    "data_kind": "diagnostic",
+    "initial": {
+      "robot_base_world": {
+        "left": [
+          0.0,
+          -0.6499999761581421,
+          0.0,
+          0.7071067811865476,
+          0.0,
+          0.0,
+          0.7071067811865475
+        ],
+        "right": [
+          0.0,
+          -0.6499999761581421,
+          0.0,
+          0.7071067811865476,
+          0.0,
+          0.0,
+          0.7071067811865475
+        ]
+      },
+      "task_frame_world": [
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "actual_arm_qpos_rad": {
+        "left": [
+          -3.016260308186247e-08,
+          -5.668539984071685e-07,
+          -4.835977051698137e-06,
+          7.702591631186806e-08,
+          4.6315946633512795e-07,
+          -8.158984883266385e-07
+        ],
+        "right": [
+          -3.258066882949606e-08,
+          -5.65274206110189e-07,
+          -4.838918357563671e-06,
+          7.693390813301448e-08,
+          4.6469963876916154e-07,
+          -8.163781899384048e-07
+        ]
+      },
+      "actual_gripper": {
+        "left": 0.9830570883221097,
+        "right": 0.9830570055378809
+      },
+      "objects_task": {
+        "block": [
+          -0.07437734305858612,
+          0.006845563184469938,
+          0.8400006890296936,
+          0.9922851265801744,
+          6.05939609237794e-06,
+          -4.955273623636583e-06,
+          0.1239767216315074
+        ],
+        "target": [
+          0.1297152191400528,
+          0.19003723561763763,
+          0.7409999966621399,
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "table": [
+          0.0,
+          0.0,
+          0.7400000095367432,
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "reset_fixture_sha256": "89ef6e94fcd26f9c2b121dbe85ce75f495efe0003ae95b4abfabd8a123be9aaf",
+      "workspace_check_id": "locked_initial_real_scene_fcl_v1",
+      "common_workspace_pass": true
+    },
+    "outcome": "control_error",
+    "failure": {
+      "stage": "control",
+      "code": "backend_error",
+      "detail": "object slipped relative to confirmed holder",
+      "step": 57,
+      "artifact": "<PROJECT_ROOT>/results/pace-g2e-127081074/trials/g2e-seed1-native-w26/events.jsonl"
+    },
+    "episode_artifact": "<PROJECT_ROOT>/results/pace-g2e-127081074/trials/g2e-seed1-native-w26",
+    "metrics": {
+      "trajectory": {
+        "reference_id": "per_tick_drive_tracking_v1",
+        "n": 9690,
+        "position_rmse_m": 0.001396564522754326,
+        "position_p95_m": 0.0027978867368740343,
+        "orientation_mean_deg": 0.17829114561331852,
+        "orientation_p95_deg": 0.3711973688177288
+      },
+      "planning": {
+        "attempts": 3,
+        "failures": 0
+      },
+      "limits": null,
+      "gripper": null,
+      "inference": {
+        "calls": 3,
+        "wall_s": 7.937431998550892
+      },
+      "control": {
+        "calls": 4845,
+        "wall_s": 64.97687300294638
+      },
+      "actions": {
+        "windows": 3,
+        "requested": 78,
+        "executed": 57,
+        "sim_elapsed_s": 19.380000920500606
+      }
+    }
+  },
+  {
+    "run_lock_sha256": "f054d1495ec048ca9b0035eab110a1ce092390d63c7bbb3b5eeea39833aa61f0",
+    "episode_id": "g2e-seed0-native-w31",
+    "task": "handover_block",
+    "seed": 0,
+    "comparison_id": "native-window-timing",
+    "pair_id": "paired-10g-00",
+    "condition": {
+      "id": "E-native-w31",
+      "embodiment": "aloha-agilex",
+      "action_source": "source_policy",
+      "checkpoint": {
+        "id": "pi05_robotwin_handover_block",
+        "revision": "17ef545270cf26ed81169893b60f845f80ce6557",
+        "manifest_sha256": "835d60676236e69276032f7bc1ea4837eb6fcda6d4f3dbab2043965063a3d97b",
+        "norm_stats_sha256": "8a1f114a8873dfa0788c7f512851ee3063224ef2b8af270421076a2e4e544960"
+      },
+      "expert_representation": null,
+      "execution": "qpos",
+      "window_actions": 31,
+      "config_sha256": "44853d3c137b1c3febaaf5cb68be81963c9b7cbcbbd09c78f199f751719253c7",
+      "observation_mapping": "native",
+      "action_mapping": "native"
+    },
+    "environment": {
+      "runtime_id": "robotwin-cu122-scnet",
+      "robotwin_revision": "PACE-vendored-fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+      "pace_revision": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+      "assets_revision": "5ebfc07c82814757168bdb3f2b7ad4a9bec18f58afc28318f49e61af117122f2",
+      "scene_config_sha256": "5439712296d7e143d41f8e78b4ab86cd4fad7fb98f40f5f5abb067a462d17650",
+      "embodiment_config_sha256": "a4f043d2d4b44cca5ec47fb498a3194da3f87ff9530dcbfdcee1539a44423d57"
+    },
+    "match_status": "matched",
+    "schema_version": 1,
+    "data_kind": "diagnostic",
+    "initial": {
+      "robot_base_world": {
+        "left": [
+          0.0,
+          -0.6499999761581421,
+          0.0,
+          0.7071067811865476,
+          0.0,
+          0.0,
+          0.7071067811865475
+        ],
+        "right": [
+          0.0,
+          -0.6499999761581421,
+          0.0,
+          0.7071067811865476,
+          0.0,
+          0.0,
+          0.7071067811865475
+        ]
+      },
+      "task_frame_world": [
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "actual_arm_qpos_rad": {
+        "left": [
+          -3.016260308186247e-08,
+          -5.668539984071685e-07,
+          -4.835977051698137e-06,
+          7.702591631186806e-08,
+          4.6315946633512795e-07,
+          -8.158984883266385e-07
+        ],
+        "right": [
+          -3.258066882949606e-08,
+          -5.65274206110189e-07,
+          -4.838918357563671e-06,
+          7.693390813301448e-08,
+          4.6469963876916154e-07,
+          -8.163781899384048e-07
+        ]
+      },
+      "actual_gripper": {
+        "left": 0.9830570883221097,
+        "right": 0.9830570055378809
+      },
+      "objects_task": {
+        "block": [
+          -0.17331258952617645,
+          0.19793014228343964,
+          0.840000569820404,
+          0.9939092006006811,
+          5.213939510099557e-06,
+          -5.030996466065737e-06,
+          0.11020209121799367
+        ],
+        "target": [
+          0.11306939274072647,
+          0.1510109156370163,
+          0.7409999966621399,
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "table": [
+          0.0,
+          0.0,
+          0.7400000095367432,
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "reset_fixture_sha256": "77629daa82a44c540ab08e35e25ec7f124167a909ff5c9251280c2bbabae2a43",
+      "workspace_check_id": "locked_initial_real_scene_fcl_v1",
+      "common_workspace_pass": true
+    },
+    "outcome": "control_error",
+    "failure": {
+      "stage": "control",
+      "code": "collision",
+      "detail": "predicted finger start intersects task block",
+      "step": 26,
+      "artifact": "<PROJECT_ROOT>/results/pace-g2e-127081074/trials/g2e-seed0-native-w31/events.jsonl"
+    },
+    "episode_artifact": "<PROJECT_ROOT>/results/pace-g2e-127081074/trials/g2e-seed0-native-w31",
+    "metrics": {
+      "trajectory": {
+        "reference_id": "per_tick_drive_tracking_v1",
+        "n": 7054,
+        "position_rmse_m": 0.001785443574527989,
+        "position_p95_m": 0.003472923982613442,
+        "orientation_mean_deg": 0.16726615669676162,
+        "orientation_p95_deg": 0.3031660688646122
+      },
+      "planning": {
+        "attempts": 1,
+        "failures": 0
+      },
+      "limits": null,
+      "gripper": null,
+      "inference": {
+        "calls": 1,
+        "wall_s": 3.690212845802307
+      },
+      "control": {
+        "calls": 3527,
+        "wall_s": 48.27645218372345
+      },
+      "actions": {
+        "windows": 1,
+        "requested": 31,
+        "executed": 26,
+        "sim_elapsed_s": 14.108000670094043
+      }
+    }
+  },
+  {
+    "run_lock_sha256": "f054d1495ec048ca9b0035eab110a1ce092390d63c7bbb3b5eeea39833aa61f0",
+    "episode_id": "g2e-seed1-native-w1",
+    "task": "handover_block",
+    "seed": 1,
+    "comparison_id": "native-window-timing",
+    "pair_id": "paired-10g-01",
+    "condition": {
+      "id": "E-native-w1",
+      "embodiment": "aloha-agilex",
+      "action_source": "source_policy",
+      "checkpoint": {
+        "id": "pi05_robotwin_handover_block",
+        "revision": "17ef545270cf26ed81169893b60f845f80ce6557",
+        "manifest_sha256": "835d60676236e69276032f7bc1ea4837eb6fcda6d4f3dbab2043965063a3d97b",
+        "norm_stats_sha256": "8a1f114a8873dfa0788c7f512851ee3063224ef2b8af270421076a2e4e544960"
+      },
+      "expert_representation": null,
+      "execution": "qpos",
+      "window_actions": 1,
+      "config_sha256": "8f3a54839df12c7d064435866f3d49fdff378980c93f811a30ef26ffcc7f0d4b",
+      "observation_mapping": "native",
+      "action_mapping": "native"
+    },
+    "environment": {
+      "runtime_id": "robotwin-cu122-scnet",
+      "robotwin_revision": "PACE-vendored-fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+      "pace_revision": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+      "assets_revision": "5ebfc07c82814757168bdb3f2b7ad4a9bec18f58afc28318f49e61af117122f2",
+      "scene_config_sha256": "5439712296d7e143d41f8e78b4ab86cd4fad7fb98f40f5f5abb067a462d17650",
+      "embodiment_config_sha256": "a4f043d2d4b44cca5ec47fb498a3194da3f87ff9530dcbfdcee1539a44423d57"
+    },
+    "match_status": "matched",
+    "schema_version": 1,
+    "data_kind": "diagnostic",
+    "initial": {
+      "robot_base_world": {
+        "left": [
+          0.0,
+          -0.6499999761581421,
+          0.0,
+          0.7071067811865476,
+          0.0,
+          0.0,
+          0.7071067811865475
+        ],
+        "right": [
+          0.0,
+          -0.6499999761581421,
+          0.0,
+          0.7071067811865476,
+          0.0,
+          0.0,
+          0.7071067811865475
+        ]
+      },
+      "task_frame_world": [
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "actual_arm_qpos_rad": {
+        "left": [
+          -3.016260308186247e-08,
+          -5.668539984071685e-07,
+          -4.835977051698137e-06,
+          7.702591631186806e-08,
+          4.6315946633512795e-07,
+          -8.158984883266385e-07
+        ],
+        "right": [
+          -3.258066882949606e-08,
+          -5.65274206110189e-07,
+          -4.838918357563671e-06,
+          7.693390813301448e-08,
+          4.6469963876916154e-07,
+          -8.163781899384048e-07
+        ]
+      },
+      "actual_gripper": {
+        "left": 0.9830570883221097,
+        "right": 0.9830570055378809
+      },
+      "objects_task": {
+        "block": [
+          -0.07437734305858612,
+          0.006845563184469938,
+          0.8400006890296936,
+          0.9922851265801744,
+          6.05939609237794e-06,
+          -4.955273623636583e-06,
+          0.1239767216315074
+        ],
+        "target": [
+          0.1297152191400528,
+          0.19003723561763763,
+          0.7409999966621399,
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "table": [
+          0.0,
+          0.0,
+          0.7400000095367432,
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "reset_fixture_sha256": "89ef6e94fcd26f9c2b121dbe85ce75f495efe0003ae95b4abfabd8a123be9aaf",
+      "workspace_check_id": "locked_initial_real_scene_fcl_v1",
+      "common_workspace_pass": true
+    },
+    "outcome": "control_error",
+    "failure": {
+      "stage": "control",
+      "code": "collision",
+      "detail": "native drive candidate blocked",
+      "step": 66,
+      "artifact": "<PROJECT_ROOT>/results/pace-g2e-127081074/trials/g2e-seed1-native-w1/events.jsonl"
+    },
+    "episode_artifact": "<PROJECT_ROOT>/results/pace-g2e-127081074/trials/g2e-seed1-native-w1",
+    "metrics": {
+      "trajectory": {
+        "reference_id": "per_tick_drive_tracking_v1",
+        "n": 10782,
+        "position_rmse_m": 0.0016264224711244172,
+        "position_p95_m": 0.002803938839053713,
+        "orientation_mean_deg": 0.21725550920899395,
+        "orientation_p95_deg": 0.4696689806693972
+      },
+      "planning": {
+        "attempts": 67,
+        "failures": 0
+      },
+      "limits": null,
+      "gripper": null,
+      "inference": {
+        "calls": 67,
+        "wall_s": 74.45592782646418
+      },
+      "control": {
+        "calls": 5391,
+        "wall_s": 95.06653095036745
+      },
+      "actions": {
+        "windows": 67,
+        "requested": 67,
+        "executed": 66,
+        "sim_elapsed_s": 21.56400102423504
+      }
+    }
+  }
+]

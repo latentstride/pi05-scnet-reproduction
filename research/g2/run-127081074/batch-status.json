@@ -1,0 +1,69 @@
+{
+  "rows": [
+    {
+      "episode_id": "g2e-seed0-native-w1",
+      "status": "completed",
+      "outcome": "control_error",
+      "success": false,
+      "executed": 24,
+      "wall_s": 404.4447447732091
+    },
+    {
+      "episode_id": "g2e-seed1-native-w31",
+      "status": "completed",
+      "outcome": "control_error",
+      "success": false,
+      "executed": 61,
+      "wall_s": 426.51253195106983
+    },
+    {
+      "episode_id": "g2e-seed0-native-w26",
+      "status": "completed",
+      "outcome": "control_error",
+      "success": false,
+      "executed": 26,
+      "wall_s": 468.56074296683073
+    },
+    {
+      "episode_id": "g2e-seed1-native-w4",
+      "status": "completed",
+      "outcome": "control_error",
+      "success": false,
+      "executed": 225,
+      "wall_s": 620.4582136794925
+    },
+    {
+      "episode_id": "g2e-seed0-native-w4",
+      "status": "completed",
+      "outcome": "control_error",
+      "success": false,
+      "executed": 27,
+      "wall_s": 472.5221618413925
+    },
+    {
+      "episode_id": "g2e-seed1-native-w26",
+      "status": "completed",
+      "outcome": "control_error",
+      "success": false,
+      "executed": 57,
+      "wall_s": 392.3741621002555
+    },
+    {
+      "episode_id": "g2e-seed0-native-w31",
+      "status": "completed",
+      "outcome": "control_error",
+      "success": false,
+      "executed": 26,
+      "wall_s": 389.66413697600365
+    },
+    {
+      "episode_id": "g2e-seed1-native-w1",
+      "status": "completed",
+      "outcome": "control_error",
+      "success": false,
+      "executed": 66,
+      "wall_s": 513.4119314923882
+    }
+  ],
+  "stopped": null
+}

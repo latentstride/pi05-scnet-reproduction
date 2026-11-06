@@ -1,0 +1,22 @@
+{
+  "block_mass_kg": 0.009999999776482582,
+  "fcl_clear": true,
+  "image_shapes": {
+    "cam_high": [
+      3,
+      240,
+      320
+    ],
+    "cam_left_wrist": [
+      3,
+      240,
+      320
+    ],
+    "cam_right_wrist": [
+      3,
+      240,
+      320
+    ]
+  },
+  "matched": true
+}

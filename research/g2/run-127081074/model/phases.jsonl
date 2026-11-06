@@ -1,0 +1,344 @@
+{"stage": "checkpoint_and_tokenizer_sha256", "event": "start", "utc": "2026-11-06T14:13:32.206+00:00"}
+{"stage": "checkpoint_and_tokenizer_sha256", "event": "end", "utc": "2026-11-06T14:13:32.747+00:00", "elapsed_s": 0.5416929647326469}
+{"stage": "openpi_import", "event": "start", "utc": "2026-11-06T14:13:32.748+00:00"}
+{"stage": "openpi_import", "event": "end", "utc": "2026-11-06T14:17:35.610+00:00", "elapsed_s": 242.86218597739935}
+{"stage": "jax_device", "event": "start", "utc": "2026-11-06T14:17:35.610+00:00"}
+{"stage": "jax_device", "event": "end", "utc": "2026-11-06T14:17:40.655+00:00", "elapsed_s": 5.044441789388657}
+{"stage": "orbax_restore_and_policy_create", "event": "start", "utc": "2026-11-06T14:17:40.656+00:00"}
+{"stage": "orbax_restore_and_policy_create", "event": "end", "utc": "2026-11-06T14:18:16.821+00:00", "elapsed_s": 36.16561798751354}
+{"stage": "first_jax_compile_and_inference", "event": "start", "utc": "2026-11-06T14:23:53.003+00:00"}
+{"stage": "first_jax_compile_and_inference", "event": "end", "utc": "2026-11-06T14:25:19.018+00:00", "elapsed_s": 86.01419813930988}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:25:23.141+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:25:25.350+00:00", "elapsed_s": 2.208590291440487}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:25:27.359+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:25:29.096+00:00", "elapsed_s": 1.7369470372796059}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:25:31.456+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:25:32.659+00:00", "elapsed_s": 1.2031829878687859}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:31:03.549+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:31:06.708+00:00", "elapsed_s": 3.159146450459957}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:31:09.991+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:31:11.439+00:00", "elapsed_s": 1.4480204060673714}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:31:13.197+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:31:14.536+00:00", "elapsed_s": 1.3384602218866348}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:31:16.295+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:31:17.505+00:00", "elapsed_s": 1.2093627825379372}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:31:19.799+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:31:20.153+00:00", "elapsed_s": 0.354437492787838}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:31:21.455+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:31:22.529+00:00", "elapsed_s": 1.073850430548191}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:31:24.978+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:31:25.339+00:00", "elapsed_s": 0.36046377569437027}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:31:27.006+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:31:28.190+00:00", "elapsed_s": 1.1841408163309097}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:31:30.907+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:31:31.224+00:00", "elapsed_s": 0.3171854540705681}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:31:33.162+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:31:33.994+00:00", "elapsed_s": 0.8322681710124016}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:31:36.123+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:31:36.427+00:00", "elapsed_s": 0.3035090044140816}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:31:38.577+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:31:38.682+00:00", "elapsed_s": 0.1050456166267395}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:31:41.484+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:31:42.059+00:00", "elapsed_s": 0.5746320337057114}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:31:44.689+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:31:45.321+00:00", "elapsed_s": 0.6549917310476303}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:31:47.942+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:31:48.591+00:00", "elapsed_s": 0.6492907553911209}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:31:51.248+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:31:51.960+00:00", "elapsed_s": 0.711667999625206}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:31:54.742+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:31:55.286+00:00", "elapsed_s": 0.5439644083380699}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:31:57.512+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:31:58.227+00:00", "elapsed_s": 0.7145089581608772}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:32:00.853+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:32:02.081+00:00", "elapsed_s": 1.2278748154640198}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:32:04.616+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:32:05.768+00:00", "elapsed_s": 1.1521605178713799}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:32:08.751+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:32:10.031+00:00", "elapsed_s": 1.280455507338047}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:32:12.535+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:32:12.684+00:00", "elapsed_s": 0.14922784268856049}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:32:14.741+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:32:15.329+00:00", "elapsed_s": 0.5884732306003571}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:32:17.185+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:32:17.453+00:00", "elapsed_s": 0.26837873458862305}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:32:19.229+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:32:19.344+00:00", "elapsed_s": 0.11509279906749725}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:38:07.617+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:38:10.372+00:00", "elapsed_s": 2.7551238611340523}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:38:58.485+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:39:00.619+00:00", "elapsed_s": 2.133427157998085}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:46:14.949+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:46:18.701+00:00", "elapsed_s": 3.7517291828989983}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:47:09.912+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:47:12.117+00:00", "elapsed_s": 2.2048202604055405}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:52:42.489+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:52:46.124+00:00", "elapsed_s": 3.635604940354824}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:52:52.701+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:52:54.897+00:00", "elapsed_s": 2.1959602385759354}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:53:02.597+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:53:04.020+00:00", "elapsed_s": 1.4230213984847069}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:53:11.351+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:53:12.508+00:00", "elapsed_s": 1.1577566713094711}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:53:21.441+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:53:22.425+00:00", "elapsed_s": 0.9836629927158356}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:53:31.435+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:53:32.199+00:00", "elapsed_s": 0.7648331224918365}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:53:40.454+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:53:41.233+00:00", "elapsed_s": 0.7793086767196655}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:53:49.444+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:53:50.987+00:00", "elapsed_s": 1.5429030284285545}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:53:54.592+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:53:55.682+00:00", "elapsed_s": 1.0904985964298248}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:53:57.986+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:53:59.102+00:00", "elapsed_s": 1.1155534759163857}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:54:01.119+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:54:01.218+00:00", "elapsed_s": 0.0989241898059845}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:54:02.907+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:54:03.991+00:00", "elapsed_s": 1.0844483524560928}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:54:06.297+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:54:07.322+00:00", "elapsed_s": 1.0252810642123222}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:54:09.669+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:54:10.730+00:00", "elapsed_s": 1.0610928386449814}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:54:14.110+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:54:15.765+00:00", "elapsed_s": 1.6552485600113869}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:54:18.068+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:54:19.964+00:00", "elapsed_s": 1.8960074707865715}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:54:22.366+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:54:23.583+00:00", "elapsed_s": 1.2165988013148308}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:54:25.614+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:54:26.112+00:00", "elapsed_s": 0.4976262077689171}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:54:28.262+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:54:29.589+00:00", "elapsed_s": 1.3267880231142044}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:54:31.569+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:54:31.986+00:00", "elapsed_s": 0.41689470410346985}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:54:33.508+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:54:33.870+00:00", "elapsed_s": 0.36236026883125305}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:54:36.857+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:54:38.253+00:00", "elapsed_s": 1.3963688984513283}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:54:40.780+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:54:41.654+00:00", "elapsed_s": 0.8734244033694267}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:54:44.207+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:54:46.690+00:00", "elapsed_s": 2.482957884669304}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:54:50.123+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:54:51.508+00:00", "elapsed_s": 1.3854614049196243}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:54:53.755+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:54:54.074+00:00", "elapsed_s": 0.3191525414586067}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:54:56.505+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:54:57.498+00:00", "elapsed_s": 0.9932195097208023}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:54:59.972+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:55:01.051+00:00", "elapsed_s": 1.079165667295456}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:55:03.016+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:55:03.704+00:00", "elapsed_s": 0.6888950616121292}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:55:05.412+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:55:05.538+00:00", "elapsed_s": 0.1252794712781906}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:55:07.714+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:55:08.898+00:00", "elapsed_s": 1.183757834136486}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:55:11.723+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:55:12.349+00:00", "elapsed_s": 0.6268171295523643}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:55:14.255+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:55:14.712+00:00", "elapsed_s": 0.45727135986089706}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:55:17.440+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:55:18.200+00:00", "elapsed_s": 0.7600723281502724}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:55:20.626+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:55:21.361+00:00", "elapsed_s": 0.735001303255558}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:55:23.879+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:55:24.716+00:00", "elapsed_s": 0.8370235189795494}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:55:28.178+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:55:29.157+00:00", "elapsed_s": 0.9788738861680031}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:55:32.328+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:55:33.079+00:00", "elapsed_s": 0.7513536512851715}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:55:37.568+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:55:38.628+00:00", "elapsed_s": 1.060399241745472}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:55:42.980+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:55:43.980+00:00", "elapsed_s": 1.0001518726348877}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:55:48.564+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:55:49.788+00:00", "elapsed_s": 1.2234951555728912}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:55:55.355+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:55:56.354+00:00", "elapsed_s": 0.9994093701243401}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:56:01.887+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:56:03.547+00:00", "elapsed_s": 1.660653978586197}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:56:08.827+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:56:09.559+00:00", "elapsed_s": 0.7317399010062218}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:56:14.702+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:56:15.613+00:00", "elapsed_s": 0.9110680371522903}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:56:21.325+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:56:22.049+00:00", "elapsed_s": 0.7240560054779053}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:56:26.934+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:56:28.077+00:00", "elapsed_s": 1.1431459486484528}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:56:33.368+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:56:34.129+00:00", "elapsed_s": 0.7608246579766273}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:56:38.569+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:56:39.108+00:00", "elapsed_s": 0.5392558351159096}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:56:42.879+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:56:43.651+00:00", "elapsed_s": 0.7722499519586563}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:56:47.540+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:56:47.980+00:00", "elapsed_s": 0.4399057477712631}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:56:51.534+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:56:51.821+00:00", "elapsed_s": 0.2867980897426605}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:56:55.207+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:56:56.025+00:00", "elapsed_s": 0.8176940158009529}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:56:59.734+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:57:00.082+00:00", "elapsed_s": 0.348164439201355}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:57:02.768+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:57:03.503+00:00", "elapsed_s": 0.7351488769054413}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:57:06.857+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:57:07.985+00:00", "elapsed_s": 1.1280819326639175}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T14:57:11.473+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T14:57:12.879+00:00", "elapsed_s": 1.4056466147303581}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:04:22.971+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:04:26.802+00:00", "elapsed_s": 3.8310123533010483}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:04:32.618+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:04:33.734+00:00", "elapsed_s": 1.1162880808115005}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:04:40.060+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:04:40.987+00:00", "elapsed_s": 0.9274947717785835}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:04:48.772+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:04:49.877+00:00", "elapsed_s": 1.104986049234867}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:04:59.043+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:05:00.281+00:00", "elapsed_s": 1.2385743707418442}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:05:09.344+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:05:10.737+00:00", "elapsed_s": 1.3924155309796333}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:05:19.456+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:05:20.554+00:00", "elapsed_s": 1.0984621942043304}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:10:45.437+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:10:48.728+00:00", "elapsed_s": 3.2911643758416176}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:11:33.322+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:11:36.352+00:00", "elapsed_s": 3.0294604748487473}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:11:54.259+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:11:55.069+00:00", "elapsed_s": 0.8099007159471512}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:17:38.701+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:17:41.780+00:00", "elapsed_s": 3.079091176390648}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:23:59.771+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:24:04.384+00:00", "elapsed_s": 4.612965039908886}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:24:07.893+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:24:10.161+00:00", "elapsed_s": 2.267680309712887}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:24:11.667+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:24:13.313+00:00", "elapsed_s": 1.6456917598843575}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:24:15.557+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:24:16.995+00:00", "elapsed_s": 1.4384360536932945}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:24:19.188+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:24:20.481+00:00", "elapsed_s": 1.293145626783371}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:24:22.379+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:24:22.804+00:00", "elapsed_s": 0.4255659952759743}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:24:24.698+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:24:25.976+00:00", "elapsed_s": 1.2782213762402534}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:24:28.334+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:24:29.476+00:00", "elapsed_s": 1.1422032117843628}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:24:31.942+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:24:32.979+00:00", "elapsed_s": 1.036631166934967}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:24:36.106+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:24:36.922+00:00", "elapsed_s": 0.8158749490976334}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:24:39.589+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:24:40.567+00:00", "elapsed_s": 0.9777969121932983}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:24:43.343+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:24:44.409+00:00", "elapsed_s": 1.0662852600216866}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:24:47.460+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:24:49.166+00:00", "elapsed_s": 1.7055842950940132}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:24:52.138+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:24:52.957+00:00", "elapsed_s": 0.8194237947463989}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:24:55.523+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:24:56.710+00:00", "elapsed_s": 1.1864776760339737}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:24:59.984+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:25:01.477+00:00", "elapsed_s": 1.4931327551603317}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:25:04.512+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:25:05.168+00:00", "elapsed_s": 0.6552127376198769}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:25:07.909+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:25:08.784+00:00", "elapsed_s": 0.8750608488917351}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:25:11.611+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:25:12.626+00:00", "elapsed_s": 1.0150319561362267}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:25:15.408+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:25:16.433+00:00", "elapsed_s": 1.0245241224765778}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:25:18.845+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:25:19.724+00:00", "elapsed_s": 0.8792229518294334}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:25:22.101+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:25:22.230+00:00", "elapsed_s": 0.12965457141399384}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:25:24.032+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:25:24.786+00:00", "elapsed_s": 0.7534652277827263}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:25:27.196+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:25:27.583+00:00", "elapsed_s": 0.38731033354997635}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:25:29.258+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:25:29.912+00:00", "elapsed_s": 0.6545815989375114}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:25:31.855+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:25:32.215+00:00", "elapsed_s": 0.3594639152288437}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:25:33.750+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:25:34.323+00:00", "elapsed_s": 0.5729415342211723}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:25:36.235+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:25:37.234+00:00", "elapsed_s": 0.9996902868151665}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:25:38.949+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:25:39.612+00:00", "elapsed_s": 0.6634437292814255}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:25:41.545+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:25:42.731+00:00", "elapsed_s": 1.1852924227714539}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:25:44.362+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:25:45.052+00:00", "elapsed_s": 0.6904493197798729}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:25:46.911+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:25:48.116+00:00", "elapsed_s": 1.2049614265561104}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:25:49.679+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:25:50.458+00:00", "elapsed_s": 0.7785028219223022}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:25:51.654+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:25:51.923+00:00", "elapsed_s": 0.26895883679389954}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:25:52.824+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:25:53.414+00:00", "elapsed_s": 0.5899453610181808}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:25:54.132+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:25:54.540+00:00", "elapsed_s": 0.40767284482717514}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:25:55.667+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:25:56.356+00:00", "elapsed_s": 0.6898872703313828}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:25:57.189+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:25:57.433+00:00", "elapsed_s": 0.24348103255033493}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:25:58.109+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:25:58.283+00:00", "elapsed_s": 0.17367205023765564}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:25:59.073+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:25:59.344+00:00", "elapsed_s": 0.27112212777137756}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:26:00.048+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:26:00.447+00:00", "elapsed_s": 0.39906104654073715}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:26:01.552+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:26:02.467+00:00", "elapsed_s": 0.9144913852214813}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:26:03.360+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:26:03.756+00:00", "elapsed_s": 0.3958577290177345}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:26:05.074+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:26:05.456+00:00", "elapsed_s": 0.3821001872420311}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:26:06.477+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:26:07.136+00:00", "elapsed_s": 0.6589995995163918}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:26:08.472+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:26:09.581+00:00", "elapsed_s": 1.1094373539090157}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:26:10.497+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:26:11.347+00:00", "elapsed_s": 0.8501606807112694}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:26:13.154+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:26:14.025+00:00", "elapsed_s": 0.8709326907992363}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:26:15.201+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:26:15.347+00:00", "elapsed_s": 0.1458967998623848}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:26:17.246+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:26:18.706+00:00", "elapsed_s": 1.460198037326336}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:26:19.849+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:26:19.963+00:00", "elapsed_s": 0.11383531987667084}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:26:20.877+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:26:20.981+00:00", "elapsed_s": 0.10412277281284332}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:26:21.985+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:26:22.809+00:00", "elapsed_s": 0.8244711086153984}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:26:24.396+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:26:24.662+00:00", "elapsed_s": 0.26637808233499527}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:26:25.512+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:26:25.790+00:00", "elapsed_s": 0.27775805443525314}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:26:26.543+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:26:27.011+00:00", "elapsed_s": 0.46895965933799744}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:26:28.768+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:26:29.531+00:00", "elapsed_s": 0.7626233622431755}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:26:31.229+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:26:32.412+00:00", "elapsed_s": 1.1834533959627151}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:26:34.396+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:26:35.751+00:00", "elapsed_s": 1.3545087426900864}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:26:38.197+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:26:38.600+00:00", "elapsed_s": 0.40299687534570694}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:26:39.468+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:26:40.054+00:00", "elapsed_s": 0.5855927169322968}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:26:41.933+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:26:42.981+00:00", "elapsed_s": 1.0480783432722092}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:26:44.756+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:26:45.971+00:00", "elapsed_s": 1.215391345322132}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:26:47.627+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:26:48.748+00:00", "elapsed_s": 1.1210919171571732}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:26:50.349+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:26:51.423+00:00", "elapsed_s": 1.0743288546800613}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:26:53.442+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:26:54.644+00:00", "elapsed_s": 1.201699897646904}
+{"stage": "inference", "event": "start", "utc": "2026-11-06T15:26:56.176+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-06T15:26:57.173+00:00", "elapsed_s": 0.997105672955513}

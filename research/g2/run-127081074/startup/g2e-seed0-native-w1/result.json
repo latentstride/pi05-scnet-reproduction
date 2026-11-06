@@ -1,0 +1,112 @@
+{
+  "data_kind": "diagnostic",
+  "formal_score_eligible": false,
+  "episode_id": "g2e-seed0-native-w1",
+  "condition": "E-native-w1",
+  "window": 1,
+  "success": false,
+  "outcome": "task_unsuccessful",
+  "requested": 4,
+  "executed": 4,
+  "queries": 4,
+  "inference_s": 93.08332292735577,
+  "planning_s": 0.07987440377473831,
+  "control_s": 8.139328643679619,
+  "plan_calls": 4,
+  "plan_failures": 0,
+  "initial": {
+    "robot_base_world": {
+      "left": [
+        0.0,
+        -0.6499999761581421,
+        0.0,
+        0.7071067811865476,
+        0.0,
+        0.0,
+        0.7071067811865475
+      ],
+      "right": [
+        0.0,
+        -0.6499999761581421,
+        0.0,
+        0.7071067811865476,
+        0.0,
+        0.0,
+        0.7071067811865475
+      ]
+    },
+    "task_frame_world": [
+      0.0,
+      0.0,
+      0.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "actual_arm_qpos_rad": {
+      "left": [
+        -3.016260308186247e-08,
+        -5.668539984071685e-07,
+        -4.835977051698137e-06,
+        7.702591631186806e-08,
+        4.6315946633512795e-07,
+        -8.158984883266385e-07
+      ],
+      "right": [
+        -3.258066882949606e-08,
+        -5.65274206110189e-07,
+        -4.838918357563671e-06,
+        7.693390813301448e-08,
+        4.6469963876916154e-07,
+        -8.163781899384048e-07
+      ]
+    },
+    "actual_gripper": {
+      "left": 0.9830570883221097,
+      "right": 0.9830570055378809
+    },
+    "objects_task": {
+      "block": [
+        -0.17331258952617645,
+        0.19793014228343964,
+        0.840000569820404,
+        0.9939092006006811,
+        5.213939510099557e-06,
+        -5.030996466065737e-06,
+        0.11020209121799367
+      ],
+      "target": [
+        0.11306939274072647,
+        0.1510109156370163,
+        0.7409999966621399,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "table": [
+        0.0,
+        0.0,
+        0.7400000095367432,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "reset_fixture_sha256": "77629daa82a44c540ab08e35e25ec7f124167a909ff5c9251280c2bbabae2a43",
+    "workspace_check_id": "locked_initial_real_scene_fcl_v1",
+    "common_workspace_pass": true
+  },
+  "failure": {
+    "phase": "termination",
+    "code": "episode_budget_or_expert_exhausted",
+    "detail": "success predicate remained false"
+  },
+  "video": "<PROJECT_ROOT>/results/pace-g2e-127081074/startup/g2e-seed0-native-w1/head.mp4",
+  "control_calls": 279,
+  "execution_protocol": "g2e_native_guarded_prefix_v1",
+  "initial_sim_s": 0.0,
+  "elapsed_s": 428.0798838213086
+}

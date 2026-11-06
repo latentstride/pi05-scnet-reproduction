@@ -1,0 +1,186 @@
+[
+  {
+    "baseline": 1,
+    "treatment": 26,
+    "pairs": [
+      {
+        "run_lock_sha256": "f054d1495ec048ca9b0035eab110a1ce092390d63c7bbb3b5eeea39833aa61f0",
+        "task": "handover_block",
+        "comparison_id": "w26-vs-w1",
+        "condition_a": "E-native-w1",
+        "condition_b": "E-native-w26",
+        "n_pairs": 2,
+        "n_matched": 2,
+        "n_missing": 0,
+        "n_not_admitted": 0,
+        "n_a_only_wins": 0,
+        "n_b_only_wins": 0,
+        "mean_success_delta_b_minus_a": 0.0
+      }
+    ],
+    "summary": [
+      {
+        "run_lock_sha256": "f054d1495ec048ca9b0035eab110a1ce092390d63c7bbb3b5eeea39833aa61f0",
+        "task": "handover_block",
+        "comparison_id": "w26-vs-w1",
+        "condition_a": "E-native-w1",
+        "condition_b": "E-native-w26",
+        "pair_id": "paired-10g-00",
+        "status": "matched",
+        "success_delta_b_minus_a": 0,
+        "episode_a": "g2e-seed0-native-w1",
+        "episode_b": "g2e-seed0-native-w26"
+      },
+      {
+        "run_lock_sha256": "f054d1495ec048ca9b0035eab110a1ce092390d63c7bbb3b5eeea39833aa61f0",
+        "task": "handover_block",
+        "comparison_id": "w26-vs-w1",
+        "condition_a": "E-native-w1",
+        "condition_b": "E-native-w26",
+        "pair_id": "paired-10g-01",
+        "status": "matched",
+        "success_delta_b_minus_a": 0,
+        "episode_a": "g2e-seed1-native-w1",
+        "episode_b": "g2e-seed1-native-w26"
+      }
+    ]
+  },
+  {
+    "baseline": 1,
+    "treatment": 31,
+    "pairs": [
+      {
+        "run_lock_sha256": "f054d1495ec048ca9b0035eab110a1ce092390d63c7bbb3b5eeea39833aa61f0",
+        "task": "handover_block",
+        "comparison_id": "w31-vs-w1",
+        "condition_a": "E-native-w1",
+        "condition_b": "E-native-w31",
+        "n_pairs": 2,
+        "n_matched": 2,
+        "n_missing": 0,
+        "n_not_admitted": 0,
+        "n_a_only_wins": 0,
+        "n_b_only_wins": 0,
+        "mean_success_delta_b_minus_a": 0.0
+      }
+    ],
+    "summary": [
+      {
+        "run_lock_sha256": "f054d1495ec048ca9b0035eab110a1ce092390d63c7bbb3b5eeea39833aa61f0",
+        "task": "handover_block",
+        "comparison_id": "w31-vs-w1",
+        "condition_a": "E-native-w1",
+        "condition_b": "E-native-w31",
+        "pair_id": "paired-10g-00",
+        "status": "matched",
+        "success_delta_b_minus_a": 0,
+        "episode_a": "g2e-seed0-native-w1",
+        "episode_b": "g2e-seed0-native-w31"
+      },
+      {
+        "run_lock_sha256": "f054d1495ec048ca9b0035eab110a1ce092390d63c7bbb3b5eeea39833aa61f0",
+        "task": "handover_block",
+        "comparison_id": "w31-vs-w1",
+        "condition_a": "E-native-w1",
+        "condition_b": "E-native-w31",
+        "pair_id": "paired-10g-01",
+        "status": "matched",
+        "success_delta_b_minus_a": 0,
+        "episode_a": "g2e-seed1-native-w1",
+        "episode_b": "g2e-seed1-native-w31"
+      }
+    ]
+  },
+  {
+    "baseline": 4,
+    "treatment": 26,
+    "pairs": [
+      {
+        "run_lock_sha256": "f054d1495ec048ca9b0035eab110a1ce092390d63c7bbb3b5eeea39833aa61f0",
+        "task": "handover_block",
+        "comparison_id": "w26-vs-w4",
+        "condition_a": "E-native-w26",
+        "condition_b": "E-native-w4",
+        "n_pairs": 2,
+        "n_matched": 2,
+        "n_missing": 0,
+        "n_not_admitted": 0,
+        "n_a_only_wins": 0,
+        "n_b_only_wins": 0,
+        "mean_success_delta_b_minus_a": 0.0
+      }
+    ],
+    "summary": [
+      {
+        "run_lock_sha256": "f054d1495ec048ca9b0035eab110a1ce092390d63c7bbb3b5eeea39833aa61f0",
+        "task": "handover_block",
+        "comparison_id": "w26-vs-w4",
+        "condition_a": "E-native-w26",
+        "condition_b": "E-native-w4",
+        "pair_id": "paired-10g-00",
+        "status": "matched",
+        "success_delta_b_minus_a": 0,
+        "episode_a": "g2e-seed0-native-w26",
+        "episode_b": "g2e-seed0-native-w4"
+      },
+      {
+        "run_lock_sha256": "f054d1495ec048ca9b0035eab110a1ce092390d63c7bbb3b5eeea39833aa61f0",
+        "task": "handover_block",
+        "comparison_id": "w26-vs-w4",
+        "condition_a": "E-native-w26",
+        "condition_b": "E-native-w4",
+        "pair_id": "paired-10g-01",
+        "status": "matched",
+        "success_delta_b_minus_a": 0,
+        "episode_a": "g2e-seed1-native-w26",
+        "episode_b": "g2e-seed1-native-w4"
+      }
+    ]
+  },
+  {
+    "baseline": 4,
+    "treatment": 31,
+    "pairs": [
+      {
+        "run_lock_sha256": "f054d1495ec048ca9b0035eab110a1ce092390d63c7bbb3b5eeea39833aa61f0",
+        "task": "handover_block",
+        "comparison_id": "w31-vs-w4",
+        "condition_a": "E-native-w31",
+        "condition_b": "E-native-w4",
+        "n_pairs": 2,
+        "n_matched": 2,
+        "n_missing": 0,
+        "n_not_admitted": 0,
+        "n_a_only_wins": 0,
+        "n_b_only_wins": 0,
+        "mean_success_delta_b_minus_a": 0.0
+      }
+    ],
+    "summary": [
+      {
+        "run_lock_sha256": "f054d1495ec048ca9b0035eab110a1ce092390d63c7bbb3b5eeea39833aa61f0",
+        "task": "handover_block",
+        "comparison_id": "w31-vs-w4",
+        "condition_a": "E-native-w31",
+        "condition_b": "E-native-w4",
+        "pair_id": "paired-10g-00",
+        "status": "matched",
+        "success_delta_b_minus_a": 0,
+        "episode_a": "g2e-seed0-native-w31",
+        "episode_b": "g2e-seed0-native-w4"
+      },
+      {
+        "run_lock_sha256": "f054d1495ec048ca9b0035eab110a1ce092390d63c7bbb3b5eeea39833aa61f0",
+        "task": "handover_block",
+        "comparison_id": "w31-vs-w4",
+        "condition_a": "E-native-w31",
+        "condition_b": "E-native-w4",
+        "pair_id": "paired-10g-01",
+        "status": "matched",
+        "success_delta_b_minus_a": 0,
+        "episode_a": "g2e-seed1-native-w31",
+        "episode_b": "g2e-seed1-native-w4"
+      }
+    ]
+  }
+]

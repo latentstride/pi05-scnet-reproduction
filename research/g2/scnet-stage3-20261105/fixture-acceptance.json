@@ -1,0 +1,236 @@
+{
+  "data_kind": "diagnostic",
+  "gpu_used": false,
+  "renderer_created": false,
+  "physics_stepped": false,
+  "scope": "two real-mesh CPU robot fixtures plus simple task primitives; not full PACE task setup",
+  "fixture_sha256": "654e77d0b975bd08d1c2d3d1ffea28b1a8c7014b00acb9c5b784c24a9b8dc5a7",
+  "robots": {
+    "aloha-agilex": {
+      "initial": {
+        "robot_base_world": {
+          "left": [
+            0.0,
+            -0.6499999761581421,
+            0.0,
+            0.7071067811865476,
+            0.0,
+            0.0,
+            0.7071067811865475
+          ],
+          "right": [
+            0.0,
+            -0.6499999761581421,
+            0.0,
+            0.7071067811865476,
+            0.0,
+            0.0,
+            0.7071067811865475
+          ]
+        },
+        "task_frame_world": [
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "actual_arm_qpos_rad": {
+          "left": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "actual_gripper": {
+          "left": 1.0,
+          "right": 1.0
+        },
+        "objects_task": {
+          "block": [
+            -0.1521603763103485,
+            0.2279314547777176,
+            0.8400001525878906,
+            0.9719521289925551,
+            2.162576439342082e-07,
+            -3.4353901864368678e-06,
+            0.2351787807923811
+          ],
+          "target": [
+            0.16532817482948303,
+            0.16106395423412323,
+            0.7409999966621399,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "table": [
+            0.0,
+            0.0,
+            0.7400000095367432,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "reset_fixture_sha256": "654e77d0b975bd08d1c2d3d1ffea28b1a8c7014b00acb9c5b784c24a9b8dc5a7",
+        "workspace_check_id": "CPU_reset_geometry_not_formal_workspace",
+        "common_workspace_pass": false
+      },
+      "initial_collision_free": true,
+      "collisions": []
+    },
+    "ARX-X5": {
+      "initial": {
+        "robot_base_world": {
+          "left": [
+            -0.30000001192092896,
+            -0.3499999940395355,
+            0.7839999794960022,
+            0.7071067811865476,
+            0.0,
+            0.0,
+            0.7071067811865475
+          ],
+          "right": [
+            0.30000001192092896,
+            -0.3499999940395355,
+            0.7839999794960022,
+            0.7071067811865476,
+            0.0,
+            0.0,
+            0.7071067811865475
+          ]
+        },
+        "task_frame_world": [
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "actual_arm_qpos_rad": {
+          "left": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "actual_gripper": {
+          "left": 0.999999994581396,
+          "right": 0.999999994581396
+        },
+        "objects_task": {
+          "block": [
+            -0.1521603763103485,
+            0.2279314547777176,
+            0.8400001525878906,
+            0.9719521289925551,
+            2.162576439342082e-07,
+            -3.4353901864368678e-06,
+            0.2351787807923811
+          ],
+          "target": [
+            0.16532817482948303,
+            0.16106395423412323,
+            0.7409999966621399,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "table": [
+            0.0,
+            0.0,
+            0.7400000095367432,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "reset_fixture_sha256": "654e77d0b975bd08d1c2d3d1ffea28b1a8c7014b00acb9c5b784c24a9b8dc5a7",
+        "workspace_check_id": "CPU_reset_geometry_not_formal_workspace",
+        "common_workspace_pass": false
+      },
+      "initial_collision_free": true,
+      "collisions": []
+    }
+  },
+  "object_mismatches": [],
+  "transfers": {
+    "aloha-agilex->ARX-X5": {
+      "status": "collision",
+      "detail": "all temporally admissible IK pairs collide",
+      "diagnostic": {
+        "rejected_pairs": 16
+      }
+    },
+    "ARX-X5->aloha-agilex": {
+      "status": "ok",
+      "q": [
+        [
+          0.0036094240302383487,
+          0.9260465171010119,
+          0.04044463852534361,
+          0.8853790472155486,
+          0.029964614156807345,
+          0.012749258467058957
+        ],
+        [
+          0.038263870292237774,
+          0.9080223997215192,
+          0.04165004180048042,
+          0.8658412807982913,
+          0.05439060916486474,
+          0.01258051249881654
+        ]
+      ],
+      "residual": [
+        {
+          "seed": 0,
+          "position_m": 4.935081699632487e-05,
+          "angle_deg": 0.0010587408614024195,
+          "sigma_min": 0.046670341664770874
+        },
+        {
+          "seed": 0,
+          "position_m": 3.3263370116295884e-05,
+          "angle_deg": 0.0008417690668576514,
+          "sigma_min": 0.04695634300591669
+        }
+      ]
+    }
+  },
+  "formal_pair_id": null,
+  "formal_workspace_certified": false,
+  "passed": true
+}

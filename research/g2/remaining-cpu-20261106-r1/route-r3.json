@@ -1,0 +1,33 @@
+{
+  "cases": [
+    {
+      "displacement": 0.9,
+      "direct_clear": false,
+      "reroute_accepted": false,
+      "status": "collision",
+      "detail": "retimed segment collides"
+    },
+    {
+      "displacement": -0.9,
+      "direct_clear": false,
+      "reroute_accepted": true,
+      "metrics": {
+        "nodes": 13,
+        "iterations": 39,
+        "edge_samples": 474,
+        "seed": 20261106,
+        "rerouted": true,
+        "policy_waypoints": 1,
+        "internal_waypoints": 2,
+        "wall_s": 2.0029535149224102
+      },
+      "control_ticks": 214,
+      "policy_actions": 1,
+      "max_velocity_rad_s": 0.49856441191157586,
+      "endpoint_q_max_difference": 0.0
+    }
+  ],
+  "physics_steps": 0,
+  "gpu_used": false,
+  "scope": "intentional 8mm physical box obstacle with real robot meshes; not a policy endpoint fix"
+}

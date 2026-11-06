@@ -1,0 +1,39 @@
+{
+  "status": "CPU_ENGINEERING_AND_STATIC_EVIDENCE_ACCEPTED",
+  "gpu_submission_ready": false,
+  "protected_job": "127081074",
+  "gpu_operations_this_task": {
+    "submitted": 0,
+    "cancelled": 0,
+    "modified": 0
+  },
+  "protected_release_manifest_sha256": "fb24a4c727a45945ebe46faaa036f26837c1ab79c3e4d7590433c9f84ef6bfe5",
+  "protected_release_files_verified": 82,
+  "existing_six_core_modules_unchanged": true,
+  "tests_passed": 188,
+  "synthetic_episodes_passed": 13,
+  "exact_original_endpoints_accepted": 0,
+  "safe_changed_goal_recoveries_accepted": 4,
+  "source_roundtrips_accepted": 4,
+  "expert_frames_checked": 854,
+  "expert_frames_rejected": 55,
+  "new_static_placement_suffixes_accepted": 3,
+  "new_physics_steps": 0,
+  "new_model_starts": 0,
+  "unified_campaign": {
+    "allocations": 1,
+    "model_servers": 1,
+    "trials": 14,
+    "proposed_allocation_s": 34200,
+    "budget_cap_yuan": 34.2,
+    "budget_expansion_recorded": true,
+    "submission_authorized": false
+  },
+  "risks": [
+    "four original exact endpoints still unsafe",
+    "physical recovery and source mapping re-entry unverified",
+    "static release branch not measured contact transition or task success",
+    "held-object generic RRT prohibited",
+    "complete runtime release not submission ready; no split GPU tests or automatic requests"
+  ]
+}

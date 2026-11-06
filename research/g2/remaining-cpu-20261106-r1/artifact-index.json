@@ -1,0 +1,28 @@
+{
+  "local_result_jsons": [
+    "replay-final.json",
+    "route-r3.json",
+    "expert-audit-r2.json",
+    "placement-r2.json",
+    "unified-plan.json",
+    "acceptance.json"
+  ],
+  "remote_full_path_archive": "<PROJECT_ROOT>/results/g2/remaining-final-paths.zip",
+  "remote_archive_sha256": "e26e322e4854f614a405205029cb5b6adca2313a3634cd9a4afbafa5b7185ae5",
+  "remote_archive_downloaded_to_local": false,
+  "archive_scope": "archived CPU replay/placement trajectories; not GPU job files",
+  "new_sources": [
+    "g2_remaining_conditions.py",
+    "g2_remaining_coordinator.py",
+    "g2_remaining_episode.py",
+    "g2_remaining_expert_audit.py",
+    "g2_remaining_geometry.py",
+    "g2_remaining_placement_cpu.py",
+    "g2_remaining_plan.py",
+    "g2_remaining_replay_cpu.py",
+    "g2_remaining_route_cpu.py",
+    "g2_remaining_router.py",
+    "test_g2_remaining.py",
+    "test_g2e.py"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "cases": [
+    {
+      "displacement": 0.9,
+      "scope": "endpoint blocked; excluded from detour test"
+    },
+    {
+      "displacement": -0.9,
+      "scope": "endpoint blocked; excluded from detour test"
+    },
+    {
+      "displacement": 1.2,
+      "scope": "endpoint blocked; excluded from detour test"
+    },
+    {
+      "displacement": -1.2,
+      "scope": "endpoint blocked; excluded from detour test"
+    }
+  ],
+  "physics_steps": 0,
+  "gpu_used": false,
+  "scope": "intentional real tray intrusion on a free-space arm path; not a policy endpoint fix"
+}

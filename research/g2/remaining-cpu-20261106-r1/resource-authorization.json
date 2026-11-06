@@ -1,0 +1,12 @@
+{
+  "date": "2026-11-06",
+  "user_text": "可以扩大预算",
+  "remaining_campaign_cap_yuan": 34.2,
+  "previous_remaining_budget_yuan": 20.0,
+  "existing_g2e_job": "127081074",
+  "existing_job_cap_yuan": 12.6,
+  "combined_max_for_these_two_scopes_yuan": 46.8,
+  "excludes_earlier_historical_cost": true,
+  "gpu_submission_authorized": false,
+  "gpu_job_changes_authorized": false
+}

@@ -1,0 +1,908 @@
+{
+  "0": {
+    "frames": 295,
+    "accepted": 271,
+    "rejected": 24,
+    "first_rejection": {
+      "frame": 271,
+      "physics_tick": 28183,
+      "actual_fcl_clear": false,
+      "collisions": [
+        {
+          "collision_type": "self_sceneobject",
+          "object_name1": "arx_right_15",
+          "link_name1": "link7",
+          "object_name2": "target_box_27",
+          "link_name2": "target_box_27",
+          "max_penetration_m": 4.042062755615916e-07
+        }
+      ]
+    },
+    "all_rejections": [
+      {
+        "frame": 271,
+        "physics_tick": 28183,
+        "actual_fcl_clear": false,
+        "collisions": [
+          {
+            "collision_type": "self_sceneobject",
+            "object_name1": "arx_right_15",
+            "link_name1": "link7",
+            "object_name2": "target_box_27",
+            "link_name2": "target_box_27",
+            "max_penetration_m": 4.042062755615916e-07
+          }
+        ]
+      },
+      {
+        "frame": 272,
+        "physics_tick": 28202,
+        "actual_fcl_clear": false,
+        "collisions": [
+          {
+            "collision_type": "self_sceneobject",
+            "object_name1": "arx_right_15",
+            "link_name1": "link7",
+            "object_name2": "target_box_27",
+            "link_name2": "target_box_27",
+            "max_penetration_m": 4.2301846292502887e-07
+          }
+        ]
+      },
+      {
+        "frame": 273,
+        "physics_tick": 28202,
+        "actual_fcl_clear": false,
+        "collisions": [
+          {
+            "collision_type": "self_sceneobject",
+            "object_name1": "arx_right_15",
+            "link_name1": "link7",
+            "object_name2": "target_box_27",
+            "link_name2": "target_box_27",
+            "max_penetration_m": 4.2301846292502887e-07
+          }
+        ]
+      },
+      {
+        "frame": 274,
+        "physics_tick": 28203,
+        "actual_fcl_clear": false,
+        "collisions": [
+          {
+            "collision_type": "self_sceneobject",
+            "object_name1": "arx_right_15",
+            "link_name1": "link7",
+            "object_name2": "target_box_27",
+            "link_name2": "target_box_27",
+            "max_penetration_m": 4.3100575908283645e-07
+          }
+        ]
+      },
+      {
+        "frame": 275,
+        "physics_tick": 28313,
+        "actual_fcl_clear": false,
+        "collisions": [
+          {
+            "collision_type": "self_sceneobject",
+            "object_name1": "arx_right_15",
+            "link_name1": "link7",
+            "object_name2": "target_box_27",
+            "link_name2": "target_box_27",
+            "max_penetration_m": 3.497545435493521e-07
+          }
+        ]
+      },
+      {
+        "frame": 276,
+        "physics_tick": 28423,
+        "actual_fcl_clear": false,
+        "collisions": [
+          {
+            "collision_type": "self_sceneobject",
+            "object_name1": "arx_right_15",
+            "link_name1": "link7",
+            "object_name2": "target_box_27",
+            "link_name2": "target_box_27",
+            "max_penetration_m": 3.8415950598391646e-07
+          }
+        ]
+      },
+      {
+        "frame": 277,
+        "physics_tick": 28533,
+        "actual_fcl_clear": false,
+        "collisions": [
+          {
+            "collision_type": "self_sceneobject",
+            "object_name1": "arx_right_15",
+            "link_name1": "link7",
+            "object_name2": "target_box_27",
+            "link_name2": "target_box_27",
+            "max_penetration_m": 1.7319678136118455e-07
+          }
+        ]
+      },
+      {
+        "frame": 278,
+        "physics_tick": 28643,
+        "actual_fcl_clear": false,
+        "collisions": [
+          {
+            "collision_type": "self_sceneobject",
+            "object_name1": "arx_right_15",
+            "link_name1": "link7",
+            "object_name2": "target_box_27",
+            "link_name2": "target_box_27",
+            "max_penetration_m": 2.662469569258974e-07
+          }
+        ]
+      },
+      {
+        "frame": 279,
+        "physics_tick": 28753,
+        "actual_fcl_clear": false,
+        "collisions": [
+          {
+            "collision_type": "self_sceneobject",
+            "object_name1": "arx_right_15",
+            "link_name1": "link7",
+            "object_name2": "target_box_27",
+            "link_name2": "target_box_27",
+            "max_penetration_m": 3.465168560978782e-07
+          }
+        ]
+      },
+      {
+        "frame": 280,
+        "physics_tick": 28863,
+        "actual_fcl_clear": false,
+        "collisions": [
+          {
+            "collision_type": "self_sceneobject",
+            "object_name1": "arx_right_15",
+            "link_name1": "link7",
+            "object_name2": "target_box_27",
+            "link_name2": "target_box_27",
+            "max_penetration_m": 3.374989319127053e-07
+          }
+        ]
+      },
+      {
+        "frame": 281,
+        "physics_tick": 28973,
+        "actual_fcl_clear": false,
+        "collisions": [
+          {
+            "collision_type": "self_sceneobject",
+            "object_name1": "arx_right_15",
+            "link_name1": "link7",
+            "object_name2": "target_box_27",
+            "link_name2": "target_box_27",
+            "max_penetration_m": 3.455710384514532e-07
+          }
+        ]
+      },
+      {
+        "frame": 282,
+        "physics_tick": 29083,
+        "actual_fcl_clear": false,
+        "collisions": [
+          {
+            "collision_type": "self_sceneobject",
+            "object_name1": "arx_right_15",
+            "link_name1": "link7",
+            "object_name2": "target_box_27",
+            "link_name2": "target_box_27",
+            "max_penetration_m": 2.64016136952705e-07
+          }
+        ]
+      },
+      {
+        "frame": 283,
+        "physics_tick": 29193,
+        "actual_fcl_clear": false,
+        "collisions": [
+          {
+            "collision_type": "self_sceneobject",
+            "object_name1": "arx_right_15",
+            "link_name1": "link7",
+            "object_name2": "target_box_27",
+            "link_name2": "target_box_27",
+            "max_penetration_m": 1.6606881558800524e-07
+          }
+        ]
+      },
+      {
+        "frame": 284,
+        "physics_tick": 29303,
+        "actual_fcl_clear": false,
+        "collisions": [
+          {
+            "collision_type": "self_sceneobject",
+            "object_name1": "arx_right_15",
+            "link_name1": "link7",
+            "object_name2": "target_box_27",
+            "link_name2": "target_box_27",
+            "max_penetration_m": 2.6739431291389337e-07
+          }
+        ]
+      },
+      {
+        "frame": 285,
+        "physics_tick": 29413,
+        "actual_fcl_clear": false,
+        "collisions": [
+          {
+            "collision_type": "self_sceneobject",
+            "object_name1": "arx_right_15",
+            "link_name1": "link7",
+            "object_name2": "target_box_27",
+            "link_name2": "target_box_27",
+            "max_penetration_m": 2.7483784492687846e-07
+          }
+        ]
+      },
+      {
+        "frame": 286,
+        "physics_tick": 29523,
+        "actual_fcl_clear": false,
+        "collisions": [
+          {
+            "collision_type": "self_sceneobject",
+            "object_name1": "arx_right_15",
+            "link_name1": "link7",
+            "object_name2": "target_box_27",
+            "link_name2": "target_box_27",
+            "max_penetration_m": 3.9149387021097937e-07
+          }
+        ]
+      },
+      {
+        "frame": 287,
+        "physics_tick": 29633,
+        "actual_fcl_clear": false,
+        "collisions": [
+          {
+            "collision_type": "self_sceneobject",
+            "object_name1": "arx_right_15",
+            "link_name1": "link7",
+            "object_name2": "target_box_27",
+            "link_name2": "target_box_27",
+            "max_penetration_m": 3.772707941607223e-07
+          }
+        ]
+      },
+      {
+        "frame": 288,
+        "physics_tick": 29690,
+        "actual_fcl_clear": false,
+        "collisions": [
+          {
+            "collision_type": "self_sceneobject",
+            "object_name1": "arx_right_15",
+            "link_name1": "link7",
+            "object_name2": "target_box_27",
+            "link_name2": "target_box_27",
+            "max_penetration_m": 5.232867579252343e-07
+          }
+        ]
+      },
+      {
+        "frame": 289,
+        "physics_tick": 29705,
+        "actual_fcl_clear": false,
+        "collisions": [
+          {
+            "collision_type": "self_sceneobject",
+            "object_name1": "arx_right_15",
+            "link_name1": "link7",
+            "object_name2": "target_box_27",
+            "link_name2": "target_box_27",
+            "max_penetration_m": 3.2302656904903415e-07
+          }
+        ]
+      },
+      {
+        "frame": 290,
+        "physics_tick": 29720,
+        "actual_fcl_clear": false,
+        "collisions": [
+          {
+            "collision_type": "self_sceneobject",
+            "object_name1": "arx_right_15",
+            "link_name1": "link7",
+            "object_name2": "target_box_27",
+            "link_name2": "target_box_27",
+            "max_penetration_m": 6.109193577685801e-07
+          }
+        ]
+      },
+      {
+        "frame": 291,
+        "physics_tick": 29735,
+        "actual_fcl_clear": false,
+        "collisions": [
+          {
+            "collision_type": "self_sceneobject",
+            "object_name1": "arx_right_15",
+            "link_name1": "link7",
+            "object_name2": "target_box_27",
+            "link_name2": "target_box_27",
+            "max_penetration_m": 5.710761570298928e-07
+          }
+        ]
+      },
+      {
+        "frame": 292,
+        "physics_tick": 29750,
+        "actual_fcl_clear": false,
+        "collisions": [
+          {
+            "collision_type": "self_sceneobject",
+            "object_name1": "arx_right_15",
+            "link_name1": "link7",
+            "object_name2": "target_box_27",
+            "link_name2": "target_box_27",
+            "max_penetration_m": 5.226660846346931e-07
+          }
+        ]
+      },
+      {
+        "frame": 293,
+        "physics_tick": 29765,
+        "actual_fcl_clear": false,
+        "collisions": [
+          {
+            "collision_type": "self_sceneobject",
+            "object_name1": "arx_right_15",
+            "link_name1": "link7",
+            "object_name2": "target_box_27",
+            "link_name2": "target_box_27",
+            "max_penetration_m": 3.0176116183611157e-07
+          }
+        ]
+      },
+      {
+        "frame": 294,
+        "physics_tick": 29779,
+        "actual_fcl_clear": false,
+        "collisions": [
+          {
+            "collision_type": "self_sceneobject",
+            "object_name1": "arx_right_15",
+            "link_name1": "link7",
+            "object_name2": "target_box_27",
+            "link_name2": "target_box_27",
+            "max_penetration_m": 3.8426662740675965e-07
+          }
+        ]
+      }
+    ],
+    "source_trace_sha256": "c0dcc14dac4e94c6364fe6a3e374c246c4a8dff4d6a6e60d9569235d20830881",
+    "scene_physics_steps": 0,
+    "gpu_used": false,
+    "wall_s": 7.942910946905613,
+    "scope": "exact archived expert frame boundaries: measured geometry only, no between-frame swept or physical replay claim"
+  },
+  "1": {
+    "frames": 277,
+    "accepted": 255,
+    "rejected": 22,
+    "first_rejection": {
+      "frame": 253,
+      "physics_tick": 25926,
+      "actual_fcl_clear": false,
+      "collisions": [
+        {
+          "collision_type": "self_sceneobject",
+          "object_name1": "arx_right_15",
+          "link_name1": "link7",
+          "object_name2": "target_box_27",
+          "link_name2": "target_box_27",
+          "max_penetration_m": 3.560178072348208e-07
+        }
+      ]
+    },
+    "all_rejections": [
+      {
+        "frame": 253,
+        "physics_tick": 25926,
+        "actual_fcl_clear": false,
+        "collisions": [
+          {
+            "collision_type": "self_sceneobject",
+            "object_name1": "arx_right_15",
+            "link_name1": "link7",
+            "object_name2": "target_box_27",
+            "link_name2": "target_box_27",
+            "max_penetration_m": 3.560178072348208e-07
+          }
+        ]
+      },
+      {
+        "frame": 254,
+        "physics_tick": 25936,
+        "actual_fcl_clear": false,
+        "collisions": [
+          {
+            "collision_type": "self_sceneobject",
+            "object_name1": "arx_right_15",
+            "link_name1": "link7",
+            "object_name2": "target_box_27",
+            "link_name2": "target_box_27",
+            "max_penetration_m": 3.171401772306126e-07
+          }
+        ]
+      },
+      {
+        "frame": 255,
+        "physics_tick": 25936,
+        "actual_fcl_clear": false,
+        "collisions": [
+          {
+            "collision_type": "self_sceneobject",
+            "object_name1": "arx_right_15",
+            "link_name1": "link7",
+            "object_name2": "target_box_27",
+            "link_name2": "target_box_27",
+            "max_penetration_m": 3.171401772306126e-07
+          }
+        ]
+      },
+      {
+        "frame": 256,
+        "physics_tick": 25937,
+        "actual_fcl_clear": false,
+        "collisions": [
+          {
+            "collision_type": "self_sceneobject",
+            "object_name1": "arx_right_15",
+            "link_name1": "link7",
+            "object_name2": "target_box_27",
+            "link_name2": "target_box_27",
+            "max_penetration_m": 1.9071832468853245e-07
+          }
+        ]
+      },
+      {
+        "frame": 258,
+        "physics_tick": 26157,
+        "actual_fcl_clear": false,
+        "collisions": [
+          {
+            "collision_type": "self_sceneobject",
+            "object_name1": "arx_right_15",
+            "link_name1": "link7",
+            "object_name2": "target_box_27",
+            "link_name2": "target_box_27",
+            "max_penetration_m": 5.471811164170504e-07
+          }
+        ]
+      },
+      {
+        "frame": 260,
+        "physics_tick": 26377,
+        "actual_fcl_clear": false,
+        "collisions": [
+          {
+            "collision_type": "self_sceneobject",
+            "object_name1": "arx_right_15",
+            "link_name1": "link7",
+            "object_name2": "target_box_27",
+            "link_name2": "target_box_27",
+            "max_penetration_m": 6.231975362425146e-07
+          }
+        ]
+      },
+      {
+        "frame": 261,
+        "physics_tick": 26487,
+        "actual_fcl_clear": false,
+        "collisions": [
+          {
+            "collision_type": "self_sceneobject",
+            "object_name1": "arx_right_15",
+            "link_name1": "link7",
+            "object_name2": "target_box_27",
+            "link_name2": "target_box_27",
+            "max_penetration_m": 5.825629045830283e-07
+          }
+        ]
+      },
+      {
+        "frame": 262,
+        "physics_tick": 26597,
+        "actual_fcl_clear": false,
+        "collisions": [
+          {
+            "collision_type": "self_sceneobject",
+            "object_name1": "arx_right_15",
+            "link_name1": "link7",
+            "object_name2": "target_box_27",
+            "link_name2": "target_box_27",
+            "max_penetration_m": 8.639625548312324e-08
+          }
+        ]
+      },
+      {
+        "frame": 263,
+        "physics_tick": 26707,
+        "actual_fcl_clear": false,
+        "collisions": [
+          {
+            "collision_type": "self_sceneobject",
+            "object_name1": "arx_right_15",
+            "link_name1": "link7",
+            "object_name2": "target_box_27",
+            "link_name2": "target_box_27",
+            "max_penetration_m": 6.248041017897776e-07
+          }
+        ]
+      },
+      {
+        "frame": 264,
+        "physics_tick": 26817,
+        "actual_fcl_clear": false,
+        "collisions": [
+          {
+            "collision_type": "self_sceneobject",
+            "object_name1": "arx_right_15",
+            "link_name1": "link7",
+            "object_name2": "target_box_27",
+            "link_name2": "target_box_27",
+            "max_penetration_m": 5.667372420248284e-07
+          }
+        ]
+      },
+      {
+        "frame": 265,
+        "physics_tick": 26927,
+        "actual_fcl_clear": false,
+        "collisions": [
+          {
+            "collision_type": "self_sceneobject",
+            "object_name1": "arx_right_15",
+            "link_name1": "link7",
+            "object_name2": "target_box_27",
+            "link_name2": "target_box_27",
+            "max_penetration_m": 3.15681887741448e-07
+          }
+        ]
+      },
+      {
+        "frame": 266,
+        "physics_tick": 27037,
+        "actual_fcl_clear": false,
+        "collisions": [
+          {
+            "collision_type": "self_sceneobject",
+            "object_name1": "arx_right_15",
+            "link_name1": "link7",
+            "object_name2": "target_box_27",
+            "link_name2": "target_box_27",
+            "max_penetration_m": 7.593801569782954e-07
+          }
+        ]
+      },
+      {
+        "frame": 267,
+        "physics_tick": 27147,
+        "actual_fcl_clear": false,
+        "collisions": [
+          {
+            "collision_type": "self_sceneobject",
+            "object_name1": "arx_right_15",
+            "link_name1": "link7",
+            "object_name2": "target_box_27",
+            "link_name2": "target_box_27",
+            "max_penetration_m": 6.328231734187284e-07
+          }
+        ]
+      },
+      {
+        "frame": 268,
+        "physics_tick": 27257,
+        "actual_fcl_clear": false,
+        "collisions": [
+          {
+            "collision_type": "self_sceneobject",
+            "object_name1": "arx_right_15",
+            "link_name1": "link7",
+            "object_name2": "target_box_27",
+            "link_name2": "target_box_27",
+            "max_penetration_m": 3.873104787999182e-07
+          }
+        ]
+      },
+      {
+        "frame": 269,
+        "physics_tick": 27367,
+        "actual_fcl_clear": false,
+        "collisions": [
+          {
+            "collision_type": "self_sceneobject",
+            "object_name1": "arx_right_15",
+            "link_name1": "link7",
+            "object_name2": "target_box_27",
+            "link_name2": "target_box_27",
+            "max_penetration_m": 3.7107432149241504e-07
+          }
+        ]
+      },
+      {
+        "frame": 270,
+        "physics_tick": 27424,
+        "actual_fcl_clear": false,
+        "collisions": [
+          {
+            "collision_type": "self_sceneobject",
+            "object_name1": "arx_right_15",
+            "link_name1": "link7",
+            "object_name2": "target_box_27",
+            "link_name2": "target_box_27",
+            "max_penetration_m": 7.370505272774608e-07
+          }
+        ]
+      },
+      {
+        "frame": 271,
+        "physics_tick": 27439,
+        "actual_fcl_clear": false,
+        "collisions": [
+          {
+            "collision_type": "self_sceneobject",
+            "object_name1": "arx_right_15",
+            "link_name1": "link7",
+            "object_name2": "target_box_27",
+            "link_name2": "target_box_27",
+            "max_penetration_m": 3.3099573215622513e-07
+          }
+        ]
+      },
+      {
+        "frame": 272,
+        "physics_tick": 27454,
+        "actual_fcl_clear": false,
+        "collisions": [
+          {
+            "collision_type": "self_sceneobject",
+            "object_name1": "arx_right_15",
+            "link_name1": "link7",
+            "object_name2": "target_box_27",
+            "link_name2": "target_box_27",
+            "max_penetration_m": 6.0358036080288e-07
+          }
+        ]
+      },
+      {
+        "frame": 273,
+        "physics_tick": 27469,
+        "actual_fcl_clear": false,
+        "collisions": [
+          {
+            "collision_type": "self_sceneobject",
+            "object_name1": "arx_right_15",
+            "link_name1": "link7",
+            "object_name2": "target_box_27",
+            "link_name2": "target_box_27",
+            "max_penetration_m": 3.64597411817158e-07
+          }
+        ]
+      },
+      {
+        "frame": 274,
+        "physics_tick": 27484,
+        "actual_fcl_clear": false,
+        "collisions": [
+          {
+            "collision_type": "self_sceneobject",
+            "object_name1": "arx_right_15",
+            "link_name1": "link7",
+            "object_name2": "target_box_27",
+            "link_name2": "target_box_27",
+            "max_penetration_m": 8.101434332274948e-07
+          }
+        ]
+      },
+      {
+        "frame": 275,
+        "physics_tick": 27499,
+        "actual_fcl_clear": false,
+        "collisions": [
+          {
+            "collision_type": "self_sceneobject",
+            "object_name1": "arx_right_15",
+            "link_name1": "link7",
+            "object_name2": "target_box_27",
+            "link_name2": "target_box_27",
+            "max_penetration_m": 5.518746206689684e-07
+          }
+        ]
+      },
+      {
+        "frame": 276,
+        "physics_tick": 27513,
+        "actual_fcl_clear": false,
+        "collisions": [
+          {
+            "collision_type": "self_sceneobject",
+            "object_name1": "arx_right_15",
+            "link_name1": "link7",
+            "object_name2": "target_box_27",
+            "link_name2": "target_box_27",
+            "max_penetration_m": 4.587325577176671e-07
+          }
+        ]
+      }
+    ],
+    "source_trace_sha256": "3d64833d1e2d8ed093d15654c6bc281717c5ae087ad4d46aaa5a05d14a5b3e13",
+    "scene_physics_steps": 0,
+    "gpu_used": false,
+    "wall_s": 3.5633889487944543,
+    "scope": "exact archived expert frame boundaries: measured geometry only, no between-frame swept or physical replay claim"
+  },
+  "2": {
+    "frames": 282,
+    "accepted": 273,
+    "rejected": 9,
+    "first_rejection": {
+      "frame": 262,
+      "physics_tick": 27331,
+      "actual_fcl_clear": false,
+      "collisions": [
+        {
+          "collision_type": "self_sceneobject",
+          "object_name1": "arx_right_15",
+          "link_name1": "link7",
+          "object_name2": "target_box_27",
+          "link_name2": "target_box_27",
+          "max_penetration_m": 4.126739838739013e-07
+        }
+      ]
+    },
+    "all_rejections": [
+      {
+        "frame": 262,
+        "physics_tick": 27331,
+        "actual_fcl_clear": false,
+        "collisions": [
+          {
+            "collision_type": "self_sceneobject",
+            "object_name1": "arx_right_15",
+            "link_name1": "link7",
+            "object_name2": "target_box_27",
+            "link_name2": "target_box_27",
+            "max_penetration_m": 4.126739838739013e-07
+          }
+        ]
+      },
+      {
+        "frame": 265,
+        "physics_tick": 27661,
+        "actual_fcl_clear": false,
+        "collisions": [
+          {
+            "collision_type": "self_sceneobject",
+            "object_name1": "arx_right_15",
+            "link_name1": "link7",
+            "object_name2": "target_box_27",
+            "link_name2": "target_box_27",
+            "max_penetration_m": 4.998602776140615e-07
+          }
+        ]
+      },
+      {
+        "frame": 266,
+        "physics_tick": 27771,
+        "actual_fcl_clear": false,
+        "collisions": [
+          {
+            "collision_type": "self_sceneobject",
+            "object_name1": "arx_right_15",
+            "link_name1": "link7",
+            "object_name2": "target_box_27",
+            "link_name2": "target_box_27",
+            "max_penetration_m": 2.8551673381116416e-07
+          }
+        ]
+      },
+      {
+        "frame": 267,
+        "physics_tick": 27881,
+        "actual_fcl_clear": false,
+        "collisions": [
+          {
+            "collision_type": "self_sceneobject",
+            "object_name1": "arx_right_15",
+            "link_name1": "link7",
+            "object_name2": "target_box_27",
+            "link_name2": "target_box_27",
+            "max_penetration_m": 4.426648558819579e-07
+          }
+        ]
+      },
+      {
+        "frame": 268,
+        "physics_tick": 27991,
+        "actual_fcl_clear": false,
+        "collisions": [
+          {
+            "collision_type": "self_sceneobject",
+            "object_name1": "arx_right_15",
+            "link_name1": "link7",
+            "object_name2": "target_box_27",
+            "link_name2": "target_box_27",
+            "max_penetration_m": 5.275516627989418e-07
+          }
+        ]
+      },
+      {
+        "frame": 269,
+        "physics_tick": 28101,
+        "actual_fcl_clear": false,
+        "collisions": [
+          {
+            "collision_type": "self_sceneobject",
+            "object_name1": "arx_right_15",
+            "link_name1": "link7",
+            "object_name2": "target_box_27",
+            "link_name2": "target_box_27",
+            "max_penetration_m": 1.3919733987677319e-07
+          }
+        ]
+      },
+      {
+        "frame": 270,
+        "physics_tick": 28211,
+        "actual_fcl_clear": false,
+        "collisions": [
+          {
+            "collision_type": "self_sceneobject",
+            "object_name1": "arx_right_15",
+            "link_name1": "link7",
+            "object_name2": "target_box_27",
+            "link_name2": "target_box_27",
+            "max_penetration_m": 3.1537828704131243e-07
+          }
+        ]
+      },
+      {
+        "frame": 271,
+        "physics_tick": 28321,
+        "actual_fcl_clear": false,
+        "collisions": [
+          {
+            "collision_type": "self_sceneobject",
+            "object_name1": "arx_right_15",
+            "link_name1": "link7",
+            "object_name2": "target_box_27",
+            "link_name2": "target_box_27",
+            "max_penetration_m": 3.67918772781195e-07
+          }
+        ]
+      },
+      {
+        "frame": 272,
+        "physics_tick": 28431,
+        "actual_fcl_clear": false,
+        "collisions": [
+          {
+            "collision_type": "self_sceneobject",
+            "object_name1": "arx_right_15",
+            "link_name1": "link7",
+            "object_name2": "target_box_27",
+            "link_name2": "target_box_27",
+            "max_penetration_m": 4.005749474345066e-07
+          }
+        ]
+      }
+    ],
+    "source_trace_sha256": "5b3efda4bdc13bf53c105830d607579ca46dd8ec320c7fa6aa1bb0b761d0cad0",
+    "scene_physics_steps": 0,
+    "gpu_used": false,
+    "wall_s": 3.5426115887239575,
+    "scope": "exact archived expert frame boundaries: measured geometry only, no between-frame swept or physical replay claim"
+  }
+}

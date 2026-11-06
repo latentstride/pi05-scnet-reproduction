@@ -1,0 +1,22 @@
+--- before/test_g2e.py
++++ tests/test_g2e.py
+@@ -280,11 +280,14 @@
+                     for arg in c["argv"]
+                 )
+             )
+-        self.assertFalse(
+-            json.loads((release / "release-admission.json").read_text())[
+-                "gpu_release_ready"
+-            ]
+-        )
++        admission = json.loads((release / "release-admission.json").read_text())
++        self.assertEqual(admission["gpu_release_ready"], admission["status"] == "ready")
++        if admission["gpu_release_ready"]:
++            self.assertTrue(admission["cpu_release_validated"])
++            self.assertIn("user_authorization", admission)
++            self.assertEqual(admission["approved_allocation_s"], 12600)
++        else:
++            self.assertEqual(admission["status"], "awaiting_user_approval")
+ 
+     def test_partial_statistics_never_counts_missing_as_failure_or_success(self):
+         from g2e_statistics import summarize

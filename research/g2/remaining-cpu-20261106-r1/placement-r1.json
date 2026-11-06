@@ -1,0 +1,65 @@
+{
+  "0": {
+    "accepted": false,
+    "status": "collision",
+    "detail": "predicted finger start intersects task block",
+    "diagnostic": {
+      "side": "left",
+      "finger": 0,
+      "depth_m": 0.0021763553377240896,
+      "allowed_penetration_m": 0.002,
+      "start_native_m": 0.029271511123283744,
+      "requested_native_m": 0.027854440733790398
+    },
+    "checkpoint_tick": 21260,
+    "phases": [],
+    "attempts": [],
+    "physics_steps": 0,
+    "gpu_used": false,
+    "task_success": null,
+    "wall_s": 3.868806635029614,
+    "scope": "static attachment geometry; runtime release/contact loss/support and original slip anchor are not dynamically verified"
+  },
+  "1": {
+    "accepted": false,
+    "status": "collision",
+    "detail": "predicted finger start intersects task block",
+    "diagnostic": {
+      "side": "left",
+      "finger": 0,
+      "depth_m": 0.0023621011059731245,
+      "allowed_penetration_m": 0.002,
+      "start_native_m": 0.029211049162086056,
+      "requested_native_m": 0.02774503268301487
+    },
+    "checkpoint_tick": 19120,
+    "phases": [],
+    "attempts": [],
+    "physics_steps": 0,
+    "gpu_used": false,
+    "task_success": null,
+    "wall_s": 1.223679043352604,
+    "scope": "static attachment geometry; runtime release/contact loss/support and original slip anchor are not dynamically verified"
+  },
+  "2": {
+    "accepted": false,
+    "status": "collision",
+    "detail": "predicted finger start intersects task block",
+    "diagnostic": {
+      "side": "left",
+      "finger": 0,
+      "depth_m": 0.0021952460519969463,
+      "allowed_penetration_m": 0.002,
+      "start_native_m": 0.029162983947117027,
+      "requested_native_m": 0.027909845113754272
+    },
+    "checkpoint_tick": 20450,
+    "phases": [],
+    "attempts": [],
+    "physics_steps": 0,
+    "gpu_used": false,
+    "task_success": null,
+    "wall_s": 1.1678974758833647,
+    "scope": "static attachment geometry; runtime release/contact loss/support and original slip anchor are not dynamically verified"
+  }
+}

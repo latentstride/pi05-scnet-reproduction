@@ -1,0 +1,119 @@
+{
+  "0": {
+    "accepted": true,
+    "release_height_m": 0.005,
+    "checkpoint_tick": 27434,
+    "original_right_only_transition_tick": 21253,
+    "phases": [
+      {
+        "phase": "approach",
+        "control_ticks": 26,
+        "max_velocity_rad_s": 0.1499057116109831
+      },
+      {
+        "phase": "descent",
+        "control_ticks": 56,
+        "max_velocity_rad_s": 0.3507112163276774
+      },
+      {
+        "phase": "opening",
+        "control_ticks": 139,
+        "max_velocity_rad_s": 0.0
+      },
+      {
+        "phase": "retreat",
+        "control_ticks": 44,
+        "max_velocity_rad_s": 0.27514773817726595
+      }
+    ],
+    "attempts": [
+      {
+        "height_m": 0.005,
+        "accepted": true
+      }
+    ],
+    "physics_steps": 0,
+    "gpu_used": false,
+    "task_success": null,
+    "wall_s": 39.07740482361987,
+    "scope": "static attachment geometry; runtime release/contact loss/support and original slip anchor are not dynamically verified"
+  },
+  "1": {
+    "accepted": true,
+    "release_height_m": 0.005,
+    "checkpoint_tick": 25204,
+    "original_right_only_transition_tick": 19115,
+    "phases": [
+      {
+        "phase": "approach",
+        "control_ticks": 24,
+        "max_velocity_rad_s": 0.1484493433440628
+      },
+      {
+        "phase": "descent",
+        "control_ticks": 54,
+        "max_velocity_rad_s": 0.3381183660122156
+      },
+      {
+        "phase": "opening",
+        "control_ticks": 139,
+        "max_velocity_rad_s": 0.0
+      },
+      {
+        "phase": "retreat",
+        "control_ticks": 43,
+        "max_velocity_rad_s": 0.2646455581168651
+      }
+    ],
+    "attempts": [
+      {
+        "height_m": 0.005,
+        "accepted": true
+      }
+    ],
+    "physics_steps": 0,
+    "gpu_used": false,
+    "task_success": null,
+    "wall_s": 12.126694303005934,
+    "scope": "static attachment geometry; runtime release/contact loss/support and original slip anchor are not dynamically verified"
+  },
+  "2": {
+    "accepted": true,
+    "release_height_m": 0.005,
+    "checkpoint_tick": 26441,
+    "original_right_only_transition_tick": 20442,
+    "phases": [
+      {
+        "phase": "approach",
+        "control_ticks": 26,
+        "max_velocity_rad_s": 0.15611025532529785
+      },
+      {
+        "phase": "descent",
+        "control_ticks": 56,
+        "max_velocity_rad_s": 0.34934467049505724
+      },
+      {
+        "phase": "opening",
+        "control_ticks": 139,
+        "max_velocity_rad_s": 0.0
+      },
+      {
+        "phase": "retreat",
+        "control_ticks": 44,
+        "max_velocity_rad_s": 0.27272574668273464
+      }
+    ],
+    "attempts": [
+      {
+        "height_m": 0.005,
+        "accepted": true
+      }
+    ],
+    "physics_steps": 0,
+    "gpu_used": false,
+    "task_success": null,
+    "wall_s": 12.173789164051414,
+    "scope": "static attachment geometry; runtime release/contact loss/support and original slip anchor are not dynamically verified"
+  }
+}

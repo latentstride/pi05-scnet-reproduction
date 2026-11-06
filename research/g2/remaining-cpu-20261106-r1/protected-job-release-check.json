@@ -1,0 +1,8 @@
+{
+  "scope": "observed Chrome terminal result, no job mutation",
+  "command": "cd tools/g2e-release-20261106-r1 && sha256sum --check --strict SHA256SUMS > ../../results/g2/remaining-protected-gpu-release-hashes.log && sha256sum SHA256SUMS",
+  "observed_manifest_sha256": "fb24a4c727a45945ebe46faaa036f26837c1ab79c3e4d7590433c9f84ef6bfe5",
+  "verified_file_count": 82,
+  "full_log_download_verified": false,
+  "transfer_diagnostic": "last attempted terminal export returned stale gzip replay bytes; rejected rather than treating as manifest log"
+}

@@ -1,0 +1,317 @@
+{
+  "data_kind": "diagnostic",
+  "gpu_used": false,
+  "renderer_created": false,
+  "physics_stepped": false,
+  "versions": {
+    "sapien": "3.0.0b1",
+    "mplib": "0.2.1"
+  },
+  "clear_before": true,
+  "copied_obstacle_detected_after_refresh": true,
+  "actual_arx_qpos_unchanged": true,
+  "collisions": [
+    {
+      "collision_type": "self_sceneobject",
+      "object_name1": "g2_aloha_proxy_1",
+      "link_name1": "base_link",
+      "object_name2": "copied_obstacle_23",
+      "link_name2": "copied_obstacle_23"
+    },
+    {
+      "collision_type": "self_sceneobject",
+      "object_name1": "g2_aloha_proxy_1",
+      "link_name1": "fl_base_link",
+      "object_name2": "copied_obstacle_23",
+      "link_name2": "copied_obstacle_23"
+    },
+    {
+      "collision_type": "self_sceneobject",
+      "object_name1": "g2_aloha_proxy_1",
+      "link_name1": "fr_base_link",
+      "object_name2": "copied_obstacle_23",
+      "link_name2": "copied_obstacle_23"
+    },
+    {
+      "collision_type": "self_sceneobject",
+      "object_name1": "g2_aloha_proxy_1",
+      "link_name1": "lr_base_link",
+      "object_name2": "copied_obstacle_23",
+      "link_name2": "copied_obstacle_23"
+    },
+    {
+      "collision_type": "self_sceneobject",
+      "object_name1": "g2_aloha_proxy_1",
+      "link_name1": "rr_base_link",
+      "object_name2": "copied_obstacle_23",
+      "link_name2": "copied_obstacle_23"
+    },
+    {
+      "collision_type": "self_sceneobject",
+      "object_name1": "g2_aloha_proxy_1",
+      "link_name1": "right_wheel_link",
+      "object_name2": "copied_obstacle_23",
+      "link_name2": "copied_obstacle_23"
+    },
+    {
+      "collision_type": "self_sceneobject",
+      "object_name1": "g2_aloha_proxy_1",
+      "link_name1": "left_wheel_link",
+      "object_name2": "copied_obstacle_23",
+      "link_name2": "copied_obstacle_23"
+    },
+    {
+      "collision_type": "self_sceneobject",
+      "object_name1": "g2_aloha_proxy_1",
+      "link_name1": "fl_link1",
+      "object_name2": "copied_obstacle_23",
+      "link_name2": "copied_obstacle_23"
+    },
+    {
+      "collision_type": "self_sceneobject",
+      "object_name1": "g2_aloha_proxy_1",
+      "link_name1": "fr_link1",
+      "object_name2": "copied_obstacle_23",
+      "link_name2": "copied_obstacle_23"
+    },
+    {
+      "collision_type": "self_sceneobject",
+      "object_name1": "g2_aloha_proxy_1",
+      "link_name1": "lr_link1",
+      "object_name2": "copied_obstacle_23",
+      "link_name2": "copied_obstacle_23"
+    },
+    {
+      "collision_type": "self_sceneobject",
+      "object_name1": "g2_aloha_proxy_1",
+      "link_name1": "rr_link1",
+      "object_name2": "copied_obstacle_23",
+      "link_name2": "copied_obstacle_23"
+    },
+    {
+      "collision_type": "self_sceneobject",
+      "object_name1": "g2_aloha_proxy_1",
+      "link_name1": "fl_wheel_link",
+      "object_name2": "copied_obstacle_23",
+      "link_name2": "copied_obstacle_23"
+    },
+    {
+      "collision_type": "self_sceneobject",
+      "object_name1": "g2_aloha_proxy_1",
+      "link_name1": "fr_wheel_link",
+      "object_name2": "copied_obstacle_23",
+      "link_name2": "copied_obstacle_23"
+    },
+    {
+      "collision_type": "self_sceneobject",
+      "object_name1": "g2_aloha_proxy_1",
+      "link_name1": "rr_wheel_link",
+      "object_name2": "copied_obstacle_23",
+      "link_name2": "copied_obstacle_23"
+    },
+    {
+      "collision_type": "self_sceneobject",
+      "object_name1": "g2_aloha_proxy_1",
+      "link_name1": "rl_wheel_link",
+      "object_name2": "copied_obstacle_23",
+      "link_name2": "copied_obstacle_23"
+    },
+    {
+      "collision_type": "self_sceneobject",
+      "object_name1": "g2_aloha_proxy_1",
+      "link_name1": "fl_link2",
+      "object_name2": "copied_obstacle_23",
+      "link_name2": "copied_obstacle_23"
+    },
+    {
+      "collision_type": "self_sceneobject",
+      "object_name1": "g2_aloha_proxy_1",
+      "link_name1": "fr_link2",
+      "object_name2": "copied_obstacle_23",
+      "link_name2": "copied_obstacle_23"
+    },
+    {
+      "collision_type": "self_sceneobject",
+      "object_name1": "g2_aloha_proxy_1",
+      "link_name1": "lr_link2",
+      "object_name2": "copied_obstacle_23",
+      "link_name2": "copied_obstacle_23"
+    },
+    {
+      "collision_type": "self_sceneobject",
+      "object_name1": "g2_aloha_proxy_1",
+      "link_name1": "rr_link2",
+      "object_name2": "copied_obstacle_23",
+      "link_name2": "copied_obstacle_23"
+    },
+    {
+      "collision_type": "self_sceneobject",
+      "object_name1": "g2_aloha_proxy_1",
+      "link_name1": "fl_link3",
+      "object_name2": "copied_obstacle_23",
+      "link_name2": "copied_obstacle_23"
+    },
+    {
+      "collision_type": "self_sceneobject",
+      "object_name1": "g2_aloha_proxy_1",
+      "link_name1": "fr_link3",
+      "object_name2": "copied_obstacle_23",
+      "link_name2": "copied_obstacle_23"
+    },
+    {
+      "collision_type": "self_sceneobject",
+      "object_name1": "g2_aloha_proxy_1",
+      "link_name1": "lr_link3",
+      "object_name2": "copied_obstacle_23",
+      "link_name2": "copied_obstacle_23"
+    },
+    {
+      "collision_type": "self_sceneobject",
+      "object_name1": "g2_aloha_proxy_1",
+      "link_name1": "rr_link3",
+      "object_name2": "copied_obstacle_23",
+      "link_name2": "copied_obstacle_23"
+    },
+    {
+      "collision_type": "self_sceneobject",
+      "object_name1": "g2_aloha_proxy_1",
+      "link_name1": "fl_link4",
+      "object_name2": "copied_obstacle_23",
+      "link_name2": "copied_obstacle_23"
+    },
+    {
+      "collision_type": "self_sceneobject",
+      "object_name1": "g2_aloha_proxy_1",
+      "link_name1": "fr_link4",
+      "object_name2": "copied_obstacle_23",
+      "link_name2": "copied_obstacle_23"
+    },
+    {
+      "collision_type": "self_sceneobject",
+      "object_name1": "g2_aloha_proxy_1",
+      "link_name1": "lr_link4",
+      "object_name2": "copied_obstacle_23",
+      "link_name2": "copied_obstacle_23"
+    },
+    {
+      "collision_type": "self_sceneobject",
+      "object_name1": "g2_aloha_proxy_1",
+      "link_name1": "rr_link4",
+      "object_name2": "copied_obstacle_23",
+      "link_name2": "copied_obstacle_23"
+    },
+    {
+      "collision_type": "self_sceneobject",
+      "object_name1": "g2_aloha_proxy_1",
+      "link_name1": "fl_link5",
+      "object_name2": "copied_obstacle_23",
+      "link_name2": "copied_obstacle_23"
+    },
+    {
+      "collision_type": "self_sceneobject",
+      "object_name1": "g2_aloha_proxy_1",
+      "link_name1": "fr_link5",
+      "object_name2": "copied_obstacle_23",
+      "link_name2": "copied_obstacle_23"
+    },
+    {
+      "collision_type": "self_sceneobject",
+      "object_name1": "g2_aloha_proxy_1",
+      "link_name1": "lr_link5",
+      "object_name2": "copied_obstacle_23",
+      "link_name2": "copied_obstacle_23"
+    },
+    {
+      "collision_type": "self_sceneobject",
+      "object_name1": "g2_aloha_proxy_1",
+      "link_name1": "rr_link5",
+      "object_name2": "copied_obstacle_23",
+      "link_name2": "copied_obstacle_23"
+    },
+    {
+      "collision_type": "self_sceneobject",
+      "object_name1": "g2_aloha_proxy_1",
+      "link_name1": "fl_link6",
+      "object_name2": "copied_obstacle_23",
+      "link_name2": "copied_obstacle_23"
+    },
+    {
+      "collision_type": "self_sceneobject",
+      "object_name1": "g2_aloha_proxy_1",
+      "link_name1": "fr_link6",
+      "object_name2": "copied_obstacle_23",
+      "link_name2": "copied_obstacle_23"
+    },
+    {
+      "collision_type": "self_sceneobject",
+      "object_name1": "g2_aloha_proxy_1",
+      "link_name1": "lr_link6",
+      "object_name2": "copied_obstacle_23",
+      "link_name2": "copied_obstacle_23"
+    },
+    {
+      "collision_type": "self_sceneobject",
+      "object_name1": "g2_aloha_proxy_1",
+      "link_name1": "rr_link6",
+      "object_name2": "copied_obstacle_23",
+      "link_name2": "copied_obstacle_23"
+    },
+    {
+      "collision_type": "self_sceneobject",
+      "object_name1": "g2_aloha_proxy_1",
+      "link_name1": "left_camera",
+      "object_name2": "copied_obstacle_23",
+      "link_name2": "copied_obstacle_23"
+    },
+    {
+      "collision_type": "self_sceneobject",
+      "object_name1": "g2_aloha_proxy_1",
+      "link_name1": "fl_link7",
+      "object_name2": "copied_obstacle_23",
+      "link_name2": "copied_obstacle_23"
+    },
+    {
+      "collision_type": "self_sceneobject",
+      "object_name1": "g2_aloha_proxy_1",
+      "link_name1": "fl_link8",
+      "object_name2": "copied_obstacle_23",
+      "link_name2": "copied_obstacle_23"
+    },
+    {
+      "collision_type": "self_sceneobject",
+      "object_name1": "g2_aloha_proxy_1",
+      "link_name1": "right_camera",
+      "object_name2": "copied_obstacle_23",
+      "link_name2": "copied_obstacle_23"
+    },
+    {
+      "collision_type": "self_sceneobject",
+      "object_name1": "g2_aloha_proxy_1",
+      "link_name1": "fr_link7",
+      "object_name2": "copied_obstacle_23",
+      "link_name2": "copied_obstacle_23"
+    },
+    {
+      "collision_type": "self_sceneobject",
+      "object_name1": "g2_aloha_proxy_1",
+      "link_name1": "fr_link8",
+      "object_name2": "copied_obstacle_23",
+      "link_name2": "copied_obstacle_23"
+    },
+    {
+      "collision_type": "self_sceneobject",
+      "object_name1": "g2_aloha_proxy_1",
+      "link_name1": "lr_link7",
+      "object_name2": "copied_obstacle_23",
+      "link_name2": "copied_obstacle_23"
+    },
+    {
+      "collision_type": "self_sceneobject",
+      "object_name1": "g2_aloha_proxy_1",
+      "link_name1": "rr_link7",
+      "object_name2": "copied_obstacle_23",
+      "link_name2": "copied_obstacle_23"
+    }
+  ],
+  "passed": true
+}

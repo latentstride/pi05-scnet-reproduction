@@ -1,0 +1,51 @@
+{
+  "status": "CPU_VALIDATED_GPU_DEFERRED",
+  "regression_tests": 158,
+  "original_regression_tests": 149,
+  "repair_regression_tests": 9,
+  "synthetic_episodes": 13,
+  "gpu_allocation_actions": 0,
+  "model_starts": 0,
+  "static_replay_physics_steps": 0,
+  "actual_arx_failures_reproduced": 4,
+  "expert_approach_endpoints_and_paths_passed": 12,
+  "additional_ik_candidate_pairs_checked": 464,
+  "native_plans_exactly_reproduced": 750,
+  "task_success_count": 0,
+  "task_trial_count": 8,
+  "original_files_unchanged": 2712,
+  "safety_rules_unchanged": true,
+  "full_raw_aloha_object_trajectory_available": false,
+  "full_dynamic_counterfactual_performed": false,
+  "read_only_original_inputs": true,
+  "legacy_statistics_reclassified_to": "diagnostic",
+  "final_cpu_result": "results/g2/offline-repair-127054052-final2",
+  "changed_existing_sources": [
+    "scripts/g2_adapter.py",
+    "scripts/g2_contact.py",
+    "scripts/g2_episode.py",
+    "scripts/g2_single_statistics.py",
+    "scripts/g2_single_launch.py",
+    "scripts/g2_orchestrator.py",
+    "scripts/g2_locked_task.py",
+    "scripts/g2_locked_score.py",
+    "scripts/g2_capture.py"
+  ],
+  "new_sources": [
+    "scripts/g2_failure_inventory.py",
+    "scripts/g2_static_failure_replay.py",
+    "scripts/g2_native_target_audit_cpu.py",
+    "scripts/g2_analyze_saved_actions.py",
+    "scripts/g2_replay_native_prefixes.py",
+    "tests/test_g2_failure_repair.py"
+  ],
+  "reports": [
+    "docs/g2_failure_evidence_inventory.md",
+    "docs/g2_aloha_failure_analysis.md",
+    "docs/g2_arx_collision_analysis.md",
+    "docs/g2_offline_counterfactual.md",
+    "docs/g2_failure_root_cause_report.md",
+    "docs/g2_repair_validation.md",
+    "docs/g2_next_gpu_decision.md"
+  ]
+}

@@ -1,0 +1,226 @@
+{
+  "outcome": "passed",
+  "checkpoint_tick": 27434,
+  "checkpoint_scope": "archived joint/drive positions, block pose and velocity; joint velocities reset; contact rebuilt from actual physics",
+  "approach_plan_s": 0.7807007716037333,
+  "task_success": true,
+  "footprint_inside": true,
+  "block_delta_m": [
+    -0.0005458122352138134,
+    -0.001518100872635847,
+    9.390830993649679e-05
+  ],
+  "block_velocity_m_s": [
+    -0.0020455149933695793,
+    0.00025891794939525425,
+    -0.0006976209115236998
+  ],
+  "angular_velocity_rad_s": [
+    -0.0025778498966246843,
+    -0.020456742495298386,
+    1.4024479241925292e-05
+  ],
+  "holder_state": {
+    "phase": "free_after_hold",
+    "holders": [],
+    "contact_fingers": {
+      "left": [],
+      "right": []
+    },
+    "stable_counts": {
+      "left": 0,
+      "right": 0
+    },
+    "saw_shared_hold": false,
+    "releasing": [],
+    "block_pose_task": [
+      [
+        0.9997090939910317,
+        -0.023916834002102958,
+        0.0031164792549418546,
+        0.11283522844314575
+      ],
+      [
+        0.023916761138554062,
+        0.9997139515171539,
+        6.065145406637289e-05,
+        0.14949887990951538
+      ],
+      [
+        -0.003117038381538049,
+        1.3902279739770932e-05,
+        0.9999951419274269,
+        0.8460934162139893
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "tool_block": {},
+    "tool_block_measured": {}
+  },
+  "phases": [
+    {
+      "phase": "approach",
+      "physics_steps": 125,
+      "wall_s": 4.698565820232034,
+      "control_calls": 25
+    },
+    {
+      "phase": "descent",
+      "physics_steps": 270,
+      "wall_s": 10.094517883379012,
+      "control_calls": 54
+    },
+    {
+      "phase": "release-0",
+      "physics_steps": 412,
+      "wall_s": 13.972475791815668,
+      "control_calls": 83
+    },
+    {
+      "phase": "release-1",
+      "physics_steps": 225,
+      "wall_s": 7.463309579063207,
+      "control_calls": 45
+    },
+    {
+      "phase": "retreat",
+      "physics_steps": 215,
+      "wall_s": 6.959296207875013,
+      "control_calls": 43
+    },
+    {
+      "phase": "hold-0",
+      "physics_steps": 5,
+      "wall_s": 0.18244253704324365,
+      "control_calls": 1
+    },
+    {
+      "phase": "hold-1",
+      "physics_steps": 5,
+      "wall_s": 0.18455635802820325,
+      "control_calls": 1
+    },
+    {
+      "phase": "hold-2",
+      "physics_steps": 5,
+      "wall_s": 0.1460330099798739,
+      "control_calls": 1
+    },
+    {
+      "phase": "hold-3",
+      "physics_steps": 5,
+      "wall_s": 0.13917606696486473,
+      "control_calls": 1
+    },
+    {
+      "phase": "hold-4",
+      "physics_steps": 5,
+      "wall_s": 0.11102960305288434,
+      "control_calls": 1
+    },
+    {
+      "phase": "hold-5",
+      "physics_steps": 5,
+      "wall_s": 0.16016246704384685,
+      "control_calls": 1
+    },
+    {
+      "phase": "hold-6",
+      "physics_steps": 5,
+      "wall_s": 0.1415338171645999,
+      "control_calls": 1
+    },
+    {
+      "phase": "hold-7",
+      "physics_steps": 5,
+      "wall_s": 0.16387569811195135,
+      "control_calls": 1
+    },
+    {
+      "phase": "hold-8",
+      "physics_steps": 5,
+      "wall_s": 0.1684004901908338,
+      "control_calls": 1
+    },
+    {
+      "phase": "hold-9",
+      "physics_steps": 5,
+      "wall_s": 0.14024033676832914,
+      "control_calls": 1
+    },
+    {
+      "phase": "hold-10",
+      "physics_steps": 5,
+      "wall_s": 0.14750246005132794,
+      "control_calls": 1
+    },
+    {
+      "phase": "hold-11",
+      "physics_steps": 5,
+      "wall_s": 0.15366727393120527,
+      "control_calls": 1
+    },
+    {
+      "phase": "hold-12",
+      "physics_steps": 5,
+      "wall_s": 0.11325886379927397,
+      "control_calls": 1
+    },
+    {
+      "phase": "hold-13",
+      "physics_steps": 5,
+      "wall_s": 0.17794181499630213,
+      "control_calls": 1
+    },
+    {
+      "phase": "hold-14",
+      "physics_steps": 5,
+      "wall_s": 0.1764173647388816,
+      "control_calls": 1
+    },
+    {
+      "phase": "hold-15",
+      "physics_steps": 5,
+      "wall_s": 0.1816047360189259,
+      "control_calls": 1
+    },
+    {
+      "phase": "hold-16",
+      "physics_steps": 5,
+      "wall_s": 0.14386200811713934,
+      "control_calls": 1
+    },
+    {
+      "phase": "hold-17",
+      "physics_steps": 5,
+      "wall_s": 0.12946114176884294,
+      "control_calls": 1
+    },
+    {
+      "phase": "hold-18",
+      "physics_steps": 5,
+      "wall_s": 0.10139537788927555,
+      "control_calls": 1
+    },
+    {
+      "phase": "hold-19",
+      "physics_steps": 5,
+      "wall_s": 0.17427324317395687,
+      "control_calls": 1
+    }
+  ],
+  "candidates": [
+    {
+      "height_m": 0.005,
+      "accepted": true,
+      "planning_s": 5.317260454874486
+    }
+  ],
+  "physics_steps": 1350,
+  "collision_checks": 2412
+}

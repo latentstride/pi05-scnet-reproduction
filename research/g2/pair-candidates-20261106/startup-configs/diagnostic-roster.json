@@ -1,0 +1,140 @@
+{
+  "status": "diagnostic_startup_only",
+  "formal_run_lock_frozen": false,
+  "cpu_pair_probe_sha256": "c387a3de2c20bbf0538f2fb037510da1f24c62acee1c50661eb35cc2625d323d",
+  "prompt": "Pick up the red block with the left arm, hand it to the right arm, and place it on the target.",
+  "episodes": [
+    {
+      "seed": 0,
+      "episode_id": "seed0-A-native-w1",
+      "condition": "A-native-w1",
+      "embodiment": "aloha-agilex",
+      "window_actions": 1,
+      "config": "seed0-A-native-w1.json",
+      "config_sha256": "5134318ba5dbf4c43ffb00158d9b86ce9fe44362553a86d28417f457792a0738",
+      "candidate_id": "expert-reset-0",
+      "formal_pair_id": null
+    },
+    {
+      "seed": 0,
+      "episode_id": "seed0-A-native-w4",
+      "condition": "A-native-w4",
+      "embodiment": "aloha-agilex",
+      "window_actions": 4,
+      "config": "seed0-A-native-w4.json",
+      "config_sha256": "cddcc718071712b097e0d78f80785b6de593cfe054a31aa434bb46ca512a347f",
+      "candidate_id": "expert-reset-0",
+      "formal_pair_id": null
+    },
+    {
+      "seed": 0,
+      "episode_id": "seed0-B-arx-w1",
+      "condition": "B-arx-w1",
+      "embodiment": "ARX-X5",
+      "window_actions": 1,
+      "config": "seed0-B-arx-w1.json",
+      "config_sha256": "2d9b7838b68cb2a0b54d8ed1567bf48dd29542fa92c18145a11fff892ffd1304",
+      "candidate_id": "expert-reset-0",
+      "formal_pair_id": null
+    },
+    {
+      "seed": 0,
+      "episode_id": "seed0-B-arx-w4",
+      "condition": "B-arx-w4",
+      "embodiment": "ARX-X5",
+      "window_actions": 4,
+      "config": "seed0-B-arx-w4.json",
+      "config_sha256": "703372d19ccbd0d589a71343333365df9d313bfa632132f472262028bc2063ec",
+      "candidate_id": "expert-reset-0",
+      "formal_pair_id": null
+    },
+    {
+      "seed": 1,
+      "episode_id": "seed1-A-native-w1",
+      "condition": "A-native-w1",
+      "embodiment": "aloha-agilex",
+      "window_actions": 1,
+      "config": "seed1-A-native-w1.json",
+      "config_sha256": "5425d3c43c4fc0688a12c4f2c967abc57ae247fa37ee4c673c444cd7070cc6c2",
+      "candidate_id": "expert-reset-1",
+      "formal_pair_id": null
+    },
+    {
+      "seed": 1,
+      "episode_id": "seed1-A-native-w4",
+      "condition": "A-native-w4",
+      "embodiment": "aloha-agilex",
+      "window_actions": 4,
+      "config": "seed1-A-native-w4.json",
+      "config_sha256": "c2297dee90e6eb2c517d004dbd9b97fe4e389c3159c23ca170286be46524b70a",
+      "candidate_id": "expert-reset-1",
+      "formal_pair_id": null
+    },
+    {
+      "seed": 1,
+      "episode_id": "seed1-B-arx-w1",
+      "condition": "B-arx-w1",
+      "embodiment": "ARX-X5",
+      "window_actions": 1,
+      "config": "seed1-B-arx-w1.json",
+      "config_sha256": "ef320611caf2edb8ae581f0629671d7151b338e93c1df5b615795673be371195",
+      "candidate_id": "expert-reset-1",
+      "formal_pair_id": null
+    },
+    {
+      "seed": 1,
+      "episode_id": "seed1-B-arx-w4",
+      "condition": "B-arx-w4",
+      "embodiment": "ARX-X5",
+      "window_actions": 4,
+      "config": "seed1-B-arx-w4.json",
+      "config_sha256": "9e2b85041023f0dd11584eac7c72bbe28ed47d98f2a25c03d141f860d642d1bf",
+      "candidate_id": "expert-reset-1",
+      "formal_pair_id": null
+    },
+    {
+      "seed": 2,
+      "episode_id": "seed2-A-native-w1",
+      "condition": "A-native-w1",
+      "embodiment": "aloha-agilex",
+      "window_actions": 1,
+      "config": "seed2-A-native-w1.json",
+      "config_sha256": "0a56e327f769b175f6ed3453d009f5568213807ba1edda204326f972affac933",
+      "candidate_id": "expert-reset-2",
+      "formal_pair_id": null
+    },
+    {
+      "seed": 2,
+      "episode_id": "seed2-A-native-w4",
+      "condition": "A-native-w4",
+      "embodiment": "aloha-agilex",
+      "window_actions": 4,
+      "config": "seed2-A-native-w4.json",
+      "config_sha256": "82b0e17375d20c1250644c57f2dca4fd7a520d233cf85c012d1a356a4d1d43ca",
+      "candidate_id": "expert-reset-2",
+      "formal_pair_id": null
+    },
+    {
+      "seed": 2,
+      "episode_id": "seed2-B-arx-w1",
+      "condition": "B-arx-w1",
+      "embodiment": "ARX-X5",
+      "window_actions": 1,
+      "config": "seed2-B-arx-w1.json",
+      "config_sha256": "c9af372b27c2f354a02a0ecdbf6020227639862f3e3f03fdfe21ace019e54970",
+      "candidate_id": "expert-reset-2",
+      "formal_pair_id": null
+    },
+    {
+      "seed": 2,
+      "episode_id": "seed2-B-arx-w4",
+      "condition": "B-arx-w4",
+      "embodiment": "ARX-X5",
+      "window_actions": 4,
+      "config": "seed2-B-arx-w4.json",
+      "config_sha256": "2035182dde0870ecc6f29558be73b51cca4bb53b9c2249727d07f15b0c01fc2c",
+      "candidate_id": "expert-reset-2",
+      "formal_pair_id": null
+    }
+  ]
+}

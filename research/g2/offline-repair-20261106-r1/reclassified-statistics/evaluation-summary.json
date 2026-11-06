@@ -1,0 +1,17 @@
+{
+  "data_kind": "diagnostic",
+  "formal_score_eligible": false,
+  "trial_records_complete": true,
+  "trial_count": 8,
+  "task_success_count": 0,
+  "task_success_rate": 0.0,
+  "all_tasks_successful": false,
+  "outcomes": {
+    "task_unsuccessful": 4,
+    "planning_failed": 3,
+    "adapter_error": 1
+  },
+  "scope": "terminal trial records; host stage completion is tracked separately",
+  "expert_diagnostic_passed": true,
+  "legacy_formal_labels_reclassified": true
+}

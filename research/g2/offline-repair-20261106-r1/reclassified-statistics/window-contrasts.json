@@ -1,0 +1,83 @@
+{
+  "data_kind": "diagnostic",
+  "pairs": [
+    {
+      "run_lock_sha256": "49281639cfcc7375e8f37be556b8c0d9349aeab1ebc969d1d7ca5638be759d67",
+      "task": "handover_block",
+      "comparison_id": "window-aloha-agilex",
+      "condition_a": "A-native-w1",
+      "condition_b": "A-native-w4",
+      "pair_id": "paired-10g-00",
+      "status": "matched",
+      "success_delta_b_minus_a": 0,
+      "episode_a": "seed0-A-native-w1",
+      "episode_b": "seed0-A-native-w4"
+    },
+    {
+      "run_lock_sha256": "49281639cfcc7375e8f37be556b8c0d9349aeab1ebc969d1d7ca5638be759d67",
+      "task": "handover_block",
+      "comparison_id": "window-aloha-agilex",
+      "condition_a": "A-native-w1",
+      "condition_b": "A-native-w4",
+      "pair_id": "paired-10g-01",
+      "status": "matched",
+      "success_delta_b_minus_a": 0,
+      "episode_a": "seed1-A-native-w1",
+      "episode_b": "seed1-A-native-w4"
+    },
+    {
+      "run_lock_sha256": "49281639cfcc7375e8f37be556b8c0d9349aeab1ebc969d1d7ca5638be759d67",
+      "task": "handover_block",
+      "comparison_id": "window-arx-x5",
+      "condition_a": "B-arx-w1",
+      "condition_b": "B-arx-w4",
+      "pair_id": "paired-10g-00",
+      "status": "matched",
+      "success_delta_b_minus_a": 0,
+      "episode_a": "seed0-B-arx-w1",
+      "episode_b": "seed0-B-arx-w4"
+    },
+    {
+      "run_lock_sha256": "49281639cfcc7375e8f37be556b8c0d9349aeab1ebc969d1d7ca5638be759d67",
+      "task": "handover_block",
+      "comparison_id": "window-arx-x5",
+      "condition_a": "B-arx-w1",
+      "condition_b": "B-arx-w4",
+      "pair_id": "paired-10g-01",
+      "status": "matched",
+      "success_delta_b_minus_a": 0,
+      "episode_a": "seed1-B-arx-w1",
+      "episode_b": "seed1-B-arx-w4"
+    }
+  ],
+  "summary": [
+    {
+      "run_lock_sha256": "49281639cfcc7375e8f37be556b8c0d9349aeab1ebc969d1d7ca5638be759d67",
+      "task": "handover_block",
+      "comparison_id": "window-aloha-agilex",
+      "condition_a": "A-native-w1",
+      "condition_b": "A-native-w4",
+      "n_pairs": 2,
+      "n_matched": 2,
+      "n_missing": 0,
+      "n_not_admitted": 0,
+      "n_a_only_wins": 0,
+      "n_b_only_wins": 0,
+      "mean_success_delta_b_minus_a": 0.0
+    },
+    {
+      "run_lock_sha256": "49281639cfcc7375e8f37be556b8c0d9349aeab1ebc969d1d7ca5638be759d67",
+      "task": "handover_block",
+      "comparison_id": "window-arx-x5",
+      "condition_a": "B-arx-w1",
+      "condition_b": "B-arx-w4",
+      "n_pairs": 2,
+      "n_matched": 2,
+      "n_missing": 0,
+      "n_not_admitted": 0,
+      "n_a_only_wins": 0,
+      "n_b_only_wins": 0,
+      "mean_success_delta_b_minus_a": 0.0
+    }
+  ]
+}

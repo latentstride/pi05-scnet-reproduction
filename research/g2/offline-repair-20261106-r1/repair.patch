@@ -1,0 +1,1755 @@
+--- a/scripts/g2_adapter.py
++++ b/scripts/g2_adapter.py
+@@ -63,6 +63,7 @@
+     arms: tuple
+     images: dict   # camera name -> (Stamp, uint8 CHW)
+     world_task: np.ndarray
++    objects_task: dict = None  # absent when a backend has no task actors
+ 
+ 
+ @dataclass(frozen=True)
+@@ -246,23 +247,30 @@
+     limit_rejected = 0
+     collision_rejected = 0
+     collision_examples = []
++    candidate_verdicts = []
+     ranked = sorted(product(*choices), key=lambda pair: np.linalg.norm(np.array([x[0] for x in pair]) - seed))
+     for pair in ranked:
+         check()
+         q = np.array([x[0] for x in pair])
+         if max_delta is not None and np.any(abs(q - seed) > max_delta + 1e-9):
+             limit_rejected += 1
++            candidate_verdicts.append(dict(candidate_q=q.tolist(), reason="continuity_limit"))
+             continue
+         if accepted(q):
+             return q, [x[1] for x in pair]
+         collision_rejected += 1
++        candidate_verdicts.append(dict(candidate_q=q.tolist(), reason="collision",
++                                      collisions=getattr(collision,"last_collisions",None)))
+         if len(collision_examples) < 8:
+             collision_examples.append({"candidate_q":q.tolist(),
+                                        "collisions":getattr(collision,"last_collisions",None)})
+     if collision_rejected:
+         raise G2Error(Status.COLLISION, "all temporally admissible IK pairs collide",
+-                      rejected_pairs=collision_rejected, collision_examples=collision_examples)
+-    raise G2Error(Status.VELOCITY, "IK branch change exceeds continuity limits", rejected_pairs=limit_rejected)
++                      rejected_pairs=collision_rejected, collision_examples=collision_examples,
++                      candidate_verdicts=candidate_verdicts, continuity_rejected=limit_rejected,
++                      ik_solutions_per_side=[len(x) for x in choices])
++    raise G2Error(Status.VELOCITY, "IK branch change exceeds continuity limits", rejected_pairs=limit_rejected, candidate_verdicts=candidate_verdicts,
++                  ik_solutions_per_side=[len(x) for x in choices])
+ 
+ 
+ def clear(collision, q, fingers):
+@@ -316,6 +324,10 @@
+             source_fingers = np.array([arm.grip.target(g) for arm, g in zip(self.aloha, grip)])
+             if callable(getattr(self.source_collision,"set_start",None)):
+                 self.source_collision.set_start(source_fingers)
++            log.update(collision_world="source_collision", arx_tools_task=tools.tolist(),
++                       ik_seed=self.seed.tolist(), source_fingers=source_fingers.tolist(),
++                       measured_target_fingers=native.tolist(),
++                       continuity_delta=None if delta is None else delta.tolist())
+             q, residual = solve_pair(self.aloha, self.source_frames, tools, self.seed,
+                                      source_fingers, self.source_collision, check, delta)
+             log.update(ik=residual, arx_tools_task=tools.tolist(), grip_fraction=grip,grip_measurement=grip_state)
+@@ -354,6 +366,8 @@
+             q, fingers, frames, _ = read_snapshot(snapshot, self.arx)
+             for arm, value in zip(self.arx, fingers):
+                 bounds(value, np.asarray(arm.grip.limits))
++            log.update(collision_world="target_collision", measured_start_q=q.tolist(),
++                       measured_start_fingers=fingers.tolist())
+             grip_log = log["grippers"] = []
+             requests = log["requests"] = []
+             targets = []
+--- a/scripts/g2_contact.py
++++ b/scripts/g2_contact.py
+@@ -361,12 +361,16 @@
+                     if index==0:
+                         if depth>self.limits.penetration_m:
+                             raise G2Error(Status.COLLISION,"predicted finger start intersects task block",
+-                                          side=SIDES[side],finger=finger)
++                                          side=SIDES[side],finger=finger, depth_m=depth,
++                                          allowed_penetration_m=self.limits.penetration_m,
++                                          start_native_m=opened, requested_native_m=desired)
+                         threshold=max(threshold,depth)
+                     if depth>threshold+1e-12:
+                         if index==0:
+                             raise G2Error(Status.COLLISION,"predicted finger start intersects task block",
+-                                          side=SIDES[side],finger=finger)
++                                          side=SIDES[side],finger=finger, depth_m=depth,
++                                          allowed_penetration_m=self.limits.penetration_m,
++                                          start_native_m=opened, requested_native_m=desired)
+                         lo,hi=previous_alpha,alpha
+                         for _ in range(14):
+                             check()
+--- a/scripts/g2_episode.py
++++ b/scripts/g2_episode.py
+@@ -148,7 +148,8 @@
+                 save_array(output / f"observation-{i:05}.npz", np.savez_compressed, **rgb)
+                 event(dict(kind="snapshot", stamp=asdict(snapshot.stamp),
+                            actual=[asdict(arm) for arm in snapshot.arms],
+-                           world_task=snapshot.world_task, prompt=spec["prompt"], rgb_file=f"observation-{i:05}.npz"))
++                           world_task=snapshot.world_task, objects_task=snapshot.objects_task,
++                           prompt=spec["prompt"], rgb_file=f"observation-{i:05}.npz"))
+                 if record.get("initial_sim_s") is None:
+                     record["initial_sim_s"] = snapshot.stamp.sim_s
+                 if expert is not None:
+--- a/scripts/g2_single_statistics.py
++++ b/scripts/g2_single_statistics.py
+@@ -1,35 +1,148 @@
+-"""Validate the locked policy records and derive the paired window contrasts."""
++"""Summarize roster-bound trials with explicit execution and scoring status."""
++
+ import argparse
++from collections import Counter
+ import json
+ from pathlib import Path
+ import subprocess
+ import sys
+ 
++from g2_episode import save_json
+ from g2_locked_score import collect
+ from summarize_experiments import paired_tables
+ 
+-if __name__=='__main__':
+-    p=argparse.ArgumentParser(description=__doc__)
+-    p.add_argument('lock',type=Path)
+-    p.add_argument('digest')
+-    p.add_argument('trials',type=Path)
+-    p.add_argument('output',type=Path)
+-    p.add_argument('expert',type=Path)
+-    a=p.parse_args()
+-    a.output.mkdir()
+-    records=a.output/'records.json'
+-    rows=collect(a.lock,a.digest,a.trials,records)
+-    subprocess.run([sys.executable,str(Path(__file__).with_name('summarize_experiments.py')),
+-        str(records),'--run-lock',str(a.lock),'--data-kind','formal','--output',str(a.output/'transfer')],check=True)
+-    ablations=[]
+-    for embodiment in ('aloha-agilex','arx-x5'):
+-        ablations.extend(dict(row,comparison_id='window-'+embodiment) for row in rows
+-                         if row['condition']['embodiment']==embodiment)
+-    summary, pairs=paired_tables(ablations)
+-    (a.output/'window-contrasts.json').write_text(json.dumps(dict(pairs=pairs,summary=summary),indent=2)+'\n')
+-    expert=json.loads(a.expert.read_text())
+-    passed=(expert['completed'] and expert['contact_monitor_passed'] and
+-            expert['native_success_at_expert_end']['success'] and expert['native_success_after_diagnostic_hold']['success'])
+-    (a.output/'expert-reference-check.json').write_text(json.dumps(dict(passed=passed,expert=expert),indent=2)+'\n')
++
++def assessment(rows, supervisor):
++    if not rows:
++        raise ValueError("cannot assess an empty trial set")
++    kind = (
++        "formal"
++        if (
++            supervisor.get("data_kind") == "formal"
++            and supervisor.get("formal_score_eligible") is True
++        )
++        else "diagnostic"
++    )
++    if any(row["data_kind"] != kind for row in rows):
++        raise ValueError("trial record kind contradicts supervisor scoring eligibility")
++    outcomes = Counter(row["outcome"] for row in rows)
++    return dict(
++        data_kind=kind,
++        formal_score_eligible=kind == "formal",
++        trial_records_complete=True,
++        trial_count=len(rows),
++        task_success_count=outcomes["success"],
++        task_success_rate=outcomes["success"] / len(rows),
++        all_tasks_successful=outcomes["success"] == len(rows),
++        outcomes=dict(outcomes),
++        scope="terminal trial records; host stage completion is tracked separately",
++    )
++
++
++def summarize(
++    lock,
++    digest,
++    trials,
++    output,
++    expert_path,
++    supervisor_path,
++    legacy_formal_records=False,
++):
++    supervisor = json.loads(supervisor_path.read_text())
++    kind = (
++        "formal"
++        if (
++            supervisor.get("data_kind") == "formal"
++            and supervisor.get("formal_score_eligible") is True
++        )
++        else "diagnostic"
++    )
++    if legacy_formal_records and kind != "diagnostic":
++        raise ValueError(
++            "legacy record reclassification requires diagnostic supervision"
++        )
++    original_run = trials.resolve().parent
++    if legacy_formal_records and (
++        output.resolve() == original_run or original_run in output.resolve().parents
++    ):
++        raise ValueError("legacy analysis output must be outside the original run")
++    output.mkdir()
++    records = output / "records.json"
++    rows = collect(
++        lock,
++        digest,
++        trials,
++        records,
++        data_kind="formal" if legacy_formal_records else kind,
++    )
++    if legacy_formal_records:
++        # Preserve the original files and mark the newly derived summary consistently.
++        rows = [dict(row, data_kind="diagnostic") for row in rows]
++        save_json(records, rows)
++    command = [
++        sys.executable,
++        str(Path(__file__).with_name("summarize_experiments.py")),
++        str(records),
++        "--data-kind",
++        kind,
++        "--output",
++        str(output / "transfer"),
++    ]
++    if kind == "formal":
++        command += ["--run-lock", str(lock)]
++    subprocess.run(command, check=True)
++    ablations = []
++    for embodiment in ("aloha-agilex", "arx-x5"):
++        ablations.extend(
++            dict(row, comparison_id="window-" + embodiment)
++            for row in rows
++            if row["condition"]["embodiment"] == embodiment
++        )
++    summary, pairs = paired_tables(ablations)
++    save_json(
++        output / "window-contrasts.json",
++        dict(data_kind=kind, pairs=pairs, summary=summary),
++    )
++    expert = json.loads(expert_path.read_text())
++    passed = (
++        expert["completed"]
++        and expert["contact_monitor_passed"]
++        and expert["native_success_at_expert_end"]["success"]
++        and expert["native_success_after_diagnostic_hold"]["success"]
++    )
++    save_json(
++        output / "expert-reference-check.json", dict(passed=passed, expert=expert)
++    )
++    result = assessment(rows, supervisor)
++    result.update(
++        expert_diagnostic_passed=passed,
++        legacy_formal_labels_reclassified=legacy_formal_records,
++    )
++    save_json(output / "evaluation-summary.json", result)
+     if not passed:
+-        raise SystemExit('expert diagnostic reference failed')
++        raise ValueError("expert diagnostic reference failed")
++    return result
++
++
++if __name__ == "__main__":
++    p = argparse.ArgumentParser(description=__doc__)
++    p.add_argument("lock", type=Path)
++    p.add_argument("digest")
++    p.add_argument("trials", type=Path)
++    p.add_argument("output", type=Path)
++    p.add_argument("expert", type=Path)
++    p.add_argument("--supervisor-report", type=Path)
++    p.add_argument("--legacy-formal-records", action="store_true")
++    a = p.parse_args()
++    supervisor = (
++        a.supervisor_report or a.trials.parent / "supervisor/g2_acceptance.json"
++    )
++    summarize(
++        a.lock,
++        a.digest,
++        a.trials,
++        a.output,
++        a.expert,
++        supervisor,
++        a.legacy_formal_records,
++    )
+--- a/scripts/g2_single_launch.py
++++ b/scripts/g2_single_launch.py
+@@ -68,6 +68,7 @@
+             row['argv'] += ['--monitor',str(output/'supervisor/gpu-memory.csv')]
+         row['timeout_s']=spec['stage_timeout_s'][name]
+     return dict(data_kind='diagnostic',total_timeout_s=spec['supervisor_timeout_s'],deadline_epoch=allocation_end-60,
++        evaluation_summary_file=str(output/'statistics/evaluation-summary.json'),
+         model_ready_timeout_s=960,model_server=model,ready_line=f'checkpoint policy on {uri}',
+         model_phases_file=str(model_dir/'phases.jsonl'),
+         model_phase_timeouts=dict(container_startup=180,checkpoint_and_tokenizer_sha256=180,
+--- a/scripts/g2_orchestrator.py
++++ b/scripts/g2_orchestrator.py
+@@ -185,8 +185,16 @@
+                 stage = None
+                 entry.update(ended_at=utc(), wall_s=time.monotonic() - start)
+                 save()
++        if plan.get("evaluation_summary_file"):
++            import json
++            summary = Path(plan["evaluation_summary_file"])
++            if summary.is_file():
++                report["evaluation"] = json.loads(summary.read_text())
++                if report["evaluation"]["formal_score_eligible"] != report["formal_score_eligible"]:
++                    raise ValueError("evaluation scoring eligibility differs from supervisor")
+         report["passed"] = all(row["status"] in ("passed", "skipped") for row in report["stages"].values())
+         report["complete"] = all(row["status"] == "passed" for row in report["stages"].values())
++        report["execution_complete"] = report["complete"]
+     except KeyboardInterrupt as exc:
+         report.update(interrupted=True, error=str(exc))
+         for entry in report["stages"].values():
+--- a/scripts/g2_locked_task.py
++++ b/scripts/g2_locked_task.py
+@@ -2,7 +2,6 @@
+ import argparse
+ from contextlib import contextmanager
+ from hashlib import sha256
+-import json
+ import os
+ from pathlib import Path
+ 
+@@ -173,6 +172,15 @@
+     return row
+ 
+ 
++def save_terminal_record(output, config, row):
++    # A frozen roster does not override an explicitly diagnostic configuration.
++    row = dict(row, data_kind='formal' if config.get('formal_release_ready') is True else 'diagnostic')
++    Draft202012Validator(decode(SCHEMA.read_text())).validate(row)
++    validate_episode(row)
++    save_json(output/f"{row['data_kind']}-record.json", row)
++    return row
++
++
+ def main():
+     p = argparse.ArgumentParser(description=__doc__)
+     for name in ('lock','config','pace-root','asset-audit','source-audit','model-manifest','model-startup','output'):
+@@ -219,10 +227,7 @@
+         if not passed:
+             raise SystemExit(1)
+         return
+-    row['data_kind'] = 'formal'
+-    Draft202012Validator(decode(SCHEMA.read_text())).validate(row)
+-    validate_episode(row)
+-    save_json(output/'formal-record.json', row)
++    save_terminal_record(output, config, row)
+ 
+ 
+ if __name__ == '__main__':
+--- a/scripts/g2_locked_score.py
++++ b/scripts/g2_locked_score.py
+@@ -7,7 +7,9 @@
+ from summarize_experiments import check_formal_roster, decode, load_records
+ 
+ 
+-def collect(lock_path, lock_sha, results, output):
++def collect(lock_path, lock_sha, results, output, *, data_kind="formal"):
++    if data_kind not in ("formal", "diagnostic"):
++        raise ValueError("expected a formal or diagnostic record kind")
+     raw = lock_path.read_bytes()
+     if sha256(raw).hexdigest() != lock_sha:
+         raise ValueError('run lock hash mismatch')
+@@ -20,14 +22,14 @@
+         episode = trial['episode_id']
+         if not episode or Path(episode).name != episode or episode in ('.', '..'):
+             raise ValueError('invalid episode directory name')
+-        record = results / episode / 'formal-record.json'
++        record = results / episode / f'{data_kind}-record.json'
+         if not record.is_file():
+             missing.append(episode)
+         else:
+             paths.append(record)
+     if missing:
+-        save_json(output.with_name('missing-formal-records.json'), dict(missing_episode_ids=missing))
+-        raise ValueError(f'{len(missing)} locked episodes have no terminal formal record')
++        save_json(output.with_name(f'missing-{data_kind}-records.json'), dict(missing_episode_ids=missing))
++        raise ValueError(f'{len(missing)} locked episodes have no terminal {data_kind} record')
+     # One object per episode directory. Validate through the existing list reader.
+     from tempfile import TemporaryDirectory
+     with TemporaryDirectory(dir=output.parent) as tmp:
+@@ -36,7 +38,7 @@
+         if any(row['episode_id'] != path.parent.name for path,row in zip(paths,decoded)):
+             raise ValueError('formal record identity differs from its episode directory')
+         save_json(assembled, decoded)
+-        rows = load_records([assembled], 'formal')
++        rows = load_records([assembled], data_kind)
+         check_formal_roster(lock_path, rows)
+     save_json(output, rows)
+     return rows
+--- a/scripts/g2_capture.py
++++ b/scripts/g2_capture.py
+@@ -1,6 +1,6 @@
+ """Capture actual named articulation state without using RoboTwin drive-target getters."""
+ from g2_adapter import ArmSample, Snapshot, Stamp, SIDES
+-from robotwin_control_geometry import pose_from_wxyz, checked_pose
++from robotwin_control_geometry import pose_from_wxyz, checked_pose, inverse_pose
+ import numpy as np
+ 
+ 
+@@ -25,6 +25,17 @@
+     return tuple(samples)
+ 
+ 
++def capture_task_objects(env, world_task):
++    task_world = inverse_pose(checked_pose(world_task))
++    objects = {}
++    for name, attribute in (("block", "box"), ("target", "target_box"), ("table", "table")):
++        actor = getattr(env, attribute, None)
++        if actor is not None:
++            value = actor.get_pose()
++            objects[name] = task_world @ pose_from_wxyz(value.p, value.q)
++    return objects or None
++
++
+ def capture_snapshot(env, stamp, world_task):
+     """Capture synchronous RGB and named actual state while physics is paused."""
+     samples = capture_arms(env.robot, stamp)
+@@ -36,4 +47,5 @@
+         if rgb.ndim != 3 or rgb.shape[2] != 3 or rgb.dtype != np.uint8:
+             raise ValueError(f"invalid RGB capture: {source}")
+         images[name] = (stamp, np.ascontiguousarray(rgb.transpose(2, 0, 1)))
+-    return Snapshot(stamp, tuple(samples), images, checked_pose(world_task).copy()), observation
++    return Snapshot(stamp, tuple(samples), images, checked_pose(world_task).copy(),
++                    capture_task_objects(env, world_task)), observation
+--- a/scripts/g2_failure_inventory.py
++++ b/scripts/g2_failure_inventory.py
+@@ -0,0 +1,185 @@
++"""Hash an existing G2 run and extract evidence without modifying its files."""
++
++import argparse
++from collections import Counter, deque
++from contextlib import nullcontext
++from hashlib import sha256
++import json
++from pathlib import Path
++import zipfile
++
++
++def digest(path):
++    h = sha256()
++    with path.open("rb") as handle:
++        for block in iter(lambda: handle.read(1024 * 1024), b""):
++            h.update(block)
++    return h.hexdigest()
++
++
++def audit(raw, output):
++    raw, output = raw.resolve(strict=True), output.resolve()
++    if output == raw or raw in output.parents:
++        raise ValueError("analysis output must be outside the original run")
++    output.mkdir(parents=True, exist_ok=False)
++    files = {}
++    for path in sorted(raw.rglob("*")):
++        if path.is_symlink():
++            raise ValueError(f"symlink requires manual provenance review: {path}")
++        if path.is_file():
++            stat = path.stat()
++            files[str(path.relative_to(raw))] = dict(
++                bytes=stat.st_size, mtime_ns=stat.st_mtime_ns, sha256=digest(path)
++            )
++            if (
++                path.stat().st_mtime_ns != stat.st_mtime_ns
++                or path.stat().st_size != stat.st_size
++            ):
++                raise ValueError("original evidence changed while hashing")
++    (output / "inventory.json").write_text(
++        json.dumps(dict(raw_root=str(raw), files=files), indent=2) + "\n"
++    )
++    trials = {}
++    with zipfile.ZipFile(
++        output / "evidence-selection.zip", "w", zipfile.ZIP_DEFLATED
++    ) as bundle:
++        for directory in sorted((raw / "trials").iterdir()):
++            if not directory.is_dir():
++                continue
++            name = directory.name
++            counts = {
++                pattern: len(list(directory.glob(pattern)))
++                for pattern in (
++                    "action-*.npy",
++                    "observation-*.npz",
++                    "plan-*.npy",
++                    "plan-*.npz",
++                )
++            }
++            required = (
++                "result.json",
++                "events.jsonl",
++                "head.mp4",
++                "initial-readback.json",
++                "setup.json",
++                "formal-record.json",
++            )
++            missing = [item for item in required if not (directory / item).is_file()]
++            result = (
++                json.loads((directory / "result.json").read_text())
++                if (directory / "result.json").is_file()
++                else None
++            )
++            kinds, phases = Counter(), Counter()
++            selected, last_steps, samples = [], deque(maxlen=2), []
++            error_sum = error_count = 0
++            max_error, first_large_error = 0, None
++            prior_clock = None
++            clock_errors = []
++            events_path = directory / "events.jsonl"
++            with (
++                events_path.open() if events_path.is_file() else nullcontext(())
++            ) as events:
++                for line_number, line in enumerate(events, 1):
++                    row = json.loads(line)
++                    kinds[row.get("kind", "adapter_diagnostic")] += 1
++                    phases[row["phase"]] += 1
++                    if row.get("kind") == "executed_step":
++                        last_steps.append(row)
++                        clock = row.get("sim_s")
++                        if (
++                            clock is not None
++                            and prior_clock is not None
++                            and clock <= prior_clock
++                        ):
++                            clock_errors.append(line_number)
++                        prior_clock = clock
++                        errors = row.get("position_error_m", [])
++                        error_sum += sum(x * x for x in errors)
++                        error_count += len(errors)
++                        if errors:
++                            max_error = max(max_error, max(errors))
++                            if max(errors) > 0.05 and first_large_error is None:
++                                first_large_error = dict(line=line_number, event=row)
++                        if row.get("tick", 0) % 250 == 0:
++                            samples.append(row)
++                    else:
++                        selected.append(dict(source_line=line_number, **row))
++            bundle.writestr(f"{name}/events-selected.json", json.dumps(selected))
++            bundle.writestr(
++                f"{name}/control-samples.json", json.dumps(samples + list(last_steps))
++            )
++            actions = sorted(directory.glob("action-*.npy"))
++            plans = sorted(directory.glob("plan-*.np*"))
++            for path in sorted(set(actions[-2:] + actions[:1] + plans[-2:])):
++                bundle.write(path, f"{name}/{path.name}")
++            for item in required:
++                if item.endswith(".json") and (directory / item).is_file():
++                    bundle.write(directory / item, f"{name}/{item}")
++            collisions = {}
++            for item in ("collision-checks.jsonl", "proxy-collision-checks.jsonl"):
++                path = directory / item
++                if not path.is_file():
++                    collisions[item] = dict(present=False)
++                    continue
++                tail, pairs, n = deque(maxlen=40), Counter(), 0
++                with path.open() as stream:
++                    for line in stream:
++                        row = json.loads(line)
++                        n += 1
++                        tail.append(row)
++                        for block in row.get("blocked", []):
++                            pairs[
++                                "|".join(
++                                    str(block.get(k))
++                                    for k in (
++                                        "collision_type",
++                                        "object_name1",
++                                        "link_name1",
++                                        "object_name2",
++                                        "link_name2",
++                                    )
++                                )
++                            ] += 1
++                collisions[item] = dict(
++                    present=True, calls=n, blocked_pairs=dict(pairs)
++                )
++                bundle.writestr(f"{name}/{item}-tail.json", json.dumps(list(tail)))
++            trials[name] = dict(
++                counts=counts,
++                missing=missing,
++                result=result,
++                event_kinds=dict(kinds),
++                event_phases=dict(phases),
++                nonmonotonic_clock_lines=clock_errors,
++                tracking_position_rmse_m=(error_sum / error_count) ** 0.5
++                if error_count
++                else None,
++                tracking_position_max_m=max_error,
++                first_tracking_error_over_50mm=first_large_error,
++                collision_logs=collisions,
++            )
++        for folder in ("supervisor", "model"):
++            for path in (raw / folder).glob("*.json"):
++                bundle.write(path, f"{folder}/{path.name}")
++        for path in raw.glob("*launch*.json"):
++            bundle.write(path, path.name)
++    (output / "trial-audit.json").write_text(json.dumps(trials, indent=2) + "\n")
++    print(
++        json.dumps(
++            dict(
++                files=len(files),
++                bytes=sum(r["bytes"] for r in files.values()),
++                trials=len(trials),
++                archive_bytes=(output / "evidence-selection.zip").stat().st_size,
++            )
++        )
++    )
++
++
++if __name__ == "__main__":
++    parser = argparse.ArgumentParser(description=__doc__)
++    parser.add_argument("raw", type=Path)
++    parser.add_argument("output", type=Path)
++    args = parser.parse_args()
++    audit(args.raw, args.output)
+--- a/scripts/g2_static_failure_replay.py
++++ b/scripts/g2_static_failure_replay.py
+@@ -0,0 +1,456 @@
++"""Reconstruct captured ARX endpoints in CPU FCL with zero physics advancement."""
++
++import argparse
++from hashlib import sha256
++from io import BytesIO
++import json
++from pathlib import Path
++from types import SimpleNamespace
++import zipfile
++
++import numpy as np
++
++from g2_adapter import G2Error, deadline, solve_pair, tool_ik
++from g2_assets import load_arms
++from g2_collision import JointCollisionWorld, audited_arx_self_profile
++from g2_contact import ContactTracker, ContactWorld, contact_profile
++from g2_motion import QuinticMotion
++from g2_proxy_collision import ProxyCollisionWorld, collision_only_urdf
++from robotwin_control_geometry import inverse_pose, pose_from_wxyz
++
++
++def matrix(value):
++    return pose_from_wxyz(value[:3], value[3:])
++
++
++def pose(value):
++    import sapien
++    from g2_robotwin_backend import pose7
++
++    v = pose7(value)
++    return sapien.Pose(v[:3], v[3:])
++
++
++def build(config, audit_path, assets, snapshot, initial, block_pose, output):
++    import sapien
++    from mplib.sapien_utils.conversion import convert_object_name
++
++    audit = json.loads(audit_path.read_text())
++    (row,) = [r for r in audit["robots"] if r["robot"] == "ARX-X5"]
++    arms = load_arms(assets, audit_path, "ARX-X5", config["calibration"]["ARX-X5"])
++    source = load_arms(
++        assets, audit_path, "aloha-agilex", config["calibration"]["aloha-agilex"]
++    )
++    scene = sapien.Scene([sapien.physx.PhysxCpuSystem()])
++    scene.set_timestep(0.004)
++    scene.default_physical_material = scene.create_physical_material(0.5, 0.5, 0.0)
++    scene.add_ground(0, render=False)
++    table_builder = scene.create_actor_builder()
++    table_builder.add_box_collision(
++        pose=sapien.Pose([0, 0, -0.025]), half_size=[0.6, 0.35, 0.025]
++    )
++    for x in (-0.55, 0.55):
++        for y in (-0.30, 0.30):
++            table_builder.add_box_collision(
++                pose=sapien.Pose([x, y, -0.372]), half_size=[0.05, 0.05, 0.368]
++            )
++    table = table_builder.build_static(name="table")
++    table.set_pose(pose(matrix(initial["objects_task"]["table"])))
++    wall_builder = scene.create_actor_builder()
++    wall_builder.add_box_collision(half_size=[3, 0.6, 1.5])
++    wall = wall_builder.build_static(name="wall")
++    wall.set_pose(sapien.Pose([0, 1, 1.5]))
++    entities = []
++    urdf = collision_only_urdf(
++        assets / row["urdf_member"], row["urdf_sha256"], output / "arx.urdf"
++    )
++    for side, sample in zip(("left", "right"), snapshot["actual"]):
++        loader = scene.create_urdf_loader()
++        loader.fix_root_link = True
++        entity = loader.load(str(urdf))
++        entity.set_name("arx_" + side)
++        entity.set_root_pose(pose(np.asarray(sample["world_base"])))
++        values = dict(zip(sample["names"], sample["qpos"]))
++        entity.set_qpos(np.array([values[j.name] for j in entity.get_active_joints()]))
++        entities.append(entity)
++    objects = {}
++    for name, half in [("box", [0.03, 0.03, 0.1]), ("target_box", [0.05, 0.05, 0.005])]:
++        actor = sapien.Entity()
++        actor.name = name
++        body = (
++            sapien.physx.PhysxRigidDynamicComponent()
++            if name == "box"
++            else sapien.physx.PhysxRigidStaticComponent()
++        )
++        body.attach(
++            sapien.physx.PhysxCollisionShapeBox(
++                half_size=half, material=scene.default_physical_material
++            )
++        )
++        actor.add_component(body)
++        actor.set_pose(
++            pose(
++                block_pose
++                if name == "box"
++                else matrix(initial["objects_task"]["target"])
++            )
++        )
++        scene.add_entity(actor)
++        if name == "box":
++            body.mass = 0.01
++        objects[name] = actor
++    robot = SimpleNamespace(left_entity=entities[0], right_entity=entities[1])
++    limits, _ = contact_profile(config, 0.01)
++    tracker = ContactTracker.from_scene(robot, objects["box"], arms, limits)
++    tracker.block_pose = block_pose
++    checker = JointCollisionWorld.from_scene(
++        scene, entities, [a.chain.names for a in arms], [a.grip.names for a in arms]
++    )
++    checker.use_self_profile(audited_arx_self_profile(assets))
++    frames = [
++        inverse_pose(matrix(config["world_task"])) @ np.asarray(s["world_base"])
++        for s in snapshot["actual"]
++    ]
++    names = [convert_object_name(x) for x in scene.get_all_actors()]
++    supports = [convert_object_name(x) for x in (table, objects["target_box"])]
++    target = ContactWorld(
++        checker,
++        tracker,
++        arms,
++        frames,
++        convert_object_name(objects["box"]),
++        names,
++        [
++            [e.find_joint_by_name(n).child_link.name for n in a.grip.names]
++            for e, a in zip(entities, arms)
++        ],
++        supports,
++        world_task=matrix(config["world_task"]),
++    )
++    bases = [matrix(v) for v in config["source_base_world"]]
++    (src,) = [r for r in audit["robots"] if r["robot"] == "aloha-agilex"]
++    proxy = ProxyCollisionWorld(
++        scene,
++        assets / src["urdf_member"],
++        src["urdf_sha256"],
++        pose(bases[0]),
++        source,
++        output / "proxy.urdf",
++    )
++    source_contact = ContactWorld(
++        proxy.checker,
++        tracker,
++        source,
++        bases,
++        convert_object_name(objects["box"]),
++        names,
++        [
++            [proxy.entity.find_joint_by_name(n).child_link.name for n in a.grip.names]
++            for a in source
++        ],
++        supports,
++        world_task=matrix(config["world_task"]),
++    )
++    q, g = [], []
++    for a, s in zip(arms, snapshot["actual"]):
++        values = dict(zip(s["names"], s["qpos"]))
++        q.append([values[n] for n in a.chain.names])
++        g.append([values[n] for n in a.grip.names])
++    q, g = np.asarray(q), np.asarray(g)
++    target.set_start(g)
++    return scene, arms, source, frames, bases, target, source_contact, q, g
++
++
++def evaluate(arms, frames, tools, seed, fingers, world, max_delta=None):
++    try:
++        q, residual = solve_pair(
++            arms, frames, tools, seed, fingers, world, deadline(20), max_delta
++        )
++        return dict(accepted=True, q=q.tolist(), residual=residual)
++    except G2Error as error:
++        return dict(
++            accepted=False,
++            status=error.status.value,
++            detail=str(error),
++            diagnostic=error.diagnostic,
++        )
++
++
++def alternatives(arms, frames, tools, seed, fingers, world, max_delta=None):
++    # Search additional seeds under the original pose, joint and continuity bounds.
++    check = deadline(30)
++    choices = []
++    for arm, frame, tool, original in zip(arms, frames, tools, seed):
++        found = []
++        seeds = [np.asarray(original).copy()]
++        for joint in range(6):
++            for change in (-1.0, 1.0):
++                shifted = np.asarray(original).copy()
++                shifted[joint] += change * np.pi / 2
++                seeds.append(shifted)
++        for value in seeds:
++            for q, residual in tool_ik(arm, frame, tool, value, check):
++                q = q - 2 * np.pi * np.round((q - original) / (2 * np.pi))
++                if np.any(q < arm.chain.limits[:, 0]) or np.any(
++                    q > arm.chain.limits[:, 1]
++                ):
++                    continue
++                if max_delta is not None and np.any(
++                    np.abs(q - original) > max_delta[len(choices)] + 1e-9
++                ):
++                    continue
++                if not any(np.max(np.abs(q - old)) < 1e-4 for old in found):
++                    found.append(q)
++            if len(found) >= 16:
++                break
++        choices.append(found)
++    from itertools import product
++
++    pairs = sorted(
++        product(*choices), key=lambda x: np.linalg.norm(np.asarray(x) - seed)
++    )
++    for i, pair in enumerate(pairs):
++        check()
++        values = np.asarray(pair)
++        if world.ik_clear(values, fingers, check):
++            return dict(
++                found=True,
++                counts=[len(x) for x in choices],
++                checked_pairs=i + 1,
++                q=values.tolist(),
++            )
++    return dict(
++        found=False,
++        counts=[len(x) for x in choices],
++        checked_pairs=len(pairs),
++        scope="bounded extra-seed search; no global infeasibility proof",
++    )
++
++
++def run(args):
++    output = args.output.resolve()
++    for source in (args.release, args.assets, args.selection.parent):
++        source = source.resolve()
++        if output == source or source in output.parents:
++            raise ValueError("analysis output must be outside the input directories")
++    args.output.mkdir(parents=True, exist_ok=False)
++    results = {}
++    with zipfile.ZipFile(args.selection) as bundle:
++        for name in sorted(
++            json.loads((args.release / "run_lock.json").read_text())["bindings"]
++        ):
++            if "B-arx" not in name:
++                continue
++            seed_number = int(name.split("-")[0][4:])
++            expert = np.load(
++                args.expert_trace / f"episode{seed_number}.npz", allow_pickle=False
++            )["target"]
++            output = args.output / name
++            output.mkdir()
++            events = json.loads(bundle.read(name + "/events-selected.json"))
++            steps = json.loads(bundle.read(name + "/control-samples.json"))
++            failure = [e for e in events if e.get("status") == "collision"][-1]
++            snaps = [e for e in events if e.get("kind") == "snapshot"]
++            snapshot = snaps[-1]
++            config = json.loads((args.release / "configs" / f"{name}.json").read_text())
++            initial = json.loads(bundle.read(name + "/initial-readback.json"))
++            contact = steps[-1]["contact_state"] if steps else None
++            if contact and (contact["holders"] or contact["phase"] != "approach"):
++                raise ValueError(
++                    "reconstruction supports only recorded approach states without a holder"
++                )
++            block = (
++                np.array(contact["block_pose_task"])
++                if contact
++                else matrix(initial["objects_task"]["block"])
++            )
++            scene, arms, source, frames, bases, target, proxy, q, g = build(
++                config,
++                args.release / "asset-audit.json",
++                args.assets,
++                snapshot,
++                initial,
++                block,
++                output,
++            )
++            source_tools = np.array(
++                [f @ a.chain.fk(v) @ a.offset() for a, f, v in zip(arms, frames, q)]
++            )
++            if failure["phase"] == "observation":
++                world = proxy
++                fractions = [a.grip.measure(v)["normalized"] for a, v in zip(arms, g)]
++                fingers = np.array(
++                    [a.grip.target(v) for a, v in zip(source, fractions)]
++                )
++                proxy.set_start(fingers)
++                previous = [e for e in events if e.get("kind") == "policy_input"][-1]
++                seed = np.asarray(previous["state"]).reshape(2, 7)[:, :6]
++                delta = np.asarray(config["source_proxy_velocity_rad_s"]) * (
++                    snapshot["stamp"]["sim_s"] - snaps[-2]["stamp"]["sim_s"]
++                )
++                actual = evaluate(
++                    source, bases, source_tools, seed, fingers, proxy, delta
++                )
++                world_kind = "source_collision"
++            else:
++                world = target
++                req = failure["requests"][0]
++                action_name = sorted(
++                    n
++                    for n in bundle.namelist()
++                    if n.startswith(name + "/action-") and n.endswith(".npy")
++                )[-1]
++                action_bytes = bundle.read(action_name)
++                action = np.load(BytesIO(action_bytes), allow_pickle=False)[
++                    req["row"]
++                ].reshape(2, 7)
++                policy_tools = np.array(
++                    [
++                        f @ a.chain.fk(v[:6]) @ a.offset()
++                        for a, f, v in zip(source, bases, action)
++                    ]
++                )
++                difference = float(
++                    np.max(np.abs(policy_tools - np.asarray(req["task_tools"])))
++                )
++                if difference > 1e-10:
++                    raise ValueError(
++                        "raw policy FK differs from the original requested tool poses"
++                    )
++                actual = evaluate(
++                    arms,
++                    frames,
++                    policy_tools,
++                    np.asarray(req["ik_start"]),
++                    np.asarray(req["fingers"]),
++                    target,
++                )
++                actual.update(
++                    raw_action_file=action_name,
++                    raw_action_sha256=sha256(action_bytes).hexdigest(),
++                    source_fk_max_abs_difference=difference,
++                )
++                world_kind = "target_collision"
++            expanded = None
++            if args.search_alternatives:
++                try:
++                    expanded = (
++                        alternatives(
++                            source, bases, source_tools, seed, fingers, proxy, delta
++                        )
++                        if failure["phase"] == "observation"
++                        else alternatives(
++                            arms,
++                            frames,
++                            np.asarray(req["task_tools"]),
++                            np.asarray(req["ik_start"]),
++                            np.asarray(req["fingers"]),
++                            target,
++                        )
++                    )
++                except G2Error as error:
++                    expanded = dict(
++                        found=False,
++                        status=error.status.value,
++                        detail=str(error),
++                        scope="bounded search incomplete",
++                    )
++            examples = []
++            for candidate in failure["collision_examples"]:
++                values = np.asarray(candidate["candidate_q"])
++                fingers = (
++                    np.asarray(failure["requests"][0]["fingers"])
++                    if failure["phase"] != "observation"
++                    else fingers
++                )
++                verdict = world.ik_clear(values, fingers, deadline(10))
++                examples.append(
++                    dict(
++                        accepted=bool(verdict),
++                        q=values.tolist(),
++                        collisions=world.last_collisions,
++                    )
++                )
++            references = []
++            for tick in (0, 25, 100):
++                row = expert[tick]
++                source_q = np.array([row[:6], row[7:13]])
++                tools = np.array(
++                    [
++                        f @ a.chain.fk(v) @ a.offset()
++                        for a, f, v in zip(source, bases, source_q)
++                    ]
++                )
++                endpoint = evaluate(arms, frames, tools, q, g, target)
++                path_result = dict(checked=False, reason="endpoint rejected")
++                if endpoint["accepted"]:
++                    limits = config["control_limits"]
++                    motion = QuinticMotion(
++                        config["control_period_s"],
++                        limits["arm_velocity_rad_s"],
++                        limits["arm_acceleration_rad_s2"],
++                        limits["finger_velocity_m_s"],
++                        limits["finger_acceleration_m_s2"],
++                        config["collision_joint_step_rad"],
++                        config["collision_finger_step_m"],
++                        limits["source"],
++                        "captured_static_CPU_FCL",
++                        max_ticks=config["max_plan_ticks"],
++                    )
++                    try:
++                        trajectory = motion.plan(
++                            q, g, [(np.asarray(endpoint["q"]), g)], target, deadline(20)
++                        )
++                        path_result = dict(
++                            checked=True,
++                            accepted=True,
++                            control_ticks=len(trajectory.q),
++                            max_abs_velocity_rad_s=float(
++                                np.abs(trajectory.velocity).max()
++                            ),
++                        )
++                    except G2Error as error:
++                        path_result = dict(
++                            checked=True,
++                            accepted=False,
++                            status=error.status.value,
++                            detail=str(error),
++                            diagnostic=error.diagnostic,
++                        )
++                references.append(
++                    dict(
++                        source="official Aloha expert target FK in task frame",
++                        physics_tick=tick,
++                        result=endpoint,
++                        path=path_result,
++                    )
++                )
++            results[name] = dict(
++                world=world_kind,
++                original=failure,
++                reconstructed=actual,
++                expanded_search=expanded,
++                recorded_candidate_checks=examples,
++                expert_task_space_controls=references,
++                scene_physics_steps=0,
++                model_started=False,
++                gpu_used=False,
++                scope="captured q/fingers and approach block pose; audited URDF and primitive task geometry; no dynamic replay",
++                block_pose_task=block.tolist(),
++                last_measured_fingers=g.tolist(),
++            )
++            (args.output / "replay.json").write_text(
++                json.dumps(results, indent=2) + "\n"
++            )
++            print(
++                name, world_kind, actual["accepted"], actual.get("detail"), flush=True
++            )
++            del world, target, proxy, scene
++
++
++if __name__ == "__main__":
++    p = argparse.ArgumentParser(description=__doc__)
++    for name in ("release", "assets", "selection", "expert-trace", "output"):
++        p.add_argument("--" + name, type=Path, required=True)
++    p.add_argument("--search-alternatives", action="store_true")
++    run(p.parse_args())
+--- a/scripts/g2_native_target_audit_cpu.py
++++ b/scripts/g2_native_target_audit_cpu.py
+@@ -0,0 +1,111 @@
++"""Check captured Aloha arm states in the audited self-collision geometry on CPU."""
++
++import argparse
++import json
++from pathlib import Path
++import zipfile
++import numpy as np
++from g2_assets import load_arms
++from g2_collision import JointCollisionWorld
++from g2_proxy_collision import collision_only_urdf
++
++
++def run(a):
++    output = a.output.resolve()
++    for source in (a.release, a.assets, a.selection.parent):
++        source = source.resolve()
++        if output == source or source in output.parents:
++            raise ValueError("analysis output must be outside the input directories")
++    import sapien
++
++    a.output.mkdir(parents=True, exist_ok=False)
++    asset = json.loads((a.release / "asset-audit.json").read_text())
++    (record,) = [r for r in asset["robots"] if r["robot"] == "aloha-agilex"]
++    audit = json.loads(a.trial_audit.read_text())
++    result = {}
++    with zipfile.ZipFile(a.selection) as z:
++        for name in sorted(n for n in audit if "A-native" in n):
++            out = a.output / name
++            out.mkdir()
++            cfg = json.loads((a.release / "configs" / f"{name}.json").read_text())
++            arms = load_arms(
++                a.assets,
++                a.release / "asset-audit.json",
++                "aloha-agilex",
++                cfg["calibration"]["aloha-agilex"],
++            )
++            scene = sapien.Scene([sapien.physx.PhysxCpuSystem()])
++            loader = scene.create_urdf_loader()
++            loader.fix_root_link = True
++            path = collision_only_urdf(
++                a.assets / record["urdf_member"],
++                record["urdf_sha256"],
++                out / "aloha.urdf",
++            )
++            entity = loader.load(str(path))
++            entity.set_name("native_aloha")
++            checker = JointCollisionWorld.from_scene(
++                scene,
++                [entity, entity],
++                [x.chain.names for x in arms],
++                [x.grip.names for x in arms],
++            )
++            initial = json.loads(z.read(name + "/initial-readback.json"))
++            samples = json.loads(z.read(name + "/control-samples.json"))
++            first = audit[name]["first_tracking_error_over_50mm"]
++            probes = [
++                (
++                    "initial",
++                    np.array(
++                        [initial["actual_arm_qpos_rad"][s] for s in ("left", "right")]
++                    ),
++                    samples[0]["actual_fingers"],
++                )
++            ]
++            for label, event in [
++                ("first_50mm", first["event"] if first else None),
++                ("final", samples[-1]),
++            ]:
++                if event:
++                    probes += [
++                        (
++                            label + "_actual",
++                            event["actual_arm"],
++                            event["actual_fingers"],
++                        ),
++                        (
++                            label + "_target",
++                            event["target_arm"],
++                            event["actual_fingers"],
++                        ),
++                    ]
++            checks = []
++            for label, q, g in probes:
++                clear = checker(np.asarray(q), np.asarray(g))
++                checks.append(
++                    dict(
++                        label=label,
++                        clear=bool(clear),
++                        q=q,
++                        fingers=g,
++                        collisions=checker.last_collisions,
++                    )
++                )
++            result[name] = dict(
++                scope="articulation self-collision only; target arm q with recorded actual fingers; no task actors or dynamics",
++                checks=checks,
++                physics_steps=0,
++                gpu_used=False,
++            )
++            print(name, [(r["label"], r["clear"]) for r in checks], flush=True)
++            del scene, entity, checker
++    (a.output / "native-self.json").write_text(
++        json.dumps(result, default=lambda x: x.tolist(), indent=2) + "\n"
++    )
++
++
++if __name__ == "__main__":
++    p = argparse.ArgumentParser(description=__doc__)
++    for n in ("release", "assets", "selection", "trial-audit", "output"):
++        p.add_argument("--" + n, type=Path, required=True)
++    run(p.parse_args())
+--- a/scripts/g2_analyze_saved_actions.py
++++ b/scripts/g2_analyze_saved_actions.py
+@@ -0,0 +1,115 @@
++"""Quantify saved policy prefixes and expert timing without evaluating a model."""
++
++import argparse
++import json
++from pathlib import Path
++import numpy as np
++
++
++def analyze(evidence, experts, output):
++    if (
++        output.resolve() == evidence.resolve()
++        or evidence.resolve() in output.resolve().parents
++    ):
++        raise ValueError("analysis output must be outside the input evidence")
++    actions = json.loads((evidence / "action-audit.json").read_text())
++    audit = json.loads((evidence / "trial-audit.json").read_text())
++    metrics = {}
++    prefix_counts = {}
++    for name, rows in actions.items():
++        if "A-native" not in name:
++            continue
++        seed = int(name.split("-")[0][4:])
++        events = json.loads(
++            (evidence / "selected" / name / "events-selected.json").read_text()
++        )
++        inputs = [r for r in events if r.get("kind") == "policy_input"]
++        states = np.array([r["state"] for r in inputs])
++        actual_prefix = np.concatenate([r["executed_prefix"] for r in rows])
++        closure = np.flatnonzero(actual_prefix[:, 6] < 0.5)
++        future = [r["first_close_index"][0] for r in rows]
++        future_found = [x for x in future if x is not None]
++        z = np.load(
++            experts / f"expert-dense-episode{seed}-20261106/trace.npz",
++            allow_pickle=False,
++        )
++        expert = z["target"]
++        frame_ticks = z["frame_ticks"]
++        expert_close = np.flatnonzero(expert[:, 6] < 0.5)
++        query_of_error = None
++        first = audit[name]["first_tracking_error_over_50mm"]
++        if first:
++            query_of_error = sum(
++                r.get("kind") == "snapshot" and r["source_line"] < first["line"]
++                for r in events
++            )
++        metrics[name] = dict(
++            queries=len(rows),
++            executed=len(actual_prefix),
++            prompt=inputs[0]["prompt"],
++            observed_state_grip_min=states[:, [6, 13]].min(0).tolist(),
++            executed_target_grip_min=actual_prefix[:, [6, 13]].min(0).tolist(),
++            first_executed_left_closure_action=int(closure[0])
++            if len(closure)
++            else None,
++            chunks_with_future_left_closure=len(future_found),
++            first_future_left_closure_query=next(
++                (i + 1 for i, x in enumerate(future) if x is not None), None
++            ),
++            median_future_left_closure_horizon=float(np.median(future_found))
++            if future_found
++            else None,
++            last_ten_future_left_closure_horizons=future[-10:],
++            first_tracking_error_over_50mm_query=query_of_error,
++            first_tracking_error_over_50mm_tick=first["event"]["tick"]
++            if first
++            else None,
++            first_tracking_error_over_50mm_sim_s=first["event"]["sim_s"]
++            if first
++            else None,
++            tracking_position_rmse_m=audit[name]["tracking_position_rmse_m"],
++            tracking_position_max_m=audit[name]["tracking_position_max_m"],
++            expert_frames=len(frame_ticks),
++            expert_physics_steps=len(expert) - 1,
++            expert_sim_duration_s=(len(expert) - 1) * 0.004,
++            expert_first_left_closure_physics_tick=int(expert_close[0])
++            if len(expert_close)
++            else None,
++            actual_sim_duration_s=json.loads(
++                (evidence / "selected" / name / "formal-record.json").read_text()
++            )["metrics"]["actions"]["sim_elapsed_s"],
++            raw_action_shapes=sorted({tuple(r["shape"]) for r in rows}),
++            all_raw_actions_finite=all(r["finite"] for r in rows),
++            max_raw_grip_clip_amount=max(r["raw_clip_amount"] for r in rows),
++            object_trajectory_recorded=False,
++        )
++        prefix_counts[name] = {
++            str(w): dict(
++                chunks_retaining_left_close=sum(
++                    x is not None and x < w for x in future
++                ),
++                chunks=len(rows),
++            )
++            for w in (1, 4, 8, 16, 32, 50)
++        }
++    output.mkdir(parents=True, exist_ok=False)
++    (output / "aloha-metrics.json").write_text(json.dumps(metrics, indent=2) + "\n")
++    (output / "prefix-counterfactual.json").write_text(
++        json.dumps(
++            dict(
++                scope="fixed recorded chunks only; alternative prefixes change future observations and require closed-loop validation",
++                cases=prefix_counts,
++            ),
++            indent=2,
++        )
++        + "\n"
++    )
++    return metrics
++
++
++if __name__ == "__main__":
++    p = argparse.ArgumentParser(description=__doc__)
++    for n in ("evidence", "experts", "output"):
++        p.add_argument(n, type=Path)
++    a = p.parse_args()
++    analyze(a.evidence, a.experts, a.output)
+--- a/scripts/g2_replay_native_prefixes.py
++++ b/scripts/g2_replay_native_prefixes.py
+@@ -0,0 +1,87 @@
++"""Reproduce saved native plans and inspect fixed-chunk prefix alternatives on CPU."""
++
++import argparse
++from hashlib import sha256
++import json
++from pathlib import Path
++
++import numpy as np
++
++from g2_adapter import G2Error
++from g2_assets import load_arms
++from g2_episode import native_prefix
++
++
++def audit(raw, release, assets, output):
++    raw = raw.resolve(strict=True)
++    output = output.resolve()
++    if output == raw or raw in output.parents:
++        raise ValueError("output must be outside the original run")
++    lock = json.loads((release / "run_lock.json").read_text())
++    report = {}
++    for directory in sorted((raw / "trials").glob("*A-native*")):
++        config_path = release / "configs" / f"{directory.name}.json"
++        if (
++            sha256(config_path.read_bytes()).hexdigest()
++            != lock["bindings"][directory.name]["config_sha256"]
++        ):
++            raise ValueError("configuration differs from the original run lock")
++        config = json.loads(config_path.read_text())
++        arms = load_arms(
++            assets,
++            release / "asset-audit.json",
++            "aloha-agilex",
++            config["calibration"]["aloha-agilex"],
++        )
++        limits = [arm.chain.limits for arm in arms]
++        sweep = {
++            str(w): dict(valid_prefixes=0, prefixes_with_left_closure=0)
++            for w in (1, 4, 8, 16, 32, 50)
++        }
++        matched = 0
++        for path in sorted(directory.glob("action-*.npy")):
++            actions = np.load(path, allow_pickle=False)
++            original = np.load(
++                directory / path.name.replace("action-", "plan-"), allow_pickle=False
++            )
++            actual = native_prefix(
++                actions,
++                config["window"],
++                limits,
++                config["native_grip_max_clip"],
++                lambda event: None,
++            )
++            if not np.array_equal(actual, original):
++                raise ValueError(f"native plan mismatch at {path}")
++            matched += 1
++            for window in (1, 4, 8, 16, 32, 50):
++                try:
++                    prefix = native_prefix(
++                        actions,
++                        window,
++                        limits,
++                        config["native_grip_max_clip"],
++                        lambda event: None,
++                    )
++                except G2Error:
++                    continue
++                sweep[str(window)]["valid_prefixes"] += 1
++                sweep[str(window)]["prefixes_with_left_closure"] += int(
++                    np.any(prefix[:, 6] < 0.5)
++                )
++        report[directory.name] = dict(
++            saved_plans_exactly_reproduced=matched,
++            prefix_sweep=sweep,
++            scope="fixed saved chunks; windows above four are outside the admitted rollout interface",
++        )
++    with output.open("x") as handle:
++        handle.write(json.dumps(report, indent=2) + "\n")
++    return report
++
++
++if __name__ == "__main__":
++    parser = argparse.ArgumentParser(description=__doc__)
++    for name in ("raw", "release", "assets", "output"):
++        parser.add_argument("--" + name, type=Path, required=True)
++    args = parser.parse_args()
++    audit(args.raw, args.release, args.assets, args.output)
+--- a/tests/test_g2_failure_repair.py
++++ b/tests/test_g2_failure_repair.py
+@@ -0,0 +1,158 @@
++from hashlib import sha256
++import json
++from pathlib import Path
++import tempfile
++import unittest
++
++from g2_locked_score import collect
++from g2_locked_task import save_terminal_record
++from g2_single_statistics import assessment
++
++ROOT = Path(__file__).resolve().parents[1]
++EVIDENCE = ROOT / "research/g2/failure-audit-127054052-r1"
++
++
++class FailureRepairTests(unittest.TestCase):
++    @classmethod
++    def setUpClass(cls):
++        cls.raw = [
++            json.loads(p.read_text())
++            for p in sorted((EVIDENCE / "selected").glob("*/formal-record.json"))
++        ]
++        if len(cls.raw) != 8:
++            raise RuntimeError(f"eight actual G2 records required at {EVIDENCE}")
++        cls.supervisor = json.loads(
++            (EVIDENCE / "selected/supervisor/g2_acceptance.json").read_text()
++        )
++
++    def test_original_formal_labels_contradict_actual_diagnostic_supervisor(self):
++        with self.assertRaisesRegex(ValueError, "contradicts"):
++            assessment(self.raw, self.supervisor)
++
++    def test_all_stages_complete_does_not_count_as_any_task_success(self):
++        rows = [dict(row, data_kind="diagnostic") for row in self.raw]
++        report = assessment(rows, self.supervisor)
++        self.assertTrue(self.supervisor["complete"])
++        self.assertTrue(report["trial_records_complete"])
++        self.assertEqual(report["trial_count"], 8)
++        self.assertEqual(report["task_success_count"], 0)
++        self.assertFalse(report["all_tasks_successful"])
++        self.assertFalse(report["formal_score_eligible"])
++        self.assertEqual(
++            report["outcomes"],
++            dict(task_unsuccessful=4, planning_failed=3, adapter_error=1),
++        )
++
++    def test_diagnostic_configuration_does_not_promote_terminal_record(self):
++        with tempfile.TemporaryDirectory() as temp:
++            output = Path(temp)
++            row = save_terminal_record(
++                output, {"formal_release_ready": False}, self.raw[0]
++            )
++            self.assertEqual(row["data_kind"], "diagnostic")
++            self.assertTrue((output / "diagnostic-record.json").is_file())
++            self.assertFalse((output / "formal-record.json").exists())
++            self.assertEqual(self.raw[0]["data_kind"], "formal")
++
++    def test_diagnostic_collection_preserves_locked_roster_and_missing_detection(self):
++        lock = EVIDENCE / "release-context/run_lock.json"
++        digest = sha256(lock.read_bytes()).hexdigest()
++        with tempfile.TemporaryDirectory() as temp:
++            root = Path(temp)
++            for row in self.raw:
++                out = root / row["episode_id"]
++                out.mkdir()
++                (out / "diagnostic-record.json").write_text(
++                    json.dumps(dict(row, data_kind="diagnostic"))
++                )
++            rows = collect(
++                lock, digest, root, root / "rows.json", data_kind="diagnostic"
++            )
++            self.assertEqual(len(rows), 8)
++            (root / self.raw[0]["episode_id"] / "diagnostic-record.json").unlink()
++            with self.assertRaisesRegex(ValueError, "no terminal diagnostic record"):
++                collect(
++                    lock, digest, root, root / "missing.json", data_kind="diagnostic"
++                )
++            self.assertFalse((root / "missing.json").exists())
++
++    def test_static_cpu_replay_reproduces_all_four_real_failures(self):
++        path = ROOT / "research/g2/offline-repair-20261106-r1/static-replay.json"
++        report = json.loads(path.read_text())
++        self.assertEqual(len(report), 4)
++        for case in report.values():
++            self.assertFalse(case["reconstructed"]["accepted"])
++            self.assertEqual(case["reconstructed"]["status"], "collision")
++            self.assertEqual(case["scene_physics_steps"], 0)
++            self.assertFalse(case["gpu_used"])
++            self.assertTrue(
++                all(not x["accepted"] for x in case["recorded_candidate_checks"])
++            )
++            self.assertTrue(
++                all(x["result"]["accepted"] for x in case["expert_task_space_controls"])
++            )
++        self.assertEqual(report["seed1-B-arx-w1"]["world"], "source_collision")
++
++    def test_repeated_future_closure_is_outside_recorded_executed_prefix(self):
++        actions = json.loads((EVIDENCE / "action-audit.json").read_text())
++        for name in ("seed0-A-native-w1", "seed1-A-native-w1", "seed1-A-native-w4"):
++            rows = actions[name]
++            self.assertTrue(
++                all(min(p[6] for p in r["executed_prefix"]) > 0.98 for r in rows)
++            )
++            self.assertGreater(
++                sum(r["first_close_index"][0] is not None for r in rows),
++                len(rows) * 0.9,
++            )
++            self.assertTrue(all(r["finite"] for r in rows))
++
++    def test_task_object_capture_uses_actual_actor_pose_in_task_frame(self):
++        from types import SimpleNamespace as NS
++        import numpy as np
++        from g2_capture import capture_task_objects
++
++        actor = NS(get_pose=lambda: NS(p=[1.0, 2.0, 3.0], q=[1.0, 0.0, 0.0, 0.0]))
++        frame = np.eye(4)
++        frame[:3, 3] = [0.5, 1.0, 1.5]
++        objects = capture_task_objects(NS(box=actor), frame)
++        np.testing.assert_allclose(objects["block"][:3, 3], [0.5, 1.0, 1.5])
++        self.assertNotIn("target", objects)
++        self.assertIsNone(capture_task_objects(NS(), frame))
++
++    def test_inventory_reports_missing_events_and_retains_input_bytes(self):
++        from contextlib import redirect_stdout
++        from io import StringIO
++        from g2_failure_inventory import audit
++
++        with tempfile.TemporaryDirectory() as temp:
++            root = Path(temp)
++            raw = root / "raw"
++            trial = raw / "trials/case"
++            trial.mkdir(parents=True)
++            marker = raw / "marker"
++            marker.write_bytes(b"original evidence")
++            before = marker.read_bytes()
++            with redirect_stdout(StringIO()):
++                audit(raw, root / "analysis")
++            report = json.loads((root / "analysis/trial-audit.json").read_text())
++            self.assertIn("events.jsonl", report["case"]["missing"])
++            self.assertIn("result.json", report["case"]["missing"])
++            self.assertEqual(marker.read_bytes(), before)
++            with self.assertRaisesRegex(ValueError, "outside"):
++                audit(raw, raw / "forbidden-analysis")
++
++    def test_legacy_statistics_refuses_writing_into_original_evidence(self):
++        from g2_single_statistics import summarize
++
++        trials = EVIDENCE / "selected"
++        with self.assertRaisesRegex(ValueError, "outside the original run"):
++            summarize(
++                EVIDENCE / "release-context/run_lock.json",
++                "unused",
++                trials,
++                trials / "forbidden-new-summary",
++                EVIDENCE / "expert-replay.json",
++                trials / "supervisor/g2_acceptance.json",
++                True,
++            )
++        self.assertFalse((trials / "forbidden-new-summary").exists())
+--- a/docs/g2_failure_evidence_inventory.md
++++ b/docs/g2_failure_evidence_inventory.md
+@@ -0,0 +1,26 @@
++作业 127054052 的证据清单已在 2026-11-06 只读核验。原目录为 <PROJECT_ROOT>/results/pace-g2-127054052，本轮输出均位于另建的 results/g2/ 与本地 research/g2/ 目录。
++
++共 2,712 个原始文件、419,842,365 字节。逐文件 SHA-256、大小和 mtime_ns 保存于 research/g2/failure-audit-127054052-r1/inventory.json。没有以 GitHub 汇总代替原始事件。
++
++| 试次 | 动作块 | RGB观测 | 原生计划 | ARX计划 | 必备文件缺失 |
++|---|---:|---:|---:|---:|---|
++| seed0-A-native-w1 | 300 | 300 | 300 | 0 | 无 |
++| seed0-A-native-w4 | 75 | 75 | 75 | 0 | 无 |
++| seed0-B-arx-w1 | 26 | 26 | 0 | 25 | 无 |
++| seed0-B-arx-w4 | 7 | 7 | 0 | 6 | 无 |
++| seed1-A-native-w1 | 300 | 300 | 300 | 0 | 无 |
++| seed1-A-native-w4 | 75 | 75 | 75 | 0 | 无 |
++| seed1-B-arx-w1 | 56 | 57 | 0 | 56 | 无 |
++| seed1-B-arx-w4 | 1 | 1 | 0 | 0 | 无 |
++
++八个试次的 result.json、events.jsonl、head.mp4、initial-readback.json、setup.json、formal-record.json 均存在。四个 ARX 各有 target collision 与 proxy collision 两份审计日志。Aloha 原生路径没有生成这两类规划日志，这与运行代码一致。seed1-B-arx-w1 有 57 次观测、56 次模型输出，最后一次在观测适配时拒绝。seed1-B-arx-w4 没有计划文件，因为首个策略目标在计划保存前拒绝。
++
++已保存 840 个模型动作块、841 个 RGB 观测文件及 837 个计划文件。Aloha 750 份原生计划全部通过冻结 native_prefix 逻辑逐值复现。动作块形状均为 50×14，数值有限。这里的完整性核验包含所有原始文件的摘要，选取包仅用于取回分析，原始全量轨迹仍保留在 SCNet。
++
++来源链使用 r2 冻结包，manifest SHA-256 为 dbcb8d40ca88074751229302a0b35797698fa85cd56f43dc1c1eff4de963c09c，run lock SHA-256 为 49281639cfcc7375e8f37be556b8c0d9349aeab1ebc969d1d7ca5638be759d67。八份配置按锁中的逐文件哈希复核。模型启动为 ready、设备 cuda:0、revision 17ef545270cf26ed81169893b60f845f80ce6557，28 个参数与配套文件摘要绑定固定模型清单。没有启动新模型或修改权重、统计。
++
++事件时序逐行检查 sim_s，八个试次均无逆序物理时间。监督器记录同一模型进程启动一次，六阶段执行完毕。八条结果仍为四次 task_unsuccessful、三次 planning_failed、一次 adapter_error。
++
++Aloha 原始 executed_step 没有保存物块位姿或物理接触对，snapshot 也没有对象轨迹。因而无法从历史日志精确恢复每个时刻的持物关系、物块高度、法线和接触冲量。原视频存在，已取回 47 个抽样帧与四张最终帧并检查。抽样帧不能排除未采样时刻的短暂接触。ARX 保存的 contact_state 则覆盖物块位姿、持有状态和双指接触，四次失败均处于 approach、无已确认持有者。
++
++选取包包括带原始行号的非物理步事件、定间隔及最后两步控制状态、末端原始动作/计划、全部试次结果和启动记录。选取包不是全量日志的替代品。transfer.zip SHA-256 为 294eae2fa78d91ec984000074c68b83346507d7cc8025d034526dfc9685269ee。后续复核原始全目录摘要的结果单独保存于 original-integrity-after.json。
+--- a/docs/g2_aloha_failure_analysis.md
++++ b/docs/g2_aloha_failure_analysis.md
+@@ -0,0 +1,32 @@
++Aloha 0/4 的直接失败表现已经定位到抓取与交接动作进展。三条轨迹的执行前缀从未发出左手闭爪目标，四条均未发出右手闭爪目标。seed0-w4 曾发出左手闭爪，但最终没有完成放置成功判据。
++
++| 试次 | 已执行左爪最小开度比例 | 含未来闭爪的动作块 | 第一次左闭爪动作索引 | TCP跟踪RMSE | 首次超过50mm的查询 |
++|---|---:|---:|---:|---:|---:|
++| seed0-A-native-w1 | 0.994688 | 291/300 | 未出现 | 298.100 mm | 66 |
++| seed0-A-native-w4 | 0.001533 | 72/75 | 178 | 40.141 mm | 34 |
++| seed1-A-native-w1 | 0.981184 | 292/300 | 未出现 | 135.875 mm | 149 |
++| seed1-A-native-w4 | 0.992866 | 73/75 | 未出现 | 6.928 mm | 未出现 |
++
++动作索引从 0 开始。闭爪统计以归一化目标小于 0.5 为描述阈值，用于分析策略意图，没有更改执行或成功判据。实际左右指开度与目标分开保存。
++
++seed0-w1 的左臂朝物块移动并接近。第 10 个动作块开始预测未来闭爪，但 291/300 个动作块的闭爪主要位于后续约 24 步，执行的第 0 行始终接近全开。查询 66、物理 tick 5986、仿真 23.944 秒首次出现 50 mm 以上跟踪误差。后续出现物块倾斜和双臂进入同一区域，最终右爪仍全开，未观察到完整交接或向蓝色目标完成释放。最终驱动目标的关节几何自碰撞检查拒绝，实测最终关节几何在该自碰撞检查下通过。
++
++seed0-w4 的左臂接近并在动作 178 首次发出闭爪目标，22/75 个四动作前缀包含左闭爪。抽样帧显示左手靠近、部分遮挡并改变物块姿态，缺少历史对象高度和双指接触数据，不能认定曾经稳定提起。第 34 次查询、仿真 33.120 秒首次超过 50 mm 跟踪误差。后段左手重新打开，右手没有闭爪，未完成交接和放置。最终实测与驱动目标的自碰撞检查均通过，说明自碰撞并非四次失败的统一解释。
++
++seed1-w1 的两臂逐渐靠近物块，视频后段显示物块被挤倒或横置。300 个执行前缀的左爪目标最低仍为 0.981184。292/300 个动作块预测未来左闭爪，最后十块的闭爪位置仍在第 12–22 行，实际只执行第 0 行。查询 149、物理 tick 11491、仿真 45.964 秒首次超过 50 mm 跟踪误差。最终两臂与对侧腕部/相机附近的几何出现重叠，自碰撞检查拒绝实测和驱动目标。没有主动右闭爪、独立右持有或释放证据。
++
++seed1-w4 跟踪 RMSE 仅 6.928 mm，最大 17.708 mm，仍然失败。73/75 个动作块预测未来左闭爪，最后十块闭爪位于第 16–27 行，四动作前缀一直近乎全开。视频显示双臂接近、挤压和倾斜物块，最后仍靠近原区域。最终实测与目标的自碰撞检查均发现对侧指/腕相机附近重叠。该试次说明大跟踪误差不能单独解释所有失败。
++
++视频与几何复核的证据位于 failure-audit-127054052-r1/frames、offline-repair-20261106-r1/final-frames 和 native-self-127054052-r1/native-self.json。自碰撞检查使用原 URDF 和 MPLib，只有机器人几何，没有任务对象或动态推进。它说明记录状态在该几何规则下重叠，不能替代原始 PhysX 接触证据或精确归因跟踪误差。首次 50 mm 偏差处的实测和目标自碰撞检查均通过，故不能把早期跟踪偏差全部归因于这些最终自碰撞。
++
++MODEL_BEHAVIOR 有直接动作证据支持。短执行窗口反复丢弃包含闭爪的动作块后缀，造成抓取阶段进展不足。更长窗口保留这些目标的静态统计见反事实报告，但新窗口会改变后续图像和模型输出，当前资料无法证明扩大窗口便会成功。
++
++CONTROL_TRACKING 已确认三个试次存在明显偏差，不能据此判定控制器代码存在确定性错误。750 份原生计划与冻结前缀变换逐值一致，原生 take_action 使用关节空间 TOPP 并跟随驱动目标，未发现重复执行增量、左右臂互换或单位换算错误。
++
++OBSERVATION_SEMANTICS 与 ACTION_SEMANTICS 已核查固定源码。PACE 输入直接使用 joint_action/vector，原 Robot.get_left/right_arm_jointState 返回 drive_target 与归一化夹爪，G1/G2 的原生输入均沿用该合同。实际关节和驱动目标不同不构成更换输入语义的依据。OpenPI 配置 adapt_to_pi=False、use_delta_joint_actions=True，策略输出变换已经恢复绝对动作，G2 对输出仅做原约定前缀选择和有界夹爪截取。
++
++PROMPT_DISTRIBUTION 存在受控因素变化。G1 提示为 “Grab the red block with the left arm.”，G2 为 “Pick up the red block with the left arm, hand it to the right arm, and place it on the target.”。后者扩展到完整任务，但没有同状态同随机条件下的模型对照，不能确定它是根因。该因果对照标为 GPU_DEFERRED。
++
++EPISODE_BUDGET 不是单纯时间不足的已证实解释。对应专家包含 295/277 帧，物理时长 15.78/14.62 秒，原生专家 CPU 回放成功。策略试次的 300 动作覆盖 65.78–81.54 秒，约为专家物理时长的 4.5–5.2 倍。策略无需逐帧模仿专家，但在更长时间中仍未执行关键闭爪，不能仅靠增加动作上限解释或修复失败。
++
++UNKNOWN 保留完整物块运动、短暂双指接触、确切持物时间和提示变化的因果效应。四条均不能从视频中可靠确认完整的左稳抓→双手持有→右独持→释放链。
+--- a/docs/g2_arx_collision_analysis.md
++++ b/docs/g2_arx_collision_analysis.md
+@@ -0,0 +1,24 @@
++四次 ARX 都在 IK 候选端点筛选阶段拒绝。QuinticMotion 尚未收到被拒绝的 waypoint，现有记录没有证据将这四次终止归为关节插值路径中间碰撞。
++
++| 试次 | 动作数 | 世界与调用链 | 碰撞拒绝对数 | 具体拒绝 |
++|---|---:|---|---:|---|
++| seed0-B-arx-w1 | 25 | Adapter.actions → solve_pair → target ContactWorld.ik_clear → project_fingers | 16 | 候选左指1在起始开度与物块相交 |
++| seed0-B-arx-w4 | 24 | Adapter.actions → solve_pair → target ContactWorld.ik_clear → project_fingers | 16 | 候选左指1在起始开度与物块相交 |
++| seed1-B-arx-w1 | 56 | Adapter.observe → solve_pair → source ContactWorld.ik_clear → proxy checker | 4 | 虚拟 Aloha fl_link4–fl_link6 自碰撞 |
++| seed1-B-arx-w4 | 0 | Adapter.actions → solve_pair → target ContactWorld.ik_clear → target checker | 16 | 实际 ARX 右臂 link2–link5 自碰撞 |
++
++两个 seed0 事件的“start”指在候选 arm q 固定后，从实测指开度开始扫描的几何端点，不能解释成当前真实机械臂已经穿透物块。CPU 重建中，w1 左指1的起始深度为 5.680498 mm，w4 为 2.752330 mm，均超过原有 2 mm 规则。实测开度分别为 43.881156/43.888327 mm，对应请求为 43.930907/43.990006 mm，指令仍接近全开。正常闭合被物块阻挡的投影规则没有被关闭，这里是开爪下的候选臂目标已压入物块。
++
++seed1-w1 发生在一次真实观测映射中。当前 ARX 状态转换为虚拟 Aloha 工具位姿时，四个满足连续性限制的候选均在虚拟左腕 fl_link4–fl_link6 相交，原记录深度约 0.009292–0.009989 mm。实际 ARX 当前关节并未被这些虚拟候选替换。原第 56 次动作之后的观测已保存，下一次策略推理和动作并未发生。
++
++seed1-w4 的初态门槛与首次 proxy 映射已通过，第一份实际模型动作之后目标 IK 才拒绝。原始 object _18 是右臂，候选 link2–link5 深度约 0.016843–0.020853 mm。CPU 重建名称为 arx_right_15，按角色、link 和几何对应，编号差异来自独立场景实体分配。该事件支持首个策略目标在所枚举分支上不可执行，不支持初态检查漏掉同一实测碰撞。
++
++每个事件最后一个 snapshot、最后一次成功 policy_input、两步末端控制状态、请求 task_tools、IK seed、指开度与候选 q 均已保存。逐值资料位于 static-replay-127054052-r3/replay.json。该文件保留原事件行号，并保存重建后的全部候选 verdict、两侧 IK 解数量、连续性拒绝及当前实测指开度。四个时刻的 contact_state 均为 approach、holders=[]，物块仍接近各自初始位置，没有已确认抓持或另一只臂携物的前提。
++
++重建使用实际命名关节、实测基座、固定 URDF、原接触阈值和原始 request，0 物理步、无渲染、无模型。四个原失败全部复现，原保存的 8/8/4/8 个候选也全部拒绝。原始候选摘要最多保存8项，碰撞审计和修复后的重建记录补齐全部候选信息。
++
++额外种子搜索没有修改生产候选算法。原始工具容差、关节界限和 source 连续性仍适用。四次分别检查70、65、104、225对额外候选，没有发现通过者。这是有界搜索结果，不是全局无解证明。没有充分证据将这些拒绝改为豁免、扩大容差或更换规划器。
++
++同样规则下，源 Aloha 专家第0、25、100物理tick的工具目标，经明确 FK 变换后进入目标 ARX IK 和 QuinticMotion。12/12目标与完整关节路径均通过，最大速度不超过原0.5 rad/s。这些控制点属于专家接近段，不能据此宣布全交接路径已通过生产门禁。它们说明当前场景和适配路径仍存在安全可达目标。
++
++候选计数需区分全部分支对与通过连续性限制的分支对。原 solver 每臂最多从四组种子产出四个解，ranked product 有16对，其中包含不同绕角表示及相近解。seed1-w1 有12对先因连续性拒绝，余下4对因碰撞拒绝。首次快速尝试还会重复第一对，故碰撞调用次数与表中拒绝对数不完全相同。
+--- a/docs/g2_offline_counterfactual.md
++++ b/docs/g2_offline_counterfactual.md
+@@ -0,0 +1,24 @@
++CPU 反事实使用保存的真实策略输出和已验证官方 Aloha 专家的关节目标。本轮没有产生新的 π₀.₅ 输出。
++
++Aloha 的动作变换复核在冻结 native_prefix 上运行，原窗口1/4的750份已保存计划逐值相同。原有左右臂顺序、绝对qpos、归一化夹爪、有界截取均保留。固定动作块内的未来闭爪保留情况如下。
++
++| 原试次 | 原窗口中的闭爪块 | 假设16行且满足原截取规则 | 假设32行且满足原截取规则 |
++|---|---:|---:|---:|
++| seed0-A-native-w1 | 0/300 | 35/299 | 270/299 |
++| seed0-A-native-w4 | 22/75 | 28/75 | 67/75 |
++| seed1-A-native-w1 | 0/300 | 168/297 | 272/297 |
++| seed1-A-native-w4 | 0/75 | 11/73 | 66/73 |
++
++16/32行只是假设读取保存数组后的截取统计。部分动作块的后缀超过原夹爪0.01截取包络，已按原规则排除。现有执行器只支持窗口1/4，这些假设没有生成新运行配置或安全可执行计划，更没有改变原试次。扩大窗口会改变后续观测和模型响应，闭环成功仍为 GPU_DEFERRED。
++
++ARX 已完成三个独立 CPU 版本。r1 使用冻结控制源码复现四个失败端点；r2 使用仅增加诊断信息的修复版本，失败结局一致，并加入专家整段路径检查；r3 增加有界额外种子诊断。原始目标仍4/4拒绝、专家接近段目标与路径仍12/12通过。结果分别保存于 offline-repair-20261106-r1/static-replay.json、static-replay-127054052-r2/replay.json 和 static-replay-127054052-r3/replay.json。
++
++专家对照按 episode0/1 的官方 Aloha trace 提取0、25、100 tick关节目标，经原Aloha FK与基座/工具变换形成任务空间目标，再调用ARX IK。没有把 ARX 专家关节值传给 Aloha 适配器。原始完整 trace 的哈希与采样索引在 expert-controls/provenance.json 中。当前反事实只评价各 captured approach state 下的端点和关节插值，不评价持物动力学、全任务成功或模型新的闭环行为。
++
++QuinticMotion 检查所有采样关节和指几何，保持原速度、加速度、采样步长、接触阈值和碰撞策略。12条对照路径包含2–904个控制点，仍未推进物理。四个策略失败在端点 IK 筛选已发生，因此没有通过更换绕障搜索器回避端点问题。
++
++Aloha 额外自碰撞复核采用原全身 URDF，但只构建机器人几何，不加入任务对象，检查初态、首次50mm误差处和末态的实际/驱动关节。初态四次全clear。seed0-w1末驱动目标、seed1-w1末实测/目标、seed1-w4末实测/目标均有重叠，seed0-w4末态均clear。该结果与真实轨迹偏离并存，但缺少完整物理接触证据，不能将所有跟踪偏差归为同一实现错误。
++
++复现入口为 scripts/g2_static_failure_replay.py、scripts/g2_native_target_audit_cpu.py、scripts/g2_analyze_saved_actions.py。前两者需要已有 SAPIEN3.0.0b1/MPLib0.2.1 CPU环境和固定资产。分析脚本明确读取原数据目录，输出至新目录。SCNet运行设置单线程、总超时240/90秒，无scene.step、无GPU或模型启动。原始日志、视频和控制输出均保留。
++
++r4进一步读取三个planning事件对应的原始action文件，重新计算源Aloha FK，得到的工具矩阵与原请求最大差为0，之后的目标IK仍得到相同拒绝。source observation事件没有新的模型动作，直接从实际ARX观测重建工具位姿。最终入口g2_replay_native_prefixes.py也独立完成750份计划复现，结果与初版审计一致。
+--- a/docs/g2_failure_root_cause_report.md
++++ b/docs/g2_failure_root_cause_report.md
+@@ -0,0 +1,36 @@
++本轮完成作业 127054052 的证据归档、Aloha 0/4 行为分析、ARX 四事件 CPU 复现、工程修复与回归。当前判断为 **GPU_DEFERRED**。已确认的工程缺陷集中在评分标记和留证，策略行为仍存在需要闭环验证的风险，原配置重复运行的价值不足。
++
++Aloha 的主要直接失败机制是抓取阶段进展不足。seed0-w1、seed1-w1、seed1-w4 的执行前缀始终没有左手闭爪，四次均没有右手闭爪。与此同时，动作块大多在未来预测了左闭爪，窗口1/4反复丢弃相应后缀。seed0-w4在第178个动作索引闭过左爪，后续重新打开，没有完成右手独持与放置。三次存在明显跟踪偏差，另一次跟踪较好仍失败，故不存在单一的跟踪误差解释。
++
++| 归因 | 证据等级 | 当前判断 |
++|---|---|---|
++| 三条原生试次没有执行左闭爪，四条没有右闭爪 | A，真实动作及执行计划 | 已确认行为事实 |
++| 短前缀持续截去未来闭爪 | A，原始动作块及750份逐值计划复现 | 已确认机制，扩大窗口后的闭环改善待验证 |
++| 三条原生轨迹有明显TCP跟踪误差 | A，逐物理步状态 | 已确认偏差，控制器实现缺陷尚未确定 |
++| G1短提示与G2完整提示不同 | A，固定记录 | 提示的因果影响为待验证假设 |
++| ARX两个目标指—物块冲突、一个源代理自碰撞、一个目标自碰撞 | A，原事件及独立CPU FCL复现 | 四事件已分别定位 |
++| 全局没有其他IK解或任何更优规划路径 | C，现有证据不足 | 只做了有界候选搜索 |
++| formal标记与诊断配置、监督器不一致 | A，原配置/源码/结果及回归 | 已修复新版本，原始记录保留 |
++
++A表示直接原始证据或保持原规则的可复现验证。B用于有证据支持但未隔离全部因素的解释，C用于尚未证实的假设。表中的行为机制并不把更长执行窗口、特定提示或某种规划器预定为正确修复。
++
++ARX的四次终止分别如下。
++
++- seed0-w1执行25个动作后，目标ARX左指1在候选工具位姿上与物块相交。CPU重建深度5.680498 mm，原规则允许2 mm。
++- seed0-w4执行24个动作后发生同一类目标指—物块拒绝，重建深度2.752330 mm。
++- seed1-w1执行56个动作后，在下一次观测映射的虚拟Aloha左腕fl_link4–fl_link6处碰撞。下一次模型推理没有发生。
++- seed1-w4首个模型目标使右臂link2–link5自碰撞，零动作执行。实测初态和首次观测映射此前通过。
++
++四个事件都在端点IK筛选阶段拒绝，尚未进入该请求的关节插值计划。464对额外种子候选仍未找到合规替代解。12个预先选取的专家接近段工具目标经源FK、目标IK及完整QuinticMotion检查全部通过。当前结论为这些具体策略请求不能按所检查的原规则执行，完整任务的全局可达性仍需独立证据。
++
++工程修复保存在独立版本 research/g2/offline-repair-20261106-r1，包含 before 源码、修复补丁、修复后快照、测试结果和摘要。诊断配置不再自动导出formal记录，统计明确给出执行完成、试次数、成功数和评分资格。原有误标记录通过显式离线转换产生新的诊断汇总，任务成功数保持0/8。新增候选世界、完整拒绝原因、指扫描深度和每次策略观测时的真实任务对象位姿留证。
++
++没有用工程修复改写失败结局。四个真实ARX失败在修复前后都得到相同拒绝分类，12个专家端点和路径保持通过。158项CPU回归及13个合成episode通过。原有149项全部保留。原始2,712文件再次核验SHA-256，全部相同；固定模型与归一化、原r2包、G1与LIBERO基线记录保持原样。
++
++冻结π₀.₅可以继续用于本任务的接口、执行协议和迁移诊断。模型服务已真实运行，动作合同复核一致，保存的输出中存在未来闭爪意图。现有结果不足以评价迁移性能，也不足以认为必须更换模型或微调。下一阶段应先建立可解释的原生完整任务基线，并明确执行窗口与提示的实验定义。
++
++本轮不改变任务、checkpoint或安全规则。研究结论范围应保持为当前冻结策略在所用执行协议下的诊断。源本体尚未建立成功基线时，ARX的0/4不能直接作为跨本体迁移性能下降的证据。
++
++GPU只对新的模型响应和新观测闭环因果验证有必要。重复原八条配置不能验证本轮提出的机制。更长窗口的数组对照没有获得新执行协议资格，当前执行器仍支持窗口1/4。下一次综合实验需要先评审原生协议与对照因素，再完成相应CPU入口验收与预算。此次没有申请、创建、取消或修改任何GPU作业。
++
++完整证据见 [清单](g2_failure_evidence_inventory.md)、[Aloha分析](g2_aloha_failure_analysis.md)、[ARX分析](g2_arx_collision_analysis.md)、[反事实](g2_offline_counterfactual.md)、[修复验收](g2_repair_validation.md)及[GPU决策](g2_next_gpu_decision.md)。
+--- a/docs/g2_repair_validation.md
++++ b/docs/g2_repair_validation.md
+@@ -0,0 +1,35 @@
++离线修复版本为 offline-repair-20261106-r1。旧源码保存于 research/g2/offline-repair-20261106-r1/before，原始r2运行发布及127054052结果保留。当前开发源码中的修复按以下范围实施。
++
++| 文件 | 修复 | 对应验证 |
++|---|---|---|
++| g2_locked_task.py | 诊断配置导出diagnostic-record，正式资格需显式声明 | 实际误标记录回归，原配置False保持诊断 |
++| g2_locked_score.py | 按声明种类读取记录，继续核对完整锁定名单和缺失项 | 8条实际记录与缺失拒绝测试 |
++| g2_single_statistics.py | 核对监督器评分资格，输出任务成功计数；旧formal标签须显式离线重分类 | 原始配置/记录矛盾复现，诊断0/8汇总 |
++| g2_orchestrator.py、g2_single_launch.py | 增加execution_complete和独立evaluation摘要接线 | 原监督器回归与全量CPU预检 |
++| g2_adapter.py | 明确source/target世界，保留失败前工具目标、状态、种子、全部候选及连续性拒绝 | 四个真实事件修复前后静态复现 |
++| g2_contact.py | 指扫描拒绝记录实际深度、阈值、起始与请求开度 | 两个真实指—物块事件重建 |
++| g2_capture.py、g2_episode.py | 在策略边界记录真实任务对象位姿，缺失对象保持未知 | 任务坐标变换、无对象后端与原有rollout测试 |
++
++新对象留证只影响未来运行，历史Aloha缺失的物块轨迹仍为未知。新增候选信息也没有假称原始日志已经保存全部细节。此次重建结果与原记录分开保存。
++
++实际回归结果为158项全部通过，包含原有149项和9项修复回归。13个合成episode全部通过。最终完整输出目录为 results/g2/offline-repair-127054052-final2。新测试文件 tests/test_g2_failure_repair.py 明确依赖本地真实选取证据与静态复现JSON，数据缺失时会报错，不会使用Mock替代真实事件复验。
++
++CPU场景验证包括四个真实ARX事件的冻结源码版本、诊断修复版本、扩展种子版本与重新计算原始策略FK版本。四次拒绝分类和碰撞拒绝对数保持16/16/4/16。source事件另有12对连续性拒绝。原始动作重新经Aloha FK得到的目标与三个planning事件原请求逐值相同，最大矩阵差为0。12个专家接近段目标与整条关节路径通过，原速度、加速度、关节限位、接触和碰撞规则全部沿用。
++
++750份Aloha原生计划全部逐值复现。静态回放均为0物理步。原始127054052的2,712个文件已在分析前后两次核对SHA-256，差异为0。模型启动回执中的28项文件摘要与固定manifest一致，八份配置与锁中摘要一致。ContactLimits类的AST与修复前一致，QuinticMotion、基础碰撞分类和限力控制源码未改。G1相关运行逻辑与LIBERO冻结结果记录的摘要复核通过，详见 baseline-integrity.json。
++
++实际旧记录已通过 --legacy-formal-records 参数在新目录生成诊断汇总。新汇总为diagnostic、formal_score_eligible=false、8条终态记录齐全、成功数0，结果分布为4次task_unsuccessful、3次planning_failed、1次adapter_error。原始formal-record.json没有被覆盖。对照时除data_kind外逐字段相同。
++
++语法检查覆盖所有新增/修改Python。新增分析代码、统计模块和测试通过Ruff检查，修改的既有模块通过Ruff F类静态检查。新增代码已格式化。修复后的代码快照、补丁和证据文件清单由SHA256SUMS及修复清单绑定。该清单包含实际读取的选取证据、配置、静态结果和测试摘要，原始大数据的逐文件摘要另见原始inventory.json。
++
++复现本地完整验收需固定OpenPI客户端源码及完整研究数据。
++
++```bash
++G2_PYTHON=/path/to/cpu/python \
++OPENPI_CLIENT_SRC=/path/to/Openpi-PACE/packages/openpi-client/src \
++bash scripts/g2_cpu_preflight.sh results/g2/new-offline-check
++```
++
++只读分析入口包括g2_failure_inventory.py、g2_analyze_saved_actions.py、g2_replay_native_prefixes.py、g2_static_failure_replay.py和g2_native_target_audit_cpu.py，均支持 --help。静态FCL入口需要已经具备权限的SAPIEN/MPLib CPU环境及固定资产。输入指向原始或验哈希后的证据，输出必须使用新目录。SCNet未执行重型动力学重放，几何检查采用单线程与硬超时。
++
++离线转换和分析入口另有输入目录保护。旧记录转换拒绝把输出写入原运行目录，静态FCL入口拒绝把输出写入release、assets或选取证据目录。该保护已有实际旧记录依赖路径回归。
+--- a/docs/g2_next_gpu_decision.md
++++ b/docs/g2_next_gpu_decision.md
+@@ -0,0 +1,13 @@
++**GPU_DEFERRED**
++
++本轮可行的CPU验收已完成。确认的评分标记和诊断留证缺陷已修复，158项回归、13个合成episode、四个真实ARX事件复现及12条专家接近段对照路径均通过对应验收。原始任务成功仍为0/8。
++
++不建议按原来的八条配置再运行一次GPU。工程标记修复提高了结果可解释性，没有证明同一策略目标变得可执行。三个目标世界事件和一个源代理事件仍按原安全规则拒绝。
++
++必须通过新模型输出或新闭环观测才能验证的因素有两个。其一，G1短提示与G2完整提示在相同状态和随机条件下是否改变抓取意图。其二，保留未来闭爪所需的执行时序是否能在闭环中改善原生任务进展，同时维持跟踪与安全。保存动作块只能支持条件数组统计，不能生成这些新观测或证明新协议成功，因此均标为GPU_DEFERRED。
++
++更长窗口尚未进入运行资格。当前执行器接口仍限定1/4，16/32/50行的分析没有变更原试次或配置。下一步如决定评审新的原生基线，应先明确执行协议与对照因素，再完成CPU入口、动作界限和失败留证验收。当前不提出可提交的资源方案，因此没有新增时限、试次数或费用授权。
++
++冻结checkpoint和任务继续保留。现有证据支持先研究原生执行协议与代理几何适配，不能用源本体0/4直接证明迁移能力下降。当前无需改为新模型、微调或新任务。
++
++任何后续GPU方案都须为一次完整资源分配内的综合实验，明确总时限、试次和中断证据，并由用户单独审批。本状态不授权提交，本轮没有调用任何资源申请、取消或作业修改操作。

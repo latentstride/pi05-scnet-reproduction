@@ -1,0 +1,90 @@
+{
+  "scripts/g2_adapter.py": {
+    "sha256": "e4774c19b1e852f8048c5c1b37554b7e83b7863e41ef4d98574570bce2c20acf",
+    "bytes": 19967
+  },
+  "scripts/g2_contact.py": {
+    "sha256": "38f74442cac32673b169bdcbc88a0f7fce77752a56e570ff259b4090006895b7",
+    "bytes": 23765
+  },
+  "scripts/g2_episode.py": {
+    "sha256": "e031613e3e9059b1e7e385f7a33944a0b614045aaa9d422fd718a06ce9d15411",
+    "bytes": 13591
+  },
+  "scripts/g2_single_statistics.py": {
+    "sha256": "b8c24b5bdaeca58a6291fd8cd9cfdff0689f37cf5f31732932fc6a4139df18a6",
+    "bytes": 4668
+  },
+  "scripts/g2_single_launch.py": {
+    "sha256": "91039c5c1a82d72da1d51e8ceacf18f6b13e8ab9cc8d2fd4e6691e41c083dd18",
+    "bytes": 5545
+  },
+  "scripts/g2_orchestrator.py": {
+    "sha256": "1d9cc5f38c2d917d84ff5415a84839401ef79a69ea616027abe41ef8c76b76e2",
+    "bytes": 9339
+  },
+  "scripts/g2_locked_task.py": {
+    "sha256": "dc7a07f6ccfba18ada25e66b561fd2e2556d85936c5f6a2819224b8e4787a1f6",
+    "bytes": 11182
+  },
+  "scripts/g2_locked_score.py": {
+    "sha256": "7c75cd2c076d090d62a4d863775d653ee22541fc6ffaac0ba3760af1b9f37fb6",
+    "bytes": 2305
+  },
+  "scripts/g2_capture.py": {
+    "sha256": "de893903d659c3dd729dcfeafd6bcb8c25e32e7ea458dda29bd04f71ac4d413f",
+    "bytes": 2360
+  },
+  "scripts/g2_failure_inventory.py": {
+    "sha256": "0b9d6f53f7f24634d85fc7e076b65e0a6035ad545ebd4893bd9fe7c60bd7236d",
+    "bytes": 7782
+  },
+  "scripts/g2_static_failure_replay.py": {
+    "sha256": "7cad4c6209ed4c9c4f8625bd6939d83f5493b14cb25609063a72ce720970e4c8",
+    "bytes": 18308
+  },
+  "scripts/g2_native_target_audit_cpu.py": {
+    "sha256": "115e6e3e2e14af90b252ee61c8a42882d30b117a0b8c7efae1f01bc6005a7c96",
+    "bytes": 4287
+  },
+  "scripts/g2_analyze_saved_actions.py": {
+    "sha256": "f9c0ac51c254dbed010ffff5728e099c694d77722b3abbaec377ef3a58ed31b1",
+    "bytes": 4754
+  },
+  "scripts/g2_replay_native_prefixes.py": {
+    "sha256": "3e4eebefdafcf21d2f55d51f46a20b2f3b72f05e0b731157f8605bec8a8ae12f",
+    "bytes": 3250
+  },
+  "tests/test_g2_failure_repair.py": {
+    "sha256": "c4c7a422d78d2c501b9bbb795d79a34db40dc6de6fa1cf888ee25555d98e5239",
+    "bytes": 7026
+  },
+  "docs/g2_failure_evidence_inventory.md": {
+    "sha256": "15e394f8f27fd94bbce9f37e57ed14f14e1d64c864702621d68fa78e4ad4f116",
+    "bytes": 3243
+  },
+  "docs/g2_aloha_failure_analysis.md": {
+    "sha256": "cd0535140976747aa8cc6a82cd1a63f99f8de16d69a4a34acec1cfed3ab3ceef",
+    "bytes": 5479
+  },
+  "docs/g2_arx_collision_analysis.md": {
+    "sha256": "f2a009b04be5c2b4e4c7a1bab3b2287bae7805f63fb91e78b89ac98db4aed4c2",
+    "bytes": 4180
+  },
+  "docs/g2_offline_counterfactual.md": {
+    "sha256": "a0dec192cf7c3bdc07512b76b8d91eafae21f929d592a28d89e37b568f86e058",
+    "bytes": 3546
+  },
+  "docs/g2_failure_root_cause_report.md": {
+    "sha256": "6d0d242afaa0bd6b4ab1671f53ac7e792e5dfa4569b844fed303b3874e4ca05b",
+    "bytes": 5081
+  },
+  "docs/g2_repair_validation.md": {
+    "sha256": "2ce265682355244dd1acd4264f7480f260ee1cccec52711d44c91bdf3ddbf980",
+    "bytes": 4573
+  },
+  "docs/g2_next_gpu_decision.md": {
+    "sha256": "5b42978c4ea41f011670b7d398e432d37edd776c53e30c7e34dd19a1d1a66be7",
+    "bytes": 1754
+  }
+}

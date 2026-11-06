@@ -1,0 +1,787 @@
+{
+  "data_kind": "diagnostic",
+  "gpu_used": false,
+  "renderer_created": false,
+  "physics_steps": 25,
+  "scope": "deliberate overlapping robot/obstacle diagnostic, not a valid task reset",
+  "checks": {
+    "cross_arm_physical_contacts": true,
+    "environment_physical_contacts": true,
+    "environment_filters_unchanged": true,
+    "native_base_link2_filtered": true,
+    "unlisted_link2_link5_enabled": true
+  },
+  "passed": true,
+  "profile": {
+    "profile_sha256": "07c7faf92f6c9c7e3b7c370cb4487494d236935910cf6d89333f89f0b56c0ddb",
+    "scope": "same_articulation_only",
+    "pairs": [
+      [
+        "base_link",
+        "link1"
+      ],
+      [
+        "base_link",
+        "link2"
+      ],
+      [
+        "base_link",
+        "link3"
+      ],
+      [
+        "link1",
+        "link2"
+      ],
+      [
+        "link1",
+        "link3"
+      ],
+      [
+        "link2",
+        "link3"
+      ],
+      [
+        "link2",
+        "link4"
+      ],
+      [
+        "link3",
+        "link4"
+      ],
+      [
+        "link3",
+        "link5"
+      ],
+      [
+        "link3",
+        "link6"
+      ],
+      [
+        "link4",
+        "link5"
+      ],
+      [
+        "link4",
+        "link6"
+      ],
+      [
+        "link5",
+        "link6"
+      ]
+    ],
+    "verified_scene_shape_pairs": 171,
+    "shapes_changed": 18,
+    "articulations": [
+      {
+        "link_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "group_id": 1
+      },
+      {
+        "link_ids": [
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22
+        ],
+        "group_id": 2
+      }
+    ],
+    "shapes": [
+      {
+        "link": "base_link",
+        "articulation": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "before": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "after": [
+          1,
+          1,
+          7,
+          1
+        ]
+      },
+      {
+        "link": "link1",
+        "articulation": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "before": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "after": [
+          1,
+          1,
+          25,
+          1
+        ]
+      },
+      {
+        "link": "link2",
+        "articulation": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "before": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "after": [
+          1,
+          1,
+          106,
+          1
+        ]
+      },
+      {
+        "link": "link3",
+        "articulation": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "before": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "after": [
+          1,
+          1,
+          948,
+          1
+        ]
+      },
+      {
+        "link": "link4",
+        "articulation": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "before": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "after": [
+          1,
+          1,
+          3264,
+          1
+        ]
+      },
+      {
+        "link": "link5",
+        "articulation": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "before": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "after": [
+          1,
+          1,
+          5376,
+          1
+        ]
+      },
+      {
+        "link": "link6",
+        "articulation": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "before": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "after": [
+          1,
+          1,
+          6656,
+          1
+        ]
+      },
+      {
+        "link": "link7",
+        "articulation": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "before": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "after": [
+          1,
+          1,
+          0,
+          1
+        ]
+      },
+      {
+        "link": "link8",
+        "articulation": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "before": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "after": [
+          1,
+          1,
+          0,
+          1
+        ]
+      },
+      {
+        "link": "base_link",
+        "articulation": [
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22
+        ],
+        "before": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "after": [
+          1,
+          1,
+          7,
+          2
+        ]
+      },
+      {
+        "link": "link1",
+        "articulation": [
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22
+        ],
+        "before": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "after": [
+          1,
+          1,
+          25,
+          2
+        ]
+      },
+      {
+        "link": "link2",
+        "articulation": [
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22
+        ],
+        "before": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "after": [
+          1,
+          1,
+          106,
+          2
+        ]
+      },
+      {
+        "link": "link3",
+        "articulation": [
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22
+        ],
+        "before": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "after": [
+          1,
+          1,
+          948,
+          2
+        ]
+      },
+      {
+        "link": "link4",
+        "articulation": [
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22
+        ],
+        "before": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "after": [
+          1,
+          1,
+          3264,
+          2
+        ]
+      },
+      {
+        "link": "link5",
+        "articulation": [
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22
+        ],
+        "before": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "after": [
+          1,
+          1,
+          5376,
+          2
+        ]
+      },
+      {
+        "link": "link6",
+        "articulation": [
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22
+        ],
+        "before": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "after": [
+          1,
+          1,
+          6656,
+          2
+        ]
+      },
+      {
+        "link": "link7",
+        "articulation": [
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22
+        ],
+        "before": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "after": [
+          1,
+          1,
+          0,
+          2
+        ]
+      },
+      {
+        "link": "link8",
+        "articulation": [
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22
+        ],
+        "before": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "after": [
+          1,
+          1,
+          0,
+          2
+        ]
+      }
+    ]
+  },
+  "cross_examples": [
+    {
+      "tick": 1,
+      "bodies": [
+        2,
+        12
+      ],
+      "names": [
+        "link1",
+        "base_link"
+      ],
+      "impulse_ns": 275548.3671875
+    },
+    {
+      "tick": 1,
+      "bodies": [
+        3,
+        12
+      ],
+      "names": [
+        "link2",
+        "base_link"
+      ],
+      "impulse_ns": 1.7415390014648438
+    },
+    {
+      "tick": 1,
+      "bodies": [
+        13,
+        1
+      ],
+      "names": [
+        "link1",
+        "base_link"
+      ],
+      "impulse_ns": 275548.359375
+    },
+    {
+      "tick": 1,
+      "bodies": [
+        13,
+        2
+      ],
+      "names": [
+        "link1",
+        "link1"
+      ],
+      "impulse_ns": 1487088.4375
+    },
+    {
+      "tick": 1,
+      "bodies": [
+        13,
+        3
+      ],
+      "names": [
+        "link1",
+        "link2"
+      ],
+      "impulse_ns": 30975.4609375
+    },
+    {
+      "tick": 1,
+      "bodies": [
+        14,
+        1
+      ],
+      "names": [
+        "link2",
+        "base_link"
+      ],
+      "impulse_ns": 67.29383087158203
+    },
+    {
+      "tick": 1,
+      "bodies": [
+        14,
+        2
+      ],
+      "names": [
+        "link2",
+        "link1"
+      ],
+      "impulse_ns": 31406.52880859375
+    },
+    {
+      "tick": 1,
+      "bodies": [
+        14,
+        3
+      ],
+      "names": [
+        "link2",
+        "link2"
+      ],
+      "impulse_ns": 19627.45703125
+    }
+  ],
+  "environment_examples": [
+    {
+      "tick": 1,
+      "bodies": [
+        7,
+        23
+      ],
+      "names": [
+        "link6",
+        "adversarial_obstacle"
+      ],
+      "impulse_ns": 158.26139307022095
+    },
+    {
+      "tick": 1,
+      "bodies": [
+        10,
+        23
+      ],
+      "names": [
+        "link7",
+        "adversarial_obstacle"
+      ],
+      "impulse_ns": 32.79879677295685
+    },
+    {
+      "tick": 1,
+      "bodies": [
+        11,
+        23
+      ],
+      "names": [
+        "link8",
+        "adversarial_obstacle"
+      ],
+      "impulse_ns": 59.72473478317261
+    },
+    {
+      "tick": 1,
+      "bodies": [
+        18,
+        23
+      ],
+      "names": [
+        "link6",
+        "adversarial_obstacle"
+      ],
+      "impulse_ns": 61.527347564697266
+    },
+    {
+      "tick": 1,
+      "bodies": [
+        21,
+        23
+      ],
+      "names": [
+        "link7",
+        "adversarial_obstacle"
+      ],
+      "impulse_ns": 23.450792014598846
+    },
+    {
+      "tick": 1,
+      "bodies": [
+        22,
+        23
+      ],
+      "names": [
+        "link8",
+        "adversarial_obstacle"
+      ],
+      "impulse_ns": 54.86428248882294
+    }
+  ]
+}

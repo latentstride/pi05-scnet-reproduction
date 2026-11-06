@@ -1,0 +1,5 @@
+data_kind,run_lock_sha256,task,comparison_id,condition_a,condition_b,pair_id,status,success_delta_b_minus_a,episode_a,episode_b
+diagnostic,49281639cfcc7375e8f37be556b8c0d9349aeab1ebc969d1d7ca5638be759d67,handover_block,transfer-w1,A-native-w1,B-arx-w1,paired-10g-00,matched,0,seed0-A-native-w1,seed0-B-arx-w1
+diagnostic,49281639cfcc7375e8f37be556b8c0d9349aeab1ebc969d1d7ca5638be759d67,handover_block,transfer-w1,A-native-w1,B-arx-w1,paired-10g-01,matched,0,seed1-A-native-w1,seed1-B-arx-w1
+diagnostic,49281639cfcc7375e8f37be556b8c0d9349aeab1ebc969d1d7ca5638be759d67,handover_block,transfer-w4,A-native-w4,B-arx-w4,paired-10g-00,matched,0,seed0-A-native-w4,seed0-B-arx-w4
+diagnostic,49281639cfcc7375e8f37be556b8c0d9349aeab1ebc969d1d7ca5638be759d67,handover_block,transfer-w4,A-native-w4,B-arx-w4,paired-10g-01,matched,0,seed1-A-native-w4,seed1-B-arx-w4

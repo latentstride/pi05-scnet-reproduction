@@ -1,0 +1,101 @@
+{
+  "status": "sensitivity_only_not_execution_budget",
+  "action_ceiling_assumption": 300,
+  "startup_overhead_s_assumption": 1200.0,
+  "g1_slowest_archived_steady_query_s": 3.18754331022501,
+  "cpu_arx_planning_and_control_s_per_completed_action_proxy": 4.662698559384793,
+  "cpu_arx_proxy_partial_last_action_included": true,
+  "local_placement_cpu_wall_s": 75.8434516270645,
+  "historical_rate_yuan_per_minute": 0.06,
+  "historical_ceiling_yuan": 20.0,
+  "unmodeled": [
+    "Aloha control and rendering",
+    "ARX rendering and scene reset per episode",
+    "actual warmup and stage validation",
+    "additional expert replay and evidence collection",
+    "GPU execution and memory jointly measured on the selected node"
+  ],
+  "scenarios": [
+    {
+      "pairs": 1,
+      "effective_window_w4": 4,
+      "policy_episodes": 4,
+      "total_queries": 750,
+      "modeled_minutes": 106.47127697166054,
+      "historical_cost_scenario_yuan": 6.388276618299632,
+      "remaining_minutes_under_historical_20_yuan": 226.86205636167284
+    },
+    {
+      "pairs": 1,
+      "effective_window_w4": 2,
+      "policy_episodes": 4,
+      "total_queries": 900,
+      "modeled_minutes": 114.44013524722307,
+      "historical_cost_scenario_yuan": 6.866408114833384,
+      "remaining_minutes_under_historical_20_yuan": 218.89319808611032
+    },
+    {
+      "pairs": 1,
+      "effective_window_w4": 1,
+      "policy_episodes": 4,
+      "total_queries": 1200,
+      "modeled_minutes": 130.37785179834813,
+      "historical_cost_scenario_yuan": 7.822671107900887,
+      "remaining_minutes_under_historical_20_yuan": 202.95548153498524
+    },
+    {
+      "pairs": 2,
+      "effective_window_w4": 4,
+      "policy_episodes": 8,
+      "total_queries": 1500,
+      "modeled_minutes": 192.9425539433211,
+      "historical_cost_scenario_yuan": 11.576553236599265,
+      "remaining_minutes_under_historical_20_yuan": 140.39077939001228
+    },
+    {
+      "pairs": 2,
+      "effective_window_w4": 2,
+      "policy_episodes": 8,
+      "total_queries": 1800,
+      "modeled_minutes": 208.88027049444614,
+      "historical_cost_scenario_yuan": 12.532816229666768,
+      "remaining_minutes_under_historical_20_yuan": 124.45306283888723
+    },
+    {
+      "pairs": 2,
+      "effective_window_w4": 1,
+      "policy_episodes": 8,
+      "total_queries": 2400,
+      "modeled_minutes": 240.75570359669624,
+      "historical_cost_scenario_yuan": 14.445342215801775,
+      "remaining_minutes_under_historical_20_yuan": 92.57762973663714
+    },
+    {
+      "pairs": 3,
+      "effective_window_w4": 4,
+      "policy_episodes": 12,
+      "total_queries": 2250,
+      "modeled_minutes": 279.4138309149816,
+      "historical_cost_scenario_yuan": 16.764829854898895,
+      "remaining_minutes_under_historical_20_yuan": 53.91950241835178
+    },
+    {
+      "pairs": 3,
+      "effective_window_w4": 2,
+      "policy_episodes": 12,
+      "total_queries": 2700,
+      "modeled_minutes": 303.32040574166916,
+      "historical_cost_scenario_yuan": 18.19922434450015,
+      "remaining_minutes_under_historical_20_yuan": 30.01292759166421
+    },
+    {
+      "pairs": 3,
+      "effective_window_w4": 1,
+      "policy_episodes": 12,
+      "total_queries": 3600,
+      "modeled_minutes": 351.1335553950443,
+      "historical_cost_scenario_yuan": 21.068013323702658,
+      "remaining_minutes_under_historical_20_yuan": -17.80022206171094
+    }
+  ]
+}

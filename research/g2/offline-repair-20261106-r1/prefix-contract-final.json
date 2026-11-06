@@ -1,0 +1,122 @@
+{
+  "seed0-A-native-w1": {
+    "saved_plans_exactly_reproduced": 300,
+    "prefix_sweep": {
+      "1": {
+        "valid_prefixes": 300,
+        "prefixes_with_left_closure": 0
+      },
+      "4": {
+        "valid_prefixes": 300,
+        "prefixes_with_left_closure": 0
+      },
+      "8": {
+        "valid_prefixes": 300,
+        "prefixes_with_left_closure": 0
+      },
+      "16": {
+        "valid_prefixes": 299,
+        "prefixes_with_left_closure": 35
+      },
+      "32": {
+        "valid_prefixes": 299,
+        "prefixes_with_left_closure": 270
+      },
+      "50": {
+        "valid_prefixes": 299,
+        "prefixes_with_left_closure": 290
+      }
+    },
+    "scope": "fixed saved chunks; windows above four are outside the admitted rollout interface"
+  },
+  "seed0-A-native-w4": {
+    "saved_plans_exactly_reproduced": 75,
+    "prefix_sweep": {
+      "1": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 20
+      },
+      "4": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 22
+      },
+      "8": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 24
+      },
+      "16": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 28
+      },
+      "32": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 67
+      },
+      "50": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 72
+      }
+    },
+    "scope": "fixed saved chunks; windows above four are outside the admitted rollout interface"
+  },
+  "seed1-A-native-w1": {
+    "saved_plans_exactly_reproduced": 300,
+    "prefix_sweep": {
+      "1": {
+        "valid_prefixes": 300,
+        "prefixes_with_left_closure": 0
+      },
+      "4": {
+        "valid_prefixes": 300,
+        "prefixes_with_left_closure": 0
+      },
+      "8": {
+        "valid_prefixes": 300,
+        "prefixes_with_left_closure": 1
+      },
+      "16": {
+        "valid_prefixes": 297,
+        "prefixes_with_left_closure": 168
+      },
+      "32": {
+        "valid_prefixes": 297,
+        "prefixes_with_left_closure": 272
+      },
+      "50": {
+        "valid_prefixes": 297,
+        "prefixes_with_left_closure": 289
+      }
+    },
+    "scope": "fixed saved chunks; windows above four are outside the admitted rollout interface"
+  },
+  "seed1-A-native-w4": {
+    "saved_plans_exactly_reproduced": 75,
+    "prefix_sweep": {
+      "1": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 0
+      },
+      "4": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 0
+      },
+      "8": {
+        "valid_prefixes": 75,
+        "prefixes_with_left_closure": 0
+      },
+      "16": {
+        "valid_prefixes": 73,
+        "prefixes_with_left_closure": 11
+      },
+      "32": {
+        "valid_prefixes": 73,
+        "prefixes_with_left_closure": 66
+      },
+      "50": {
+        "valid_prefixes": 73,
+        "prefixes_with_left_closure": 71
+      }
+    },
+    "scope": "fixed saved chunks; windows above four are outside the admitted rollout interface"
+  }
+}

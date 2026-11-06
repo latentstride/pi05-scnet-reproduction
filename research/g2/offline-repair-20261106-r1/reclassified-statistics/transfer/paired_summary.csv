@@ -1,0 +1,3 @@
+data_kind,run_lock_sha256,task,comparison_id,condition_a,condition_b,n_pairs,n_matched,n_missing,n_not_admitted,n_a_only_wins,n_b_only_wins,mean_success_delta_b_minus_a
+diagnostic,49281639cfcc7375e8f37be556b8c0d9349aeab1ebc969d1d7ca5638be759d67,handover_block,transfer-w1,A-native-w1,B-arx-w1,2,2,0,0,0,0,0.0
+diagnostic,49281639cfcc7375e8f37be556b8c0d9349aeab1ebc969d1d7ca5638be759d67,handover_block,transfer-w4,A-native-w4,B-arx-w4,2,2,0,0,0,0,0.0

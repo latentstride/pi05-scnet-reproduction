@@ -3717,16 +3717,52 @@
       "source": "latest G2 links; prior baseline preserved"
     },
     "docs/g2_chat_sync_20261106.md": {
-      "bytes": 2172,
-      "sha256": "fdc180665933b268ee3dbf337ea6ba2ac37a2e4a1d6bc804f80538290967e38f",
-      "git_blob_sha": "54ab1108ebed57c2f0de9ff58359d1d15ce8ba0c",
-      "source": "public sync scope"
+      "bytes": 2663,
+      "sha256": "5dd46d5e2f496663376c781f9b8aa2fb29d7d40fe732e9d3b77d3bf3a387e87d",
+      "git_blob_sha": "e9d533986f74922db653ee36c76e1e6f1c8ee1de",
+      "source": "public sync final supplement"
     },
     "docs/pace_g2_code_snapshot.md": {
       "bytes": 902,
       "sha256": "3148669befc10dd8b41be3688f9dd4181e034eef55a4d739948f5a31798d5c9f",
       "git_blob_sha": "554ba54d271aed3889a32ce295812cdde7f3ecca",
       "source": "prior notice with new sync link"
+    },
+    "research/g2/failure-audit-127054052-r1/action-audit.json": {
+      "bytes": 1247450,
+      "sha256": "025aad051c0b90f6abab9165d4815386db0c0b995b56635475070760e281afec",
+      "git_blob_sha": "7ee9235343999b98322f8dfac0db3e981c53d7ed",
+      "source": "public sync final supplement"
+    },
+    "research/g2/expert-settle-20261106/executed-script.py": {
+      "bytes": 7044,
+      "sha256": "02fae441e32b1f54e3a8db8979320e20d92ae97be86520665f03347927ad80f5",
+      "git_blob_sha": "e2cafeecc045aa314ce3cf57f83c2375ba2084d7",
+      "source": "research/g2/expert-settle-20261106/executed-script.py"
+    },
+    "research/g2/expert-workspace-20261106/executed-script.py": {
+      "bytes": 4574,
+      "sha256": "1cde51362ef7a5f4f7306fd149596c3aedcdabeb19310bd53ca4bcf2b088068e",
+      "git_blob_sha": "25f0dc3391c8c58b898986cbf39e14ec3f9e50a3",
+      "source": "research/g2/expert-workspace-20261106/executed-script.py"
+    },
+    "research/g2/expert-settle-source-mass-20261106/executed-script.py": {
+      "bytes": 7109,
+      "sha256": "c8740c01b6f010424195360fd16737721db3b0e66851c08eb08aedf142e6ff61",
+      "git_blob_sha": "2a1a62b754ed349b631074418b2bf832bdf200eb",
+      "source": "research/g2/expert-settle-source-mass-20261106/executed-script.py"
+    },
+    "research/g2/release-20261106-r2/rehearse_entry.py": {
+      "bytes": 7283,
+      "sha256": "bda6ccb78d146614e98cb01d40c353965f3453ee2ff48087e86d403bf853ac18",
+      "git_blob_sha": "275d0820e3fb57e2a758828a1bb77b5f24ab8ed3",
+      "source": "research/g2/release-20261106-r2/rehearse_entry.py"
+    },
+    "research/g2/g2e-20261106-r1/submission/submit_once.py": {
+      "bytes": 2647,
+      "sha256": "72d548fc3fb1e9ae45a18571cca8d471dc1f952036ea8d2559126412ff16636e",
+      "git_blob_sha": "8c1bdd9fdf8f861526339d5c4d8b459567b60b22",
+      "source": "research/g2/g2e-20261106-r1/submission/submit_once.py"
     }
   },
   "omitted_large_evidence": [
@@ -3799,5 +3835,7 @@
       "reason": "large evidence retained in original research workspace"
     }
   ],
-  "missing_relevant_code": []
+  "missing_relevant_code": [],
+  "public_subset_tests_passed": 58,
+  "dependency_source_policy": "Official PACE and installed third-party package copies omitted; provenance/version hashes retained"
 }

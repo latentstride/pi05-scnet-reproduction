@@ -1,0 +1,119 @@
+[
+  {
+    "episode": 0,
+    "legacy_jpeg_channel_reversal": true,
+    "scope": "2D_bbox_consistency_only_not_pose_measurement",
+    "objects": {
+      "box": {
+        "predicted_spawn_bbox_px": [
+          72.81958489246253,
+          0.0,
+          116.09548316381772,
+          67.53859698054397
+        ],
+        "observed_color_bbox_px": [
+          77,
+          0,
+          115,
+          67
+        ],
+        "max_bbox_edge_difference_px": 4.1804151075374705,
+        "color_pixel_count": 1884
+      },
+      "target_box": {
+        "predicted_spawn_bbox_px": [
+          198.66595936450236,
+          54.98324692166595,
+          245.96651569605294,
+          88.40030371870498
+        ],
+        "observed_color_bbox_px": [
+          199,
+          55,
+          245,
+          86
+        ],
+        "max_bbox_edge_difference_px": 2.4003037187049756,
+        "color_pixel_count": 1377
+      }
+    }
+  },
+  {
+    "episode": 1,
+    "legacy_jpeg_channel_reversal": true,
+    "scope": "2D_bbox_consistency_only_not_pose_measurement",
+    "objects": {
+      "box": {
+        "predicted_spawn_bbox_px": [
+          113.91599751723808,
+          33.65348758262781,
+          157.16080832378358,
+          133.8331136499135
+        ],
+        "observed_color_bbox_px": [
+          114,
+          35,
+          156,
+          133
+        ],
+        "max_bbox_edge_difference_px": 1.346512417372189,
+        "color_pixel_count": 3347
+      },
+      "target_box": {
+        "predicted_spawn_bbox_px": [
+          204.2607199608545,
+          44.20022747264846,
+          250.69276630968474,
+          76.02811228429263
+        ],
+        "observed_color_bbox_px": [
+          204,
+          44,
+          249,
+          74
+        ],
+        "max_bbox_edge_difference_px": 2.0281122842926322,
+        "color_pixel_count": 1298
+      }
+    }
+  },
+  {
+    "episode": 2,
+    "legacy_jpeg_channel_reversal": true,
+    "scope": "2D_bbox_consistency_only_not_pose_measurement",
+    "objects": {
+      "box": {
+        "predicted_spawn_bbox_px": [
+          57.101045229750085,
+          0.0,
+          105.23610109433007,
+          81.01020398358466
+        ],
+        "observed_color_bbox_px": [
+          59,
+          0,
+          104,
+          80
+        ],
+        "max_bbox_edge_difference_px": 1.8989547702499152,
+        "color_pixel_count": 2395
+      },
+      "target_box": {
+        "predicted_spawn_bbox_px": [
+          239.01994250239235,
+          43.485306201413586,
+          288.18139545410696,
+          75.20926972473761
+        ],
+        "observed_color_bbox_px": [
+          240,
+          44,
+          287,
+          73
+        ],
+        "max_bbox_edge_difference_px": 2.2092697247376094,
+        "color_pixel_count": 1267
+      }
+    }
+  }
+]

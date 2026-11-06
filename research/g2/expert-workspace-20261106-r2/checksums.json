@@ -1,0 +1,14 @@
+{
+  "research/g2/expert-workspace-20261106-r2/summary.json": "2b273d6e60968677976acd84a6a10e784e3d59760f2db316a8fdbf394f6e9830",
+  "research/g2/expert-workspace-20261106-r2/episode2.json": "b367e846b913a23835c00c50c08cb56eedbf42c2fd44cf6a70806a511aba18e9",
+  "research/g2/expert-workspace-20261106-r2/episode1.json": "4cecebe10e23041e653124b3e610f6e45d22dbf8d5b91deec34fb23577c4ee95",
+  "research/g2/expert-workspace-20261106-r2/episode0.json": "ab71016665b5f5279d717888c8012108b06fb0c4604e4e7f4acb3e112a1b0d20",
+  "research/g2/expert-workspace-20261106-r2/selected-targets.npz": "acdcea19425ad602f64a386c96245437fa93bd07aa3aeb79145f376e32049f3d",
+  "research/g2/expert-workspace-20261106-r2/executed-script.py": "29845810d1eeb7ef2535e1128031790a2cb1e83f285a113c169ef8e3f36dc478",
+  "scripts/g2_adapter.py": "7b73f351b9886d4ba5d14431bc53ed36e5c366f31f72ed096acf04609f930427",
+  "scripts/g2_expert_workspace.py": "29845810d1eeb7ef2535e1128031790a2cb1e83f285a113c169ef8e3f36dc478",
+  "scripts/g2_initial_collision_cpu.py": "ae50551fa8437eedbe9c00462025d895974a58bdcc840172b36aa0467de0e1af",
+  "scripts/g2_expert_path_collision_cpu.py": "72c2e9a4c51753e54b4839006d9a9be0df582088ac6803b7a04d47cdaa6efbc2",
+  "scripts/g2_expert_compare_collision_cpu.py": "bba51b1739e2a9c7efee409066de1d34a6e1975c9a767966cf626a8f4726cf88",
+  "scripts/g2_settled_candidates.py": "2c292c424b324b0d758087940bb49874e16e3e68c162b8f0fe5ef8722c349d80"
+}

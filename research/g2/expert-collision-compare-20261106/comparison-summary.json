@@ -1,0 +1,81 @@
+{
+  "scope": "sampled command geometry; not actual expert rollout or migration success/failure",
+  "all_six_actual_initials_repeat": true,
+  "executed_script_matches_local": true,
+  "total_geometric_samples": 6675,
+  "both_embodiments_have_tray_endpoint_overlap": true,
+  "records": [
+    {
+      "episode": 0,
+      "robot": "ARX-X5",
+      "scope": "selected IK branch, linearly sampled joint paths; held-object pose unknown and static box overlaps unresolved",
+      "no_physics_mutation": true,
+      "frames": 295,
+      "samples": 1214,
+      "segments_with_known_collision": 24,
+      "max_joint_sampling_step_rad": 0.02,
+      "max_finger_sampling_step_m": 0.001,
+      "full_contact_task_clear": false
+    },
+    {
+      "episode": 0,
+      "robot": "aloha-agilex",
+      "scope": "selected IK branch, linearly sampled joint paths; held-object pose unknown and static box overlaps unresolved",
+      "no_physics_mutation": true,
+      "frames": 295,
+      "samples": 1104,
+      "segments_with_known_collision": 40,
+      "max_joint_sampling_step_rad": 0.02,
+      "max_finger_sampling_step_m": 0.001,
+      "full_contact_task_clear": false
+    },
+    {
+      "episode": 1,
+      "robot": "ARX-X5",
+      "scope": "selected IK branch, linearly sampled joint paths; held-object pose unknown and static box overlaps unresolved",
+      "no_physics_mutation": true,
+      "frames": 277,
+      "samples": 1139,
+      "segments_with_known_collision": 24,
+      "max_joint_sampling_step_rad": 0.02,
+      "max_finger_sampling_step_m": 0.001,
+      "full_contact_task_clear": false
+    },
+    {
+      "episode": 1,
+      "robot": "aloha-agilex",
+      "scope": "selected IK branch, linearly sampled joint paths; held-object pose unknown and static box overlaps unresolved",
+      "no_physics_mutation": true,
+      "frames": 277,
+      "samples": 999,
+      "segments_with_known_collision": 25,
+      "max_joint_sampling_step_rad": 0.02,
+      "max_finger_sampling_step_m": 0.001,
+      "full_contact_task_clear": false
+    },
+    {
+      "episode": 2,
+      "robot": "ARX-X5",
+      "scope": "selected IK branch, linearly sampled joint paths; held-object pose unknown and static box overlaps unresolved",
+      "no_physics_mutation": true,
+      "frames": 282,
+      "samples": 1180,
+      "segments_with_known_collision": 16,
+      "max_joint_sampling_step_rad": 0.02,
+      "max_finger_sampling_step_m": 0.001,
+      "full_contact_task_clear": false
+    },
+    {
+      "episode": 2,
+      "robot": "aloha-agilex",
+      "scope": "selected IK branch, linearly sampled joint paths; held-object pose unknown and static box overlaps unresolved",
+      "no_physics_mutation": true,
+      "frames": 282,
+      "samples": 1039,
+      "segments_with_known_collision": 25,
+      "max_joint_sampling_step_rad": 0.02,
+      "max_finger_sampling_step_m": 0.001,
+      "full_contact_task_clear": false
+    }
+  ]
+}

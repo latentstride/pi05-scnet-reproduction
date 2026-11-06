@@ -1,0 +1,9 @@
+{
+  "research/g2/expert-dense-episode1-20261106/input.json": "7c7132fdce1c4fe0283872518f1927117cf7aea604e23baf818f55a4bfa093be",
+  "research/g2/expert-dense-episode1-20261106/trace.npz": "1676a8eba4b4859d1369098d30c9f54a7f485680f333721c44aa34e0152fb97d",
+  "research/g2/expert-dense-episode1-20261106/runtime-trace.npz": "26fe796738a00fa4514c5cc6e7e27ba5a675d8cf8d8773f77b40407e0e3be4dd",
+  "scripts/g2_expert_dense.py": "8be1047f59276f10b472ac6cd90ff97084836aeaddad0df94edc05e02b62feb4",
+  "scripts/g2_native_expert_cpu.py": "f62abf3114aa066947d911bd3e9a8d4b70e45ea1ba70cf6964e10604a682d2e8",
+  "scripts/g2_verify_native_expert.py": "7b13447621ab083cf33b504bb21417fa126afcfa582c72b20a3f3742946dac3e",
+  "scripts/g2_settle_expert_cpu.py": "2f6be8b4afec7547445e52af195729676b97090b7a039b4dc72da2d43df7199c"
+}

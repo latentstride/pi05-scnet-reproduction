@@ -1,0 +1,10 @@
+{
+  "geometry_runtime": "SCNet login08 existing CPU container; no Slurm",
+  "source_assets_sha256": "5ebfc07c82814757168bdb3f2b7ad4a9bec18f58afc28318f49e61af117122f2",
+  "expert_dataset_revision": "3dc3b798668feb99ac61cc9086d84cbcc3d79186",
+  "workspace_input": "research/g2/expert-workspace-20261106-r2/selected-targets.npz",
+  "runtime_tool_ik_fix_physically_replayed": false,
+  "cpu_tests_passed": 121,
+  "synthetic_episodes_passed": 13,
+  "gpu_used": false
+}

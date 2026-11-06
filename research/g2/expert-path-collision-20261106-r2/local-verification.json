@@ -1,0 +1,63 @@
+{
+  "all_six_snapshots_repeat_exactly": true,
+  "path_executed_script_matches_local": true,
+  "summary": [
+    {
+      "episode": 0,
+      "frames": 295,
+      "samples": 1214,
+      "blocked_segments": 24,
+      "first_blocked_frame": 271,
+      "last_blocked_frame": 294,
+      "blocked_stages": [
+        [
+          "R",
+          3
+        ],
+        [
+          "RG",
+          1
+        ]
+      ],
+      "no_physics_mutation": true
+    },
+    {
+      "episode": 1,
+      "frames": 277,
+      "samples": 1139,
+      "blocked_segments": 24,
+      "first_blocked_frame": 253,
+      "last_blocked_frame": 276,
+      "blocked_stages": [
+        [
+          "R",
+          3
+        ],
+        [
+          "RG",
+          1
+        ]
+      ],
+      "no_physics_mutation": true
+    },
+    {
+      "episode": 2,
+      "frames": 282,
+      "samples": 1180,
+      "blocked_segments": 16,
+      "first_blocked_frame": 258,
+      "last_blocked_frame": 273,
+      "blocked_stages": [
+        [
+          "R",
+          3
+        ],
+        [
+          "RG",
+          1
+        ]
+      ],
+      "no_physics_mutation": true
+    }
+  ]
+}

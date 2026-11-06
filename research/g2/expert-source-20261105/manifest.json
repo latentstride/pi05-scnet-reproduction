@@ -1,0 +1,87 @@
+{
+  "repository": "RoboTwin-Platform/RoboTwin",
+  "revision": "ea8b21121ebb3cd201ff5b3fe361944ac94eda3f",
+  "files": [
+    {
+      "path": "envs/_base_task.py",
+      "sha256": "76a12a3ce2254c019e5c291e29c99b421dabbb0c6e0b9ec24db9155b2dcf81f5",
+      "git_blob_sha1": "ace13e6c80f911ac32fb05332ac2e9896e37547c",
+      "bytes": 72679,
+      "url": "https://raw.githubusercontent.com/RoboTwin-Platform/RoboTwin/ea8b21121ebb3cd201ff5b3fe361944ac94eda3f/envs/_base_task.py"
+    },
+    {
+      "path": "env_cfg/task_config/demo_clean.yml",
+      "sha256": "3acfcd508078a51e3a48fd7e2f6e61c1b9a6ced0cc44dedd149b55114248e2ab",
+      "git_blob_sha1": "52e621390c81d1e0afdd67ae7c605fa54775aa25",
+      "bytes": 896,
+      "url": "https://raw.githubusercontent.com/RoboTwin-Platform/RoboTwin/ea8b21121ebb3cd201ff5b3fe361944ac94eda3f/env_cfg/task_config/demo_clean.yml"
+    },
+    {
+      "path": "envs/camera.py",
+      "error": "HTTPError"
+    },
+    {
+      "path": "envs/robot/planner.py",
+      "sha256": "f1012345542483f4cfbac64880a266b7ee0d4a64362d5ec6fd6985ed9c34b564",
+      "git_blob_sha1": "21ae43267859777734248561e405f5b9643a7462",
+      "bytes": 17282,
+      "url": "https://raw.githubusercontent.com/RoboTwin-Platform/RoboTwin/ea8b21121ebb3cd201ff5b3fe361944ac94eda3f/envs/robot/planner.py"
+    },
+    {
+      "path": "envs/robot/robot.py",
+      "sha256": "3dcd80acc8cab489a4c5edb507cc460dab1724be0226b8d5c4c1b218dee605cb",
+      "git_blob_sha1": "9dfc08f5485d659abe65b0f6c7045457fafef788",
+      "bytes": 31721,
+      "url": "https://raw.githubusercontent.com/RoboTwin-Platform/RoboTwin/ea8b21121ebb3cd201ff5b3fe361944ac94eda3f/envs/robot/robot.py"
+    },
+    {
+      "path": "envs/handover_block.py",
+      "sha256": "5439712296d7e143d41f8e78b4ab86cd4fad7fb98f40f5f5abb067a462d17650",
+      "git_blob_sha1": "219e3d53c59f7eda6ffc9cbc33370de97bf7d253",
+      "bytes": 3818,
+      "url": "https://raw.githubusercontent.com/RoboTwin-Platform/RoboTwin/ea8b21121ebb3cd201ff5b3fe361944ac94eda3f/envs/handover_block.py"
+    },
+    {
+      "path": "envs/utils/rand_create_actor.py",
+      "sha256": "6c409ff1d97528b9dc654d39cc34683f51af6e797c1c5d92c076c29c09f9bedb",
+      "git_blob_sha1": "de1e5ccee32ef75fc2969919c9a9e655b5adb9a0",
+      "bytes": 4852,
+      "url": "https://raw.githubusercontent.com/RoboTwin-Platform/RoboTwin/ea8b21121ebb3cd201ff5b3fe361944ac94eda3f/envs/utils/rand_create_actor.py"
+    },
+    {
+      "path": "scripts/collect_data.py",
+      "bytes": 11787,
+      "sha256": "1b39396f1e987d4d6ef138b32dd14585af66ea5d71467f672168754fe2a31f1b",
+      "git_blob_sha1": "467d805d1a11352c900cffc4b3b9cc6c313dda63",
+      "url": "https://raw.githubusercontent.com/RoboTwin-Platform/RoboTwin/ea8b21121ebb3cd201ff5b3fe361944ac94eda3f/scripts/collect_data.py"
+    },
+    {
+      "path": "envs/camera/__init__.py",
+      "bytes": 22,
+      "sha256": "c666ede4ebee6fd286a444c8fa966e1bf2034a2fd1fe1a04c7f8a55fd0ba6df6",
+      "git_blob_sha1": "e1235c57aec4ce565e05d69a914c901432a24826",
+      "url": "https://raw.githubusercontent.com/RoboTwin-Platform/RoboTwin/ea8b21121ebb3cd201ff5b3fe361944ac94eda3f/envs/camera/__init__.py"
+    },
+    {
+      "path": "envs/camera/camera.py",
+      "bytes": 25220,
+      "sha256": "e4d17e99c8a68f44a12bef248a2164f52206efeaf24168172b778cc1e32832dd",
+      "git_blob_sha1": "46d960d54a96b1370803e192a5c198a4dde80d66",
+      "url": "https://raw.githubusercontent.com/RoboTwin-Platform/RoboTwin/ea8b21121ebb3cd201ff5b3fe361944ac94eda3f/envs/camera/camera.py"
+    },
+    {
+      "path": "envs/utils/create_actor.py",
+      "bytes": 21406,
+      "sha256": "6bababee8e70da2460b2bbf47d3b5fbb20ccf73368782a7be596a63c962dce6d",
+      "git_blob_sha1": "67c8c6624413aad881eb9d5e9637ae12f9147972",
+      "url": "https://raw.githubusercontent.com/RoboTwin-Platform/RoboTwin/ea8b21121ebb3cd201ff5b3fe361944ac94eda3f/envs/utils/create_actor.py"
+    },
+    {
+      "path": "envs/utils/actor_utils.py",
+      "sha256": "252d43c526b23adcf4ba549fec64a49f037fc4a24e9edd1998e5f60d3e13d5d9",
+      "git_blob_sha1": "e0e6612d3651cb78a0753e4c2c4314afeabaccbb",
+      "bytes": 6282,
+      "url": "https://raw.githubusercontent.com/RoboTwin-Platform/RoboTwin/ea8b21121ebb3cd201ff5b3fe361944ac94eda3f/envs/utils/actor_utils.py"
+    }
+  ]
+}

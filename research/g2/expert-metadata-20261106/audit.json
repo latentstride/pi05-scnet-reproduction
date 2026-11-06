@@ -1,0 +1,517 @@
+{
+  "schema_version": 1,
+  "time_semantics": "source_reconstructed_simulation_time_not_raw_timestamp",
+  "generator_revision_proven": false,
+  "physics_dt_s": 0.004,
+  "interior_frame_dt_s": 0.06,
+  "source_revision": "ea8b21121ebb3cd201ff5b3fe361944ac94eda3f",
+  "dataset_revision": "3dc3b798668feb99ac61cc9086d84cbcc3d79186",
+  "original_object_pose_snapshot_found": false,
+  "episodes": [
+    {
+      "episode": 0,
+      "seed": 0,
+      "frames": 295,
+      "duration_s": 15.780000000000001,
+      "max_target_error": 0.0,
+      "all_14_channels_all_frames_match": true,
+      "tick_delta_histogram": {
+        "0": 13,
+        "1": 15,
+        "3": 1,
+        "5": 2,
+        "7": 1,
+        "9": 1,
+        "12": 2,
+        "13": 2,
+        "14": 4,
+        "15": 253
+      },
+      "hdf5_sha256": "419abe95f2ad2910b19aef1de61c2374e76cbfe5e7a9eb5c26f137ee4f144ee2",
+      "planner_sha256": "881363a1b7e7ca53105e05c6ab8a48c9cd6f87c4a6b227f28e6dfc05fb44a48b",
+      "stages": [
+        {
+          "kind": "L",
+          "path_index": 0,
+          "first_frame": 0,
+          "frame_count": 41,
+          "first_tick": 0,
+          "last_tick": 576
+        },
+        {
+          "kind": "L",
+          "path_index": 1,
+          "first_frame": 41,
+          "frame_count": 11,
+          "first_tick": 576,
+          "last_tick": 709
+        },
+        {
+          "kind": "LG",
+          "path_index": 0,
+          "first_frame": 52,
+          "frame_count": 22,
+          "first_tick": 709,
+          "last_tick": 1009
+        },
+        {
+          "kind": "L",
+          "path_index": 2,
+          "first_frame": 74,
+          "frame_count": 16,
+          "first_tick": 1009,
+          "last_tick": 1206
+        },
+        {
+          "kind": "L",
+          "path_index": 3,
+          "first_frame": 90,
+          "frame_count": 27,
+          "first_tick": 1206,
+          "last_tick": 1580
+        },
+        {
+          "kind": "L",
+          "path_index": 4,
+          "first_frame": 117,
+          "frame_count": 6,
+          "first_tick": 1580,
+          "last_tick": 1631
+        },
+        {
+          "kind": "R",
+          "path_index": 0,
+          "first_frame": 123,
+          "frame_count": 33,
+          "first_tick": 1631,
+          "last_tick": 2091
+        },
+        {
+          "kind": "R",
+          "path_index": 1,
+          "first_frame": 156,
+          "frame_count": 15,
+          "first_tick": 2091,
+          "last_tick": 2279
+        },
+        {
+          "kind": "RG",
+          "path_index": 0,
+          "first_frame": 171,
+          "frame_count": 22,
+          "first_tick": 2279,
+          "last_tick": 2579
+        },
+        {
+          "kind": "LG",
+          "path_index": 1,
+          "first_frame": 193,
+          "frame_count": 22,
+          "first_tick": 2579,
+          "last_tick": 2879
+        },
+        {
+          "kind": "L",
+          "path_index": 5,
+          "first_frame": 215,
+          "frame_count": 16,
+          "first_tick": 2879,
+          "last_tick": 3078
+        },
+        {
+          "kind": "B",
+          "path_index": [
+            6,
+            2
+          ],
+          "first_frame": 231,
+          "frame_count": 31,
+          "first_tick": 3078,
+          "last_tick": 3512
+        },
+        {
+          "kind": "R",
+          "path_index": 3,
+          "first_frame": 262,
+          "frame_count": 11,
+          "first_tick": 3512,
+          "last_tick": 3645
+        },
+        {
+          "kind": "RG",
+          "path_index": 1,
+          "first_frame": 273,
+          "frame_count": 22,
+          "first_tick": 3645,
+          "last_tick": 3945
+        }
+      ],
+      "initial_pose_kind": "seed_source_reconstruction_before_2500_step_settling_not_actual_snapshot",
+      "spawn_pose": {
+        "box": {
+          "position_m": [
+            -0.17331169623484444,
+            0.19793125952066615,
+            0.842
+          ],
+          "quaternion_wxyz": [
+            0.9939092089926762,
+            0.0,
+            0.0,
+            0.11020201576900682
+          ]
+        },
+        "target_box": {
+          "position_m": [
+            0.1130693949552311,
+            0.15101091987201629,
+            0.741
+          ],
+          "quaternion_wxyz": [
+            1,
+            0,
+            0,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "episode": 1,
+      "seed": 1,
+      "frames": 277,
+      "duration_s": 14.620000000000001,
+      "max_target_error": 0.0,
+      "all_14_channels_all_frames_match": true,
+      "tick_delta_histogram": {
+        "0": 14,
+        "1": 15,
+        "2": 1,
+        "5": 2,
+        "7": 1,
+        "8": 1,
+        "10": 2,
+        "12": 1,
+        "14": 4,
+        "15": 235
+      },
+      "hdf5_sha256": "0b46329e6cef1f36627f23fdfdaf56c1b53bfcdd6807e23a2267e3c968396202",
+      "planner_sha256": "99bef7f009146c280ba81bfc4577fb5b77d3f47c270b7852172f3be7134393b8",
+      "stages": [
+        {
+          "kind": "L",
+          "path_index": 0,
+          "first_frame": 0,
+          "frame_count": 34,
+          "first_tick": 0,
+          "last_tick": 478
+        },
+        {
+          "kind": "L",
+          "path_index": 1,
+          "first_frame": 34,
+          "frame_count": 14,
+          "first_tick": 478,
+          "last_tick": 649
+        },
+        {
+          "kind": "LG",
+          "path_index": 0,
+          "first_frame": 48,
+          "frame_count": 22,
+          "first_tick": 649,
+          "last_tick": 949
+        },
+        {
+          "kind": "L",
+          "path_index": 2,
+          "first_frame": 70,
+          "frame_count": 16,
+          "first_tick": 949,
+          "last_tick": 1147
+        },
+        {
+          "kind": "L",
+          "path_index": 3,
+          "first_frame": 86,
+          "frame_count": 14,
+          "first_tick": 1147,
+          "last_tick": 1323
+        },
+        {
+          "kind": "L",
+          "path_index": 4,
+          "first_frame": 100,
+          "frame_count": 6,
+          "first_tick": 1323,
+          "last_tick": 1370
+        },
+        {
+          "kind": "R",
+          "path_index": 0,
+          "first_frame": 106,
+          "frame_count": 33,
+          "first_tick": 1370,
+          "last_tick": 1821
+        },
+        {
+          "kind": "R",
+          "path_index": 1,
+          "first_frame": 139,
+          "frame_count": 15,
+          "first_tick": 1821,
+          "last_tick": 2009
+        },
+        {
+          "kind": "RG",
+          "path_index": 0,
+          "first_frame": 154,
+          "frame_count": 22,
+          "first_tick": 2009,
+          "last_tick": 2309
+        },
+        {
+          "kind": "LG",
+          "path_index": 1,
+          "first_frame": 176,
+          "frame_count": 22,
+          "first_tick": 2309,
+          "last_tick": 2609
+        },
+        {
+          "kind": "L",
+          "path_index": 5,
+          "first_frame": 198,
+          "frame_count": 15,
+          "first_tick": 2609,
+          "last_tick": 2798
+        },
+        {
+          "kind": "B",
+          "path_index": [
+            6,
+            2
+          ],
+          "first_frame": 213,
+          "frame_count": 31,
+          "first_tick": 2798,
+          "last_tick": 3224
+        },
+        {
+          "kind": "R",
+          "path_index": 3,
+          "first_frame": 244,
+          "frame_count": 11,
+          "first_tick": 3224,
+          "last_tick": 3355
+        },
+        {
+          "kind": "RG",
+          "path_index": 1,
+          "first_frame": 255,
+          "frame_count": 22,
+          "first_tick": 3355,
+          "last_tick": 3655
+        }
+      ],
+      "initial_pose_kind": "seed_source_reconstruction_before_2500_step_settling_not_actual_snapshot",
+      "spawn_pose": {
+        "box": {
+          "position_m": [
+            -0.0743765127218109,
+            0.006846898299481541,
+            0.842
+          ],
+          "quaternion_wxyz": [
+            0.9922851331582165,
+            0.0,
+            0.0,
+            0.12397666922925532
+          ]
+        },
+        "target_box": {
+          "position_m": [
+            0.12971522336273184,
+            0.19003722843377685,
+            0.741
+          ],
+          "quaternion_wxyz": [
+            1,
+            0,
+            0,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "episode": 2,
+      "seed": 2,
+      "frames": 282,
+      "duration_s": 15.056000000000001,
+      "max_target_error": 0.0,
+      "all_14_channels_all_frames_match": true,
+      "tick_delta_histogram": {
+        "0": 13,
+        "1": 14,
+        "4": 2,
+        "7": 1,
+        "8": 1,
+        "9": 1,
+        "10": 1,
+        "12": 1,
+        "13": 2,
+        "14": 5,
+        "15": 240
+      },
+      "hdf5_sha256": "e4de42700f3d4f66f9ac0e875760b099aa11bce240482e99a21f1cf0254d283b",
+      "planner_sha256": "f5bb8887fb9a2b0bd0d73b5a3743ac0e2c929ff084c9e3cc60c946f2ee811104",
+      "stages": [
+        {
+          "kind": "L",
+          "path_index": 0,
+          "first_frame": 0,
+          "frame_count": 38,
+          "first_tick": 0,
+          "last_tick": 534
+        },
+        {
+          "kind": "L",
+          "path_index": 1,
+          "first_frame": 38,
+          "frame_count": 12,
+          "first_tick": 534,
+          "last_tick": 680
+        },
+        {
+          "kind": "LG",
+          "path_index": 0,
+          "first_frame": 50,
+          "frame_count": 22,
+          "first_tick": 680,
+          "last_tick": 980
+        },
+        {
+          "kind": "L",
+          "path_index": 2,
+          "first_frame": 72,
+          "frame_count": 15,
+          "first_tick": 980,
+          "last_tick": 1165
+        },
+        {
+          "kind": "L",
+          "path_index": 3,
+          "first_frame": 87,
+          "frame_count": 20,
+          "first_tick": 1165,
+          "last_tick": 1435
+        },
+        {
+          "kind": "L",
+          "path_index": 4,
+          "first_frame": 107,
+          "frame_count": 6,
+          "first_tick": 1435,
+          "last_tick": 1485
+        },
+        {
+          "kind": "R",
+          "path_index": 0,
+          "first_frame": 113,
+          "frame_count": 32,
+          "first_tick": 1485,
+          "last_tick": 1934
+        },
+        {
+          "kind": "R",
+          "path_index": 1,
+          "first_frame": 145,
+          "frame_count": 15,
+          "first_tick": 1934,
+          "last_tick": 2124
+        },
+        {
+          "kind": "RG",
+          "path_index": 0,
+          "first_frame": 160,
+          "frame_count": 22,
+          "first_tick": 2124,
+          "last_tick": 2424
+        },
+        {
+          "kind": "LG",
+          "path_index": 1,
+          "first_frame": 182,
+          "frame_count": 22,
+          "first_tick": 2424,
+          "last_tick": 2724
+        },
+        {
+          "kind": "L",
+          "path_index": 5,
+          "first_frame": 204,
+          "frame_count": 15,
+          "first_tick": 2724,
+          "last_tick": 2917
+        },
+        {
+          "kind": "B",
+          "path_index": [
+            6,
+            2
+          ],
+          "first_frame": 219,
+          "frame_count": 30,
+          "first_tick": 2917,
+          "last_tick": 3330
+        },
+        {
+          "kind": "R",
+          "path_index": 3,
+          "first_frame": 249,
+          "frame_count": 11,
+          "first_tick": 3330,
+          "last_tick": 3464
+        },
+        {
+          "kind": "RG",
+          "path_index": 1,
+          "first_frame": 260,
+          "frame_count": 22,
+          "first_tick": 3464,
+          "last_tick": 3764
+        }
+      ],
+      "initial_pose_kind": "seed_source_reconstruction_before_2500_step_settling_not_actual_snapshot",
+      "spawn_pose": {
+        "box": {
+          "position_m": [
+            -0.19663454497942667,
+            0.15528345819232373,
+            0.842
+          ],
+          "quaternion_wxyz": [
+            0.9911543267372404,
+            0.0,
+            0.0,
+            0.13271435713609772
+          ]
+        },
+        "target_box": {
+          "position_m": [
+            0.21780027217250103,
+            0.19269876463197444,
+            0.741
+          ],
+          "quaternion_wxyz": [
+            1,
+            0,
+            0,
+            0
+          ]
+        }
+      }
+    }
+  ]
+}

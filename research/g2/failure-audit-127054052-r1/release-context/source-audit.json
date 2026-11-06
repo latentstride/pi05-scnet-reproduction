@@ -1,0 +1,10 @@
+{
+  "envs/robot/robot.py": "3dcd80acc8cab489a4c5edb507cc460dab1724be0226b8d5c4c1b218dee605cb",
+  "envs/robot/planner.py": "f1012345542483f4cfbac64880a266b7ee0d4a64362d5ec6fd6985ed9c34b564",
+  "envs/_base_task.py": "448f7152b65cb9102217cf5463aa821d72810ca56f63d5a797ec7bd43e23e101",
+  "envs/handover_block.py": "5439712296d7e143d41f8e78b4ab86cd4fad7fb98f40f5f5abb067a462d17650",
+  "task_config/demo_clean.yml": "8ee5d0d07daecf7599b8d89b44776b700c7c60da24cd6317e176e6798d8cb11e",
+  "task_config/_embodiment_config.yml": "b0a198ff27bf6bf6b73162d2d1adafc7e73fcdf53f39943e67e40fee15bd83fa",
+  "expert_scenes_subset.json": "58634289b9668275ac709becb43353e71c334419b20c344880f86af1d2bacb87",
+  "PACE_VERSION.txt": "3156c19503f44b5bb30afa2887876ae0713f5333be9e088b5adf9295b21e1c43"
+}

@@ -1,0 +1,155 @@
+{
+  "task": "handover_block",
+  "config": "pi05_robotwin_handover_block",
+  "path": "handover_block",
+  "asset_id": "robotwin",
+  "norm_stats": "handover_block/assets/robotwin/norm_stats.json",
+  "norm_stats_sha256": "8a1f114a8873dfa0788c7f512851ee3063224ef2b8af270421076a2e4e544960",
+  "files": [
+    {
+      "path": "handover_block/assets/robotwin/norm_stats.json",
+      "bytes": 3300,
+      "sha256": "8a1f114a8873dfa0788c7f512851ee3063224ef2b8af270421076a2e4e544960"
+    },
+    {
+      "path": "handover_block/params/_METADATA",
+      "bytes": 23544,
+      "sha256": "f27d21952e602528615298c668b588ba14ae8268e03e94598ea0235eaea52a5f"
+    },
+    {
+      "path": "handover_block/params/_sharding",
+      "bytes": 12797,
+      "sha256": "7e65c8b63fafedfedb52bf416d6bfde394c1c88fd28dc02f18a7911f2581c183"
+    },
+    {
+      "path": "handover_block/params/array_metadatas/process_0",
+      "bytes": 9162,
+      "sha256": "b6f4c56c01a8b73c9db955c4c68dd0b74d7fdda723831715dcbcd18ba5ddd4ab"
+    },
+    {
+      "path": "handover_block/params/d/3ac7e30a2c91f72f703e06433bba448e",
+      "bytes": 2236,
+      "sha256": "a7f5740faa60e79ecb438dea3239429c4c26e223ae7545144ac852eebeb76bb2"
+    },
+    {
+      "path": "handover_block/params/manifest.ocdbt",
+      "bytes": 117,
+      "sha256": "585e745b3c42a97e11cf797f4a6c2af39e0bfc8a7f208ab8aa969110b88aef4f"
+    },
+    {
+      "path": "handover_block/params/ocdbt.process_0/d/0e807a327c35df3e799565ecfaf9d595",
+      "bytes": 70041649,
+      "sha256": "1eeab9b3b5751e1a2fb27041a87c429b2f4a40b1873fb61c040d136e15020d91"
+    },
+    {
+      "path": "handover_block/params/ocdbt.process_0/d/187f6ae416622c2c1fee434a512e8dc7",
+      "bytes": 5368,
+      "sha256": "0abab437cf7dcf9fa06befd519673195e99a4e175d9fe93aca009328504560d9"
+    },
+    {
+      "path": "handover_block/params/ocdbt.process_0/d/251395139f35960eba7d276bc7234869",
+      "bytes": 2531037,
+      "sha256": "990a64a10104981db40d65cd3bfb003c155d67e64623079a46ef6fab4651806d"
+    },
+    {
+      "path": "handover_block/params/ocdbt.process_0/d/374896a5101ddc50b10b65ecac3abb90",
+      "bytes": 840266392,
+      "sha256": "7116a73644c769e310ba374e11164f72a0f0abc473ed47160a301fb7d9f54a18"
+    },
+    {
+      "path": "handover_block/params/ocdbt.process_0/d/3d87c847d18816cace2b3a02942d16a1",
+      "bytes": 1711,
+      "sha256": "a9cecdcc9e92b951ac1185be594e1128100eab803153bc72f713563cee5dabda"
+    },
+    {
+      "path": "handover_block/params/ocdbt.process_0/d/482823b06bfd1f1d194e4e06d1891cf2",
+      "bytes": 1120145567,
+      "sha256": "a439530f6e5ad7c18b5f3441d0d13ab12d4b66646cae078ce8cd61abc8078908"
+    },
+    {
+      "path": "handover_block/params/ocdbt.process_0/d/4e2480b45b771edf064612c880c1ff78",
+      "bytes": 27978375,
+      "sha256": "69500624cdeb858b48813b0075ca257d5dec8ed7030131ea7f11afb99a4a3996"
+    },
+    {
+      "path": "handover_block/params/ocdbt.process_0/d/5210ebd886876025f288b2759a32ea7c",
+      "bytes": 2215,
+      "sha256": "8e55b5bcd5a197f10cf2243793861c04c0a3d188359e42aa30a992044f426644"
+    },
+    {
+      "path": "handover_block/params/ocdbt.process_0/d/54508c55560cbff946c96d80fcf0706f",
+      "bytes": 265959469,
+      "sha256": "2d52f608bc58efa80a16302eb93f136b0508131cda957282bc2cf5ffc0f47d0b"
+    },
+    {
+      "path": "handover_block/params/ocdbt.process_0/d/56358d90b49ec08165fcc024aa21160f",
+      "bytes": 994206692,
+      "sha256": "4821d32365b94a8eeaf85871b218d526bbc23fb951152c176b66f8e4fbc1c5ae"
+    },
+    {
+      "path": "handover_block/params/ocdbt.process_0/d/7d0861c51d92ed78773e232ba5b17171",
+      "bytes": 1095,
+      "sha256": "c50d04becc543747607e4b681916d77cc0cf096939609a38dec302483728c811"
+    },
+    {
+      "path": "handover_block/params/ocdbt.process_0/d/971b8c4383688d077ecd064ab6fe126c",
+      "bytes": 3077101987,
+      "sha256": "8952183e19ea1d615716956a03796a3b3cd7de22a380524e08163527a4d07bdd"
+    },
+    {
+      "path": "handover_block/params/ocdbt.process_0/d/c2a442d28ab88daedbcd7411830e2c55",
+      "bytes": 34945046,
+      "sha256": "3a9cff2d68db0807669762d1f5c0f5c9526c340447ef6184e49ca63e5b0bead8"
+    },
+    {
+      "path": "handover_block/params/ocdbt.process_0/d/c8b51041b0a712296965ba8afed31405",
+      "bytes": 2240420926,
+      "sha256": "4a5417f090979b07059fc23d564f3f4c567973ecaf92444d9bb5aa122a5dfb18"
+    },
+    {
+      "path": "handover_block/params/ocdbt.process_0/d/cf80491c55bc9b30bef480e550a88394",
+      "bytes": 559155908,
+      "sha256": "269475aed39fe7fbc4bf0786266315de5e9076c45d5c770530475412bf73eeb7"
+    },
+    {
+      "path": "handover_block/params/ocdbt.process_0/d/d9ec3ad581a4447619effad315ce0af0",
+      "bytes": 2042,
+      "sha256": "e8d15e662fe72a3032b2df7d5242c021e6553b706fbd712f346b8d1574480d6b"
+    },
+    {
+      "path": "handover_block/params/ocdbt.process_0/d/dba88d5bdd0f85fa049fdd92fdfe5d6e",
+      "bytes": 213,
+      "sha256": "fff2f8b328c86ab34912c01d5758210df1805bcd73e3709be401d1989b9b18c3"
+    },
+    {
+      "path": "handover_block/params/ocdbt.process_0/d/ef545f45d67dae8b5300d10897077a9b",
+      "bytes": 545971189,
+      "sha256": "d28a95f5e13a58c2c026e500c78ff4c6c4c3646f77a46eac476db6d90dd5deb1"
+    },
+    {
+      "path": "handover_block/params/ocdbt.process_0/d/f9109942930a61f90de46580f8d82cbe",
+      "bytes": 422345896,
+      "sha256": "1dfad4fee1bb7b5e612fb6bcb66b95c2227c4163a578bec2716b33ca3605bbd6"
+    },
+    {
+      "path": "handover_block/params/ocdbt.process_0/d/ffce6118c74227836316378fe2a4820d",
+      "bytes": 2240418316,
+      "sha256": "bf865849feb1495c30fb1767ce564fe97dfdb14f1c8c840c98609254ee51f7a4"
+    },
+    {
+      "path": "handover_block/params/ocdbt.process_0/manifest.ocdbt",
+      "bytes": 488,
+      "sha256": "06e4eb382a9d53915e73a9b3d4159cb93104b599681f8dee8e9cd060e5d3d780"
+    },
+    {
+      "path": "tokenizer.model",
+      "bytes": 4264023,
+      "sha256": "8986bb4f423f07f8c7f70d0dbe3526fb2316056c17bae71b1ea975e77a168fc6"
+    }
+  ],
+  "schema_version": 1,
+  "repo": "niejunnan25/pi05-robotwin",
+  "revision": "17ef545270cf26ed81169893b60f845f80ce6557",
+  "checkpoint_bytes": 12441552737,
+  "total_bytes": 12445816760
+}

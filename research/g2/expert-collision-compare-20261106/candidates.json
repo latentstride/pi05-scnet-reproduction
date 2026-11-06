@@ -1,0 +1,576 @@
+{
+  "schema_version": 1,
+  "formal_roster_frozen": false,
+  "candidates": [
+    {
+      "candidate_id": "official-expert-episode0-seed0",
+      "formal_pair_id": null,
+      "episode": 0,
+      "seed": 0,
+      "data_kind": "diagnostic",
+      "object_pair_check_passed": true,
+      "object_pair_failures": [],
+      "source_kind": "actual_CPU_reconstruction_after_settling",
+      "actual_initial": {
+        "aloha-agilex": {
+          "robot_base_world": {
+            "left": [
+              0.0,
+              -0.6499999761581421,
+              0.0,
+              0.7071067811865476,
+              0.0,
+              0.0,
+              0.7071067811865475
+            ],
+            "right": [
+              0.0,
+              -0.6499999761581421,
+              0.0,
+              0.7071067811865476,
+              0.0,
+              0.0,
+              0.7071067811865475
+            ]
+          },
+          "task_frame_world": [
+            0.0,
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "actual_arm_qpos_rad": {
+            "left": [
+              -1.9245888324803673e-05,
+              0.016413232311606407,
+              -0.045853741466999054,
+              -0.007920276373624802,
+              -0.0004339884908404201,
+              -0.00019198669178877026
+            ],
+            "right": [
+              -1.9249879187555052e-05,
+              0.01641317456960678,
+              -0.04585381969809532,
+              -0.007920220494270325,
+              -0.0004339854931458831,
+              -0.00019196390348952264
+            ]
+          },
+          "actual_gripper": {
+            "left": 1.0,
+            "right": 1.0
+          },
+          "objects_task": {
+            "block": [
+              -0.17331185936927795,
+              0.19793175160884857,
+              0.8399999737739563,
+              0.993909252668161,
+              -2.223279930265378e-06,
+              -2.3982686353397174e-07,
+              0.11020162183750812
+            ],
+            "target": [
+              0.11306939274072647,
+              0.1510109156370163,
+              0.7409999966621399,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "table": [
+              0.0,
+              0.0,
+              0.7400000095367432,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "reset_fixture_sha256": "877735391dc10631420494b39457b923c5abac4582225010f6b5e35e7612a329",
+          "workspace_check_id": "settled_cpu_reconstruction_not_formal",
+          "common_workspace_pass": false
+        },
+        "ARX-X5": {
+          "robot_base_world": {
+            "left": [
+              -0.30000001192092896,
+              -0.3499999940395355,
+              0.7839999794960022,
+              0.7071067811865476,
+              0.0,
+              0.0,
+              0.7071067811865475
+            ],
+            "right": [
+              0.30000001192092896,
+              -0.3499999940395355,
+              0.7839999794960022,
+              0.7071067811865476,
+              0.0,
+              0.0,
+              0.7071067811865475
+            ]
+          },
+          "task_frame_world": [
+            0.0,
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "actual_arm_qpos_rad": {
+            "left": [
+              -5.19472268933896e-06,
+              0.01737149991095066,
+              -0.04507334530353546,
+              -0.009320350363850594,
+              -4.2226066199191337e-08,
+              -6.102401783891764e-08
+            ],
+            "right": [
+              -5.182523182156729e-06,
+              0.01737149991095066,
+              -0.04507335275411606,
+              -0.009320355951786041,
+              -6.177904054993633e-08,
+              -4.9290836301452146e-08
+            ]
+          },
+          "actual_gripper": {
+            "left": 0.9999765845184977,
+            "right": 0.9999778121709825
+          },
+          "objects_task": {
+            "block": [
+              -0.17331185936927795,
+              0.19793175160884857,
+              0.8399999737739563,
+              0.993909252668161,
+              -2.223279930265378e-06,
+              -2.3982686353397174e-07,
+              0.11020162183750812
+            ],
+            "target": [
+              0.11306939274072647,
+              0.1510109156370163,
+              0.7409999966621399,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "table": [
+              0.0,
+              0.0,
+              0.7400000095367432,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "reset_fixture_sha256": "877735391dc10631420494b39457b923c5abac4582225010f6b5e35e7612a329",
+          "workspace_check_id": "settled_cpu_reconstruction_not_formal",
+          "common_workspace_pass": false
+        }
+      },
+      "initial_fcl_geometry_passed": true,
+      "known_colliding_path_segments": 24,
+      "formal_exclusion_reasons": [
+        "original_expert_actual_robot_initial_state_not_recovered",
+        "CPU_explicit_opened_home_initialization_differs_from_source_gripper_ramp",
+        "held_object_and_contact_path_unverified",
+        "selected_expert_path_hits_target_tray"
+      ]
+    },
+    {
+      "candidate_id": "official-expert-episode1-seed1",
+      "formal_pair_id": null,
+      "episode": 1,
+      "seed": 1,
+      "data_kind": "diagnostic",
+      "object_pair_check_passed": true,
+      "object_pair_failures": [],
+      "source_kind": "actual_CPU_reconstruction_after_settling",
+      "actual_initial": {
+        "aloha-agilex": {
+          "robot_base_world": {
+            "left": [
+              0.0,
+              -0.6499999761581421,
+              0.0,
+              0.7071067811865476,
+              0.0,
+              0.0,
+              0.7071067811865475
+            ],
+            "right": [
+              0.0,
+              -0.6499999761581421,
+              0.0,
+              0.7071067811865476,
+              0.0,
+              0.0,
+              0.7071067811865475
+            ]
+          },
+          "task_frame_world": [
+            0.0,
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "actual_arm_qpos_rad": {
+            "left": [
+              -1.9245888324803673e-05,
+              0.016413232311606407,
+              -0.045853741466999054,
+              -0.007920276373624802,
+              -0.0004339884908404201,
+              -0.00019198669178877026
+            ],
+            "right": [
+              -1.9249879187555052e-05,
+              0.01641317456960678,
+              -0.04585381969809532,
+              -0.007920220494270325,
+              -0.0004339854931458831,
+              -0.00019196390348952264
+            ]
+          },
+          "actual_gripper": {
+            "left": 1.0,
+            "right": 1.0
+          },
+          "objects_task": {
+            "block": [
+              -0.0743768960237503,
+              0.006847504060715437,
+              0.8399999737739563,
+              0.9922851815990736,
+              -3.001563770453711e-06,
+              -8.95692260663163e-07,
+              0.12397628147787698
+            ],
+            "target": [
+              0.1297152191400528,
+              0.19003723561763763,
+              0.7409999966621399,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "table": [
+              0.0,
+              0.0,
+              0.7400000095367432,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "reset_fixture_sha256": "330b41c6d88180639319408b0d6facc810e4c300da79c90ff94bd55519abdceb",
+          "workspace_check_id": "settled_cpu_reconstruction_not_formal",
+          "common_workspace_pass": false
+        },
+        "ARX-X5": {
+          "robot_base_world": {
+            "left": [
+              -0.30000001192092896,
+              -0.3499999940395355,
+              0.7839999794960022,
+              0.7071067811865476,
+              0.0,
+              0.0,
+              0.7071067811865475
+            ],
+            "right": [
+              0.30000001192092896,
+              -0.3499999940395355,
+              0.7839999794960022,
+              0.7071067811865476,
+              0.0,
+              0.0,
+              0.7071067811865475
+            ]
+          },
+          "task_frame_world": [
+            0.0,
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "actual_arm_qpos_rad": {
+            "left": [
+              -5.19472268933896e-06,
+              0.01737149991095066,
+              -0.04507334530353546,
+              -0.009320350363850594,
+              -4.2226066199191337e-08,
+              -6.102401783891764e-08
+            ],
+            "right": [
+              -5.182523182156729e-06,
+              0.01737149991095066,
+              -0.04507335275411606,
+              -0.009320355951786041,
+              -6.177904054993633e-08,
+              -4.9290836301452146e-08
+            ]
+          },
+          "actual_gripper": {
+            "left": 0.9999765845184977,
+            "right": 0.9999778121709825
+          },
+          "objects_task": {
+            "block": [
+              -0.0743768960237503,
+              0.006847504060715437,
+              0.8399999737739563,
+              0.9922851815990736,
+              -3.001563770453711e-06,
+              -8.95692260663163e-07,
+              0.12397628147787698
+            ],
+            "target": [
+              0.1297152191400528,
+              0.19003723561763763,
+              0.7409999966621399,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "table": [
+              0.0,
+              0.0,
+              0.7400000095367432,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "reset_fixture_sha256": "330b41c6d88180639319408b0d6facc810e4c300da79c90ff94bd55519abdceb",
+          "workspace_check_id": "settled_cpu_reconstruction_not_formal",
+          "common_workspace_pass": false
+        }
+      },
+      "initial_fcl_geometry_passed": true,
+      "known_colliding_path_segments": 24,
+      "formal_exclusion_reasons": [
+        "original_expert_actual_robot_initial_state_not_recovered",
+        "CPU_explicit_opened_home_initialization_differs_from_source_gripper_ramp",
+        "held_object_and_contact_path_unverified",
+        "selected_expert_path_hits_target_tray"
+      ]
+    },
+    {
+      "candidate_id": "official-expert-episode2-seed2",
+      "formal_pair_id": null,
+      "episode": 2,
+      "seed": 2,
+      "data_kind": "diagnostic",
+      "object_pair_check_passed": true,
+      "object_pair_failures": [],
+      "source_kind": "actual_CPU_reconstruction_after_settling",
+      "actual_initial": {
+        "aloha-agilex": {
+          "robot_base_world": {
+            "left": [
+              0.0,
+              -0.6499999761581421,
+              0.0,
+              0.7071067811865476,
+              0.0,
+              0.0,
+              0.7071067811865475
+            ],
+            "right": [
+              0.0,
+              -0.6499999761581421,
+              0.0,
+              0.7071067811865476,
+              0.0,
+              0.0,
+              0.7071067811865475
+            ]
+          },
+          "task_frame_world": [
+            0.0,
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "actual_arm_qpos_rad": {
+            "left": [
+              -1.9245888324803673e-05,
+              0.016413232311606407,
+              -0.045853741466999054,
+              -0.007920276373624802,
+              -0.0004339884908404201,
+              -0.00019198669178877026
+            ],
+            "right": [
+              -1.9249879187555052e-05,
+              0.01641317456960678,
+              -0.04585381969809532,
+              -0.007920220494270325,
+              -0.0004339854931458831,
+              -0.00019196390348952264
+            ]
+          },
+          "actual_gripper": {
+            "left": 1.0,
+            "right": 1.0
+          },
+          "objects_task": {
+            "block": [
+              -0.19663457572460175,
+              0.15528398752212524,
+              0.8400001525878906,
+              0.9911543731740489,
+              -2.348214453367667e-06,
+              2.915424883020212e-07,
+              0.1327140103092328
+            ],
+            "target": [
+              0.21780027449131012,
+              0.19269876182079315,
+              0.7409999966621399,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "table": [
+              0.0,
+              0.0,
+              0.7400000095367432,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "reset_fixture_sha256": "6b21ac43eb1dd286c540dfa3701932fb9bef67fccbd4002127e9eed64d4610c4",
+          "workspace_check_id": "settled_cpu_reconstruction_not_formal",
+          "common_workspace_pass": false
+        },
+        "ARX-X5": {
+          "robot_base_world": {
+            "left": [
+              -0.30000001192092896,
+              -0.3499999940395355,
+              0.7839999794960022,
+              0.7071067811865476,
+              0.0,
+              0.0,
+              0.7071067811865475
+            ],
+            "right": [
+              0.30000001192092896,
+              -0.3499999940395355,
+              0.7839999794960022,
+              0.7071067811865476,
+              0.0,
+              0.0,
+              0.7071067811865475
+            ]
+          },
+          "task_frame_world": [
+            0.0,
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "actual_arm_qpos_rad": {
+            "left": [
+              -5.19472268933896e-06,
+              0.01737149991095066,
+              -0.04507334530353546,
+              -0.009320350363850594,
+              -4.2226066199191337e-08,
+              -6.102401783891764e-08
+            ],
+            "right": [
+              -5.182523182156729e-06,
+              0.01737149991095066,
+              -0.04507335275411606,
+              -0.009320355951786041,
+              -6.177904054993633e-08,
+              -4.9290836301452146e-08
+            ]
+          },
+          "actual_gripper": {
+            "left": 0.9999765845184977,
+            "right": 0.9999778121709825
+          },
+          "objects_task": {
+            "block": [
+              -0.19663457572460175,
+              0.15528398752212524,
+              0.8400001525878906,
+              0.9911543731740489,
+              -2.348214453367667e-06,
+              2.915424883020212e-07,
+              0.1327140103092328
+            ],
+            "target": [
+              0.21780027449131012,
+              0.19269876182079315,
+              0.7409999966621399,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "table": [
+              0.0,
+              0.0,
+              0.7400000095367432,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "reset_fixture_sha256": "6b21ac43eb1dd286c540dfa3701932fb9bef67fccbd4002127e9eed64d4610c4",
+          "workspace_check_id": "settled_cpu_reconstruction_not_formal",
+          "common_workspace_pass": false
+        }
+      },
+      "initial_fcl_geometry_passed": true,
+      "known_colliding_path_segments": 16,
+      "formal_exclusion_reasons": [
+        "original_expert_actual_robot_initial_state_not_recovered",
+        "CPU_explicit_opened_home_initialization_differs_from_source_gripper_ramp",
+        "held_object_and_contact_path_unverified",
+        "selected_expert_path_hits_target_tray"
+      ]
+    }
+  ]
+}

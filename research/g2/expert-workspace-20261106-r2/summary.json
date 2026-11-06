@@ -1,0 +1,53 @@
+{
+  "data_kind": "diagnostic",
+  "input_semantics": "FK_of_recorded_drive_targets_not_actual_expert_qpos",
+  "all_frames_screened": true,
+  "collision_checked": false,
+  "task_success_evaluated": false,
+  "formal_roster_frozen": false,
+  "note": "Finite IK failure is not proof of unreachability; outside outer radius is a necessary geometric exclusion.",
+  "episodes": [
+    {
+      "episode": 0,
+      "frames": 295,
+      "wall_s": 2.189580375001242,
+      "both_ik_solved": 295,
+      "arm_status_counts": [
+        {
+          "ik_solution": 295
+        },
+        {
+          "ik_solution": 295
+        }
+      ]
+    },
+    {
+      "episode": 1,
+      "frames": 277,
+      "wall_s": 1.8727139999973588,
+      "both_ik_solved": 277,
+      "arm_status_counts": [
+        {
+          "ik_solution": 277
+        },
+        {
+          "ik_solution": 277
+        }
+      ]
+    },
+    {
+      "episode": 2,
+      "frames": 282,
+      "wall_s": 1.9937763330017333,
+      "both_ik_solved": 282,
+      "arm_status_counts": [
+        {
+          "ik_solution": 282
+        },
+        {
+          "ik_solution": 282
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "snapshot_matches_measured_tail": [
+    "0-aloha-agilex",
+    "0-ARX-X5",
+    "1-aloha-agilex",
+    "1-ARX-X5",
+    "2-aloha-agilex",
+    "2-ARX-X5"
+  ],
+  "executed_script_matches_local": true,
+  "full_regression_tests": 116,
+  "full_regression_passed": true
+}

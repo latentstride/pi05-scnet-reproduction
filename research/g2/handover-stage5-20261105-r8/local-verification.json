@@ -1,0 +1,30 @@
+{
+  "archive_sha256": "a251be07cb56a960673e6248ec5fc36edbaacee54db4ef1f877c5025dd8966d2",
+  "archive_verified": true,
+  "readback_files_verified": true,
+  "journal_matches_execution": true,
+  "local_script_import_graph": {
+    "g2_capture.py": "86321da264488df47dce20781cc59acc7a81f0bd8cce25b4d7afecf5ebc37563",
+    "g2_proxy_collision.py": "636ff63de9be6b3f49cfceda5fe9c101cfaf3b28645569f6f38634e5c0879af2",
+    "g2_episode.py": "4d31e79dca6006a72d2db216a40272449b8fe04f0e392ea672fff496e0caa169",
+    "g2_motion.py": "aaa3f36cb8b44479006da2adb210e2437548a659a564b64ac949549ea531121c",
+    "g2_assets.py": "ef712349bc246de2259da0f009eac7cee785ab1b439e484e291c697c0a4c1907",
+    "g2_contact.py": "8861b1bece4852703dce95465bd9128c7e87fce3d253da315ceb5d8170e47f83",
+    "g2_collision.py": "3047aec1d3c0c4cd221a2bc860aada89cb91de151d6abc8eb155186010d2ec0e",
+    "g2_robotwin_backend.py": "43ebad5eaeff062401289c6ca34e60936071cb2a9db62be275541a0ced68d006",
+    "pace_runtime.py": "e59e501fe291e079bd86a50da74b23a3825554fcbf7ecc9942f2561dd0f13ddb",
+    "verify_robotwin_fk.py": "4af616a6ae263f48e88e28a91c64dfb809a6d245698a0b7e432febd974188428",
+    "robotwin_control_geometry.py": "e3ede0d095ee30558451f14fe12789e8778b6caecd7c9edcd3d0925c07a2d788",
+    "g2_handover_cpu_smoke.py": "f964a250f78c9d667efc40ea7d5d6f3cc0dada48cd6a23a9c9e4bcf71d8ee11a",
+    "g2_kinematics.py": "bb21f17ffacd0ee603f79ab36f393ee4b8fda2efe44fdb2786a430233365a546",
+    "g2_adapter.py": "ccd7baf793bb69a6951d5c8294af4adbed0378083937021228af96a78b170382"
+  },
+  "import_graph_hashes_match": true,
+  "unused_preparation_file_drift": [
+    "g2_prepare_config.py"
+  ],
+  "input_hashes_verified": {
+    "config": "95811b25d7d2b0f4408dc4b701b17b268dd7c34a625d712a02f6bdb0154086a1",
+    "audit": "5ebfc07c82814757168bdb3f2b7ad4a9bec18f58afc28318f49e61af117122f2"
+  }
+}

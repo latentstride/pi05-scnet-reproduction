@@ -1,0 +1,678 @@
+[
+  {
+    "delta_task_m": [
+      -0.07,
+      0,
+      0
+    ],
+    "status": "rejected",
+    "detail": "all temporally admissible IK pairs collide",
+    "diagnostic": {
+      "rejected_pairs": 16,
+      "collision_examples": [
+        {
+          "candidate_q": [
+            [
+              -8.28791851632934e-05,
+              -0.6866555780853557,
+              0.18340478100127883,
+              -0.869972137506192,
+              -0.00035071674159935055,
+              0.0020187242918325164
+            ],
+            [
+              -0.00021546479547396302,
+              -1.1548891052370891e-05,
+              2.9080358217470348e-05,
+              1.9327239897393156e-06,
+              0.00037409443757496774,
+              0.002012824872508645
+            ]
+          ],
+          "collisions": [
+            {
+              "collision_type": "self",
+              "object_name1": "cpu_contact_arx_0_1",
+              "link_name1": "link2",
+              "object_name2": "cpu_contact_arx_0_1",
+              "link_name2": "link5",
+              "max_penetration_m": 0.00023400873760692775
+            }
+          ]
+        },
+        {
+          "candidate_q": [
+            [
+              -8.28791851632934e-05,
+              -0.6866555780853557,
+              0.18340478100127883,
+              -0.869972137506192,
+              -0.00035071674159935055,
+              0.0020187242918325164
+            ],
+            [
+              -0.00021583924244025318,
+              -1.184881610887892e-05,
+              2.8866376408584353e-05,
+              2.440710467796854e-06,
+              0.0003736065442313273,
+              0.002012506189005776
+            ]
+          ],
+          "collisions": [
+            {
+              "collision_type": "self",
+              "object_name1": "cpu_contact_arx_0_1",
+              "link_name1": "link2",
+              "object_name2": "cpu_contact_arx_0_1",
+              "link_name2": "link5",
+              "max_penetration_m": 0.00023400873760692775
+            }
+          ]
+        },
+        {
+          "candidate_q": [
+            [
+              -6.781921402437019e-05,
+              -0.6866556257400239,
+              0.1834047798448603,
+              -0.8699721832532311,
+              -0.0003356649807128493,
+              0.0020187229552970525
+            ],
+            [
+              -0.00021546479547396302,
+              -1.1548891052370891e-05,
+              2.9080358217470348e-05,
+              1.9327239897393156e-06,
+              0.00037409443757496774,
+              0.002012824872508645
+            ]
+          ],
+          "collisions": [
+            {
+              "collision_type": "self",
+              "object_name1": "cpu_contact_arx_0_1",
+              "link_name1": "link2",
+              "object_name2": "cpu_contact_arx_0_1",
+              "link_name2": "link5",
+              "max_penetration_m": 0.00023400872305501252
+            }
+          ]
+        },
+        {
+          "candidate_q": [
+            [
+              -6.781921402437019e-05,
+              -0.6866556257400239,
+              0.1834047798448603,
+              -0.8699721832532311,
+              -0.0003356649807128493,
+              0.0020187229552970525
+            ],
+            [
+              -0.00021583924244025318,
+              -1.184881610887892e-05,
+              2.8866376408584353e-05,
+              2.440710467796854e-06,
+              0.0003736065442313273,
+              0.002012506189005776
+            ]
+          ],
+          "collisions": [
+            {
+              "collision_type": "self",
+              "object_name1": "cpu_contact_arx_0_1",
+              "link_name1": "link2",
+              "object_name2": "cpu_contact_arx_0_1",
+              "link_name2": "link5",
+              "max_penetration_m": 0.00023400872305501252
+            }
+          ]
+        },
+        {
+          "candidate_q": [
+            [
+              -8.28791851632934e-05,
+              -0.6866555780853557,
+              0.18340478100127883,
+              -0.869972137506192,
+              -0.00035071674159935055,
+              0.0020187242918325164
+            ],
+            [
+              -6.2833714006499095,
+              -6.283425265041576,
+              -6.28318795101809,
+              -6.283382109993963,
+              -6.2827824340835186,
+              0.002013352610730972
+            ]
+          ],
+          "collisions": [
+            {
+              "collision_type": "self",
+              "object_name1": "cpu_contact_arx_0_1",
+              "link_name1": "link2",
+              "object_name2": "cpu_contact_arx_0_1",
+              "link_name2": "link5",
+              "max_penetration_m": 0.00023400873760692775
+            }
+          ]
+        },
+        {
+          "candidate_q": [
+            [
+              -6.781921402437019e-05,
+              -0.6866556257400239,
+              0.1834047798448603,
+              -0.8699721832532311,
+              -0.0003356649807128493,
+              0.0020187229552970525
+            ],
+            [
+              -6.2833714006499095,
+              -6.283425265041576,
+              -6.28318795101809,
+              -6.283382109993963,
+              -6.2827824340835186,
+              0.002013352610730972
+            ]
+          ],
+          "collisions": [
+            {
+              "collision_type": "self",
+              "object_name1": "cpu_contact_arx_0_1",
+              "link_name1": "link2",
+              "object_name2": "cpu_contact_arx_0_1",
+              "link_name2": "link5",
+              "max_penetration_m": 0.00023400872305501252
+            }
+          ]
+        },
+        {
+          "candidate_q": [
+            [
+              -8.28791851632934e-05,
+              -0.6866555780853557,
+              0.18340478100127883,
+              -0.869972137506192,
+              -0.00035071674159935055,
+              0.0020187242918325164
+            ],
+            [
+              6.283361342219709,
+              6.283207922260858,
+              6.283102915776975,
+              6.283547910021539,
+              6.2839285345188,
+              0.002018809558169958
+            ]
+          ],
+          "collisions": [
+            {
+              "collision_type": "self",
+              "object_name1": "cpu_contact_arx_0_1",
+              "link_name1": "link2",
+              "object_name2": "cpu_contact_arx_0_1",
+              "link_name2": "link5",
+              "max_penetration_m": 0.00023400873760692775
+            }
+          ]
+        },
+        {
+          "candidate_q": [
+            [
+              -6.781921402437019e-05,
+              -0.6866556257400239,
+              0.1834047798448603,
+              -0.8699721832532311,
+              -0.0003356649807128493,
+              0.0020187229552970525
+            ],
+            [
+              6.283361342219709,
+              6.283207922260858,
+              6.283102915776975,
+              6.283547910021539,
+              6.2839285345188,
+              0.002018809558169958
+            ]
+          ],
+          "collisions": [
+            {
+              "collision_type": "self",
+              "object_name1": "cpu_contact_arx_0_1",
+              "link_name1": "link2",
+              "object_name2": "cpu_contact_arx_0_1",
+              "link_name2": "link5",
+              "max_penetration_m": 0.00023400872305501252
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "delta_task_m": [
+      -0.07,
+      0,
+      0.03
+    ],
+    "status": "rejected",
+    "detail": "adapter deadline exceeded",
+    "diagnostic": {}
+  },
+  {
+    "delta_task_m": [
+      -0.07,
+      0,
+      0.06
+    ],
+    "status": "rejected",
+    "detail": "adapter deadline exceeded",
+    "diagnostic": {}
+  },
+  {
+    "delta_task_m": [
+      -0.05,
+      0,
+      0.04
+    ],
+    "status": "rejected",
+    "detail": "adapter deadline exceeded",
+    "diagnostic": {}
+  },
+  {
+    "delta_task_m": [
+      -0.06,
+      0,
+      -0.02
+    ],
+    "status": "rejected",
+    "detail": "all temporally admissible IK pairs collide",
+    "diagnostic": {
+      "rejected_pairs": 16,
+      "collision_examples": [
+        {
+          "candidate_q": [
+            [
+              -8.258542768891431e-05,
+              -0.8309453075534617,
+              0.11019264732872053,
+              -0.9410459670930221,
+              -0.0003499270017792709,
+              0.002019452986785475
+            ],
+            [
+              -0.00021546479547396302,
+              -1.1548891052370891e-05,
+              2.9080358217470348e-05,
+              1.9327239897393156e-06,
+              0.00037409443757496774,
+              0.002012824872508645
+            ]
+          ],
+          "collisions": [
+            {
+              "collision_type": "self",
+              "object_name1": "cpu_contact_arx_0_1",
+              "link_name1": "link1",
+              "object_name2": "cpu_contact_arx_0_1",
+              "link_name2": "link5",
+              "max_penetration_m": 0.009749027900397778
+            },
+            {
+              "collision_type": "self",
+              "object_name1": "cpu_contact_arx_0_1",
+              "link_name1": "link2",
+              "object_name2": "cpu_contact_arx_0_1",
+              "link_name2": "link5",
+              "max_penetration_m": 0.02130240388214588
+            },
+            {
+              "collision_type": "self",
+              "object_name1": "cpu_contact_arx_0_1",
+              "link_name1": "link2",
+              "object_name2": "cpu_contact_arx_0_1",
+              "link_name2": "link6",
+              "max_penetration_m": 0.008001647889614105
+            }
+          ]
+        },
+        {
+          "candidate_q": [
+            [
+              -8.258542768891431e-05,
+              -0.8309453075534617,
+              0.11019264732872053,
+              -0.9410459670930221,
+              -0.0003499270017792709,
+              0.002019452986785475
+            ],
+            [
+              -0.00021583924244025318,
+              -1.184881610887892e-05,
+              2.8866376408584353e-05,
+              2.440710467796854e-06,
+              0.0003736065442313273,
+              0.002012506189005776
+            ]
+          ],
+          "collisions": [
+            {
+              "collision_type": "self",
+              "object_name1": "cpu_contact_arx_0_1",
+              "link_name1": "link1",
+              "object_name2": "cpu_contact_arx_0_1",
+              "link_name2": "link5",
+              "max_penetration_m": 0.009749027900397778
+            },
+            {
+              "collision_type": "self",
+              "object_name1": "cpu_contact_arx_0_1",
+              "link_name1": "link2",
+              "object_name2": "cpu_contact_arx_0_1",
+              "link_name2": "link5",
+              "max_penetration_m": 0.02130240388214588
+            },
+            {
+              "collision_type": "self",
+              "object_name1": "cpu_contact_arx_0_1",
+              "link_name1": "link2",
+              "object_name2": "cpu_contact_arx_0_1",
+              "link_name2": "link6",
+              "max_penetration_m": 0.008001647889614105
+            }
+          ]
+        },
+        {
+          "candidate_q": [
+            [
+              -8.399321964058741e-05,
+              -0.83094538435088,
+              0.11019284762618939,
+              -0.9410462475001413,
+              -0.00035134255956935156,
+              0.0020194532896881012
+            ],
+            [
+              -0.00021546479547396302,
+              -1.1548891052370891e-05,
+              2.9080358217470348e-05,
+              1.9327239897393156e-06,
+              0.00037409443757496774,
+              0.002012824872508645
+            ]
+          ],
+          "collisions": [
+            {
+              "collision_type": "self",
+              "object_name1": "cpu_contact_arx_0_1",
+              "link_name1": "link1",
+              "object_name2": "cpu_contact_arx_0_1",
+              "link_name2": "link5",
+              "max_penetration_m": 0.009749028831720352
+            },
+            {
+              "collision_type": "self",
+              "object_name1": "cpu_contact_arx_0_1",
+              "link_name1": "link2",
+              "object_name2": "cpu_contact_arx_0_1",
+              "link_name2": "link5",
+              "max_penetration_m": 0.021302415058016777
+            },
+            {
+              "collision_type": "self",
+              "object_name1": "cpu_contact_arx_0_1",
+              "link_name1": "link2",
+              "object_name2": "cpu_contact_arx_0_1",
+              "link_name2": "link6",
+              "max_penetration_m": 0.008001684211194515
+            }
+          ]
+        },
+        {
+          "candidate_q": [
+            [
+              -8.399321964058741e-05,
+              -0.83094538435088,
+              0.11019284762618939,
+              -0.9410462475001413,
+              -0.00035134255956935156,
+              0.0020194532896881012
+            ],
+            [
+              -0.00021583924244025318,
+              -1.184881610887892e-05,
+              2.8866376408584353e-05,
+              2.440710467796854e-06,
+              0.0003736065442313273,
+              0.002012506189005776
+            ]
+          ],
+          "collisions": [
+            {
+              "collision_type": "self",
+              "object_name1": "cpu_contact_arx_0_1",
+              "link_name1": "link1",
+              "object_name2": "cpu_contact_arx_0_1",
+              "link_name2": "link5",
+              "max_penetration_m": 0.009749028831720352
+            },
+            {
+              "collision_type": "self",
+              "object_name1": "cpu_contact_arx_0_1",
+              "link_name1": "link2",
+              "object_name2": "cpu_contact_arx_0_1",
+              "link_name2": "link5",
+              "max_penetration_m": 0.021302415058016777
+            },
+            {
+              "collision_type": "self",
+              "object_name1": "cpu_contact_arx_0_1",
+              "link_name1": "link2",
+              "object_name2": "cpu_contact_arx_0_1",
+              "link_name2": "link6",
+              "max_penetration_m": 0.008001684211194515
+            }
+          ]
+        },
+        {
+          "candidate_q": [
+            [
+              -8.258542768891431e-05,
+              -0.8309453075534617,
+              0.11019264732872053,
+              -0.9410459670930221,
+              -0.0003499270017792709,
+              0.002019452986785475
+            ],
+            [
+              -6.2833714006499095,
+              -6.283425265041576,
+              -6.28318795101809,
+              -6.283382109993963,
+              -6.2827824340835186,
+              0.002013352610730972
+            ]
+          ],
+          "collisions": [
+            {
+              "collision_type": "self",
+              "object_name1": "cpu_contact_arx_0_1",
+              "link_name1": "link1",
+              "object_name2": "cpu_contact_arx_0_1",
+              "link_name2": "link5",
+              "max_penetration_m": 0.009749027900397778
+            },
+            {
+              "collision_type": "self",
+              "object_name1": "cpu_contact_arx_0_1",
+              "link_name1": "link2",
+              "object_name2": "cpu_contact_arx_0_1",
+              "link_name2": "link5",
+              "max_penetration_m": 0.02130240388214588
+            },
+            {
+              "collision_type": "self",
+              "object_name1": "cpu_contact_arx_0_1",
+              "link_name1": "link2",
+              "object_name2": "cpu_contact_arx_0_1",
+              "link_name2": "link6",
+              "max_penetration_m": 0.008001647889614105
+            }
+          ]
+        },
+        {
+          "candidate_q": [
+            [
+              -8.399321964058741e-05,
+              -0.83094538435088,
+              0.11019284762618939,
+              -0.9410462475001413,
+              -0.00035134255956935156,
+              0.0020194532896881012
+            ],
+            [
+              -6.2833714006499095,
+              -6.283425265041576,
+              -6.28318795101809,
+              -6.283382109993963,
+              -6.2827824340835186,
+              0.002013352610730972
+            ]
+          ],
+          "collisions": [
+            {
+              "collision_type": "self",
+              "object_name1": "cpu_contact_arx_0_1",
+              "link_name1": "link1",
+              "object_name2": "cpu_contact_arx_0_1",
+              "link_name2": "link5",
+              "max_penetration_m": 0.009749028831720352
+            },
+            {
+              "collision_type": "self",
+              "object_name1": "cpu_contact_arx_0_1",
+              "link_name1": "link2",
+              "object_name2": "cpu_contact_arx_0_1",
+              "link_name2": "link5",
+              "max_penetration_m": 0.021302415058016777
+            },
+            {
+              "collision_type": "self",
+              "object_name1": "cpu_contact_arx_0_1",
+              "link_name1": "link2",
+              "object_name2": "cpu_contact_arx_0_1",
+              "link_name2": "link6",
+              "max_penetration_m": 0.008001684211194515
+            }
+          ]
+        },
+        {
+          "candidate_q": [
+            [
+              -8.258542768891431e-05,
+              -0.8309453075534617,
+              0.11019264732872053,
+              -0.9410459670930221,
+              -0.0003499270017792709,
+              0.002019452986785475
+            ],
+            [
+              6.283361342219709,
+              6.283207922260858,
+              6.283102915776975,
+              6.283547910021539,
+              6.2839285345188,
+              0.002018809558169958
+            ]
+          ],
+          "collisions": [
+            {
+              "collision_type": "self",
+              "object_name1": "cpu_contact_arx_0_1",
+              "link_name1": "link1",
+              "object_name2": "cpu_contact_arx_0_1",
+              "link_name2": "link5",
+              "max_penetration_m": 0.009749027900397778
+            },
+            {
+              "collision_type": "self",
+              "object_name1": "cpu_contact_arx_0_1",
+              "link_name1": "link2",
+              "object_name2": "cpu_contact_arx_0_1",
+              "link_name2": "link5",
+              "max_penetration_m": 0.02130240388214588
+            },
+            {
+              "collision_type": "self",
+              "object_name1": "cpu_contact_arx_0_1",
+              "link_name1": "link2",
+              "object_name2": "cpu_contact_arx_0_1",
+              "link_name2": "link6",
+              "max_penetration_m": 0.008001647889614105
+            }
+          ]
+        },
+        {
+          "candidate_q": [
+            [
+              -8.399321964058741e-05,
+              -0.83094538435088,
+              0.11019284762618939,
+              -0.9410462475001413,
+              -0.00035134255956935156,
+              0.0020194532896881012
+            ],
+            [
+              6.283361342219709,
+              6.283207922260858,
+              6.283102915776975,
+              6.283547910021539,
+              6.2839285345188,
+              0.002018809558169958
+            ]
+          ],
+          "collisions": [
+            {
+              "collision_type": "self",
+              "object_name1": "cpu_contact_arx_0_1",
+              "link_name1": "link1",
+              "object_name2": "cpu_contact_arx_0_1",
+              "link_name2": "link5",
+              "max_penetration_m": 0.009749028831720352
+            },
+            {
+              "collision_type": "self",
+              "object_name1": "cpu_contact_arx_0_1",
+              "link_name1": "link2",
+              "object_name2": "cpu_contact_arx_0_1",
+              "link_name2": "link5",
+              "max_penetration_m": 0.021302415058016777
+            },
+            {
+              "collision_type": "self",
+              "object_name1": "cpu_contact_arx_0_1",
+              "link_name1": "link2",
+              "object_name2": "cpu_contact_arx_0_1",
+              "link_name2": "link6",
+              "max_penetration_m": 0.008001684211194515
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "delta_task_m": [
+      -0.05,
+      -0.03,
+      0.04
+    ],
+    "status": "rejected",
+    "detail": "adapter deadline exceeded",
+    "diagnostic": {}
+  }
+]

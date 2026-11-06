@@ -1,0 +1,194 @@
+{
+  "data_kind": "diagnostic",
+  "gpu_used": false,
+  "renderer_created": false,
+  "physics_backend": "PhysxCpuSystem",
+  "physics_stepped": true,
+  "steps_per_condition": 750,
+  "physics_dt_s": 0.004,
+  "versions": {
+    "sapien": "3.0.0b1"
+  },
+  "urdf_sha256": "7aaa308a1a5b6a213d914db86ba09ddd6252f25cb498ac9a148bfa6c7166a423",
+  "scope": "static-obstacle finger closure assay, not dynamic grasp/lift or complete task acceptance",
+  "conditions": [
+    {
+      "condition": "empty_cap2",
+      "force_limit_n": 2.0,
+      "block_is_static": false,
+      "closed_drive_target_m": 0.0,
+      "settled_actual_fingers_m": [
+        2.9672540504179777e-05,
+        2.8707238143397263e-05
+      ],
+      "block_world": [
+        [
+          1.0,
+          6.240201599894135e-08,
+          5.960487925449343e-08,
+          0.2522700191652687
+        ],
+        [
+          -6.240203020979607e-08,
+          1.0,
+          1.8275682123203296e-07,
+          -0.0005004067292967466
+        ],
+        [
+          -5.960486504363871e-08,
+          -1.8275682123203296e-07,
+          1.0,
+          1.1563598263147148
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "settled_contact_links": [],
+      "settled_penetration_max_m": 0.0,
+      "settled_contact_force_mean_n": {},
+      "arm_drift_max_rad": 8.042952970299666e-08
+    },
+    {
+      "condition": "block_uncapped",
+      "force_limit_n": null,
+      "block_is_static": true,
+      "closed_drive_target_m": 0.0,
+      "settled_actual_fingers_m": [
+        0.029707341026514768,
+        0.029478683397173883
+      ],
+      "block_world": [
+        [
+          1.0,
+          6.240201599894135e-08,
+          5.960487925449343e-08,
+          0.2522700191652687
+        ],
+        [
+          -6.240203020979607e-08,
+          1.0,
+          1.8275682123203296e-07,
+          -0.0005004067292967466
+        ],
+        [
+          -5.960486504363871e-08,
+          -1.8275682123203296e-07,
+          1.0,
+          1.1563598263147148
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "settled_contact_links": [
+        "link7",
+        "link8"
+      ],
+      "settled_penetration_max_m": 1.4932826161384583e-05,
+      "settled_contact_force_mean_n": {
+        "link8": 14.233405500999652,
+        "link7": 11.116189281165134
+      },
+      "arm_drift_max_rad": 0.0005682141636498272
+    },
+    {
+      "condition": "block_cap0p5",
+      "force_limit_n": 0.5,
+      "block_is_static": true,
+      "closed_drive_target_m": 0.0,
+      "settled_actual_fingers_m": [
+        0.029598983377218245,
+        0.02959388352930546
+      ],
+      "block_world": [
+        [
+          1.0,
+          6.240201599894135e-08,
+          5.960487925449343e-08,
+          0.2522700191652687
+        ],
+        [
+          -6.240203020979607e-08,
+          1.0,
+          1.8275682123203296e-07,
+          -0.0005004067292967466
+        ],
+        [
+          -5.960486504363871e-08,
+          -1.8275682123203296e-07,
+          1.0,
+          1.1563598263147148
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "settled_contact_links": [
+        "link7",
+        "link8"
+      ],
+      "settled_penetration_max_m": 5.21540641784668e-08,
+      "settled_contact_force_mean_n": {
+        "link8": 0.5196818336042597,
+        "link7": 0.4948869745430784
+      },
+      "arm_drift_max_rad": 2.572462335592718e-06
+    },
+    {
+      "condition": "block_cap2",
+      "force_limit_n": 2.0,
+      "block_is_static": true,
+      "closed_drive_target_m": 0.0,
+      "settled_actual_fingers_m": [
+        0.029599658995866775,
+        0.029593242835253476
+      ],
+      "block_world": [
+        [
+          1.0,
+          6.240201599894135e-08,
+          5.960487925449343e-08,
+          0.2522700191652687
+        ],
+        [
+          -6.240203020979607e-08,
+          1.0,
+          1.8275682123203296e-07,
+          -0.0005004067292967466
+        ],
+        [
+          -5.960486504363871e-08,
+          -1.8275682123203296e-07,
+          1.0,
+          1.1563598263147148
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "settled_contact_links": [
+        "link7",
+        "link8"
+      ],
+      "settled_penetration_max_m": 1.2293457984924316e-07,
+      "settled_contact_force_mean_n": {
+        "link8": 2.034324890987902,
+        "link7": 1.9860421232806402
+      },
+      "arm_drift_max_rad": 5.233906904322794e-06
+    }
+  ]
+}

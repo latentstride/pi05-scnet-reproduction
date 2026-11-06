@@ -1,0 +1,22 @@
+{
+  "research/g2/native-expert-rest-20261106/evidence.zip": "5c0a5c2ef917bef32806070a5afaf09bd74625e194cbf0ff290f68d5b9d51d1b",
+  "research/g2/native-expert-rest-20261106/executed-script.py": "f62abf3114aa066947d911bd3e9a8d4b70e45ea1ba70cf6964e10604a682d2e8",
+  "research/g2/native-expert-rest-20261106/episode1/contact-events.jsonl": "2fc04081d4ff40fddcf83e32287c4dce7b34f4e65dbaa3dd2c2c6fdcedca90ea",
+  "research/g2/native-expert-rest-20261106/episode1/input.json": "7c7132fdce1c4fe0283872518f1927117cf7aea604e23baf818f55a4bfa093be",
+  "research/g2/native-expert-rest-20261106/episode1/replay.json": "206c460489e6ed82cd3d480db5d0bf4854498cea50ebe5075efda4277b49e3af",
+  "research/g2/native-expert-rest-20261106/episode1/physics-trace.npz": "3e96283345f498a750bf7f2db64e3e97f2de0b9e81885704386950ba8a8e9aae",
+  "research/g2/native-expert-rest-20261106/episode1/stages.json": "6b976006dc4a4a5d6bb192905afc5103641c5d0ded0e0ab3689de8883fb130fa",
+  "research/g2/native-expert-rest-20261106/episode1/input-trace.npz": "26fe796738a00fa4514c5cc6e7e27ba5a675d8cf8d8773f77b40407e0e3be4dd",
+  "research/g2/native-expert-rest-20261106/episode1/initial.json": "94b389c9ffe2fe9c1a612e5f3524a0d44416ccfdd063296881c783356cd8c8c0",
+  "research/g2/native-expert-rest-20261106/episode2/contact-events.jsonl": "a3e98ca847b075825602e7c15cb606f91c7631c12fa33fd4b286d835f6a54615",
+  "research/g2/native-expert-rest-20261106/episode2/input.json": "33f51d53544f54146e973d2cf56ef9b985d010b6f0d08fe270de3dcb0a4ff87f",
+  "research/g2/native-expert-rest-20261106/episode2/replay.json": "01480a8e1e2e57eaa09a9089f017714cfb1a00ae4b54ec94d474c4e3f62e5a69",
+  "research/g2/native-expert-rest-20261106/episode2/physics-trace.npz": "7e02efb4eeb6ff8c68bd057e34d4c7d3c5d4ac7151a3841c4ace39fca797c932",
+  "research/g2/native-expert-rest-20261106/episode2/stages.json": "290aa1ec66d2860f1fdb17d3920a19f2c5b31da74408e339fe15e910bf9d709b",
+  "research/g2/native-expert-rest-20261106/episode2/input-trace.npz": "4483901b895c679382b4a5cd3f77f9a8826d598f5fbdb65f724240755173d6ab",
+  "research/g2/native-expert-rest-20261106/episode2/initial.json": "e700893017dd3e3f75aad0130be7102306d28febbd784ac34061ece7e28f81eb",
+  "scripts/g2_expert_dense.py": "8be1047f59276f10b472ac6cd90ff97084836aeaddad0df94edc05e02b62feb4",
+  "scripts/g2_native_expert_cpu.py": "f62abf3114aa066947d911bd3e9a8d4b70e45ea1ba70cf6964e10604a682d2e8",
+  "scripts/g2_verify_native_expert.py": "7b13447621ab083cf33b504bb21417fa126afcfa582c72b20a3f3742946dac3e",
+  "scripts/g2_settle_expert_cpu.py": "2f6be8b4afec7547445e52af195729676b97090b7a039b4dc72da2d43df7199c"
+}

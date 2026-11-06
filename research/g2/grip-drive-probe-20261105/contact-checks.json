@@ -1,0 +1,31 @@
+{
+  "empty_cap2": {
+    "last100_bilateral_contact_steps": 0,
+    "all_step_contact_links": [],
+    "all_step_penetration_max_m": 0
+  },
+  "block_uncapped": {
+    "last100_bilateral_contact_steps": 100,
+    "all_step_contact_links": [
+      "link7",
+      "link8"
+    ],
+    "all_step_penetration_max_m": 1.49458646774292e-05
+  },
+  "block_cap0p5": {
+    "last100_bilateral_contact_steps": 100,
+    "all_step_contact_links": [
+      "link7",
+      "link8"
+    ],
+    "all_step_penetration_max_m": 8.940696716308594e-08
+  },
+  "block_cap2": {
+    "last100_bilateral_contact_steps": 100,
+    "all_step_contact_links": [
+      "link7",
+      "link8"
+    ],
+    "all_step_penetration_max_m": 2.849847078323364e-07
+  }
+}

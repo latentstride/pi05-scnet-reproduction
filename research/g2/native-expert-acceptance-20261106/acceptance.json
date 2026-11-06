@@ -1,0 +1,109 @@
+{
+  "data_kind": "diagnostic",
+  "scope": "3 fixed native Aloha expert reconstructions; no policy or ARX success rate",
+  "gpu_used": false,
+  "model_used": false,
+  "all_verified": true,
+  "native_task_successes": 3,
+  "episodes": [
+    {
+      "episode": 0,
+      "seed": 0,
+      "physics_steps": 3945,
+      "frames": 295,
+      "wall_s": 38.64482722710818,
+      "checks": {
+        "completed": true,
+        "controls_exact": true,
+        "predicate_matches_actual_trace": true,
+        "source_mass_matches": true,
+        "recorded_endpose_agrees": true,
+        "physics_trace_finite": true,
+        "row_count": true
+      },
+      "verification_passed": true,
+      "native_task_success": true,
+      "hold_success": true,
+      "functional_point_delta_mm": [
+        -2.2067182697355774,
+        -1.0426616820041201,
+        0.3075432777405185
+      ],
+      "archived_ee_max_position_mm": 0.1665979709432214,
+      "archived_ee_max_angle_deg": 0.05608035674868017,
+      "max_finger_target_actual_penetration_mm": 0.012010335922241211,
+      "peak_finger_target_impulse_norm_sum_Ns": 0.23677177727222443,
+      "peak_finger_target_impulse_over_dt_N": 59.19294431805611,
+      "finger_target_nonzero_impulse_steps": 348,
+      "input_trace_sha256": "749c82d3d4ccca01a8eba522848b04856ed98ca504e97f1f6f1c55f12b3ebcd7",
+      "physics_trace_sha256": "0a77363bbf190c5275c6ee7aa28e86e45094cdb19ff263d133347c9f28cc9fee",
+      "folder": "/Users/chenpengfei/Documents/ChatGPT/vlm\u9879\u76ee/pi05/research/g2/native-expert-episode0-20261106"
+    },
+    {
+      "episode": 1,
+      "seed": 1,
+      "physics_steps": 3655,
+      "frames": 277,
+      "wall_s": 16.28600255586207,
+      "checks": {
+        "completed": true,
+        "controls_exact": true,
+        "predicate_matches_actual_trace": true,
+        "source_mass_matches": true,
+        "recorded_endpose_agrees": true,
+        "physics_trace_finite": true,
+        "row_count": true
+      },
+      "verification_passed": true,
+      "native_task_success": true,
+      "hold_success": true,
+      "functional_point_delta_mm": [
+        -1.986832357943058,
+        -0.442559365183115,
+        0.30758500099181685
+      ],
+      "archived_ee_max_position_mm": 0.014224272585533243,
+      "archived_ee_max_angle_deg": 0.007891862159428149,
+      "max_finger_target_actual_penetration_mm": 0.0038250082070589997,
+      "peak_finger_target_impulse_norm_sum_Ns": 0.40017926692962646,
+      "peak_finger_target_impulse_over_dt_N": 100.04481673240662,
+      "finger_target_nonzero_impulse_steps": 276,
+      "input_trace_sha256": "26fe796738a00fa4514c5cc6e7e27ba5a675d8cf8d8773f77b40407e0e3be4dd",
+      "physics_trace_sha256": "3e96283345f498a750bf7f2db64e3e97f2de0b9e81885704386950ba8a8e9aae",
+      "folder": "/Users/chenpengfei/Documents/ChatGPT/vlm\u9879\u76ee/pi05/research/g2/native-expert-rest-20261106/episode1"
+    },
+    {
+      "episode": 2,
+      "seed": 2,
+      "physics_steps": 3764,
+      "frames": 282,
+      "wall_s": 14.708149853162467,
+      "checks": {
+        "completed": true,
+        "controls_exact": true,
+        "predicate_matches_actual_trace": true,
+        "source_mass_matches": true,
+        "recorded_endpose_agrees": true,
+        "physics_trace_finite": true,
+        "row_count": true
+      },
+      "verification_passed": true,
+      "native_task_success": true,
+      "hold_success": true,
+      "functional_point_delta_mm": [
+        -2.517124451696884,
+        -2.5674344578874297,
+        0.2539110183715776
+      ],
+      "archived_ee_max_position_mm": 0.31382333720505906,
+      "archived_ee_max_angle_deg": 0.03251314095697831,
+      "max_finger_target_actual_penetration_mm": 0.006775031579309143,
+      "peak_finger_target_impulse_norm_sum_Ns": 0.23075361549854279,
+      "peak_finger_target_impulse_over_dt_N": 57.688403874635696,
+      "finger_target_nonzero_impulse_steps": 247,
+      "input_trace_sha256": "4483901b895c679382b4a5cd3f77f9a8826d598f5fbdb65f724240755173d6ab",
+      "physics_trace_sha256": "7e02efb4eeb6ff8c68bd057e34d4c7d3c5d4ac7151a3841c4ace39fca797c932",
+      "folder": "/Users/chenpengfei/Documents/ChatGPT/vlm\u9879\u76ee/pi05/research/g2/native-expert-rest-20261106/episode2"
+    }
+  ]
+}

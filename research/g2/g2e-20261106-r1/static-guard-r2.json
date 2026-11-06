@@ -1,0 +1,116 @@
+{
+  "seed0-A-native-w1": {
+    "initial_fcl_clear": true,
+    "physics_steps": 0,
+    "gpu_used": false,
+    "static_candidate_wall_median_s": 0.016892407787963748,
+    "static_candidate_wall_max_s": 0.017538677901029587,
+    "prefix_checks": {
+      "1": {
+        "accepted_actions": 1,
+        "rejection": null,
+        "wall_s": 0.015831167809665203
+      },
+      "4": {
+        "accepted_actions": 4,
+        "rejection": null,
+        "wall_s": 0.0680340020917356
+      },
+      "26": {
+        "accepted_actions": 26,
+        "rejection": null,
+        "wall_s": 0.9064503223635256
+      },
+      "31": {
+        "accepted_actions": 26,
+        "rejection": {
+          "index": 26,
+          "code": "collision",
+          "detail": "predicted finger start intersects task block",
+          "diagnostic": {
+            "side": "left",
+            "finger": 1,
+            "depth_m": 0.00492822052910924,
+            "allowed_penetration_m": 0.002,
+            "start_native_m": 0.04477458831942141,
+            "requested_native_m": 0.04475244483294666
+          }
+        },
+        "wall_s": 0.9415370388887823
+      }
+    },
+    "tray_intrusion_rejected": true,
+    "tray_collisions": [
+      {
+        "collision_type": "self_sceneobject",
+        "object_name1": "native_aloha_2",
+        "link_name1": "fr_link6",
+        "object_name2": "target_box_57",
+        "link_name2": "target_box_57",
+        "max_penetration_m": 0.04149993136525154
+      },
+      {
+        "collision_type": "self_sceneobject",
+        "object_name1": "native_aloha_2",
+        "link_name1": "fr_link7",
+        "object_name2": "target_box_57",
+        "link_name2": "target_box_57",
+        "max_penetration_m": 0.06411027163267136
+      }
+    ],
+    "scope": "exact locked native roots/arms/fingers and rigid shapes, zero-step frozen scene; no contact impulses or native TOPP dynamics",
+    "guard_calls": 68,
+    "guard_samples": 311
+  },
+  "seed1-A-native-w1": {
+    "initial_fcl_clear": true,
+    "physics_steps": 0,
+    "gpu_used": false,
+    "static_candidate_wall_median_s": 0.015202312031760812,
+    "static_candidate_wall_max_s": 0.015476877335458994,
+    "prefix_checks": {
+      "1": {
+        "accepted_actions": 1,
+        "rejection": null,
+        "wall_s": 0.01568792760372162
+      },
+      "4": {
+        "accepted_actions": 4,
+        "rejection": null,
+        "wall_s": 0.04340648977085948
+      },
+      "26": {
+        "accepted_actions": 26,
+        "rejection": null,
+        "wall_s": 0.9523692037910223
+      },
+      "31": {
+        "accepted_actions": 31,
+        "rejection": null,
+        "wall_s": 1.0370593750849366
+      }
+    },
+    "tray_intrusion_rejected": true,
+    "tray_collisions": [
+      {
+        "collision_type": "self_sceneobject",
+        "object_name1": "native_aloha_2",
+        "link_name1": "fr_link6",
+        "object_name2": "target_box_57",
+        "link_name2": "target_box_57",
+        "max_penetration_m": 0.04149993136525154
+      },
+      {
+        "collision_type": "self_sceneobject",
+        "object_name1": "native_aloha_2",
+        "link_name1": "fr_link7",
+        "object_name2": "target_box_57",
+        "link_name2": "target_box_57",
+        "max_penetration_m": 0.06411027163267136
+      }
+    ],
+    "scope": "exact locked native roots/arms/fingers and rigid shapes, zero-step frozen scene; no contact impulses or native TOPP dynamics",
+    "guard_calls": 72,
+    "guard_samples": 318
+  }
+}

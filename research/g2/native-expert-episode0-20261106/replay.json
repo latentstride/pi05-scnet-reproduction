@@ -1,0 +1,68 @@
+{
+  "data_kind": "diagnostic",
+  "scope": "dense native expert drive replay in reconstructed no-render original task geometry",
+  "gpu_used": false,
+  "renderer_created": false,
+  "model_used": false,
+  "episode": 0,
+  "seed": 0,
+  "completed": true,
+  "physics_steps_replayed": 3945,
+  "expected_physics_steps": 3945,
+  "diagnostic_hold_steps": 200,
+  "source_actor_default_mass_kg": 0.01,
+  "actual_block_mass_kg": 0.009999999776482582,
+  "native_success_at_expert_end": {
+    "success": true,
+    "block_functional_point_m": [
+      0.1108626744709909,
+      0.14996825395501218,
+      0.7463075399398804
+    ],
+    "target_functional_point_m": [
+      0.11306939274072647,
+      0.1510109156370163,
+      0.7459999966621399
+    ],
+    "delta_m": [
+      -0.0022067182697355775,
+      -0.0010426616820041201,
+      0.0003075432777405185
+    ],
+    "right_requested_open": true
+  },
+  "native_success_after_diagnostic_hold": {
+    "success": true,
+    "block_functional_point_m": [
+      0.11086633331142366,
+      0.14996754760149997,
+      0.7461908638477326
+    ],
+    "target_functional_point_m": [
+      0.11306939274072647,
+      0.1510109156370163,
+      0.7459999966621399
+    ],
+    "delta_m": [
+      -0.002203059429302809,
+      -0.0010433680355163288,
+      0.00019086718559269134
+    ],
+    "right_requested_open": true
+  },
+  "failure": null,
+  "wall_s": 38.64482722710818,
+  "sapien_version": "3.0.0b1",
+  "trace_sha256": "749c82d3d4ccca01a8eba522848b04856ed98ca504e97f1f6f1c55f12b3ebcd7",
+  "initialization": "source-like camera tick, 200+100 gripper ramp and passive forces, 2500 settling ticks; no renderer",
+  "contact_columns": [
+    "left_block_impulse_Ns",
+    "right_block_impulse_Ns",
+    "left_target_impulse_Ns",
+    "right_target_impulse_Ns",
+    "left_block_contact_points",
+    "right_block_contact_points",
+    "max_block_penetration_m",
+    "max_finger_target_penetration_m"
+  ]
+}

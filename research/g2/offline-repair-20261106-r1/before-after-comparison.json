@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "real_arx_failures_reproduced_before": 4,
+  "real_arx_failures_reproduced_after": 4,
+  "expert_endpoints_and_paths_accepted": 12,
+  "native_plans_reproduced": 750,
+  "safety_relaxed": false,
+  "actual_task_success_claimed": false
+}

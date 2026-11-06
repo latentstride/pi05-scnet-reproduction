@@ -1,0 +1,109 @@
+{
+  "scope": "fixed recorded chunks only; alternative prefixes change future observations and require closed-loop validation",
+  "cases": {
+    "seed0-A-native-w1": {
+      "1": {
+        "chunks_retaining_left_close": 0,
+        "chunks": 300
+      },
+      "4": {
+        "chunks_retaining_left_close": 0,
+        "chunks": 300
+      },
+      "8": {
+        "chunks_retaining_left_close": 0,
+        "chunks": 300
+      },
+      "16": {
+        "chunks_retaining_left_close": 35,
+        "chunks": 300
+      },
+      "32": {
+        "chunks_retaining_left_close": 271,
+        "chunks": 300
+      },
+      "50": {
+        "chunks_retaining_left_close": 291,
+        "chunks": 300
+      }
+    },
+    "seed0-A-native-w4": {
+      "1": {
+        "chunks_retaining_left_close": 20,
+        "chunks": 75
+      },
+      "4": {
+        "chunks_retaining_left_close": 22,
+        "chunks": 75
+      },
+      "8": {
+        "chunks_retaining_left_close": 24,
+        "chunks": 75
+      },
+      "16": {
+        "chunks_retaining_left_close": 28,
+        "chunks": 75
+      },
+      "32": {
+        "chunks_retaining_left_close": 67,
+        "chunks": 75
+      },
+      "50": {
+        "chunks_retaining_left_close": 72,
+        "chunks": 75
+      }
+    },
+    "seed1-A-native-w1": {
+      "1": {
+        "chunks_retaining_left_close": 0,
+        "chunks": 300
+      },
+      "4": {
+        "chunks_retaining_left_close": 0,
+        "chunks": 300
+      },
+      "8": {
+        "chunks_retaining_left_close": 1,
+        "chunks": 300
+      },
+      "16": {
+        "chunks_retaining_left_close": 168,
+        "chunks": 300
+      },
+      "32": {
+        "chunks_retaining_left_close": 275,
+        "chunks": 300
+      },
+      "50": {
+        "chunks_retaining_left_close": 292,
+        "chunks": 300
+      }
+    },
+    "seed1-A-native-w4": {
+      "1": {
+        "chunks_retaining_left_close": 0,
+        "chunks": 75
+      },
+      "4": {
+        "chunks_retaining_left_close": 0,
+        "chunks": 75
+      },
+      "8": {
+        "chunks_retaining_left_close": 0,
+        "chunks": 75
+      },
+      "16": {
+        "chunks_retaining_left_close": 11,
+        "chunks": 75
+      },
+      "32": {
+        "chunks_retaining_left_close": 67,
+        "chunks": 75
+      },
+      "50": {
+        "chunks_retaining_left_close": 73,
+        "chunks": 75
+      }
+    }
+  }
+}

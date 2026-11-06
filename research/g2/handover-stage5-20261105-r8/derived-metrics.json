@@ -1,0 +1,60 @@
+{
+  "physics_steps": 3023,
+  "sim_s": 12.092,
+  "lift_height_m": 0.0449448823928833,
+  "max_tcp_position_error_m": 0.0008955586357737703,
+  "max_tcp_angle_error_deg": 0.06747334900639675,
+  "max_cumulative_grasp_slip_m": 0.0031021139764839767,
+  "max_cumulative_grasp_slip_deg": 0.5784956857356106,
+  "independent_recipient_hold_s": 0.2,
+  "actual_final_grip": [
+    {
+      "normalized": 0.9999724782326005,
+      "raw_normalized": 0.9999724782326005,
+      "state_mode": "independent_aperture_v1",
+      "state_source": "ARX X5A SHA 7aaa308a1a5b6a213d914db86ba09ddd6252f25cb498ac9a148bfa6c7166a423: independent opposed axes, common link6; aperture sum v1",
+      "native_m": [
+        0.04399876296520233,
+        0.04399881511926651
+      ],
+      "equivalent_symmetric_native_m": [
+        0.04399878904223442,
+        0.04399878904223442
+      ],
+      "reduction_residual_m": [
+        -2.60770320892334e-08,
+        2.60770320892334e-08
+      ],
+      "aperture_increase_m": 0.08799757808446884,
+      "center_shift_from_symmetric_m": -2.60770320892334e-08,
+      "scalar_clipped": false
+    },
+    {
+      "normalized": 0.6719120693477718,
+      "raw_normalized": 0.6719120693477718,
+      "state_mode": "independent_aperture_v1",
+      "state_source": "ARX X5A SHA 7aaa308a1a5b6a213d914db86ba09ddd6252f25cb498ac9a148bfa6c7166a423: independent opposed axes, common link6; aperture sum v1",
+      "native_m": [
+        0.026789303869009018,
+        0.032338958233594894
+      ],
+      "equivalent_symmetric_native_m": [
+        0.02956413105130196,
+        0.02956413105130196
+      ],
+      "reduction_residual_m": [
+        -0.0027748271822929417,
+        0.0027748271822929348
+      ],
+      "aperture_increase_m": 0.05912826210260391,
+      "center_shift_from_symmetric_m": -0.0027748271822929382,
+      "scalar_clipped": false
+    }
+  ],
+  "thresholds": {
+    "position_slip_m": 0.005,
+    "angle_slip_deg": 5.0,
+    "tcp_position_m": 0.02,
+    "tcp_angle_deg": 5.0
+  }
+}

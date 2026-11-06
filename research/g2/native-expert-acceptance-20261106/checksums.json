@@ -1,0 +1,8 @@
+{
+  "research/g2/native-expert-acceptance-20261106/acceptance.json": "ab38fef712a01c72008b7f7e8f245ea61082d00afc44c4968e6cfe1832c31f29",
+  "research/g2/native-expert-acceptance-20261106/tests.log": "71cfa7abaf89bee61c830715889259d6857670797e3ae713108fcd130b3c75e0",
+  "scripts/g2_expert_dense.py": "8be1047f59276f10b472ac6cd90ff97084836aeaddad0df94edc05e02b62feb4",
+  "scripts/g2_native_expert_cpu.py": "f62abf3114aa066947d911bd3e9a8d4b70e45ea1ba70cf6964e10604a682d2e8",
+  "scripts/g2_verify_native_expert.py": "7b13447621ab083cf33b504bb21417fa126afcfa582c72b20a3f3742946dac3e",
+  "scripts/g2_settle_expert_cpu.py": "2f6be8b4afec7547445e52af195729676b97090b7a039b4dc72da2d43df7199c"
+}

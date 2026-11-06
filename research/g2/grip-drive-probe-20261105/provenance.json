@@ -1,0 +1,12 @@
+{
+  "files_sha256": {
+    "block_uncapped.json": "0f75990e1fb6e057ef23a7ea83fe8827ff401eb653010a281a626d06bc7d3b59",
+    "block_cap0p5.json": "94774180ce386eaf62ff0e7d239c7521b7f54baa98f7a5d813c0db3bc1726e5b",
+    "grip-drive-results.json": "901cd3d204099096049a4c112ccb5af784a91c09af00e2df42fe0b97c986f2c1",
+    "ARX-collision.urdf": "78bbf5aa5fa258542eba4c101226ca813c0609b07d5867552cc22a217a86ce98",
+    "empty_cap2.json": "bb1da1b796129c7fe72da8de0fef56a563eba528a10898c6bf1d309715b4af5b",
+    "block_cap2.json": "3f0047077fccdf8431a214d78304e4fd59a1ad92a7f966e549a648d514cd2387"
+  },
+  "remote_directory": "<PROJECT_ROOT>/results/g2/grip-drive-probe-20261105",
+  "source_sha256": "0ac0ed186c714d581c88f4cd21453096ef4b2b581b24e637322053781b939d48"
+}

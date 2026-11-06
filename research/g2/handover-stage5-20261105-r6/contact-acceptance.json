@@ -1,0 +1,714 @@
+{
+  "data_kind": "diagnostic",
+  "scope": "engineered opposed-ARX CPU handover fixture; not full PACE task or policy acceptance",
+  "gpu_used": false,
+  "renderer_created": false,
+  "physics_stepped": true,
+  "physics_steps": 3389,
+  "checks": {
+    "initial_donor_confirmed": true,
+    "shared_hold_confirmed": true,
+    "release_order_confirmed": true,
+    "receiver_only_holding": true,
+    "donor_fully_open": true,
+    "donor_withdraw_completed": false,
+    "receiver_lift_5cm": false,
+    "no_control_failure": false
+  },
+  "passed": false,
+  "failure": {
+    "code": "backend_error",
+    "detail": "measured TCP tracking exceeded acceptance bounds",
+    "diagnostic": {
+      "position_error_m": [
+        0.015385357066605397,
+        2.410222199691982e-05
+      ],
+      "orientation_error_deg": [
+        5.001772983080311,
+        0.036805964841382884
+      ]
+    }
+  },
+  "stages": [
+    {
+      "name": "receiver_close",
+      "status": "completed",
+      "tick": 1397,
+      "contact": {
+        "phase": "both_holding",
+        "holders": [
+          "left",
+          "right"
+        ],
+        "contact_fingers": {
+          "left": [
+            10,
+            11
+          ],
+          "right": [
+            21,
+            22
+          ]
+        },
+        "stable_counts": {
+          "left": 3,
+          "right": 3
+        },
+        "saw_shared_hold": true,
+        "releasing": [],
+        "block_pose_task": [
+          [
+            0.9999999814531417,
+            0.00019254866069802476,
+            4.32775881866321e-06,
+            0.2522750496864319
+          ],
+          [
+            -0.00019253784875949392,
+            0.999997165878758,
+            -0.0023730072963685004,
+            -0.0007424353971146047
+          ],
+          [
+            -4.784665930012407e-06,
+            0.002373006419099298,
+            0.9999971844048572,
+            1.206430196762085
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "tool_block": {
+          "left": [
+            [
+              0.9999999999988369,
+              9.103525711564222e-07,
+              1.2237149391058689e-06,
+              0.034570107052308396
+            ],
+            [
+              9.103520040960795e-07,
+              -0.9999999999994783,
+              4.6339299165432784e-07,
+              4.246876389263311e-07
+            ],
+            [
+              1.2237153609562319e-06,
+              -4.6339187764244146e-07,
+              -0.9999999999991439,
+              -0.0498601449167384
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "right": [
+            [
+              -0.9999999331003643,
+              0.00033567659632131327,
+              0.00014532890108174236,
+              0.034565720379945764
+            ],
+            [
+              0.00033532710256327586,
+              0.9999970680222379,
+              -0.0023982290679164463,
+              0.0003879263066256338
+            ],
+            [
+              -0.0001461335043513532,
+              -0.0023981801747564777,
+              -0.9999971136842588,
+              0.050125161070423196
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "name": "donor_open",
+      "status": "completed",
+      "tick": 2033,
+      "contact": {
+        "phase": "right_holding",
+        "holders": [
+          "right"
+        ],
+        "contact_fingers": {
+          "left": [],
+          "right": [
+            21,
+            22
+          ]
+        },
+        "stable_counts": {
+          "left": 0,
+          "right": 3
+        },
+        "saw_shared_hold": true,
+        "releasing": [],
+        "block_pose_task": [
+          [
+            0.9999999980435499,
+            6.183612973192091e-05,
+            -9.44422333823252e-06,
+            0.25227561593055725
+          ],
+          [
+            -6.184386554852612e-05,
+            0.9999996608095291,
+            -0.0008213136812782432,
+            0.0004027192771900445
+          ],
+          [
+            9.393433275495837e-06,
+            0.0008213142637386623,
+            0.9999996626772649,
+            1.2063844203948975
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "tool_block": {
+          "right": [
+            [
+              -0.9999999331003643,
+              0.00033567659632131327,
+              0.00014532890108174236,
+              0.034565720379945764
+            ],
+            [
+              0.00033532710256327586,
+              0.9999970680222379,
+              -0.0023982290679164463,
+              0.0003879263066256338
+            ],
+            [
+              -0.0001461335043513532,
+              -0.0023981801747564777,
+              -0.9999971136842588,
+              0.050125161070423196
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      }
+    }
+  ],
+  "withdrawal_attempts": [
+    {
+      "delta_task_m": [
+        -0.07,
+        0,
+        0
+      ],
+      "status": "rejected",
+      "detail": "all temporally admissible IK pairs collide",
+      "diagnostic": {
+        "rejected_pairs": 16,
+        "collision_examples": [
+          {
+            "candidate_q": [
+              [
+                -8.28791851632934e-05,
+                -0.6866555780853557,
+                0.18340478100127883,
+                -0.869972137506192,
+                -0.00035071674159935055,
+                0.0020187242918325164
+              ],
+              [
+                -0.00021546479547396302,
+                -1.1548891052370891e-05,
+                2.9080358217470348e-05,
+                1.9327239897393156e-06,
+                0.00037409443757496774,
+                0.002012824872508645
+              ]
+            ],
+            "collisions": [
+              {
+                "collision_type": "self",
+                "object_name1": "cpu_contact_arx_0_1",
+                "link_name1": "link2",
+                "object_name2": "cpu_contact_arx_0_1",
+                "link_name2": "link5",
+                "max_penetration_m": 0.00023400873760692775
+              }
+            ]
+          },
+          {
+            "candidate_q": [
+              [
+                -8.28791851632934e-05,
+                -0.6866555780853557,
+                0.18340478100127883,
+                -0.869972137506192,
+                -0.00035071674159935055,
+                0.0020187242918325164
+              ],
+              [
+                -0.00021583924244025318,
+                -1.184881610887892e-05,
+                2.8866376408584353e-05,
+                2.440710467796854e-06,
+                0.0003736065442313273,
+                0.002012506189005776
+              ]
+            ],
+            "collisions": [
+              {
+                "collision_type": "self",
+                "object_name1": "cpu_contact_arx_0_1",
+                "link_name1": "link2",
+                "object_name2": "cpu_contact_arx_0_1",
+                "link_name2": "link5",
+                "max_penetration_m": 0.00023400873760692775
+              }
+            ]
+          },
+          {
+            "candidate_q": [
+              [
+                -6.781921402437019e-05,
+                -0.6866556257400239,
+                0.1834047798448603,
+                -0.8699721832532311,
+                -0.0003356649807128493,
+                0.0020187229552970525
+              ],
+              [
+                -0.00021546479547396302,
+                -1.1548891052370891e-05,
+                2.9080358217470348e-05,
+                1.9327239897393156e-06,
+                0.00037409443757496774,
+                0.002012824872508645
+              ]
+            ],
+            "collisions": [
+              {
+                "collision_type": "self",
+                "object_name1": "cpu_contact_arx_0_1",
+                "link_name1": "link2",
+                "object_name2": "cpu_contact_arx_0_1",
+                "link_name2": "link5",
+                "max_penetration_m": 0.00023400872305501252
+              }
+            ]
+          },
+          {
+            "candidate_q": [
+              [
+                -6.781921402437019e-05,
+                -0.6866556257400239,
+                0.1834047798448603,
+                -0.8699721832532311,
+                -0.0003356649807128493,
+                0.0020187229552970525
+              ],
+              [
+                -0.00021583924244025318,
+                -1.184881610887892e-05,
+                2.8866376408584353e-05,
+                2.440710467796854e-06,
+                0.0003736065442313273,
+                0.002012506189005776
+              ]
+            ],
+            "collisions": [
+              {
+                "collision_type": "self",
+                "object_name1": "cpu_contact_arx_0_1",
+                "link_name1": "link2",
+                "object_name2": "cpu_contact_arx_0_1",
+                "link_name2": "link5",
+                "max_penetration_m": 0.00023400872305501252
+              }
+            ]
+          },
+          {
+            "candidate_q": [
+              [
+                -8.28791851632934e-05,
+                -0.6866555780853557,
+                0.18340478100127883,
+                -0.869972137506192,
+                -0.00035071674159935055,
+                0.0020187242918325164
+              ],
+              [
+                -6.2833714006499095,
+                -6.283425265041576,
+                -6.28318795101809,
+                -6.283382109993963,
+                -6.2827824340835186,
+                0.002013352610730972
+              ]
+            ],
+            "collisions": [
+              {
+                "collision_type": "self",
+                "object_name1": "cpu_contact_arx_0_1",
+                "link_name1": "link2",
+                "object_name2": "cpu_contact_arx_0_1",
+                "link_name2": "link5",
+                "max_penetration_m": 0.00023400873760692775
+              }
+            ]
+          },
+          {
+            "candidate_q": [
+              [
+                -6.781921402437019e-05,
+                -0.6866556257400239,
+                0.1834047798448603,
+                -0.8699721832532311,
+                -0.0003356649807128493,
+                0.0020187229552970525
+              ],
+              [
+                -6.2833714006499095,
+                -6.283425265041576,
+                -6.28318795101809,
+                -6.283382109993963,
+                -6.2827824340835186,
+                0.002013352610730972
+              ]
+            ],
+            "collisions": [
+              {
+                "collision_type": "self",
+                "object_name1": "cpu_contact_arx_0_1",
+                "link_name1": "link2",
+                "object_name2": "cpu_contact_arx_0_1",
+                "link_name2": "link5",
+                "max_penetration_m": 0.00023400872305501252
+              }
+            ]
+          },
+          {
+            "candidate_q": [
+              [
+                -8.28791851632934e-05,
+                -0.6866555780853557,
+                0.18340478100127883,
+                -0.869972137506192,
+                -0.00035071674159935055,
+                0.0020187242918325164
+              ],
+              [
+                6.283361342219709,
+                6.283207922260858,
+                6.283102915776975,
+                6.283547910021539,
+                6.2839285345188,
+                0.002018809558169958
+              ]
+            ],
+            "collisions": [
+              {
+                "collision_type": "self",
+                "object_name1": "cpu_contact_arx_0_1",
+                "link_name1": "link2",
+                "object_name2": "cpu_contact_arx_0_1",
+                "link_name2": "link5",
+                "max_penetration_m": 0.00023400873760692775
+              }
+            ]
+          },
+          {
+            "candidate_q": [
+              [
+                -6.781921402437019e-05,
+                -0.6866556257400239,
+                0.1834047798448603,
+                -0.8699721832532311,
+                -0.0003356649807128493,
+                0.0020187229552970525
+              ],
+              [
+                6.283361342219709,
+                6.283207922260858,
+                6.283102915776975,
+                6.283547910021539,
+                6.2839285345188,
+                0.002018809558169958
+              ]
+            ],
+            "collisions": [
+              {
+                "collision_type": "self",
+                "object_name1": "cpu_contact_arx_0_1",
+                "link_name1": "link2",
+                "object_name2": "cpu_contact_arx_0_1",
+                "link_name2": "link5",
+                "max_penetration_m": 0.00023400872305501252
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "delta_task_m": [
+        -0.07,
+        0,
+        0.03
+      ],
+      "status": "accepted"
+    }
+  ],
+  "lift_height_m": null,
+  "actual_fingers_m": [
+    [
+      0.04399917274713516,
+      0.0439845509827137
+    ],
+    [
+      0.028663234785199165,
+      0.03046918287873268
+    ]
+  ],
+  "drive_fingers_m": [
+    [
+      0.04399999976158142,
+      0.04399999976158142
+    ],
+    [
+      0.0,
+      0.0
+    ]
+  ],
+  "grip_measurement": [
+    {
+      "normalized": 0.9998150423846462,
+      "raw_normalized": 0.9998150423846462,
+      "state_mode": "independent_aperture_v1",
+      "state_source": "ARX X5A SHA 7aaa308a1a5b6a213d914db86ba09ddd6252f25cb498ac9a148bfa6c7166a423: independent opposed axes, common link6; aperture sum v1",
+      "native_m": [
+        0.04399917274713516,
+        0.0439845509827137
+      ],
+      "equivalent_symmetric_native_m": [
+        0.04399186186492443,
+        0.04399186186492443
+      ],
+      "reduction_residual_m": [
+        7.310882210731506e-06,
+        -7.310882210731506e-06
+      ],
+      "aperture_increase_m": 0.08798372372984886,
+      "center_shift_from_symmetric_m": 7.310882210731506e-06,
+      "scalar_clipped": false
+    },
+    {
+      "normalized": 0.6719592916355892,
+      "raw_normalized": 0.6719592916355892,
+      "state_mode": "independent_aperture_v1",
+      "state_source": "ARX X5A SHA 7aaa308a1a5b6a213d914db86ba09ddd6252f25cb498ac9a148bfa6c7166a423: independent opposed axes, common link6; aperture sum v1",
+      "native_m": [
+        0.028663234785199165,
+        0.03046918287873268
+      ],
+      "equivalent_symmetric_native_m": [
+        0.029566208831965923,
+        0.029566208831965923
+      ],
+      "reduction_residual_m": [
+        -0.000902974046766758,
+        0.000902974046766758
+      ],
+      "aperture_increase_m": 0.05913241766393185,
+      "center_shift_from_symmetric_m": -0.000902974046766758,
+      "scalar_clipped": false
+    }
+  ],
+  "holder_state": {
+    "phase": "right_holding",
+    "holders": [
+      "right"
+    ],
+    "contact_fingers": {
+      "left": [],
+      "right": [
+        21,
+        22
+      ]
+    },
+    "stable_counts": {
+      "left": 0,
+      "right": 3
+    },
+    "saw_shared_hold": true,
+    "releasing": [],
+    "block_pose_task": [
+      [
+        0.9999999976937348,
+        6.698377992975535e-05,
+        -1.1211756529000561e-05,
+        0.2522750794887543
+      ],
+      [
+        -6.698409096920256e-05,
+        0.999999997371696,
+        -2.7744182373125574e-05,
+        0.00048069219337776303
+      ],
+      [
+        1.1209898089326243e-05,
+        2.7744933318459397e-05,
+        0.9999999995522785,
+        1.20635986328125
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "tool_block": {
+      "right": [
+        [
+          -0.9999999331003643,
+          0.00033567659632131327,
+          0.00014532890108174236,
+          0.034565720379945764
+        ],
+        [
+          0.00033532710256327586,
+          0.9999970680222379,
+          -0.0023982290679164463,
+          0.0003879263066256338
+        ],
+        [
+          -0.0001461335043513532,
+          -0.0023981801747564777,
+          -0.9999971136842588,
+          0.050125161070423196
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    }
+  },
+  "contact_events": [
+    {
+      "tick": 326,
+      "sim_s": 1.304,
+      "before": [],
+      "after": [
+        "left"
+      ],
+      "phase": "left_holding"
+    },
+    {
+      "tick": 1032,
+      "sim_s": 4.128,
+      "before": [
+        "left"
+      ],
+      "after": [
+        "left",
+        "right"
+      ],
+      "phase": "both_holding"
+    },
+    {
+      "tick": 1798,
+      "sim_s": 7.192,
+      "before": [
+        "left",
+        "right"
+      ],
+      "after": [
+        "right"
+      ],
+      "phase": "right_holding"
+    }
+  ],
+  "replans": [
+    {
+      "reason": "measured_contact_transition",
+      "tick": 326,
+      "before": [],
+      "after": [
+        "left"
+      ],
+      "interrupted_waypoint": true
+    },
+    null,
+    {
+      "reason": "measured_contact_transition",
+      "tick": 1032,
+      "before": [
+        "left"
+      ],
+      "after": [
+        "left",
+        "right"
+      ],
+      "interrupted_waypoint": true
+    },
+    null,
+    {
+      "reason": "measured_contact_transition",
+      "tick": 1798,
+      "before": [
+        "left",
+        "right"
+      ],
+      "after": [
+        "right"
+      ],
+      "interrupted_waypoint": true
+    },
+    null
+  ],
+  "contact_limits": {
+    "penetration_m": 0.002,
+    "closure_penetration_m": 0.0005,
+    "scan_step_m": 0.001,
+    "position_slip_m": 0.005,
+    "angle_slip_deg": 5.0,
+    "closed_chain_position_m": 0.002,
+    "closed_chain_angle_deg": 2.0,
+    "stable_steps": 3,
+    "minimum_impulse": 1e-08,
+    "contact_cap": 256
+  },
+  "drive": {
+    "stiffness": 1000.0,
+    "damping": 200.0,
+    "force_limit_n": 20.0,
+    "source": "CPU force sweep; provisional"
+  }
+}

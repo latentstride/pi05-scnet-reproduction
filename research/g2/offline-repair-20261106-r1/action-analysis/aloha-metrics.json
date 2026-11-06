@@ -1,0 +1,194 @@
+{
+  "seed0-A-native-w1": {
+    "queries": 300,
+    "executed": 300,
+    "prompt": "Pick up the red block with the left arm, hand it to the right arm, and place it on the target.",
+    "observed_state_grip_min": [
+      0.9830570816993713,
+      0.9830570220947266
+    ],
+    "executed_target_grip_min": [
+      0.9946879391798974,
+      0.9955141335296631
+    ],
+    "first_executed_left_closure_action": null,
+    "chunks_with_future_left_closure": 291,
+    "first_future_left_closure_query": 10,
+    "median_future_left_closure_horizon": 24.0,
+    "last_ten_future_left_closure_horizons": [
+      24,
+      24,
+      24,
+      24,
+      24,
+      23,
+      24,
+      24,
+      22,
+      22
+    ],
+    "first_tracking_error_over_50mm_query": 66,
+    "first_tracking_error_over_50mm_tick": 5986,
+    "first_tracking_error_over_50mm_sim_s": 23.944001137278974,
+    "tracking_position_rmse_m": 0.29809974507168935,
+    "tracking_position_max_m": 0.7577989709196297,
+    "expert_frames": 295,
+    "expert_physics_steps": 3945,
+    "expert_sim_duration_s": 15.780000000000001,
+    "expert_first_left_closure_physics_tick": 810,
+    "actual_sim_duration_s": 81.54000387294218,
+    "raw_action_shapes": [
+      [
+        50,
+        14
+      ]
+    ],
+    "all_raw_actions_finite": true,
+    "max_raw_grip_clip_amount": 0.011789399432420744,
+    "object_trajectory_recorded": false
+  },
+  "seed0-A-native-w4": {
+    "queries": 75,
+    "executed": 300,
+    "prompt": "Pick up the red block with the left arm, hand it to the right arm, and place it on the target.",
+    "observed_state_grip_min": [
+      0.0015334414783865213,
+      0.9830570220947266
+    ],
+    "executed_target_grip_min": [
+      0.0015334415037631989,
+      0.994986856581688
+    ],
+    "first_executed_left_closure_action": 178,
+    "chunks_with_future_left_closure": 72,
+    "first_future_left_closure_query": 4,
+    "median_future_left_closure_horizon": 25.0,
+    "last_ten_future_left_closure_horizons": [
+      0,
+      0,
+      13,
+      28,
+      17,
+      19,
+      25,
+      25,
+      23,
+      20
+    ],
+    "first_tracking_error_over_50mm_query": 34,
+    "first_tracking_error_over_50mm_tick": 8280,
+    "first_tracking_error_over_50mm_sim_s": 33.12000157311559,
+    "tracking_position_rmse_m": 0.040141080842928584,
+    "tracking_position_max_m": 0.13594641901635973,
+    "expert_frames": 295,
+    "expert_physics_steps": 3945,
+    "expert_sim_duration_s": 15.780000000000001,
+    "expert_first_left_closure_physics_tick": 810,
+    "actual_sim_duration_s": 71.2520033842884,
+    "raw_action_shapes": [
+      [
+        50,
+        14
+      ]
+    ],
+    "all_raw_actions_finite": true,
+    "max_raw_grip_clip_amount": 0.00913632871317871,
+    "object_trajectory_recorded": false
+  },
+  "seed1-A-native-w1": {
+    "queries": 300,
+    "executed": 300,
+    "prompt": "Pick up the red block with the left arm, hand it to the right arm, and place it on the target.",
+    "observed_state_grip_min": [
+      0.9811840057373047,
+      0.9830570220947266
+    ],
+    "executed_target_grip_min": [
+      0.9811839760787487,
+      0.9933326800986529
+    ],
+    "first_executed_left_closure_action": null,
+    "chunks_with_future_left_closure": 292,
+    "first_future_left_closure_query": 8,
+    "median_future_left_closure_horizon": 14.0,
+    "last_ten_future_left_closure_horizons": [
+      19,
+      22,
+      18,
+      19,
+      17,
+      16,
+      18,
+      15,
+      12,
+      13
+    ],
+    "first_tracking_error_over_50mm_query": 149,
+    "first_tracking_error_over_50mm_tick": 11491,
+    "first_tracking_error_over_50mm_sim_s": 45.96400218317285,
+    "tracking_position_rmse_m": 0.13587515526750688,
+    "tracking_position_max_m": 0.3907008669949437,
+    "expert_frames": 277,
+    "expert_physics_steps": 3655,
+    "expert_sim_duration_s": 14.620000000000001,
+    "expert_first_left_closure_physics_tick": 750,
+    "actual_sim_duration_s": 69.9200033210218,
+    "raw_action_shapes": [
+      [
+        50,
+        14
+      ]
+    ],
+    "all_raw_actions_finite": true,
+    "max_raw_grip_clip_amount": 0.011164032762885245,
+    "object_trajectory_recorded": false
+  },
+  "seed1-A-native-w4": {
+    "queries": 75,
+    "executed": 300,
+    "prompt": "Pick up the red block with the left arm, hand it to the right arm, and place it on the target.",
+    "observed_state_grip_min": [
+      0.9830570816993713,
+      0.9830570220947266
+    ],
+    "executed_target_grip_min": [
+      0.9928660090114475,
+      0.9923404602541924
+    ],
+    "first_executed_left_closure_action": null,
+    "chunks_with_future_left_closure": 73,
+    "first_future_left_closure_query": 3,
+    "median_future_left_closure_horizon": 25.0,
+    "last_ten_future_left_closure_horizons": [
+      17,
+      17,
+      22,
+      17,
+      24,
+      27,
+      17,
+      21,
+      16,
+      17
+    ],
+    "first_tracking_error_over_50mm_query": null,
+    "first_tracking_error_over_50mm_tick": null,
+    "first_tracking_error_over_50mm_sim_s": null,
+    "tracking_position_rmse_m": 0.006928330103577914,
+    "tracking_position_max_m": 0.0177076937553758,
+    "expert_frames": 277,
+    "expert_physics_steps": 3655,
+    "expert_sim_duration_s": 14.620000000000001,
+    "expert_first_left_closure_physics_tick": 750,
+    "actual_sim_duration_s": 65.78000312438235,
+    "raw_action_shapes": [
+      [
+        50,
+        14
+      ]
+    ],
+    "all_raw_actions_finite": true,
+    "max_raw_grip_clip_amount": 0.010726264175653588,
+    "object_trajectory_recorded": false
+  }
+}

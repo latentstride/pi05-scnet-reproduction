@@ -1,0 +1,22 @@
+{
+  "job_id": "127081074",
+  "state": "RUNNING",
+  "node": "gnode39",
+  "submitted_at_china": "2026-11-06 22:12:53",
+  "started_at_china": "2026-11-06 22:12:55",
+  "slurm_deadline_china": "2026-11-07 01:42:55",
+  "time_limit_s": 12600,
+  "time_min_s": 12600,
+  "gpu_count": 1,
+  "cpu_count": 4,
+  "memory": "32G",
+  "graphics_gate_passed": true,
+  "stage": "model_openpi_import",
+  "model_server_starts": 1,
+  "task_trials_completed": 0,
+  "max_cost_yuan": 12.6,
+  "verified_price_yuan_per_gpu_hour": 3.6,
+  "balance_sufficient_at_submission": true,
+  "authorization_used": true,
+  "no_resubmission_authorized": true
+}

@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "original_versions_match_published_source": true,
+  "contact_limits_identical": true,
+  "unchanged_safety_logic": [
+    "g2_motion.py",
+    "g2_collision.py",
+    "g2_finger_force.py",
+    "robotwin_control_geometry.py"
+  ],
+  "unchanged_baseline_records": [
+    "baseline_manifest.json",
+    "baseline_freeze.md",
+    "evaluation_report.md",
+    "evaluation_results.csv"
+  ]
+}

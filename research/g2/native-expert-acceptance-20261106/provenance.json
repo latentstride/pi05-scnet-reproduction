@@ -1,0 +1,10 @@
+{
+  "scope": "native Aloha expert CPU reconstruction only; ARX and policy pending",
+  "verified_physics_episodes": 3,
+  "cpu_tests": 127,
+  "synthetic_regressions": 13,
+  "source_robot_config_audit_sha256": "5ebfc07c82814757168bdb3f2b7ad4a9bec18f58afc28318f49e61af117122f2",
+  "source_manifest_sha256": "1f822f345ac99eca031eaacbb59be847d3cab08ab083ae38863cfd5543616c36",
+  "source_dataset_revision": "3dc3b798668feb99ac61cc9086d84cbcc3d79186",
+  "gpu_used": false
+}

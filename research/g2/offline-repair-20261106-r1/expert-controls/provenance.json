@@ -1,0 +1,22 @@
+{
+  "0": {
+    "source": "research/g2/expert-dense-episode0-20261106/trace.npz",
+    "source_sha256": "4acd20be024e7c8003b3d306cc5f50ac12d2840776d14f17773bc871d1e0e80a",
+    "ticks": [
+      0,
+      25,
+      100
+    ],
+    "semantics": "Aloha arm joint targets converted to task-space tool transforms, never ARX joints"
+  },
+  "1": {
+    "source": "research/g2/expert-dense-episode1-20261106/trace.npz",
+    "source_sha256": "1676a8eba4b4859d1369098d30c9f54a7f485680f333721c44aa34e0152fb97d",
+    "ticks": [
+      0,
+      25,
+      100
+    ],
+    "semantics": "Aloha arm joint targets converted to task-space tool transforms, never ARX joints"
+  }
+}

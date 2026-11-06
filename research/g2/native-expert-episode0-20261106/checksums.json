@@ -1,0 +1,15 @@
+{
+  "research/g2/native-expert-episode0-20261106/evidence.zip": "933b1e7a746d9dcd2023d05b5c292e56aa30d5ac0f1e3e730ca76b5f143406bd",
+  "research/g2/native-expert-episode0-20261106/contact-events.jsonl": "cb002553574d2e516455c997fa1ba9f5f39465624f3bc9f63586b05c1ea00546",
+  "research/g2/native-expert-episode0-20261106/input.json": "cb1dc1a5bb00f0ee60ebe53155392a8a6be8e1a764052f16813d89c33050a7b1",
+  "research/g2/native-expert-episode0-20261106/replay.json": "6a6c621f0d28f7451a5751088285d589baaa9d61841cb3fdc31e51d7266998b2",
+  "research/g2/native-expert-episode0-20261106/physics-trace.npz": "0a77363bbf190c5275c6ee7aa28e86e45094cdb19ff263d133347c9f28cc9fee",
+  "research/g2/native-expert-episode0-20261106/stages.json": "24a578d02277fe4483d88ed2c61860168d206c0e13afe965dbb6298dd00d4d8a",
+  "research/g2/native-expert-episode0-20261106/input-trace.npz": "749c82d3d4ccca01a8eba522848b04856ed98ca504e97f1f6f1c55f12b3ebcd7",
+  "research/g2/native-expert-episode0-20261106/executed-script.py": "f62abf3114aa066947d911bd3e9a8d4b70e45ea1ba70cf6964e10604a682d2e8",
+  "research/g2/native-expert-episode0-20261106/initial.json": "e6dc3223014daa86e2c2178967338b4fd0c43d442eef14b1dcd5753da4fa5980",
+  "scripts/g2_expert_dense.py": "8be1047f59276f10b472ac6cd90ff97084836aeaddad0df94edc05e02b62feb4",
+  "scripts/g2_native_expert_cpu.py": "f62abf3114aa066947d911bd3e9a8d4b70e45ea1ba70cf6964e10604a682d2e8",
+  "scripts/g2_verify_native_expert.py": "7b13447621ab083cf33b504bb21417fa126afcfa582c72b20a3f3742946dac3e",
+  "scripts/g2_settle_expert_cpu.py": "2f6be8b4afec7547445e52af195729676b97090b7a039b4dc72da2d43df7199c"
+}

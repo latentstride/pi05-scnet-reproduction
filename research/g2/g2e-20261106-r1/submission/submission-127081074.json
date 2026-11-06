@@ -1,0 +1,25 @@
+{
+  "authorized_by": "2026-11-06 user: 提交作业吧",
+  "attempted_at_utc": "2026-11-06T14:12:53.093085+00:00",
+  "release": "<PROJECT_ROOT>/tools/g2e-release-20261106-r1",
+  "manifest_sha256": "fb24a4c727a45945ebe46faaa036f26837c1ab79c3e4d7590433c9f84ef6bfe5",
+  "argv": [
+    "sbatch",
+    "--parsable",
+    "--time=03:30:00",
+    "--time-min=210",
+    "--no-requeue",
+    "--chdir=<PROJECT_ROOT>",
+    "<PROJECT_ROOT>/tools/g2e-release-20261106-r1/scripts/pace_g2e.slurm",
+    "<PROJECT_ROOT>/tools/g2e-release-20261106-r1",
+    "fb24a4c727a45945ebe46faaa036f26837c1ab79c3e4d7590433c9f84ef6bfe5"
+  ],
+  "approved_allocation_s": 12600,
+  "one_gpu": true,
+  "max_native_trials": 8,
+  "arx_trials": 0,
+  "verified_price_yuan_per_gpu_hour": 3.6,
+  "max_cost_yuan": 12.6,
+  "job_id": "127081074",
+  "returncode": 0
+}

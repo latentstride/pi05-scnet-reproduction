@@ -126,7 +126,12 @@ class DeployTests(unittest.TestCase):
             ("measured state has non-permitted contact", "actual_safety_stop"),
         ]:
             self.assertEqual(
-                classify(dict(outcome="control_error", failure=dict(detail=detail))),
+                classify(
+                    dict(
+                        outcome="control_error",
+                        failure=dict(detail=detail, code="collision"),
+                    )
+                ),
                 expected,
             )
 

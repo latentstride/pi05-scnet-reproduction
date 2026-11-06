@@ -5,6 +5,7 @@ import numpy as np
 
 from g2_adapter import G2Error, Snapshot, SIDES, Stamp, read_snapshot
 from g2_capture import capture_arms, capture_snapshot
+from g2_contact import contact_failure_kind
 from g2_initial import compare_initial, capture_initial
 from g2_kinematics import pose_error
 from pace_client_smoke import NativeState, encode
@@ -135,7 +136,17 @@ class NativeBackend:
                               points=[dict(position=p.position,separation=float(p.separation),
                                            normal=p.normal,impulse=p.impulse) for p in c.points]) for c in contacts],
                           control_call_count=0,physics_step_count=0))
-            self.guard.measured(stamp,q,fingers,actual,block_pose,contacts)
+            try:
+                self.guard.measured(stamp,q,fingers,actual,block_pose,contacts)
+            except G2Error as error:
+                kind=contact_failure_kind(error,self.guard.collision.tracker,stamp)
+                if kind is None:
+                    raise
+                self.guard.collision.verify_contact_stop(q,fingers)
+                self.guard.tracking(target_tools,actual)
+                self.remaining()
+                error.diagnostic.update(terminal_checks_passed=True,contact_loss=kind,contact_tick=self.tick)
+                raise
             self.log(dict(kind="native_guard_state",tick=self.tick, action_index=self.action_index,
                           control_call_count=0, physics_step_count=0, **self.guard.metrics()))
             self.guard.tracking(target_tools,actual)

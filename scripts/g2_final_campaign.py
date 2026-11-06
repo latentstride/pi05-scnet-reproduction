@@ -1,11 +1,43 @@
 """Supervise one shared model and independently admitted diagnostic trials."""
 
+import os
 from pathlib import Path
 import subprocess
 import time
 
 from g2e_host_supervisor import argv, interrupt_signals, stop_group
 from pace_g1_orchestrate import persist, wait_ready
+
+
+def verified_contact_stop(proof):
+    return (
+        isinstance(proof, dict)
+        and proof.get("kind") in ("slip", "bilateral_loss")
+        and type(proof.get("tick")) is int
+        and proof["tick"] > 0
+        and all(
+            proof.get(key) is True
+            for key in (
+                "terminal_checks_passed",
+                "hold_complete",
+                "close_complete",
+                "scene_context_closed",
+            )
+        )
+    )
+
+
+def process_group_gone(pid):
+    """A reaped leader alone does not prove the simulator group is gone."""
+    end = time.monotonic() + 2
+    while True:
+        try:
+            os.killpg(pid, 0)
+        except ProcessLookupError:
+            return True
+        if time.monotonic() >= end:
+            return False
+        time.sleep(0.025)
 
 
 def gpu_samples(path):
@@ -175,6 +207,7 @@ def supervise(plan, runtime, output, *, rehearsal=False, allocated=False):
                 save()
                 trial = launch(runtime["commands"][episode], output / f"{episode}.log")
                 reason = wait_trial(trial, time.monotonic() + row["hard_timeout_s"])
+                trial_pid = trial.pid
                 stop_group(trial)
                 trial = None
                 if reason:
@@ -193,7 +226,8 @@ def supervise(plan, runtime, output, *, rehearsal=False, allocated=False):
                     break
                 rows[episode] = {"status": "completed", "result": receipt}
                 save()
-                if receipt.get("stop_campaign") is True or receipt.get("category") in (
+                category = receipt.get("category")
+                if receipt.get("stop_campaign") is True or category in (
                     "infrastructure_failure",
                     "actual_safety_stop",
                 ):
@@ -201,6 +235,20 @@ def supervise(plan, runtime, output, *, rehearsal=False, allocated=False):
                         receipt.get("category")
                         or "actual safety or input contract failure"
                     )
+                    break
+                if category == "controlled_contact_stop":
+                    if not (
+                        receipt.get("fresh_reset_verified") is True
+                        and verified_contact_stop(receipt.get("contact_stop"))
+                        and process_group_gone(trial_pid)
+                    ):
+                        reason = "contact stop safety or cleanup unverified"
+                        break
+                elif allocated and (
+                    category != "diagnostic_complete"
+                    or receipt.get("fresh_reset_verified") is not True
+                ):
+                    reason = "trial completion or independent reset unverified"
                     break
         except (Exception, KeyboardInterrupt) as error:
             reason = str(error)

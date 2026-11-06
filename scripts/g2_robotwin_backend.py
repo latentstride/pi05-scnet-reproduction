@@ -8,7 +8,7 @@ import numpy as np
 
 from g2_adapter import G2Error, SIDES, Stamp, Snapshot, read_snapshot
 from g2_capture import capture_snapshot, capture_arms
-from g2_contact import finger_force_limits
+from g2_contact import contact_failure_kind, finger_force_limits
 from g2_finger_force import MODE as CENTERED_FORCE,centered_finger_force
 from g2_kinematics import pose_error, rotation_vector
 from g2_motion import Trajectory
@@ -323,6 +323,7 @@ class ARXBackend:
                 snapshot = Snapshot(stamp, capture_arms(self.env.robot, stamp), {}, self.world_task)
                 q, native, frames, actual = read_snapshot(snapshot, self.arms)
                 contact_state=None
+                contact_error=None
                 if self.contact_drive is not None:
                     try:
                         contact_state=self._contact_observation(snapshot)
@@ -335,7 +336,13 @@ class ARXBackend:
                                  actual_arm=q,actual_fingers=native,target_fingers=plan.fingers[index],
                                  contact_state=self.collision.tracker.snapshot(),detail=str(error),
                                  diagnostic=error.diagnostic,control_call_count=1 if substep==0 else 0,physics_step_count=1))
-                        raise
+                        kind=contact_failure_kind(error,self.collision.tracker,stamp)
+                        if kind is None:
+                            raise
+                        for arm, fingers in zip(self.arms, native):
+                            arm.grip.measure(fingers)
+                        self.collision.verify_contact_stop(q,native)
+                        contact_error=error
                 desired = np.array([frame @ arm.chain.fk(target) @ arm.offset()
                                     for frame, arm, target in zip(frames, self.arms, plan.q[index])])
                 residual = [pose_error(goal, real) for goal, real in zip(desired, actual)]
@@ -348,10 +355,15 @@ class ARXBackend:
                          finger_drive_properties=self.contact_drive,
                          applied_finger_force_n=self.applied_finger_force.copy() if self.contact_drive and self.contact_drive.get('mode')==CENTERED_FORCE else None,
                          target_tools_task=desired, position_error_m=p, orientation_error_deg=a,
-                         control_call_count=1 if substep == 0 else 0, physics_step_count=1))
+                         control_call_count=1 if substep == 0 and contact_error is None else 0,
+                         physics_step_count=1 if contact_error is None else 0))
                 if max(p) > self.position_tol or max(a) > self.angle_tol:
                     raise G2Error(Status.BACKEND_ERROR, "measured TCP tracking exceeded acceptance bounds",
                                   position_error_m=p, orientation_error_deg=a)
+                if contact_error is not None:
+                    remaining()
+                    contact_error.diagnostic.update(terminal_checks_passed=True,contact_loss=kind,contact_tick=self.tick)
+                    raise contact_error
                 g0=native
                 if self.contact_drive is not None and set(self.collision.tracker.holders)!=before_holders:
                     self.replan_reason=dict(reason="measured_contact_transition",tick=self.tick,

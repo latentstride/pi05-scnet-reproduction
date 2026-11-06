@@ -76,7 +76,14 @@ def prepare(project, output):
         bindings[episode] = binding
     plan["trial_bindings"] = bindings
     plan["status"] = "CANDIDATE_DIAGNOSTIC_ONLY"
-    quote = project / "research/g2/final-cpu-review/scnet-rate-20261107.json"
+    plan["early_stop"].append(
+        "verified same-tick contact stop and full cleanup end only that trial; the next trial repeats independent measured reset and geometry admission"
+    )
+    quote = (
+        project / "research/g2/final-cpu-review/scnet-rate-contact-stop-20261107.json"
+    )
+    if not quote.is_file():
+        quote = quote.with_name("scnet-rate-20261107.json")
     if quote.is_file():
         shutil.copyfile(quote, output / "catalog-rate.json")
         plan["budget"].update(

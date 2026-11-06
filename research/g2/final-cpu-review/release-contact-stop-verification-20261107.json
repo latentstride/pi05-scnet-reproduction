@@ -1,0 +1,49 @@
+{
+  "status": "READY_FOR_REVIEW",
+  "base_commit": "180626f08142177b37e76d1fe40405153aa51a0b",
+  "scope": "controlled contact stop and independent next-trial admission",
+  "tests": 213,
+  "synthetic_episodes": 13,
+  "data_kind": "CPU and synthetic evidence",
+  "real_closed_loop_validated": false,
+  "gpu_jobs_submitted_modified_cancelled": 0,
+  "submission_allowed": false,
+  "frozen_contact_monitor_contract_unchanged": true,
+  "historical_artifacts_verified": 781,
+  "roster_order_inputs_checkpoint_budget_equal_to_prior_release": true,
+  "planned_s": 29700,
+  "hard_cap_s": 34200,
+  "fee_cap_yuan": "34.20",
+  "scenarios": [
+    "native slip or bilateral loss interrupts at the first offending physics step",
+    "full stop evidence permits predeclared ARX and expert trials",
+    "simultaneous measured collision or tracking violation stops globally",
+    "missing hold or close proof, surviving process group, failed next reset stop globally",
+    "service, unknown or unsynchronized failures stop globally"
+  ],
+  "source_sha256": {
+    "scripts/g2_contact.py": "0f660a6f94e014eeffc701cabe1ffd1d7a7079c400a23260d038e3277c193517",
+    "scripts/g2_native_backend.py": "5f00c47a01116de9451130044f7be2afab70600e2fc2f5b9a7023abab63e5ca9",
+    "scripts/g2_robotwin_backend.py": "5099166ca0caca00186d7549b7da2ca88adc48601f5f6aa24e5bd2e94c5602c5",
+    "scripts/g2_final_trial.py": "75f83a001032f62c5956842ee02a60acd98184824bbdf45f47bdb9f5e82b6c45",
+    "scripts/g2_final_campaign.py": "db67a62c68b0b78dd49ed64ade4b881375d113144c882c04e2379e7e09d2228b",
+    "scripts/g2_final_prepare_review.py": "e6f9d142e43717dc5159ed0b4c85bbf79445706bd3e3cd23f04a30abe44c0a77"
+  },
+  "evidence_sha256": {
+    "tests": "6ea86a248bc48a5b0232664c8d0d60d98ed261a0490924785d677dfa1d220f9b",
+    "synthetic": "5914e5ae309a844145d3a19b29e9eb7d68a44635a8a1d80b98baf2c0526952c4"
+  },
+  "release": {
+    "directory": "candidate-release-contact-stop-verified-20261107",
+    "manifest_sha256": "a519ed9bab57f8ad25dd4c4d26c900e55e6b66f0ed3eb3cbc6315706c91419f2",
+    "archive_sha256": "cfee63250057eccd3b448e75420313c5c43094c8080dd49775e607414872b978",
+    "files": 75
+  },
+  "quote": {
+    "path": "scnet-rate-contact-stop-20261107.json",
+    "sha256": "80dd4778bd03d0effdd5fefdddff8888531daa27a784b12e95aea23188253933",
+    "observed_at": "2026-11-07T03:33:00+08:00",
+    "listed_yuan_per_gpu_hour": "3.60",
+    "scope": "refreshed signed-in SCNet product price; recheck at authorization"
+  }
+}

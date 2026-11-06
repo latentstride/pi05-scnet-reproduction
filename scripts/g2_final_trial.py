@@ -8,7 +8,9 @@ from pathlib import Path
 import time
 
 from g2_adapter import G2Error, images_of
+from g2_contact import CONTACT_LOSSES
 from g2_episode import json_value
+from g2_final_campaign import verified_contact_stop
 from g2_final_deploy import authorization
 from g2_final_expert import execute_expert, expert_prefix
 from g2_locked_task import (
@@ -30,10 +32,11 @@ def read(path):
     return json.loads(path.read_text())
 
 
-def classify(result):
+def classify(result, contact_stop=None):
     failure = result.get("failure") or {}
     detail = failure.get("detail", "").lower()
     diagnostic = failure.get("diagnostic") or {}
+    code = failure.get("code")
     if (
         diagnostic.get("geometry") == "actual"
         or any(
@@ -42,13 +45,11 @@ def classify(result):
                 "measured state",
                 "actual reset state",
                 "measured native",
-                "object slipped",
-                "lost bilateral",
                 "measured tcp",
                 "unsynced",
             )
         )
-        or failure.get("code") == "unsynced"
+        or code == Status.UNSYNCED.value
     ):
         return "actual_safety_stop"
     if result["outcome"] in (
@@ -59,19 +60,99 @@ def classify(result):
         "export_failed",
     ):
         return "infrastructure_failure"
-    if diagnostic.get("geometry") == "candidate":
+    if "object slipped" in detail or "lost bilateral" in detail:
+        if (
+            result["outcome"] == "control_error"
+            and code == Status.BACKEND_ERROR.value
+            and verified_contact_stop(contact_stop)
+            and CONTACT_LOSSES.get(detail) == contact_stop["kind"]
+        ):
+            return "controlled_contact_stop"
+        return "actual_safety_stop"
+    planning_codes = {
+        Status.COLLISION.value,
+        Status.IK_FAILED.value,
+        Status.UNREACHABLE.value,
+        Status.PLAN_FAILED.value,
+        Status.VELOCITY.value,
+    }
+    if diagnostic.get("geometry") == "candidate" and code in planning_codes | {
+        Status.LIMIT.value
+    }:
         return "diagnostic_complete"
-    if result["outcome"] in ("control_error", "joint_limit") and not any(
-        s in detail
-        for s in (
-            "candidate",
-            "predicted finger start",
-            "donor opening",
+    if (
+        code == Status.COLLISION.value
+        and detail
+        in (
+            "native drive candidate blocked",
+            "predicted finger start intersects task block",
             "scene changed after planning",
         )
+    ) or (
+        code == Status.BACKEND_ERROR.value
+        and detail.startswith("donor opening before receiver contact confirmation")
     ):
+        return "diagnostic_complete"
+    if result["outcome"] in ("control_error", "joint_limit"):
         return "actual_safety_stop"
-    return "diagnostic_complete"
+    if result["outcome"] in ("success", "task_unsuccessful"):
+        return "diagnostic_complete"
+    if code in planning_codes and (
+        result["outcome"] in ("planning_failed", "ik_failed", "unreachable")
+        or (
+            result["outcome"] == "adapter_error"
+            and diagnostic.get("collision_world") == "source_collision"
+        )
+    ):
+        return "diagnostic_complete"
+    return "infrastructure_failure"
+
+
+class RuntimeReset(VerifiedReset):
+    """A fresh scene plus same-tick evidence for an orderly contact stop."""
+
+    def __init__(self, backend, expected, output, verify_scene, cleanup_failures):
+        super().__init__(backend, expected, output, verify_scene)
+        self.cleanup_failures = cleanup_failures
+        self.contact_stop = {}
+
+    def execute(self, *args, **kwargs):
+        if self.status != "matched" or self.contact_stop:
+            raise G2Error(Status.UNSYNCED, "execution requires a fresh admitted scene")
+        try:
+            return self.backend.execute(*args, **kwargs)
+        except G2Error as error:
+            kind = CONTACT_LOSSES.get(str(error))
+            if (
+                error.status == Status.BACKEND_ERROR
+                and kind is not None
+                and error.diagnostic.get("contact_loss") == kind
+                and error.diagnostic.get("terminal_checks_passed") is True
+                and error.diagnostic.get("contact_tick") == self.backend.tick
+            ):
+                self.contact_stop = dict(
+                    kind=kind, tick=self.backend.tick, terminal_checks_passed=True
+                )
+            raise
+
+    def _cleanup(self, key, action, *args):
+        try:
+            before = self.backend.tick
+            value = action(*args)
+            if self.contact_stop:
+                self.contact_stop[key + "_complete"] = (
+                    before == self.backend.tick == self.contact_stop["tick"]
+                )
+            return value
+        except Exception as error:
+            self.cleanup_failures.append(f"{key}: {error}")
+            raise
+
+    def hold(self):
+        return self._cleanup("hold", self.backend.hold)
+
+    def close(self, output):
+        return self._cleanup("close", self.backend.close, output)
 
 
 def run(args):
@@ -94,24 +175,11 @@ def run(args):
     source = read(release / "source-audit.json")
     assets = args.pace / "assets"
     cleanup_failures = []
-
-    class RuntimeReset(VerifiedReset):
-        def hold(self):
-            try:
-                return self.backend.hold()
-            except Exception as error:
-                cleanup_failures.append(f"hold: {error}")
-                raise
-
-        def close(self, output):
-            try:
-                return self.backend.close(output)
-            except Exception as error:
-                cleanup_failures.append(f"close: {error}")
-                raise
+    runtime_reset = None
 
     @contextmanager
     def factory(spec):
+        nonlocal runtime_reset
         with real_scene(
             config,
             spec,
@@ -121,12 +189,16 @@ def run(args):
             source,
             evidence,
         ) as (backend, adapter):
-            yield (
-                RuntimeReset(
-                    backend, binding["expected_initial"], evidence, verify_real_scene
-                ),
-                adapter,
+            runtime_reset = RuntimeReset(
+                backend,
+                binding["expected_initial"],
+                evidence,
+                verify_real_scene,
+                cleanup_failures,
             )
+            yield runtime_reset, adapter
+        if runtime_reset.contact_stop:
+            runtime_reset.contact_stop["scene_context_closed"] = True
 
     receipt = dict(episode_id=args.episode, category="infrastructure_failure")
     started = time.monotonic()
@@ -186,6 +258,7 @@ def run(args):
             elif "expert" in row["method"]:
                 evidence.mkdir()
                 end = time.monotonic() + config["timeout_s"]
+                expert_error = None
 
                 def remaining():
                     seconds = end - time.monotonic()
@@ -221,11 +294,15 @@ def run(args):
                         receipt.update(
                             category="diagnostic_complete", success=success, expert=True
                         )
+                    except G2Error as error:
+                        expert_error = error
                     finally:
                         try:
                             backend.hold()
                         finally:
                             backend.close(evidence)
+                if expert_error is not None:
+                    raise expert_error
             else:
                 with open_policy(args.uri, "checkpoint", 90) as policy:
                     persist(
@@ -234,7 +311,9 @@ def run(args):
                     )
                     result = run_condition(config, row, factory, policy, evidence)
                 receipt.update(
-                    category=classify(result),
+                    category=classify(
+                        result, runtime_reset.contact_stop if runtime_reset else None
+                    ),
                     result=json.loads(
                         json.dumps(result, default=json_value, allow_nan=False)
                     ),
@@ -242,24 +321,26 @@ def run(args):
     except (Exception, KeyboardInterrupt) as error:
         detail = str(error)
         if isinstance(error, G2Error):
+            outcome = "control_error"
+            if error.status == Status.TIMEOUT:
+                outcome = "timeout"
+            elif error.status in (
+                Status.PLAN_FAILED,
+                Status.IK_FAILED,
+                Status.UNREACHABLE,
+            ):
+                outcome = "planning_failed"
             category = classify(
                 dict(
-                    outcome="timeout"
-                    if error.status == Status.TIMEOUT
-                    else "control_error",
+                    outcome=outcome,
                     failure=dict(
                         detail=detail,
                         code=error.status.value,
                         diagnostic=error.diagnostic,
                     ),
-                )
+                ),
+                runtime_reset.contact_stop if runtime_reset else None,
             )
-            if error.status in (
-                Status.PLAN_FAILED,
-                Status.IK_FAILED,
-                Status.UNREACHABLE,
-            ):
-                category = "diagnostic_complete"
         else:
             category = "infrastructure_failure"
         if args.probe and isinstance(error, InitialMismatch):
@@ -272,6 +353,10 @@ def run(args):
                 json.dumps(error.diagnostic, default=json_value, allow_nan=False)
             )
     finally:
+        if runtime_reset is not None:
+            receipt["fresh_reset_verified"] = runtime_reset.status == "matched"
+            if runtime_reset.contact_stop:
+                receipt["contact_stop"] = runtime_reset.contact_stop
         if cleanup_failures:
             receipt.update(
                 category="infrastructure_failure", cleanup_failures=cleanup_failures

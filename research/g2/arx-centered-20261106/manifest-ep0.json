@@ -1,0 +1,157 @@
+{
+  "reference-q.npz": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-settle-expert-20261106/workspace-q.npz",
+    "bytes": 30502,
+    "sha256": "e3c734e7796cb963788d10a0f3476b16636328d5a3b2b3da8bfda095662971b2"
+  },
+  "config.json": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-settle-expert-20261106/config.json",
+    "bytes": 7564,
+    "sha256": "200e35a7d2e0370df9a9284e72184a069effe021a3f6fdcfcdd3ce1122055289"
+  },
+  "asset-audit.json": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-runtime-stage3-final-20261105/asset-audit.json",
+    "bytes": 6665,
+    "sha256": "5ebfc07c82814757168bdb3f2b7ad4a9bec18f58afc28318f49e61af117122f2"
+  },
+  "episode0/input-trace.npz": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-native-expert-20261106/trace.npz",
+    "bytes": 97819,
+    "sha256": "749c82d3d4ccca01a8eba522848b04856ed98ca504e97f1f6f1c55f12b3ebcd7"
+  },
+  "episode0/input.json": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-native-expert-20261106/input.json",
+    "bytes": 2211,
+    "sha256": "cb1dc1a5bb00f0ee60ebe53155392a8a6be8e1a764052f16813d89c33050a7b1"
+  },
+  "episode1/input-trace.npz": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-native-expert-20261106/episode1/trace.npz",
+    "bytes": 91340,
+    "sha256": "26fe796738a00fa4514c5cc6e7e27ba5a675d8cf8d8773f77b40407e0e3be4dd"
+  },
+  "episode1/input.json": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-native-expert-20261106/episode1/input.json",
+    "bytes": 2210,
+    "sha256": "7c7132fdce1c4fe0283872518f1927117cf7aea604e23baf818f55a4bfa093be"
+  },
+  "episode2/input-trace.npz": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-native-expert-20261106/episode2/trace.npz",
+    "bytes": 94432,
+    "sha256": "4483901b895c679382b4a5cd3f77f9a8826d598f5fbdb65f724240755173d6ab"
+  },
+  "episode2/input.json": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-native-expert-20261106/episode2/input.json",
+    "bytes": 2210,
+    "sha256": "33f51d53544f54146e973d2cf56ef9b985d010b6f0d08fe270de3dcb0a4ff87f"
+  },
+  "runtime-sources/g2_arx_reference.py": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-arx-centered-20261106/g2_arx_reference.py",
+    "bytes": 2487,
+    "sha256": "62ec7b239bb5b8194564ab0342b4db956bc03e47ea976bcbac9777210258a70c"
+  },
+  "runtime-sources/g2_arx_expert_cpu.py": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-arx-expert-20261106/g2_arx_expert_cpu.py",
+    "bytes": 13777,
+    "sha256": "adcc098f87fbcba82b5e2420ba98f8375fd87bb75a53281fa4050e5389f37f66"
+  },
+  "runtime-sources/g2_arx_expert_monitor_cpu.py": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-arx-expert-20261106/g2_arx_expert_monitor_cpu.py",
+    "bytes": 15879,
+    "sha256": "471d505c7828ce7f09257b920a38627fd786908ae7b871f0a4d8143bd2290636"
+  },
+  "runtime-sources/g2_arx_expert_monitor_cpu_v2.py": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-arx-expert-20261106/g2_arx_expert_monitor_cpu_v2.py",
+    "bytes": 15928,
+    "sha256": "acf2114d77b67e03e01a24d8968b5e10d499567bad2553cd52c723ea75c1df52"
+  },
+  "runtime-sources/g2_adapter.py": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-contact-stage5-20261105/g2_adapter.py",
+    "bytes": 17978,
+    "sha256": "ccd7baf793bb69a6951d5c8294af4adbed0378083937021228af96a78b170382"
+  },
+  "runtime-sources/g2_contact.py": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-arx-centered-20261106/g2_contact.py",
+    "bytes": 22372,
+    "sha256": "a86dc58fccef78196e0aea285111f19b3ec501ed2ec933c52fed505757f7a080"
+  },
+  "runtime-sources/g2_collision.py": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-physics-parity-20261105/g2_collision.py",
+    "bytes": 10730,
+    "sha256": "3047aec1d3c0c4cd221a2bc860aada89cb91de151d6abc8eb155186010d2ec0e"
+  },
+  "runtime-sources/g2_assets.py": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-contact-stage5-20261105/g2_assets.py",
+    "bytes": 2706,
+    "sha256": "ef712349bc246de2259da0f009eac7cee785ab1b439e484e291c697c0a4c1907"
+  },
+  "runtime-sources/g2_proxy_collision.py": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-runtime-stage3-final-20261105/g2_proxy_collision.py",
+    "bytes": 3207,
+    "sha256": "636ff63de9be6b3f49cfceda5fe9c101cfaf3b28645569f6f38634e5c0879af2"
+  },
+  "runtime-sources/g2_kinematics.py": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-runtime-stage3-final-20261105/g2_kinematics.py",
+    "bytes": 5560,
+    "sha256": "bb21f17ffacd0ee603f79ab36f393ee4b8fda2efe44fdb2786a430233365a546"
+  },
+  "runtime-sources/robotwin_control_geometry.py": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-runtime-stage3-final-20261105/robotwin_control_geometry.py",
+    "bytes": 5539,
+    "sha256": "e3ede0d095ee30558451f14fe12789e8778b6caecd7c9edcd3d0925c07a2d788"
+  },
+  "runtime-sources/verify_robotwin_fk.py": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-runtime-stage3-final-20261105/verify_robotwin_fk.py",
+    "bytes": 8503,
+    "sha256": "4af616a6ae263f48e88e28a91c64dfb809a6d245698a0b7e432febd974188428"
+  },
+  "runtime-sources/g2_finger_force.py": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-arx-centered-20261106/g2_finger_force.py",
+    "bytes": 990,
+    "sha256": "9c9565f50bb65478303a46d27d536d35080668f10c49f3fc89cc47ea05b42934"
+  },
+  "runtime-sources/g2_arx_expert_monitor_cpu_v5.py": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-arx-centered-20261106/g2_arx_expert_monitor_cpu_v5.py",
+    "bytes": 16992,
+    "sha256": "e3c06859249a8b64ec64d5458391e4e651175e1c28c68dd293d52992db4fec01"
+  },
+  "episode0/contact-events.jsonl": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-v2-episode0-2N-centered-20261106/contact-events.jsonl",
+    "bytes": 163552,
+    "sha256": "0db2f5e17d2ed6ac0afb286cf7121712736c96330bcbe591d5f6c67cded401c1"
+  },
+  "episode0/contact-monitor.json": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-v2-episode0-2N-centered-20261106/contact-monitor.json",
+    "bytes": 2083,
+    "sha256": "43f67f1eaea87ae49290de11ec296ac842d1864a7f279f08eff7738fb465e2d1"
+  },
+  "episode0/stages.json": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-v2-episode0-2N-centered-20261106/stages.json",
+    "bytes": 10396,
+    "sha256": "f0b262b18d077e05f8d3f39369c1c542d15796c5493ad18c47ea8e1ed4cc652d"
+  },
+  "episode0/robot.urdf": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-v2-episode0-2N-centered-20261106/robot.urdf",
+    "bytes": 7283,
+    "sha256": "78bbf5aa5fa258542eba4c101226ca813c0609b07d5867552cc22a217a86ce98"
+  },
+  "episode0/initial.json": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-v2-episode0-2N-centered-20261106/initial.json",
+    "bytes": 1641,
+    "sha256": "adc3815b85466245a96e9ab638907050a70b98c26f9477da97952d39f6631e3d"
+  },
+  "episode0/physics-trace.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-v2-episode0-2N-centered-20261106/physics-trace.npz",
+    "bytes": 1773274,
+    "sha256": "c0dcc14dac4e94c6364fe6a3e374c246c4a8dff4d6a6e60d9569235d20830881"
+  },
+  "episode0/replay.json": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-v2-episode0-2N-centered-20261106/replay.json",
+    "bytes": 12279,
+    "sha256": "bace1154405542b34f8c27f74525ac1ea1fcbc95301faafbc8514887028ae8d4"
+  },
+  "episode0/outer.log": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-v2-episode0-2N-centered-20261106.log",
+    "bytes": 13817,
+    "sha256": "ffade1823582584722169234075663923d8417b02c1ebdfb4a03e6a1c51e5e8a"
+  }
+}

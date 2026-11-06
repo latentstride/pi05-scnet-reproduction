@@ -1,0 +1,126 @@
+{
+  "episode": 1,
+  "seed": 1,
+  "spawn_pose": {
+    "box": {
+      "position_m": [
+        -0.0743765127218109,
+        0.006846898299481541,
+        0.842
+      ],
+      "quaternion_wxyz": [
+        0.9922851331582165,
+        0.0,
+        0.0,
+        0.12397666922925532
+      ]
+    },
+    "target_box": {
+      "position_m": [
+        0.12971522336273184,
+        0.19003722843377685,
+        0.741
+      ],
+      "quaternion_wxyz": [
+        1,
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "segments": [
+    {
+      "kind": "L",
+      "path_index": 0,
+      "first_tick": 0,
+      "last_tick": 478
+    },
+    {
+      "kind": "L",
+      "path_index": 1,
+      "first_tick": 478,
+      "last_tick": 649
+    },
+    {
+      "kind": "LG",
+      "path_index": 0,
+      "first_tick": 649,
+      "last_tick": 949
+    },
+    {
+      "kind": "L",
+      "path_index": 2,
+      "first_tick": 949,
+      "last_tick": 1147
+    },
+    {
+      "kind": "L",
+      "path_index": 3,
+      "first_tick": 1147,
+      "last_tick": 1323
+    },
+    {
+      "kind": "L",
+      "path_index": 4,
+      "first_tick": 1323,
+      "last_tick": 1370
+    },
+    {
+      "kind": "R",
+      "path_index": 0,
+      "first_tick": 1370,
+      "last_tick": 1821
+    },
+    {
+      "kind": "R",
+      "path_index": 1,
+      "first_tick": 1821,
+      "last_tick": 2009
+    },
+    {
+      "kind": "RG",
+      "path_index": 0,
+      "first_tick": 2009,
+      "last_tick": 2309
+    },
+    {
+      "kind": "LG",
+      "path_index": 1,
+      "first_tick": 2309,
+      "last_tick": 2609
+    },
+    {
+      "kind": "L",
+      "path_index": 5,
+      "first_tick": 2609,
+      "last_tick": 2798
+    },
+    {
+      "kind": "B",
+      "path_index": [
+        6,
+        2
+      ],
+      "first_tick": 2798,
+      "last_tick": 3224
+    },
+    {
+      "kind": "R",
+      "path_index": 3,
+      "first_tick": 3224,
+      "last_tick": 3355
+    },
+    {
+      "kind": "RG",
+      "path_index": 1,
+      "first_tick": 3355,
+      "last_tick": 3655
+    }
+  ],
+  "physics_dt_s": 0.004,
+  "frames": 277,
+  "physics_steps": 3655,
+  "planner_sha256": "99bef7f009146c280ba81bfc4577fb5b77d3f47c270b7852172f3be7134393b8",
+  "all_recorded_targets_exact": true
+}

@@ -1,0 +1,16 @@
+{
+  "verified_files": 70,
+  "all_manifest_hashes_verified": true,
+  "source_differences": [
+    "g2_adapter.py"
+  ],
+  "observer_vs_unmonitored_equal": {
+    "actual_native": true,
+    "drive_native": true,
+    "block_pose": true,
+    "actual_endpose_matrix": true,
+    "sample_ticks": true
+  },
+  "source_difference_scope": "remote g2_adapter predates local tool_ik residual correction; replay imports Grip/Stamp/G2Error and never calls tool_ik",
+  "archive_sha256": "facc1e0899010674b9f6f38590bc76fd3956abe4ecb205c28e2bd398b9f66224"
+}

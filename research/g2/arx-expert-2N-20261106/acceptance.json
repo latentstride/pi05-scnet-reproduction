@@ -1,0 +1,417 @@
+{
+  "data_kind": "diagnostic",
+  "scope": "retimed expert direct-physics ARX reference with shadow contact guard; not policy or production planner acceptance",
+  "gpu_used": false,
+  "model_used": false,
+  "formal_run_lock_frozen": false,
+  "all_verified": false,
+  "task_successes": 3,
+  "episodes": [
+    {
+      "episode": 0,
+      "checks": {
+        "completed": true,
+        "source_mass": true,
+        "force_cap": true,
+        "task_predicate_matches_measured_trace": true,
+        "drive_values_match_reference": true,
+        "complete_contact_record": true,
+        "contact_monitor_continuous": false,
+        "contact_monitor_passed": false,
+        "handover_contact_order": true,
+        "finite_actual": true,
+        "command_speed_bounds": true,
+        "command_acceleration_bounds": true,
+        "source_waypoints_retained": true,
+        "finger_hard_limits": true
+      },
+      "verification_passed": false,
+      "task_success": true,
+      "hold_success": true,
+      "retimed_physics_steps": 29779,
+      "retimed_duration_s": 119.116,
+      "wall_s": 257.3341786749661,
+      "functional_point_delta_mm": [
+        -1.6222731908783343,
+        -4.318229760974651,
+        0.32237291336056906
+      ],
+      "sampled_max_cumulative_slip_mm": 4.975504489962398,
+      "sampled_max_cumulative_slip_deg": 3.977503953396373,
+      "slip_statistics_period_ticks": 5,
+      "max_actual_finger_target_penetration_mm": 0.002797313754854258,
+      "max_actual_tool_position_error_mm": 5.902363895505321,
+      "max_actual_tool_angle_error_deg": 0.636299125629228,
+      "drive_max_error_rad": 1.1920928955078125e-07,
+      "drive_max_finger_error_m": 1.8616821764738667e-09,
+      "gripper_force_limit_n": 2.0,
+      "monitor_failure": {
+        "tick": 27463,
+        "stage": 12,
+        "detail": "object slipped relative to confirmed holder",
+        "diagnostic": {
+          "side": "right",
+          "contact_state": {
+            "phase": "right_holding",
+            "holders": [
+              "right"
+            ],
+            "contact_fingers": {
+              "left": [],
+              "right": [
+                24,
+                25
+              ]
+            },
+            "stable_counts": {
+              "left": 0,
+              "right": 3
+            },
+            "saw_shared_hold": true,
+            "releasing": [],
+            "block_pose_task": [
+              [
+                0.9997841119766235,
+                -0.014920616522431374,
+                -0.014461877755820751,
+                0.1049882173538208
+              ],
+              [
+                0.014776226133108139,
+                0.9998404383659363,
+                -0.010040167719125748,
+                0.14395153522491455
+              ],
+              [
+                0.014609375037252903,
+                0.009824307635426521,
+                0.999845027923584,
+                0.8963229656219482
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "tool_block": {
+              "right": [
+                [
+                  -0.008462629387853103,
+                  0.999944729741605,
+                  0.00623845652599778,
+                  -0.000937027437775427
+                ],
+                [
+                  0.998514203748568,
+                  0.008114370620474378,
+                  0.0538843244943588,
+                  0.0038552396778296794
+                ],
+                [
+                  0.05383072543191923,
+                  0.006685192256126064,
+                  -0.998527707425666,
+                  -0.0725164630106534
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ]
+            },
+            "tool_block_measured": {
+              "right": [
+                [
+                  -0.0010642487986929632,
+                  0.9998994637173377,
+                  -0.014147078565390547,
+                  -0.0026630750492164235
+                ],
+                [
+                  0.9999992823819163,
+                  0.0010733456514223812,
+                  0.0006329969913895783,
+                  -0.0007455222582798959
+                ],
+                [
+                  0.0006481201137500166,
+                  -0.01414639397238172,
+                  -0.999899711559264,
+                  -0.07155887395931915
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ]
+            }
+          }
+        },
+        "monitor_stopped_at_first_failure": true
+      },
+      "first_failure_metrics": {
+        "tick": 27463,
+        "sim_s": 109.852,
+        "side": "right",
+        "translation_mm": 5.006318761420524,
+        "angle_deg": 3.29733292924191
+      },
+      "guard_observed_through_tick": 27463,
+      "contact_events": [
+        {
+          "tick": 7343,
+          "sim_s": 29.372,
+          "before": [],
+          "after": [
+            "left"
+          ],
+          "phase": "left_holding"
+        },
+        {
+          "tick": 19243,
+          "sim_s": 76.97200000000001,
+          "before": [
+            "left"
+          ],
+          "after": [
+            "left",
+            "right"
+          ],
+          "phase": "both_holding"
+        },
+        {
+          "tick": 21255,
+          "sim_s": 85.02,
+          "before": [
+            "left",
+            "right"
+          ],
+          "after": [
+            "right"
+          ],
+          "phase": "right_holding"
+        }
+      ],
+      "physical_trace_sha256": "cb9573e555a052e8246dd2669969c9e98111e81cec0d923c609f8ed3b094ba65",
+      "production_collision_gate_exercised": false
+    },
+    {
+      "episode": 1,
+      "checks": {
+        "completed": true,
+        "source_mass": true,
+        "force_cap": true,
+        "task_predicate_matches_measured_trace": true,
+        "drive_values_match_reference": true,
+        "complete_contact_record": true,
+        "contact_monitor_continuous": true,
+        "contact_monitor_passed": true,
+        "handover_contact_order": true,
+        "finite_actual": true,
+        "command_speed_bounds": true,
+        "command_acceleration_bounds": true,
+        "source_waypoints_retained": true,
+        "finger_hard_limits": true
+      },
+      "verification_passed": true,
+      "task_success": true,
+      "hold_success": true,
+      "retimed_physics_steps": 27513,
+      "retimed_duration_s": 110.052,
+      "wall_s": 273.8955226582475,
+      "functional_point_delta_mm": [
+        -2.222719974815851,
+        -1.2480232398957014,
+        0.4576635360717951
+      ],
+      "sampled_max_cumulative_slip_mm": 4.6674146861591295,
+      "sampled_max_cumulative_slip_deg": 4.148053915552223,
+      "slip_statistics_period_ticks": 5,
+      "max_actual_finger_target_penetration_mm": 0.0030274291020759847,
+      "max_actual_tool_position_error_mm": 4.608556475310133,
+      "max_actual_tool_angle_error_deg": 0.6119944739833855,
+      "drive_max_error_rad": 1.1920928955078125e-07,
+      "drive_max_finger_error_m": 1.8590468817136774e-09,
+      "gripper_force_limit_n": 2.0,
+      "monitor_failure": null,
+      "first_failure_metrics": null,
+      "guard_observed_through_tick": 27713,
+      "contact_events": [
+        {
+          "tick": 6550,
+          "sim_s": 26.2,
+          "before": [],
+          "after": [
+            "left"
+          ],
+          "phase": "left_holding"
+        },
+        {
+          "tick": 17105,
+          "sim_s": 68.42,
+          "before": [
+            "left"
+          ],
+          "after": [
+            "left",
+            "right"
+          ],
+          "phase": "both_holding"
+        },
+        {
+          "tick": 19115,
+          "sim_s": 76.46000000000001,
+          "before": [
+            "left",
+            "right"
+          ],
+          "after": [
+            "right"
+          ],
+          "phase": "right_holding"
+        },
+        {
+          "tick": 26881,
+          "sim_s": 107.524,
+          "before": [
+            "right"
+          ],
+          "after": [],
+          "phase": "free_after_hold"
+        },
+        {
+          "tick": 26888,
+          "sim_s": 107.552,
+          "before": [],
+          "after": [
+            "right"
+          ],
+          "phase": "right_holding"
+        },
+        {
+          "tick": 26892,
+          "sim_s": 107.568,
+          "before": [
+            "right"
+          ],
+          "after": [],
+          "phase": "free_after_hold"
+        },
+        {
+          "tick": 26908,
+          "sim_s": 107.632,
+          "before": [],
+          "after": [
+            "right"
+          ],
+          "phase": "right_holding"
+        },
+        {
+          "tick": 26955,
+          "sim_s": 107.82000000000001,
+          "before": [
+            "right"
+          ],
+          "after": [],
+          "phase": "free_after_hold"
+        }
+      ],
+      "physical_trace_sha256": "4bc5c58c0485feff3359a40897145892220759a9a5a46fb8429d31c9cf90e137",
+      "production_collision_gate_exercised": false
+    },
+    {
+      "episode": 2,
+      "checks": {
+        "completed": true,
+        "source_mass": true,
+        "force_cap": true,
+        "task_predicate_matches_measured_trace": true,
+        "drive_values_match_reference": true,
+        "complete_contact_record": true,
+        "contact_monitor_continuous": true,
+        "contact_monitor_passed": true,
+        "handover_contact_order": true,
+        "finite_actual": true,
+        "command_speed_bounds": true,
+        "command_acceleration_bounds": true,
+        "source_waypoints_retained": true,
+        "finger_hard_limits": true
+      },
+      "verification_passed": true,
+      "task_success": true,
+      "hold_success": true,
+      "retimed_physics_steps": 28797,
+      "retimed_duration_s": 115.188,
+      "wall_s": 263.5835310029797,
+      "functional_point_delta_mm": [
+        -3.5439854997548483,
+        -3.8156908912242162,
+        0.0003170967102228417
+      ],
+      "sampled_max_cumulative_slip_mm": 4.713250597166926,
+      "sampled_max_cumulative_slip_deg": 3.8185855926425316,
+      "slip_statistics_period_ticks": 5,
+      "max_actual_finger_target_penetration_mm": 0.004943062776874285,
+      "max_actual_tool_position_error_mm": 5.383449452469664,
+      "max_actual_tool_angle_error_deg": 0.6420188837883549,
+      "drive_max_error_rad": 1.1920928955078125e-07,
+      "drive_max_finger_error_m": 1.8613745822460004e-09,
+      "gripper_force_limit_n": 2.0,
+      "monitor_failure": null,
+      "first_failure_metrics": null,
+      "guard_observed_through_tick": 28997,
+      "contact_events": [
+        {
+          "tick": 7270,
+          "sim_s": 29.080000000000002,
+          "before": [],
+          "after": [
+            "left"
+          ],
+          "phase": "left_holding"
+        },
+        {
+          "tick": 18433,
+          "sim_s": 73.732,
+          "before": [
+            "left"
+          ],
+          "after": [
+            "left",
+            "right"
+          ],
+          "phase": "both_holding"
+        },
+        {
+          "tick": 20441,
+          "sim_s": 81.764,
+          "before": [
+            "left",
+            "right"
+          ],
+          "after": [
+            "right"
+          ],
+          "phase": "right_holding"
+        },
+        {
+          "tick": 28147,
+          "sim_s": 112.58800000000001,
+          "before": [
+            "right"
+          ],
+          "after": [],
+          "phase": "free_after_hold"
+        }
+      ],
+      "physical_trace_sha256": "8bcdad92374353a60c3c2e49645271cc3b24aead5aeae60d0349709b0202c039",
+      "production_collision_gate_exercised": false
+    }
+  ]
+}

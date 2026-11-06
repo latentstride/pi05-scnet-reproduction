@@ -1,0 +1,35 @@
+{
+  "endpoint": "huggingface.co",
+  "repository": "TianxingChen/RoboTwin2.0",
+  "revision": "3dc3b798668feb99ac61cc9086d84cbcc3d79186",
+  "archive_path": "dataset/handover_block/aloha-agilex_clean_50.zip",
+  "full_archive_sha256_verified": false,
+  "http_bytes_received": 585735,
+  "range_requests": 9,
+  "members": [
+    {
+      "file": "episode0.pkl",
+      "archive_member": "aloha-agilex_clean_50/_traj_data/episode0.pkl",
+      "bytes": 143255,
+      "sha256": "881363a1b7e7ca53105e05c6ab8a48c9cd6f87c4a6b227f28e6dfc05fb44a48b",
+      "zip_crc32": "500c5375",
+      "crc_verified": true
+    },
+    {
+      "file": "episode1.pkl",
+      "archive_member": "aloha-agilex_clean_50/_traj_data/episode1.pkl",
+      "bytes": 131294,
+      "sha256": "99bef7f009146c280ba81bfc4577fb5b77d3f47c270b7852172f3be7134393b8",
+      "zip_crc32": "38d8ee1f",
+      "crc_verified": true
+    },
+    {
+      "file": "episode2.pkl",
+      "archive_member": "aloha-agilex_clean_50/_traj_data/episode2.pkl",
+      "bytes": 136151,
+      "sha256": "f5bb8887fb9a2b0bd0d73b5a3743ac0e2c929ff084c9e3cc60c946f2ee811104",
+      "zip_crc32": "2d9ef149",
+      "crc_verified": true
+    }
+  ]
+}

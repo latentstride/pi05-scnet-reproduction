@@ -1,0 +1,42 @@
+{
+  "episode1/robot.urdf": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-v2-episode1-2N-centered-20261106/robot.urdf",
+    "bytes": 7283,
+    "sha256": "78bbf5aa5fa258542eba4c101226ca813c0609b07d5867552cc22a217a86ce98"
+  },
+  "episode1/physics-trace.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-v2-episode1-2N-centered-20261106/physics-trace.npz",
+    "bytes": 1649996,
+    "sha256": "3d64833d1e2d8ed093d15654c6bc281717c5ae087ad4d46aaa5a05d14a5b3e13"
+  },
+  "episode1/replay.json": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-v2-episode1-2N-centered-20261106/replay.json",
+    "bytes": 12285,
+    "sha256": "c9568d1e83c11940b0bdbd8f80a20c597822a7d603c45fb805bbd2c1a5675bbc"
+  },
+  "episode1/contact-events.jsonl": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-v2-episode1-2N-centered-20261106/contact-events.jsonl",
+    "bytes": 111525,
+    "sha256": "b99d17ce68f0d6c6c1ac87f7d58fc0624900d8a13acffefe47fa41468f6db920"
+  },
+  "episode1/initial.json": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-v2-episode1-2N-centered-20261106/initial.json",
+    "bytes": 1644,
+    "sha256": "0cb8515516e099e54c21a6f4a3fb85390b889f89c6660887a4d3c2866d3fa47e"
+  },
+  "episode1/contact-monitor.json": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-v2-episode1-2N-centered-20261106/contact-monitor.json",
+    "bytes": 2082,
+    "sha256": "fd1724401cb17c0b1e7987c5f357009c7df2e1e9381e2f0ac13afada153520cf"
+  },
+  "episode1/stages.json": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-v2-episode1-2N-centered-20261106/stages.json",
+    "bytes": 10401,
+    "sha256": "27e91af10e250ef49aec865c767cd41105107ae8466f27fb62fa1d28df392095"
+  },
+  "episode1/outer.log": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-v2-episode1-2N-centered-20261106.log",
+    "bytes": 13826,
+    "sha256": "49a4f2d07b2724079984e5760314f433f8fb3aa601e25fdaeb57de4a9bf3c563"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "episode0/robot.urdf": {
+    "bytes": 7283,
+    "sha256": "78bbf5aa5fa258542eba4c101226ca813c0609b07d5867552cc22a217a86ce98"
+  },
+  "episode0/contact-events.jsonl": {
+    "bytes": 145347,
+    "sha256": "195ffb7786aa6798805671b318b83f0912a31769c49b5ac5567cd18f28cf6bde"
+  },
+  "episode0/physics-trace.npz": {
+    "bytes": 1370099,
+    "sha256": "a35d4b80e369e6452693cb70a9ecb1321e307a093ce62e877f08b56c99e0963e"
+  },
+  "episode0/contact-monitor.json": {
+    "bytes": 4983,
+    "sha256": "1fb2ed04b75a4fd1d89d3f4fa713991136a89f3bfc6022a5e8afcd2ca2a86de7"
+  },
+  "episode0/replay.json": {
+    "bytes": 14624,
+    "sha256": "021f01c78c71bb27a60ef8fcdbd02af13be3b6140e440033a6ae403b5f49f9f2"
+  },
+  "episode0/initial.json": {
+    "bytes": 1622,
+    "sha256": "403d599e98a7caf79f7aa70cb25d3a601d31a537f04c18c0df89370bdf7bceaf"
+  },
+  "episode0/stages.json": {
+    "bytes": 10385,
+    "sha256": "96b566bfe71fadfee9d69e198d0addb16ecd93975a3fef3c163d09230da07234"
+  }
+}

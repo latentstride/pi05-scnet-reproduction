@@ -1,0 +1,114 @@
+{
+  "status": "CPU_diagnostic_adaptive_force_comparison_not_formal_roster",
+  "task_block_mass_kg": 0.01,
+  "forces_n": [
+    2.0,
+    4.0
+  ],
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "selection_reason": "4N condition selected after 2N episode0 physical task success but first continuous slip guard failure at descent; preserve 2N failures",
+  "slip_position_m": 0.005,
+  "slip_angle_deg": 5.0,
+  "other_physics_parameters_unchanged": true,
+  "retiming_method": "quintic_stop_at_saved_expert_waypoints",
+  "source_reference_sha256": "e3c734e7796cb963788d10a0f3476b16636328d5a3b2b3da8bfda095662971b2",
+  "gpu_authorized": false,
+  "executed_conditions": [
+    {
+      "force_n": 2,
+      "episodes": [
+        0,
+        1,
+        2
+      ],
+      "task_successes": 3,
+      "guard_passes": 2
+    },
+    {
+      "force_n": 4,
+      "episodes": [
+        0
+      ],
+      "task_successes": 1,
+      "guard_passes": 0
+    }
+  ],
+  "unexecuted_conditions": [
+    {
+      "force_n": 4,
+      "episodes": [
+        1,
+        2
+      ],
+      "reason": "stopped adaptive comparison after episode0 guard failure; not classified as task failures"
+    }
+  ],
+  "force_frozen_for_production": false,
+  "next_diagnostic": {
+    "force_n": 1.0,
+    "first_episode": 0,
+    "reason": "observed transfer jaw-center drift; 4N first failure earlier than2N; test reduced squeeze preserving all trajectories and guards",
+    "thresholds_changed": false,
+    "trajectory_changed": false,
+    "formal_preregistration": false
+  },
+  "adaptive_conditions": [
+    {
+      "force_n": [
+        1.0,
+        1.0
+      ],
+      "episodes": [
+        0
+      ],
+      "status": "continuous_guard_failed_donor_during_receiver_closure",
+      "first_failure_tick": 19238,
+      "acceptance": "research/g2/arx-expert-1N-failed-20261106/acceptance.json"
+    },
+    {
+      "force_n": [
+        2.0,
+        1.0
+      ],
+      "episodes": [
+        0
+      ],
+      "status": "failed: receiver briefly lost bilateral contact at tick19245",
+      "selection_reason": "keep donor2N, reduce receiver squeeze to1N after uniform1N donor displacement at handover",
+      "acceptance": "research/g2/arx-slip-comparisons-20261106/side/acceptance.json"
+    },
+    {
+      "force_n": [
+        2.0,
+        2.0
+      ],
+      "arm_acceleration_rad_s2": 0.5,
+      "episodes": [
+        0
+      ],
+      "status": "failed: first cumulative slip5.005137mm at tick36787",
+      "acceptance": "research/g2/arx-slip-comparisons-20261106/soft/acceptance.json"
+    },
+    {
+      "force_n": [
+        2.0,
+        2.0
+      ],
+      "arm_acceleration_rad_s2": 1.0,
+      "controller": "bounded_aperture_center_force_v1",
+      "episodes": [
+        0,
+        1,
+        2
+      ],
+      "status": "verified: task/hold/continuous guard3/3, bounded effort2N",
+      "selection_reason": "shared saturated closure effort was masking differential center feedback; explicit bounded allocation fixes control dead zone",
+      "acceptance": "research/g2/arx-centered-20261106/acceptance.json"
+    }
+  ],
+  "selected_controller_for_diagnostic": "bounded_aperture_center_force_v1"
+}

@@ -1,0 +1,42 @@
+{
+  "episode2/robot.urdf": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-v2-episode2-2N-centered-20261106/robot.urdf",
+    "bytes": 7283,
+    "sha256": "78bbf5aa5fa258542eba4c101226ca813c0609b07d5867552cc22a217a86ce98"
+  },
+  "episode2/contact-events.jsonl": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-v2-episode2-2N-centered-20261106/contact-events.jsonl",
+    "bytes": 92827,
+    "sha256": "198bf730ba9da58d1c6d5e5fe07aaec10cb57689cbbfaac92d949b17d0fb1edb"
+  },
+  "episode2/physics-trace.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-v2-episode2-2N-centered-20261106/physics-trace.npz",
+    "bytes": 1728075,
+    "sha256": "5b3efda4bdc13bf53c105830d607579ca46dd8ec320c7fa6aa1bb0b761d0cad0"
+  },
+  "episode2/replay.json": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-v2-episode2-2N-centered-20261106/replay.json",
+    "bytes": 12275,
+    "sha256": "894bf587b14a051917f129f9c2d5a3c0bc16b834fb6bda418eeffed4ca067bf5"
+  },
+  "episode2/initial.json": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-v2-episode2-2N-centered-20261106/initial.json",
+    "bytes": 1642,
+    "sha256": "12188c5933c9a0d3e7a9f4eb6f312c7fe257be2a3e916ad5d2380cec78b70278"
+  },
+  "episode2/contact-monitor.json": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-v2-episode2-2N-centered-20261106/contact-monitor.json",
+    "bytes": 1766,
+    "sha256": "9938ed7cb20db32fc6e694c630ae17fa6904714f55b195c6de443b1766f62b19"
+  },
+  "episode2/stages.json": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-v2-episode2-2N-centered-20261106/stages.json",
+    "bytes": 10403,
+    "sha256": "2098d8ed7cefd041be8fedc10d18148c9cb19f172301b4c27574b5382f2fc6ea"
+  },
+  "episode2/outer.log": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-v2-episode2-2N-centered-20261106.log",
+    "bytes": 13810,
+    "sha256": "49ee80cf28a9c486e29cd0d53657ac64eda56efdfd98d4a6472bf076d6ac157a"
+  }
+}

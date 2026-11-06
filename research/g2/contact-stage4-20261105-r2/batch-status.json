@@ -1,0 +1,36 @@
+{
+  "data_kind": "diagnostic",
+  "gpu_used": false,
+  "renderer_created": false,
+  "completed": true,
+  "conditions": [
+    {
+      "condition": "static-final",
+      "dynamic": false,
+      "force_limit_n": 2.0,
+      "checks_passed": true,
+      "wall_s": 83.39778776466846
+    },
+    {
+      "condition": "dynamic-2N",
+      "dynamic": true,
+      "force_limit_n": 2.0,
+      "checks_passed": false,
+      "wall_s": 56.57437117723748
+    },
+    {
+      "condition": "dynamic-8N",
+      "dynamic": true,
+      "force_limit_n": 8.0,
+      "checks_passed": false,
+      "wall_s": 57.1424585278146
+    },
+    {
+      "condition": "dynamic-12N",
+      "dynamic": true,
+      "force_limit_n": 12.0,
+      "checks_passed": false,
+      "wall_s": 60.57287573069334
+    }
+  ]
+}

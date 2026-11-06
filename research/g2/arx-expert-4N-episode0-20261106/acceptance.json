@@ -1,0 +1,24 @@
+{
+  "data_kind": "diagnostic",
+  "completed": true,
+  "task_success_at_end": true,
+  "task_success_after_hold": true,
+  "guard_passed": false,
+  "first_failure": {
+    "tick": 9155,
+    "sim_s": 36.62,
+    "side": "left",
+    "translation_mm": 5.000842597942124,
+    "angle_deg": 2.579661683343928
+  },
+  "force_limit_n": 4.0,
+  "block_mass_kg": 0.009999999776482582,
+  "force_only_comparison": true,
+  "first_finger_tray_contact_tick": 28158,
+  "production_collision_gate_exercised": false,
+  "archive_sha256": "d8f1386490a80177dbc4aab9dc6d06679e42e2b20079e4d52b7ce44aa6440264",
+  "physics_trace_sha256": "cd11dad7a66eeb1f254eee1f392c95cf7c0e34cff2d561224cd31a4ef3a32daf",
+  "input_source_trace_sha256": "749c82d3d4ccca01a8eba522848b04856ed98ca504e97f1f6f1c55f12b3ebcd7",
+  "runtime_source_sha256": "acf2114d77b67e03e01a24d8968b5e10d499567bad2553cd52c723ea75c1df52",
+  "remaining_4N_episodes_status": "not_run: episode0 failed unchanged slip guard; no force escalation"
+}

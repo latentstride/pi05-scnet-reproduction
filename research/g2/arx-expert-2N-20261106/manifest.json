@@ -1,0 +1,352 @@
+{
+  "episode0/initial.json": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-v2-episode0-2N-20261106/initial.json",
+    "bytes": 1622,
+    "sha256": "d3c19ab684136ae2d82200eed9a0f5dd1f844a0e0468f51e64648e943964dd62"
+  },
+  "episode0/stages.json": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-v2-episode0-2N-20261106/stages.json",
+    "bytes": 10402,
+    "sha256": "ca5d9545ab3fced57a0d4eddd9681a7940a1648376849143ea34c86f71a7c12b"
+  },
+  "episode0/robot.urdf": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-v2-episode0-2N-20261106/robot.urdf",
+    "bytes": 7283,
+    "sha256": "78bbf5aa5fa258542eba4c101226ca813c0609b07d5867552cc22a217a86ce98"
+  },
+  "episode0/contact-events.jsonl": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-v2-episode0-2N-20261106/contact-events.jsonl",
+    "bytes": 117557,
+    "sha256": "fa98dbcae7ea71c2ce52976aeeaca0de1c2be44f364b81f2baa4f4d2f2ba0ea5"
+  },
+  "episode0/physics-trace.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-v2-episode0-2N-20261106/physics-trace.npz",
+    "bytes": 1332182,
+    "sha256": "cb9573e555a052e8246dd2669969c9e98111e81cec0d923c609f8ed3b094ba65"
+  },
+  "episode0/contact-monitor.json": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-v2-episode0-2N-20261106/contact-monitor.json",
+    "bytes": 5319,
+    "sha256": "277c5219b3c1660e984fd16602c132379743e042fd7b1bd06172b8f0aade5af8"
+  },
+  "episode0/replay.json": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-v2-episode0-2N-20261106/replay.json",
+    "bytes": 14597,
+    "sha256": "0df6436f774110100a920f7e1594a795fcf49c2e474fcc755a8607b71b593a1f"
+  },
+  "episode1/robot.urdf": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-v2-episode1-2N-20261106/robot.urdf",
+    "bytes": 7283,
+    "sha256": "78bbf5aa5fa258542eba4c101226ca813c0609b07d5867552cc22a217a86ce98"
+  },
+  "episode1/physics-trace.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-v2-episode1-2N-20261106/physics-trace.npz",
+    "bytes": 1247522,
+    "sha256": "4bc5c58c0485feff3359a40897145892220759a9a5a46fb8429d31c9cf90e137"
+  },
+  "episode1/replay.json": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-v2-episode1-2N-20261106/replay.json",
+    "bytes": 12046,
+    "sha256": "97b076be72af97cefeb63c3fefb6f2c9f6546ef6dc2657be2dfaadff9d898639"
+  },
+  "episode1/contact-events.jsonl": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-v2-episode1-2N-20261106/contact-events.jsonl",
+    "bytes": 75291,
+    "sha256": "0026cc7acf7fa0a5fe274972cba72e065d2f67fabc5d0d8294dc5eb3aa6e1200"
+  },
+  "episode1/initial.json": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-v2-episode1-2N-20261106/initial.json",
+    "bytes": 1625,
+    "sha256": "86d22f41110a39d972d9fe4708da762273bf39c13ab9d45a2cff0a5564e512c7"
+  },
+  "episode1/contact-monitor.json": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-v2-episode1-2N-20261106/contact-monitor.json",
+    "bytes": 2393,
+    "sha256": "0081796c34d0bdec7d54109a3d8c2cc64e8e44ecee7dd50fc6f8b440571d42a0"
+  },
+  "episode1/stages.json": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-v2-episode1-2N-20261106/stages.json",
+    "bytes": 10390,
+    "sha256": "a1997c2b7389301e4418d50a308863a1e599d303c52bf26e27a58dea292ea4ba"
+  },
+  "episode2/contact-events.jsonl": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-v2-episode2-2N-20261106/contact-events.jsonl",
+    "bytes": 88713,
+    "sha256": "3a66db37b800594a6afcdee8bbed7d71babeb4d8c9276ae4393c7645ab0f49b7"
+  },
+  "episode2/contact-monitor.json": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-v2-episode2-2N-20261106/contact-monitor.json",
+    "bytes": 1780,
+    "sha256": "d2427763464b30a33351be07b7421e91400252a62a222e1c9deb54b97429bc2b"
+  },
+  "episode2/stages.json": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-v2-episode2-2N-20261106/stages.json",
+    "bytes": 10392,
+    "sha256": "9f9eb7622c013dc04eb8cd2d4e133605156274870e5173c916c387222fdc9336"
+  },
+  "episode2/robot.urdf": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-v2-episode2-2N-20261106/robot.urdf",
+    "bytes": 7283,
+    "sha256": "78bbf5aa5fa258542eba4c101226ca813c0609b07d5867552cc22a217a86ce98"
+  },
+  "episode2/initial.json": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-v2-episode2-2N-20261106/initial.json",
+    "bytes": 1623,
+    "sha256": "1f7b39e865f468b6a4bae3faa9fc4b2794a30aa7e7d023db6a5cfef15167dd0d"
+  },
+  "episode2/physics-trace.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-v2-episode2-2N-20261106/physics-trace.npz",
+    "bytes": 1307410,
+    "sha256": "8bcdad92374353a60c3c2e49645271cc3b24aead5aeae60d0349709b0202c039"
+  },
+  "episode2/replay.json": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-v2-episode2-2N-20261106/replay.json",
+    "bytes": 12040,
+    "sha256": "b234321c252f4a5e8b99272f3d16185f6d48ec5e6ac2bea90548d3fa6c1c788f"
+  },
+  "unmonitored0/initial.json": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-episode0-2N-20261106/initial.json",
+    "bytes": 1622,
+    "sha256": "d3c19ab684136ae2d82200eed9a0f5dd1f844a0e0468f51e64648e943964dd62"
+  },
+  "unmonitored0/stages.json": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-episode0-2N-20261106/stages.json",
+    "bytes": 10402,
+    "sha256": "ca5d9545ab3fced57a0d4eddd9681a7940a1648376849143ea34c86f71a7c12b"
+  },
+  "unmonitored0/robot.urdf": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-episode0-2N-20261106/robot.urdf",
+    "bytes": 7283,
+    "sha256": "78bbf5aa5fa258542eba4c101226ca813c0609b07d5867552cc22a217a86ce98"
+  },
+  "unmonitored0/contact-events.jsonl": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-episode0-2N-20261106/contact-events.jsonl",
+    "bytes": 117557,
+    "sha256": "fa98dbcae7ea71c2ce52976aeeaca0de1c2be44f364b81f2baa4f4d2f2ba0ea5"
+  },
+  "unmonitored0/physics-trace.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-episode0-2N-20261106/physics-trace.npz",
+    "bytes": 1332182,
+    "sha256": "cb9573e555a052e8246dd2669969c9e98111e81cec0d923c609f8ed3b094ba65"
+  },
+  "unmonitored0/replay.json": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-episode0-2N-20261106/replay.json",
+    "bytes": 11933,
+    "sha256": "701d72d98f4c174c4dc278b6bbfe9d20ec1949355222aaa175de45d865f2fc37"
+  },
+  "infrastructure/episode0/contact-events.jsonl": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-episode0-2N-20261106/contact-events.jsonl",
+    "bytes": 102294,
+    "sha256": "bec1d3d1f2d0d1125a86582ca9b8de69fa198e780d8b4cb46a52c345579117f5"
+  },
+  "infrastructure/episode0/replay.json": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-episode0-2N-20261106/replay.json",
+    "bytes": 11668,
+    "sha256": "33f5d95afb3ce48dcb532eea414169f34b43580f7db9b842fc1ac91f7079671a"
+  },
+  "infrastructure/episode0/robot.urdf": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-episode0-2N-20261106/robot.urdf",
+    "bytes": 7283,
+    "sha256": "78bbf5aa5fa258542eba4c101226ca813c0609b07d5867552cc22a217a86ce98"
+  },
+  "infrastructure/episode0/initial.json": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-episode0-2N-20261106/initial.json",
+    "bytes": 1622,
+    "sha256": "d3c19ab684136ae2d82200eed9a0f5dd1f844a0e0468f51e64648e943964dd62"
+  },
+  "infrastructure/episode0/physics-trace.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-episode0-2N-20261106/physics-trace.npz",
+    "bytes": 926937,
+    "sha256": "628c63b2e779deaf55218a1976942900b3d0d7c0edb98c2b1d7714ee9dff6514"
+  },
+  "infrastructure/episode0/contact-monitor.json": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-episode0-2N-20261106/contact-monitor.json",
+    "bytes": 2696,
+    "sha256": "3e60f38322736a1e1ea5c82471471be1430ec6cc7aa55a5e333463007cd46c79"
+  },
+  "infrastructure/episode0/stages.json": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-episode0-2N-20261106/stages.json",
+    "bytes": 7427,
+    "sha256": "1d115faca910a90522d3755b1fe38baf2e10b010fe4f54ee1ae1d89517f61970"
+  },
+  "infrastructure/episode0/outer.log": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-episode0-2N-20261106.log",
+    "bytes": 13324,
+    "sha256": "77461d899ffe41bc456bc68624e87ae631692922bed728b6191310284f68da16"
+  },
+  "infrastructure/episode1/initial.json": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-episode1-2N-20261106/initial.json",
+    "bytes": 1625,
+    "sha256": "86d22f41110a39d972d9fe4708da762273bf39c13ab9d45a2cff0a5564e512c7"
+  },
+  "infrastructure/episode1/stages.json": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-episode1-2N-20261106/stages.json",
+    "bytes": 5939,
+    "sha256": "cd52d41e439665d1f41b98e2cf34a730f9e9cd6e9f47c0ef26de5031a307ce68"
+  },
+  "infrastructure/episode1/robot.urdf": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-episode1-2N-20261106/robot.urdf",
+    "bytes": 7283,
+    "sha256": "78bbf5aa5fa258542eba4c101226ca813c0609b07d5867552cc22a217a86ce98"
+  },
+  "infrastructure/episode1/contact-events.jsonl": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-episode1-2N-20261106/contact-events.jsonl",
+    "bytes": 36073,
+    "sha256": "0265fea3faf1700554902874a060fa5704116c162752cca11936fc9263194a20"
+  },
+  "infrastructure/episode1/physics-trace.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-episode1-2N-20261106/physics-trace.npz",
+    "bytes": 670199,
+    "sha256": "a3ad564da58719ba3b8820bf1c976d86415bd77e0d162a5071e302931b403a33"
+  },
+  "infrastructure/episode1/contact-monitor.json": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-episode1-2N-20261106/contact-monitor.json",
+    "bytes": 3628,
+    "sha256": "1c64ba230e444a6faab555d9ac56b1c3f014973a35ae09b7d3d11bdfe2033542"
+  },
+  "infrastructure/episode1/outer.log": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-episode1-2N-20261106.log",
+    "bytes": 2556,
+    "sha256": "61c3e3eccb3ecfd946aa0b6c8ca91272bfd4f6f481f6294dd9a5748dbdb4d765"
+  },
+  "infrastructure/episode2/robot.urdf": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-episode2-2N-20261106/robot.urdf",
+    "bytes": 7283,
+    "sha256": "78bbf5aa5fa258542eba4c101226ca813c0609b07d5867552cc22a217a86ce98"
+  },
+  "infrastructure/episode2/contact-events.jsonl": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-episode2-2N-20261106/contact-events.jsonl",
+    "bytes": 899,
+    "sha256": "1c6dabbb657021fd5dddcb900a91fd4cedd6c787f7bf97396adedea0709476ff"
+  },
+  "infrastructure/episode2/physics-trace.npz": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-episode2-2N-20261106/physics-trace.npz",
+    "bytes": 68449,
+    "sha256": "e6812b9e15660e2e8a0f2e90357dd6edcac175c2329654f2849e56c816506cbe"
+  },
+  "infrastructure/episode2/initial.json": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-episode2-2N-20261106/initial.json",
+    "bytes": 1623,
+    "sha256": "1f7b39e865f468b6a4bae3faa9fc4b2794a30aa7e7d023db6a5cfef15167dd0d"
+  },
+  "infrastructure/episode2/contact-monitor.json": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-episode2-2N-20261106/contact-monitor.json",
+    "bytes": 964,
+    "sha256": "8a9a70bfa8c5e793c92bc612c8cf0619c8c1606880cb20e5aabc4a49379c4157"
+  },
+  "infrastructure/episode2/stages.json": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-episode2-2N-20261106/stages.json",
+    "bytes": 3,
+    "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+  },
+  "infrastructure/episode2/outer.log": {
+    "remote_path": "<PROJECT_ROOT>/results/g2/arx-expert-monitored-episode2-2N-20261106.log",
+    "bytes": 1713,
+    "sha256": "975c3b0d928bc9145b9c0e927426fe46786216e00c58a72a7897677fa2fc3ada"
+  },
+  "reference-q.npz": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-settle-expert-20261106/workspace-q.npz",
+    "bytes": 30502,
+    "sha256": "e3c734e7796cb963788d10a0f3476b16636328d5a3b2b3da8bfda095662971b2"
+  },
+  "config.json": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-settle-expert-20261106/config.json",
+    "bytes": 7564,
+    "sha256": "200e35a7d2e0370df9a9284e72184a069effe021a3f6fdcfcdd3ce1122055289"
+  },
+  "asset-audit.json": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-runtime-stage3-final-20261105/asset-audit.json",
+    "bytes": 6665,
+    "sha256": "5ebfc07c82814757168bdb3f2b7ad4a9bec18f58afc28318f49e61af117122f2"
+  },
+  "episode0/input-trace.npz": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-native-expert-20261106/trace.npz",
+    "bytes": 97819,
+    "sha256": "749c82d3d4ccca01a8eba522848b04856ed98ca504e97f1f6f1c55f12b3ebcd7"
+  },
+  "episode0/input.json": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-native-expert-20261106/input.json",
+    "bytes": 2211,
+    "sha256": "cb1dc1a5bb00f0ee60ebe53155392a8a6be8e1a764052f16813d89c33050a7b1"
+  },
+  "episode1/input-trace.npz": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-native-expert-20261106/episode1/trace.npz",
+    "bytes": 91340,
+    "sha256": "26fe796738a00fa4514c5cc6e7e27ba5a675d8cf8d8773f77b40407e0e3be4dd"
+  },
+  "episode1/input.json": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-native-expert-20261106/episode1/input.json",
+    "bytes": 2210,
+    "sha256": "7c7132fdce1c4fe0283872518f1927117cf7aea604e23baf818f55a4bfa093be"
+  },
+  "episode2/input-trace.npz": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-native-expert-20261106/episode2/trace.npz",
+    "bytes": 94432,
+    "sha256": "4483901b895c679382b4a5cd3f77f9a8826d598f5fbdb65f724240755173d6ab"
+  },
+  "episode2/input.json": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-native-expert-20261106/episode2/input.json",
+    "bytes": 2210,
+    "sha256": "33f51d53544f54146e973d2cf56ef9b985d010b6f0d08fe270de3dcb0a4ff87f"
+  },
+  "runtime-sources/g2_arx_reference.py": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-arx-expert-20261106/g2_arx_reference.py",
+    "bytes": 2242,
+    "sha256": "55010d26a4b939647848aca2a5589d320f5f5f12dd52f103640af5b4a355cc45"
+  },
+  "runtime-sources/g2_arx_expert_cpu.py": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-arx-expert-20261106/g2_arx_expert_cpu.py",
+    "bytes": 13777,
+    "sha256": "adcc098f87fbcba82b5e2420ba98f8375fd87bb75a53281fa4050e5389f37f66"
+  },
+  "runtime-sources/g2_arx_expert_monitor_cpu.py": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-arx-expert-20261106/g2_arx_expert_monitor_cpu.py",
+    "bytes": 15879,
+    "sha256": "471d505c7828ce7f09257b920a38627fd786908ae7b871f0a4d8143bd2290636"
+  },
+  "runtime-sources/g2_arx_expert_monitor_cpu_v2.py": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-arx-expert-20261106/g2_arx_expert_monitor_cpu_v2.py",
+    "bytes": 15928,
+    "sha256": "acf2114d77b67e03e01a24d8968b5e10d499567bad2553cd52c723ea75c1df52"
+  },
+  "runtime-sources/g2_adapter.py": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-contact-stage5-20261105/g2_adapter.py",
+    "bytes": 17978,
+    "sha256": "ccd7baf793bb69a6951d5c8294af4adbed0378083937021228af96a78b170382"
+  },
+  "runtime-sources/g2_contact.py": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-live-contact-20261105/g2_contact.py",
+    "bytes": 21270,
+    "sha256": "8861b1bece4852703dce95465bd9128c7e87fce3d253da315ceb5d8170e47f83"
+  },
+  "runtime-sources/g2_collision.py": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-physics-parity-20261105/g2_collision.py",
+    "bytes": 10730,
+    "sha256": "3047aec1d3c0c4cd221a2bc860aada89cb91de151d6abc8eb155186010d2ec0e"
+  },
+  "runtime-sources/g2_assets.py": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-contact-stage5-20261105/g2_assets.py",
+    "bytes": 2706,
+    "sha256": "ef712349bc246de2259da0f009eac7cee785ab1b439e484e291c697c0a4c1907"
+  },
+  "runtime-sources/g2_proxy_collision.py": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-runtime-stage3-final-20261105/g2_proxy_collision.py",
+    "bytes": 3207,
+    "sha256": "636ff63de9be6b3f49cfceda5fe9c101cfaf3b28645569f6f38634e5c0879af2"
+  },
+  "runtime-sources/g2_kinematics.py": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-runtime-stage3-final-20261105/g2_kinematics.py",
+    "bytes": 5560,
+    "sha256": "bb21f17ffacd0ee603f79ab36f393ee4b8fda2efe44fdb2786a430233365a546"
+  },
+  "runtime-sources/robotwin_control_geometry.py": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-runtime-stage3-final-20261105/robotwin_control_geometry.py",
+    "bytes": 5539,
+    "sha256": "e3ede0d095ee30558451f14fe12789e8778b6caecd7c9edcd3d0925c07a2d788"
+  },
+  "runtime-sources/verify_robotwin_fk.py": {
+    "remote_path": "<PROJECT_ROOT>/tools/g2-runtime-stage3-final-20261105/verify_robotwin_fk.py",
+    "bytes": 8503,
+    "sha256": "4af616a6ae263f48e88e28a91c64dfb809a6d245698a0b7e432febd974188428"
+  }
+}

@@ -1,0 +1,180 @@
+{
+  "data_kind": "diagnostic",
+  "scope": "fixed block CPU contact integration; synthetic camera stub; no full task/handover acceptance",
+  "gpu_used": false,
+  "renderer_created": false,
+  "physics_stepped": true,
+  "physics_steps": 701,
+  "checks": {
+    "raw_closed_endpoint_rejected": true,
+    "bounded_prediction_accepted": true,
+    "policy_intent_preserved": true,
+    "actual_blocked_open": true,
+    "bilateral_measured_holder": true,
+    "measured_event_forced_replan": true,
+    "carried_object_follows_candidate": true,
+    "fcl_pose_restored": true,
+    "carried_object_environment_collision": true,
+    "deep_finger_contact_rejected": true,
+    "cross_arm_collision_rejected": true,
+    "geometric_queries_do_not_mutate_physics": true
+  },
+  "passed": true,
+  "dynamic_block": false,
+  "block_mass_kg": null,
+  "control_failure": null,
+  "lift_failure": null,
+  "lift_height_m": null,
+  "actual_fingers_m": [
+    [
+      0.02959935925900936,
+      0.02959355153143406
+    ],
+    [
+      0.04399999976158142,
+      0.04399999976158142
+    ]
+  ],
+  "drive_fingers_m": [
+    [
+      0.0,
+      0.0
+    ],
+    [
+      0.04399999976158142,
+      0.04399999976158142
+    ]
+  ],
+  "holder_state": {
+    "phase": "left_holding",
+    "holders": [
+      "left"
+    ],
+    "contact_fingers": {
+      "left": [
+        10,
+        11
+      ],
+      "right": []
+    },
+    "stable_counts": {
+      "left": 3,
+      "right": 0
+    },
+    "saw_shared_hold": false,
+    "releasing": [],
+    "block_pose_task": [
+      [
+        0.9999999999999962,
+        6.240201765776959e-08,
+        5.960487785126315e-08,
+        0.25227001309394836
+      ],
+      [
+        -6.240202855096656e-08,
+        0.9999999999999813,
+        1.827568193722988e-07,
+        -0.000500406720675528
+      ],
+      [
+        -5.960486644686777e-08,
+        -1.8275682309176341e-07,
+        0.9999999999999816,
+        1.1563597917556763
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "tool_block": {
+      "left": [
+        [
+          0.9999999999984787,
+          1.7383719697721267e-06,
+          1.4368368115568972e-07,
+          0.03457001710488675
+        ],
+        [
+          1.738371886970735e-06,
+          -0.9999999999983229,
+          5.76273659714204e-07,
+          2.9510521279516467e-07
+        ],
+        [
+          1.4368468293342575e-07,
+          -5.762734099376559e-07,
+          -0.9999999999998236,
+          0.00014018301097329378
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    }
+  },
+  "contact_events": [
+    {
+      "tick": 326,
+      "sim_s": 1.304,
+      "before": [],
+      "after": [
+        "left"
+      ],
+      "phase": "left_holding"
+    }
+  ],
+  "replans": [
+    {
+      "reason": "measured_contact_transition",
+      "tick": 326,
+      "before": [],
+      "after": [
+        "left"
+      ],
+      "interrupted_waypoint": true
+    },
+    null
+  ],
+  "contact_limits": {
+    "penetration_m": 0.002,
+    "closure_penetration_m": 0.0005,
+    "scan_step_m": 0.001,
+    "position_slip_m": 0.005,
+    "angle_slip_deg": 5.0,
+    "closed_chain_position_m": 0.002,
+    "closed_chain_angle_deg": 2.0,
+    "stable_steps": 3,
+    "minimum_impulse": 1e-08,
+    "contact_cap": 256
+  },
+  "drive": {
+    "stiffness": 1000.0,
+    "damping": 200.0,
+    "force_limit_n": 2.0,
+    "source": "CPU force sweep; provisional"
+  },
+  "projection": [
+    {
+      "side": "left",
+      "finger": 0,
+      "requested_native_m": 0.0,
+      "predicted_contact_native_m": 0.029098388514202357,
+      "rule": "first_bounded_finger_block_contact",
+      "profile": "g2_contact_v1:bfc086ce3f2621e6914b226e791e6e8895de1a9560d6ef696c5055525f8ae8ef"
+    },
+    {
+      "side": "left",
+      "finger": 1,
+      "requested_native_m": 0.0,
+      "predicted_contact_native_m": 0.02909454329937944,
+      "rule": "first_bounded_finger_block_contact",
+      "profile": "g2_contact_v1:bfc086ce3f2621e6914b226e791e6e8895de1a9560d6ef696c5055525f8ae8ef"
+    }
+  ]
+}

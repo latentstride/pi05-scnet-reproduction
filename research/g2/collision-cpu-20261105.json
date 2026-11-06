@@ -1,0 +1,51 @@
+{
+  "data_kind": "diagnostic",
+  "gpu_used": false,
+  "renderer_created": false,
+  "physics_stepped": false,
+  "versions": {
+    "sapien": "3.0.0b1",
+    "mplib": "0.2.1"
+  },
+  "urdf_sha256": "7aaa308a1a5b6a213d914db86ba09ddd6252f25cb498ac9a148bfa6c7166a423",
+  "mesh_sha256": {
+    "base_link.STL": "898dbe3af3a98857358ac5a3d74e085ec9c69946737e767dad139776761cbd92",
+    "link1.STL": "04a52b86a5b28c847377a9167e7effab0478fa591052e83b0b32cf8709bb3885",
+    "link2.STL": "2865da6a962c814abaf9251497bcf5f5e3b67610e3b657ddcaa9de8b3d45e83e",
+    "link3.STL": "3ac2411b0cbffcf4808cae4c215cfeab607f240cd124eeba209ac7986ac047c0",
+    "link4.STL": "3447ddef920c22e4607b887e1cc588037dfb51c37825c4cac86a5391425469c4",
+    "link5.STL": "934b3e70ce2987f8de999de29d8ef72c8370dced8e9fdf6f9ddd3e7e24c1e464",
+    "link6.STL": "32dca4ededcf3215163207b9aea1046114ae59921555d1e068ee46fa6e53915e",
+    "link7.STL": "ec3d40b39cccde0075ca3d16603f14f180fce41a46b446473d384def7a1b0be0",
+    "link8.STL": "29f7a8379cad81797e82e4ba099455cc275ac6ac5bb9e264ce46719fd7d2bb60"
+  },
+  "removed_visual_material_count": 11,
+  "retained_collision_elements": 9,
+  "neutral_clear": true,
+  "neutral_collisions": [],
+  "obstacle_collision_detected": true,
+  "obstacle_collisions": [
+    "<mplib.pymp.collision_detection.WorldCollisionResult object at 0x2b55370d3370>",
+    "<mplib.pymp.collision_detection.WorldCollisionResult object at 0x2b55370af3f0>",
+    "<mplib.pymp.collision_detection.WorldCollisionResult object at 0x2b5536df6df0>",
+    "<mplib.pymp.collision_detection.WorldCollisionResult object at 0x2b5536df6db0>",
+    "<mplib.pymp.collision_detection.WorldCollisionResult object at 0x2b55370947f0>",
+    "<mplib.pymp.collision_detection.WorldCollisionResult object at 0x2b553715ddf0>",
+    "<mplib.pymp.collision_detection.WorldCollisionResult object at 0x2b553715de30>",
+    "<mplib.pymp.collision_detection.WorldCollisionResult object at 0x2b5536d029b0>",
+    "<mplib.pymp.collision_detection.WorldCollisionResult object at 0x2b553716d870>",
+    "<mplib.pymp.collision_detection.WorldCollisionResult object at 0x2b553716caf0>",
+    "<mplib.pymp.collision_detection.WorldCollisionResult object at 0x2b5537174b30>",
+    "<mplib.pymp.collision_detection.WorldCollisionResult object at 0x2b5537176ef0>",
+    "<mplib.pymp.collision_detection.WorldCollisionResult object at 0x2b5537177df0>",
+    "<mplib.pymp.collision_detection.WorldCollisionResult object at 0x2b55371752b0>",
+    "<mplib.pymp.collision_detection.WorldCollisionResult object at 0x2b5537174bb0>",
+    "<mplib.pymp.collision_detection.WorldCollisionResult object at 0x2b5537174a70>",
+    "<mplib.pymp.collision_detection.WorldCollisionResult object at 0x2b5537174ef0>",
+    "<mplib.pymp.collision_detection.WorldCollisionResult object at 0x2b5537180330>"
+  ],
+  "overlap_collision_detected": true,
+  "actual_qpos_unchanged": true,
+  "passed": true,
+  "scope": "CPU synthetic scene with real ARX collision meshes; no task/contact/control acceptance"
+}

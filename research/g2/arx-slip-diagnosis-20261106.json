@@ -1,0 +1,29 @@
+{
+  "data_kind": "diagnostic",
+  "hypothesis": "reduced squeeze may reduce jaw-center drift and block rotation during handover; unproven before1N replay",
+  "measured_stage_ticks": [
+    19245,
+    21907,
+    27434
+  ],
+  "measured_right_jaw_center_offset_mm": [
+    -0.04424527287483215,
+    -0.4298798739910126,
+    0.5825785994529724
+  ],
+  "first_breach_tick": 27463,
+  "first_tray_impulse_tick": 28157,
+  "unchanged_guards_mm_deg": [
+    5,
+    5
+  ],
+  "force_test_n": 1.0,
+  "no_threshold_or_anchor_reset": true,
+  "static_friction_force_estimate": {
+    "block_mass_kg": 0.01,
+    "gravity_m_s2": 9.81,
+    "coefficient": 0.5,
+    "symmetric_per_finger_min_n": 0.0981,
+    "scope": "static opposed flat-contact estimate only; not dynamic acceptance"
+  }
+}

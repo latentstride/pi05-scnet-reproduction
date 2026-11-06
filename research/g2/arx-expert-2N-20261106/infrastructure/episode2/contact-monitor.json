@@ -1,0 +1,49 @@
+{
+  "failure": null,
+  "snapshot": {
+    "phase": "approach",
+    "holders": [],
+    "contact_fingers": {
+      "left": [],
+      "right": []
+    },
+    "stable_counts": {
+      "left": 0,
+      "right": 0
+    },
+    "saw_shared_hold": false,
+    "releasing": [],
+    "block_pose_task": [
+      [
+        0.9647737741470337,
+        -0.26308098435401917,
+        -8.346247341251e-06,
+        -0.1966353952884674
+      ],
+      [
+        0.26308098435401917,
+        0.9647737741470337,
+        -1.1682353942887858e-05,
+        0.15528222918510437
+      ],
+      [
+        1.1125644959975034e-05,
+        9.075089110410772e-06,
+        1.0,
+        0.8400005102157593
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "tool_block": {},
+    "tool_block_measured": {}
+  },
+  "events": [],
+  "max_cumulative_slip_m": 0.0,
+  "max_cumulative_slip_deg": 0.0,
+  "mode": "shadow observer; first failure retained; physics not altered"
+}

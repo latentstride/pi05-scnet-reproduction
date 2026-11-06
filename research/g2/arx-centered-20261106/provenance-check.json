@@ -1,0 +1,10 @@
+{
+  "episode0_command_and_sample_clock_equal_to_2N": true,
+  "archived_runtime_local_differences": [
+    "g2_adapter.py"
+  ],
+  "difference_scope": "old tool_ik residual fix not invoked by direct reference; imports types only",
+  "effective_center_force_source_matches_local": true,
+  "control_force_scope": "bounded commanded prismatic effort excluding separately computed passive gravity/coriolis compensation",
+  "new_hold_passive_force_compensation": "refreshed every hold tick; task success also verified before hold"
+}

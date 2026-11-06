@@ -1,0 +1,205 @@
+{
+  "candidate_id": "g1-126905534-scene100000",
+  "data_kind": "diagnostic",
+  "explicit_reset_fixture": "research/g2/diagnostic-configs-20261105/reset-fixture.json",
+  "actual_cpu_snapshots": {
+    "aloha-agilex": {
+      "robot_base_world": {
+        "left": [
+          0.0,
+          -0.6499999761581421,
+          0.0,
+          0.7071067811865476,
+          0.0,
+          0.0,
+          0.7071067811865475
+        ],
+        "right": [
+          0.0,
+          -0.6499999761581421,
+          0.0,
+          0.7071067811865476,
+          0.0,
+          0.0,
+          0.7071067811865475
+        ]
+      },
+      "task_frame_world": [
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "actual_arm_qpos_rad": {
+        "left": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "right": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "actual_gripper": {
+        "left": 1.0,
+        "right": 1.0
+      },
+      "objects_task": {
+        "block": [
+          -0.1521603763103485,
+          0.2279314547777176,
+          0.8400001525878906,
+          0.9719521289925551,
+          2.162576439342082e-07,
+          -3.4353901864368678e-06,
+          0.2351787807923811
+        ],
+        "target": [
+          0.16532817482948303,
+          0.16106395423412323,
+          0.7409999966621399,
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "table": [
+          0.0,
+          0.0,
+          0.7400000095367432,
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "reset_fixture_sha256": "654e77d0b975bd08d1c2d3d1ffea28b1a8c7014b00acb9c5b784c24a9b8dc5a7",
+      "workspace_check_id": "CPU_reset_geometry_not_formal_workspace",
+      "common_workspace_pass": false
+    },
+    "ARX-X5": {
+      "robot_base_world": {
+        "left": [
+          -0.30000001192092896,
+          -0.3499999940395355,
+          0.7839999794960022,
+          0.7071067811865476,
+          0.0,
+          0.0,
+          0.7071067811865475
+        ],
+        "right": [
+          0.30000001192092896,
+          -0.3499999940395355,
+          0.7839999794960022,
+          0.7071067811865476,
+          0.0,
+          0.0,
+          0.7071067811865475
+        ]
+      },
+      "task_frame_world": [
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "actual_arm_qpos_rad": {
+        "left": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "right": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "actual_gripper": {
+        "left": 0.999999994581396,
+        "right": 0.999999994581396
+      },
+      "objects_task": {
+        "block": [
+          -0.1521603763103485,
+          0.2279314547777176,
+          0.8400001525878906,
+          0.9719521289925551,
+          2.162576439342082e-07,
+          -3.4353901864368678e-06,
+          0.2351787807923811
+        ],
+        "target": [
+          0.16532817482948303,
+          0.16106395423412323,
+          0.7409999966621399,
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "table": [
+          0.0,
+          0.0,
+          0.7400000095367432,
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "reset_fixture_sha256": "654e77d0b975bd08d1c2d3d1ffea28b1a8c7014b00acb9c5b784c24a9b8dc5a7",
+      "workspace_check_id": "CPU_reset_geometry_not_formal_workspace",
+      "common_workspace_pass": false
+    }
+  },
+  "object_snapshot_match": true,
+  "initial_collision_checks": {
+    "aloha-agilex": true,
+    "ARX-X5": true
+  },
+  "bidirectional_ik_status": {
+    "aloha-agilex->ARX-X5": "ok",
+    "ARX-X5->aloha-agilex": "ok"
+  },
+  "connection_plans": {
+    "aloha-agilex->ARX-X5": {
+      "status": "ok",
+      "ticks": 148,
+      "collision_calls": 149
+    },
+    "ARX-X5->aloha-agilex": {
+      "status": "ok",
+      "ticks": 174,
+      "collision_calls": 175
+    }
+  },
+  "formal_pair_id": null,
+  "formal_admitted": false,
+  "exclusions": [
+    "CPU_geometry_fixture_is_not_a_full_PACE_task_session_snapshot",
+    "grasp_holding_handover_contact_constraints_unverified",
+    "formal_roster_and_resource_budget_not_frozen"
+  ]
+}

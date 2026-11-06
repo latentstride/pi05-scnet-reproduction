@@ -1,0 +1,213 @@
+{
+  "data_kind": "diagnostic",
+  "scope": "retimed expert direct-physics ARX reference with shadow contact guard; not policy or production planner acceptance",
+  "gpu_used": false,
+  "model_used": false,
+  "formal_run_lock_frozen": false,
+  "all_verified": false,
+  "task_successes": 1,
+  "episodes": [
+    {
+      "episode": 0,
+      "checks": {
+        "completed": true,
+        "source_mass": true,
+        "force_cap": true,
+        "task_predicate_matches_measured_trace": true,
+        "drive_values_match_reference": true,
+        "complete_contact_record": true,
+        "contact_monitor_continuous": false,
+        "contact_monitor_passed": false,
+        "handover_contact_order": true,
+        "finite_actual": true,
+        "command_speed_bounds": true,
+        "command_acceleration_bounds": true,
+        "source_waypoints_retained": true,
+        "finger_hard_limits": true
+      },
+      "verification_passed": false,
+      "task_success": true,
+      "hold_success": true,
+      "retimed_physics_steps": 39403,
+      "retimed_duration_s": 157.612,
+      "wall_s": 368.7878334261477,
+      "functional_point_delta_mm": [
+        -1.9818612490780652,
+        -4.997644686773134,
+        0.026942491531345425
+      ],
+      "sampled_max_cumulative_slip_mm": 4.991191145809935,
+      "sampled_max_cumulative_slip_deg": 4.096536488681482,
+      "slip_statistics_period_ticks": 5,
+      "max_actual_finger_target_penetration_mm": 0.0015040836842672434,
+      "max_actual_tool_position_error_mm": 5.872971440714769,
+      "max_actual_tool_angle_error_deg": 0.6293797424363958,
+      "drive_max_error_rad": 1.1920928955078125e-07,
+      "drive_max_finger_error_m": 1.8616821764738667e-09,
+      "gripper_force_limit_n": [
+        2.0,
+        2.0
+      ],
+      "monitor_failure": {
+        "tick": 36787,
+        "stage": 12,
+        "detail": "object slipped relative to confirmed holder",
+        "diagnostic": {
+          "side": "right",
+          "contact_state": {
+            "phase": "right_holding",
+            "holders": [
+              "right"
+            ],
+            "contact_fingers": {
+              "left": [],
+              "right": [
+                24,
+                25
+              ]
+            },
+            "stable_counts": {
+              "left": 0,
+              "right": 3
+            },
+            "saw_shared_hold": true,
+            "releasing": [],
+            "block_pose_task": [
+              [
+                0.9998084306716919,
+                -0.011491554789245129,
+                -0.015843981876969337,
+                0.10504704713821411
+              ],
+              [
+                0.01161103043705225,
+                0.9999046921730042,
+                0.007469476200640202,
+                0.1455140858888626
+              ],
+              [
+                0.0157566349953413,
+                -0.007652009837329388,
+                0.9998465776443481,
+                0.8966483473777771
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "tool_block": {
+              "right": [
+                [
+                  -0.006153302902547177,
+                  0.9999677311667399,
+                  0.005184362181049309,
+                  -0.0011527024587144512
+                ],
+                [
+                  0.9984888293407485,
+                  0.005860871808157106,
+                  0.05464443739884692,
+                  0.00397073565385926
+                ],
+                [
+                  0.054612273634618985,
+                  0.005512771183030736,
+                  -0.9984924132478413,
+                  -0.07246384285673912
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ]
+            },
+            "tool_block_measured": {
+              "right": [
+                [
+                  -0.003567775869906329,
+                  0.999988577089365,
+                  0.003205264701981736,
+                  -0.0013724930905300858
+                ],
+                [
+                  0.9999935770912085,
+                  0.00356922473422323,
+                  -0.00044252121970544955,
+                  -0.0010242523701312484
+                ],
+                [
+                  -0.0004539537526469517,
+                  0.0032036623347468565,
+                  -0.9999947404571427,
+                  -0.07223321974642205
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ]
+            }
+          }
+        },
+        "monitor_stopped_at_first_failure": true
+      },
+      "first_failure_metrics": {
+        "tick": 36787,
+        "sim_s": 147.148,
+        "side": "right",
+        "translation_mm": 5.005137390787073,
+        "angle_deg": 3.1627361527523505
+      },
+      "guard_observed_through_tick": 36787,
+      "contact_events": [
+        {
+          "tick": 10143,
+          "sim_s": 40.572,
+          "before": [],
+          "after": [
+            "left"
+          ],
+          "phase": "left_holding"
+        },
+        {
+          "tick": 26273,
+          "sim_s": 105.092,
+          "before": [
+            "left"
+          ],
+          "after": [
+            "left",
+            "right"
+          ],
+          "phase": "both_holding"
+        },
+        {
+          "tick": 28285,
+          "sim_s": 113.14,
+          "before": [
+            "left",
+            "right"
+          ],
+          "after": [
+            "right"
+          ],
+          "phase": "right_holding"
+        }
+      ],
+      "physical_trace_sha256": "5f9994902da2019dde78bf69b9b43daa514d0e9e139ca9c7dea5b6a9c03c2f78",
+      "production_collision_gate_exercised": false,
+      "max_allocated_finger_force_n": null,
+      "max_actual_jaw_center_offset_mm": [
+        0.6955796852707863,
+        7.35826138406992
+      ]
+    }
+  ]
+}

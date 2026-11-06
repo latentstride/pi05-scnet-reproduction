@@ -25,7 +25,8 @@ class RecoveryCoordinator:
 
     def _free(self):
         tracker = getattr(self.adapter.target_collision, "tracker", None)
-        if tracker is not None and (tracker.holders or tracker.releasing):
+        if tracker is not None and (tracker.holders or tracker.releasing or
+                any(getattr(tracker,"contact_fingers",{}).values())):
             raise G2Error(
                 Status.COLLISION, "generic recovery forbidden during holding/release"
             )
@@ -185,7 +186,7 @@ class RecoveryCoordinator:
 
         validate_request(request)
         log(dict(kind="policy_request", snapshot=snapshot, request=request))
-        response = policy.infer(request)
+        response = getattr(policy,"infer_raw",policy.infer)(request)
         log(dict(kind="policy_response", response=response))
         chunk = validate_response(response)
         log(dict(kind="policy_validated"))

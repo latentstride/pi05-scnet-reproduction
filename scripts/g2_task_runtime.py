@@ -36,6 +36,11 @@ def verify_runtime(pace_root, audit):
 
 
 def validate_config(config):
+    semantics = config.get("native_release_semantics")
+    if semantics is not None and (semantics != "physical_aperture_v1"
+            or config["contact_mode"] != CONTACT_MODE_NATIVE):
+        raise ValueError("native release semantics require guarded Aloha")
+
     if config["data_kind"] != "diagnostic" or config["task"] != TASK:
         raise ValueError("real scene entry currently accepts diagnostic handover_block only")
     if config["contact_mode"]==CONTACT_MODE_NATIVE:
@@ -200,14 +205,16 @@ def real_scene(config, spec, pace_root, assets_root, asset_audit, source_audit, 
             if embodiment == "aloha-agilex":
                 guard = None
                 if config.get("execution_protocol") == PROTOCOL:
-                    from g2e_native_guard import NativeGuard
+                    from g2e_native_guard import NativeGuard, NativeReleaseTracker
                     from g2_contact import ContactLimits
                     from mplib.sapien_utils.conversion import convert_object_name
                     entities=[env.robot.left_entity,env.robot.right_entity]
                     collision=JointCollisionWorld.from_scene(env.scene,entities,
                         [a.chain.names for a in arms],[a.grip.names for a in arms])
                     block=getattr(env.box,"actor",env.box)
-                    tracker=ContactTracker.from_scene(env.robot,block,arms,ContactLimits())
+                    tracker_type = (NativeReleaseTracker if config.get("native_release_semantics")
+                                    else ContactTracker)
+                    tracker=tracker_type.from_scene(env.robot,block,arms,ContactLimits())
                     actors=env.scene.get_all_actors()
                     collision=ContactWorld(collision,tracker,arms,
                         [np.linalg.inv(world_task)@sample.world_base for sample in actual],
@@ -218,6 +225,7 @@ def real_scene(config, spec, pace_root, assets_root, asset_audit, source_audit, 
                     guard=NativeGuard(collision,arms,config["collision_joint_step_rad"],
                                       config["tracking_position_limit_m"],config["tracking_angle_limit_deg"])
                     setup.update(execution_protocol=PROTOCOL,contact_limits_id=tracker.limits.profile_id,
+                                 native_release_semantics=config.get("native_release_semantics", "legacy_drive_delta"),
                                  native_gripper_scale_m={side:getattr(env.robot,side+"_gripper_scale") for side in SIDES})
                     save_json(output/"setup.json",setup)
                 backend = NativeBackend(env, arms, world_task, initial, video,guard=guard)

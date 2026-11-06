@@ -9,12 +9,12 @@ from pathlib import Path
 def build(project):
     prior = project / "research/g2/failure-audit-127054052-r1/release-context"
     conditions = [
-        ("native-w1", "aloha-agilex", 1, "native_guard", 1200),
+        ("native-w31", "aloha-agilex", 31, "native_guard", 1200),
+        ("native-w26", "aloha-agilex", 26, "native_guard", 1200),
         ("native-w4", "aloha-agilex", 4, "native_guard", 1200),
         ("arx-baseline-w4", "ARX-X5", 4, "frozen_exact_mapping", 2600),
         ("arx-recovery-no-route-w4", "ARX-X5", 4, "bounded_recovery", 2600),
         ("arx-full-w4", "ARX-X5", 4, "bounded_recovery_and_router", 2600),
-        ("arx-full-w1", "ARX-X5", 1, "bounded_recovery_and_router", 2600),
         (
             "arx-expert-repaired",
             "ARX-X5",
@@ -56,18 +56,19 @@ def build(project):
                     formal_score_eligible=False,
                 )
             )
-    # Native paired admission first, then counterbalance seed order per condition.
-    order = []
-    for condition_index, condition in enumerate(conditions):
-        seeds = (0, 1) if condition_index % 2 == 0 else (1, 0)
-        order.extend(
-            next(
-                t
-                for t in trials
-                if t["condition"] == condition[0] and t["seed"] == seed
-            )
-            for seed in seeds
-        )
+    # Probe the only seed with observed closure, then the main ARX diagnostic.
+    # Keep matched controls and counterbalance later blocks.
+    keys = [
+        (1, "native-w31"), (0, "native-w31"),
+        (0, "arx-full-w4"), (1, "arx-full-w4"),
+        (1, "native-w26"), (0, "native-w26"),
+        (0, "native-w4"), (1, "native-w4"),
+        (1, "arx-expert-repaired"), (0, "arx-expert-repaired"),
+        (0, "arx-recovery-no-route-w4"), (1, "arx-recovery-no-route-w4"),
+        (1, "arx-baseline-w4"), (0, "arx-baseline-w4"),
+    ]
+    indexed = {(row["seed"], row["condition"]): row for row in trials}
+    order = [indexed[key] for key in keys]
     trial_s = sum(t["hard_timeout_s"] for t in order)
     overhead = dict(
         graphics_s=300,
@@ -80,7 +81,7 @@ def build(project):
     if len(order) != 14 or total > allocation:
         raise ValueError("incomplete roster or budget overflow")
     return dict(
-        schema_version=1,
+        schema_version=2,
         status="CPU_PLAN_ONLY_NOT_SUBMISSION_READY",
         submission_allowed=False,
         protected_existing_job="127081074",
@@ -90,16 +91,18 @@ def build(project):
         trials=order,
         stages=[
             "same-allocation startup",
-            "native paired admission",
+            "native short startup and long-window diagnostic",
             "cross-embodiment policy",
             "recovery/router/window ablations",
             "official expert control",
             "statistics",
         ],
-        native_gate="must include at least one full task predicate success plus measured left-only/shared/right-only/released sequence before any ARX policy trial",
+        native_gate="independent native safety and input admission; no native task-success prerequisite for ARX diagnostics",
+        arx_gate="independent same-allocation real initial/asset/geometry, actual state and proxy input contract admission for each seed",
+        transfer_claim_gate="matched K4 native predicate plus measured physical sequence and matching ARX evidence; otherwise diagnostic only",
         early_stop=[
-            "native gate fails: skip all ARX policy and expert trials, produce complete missing/not-run report",
-            "model or initial mismatch or actual unsafe collision: stop campaign; never restart/requeue",
+            "native task failure retains ARX diagnostics if independently admitted; unavailable conditions are not_run",
+            "model/process/time failure or actual unsafe state: stop campaign and report all remaining trials as not_run",
             "candidate rejection ends only that trial; later predeclared condition may continue",
             "recovery requires a fresh measured mapping; at most four per trial, one per failed observation",
             "contact/holding forbids generic RRT and partial-goal recovery",
@@ -115,6 +118,7 @@ def build(project):
             memory_gib=32,
             node="gnode39",
             reference_price_yuan_per_gpu_hour=3.6,
+            rate_status="historical_reference_only_live_quote_required",
             proposed_fee_cap_yuan=34.2,
             prior_project_budget_yuan=20.0,
             approved_remaining_campaign_budget_yuan=34.2,
@@ -125,10 +129,10 @@ def build(project):
         ),
         comparisons=[
             ["native-w4", "arx-full-w4"],
-            ["native-w1", "arx-full-w1"],
+            ["native-w26", "native-w31"],
+            ["native-w4", "native-w31"],
             ["arx-baseline-w4", "arx-recovery-no-route-w4"],
             ["arx-recovery-no-route-w4", "arx-full-w4"],
-            ["arx-full-w1", "arx-full-w4"],
         ],
         statistics=dict(
             experimental_units="two locked environmental seeds, never individual correlated frames/actions",

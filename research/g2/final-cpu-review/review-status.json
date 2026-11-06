@@ -1,0 +1,32 @@
+{
+  "base_commit": "d64b0e4feba82c4a97dbbfc8c6b518c67743a0f1",
+  "branch": "experiment/g2-final-cpu-review",
+  "archive_run": "127081074",
+  "gpu_jobs_submitted_modified_or_cancelled": 0,
+  "tests": {
+    "full_cpu": 201,
+    "synthetic_episodes": 13,
+    "focused_after_runtime_telemetry_and_reset_change": 38
+  },
+  "source_history": {
+    "files_verified": 781,
+    "unchanged": true
+  },
+  "evidence": {
+    "native_fcl_reproduced": 6,
+    "native_fcl_physics_steps": 0,
+    "k26_historical_physics_replay": true,
+    "expert_approach_archived": true,
+    "additional_expert_scene_probe": "NOT_VERIFIED: SSH did not return the result",
+    "candidate_physical_validation": "NOT_VERIFIED",
+    "video_manual_audit": "NOT_VERIFIED"
+  },
+  "release": {
+    "candidate": "candidate-release-final",
+    "submission_allowed": false,
+    "live_rate": "NOT_VERIFIED",
+    "plan_s": 29700,
+    "allocation_cap_s": 34200,
+    "fee_cap_yuan": 34.2
+  }
+}

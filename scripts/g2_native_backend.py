@@ -153,7 +153,7 @@ class NativeBackend:
                 raise G2Error(Status.LIMIT,"native target outside calibrated bounds")
         self.log, self.remaining = log, remaining
         done = 0
-        if self.guard is not None and self.guard.previous_drive is None:
+        if self.guard is not None and self.tick == 0 and self.guard.previous_drive is None:
             self.guard.previous_drive = self._drive()[1].copy()
         try:
             for self.action_index,row in enumerate(array):

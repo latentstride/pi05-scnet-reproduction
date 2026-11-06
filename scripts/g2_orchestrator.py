@@ -185,8 +185,16 @@ def orchestrate(plan, output):
                 stage = None
                 entry.update(ended_at=utc(), wall_s=time.monotonic() - start)
                 save()
+        if plan.get("evaluation_summary_file"):
+            import json
+            summary = Path(plan["evaluation_summary_file"])
+            if summary.is_file():
+                report["evaluation"] = json.loads(summary.read_text())
+                if report["evaluation"]["formal_score_eligible"] != report["formal_score_eligible"]:
+                    raise ValueError("evaluation scoring eligibility differs from supervisor")
         report["passed"] = all(row["status"] in ("passed", "skipped") for row in report["stages"].values())
         report["complete"] = all(row["status"] == "passed" for row in report["stages"].values())
+        report["execution_complete"] = report["complete"]
     except KeyboardInterrupt as exc:
         report.update(interrupted=True, error=str(exc))
         for entry in report["stages"].values():

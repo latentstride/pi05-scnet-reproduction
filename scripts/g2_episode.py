@@ -6,6 +6,7 @@ from time import monotonic
 
 import numpy as np
 
+from g2e_protocol import PROTOCOL, validate_window
 from g2_adapter import G2Error, SIDES, images_of, positive
 from pace_runtime import validate_request, validate_response
 from robotwin_control_geometry import Status, finite_array
@@ -83,7 +84,8 @@ def run_episode(spec, backend, policy, output, *, adapter=None, expert=None):
     output = Path(output)
     output.mkdir(parents=True, exist_ok=False)
     window, max_actions = spec["window"], spec["max_actions"]
-    if type(window) is not int or window not in (1, 4) or type(max_actions) is not int or max_actions < 1:
+    validate_window(window, spec.get("execution_protocol"))
+    if type(max_actions) is not int or max_actions < 1:
         raise ValueError("invalid episode bounds")
     if (expert is None) == (policy is None) or (expert is not None and adapter is None):
         raise ValueError("use one policy or expert source; expert requires retiming")
@@ -131,6 +133,10 @@ def run_episode(spec, backend, policy, output, *, adapter=None, expert=None):
         try:
             record["initial"] = backend.reset(spec)
             save_json(output / "initial.json", record["initial"])
+            if spec.get("execution_protocol") == PROTOCOL:
+                if adapter is not None or expert is not None or getattr(backend, "execution_protocol", None) != PROTOCOL:
+                    raise G2Error(Status.INVALID, "G2-E native guard is missing")
+                record["execution_protocol"] = PROTOCOL
             if backend.success():
                 raise G2Error(Status.INVALID, "task already successful on reset")
             if expert is not None:
@@ -148,7 +154,8 @@ def run_episode(spec, backend, policy, output, *, adapter=None, expert=None):
                 save_array(output / f"observation-{i:05}.npz", np.savez_compressed, **rgb)
                 event(dict(kind="snapshot", stamp=asdict(snapshot.stamp),
                            actual=[asdict(arm) for arm in snapshot.arms],
-                           world_task=snapshot.world_task, prompt=spec["prompt"], rgb_file=f"observation-{i:05}.npz"))
+                           world_task=snapshot.world_task, objects_task=snapshot.objects_task,
+                           prompt=spec["prompt"], rgb_file=f"observation-{i:05}.npz"))
                 if record.get("initial_sim_s") is None:
                     record["initial_sim_s"] = snapshot.stamp.sim_s
                 if expert is not None:
@@ -206,7 +213,14 @@ def run_episode(spec, backend, policy, output, *, adapter=None, expert=None):
                     before_reports = control_reports
                     try:
                         done = backend.execute(plan, step, remaining)
-                    except BaseException:
+                    except BaseException as error:
+                        if spec.get("execution_protocol") == PROTOCOL:
+                            completed = getattr(error, "diagnostic", {}).get("completed_actions", 0)
+                            if type(completed) is not int or not 0 <= completed < count:
+                                raise ValueError("invalid partial native action receipt") from error
+                            record["executed"] += completed
+                            event(dict(kind="partial_prefix_abort", completed_actions=completed,
+                                       interrupted_action_may_have_advanced=True))
                         if control_reports == before_reports:
                             record["control_calls"] = None
                         raise

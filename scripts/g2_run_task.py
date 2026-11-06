@@ -20,6 +20,8 @@ def execute(config, factory, policy, output, expert=None):
                 condition=config["condition"], prompt=config["prompt"], window=config["window"],
                 max_actions=config["max_actions"], timeout_s=config["timeout_s"],
                 native_grip_max_clip=config["native_grip_max_clip"])
+    if "execution_protocol" in config:
+        spec["execution_protocol"] = config["execution_protocol"]
     session = RuntimeSession(factory)
     adapter = SessionAdapter(session) if config["embodiment"] == "ARX-X5" else None
     return run_episode(spec, session, policy, output, adapter=adapter, expert=expert)

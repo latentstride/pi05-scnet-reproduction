@@ -40,9 +40,9 @@ CPU SAPIEN 3，物理周期4ms，无renderer、模型、CUDA或GPU申请。使�
 `scripts/g2_settle_expert_cpu.py` 在现有SCNet CPU容器中运行，参数为审计资产根目录、asset-audit、config、input、fresh output。外围240秒超时，成功退出0。所有远端写入均在用户 `$HOME/code_cpf/pi05` 内。
 
 ```sh
-PYTHONPATH=scripts /private/tmp/pi05-g1-tests/bin/python scripts/g2_settled_candidates.py --input research/g2/expert-settle-source-mass-20261106/settling.json --output /private/tmp/g2-settled-candidates.json
-/private/tmp/pi05-g1-tests/bin/python scripts/g2_check_expert_projection.py --settled research/g2/expert-settle-source-mass-20261106/settling.json
-PYTHONPATH=scripts /private/tmp/pi05-g1-tests/bin/python -m unittest discover -s tests -p test_g2_settled_candidates.py -v
+PYTHONPATH=scripts <CPU_TEST_ENV>/bin/python scripts/g2_settled_candidates.py --input research/g2/expert-settle-source-mass-20261106/settling.json --output /private/tmp/g2-settled-candidates.json
+<CPU_TEST_ENV>/bin/python scripts/g2_check_expert_projection.py --settled research/g2/expert-settle-source-mass-20261106/settling.json
+PYTHONPATH=scripts <CPU_TEST_ENV>/bin/python -m unittest discover -s tests -p test_g2_settled_candidates.py -v
 ```
 
 新增拒绝验收覆盖：两本体物块位置相差2mm、末帧仍有速度、机器人接触支撑物块。均被拒绝，不因真实三组样本通过而放宽阈值。

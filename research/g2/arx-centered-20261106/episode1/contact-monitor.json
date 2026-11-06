@@ -1,0 +1,112 @@
+{
+  "failure": null,
+  "snapshot": {
+    "phase": "free_after_hold",
+    "holders": [],
+    "contact_fingers": {
+      "left": [],
+      "right": []
+    },
+    "stable_counts": {
+      "left": 0,
+      "right": 0
+    },
+    "saw_shared_hold": true,
+    "releasing": [],
+    "block_pose_task": [
+      [
+        0.9999849796295166,
+        -0.005479134619235992,
+        -1.7127182218246162e-05,
+        0.12680622935295105
+      ],
+      [
+        0.00547915231436491,
+        0.9999841451644897,
+        0.0012815886875614524,
+        0.18890701234340668
+      ],
+      [
+        1.0104914508701768e-05,
+        -0.0012816631933674216,
+        0.9999991655349731,
+        0.8460386395454407
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "tool_block": {},
+    "tool_block_measured": {}
+  },
+  "events": [
+    {
+      "tick": 6545,
+      "sim_s": 26.18,
+      "before": [],
+      "after": [
+        "left"
+      ],
+      "phase": "left_holding"
+    },
+    {
+      "tick": 17100,
+      "sim_s": 68.4,
+      "before": [
+        "left"
+      ],
+      "after": [
+        "left",
+        "right"
+      ],
+      "phase": "both_holding"
+    },
+    {
+      "tick": 19115,
+      "sim_s": 76.46000000000001,
+      "before": [
+        "left",
+        "right"
+      ],
+      "after": [
+        "right"
+      ],
+      "phase": "right_holding"
+    },
+    {
+      "tick": 26879,
+      "sim_s": 107.516,
+      "before": [
+        "right"
+      ],
+      "after": [],
+      "phase": "free_after_hold"
+    },
+    {
+      "tick": 26908,
+      "sim_s": 107.632,
+      "before": [],
+      "after": [
+        "right"
+      ],
+      "phase": "right_holding"
+    },
+    {
+      "tick": 26949,
+      "sim_s": 107.796,
+      "before": [
+        "right"
+      ],
+      "after": [],
+      "phase": "free_after_hold"
+    }
+  ],
+  "max_cumulative_slip_m": 0.0041744861825511554,
+  "max_cumulative_slip_deg": 4.17493511191408,
+  "max_slip_statistics_sample_ticks": 5,
+  "continuous_guard_ticks": 1,
+  "mode": "shadow observer; first failure retained; physics not altered"
+}

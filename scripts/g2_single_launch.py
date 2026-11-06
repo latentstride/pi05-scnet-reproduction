@@ -68,6 +68,7 @@ def build(root, release, output, job, graphics, allocation_end):
             row['argv'] += ['--monitor',str(output/'supervisor/gpu-memory.csv')]
         row['timeout_s']=spec['stage_timeout_s'][name]
     return dict(data_kind='diagnostic',total_timeout_s=spec['supervisor_timeout_s'],deadline_epoch=allocation_end-60,
+        evaluation_summary_file=str(output/'statistics/evaluation-summary.json'),
         model_ready_timeout_s=960,model_server=model,ready_line=f'checkpoint policy on {uri}',
         model_phases_file=str(model_dir/'phases.jsonl'),
         model_phase_timeouts=dict(container_startup=180,checkpoint_and_tokenizer_sha256=180,

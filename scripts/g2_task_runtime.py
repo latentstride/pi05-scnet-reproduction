@@ -10,6 +10,7 @@ import sys
 
 import numpy as np
 
+from g2e_protocol import PROTOCOL, CONTACT_MODE_NATIVE, validate_window
 from g2_adapter import Adapter, SIDES, Stamp
 from g2_assets import load_arms
 from g2_capture import capture_arms
@@ -37,7 +38,15 @@ def verify_runtime(pace_root, audit):
 def validate_config(config):
     if config["data_kind"] != "diagnostic" or config["task"] != TASK:
         raise ValueError("real scene entry currently accepts diagnostic handover_block only")
-    if config["contact_mode"]==CONTACT_MODE:
+    if config["contact_mode"]==CONTACT_MODE_NATIVE:
+        if config.get("execution_protocol")!=PROTOCOL or config["embodiment"]!="aloha-agilex":
+            raise ValueError("native contact guard requires the G2-E native protocol")
+        seed=config.get("policy_rng_seed")
+        if type(seed) is not int or not 0<=seed<2**32:
+            raise ValueError("G2-E requires an explicit uint32 policy RNG seed")
+    elif config.get("execution_protocol")==PROTOCOL:
+        raise ValueError("G2-E requires its explicit measured-contact mode")
+    elif config["contact_mode"]==CONTACT_MODE:
         contact_profile(config)
     elif config["contact_mode"] != "strict_no_contact_exemptions":
         raise ValueError("contact permission/held-object profiles have not passed acceptance")
@@ -45,8 +54,7 @@ def validate_config(config):
         raise ValueError("control bounds require an explicit source")
     if not np.allclose(matrix7(config["world_task"]), matrix7(config["source_world_task"]), atol=1e-9, rtol=0):
         raise ValueError("proxy collision scene currently requires identical source/target task frames")
-    if type(config["window"]) is not int or config["window"] not in (1,4):
-        raise ValueError("invalid action window")
+    validate_window(config["window"],config.get("execution_protocol"),config["embodiment"])
     if type(config["max_actions"]) is not int:
         raise ValueError("maximum actions must be an integer")
     for name in ("max_actions", "timeout_s"):
@@ -89,6 +97,10 @@ class RuntimeSession:
         self.context = self.factory(spec)
         self.backend, self.adapter = self.context.__enter__()
         return self.backend.reset(spec)
+
+    @property
+    def execution_protocol(self):
+        return getattr(self.backend,"execution_protocol",None)
 
     @property
     def native_limits(self):
@@ -186,7 +198,30 @@ def real_scene(config, spec, pace_root, assets_root, asset_audit, source_audit, 
             save_json(output / "setup.json", setup)
             video = Video(output / "head.mp4")
             if embodiment == "aloha-agilex":
-                backend = NativeBackend(env, arms, world_task, initial, video)
+                guard = None
+                if config.get("execution_protocol") == PROTOCOL:
+                    from g2e_native_guard import NativeGuard
+                    from g2_contact import ContactLimits
+                    from mplib.sapien_utils.conversion import convert_object_name
+                    entities=[env.robot.left_entity,env.robot.right_entity]
+                    collision=JointCollisionWorld.from_scene(env.scene,entities,
+                        [a.chain.names for a in arms],[a.grip.names for a in arms])
+                    block=getattr(env.box,"actor",env.box)
+                    tracker=ContactTracker.from_scene(env.robot,block,arms,ContactLimits())
+                    actors=env.scene.get_all_actors()
+                    collision=ContactWorld(collision,tracker,arms,
+                        [np.linalg.inv(world_task)@sample.world_base for sample in actual],
+                        convert_object_name(block),[convert_object_name(a) for a in actors],
+                        [[entity.find_joint_by_name(n).child_link.name for n in arm.grip.names]
+                         for entity,arm in zip(entities,arms)],
+                        [convert_object_name(a) for a in actors if a.name in ("table","target_box")],world_task=world_task)
+                    guard=NativeGuard(collision,arms,config["collision_joint_step_rad"],
+                                      config["tracking_position_limit_m"],config["tracking_angle_limit_deg"])
+                    setup.update(execution_protocol=PROTOCOL,contact_limits_id=tracker.limits.profile_id,
+                                 native_gripper_scale_m={side:getattr(env.robot,side+"_gripper_scale") for side in SIDES})
+                    save_json(output/"setup.json",setup)
+                backend = NativeBackend(env, arms, world_task, initial, video,guard=guard)
+                if guard is not None: backend.collision=guard.collision
                 adapter = None
             else:
                 entities = [env.robot.left_entity, env.robot.right_entity]

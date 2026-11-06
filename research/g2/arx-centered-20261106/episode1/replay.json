@@ -1,0 +1,741 @@
+{
+  "data_kind": "diagnostic",
+  "scope": "retimed sampled expert FK/IK to ARX, direct finite-force physical reference; production planner/contact gate not exercised",
+  "gpu_used": false,
+  "renderer_created": false,
+  "model_used": false,
+  "finger_force_control_mode": "bounded_aperture_center_force_v1",
+  "max_allocated_finger_force_n": [
+    [
+      2.0,
+      2.0
+    ],
+    [
+      2.0,
+      2.0
+    ]
+  ],
+  "episode": 1,
+  "seed": 1,
+  "contact_monitor_passed": true,
+  "contact_monitor_covered_ticks": 27513,
+  "contact_monitor_failure": null,
+  "retiming": {
+    "max_command_velocity": [
+      [
+        0.15156283879127258,
+        0.28499105775898154,
+        0.10768524729288541,
+        0.22845806799725527,
+        0.2187797166270149,
+        0.02031561679040257,
+        0.014133165829145741,
+        0.014133165829145741
+      ],
+      [
+        0.356818263358234,
+        0.29568572622199246,
+        0.13786316331889895,
+        0.24674591192040027,
+        0.34104580940354773,
+        0.018593183757848634,
+        0.014133165829145741,
+        0.014133165829145741
+      ]
+    ],
+    "max_command_acceleration": [
+      [
+        0.9972062196613685,
+        0.9999859736285641,
+        0.7762680459508494,
+        0.999675339426098,
+        0.9995047252726598,
+        0.459969679321263,
+        0.09890651025404745,
+        0.09890651025404745
+      ],
+      [
+        0.9989164001774739,
+        0.9986262290214746,
+        0.9985816462436419,
+        0.9375904351518097,
+        0.9556603240253786,
+        0.31115303326626337,
+        0.09890651025404745,
+        0.09890651025404745
+      ]
+    ],
+    "arm_acceleration_limit_rad_s2": 1.0,
+    "original_source_duration_s": 14.620000000000001,
+    "retimed_duration_s": 110.052,
+    "frames": 277,
+    "ticks": 27513,
+    "collision_checked": false,
+    "method": "quintic_stop_at_saved_expert_waypoints",
+    "limits_source": "G2 experiment-imposed simulation command bounds v1; not manufacturer ratings"
+  },
+  "physical_filter": {
+    "profile_sha256": "07c7faf92f6c9c7e3b7c370cb4487494d236935910cf6d89333f89f0b56c0ddb",
+    "scope": "same_articulation_only",
+    "pairs": [
+      [
+        "base_link",
+        "link1"
+      ],
+      [
+        "base_link",
+        "link2"
+      ],
+      [
+        "base_link",
+        "link3"
+      ],
+      [
+        "link1",
+        "link2"
+      ],
+      [
+        "link1",
+        "link3"
+      ],
+      [
+        "link2",
+        "link3"
+      ],
+      [
+        "link2",
+        "link4"
+      ],
+      [
+        "link3",
+        "link4"
+      ],
+      [
+        "link3",
+        "link5"
+      ],
+      [
+        "link3",
+        "link6"
+      ],
+      [
+        "link4",
+        "link5"
+      ],
+      [
+        "link4",
+        "link6"
+      ],
+      [
+        "link5",
+        "link6"
+      ]
+    ],
+    "verified_scene_shape_pairs": 300,
+    "shapes_changed": 18,
+    "articulations": [
+      {
+        "link_ids": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "group_id": 1
+      },
+      {
+        "link_ids": [
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25
+        ],
+        "group_id": 2
+      }
+    ],
+    "shapes": [
+      {
+        "link": "base_link",
+        "articulation": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "before": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "after": [
+          1,
+          1,
+          7,
+          1
+        ]
+      },
+      {
+        "link": "link1",
+        "articulation": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "before": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "after": [
+          1,
+          1,
+          25,
+          1
+        ]
+      },
+      {
+        "link": "link2",
+        "articulation": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "before": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "after": [
+          1,
+          1,
+          106,
+          1
+        ]
+      },
+      {
+        "link": "link3",
+        "articulation": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "before": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "after": [
+          1,
+          1,
+          948,
+          1
+        ]
+      },
+      {
+        "link": "link4",
+        "articulation": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "before": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "after": [
+          1,
+          1,
+          3264,
+          1
+        ]
+      },
+      {
+        "link": "link5",
+        "articulation": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "before": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "after": [
+          1,
+          1,
+          5376,
+          1
+        ]
+      },
+      {
+        "link": "link6",
+        "articulation": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "before": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "after": [
+          1,
+          1,
+          6656,
+          1
+        ]
+      },
+      {
+        "link": "link7",
+        "articulation": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "before": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "after": [
+          1,
+          1,
+          0,
+          1
+        ]
+      },
+      {
+        "link": "link8",
+        "articulation": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "before": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "after": [
+          1,
+          1,
+          0,
+          1
+        ]
+      },
+      {
+        "link": "base_link",
+        "articulation": [
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25
+        ],
+        "before": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "after": [
+          1,
+          1,
+          7,
+          2
+        ]
+      },
+      {
+        "link": "link1",
+        "articulation": [
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25
+        ],
+        "before": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "after": [
+          1,
+          1,
+          25,
+          2
+        ]
+      },
+      {
+        "link": "link2",
+        "articulation": [
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25
+        ],
+        "before": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "after": [
+          1,
+          1,
+          106,
+          2
+        ]
+      },
+      {
+        "link": "link3",
+        "articulation": [
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25
+        ],
+        "before": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "after": [
+          1,
+          1,
+          948,
+          2
+        ]
+      },
+      {
+        "link": "link4",
+        "articulation": [
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25
+        ],
+        "before": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "after": [
+          1,
+          1,
+          3264,
+          2
+        ]
+      },
+      {
+        "link": "link5",
+        "articulation": [
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25
+        ],
+        "before": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "after": [
+          1,
+          1,
+          5376,
+          2
+        ]
+      },
+      {
+        "link": "link6",
+        "articulation": [
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25
+        ],
+        "before": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "after": [
+          1,
+          1,
+          6656,
+          2
+        ]
+      },
+      {
+        "link": "link7",
+        "articulation": [
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25
+        ],
+        "before": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "after": [
+          1,
+          1,
+          0,
+          2
+        ]
+      },
+      {
+        "link": "link8",
+        "articulation": [
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25
+        ],
+        "before": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "after": [
+          1,
+          1,
+          0,
+          2
+        ]
+      }
+    ]
+  },
+  "gripper_force_limit_n": [
+    2.0,
+    2.0
+  ],
+  "collision_gate_exercised": false,
+  "completed": true,
+  "physics_steps_replayed": 27513,
+  "expected_physics_steps": 27513,
+  "diagnostic_hold_steps": 200,
+  "source_actor_default_mass_kg": 0.01,
+  "actual_block_mass_kg": 0.009999999776482582,
+  "native_success_at_expert_end": {
+    "success": true,
+    "block_functional_point_m": [
+      0.12680787250355935,
+      0.18877865714021028,
+      0.7461381614208221
+    ],
+    "target_functional_point_m": [
+      0.1297152191400528,
+      0.19003723561763763,
+      0.7459999966621399
+    ],
+    "delta_m": [
+      -0.0029073466364934464,
+      -0.0012585784774273578,
+      0.00013816475868222433
+    ],
+    "right_requested_open": true
+  },
+  "native_success_after_diagnostic_hold": {
+    "success": true,
+    "block_functional_point_m": [
+      0.12680794207117288,
+      0.18877885347465054,
+      0.7460387229919434
+    ],
+    "target_functional_point_m": [
+      0.1297152191400528,
+      0.19003723561763763,
+      0.7459999966621399
+    ],
+    "delta_m": [
+      -0.0029072770688799154,
+      -0.0012583821429870967,
+      3.8726329803506765e-05
+    ],
+    "right_requested_open": true
+  },
+  "failure": null,
+  "wall_s": 303.22097515128553,
+  "sapien_version": "3.0.0b1",
+  "trace_sha256": "26fe796738a00fa4514c5cc6e7e27ba5a675d8cf8d8773f77b40407e0e3be4dd",
+  "initialization": "explicit mapped source-home configuration, 100 robot settling ticks, 2500 object settling ticks with passive-force compensation; no renderer",
+  "contact_columns": [
+    "left_block_impulse_Ns",
+    "right_block_impulse_Ns",
+    "left_target_impulse_Ns",
+    "right_target_impulse_Ns",
+    "left_block_contact_points",
+    "right_block_contact_points",
+    "max_block_penetration_m",
+    "max_finger_target_penetration_m"
+  ]
+}

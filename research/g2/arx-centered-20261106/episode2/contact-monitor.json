@@ -1,0 +1,94 @@
+{
+  "failure": null,
+  "snapshot": {
+    "phase": "free_after_hold",
+    "holders": [],
+    "contact_fingers": {
+      "left": [],
+      "right": []
+    },
+    "stable_counts": {
+      "left": 0,
+      "right": 0
+    },
+    "saw_shared_hold": true,
+    "releasing": [],
+    "block_pose_task": [
+      [
+        0.9999829530715942,
+        -0.005834801588207483,
+        -6.5438994170108344e-06,
+        0.2138550728559494
+      ],
+      [
+        0.005834801588207483,
+        0.9999829530715942,
+        1.3521739674615674e-05,
+        0.1900191754102707
+      ],
+      [
+        6.46489161226782e-06,
+        -1.3559691069531254e-05,
+        1.0,
+        0.8460006713867188
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "tool_block": {},
+    "tool_block_measured": {}
+  },
+  "events": [
+    {
+      "tick": 7266,
+      "sim_s": 29.064,
+      "before": [],
+      "after": [
+        "left"
+      ],
+      "phase": "left_holding"
+    },
+    {
+      "tick": 18427,
+      "sim_s": 73.708,
+      "before": [
+        "left"
+      ],
+      "after": [
+        "left",
+        "right"
+      ],
+      "phase": "both_holding"
+    },
+    {
+      "tick": 20442,
+      "sim_s": 81.768,
+      "before": [
+        "left",
+        "right"
+      ],
+      "after": [
+        "right"
+      ],
+      "phase": "right_holding"
+    },
+    {
+      "tick": 28144,
+      "sim_s": 112.57600000000001,
+      "before": [
+        "right"
+      ],
+      "after": [],
+      "phase": "free_after_hold"
+    }
+  ],
+  "max_cumulative_slip_m": 0.004094415910258447,
+  "max_cumulative_slip_deg": 3.7880580643579584,
+  "max_slip_statistics_sample_ticks": 5,
+  "continuous_guard_ticks": 1,
+  "mode": "shadow observer; first failure retained; physics not altered"
+}

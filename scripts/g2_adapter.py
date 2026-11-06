@@ -63,6 +63,7 @@ class Snapshot:
     arms: tuple
     images: dict   # camera name -> (Stamp, uint8 CHW)
     world_task: np.ndarray
+    objects_task: dict = None  # absent when a backend has no task actors
 
 
 @dataclass(frozen=True)
@@ -246,23 +247,30 @@ def solve_pair(arms, frames, tools, seed, fingers, collision, check, max_delta=N
     limit_rejected = 0
     collision_rejected = 0
     collision_examples = []
+    candidate_verdicts = []
     ranked = sorted(product(*choices), key=lambda pair: np.linalg.norm(np.array([x[0] for x in pair]) - seed))
     for pair in ranked:
         check()
         q = np.array([x[0] for x in pair])
         if max_delta is not None and np.any(abs(q - seed) > max_delta + 1e-9):
             limit_rejected += 1
+            candidate_verdicts.append(dict(candidate_q=q.tolist(), reason="continuity_limit"))
             continue
         if accepted(q):
             return q, [x[1] for x in pair]
         collision_rejected += 1
+        candidate_verdicts.append(dict(candidate_q=q.tolist(), reason="collision",
+                                      collisions=getattr(collision,"last_collisions",None)))
         if len(collision_examples) < 8:
             collision_examples.append({"candidate_q":q.tolist(),
                                        "collisions":getattr(collision,"last_collisions",None)})
     if collision_rejected:
         raise G2Error(Status.COLLISION, "all temporally admissible IK pairs collide",
-                      rejected_pairs=collision_rejected, collision_examples=collision_examples)
-    raise G2Error(Status.VELOCITY, "IK branch change exceeds continuity limits", rejected_pairs=limit_rejected)
+                      rejected_pairs=collision_rejected, collision_examples=collision_examples,
+                      candidate_verdicts=candidate_verdicts, continuity_rejected=limit_rejected,
+                      ik_solutions_per_side=[len(x) for x in choices])
+    raise G2Error(Status.VELOCITY, "IK branch change exceeds continuity limits", rejected_pairs=limit_rejected, candidate_verdicts=candidate_verdicts,
+                  ik_solutions_per_side=[len(x) for x in choices])
 
 
 def clear(collision, q, fingers):
@@ -316,6 +324,10 @@ class Adapter:
             source_fingers = np.array([arm.grip.target(g) for arm, g in zip(self.aloha, grip)])
             if callable(getattr(self.source_collision,"set_start",None)):
                 self.source_collision.set_start(source_fingers)
+            log.update(collision_world="source_collision", arx_tools_task=tools.tolist(),
+                       ik_seed=self.seed.tolist(), source_fingers=source_fingers.tolist(),
+                       measured_target_fingers=native.tolist(),
+                       continuity_delta=None if delta is None else delta.tolist())
             q, residual = solve_pair(self.aloha, self.source_frames, tools, self.seed,
                                      source_fingers, self.source_collision, check, delta)
             log.update(ik=residual, arx_tools_task=tools.tolist(), grip_fraction=grip,grip_measurement=grip_state)
@@ -354,6 +366,8 @@ class Adapter:
             q, fingers, frames, _ = read_snapshot(snapshot, self.arx)
             for arm, value in zip(self.arx, fingers):
                 bounds(value, np.asarray(arm.grip.limits))
+            log.update(collision_world="target_collision", measured_start_q=q.tolist(),
+                       measured_start_fingers=fingers.tolist())
             grip_log = log["grippers"] = []
             requests = log["requests"] = []
             targets = []

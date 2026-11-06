@@ -62,7 +62,7 @@ CPU场景使用固定真实Aloha碰撞网格、原桌/墙/物块/目标尺寸、
 每条原始控制执行完后额外保持200步；CPU墙钟分别约38.64、16.29、14.71秒（包含构建/稳定/日志，不作为GPU渲染预算）。三个程序均退出0，原始失败没有删除或混算。全部远端写入位于个人 `$HOME/code_cpf/pi05`。没有新GPU申请或Slurm提交。
 
 ```sh
-PYTHONPATH=scripts /private/tmp/pi05-g1-tests/bin/python scripts/g2_verify_native_expert.py --output /private/tmp/g2-native-acceptance.json
+PYTHONPATH=scripts <CPU_TEST_ENV>/bin/python scripts/g2_verify_native_expert.py --output /private/tmp/g2-native-acceptance.json
 ```
 
 本轮完整CPU预检见 `results/g2/cpu-native-expert-20261106-final/`。测试覆盖全部密集指令/速度、无损编码、原夹爪函数逐步等价、Actor质量、原成功判据及三条实测轨迹核验；13个合成episode仍只作为接口回归，不计入这三条物理结果。

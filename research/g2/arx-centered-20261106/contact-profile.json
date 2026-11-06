@@ -1,0 +1,36 @@
+{
+  "status": "cpu_diagnostic_only",
+  "giver": "left",
+  "validated_block_mass_kg": 0.01,
+  "source": "original10g ARX expert CPU replays0/1/2; task/hold/continuous contact guard passed",
+  "limits": {
+    "penetration_m": 0.002,
+    "closure_penetration_m": 0.0005,
+    "scan_step_m": 0.001,
+    "position_slip_m": 0.005,
+    "angle_slip_deg": 5.0,
+    "closed_chain_position_m": 0.002,
+    "closed_chain_angle_deg": 2.0,
+    "stable_steps": 3,
+    "minimum_impulse": 1e-08,
+    "contact_cap": 256
+  },
+  "drive": {
+    "stiffness": 1000.0,
+    "damping": 200.0,
+    "force_limit_n": [
+      2.0,
+      2.0
+    ],
+    "mode": "bounded_aperture_center_force_v1",
+    "source": "bounded aperture/center effort allocation; control effort excludes separate passive compensation"
+  },
+  "acceptance_sha256": "70d649f0afab9dea1a57617ec312052beffb05b312012fcfc729069c44c04298",
+  "physical_trace_sha256": [
+    "c0dcc14dac4e94c6364fe6a3e374c246c4a8dff4d6a6e60d9569235d20830881",
+    "3d64833d1e2d8ed093d15654c6bc281717c5ae087ad4d46aaa5a05d14a5b3e13",
+    "5b3efda4bdc13bf53c105830d607579ca46dd8ec320c7fa6aa1bb0b761d0cad0"
+  ],
+  "formal_release_ready": false,
+  "production_collision_gate_verified": false
+}

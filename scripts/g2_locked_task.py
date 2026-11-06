@@ -2,7 +2,6 @@
 import argparse
 from contextlib import contextmanager
 from hashlib import sha256
-import json
 import os
 from pathlib import Path
 
@@ -173,6 +172,15 @@ def run_checked(config, expected, identity, factory, policy, output, *, verify_s
     return row
 
 
+def save_terminal_record(output, config, row):
+    # A frozen roster does not override an explicitly diagnostic configuration.
+    row = dict(row, data_kind='formal' if config.get('formal_release_ready') is True else 'diagnostic')
+    Draft202012Validator(decode(SCHEMA.read_text())).validate(row)
+    validate_episode(row)
+    save_json(output/f"{row['data_kind']}-record.json", row)
+    return row
+
+
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     for name in ('lock','config','pace-root','asset-audit','source-audit','model-manifest','model-startup','output'):
@@ -210,7 +218,16 @@ def main():
         return real_scene(config, spec, pace, pace/'assets', a.asset_audit.resolve(), source, output)
 
     with interrupt_signals(), open_policy(a.uri, 'checkpoint', a.policy_timeout_s) as policy:
+        if config.get('execution_protocol') == 'g2e_native_guarded_prefix_v1':
+            from g2e_model_entry import reset_remote
+            # Evidence directory is created by run_episode; retain acknowledgement
+            # beside its outputs immediately after it returns.
+            rng_receipt = reset_remote(policy, config['policy_rng_seed'], a.episode_id)
+        else:
+            rng_receipt = None
         row = run_checked(config, expected, identity, factory, policy, output, verify_scene=verify_real_scene)
+    if rng_receipt is not None:
+        save_json(output/'rng-reset.json',rng_receipt)
     if a.startup_timeout_s is not None:
         result = decode((output/'result.json').read_text())
         passed = (row['match_status'] == 'matched' and result['executed'] > 0 and
@@ -219,10 +236,7 @@ def main():
         if not passed:
             raise SystemExit(1)
         return
-    row['data_kind'] = 'formal'
-    Draft202012Validator(decode(SCHEMA.read_text())).validate(row)
-    validate_episode(row)
-    save_json(output/'formal-record.json', row)
+    save_terminal_record(output, config, row)
 
 
 if __name__ == '__main__':

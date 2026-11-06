@@ -41,9 +41,9 @@ PKL 只有左右规划路径列表（7 和 4 段），每段包含 status、posi
 使用项目临时 Python 环境（numpy1.26.4、h5py3.11.0；投影预览另需 Pillow11.3.0）：
 
 ```sh
-PYTHONPATH=scripts /private/tmp/pi05-g1-tests/bin/python -m unittest discover -s tests -p test_g2_expert_metadata.py -v
-/private/tmp/pi05-g1-tests/bin/python scripts/g2_audit_expert_metadata.py --cache research/g2/expert-cache-uncached-20261106 --output /private/tmp/g2-expert-audit-fresh
-/private/tmp/pi05-g1-tests/bin/python scripts/g2_check_expert_projection.py
+PYTHONPATH=scripts <CPU_TEST_ENV>/bin/python -m unittest discover -s tests -p test_g2_expert_metadata.py -v
+<CPU_TEST_ENV>/bin/python scripts/g2_audit_expert_metadata.py --cache research/g2/expert-cache-uncached-20261106 --output /private/tmp/g2-expert-audit-fresh
+<CPU_TEST_ENV>/bin/python scripts/g2_check_expert_projection.py
 ```
 
 三个新增测试通过：三条真实示范全量匹配、非白名单 pickle 拒绝、seed 重建不污染全局 RNG。结果目录为 `research/g2/expert-metadata-20261106/`。本轮没有申请 GPU 或提交作业。

@@ -1,0 +1,14 @@
+{
+  "evidence-ep0.zip": {
+    "bytes": 2137518,
+    "sha256": "36fa6d0dc397343e2a4850c078aa018eb37d27fd3d107b6356c512c2ba55a9e8"
+  },
+  "evidence-ep1.zip": {
+    "bytes": 1639134,
+    "sha256": "af66da4e5d55b9bf11ec529bb95d129e5fd6c66cc6ef44da16be7f9f16db1513"
+  },
+  "evidence-ep2.zip": {
+    "bytes": 1714794,
+    "sha256": "c590f57515af36d421cbe779593b549b598c6bd19344d47f762b897c78928707"
+  }
+}

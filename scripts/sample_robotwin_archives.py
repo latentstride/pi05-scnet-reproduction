@@ -56,7 +56,8 @@ class RangeFile(io.RawIOBase):
             if self.transferred + length > self.budget:
                 raise RuntimeError("Transfer budget exceeded")
             request = urllib.request.Request(
-                self.url + "?download=true&probe_range=" + str(self.pos) + "-" + str(end),
+                self.url + "?download=true&probe_range=" + str(self.pos) + "-" + str(end)
+                + "&probe_nonce=" + str(time.time_ns()),
                 headers={"Range": "bytes=%d-%d" % (self.pos, end), "User-Agent": "robotwin-data-probe/1"},
             )
             last_error = None

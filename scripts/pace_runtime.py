@@ -66,10 +66,14 @@ class RemotePolicy:
         self.socket = socket
         self.timeout = timeout
 
-    def infer(self, request):
+    def infer_raw(self, request):
+        """Return decoded output for callers that persist evidence before validation."""
         validate_request(request)
         self.socket.send(msgpack_numpy.packb(request))
-        response = decode(self.socket.recv(timeout=self.timeout))
+        return decode(self.socket.recv(timeout=self.timeout))
+
+    def infer(self, request):
+        response = self.infer_raw(request)
         validate_response(response)
         return response
 

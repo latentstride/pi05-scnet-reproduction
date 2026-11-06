@@ -1,0 +1,9 @@
+# Independent CPU developer environment; do not install into the frozen model runtime.
+numpy==1.26.4
+msgpack==1.1.1
+websockets==15.0.1
+imageio-ffmpeg==0.6.0
+jsonschema==4.23.0
+PyYAML==6.0.2
+# Set OPENPI_CLIENT_SRC to packages/openpi-client/src of
+# niejunnan25/Openpi-PACE f4e52e6de4cc487a11585a3a7414d610b2883dae.

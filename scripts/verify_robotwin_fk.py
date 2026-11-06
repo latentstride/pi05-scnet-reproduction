@@ -9,11 +9,9 @@ import json
 import hashlib
 import xml.etree.ElementTree as ET
 import numpy as np
-import h5py
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "research/robotwin/fk"
-OUT.mkdir(parents=True, exist_ok=True)
 POSITION_TOL_M = 1e-3
 ANGLE_TOL_DEG = 0.1
 
@@ -90,6 +88,9 @@ def errors(pred, target):
 
 
 def main():
+    import h5py
+
+    OUT.mkdir(parents=True, exist_ok=True)
     # Independent analytic case: z hinge followed by a fixed 1 m x offset.
     import tempfile
     xml = '<robot name="analytic"><link name="b"/><link name="a"/><link name="e"/><joint name="q" type="revolute"><parent link="b"/><child link="a"/><axis xyz="0 0 1"/></joint><joint name="end" type="fixed"><parent link="a"/><child link="e"/><origin xyz="1 0 0"/></joint></robot>'

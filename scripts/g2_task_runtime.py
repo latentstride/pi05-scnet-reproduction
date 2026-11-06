@@ -67,16 +67,17 @@ def validate_config(config):
             raise ValueError("invalid episode budget")
 
 
-def inspect_assets(config, assets_root, asset_audit):
-    for robot in ("aloha-agilex","ARX-X5"):
+def inspect_assets(config, assets_root, asset_audit, *, native_only=False):
+    robots = ("aloha-agilex",) if native_only else ("aloha-agilex", "ARX-X5")
+    for robot in robots:
         load_arms(assets_root,asset_audit,robot,config["calibration"][robot])
     limits=config["control_limits"]
     QuinticMotion(config["control_period_s"],limits["arm_velocity_rad_s"],limits["arm_acceleration_rad_s2"],
                   limits["finger_velocity_m_s"],limits["finger_acceleration_m_s2"],
                   config["collision_joint_step_rad"],config["collision_finger_step_m"],
                   limits["source"],"preflight-only",max_ticks=config["max_plan_ticks"])
-    profile=audited_arx_self_profile(assets_root)
-    return {"calibration_assets_verified":True,"self_collision_policy_sha256":profile["sha256"],"contact_dynamics_verified":False}
+    profile = None if native_only else audited_arx_self_profile(assets_root)["sha256"]
+    return {"calibration_assets_verified":True,"self_collision_policy_sha256":profile,"contact_dynamics_verified":False}
 
 
 @contextmanager

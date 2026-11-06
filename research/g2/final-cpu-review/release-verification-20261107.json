@@ -1,0 +1,45 @@
+{
+  "status": "READY_FOR_REVIEW",
+  "gpu_jobs_submitted_cancelled_or_modified": 0,
+  "submission_allowed": false,
+  "historical_g2e_successes": 0,
+  "historical_g2e_trials": 8,
+  "historical_archive_hashes_verified": 781,
+  "tracked_public_copies_verified_against_cpu_base": 32,
+  "cpu_tests": 207,
+  "synthetic_episodes": 13,
+  "real_closed_loop_validated": false,
+  "evidence_sha256": {
+    "tests": "67138a8b31e3c2d1b5448aeb213c07d9856ddc7a756f5c1d4558d8ef8ef20f8b",
+    "synthetic": "19fc7d8ee9913068b574effa2a3882041b8f3342f1a89d4d8199a9af9fb659f9",
+    "cpu_manifest": "2604c475544a3b8f2bf824c7d6c06e91fda4bb3133674613afc6954cc7c93b85"
+  },
+  "deployment": {
+    "python_modules_parsed": 46,
+    "shell_entries_parsed": 3,
+    "unauthorised_entry_rejected": true,
+    "verified_files": 75,
+    "manifest_sha256": "2d04fb341018440be7198273dc341b17987fa868d479fc30b614ae55b8a5903b",
+    "archive_sha256": "4ffea435c8708b11b917caaf5cd0808c42888527b388473485bab9a22c76ae8b",
+    "trials": {
+      "aloha": 6,
+      "arx_policy": 6,
+      "arx_expert": 2
+    }
+  },
+  "cost": {
+    "planned_seconds": 29700,
+    "hard_cap_seconds": 34200,
+    "listed_rate": "3.60",
+    "estimated_yuan": "29.70",
+    "hard_cap_yuan": "34.20",
+    "live_catalog_evidence": "scnet-rate-20261107.json",
+    "recheck_before_authorization": true
+  },
+  "remaining_dynamic_checks": [
+    "cluster graphics and checkpoint service",
+    "first inference and GPU headroom",
+    "guarded Aloha and ARX execution",
+    "expert live contact-to-placement transition"
+  ]
+}

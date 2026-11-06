@@ -237,7 +237,7 @@ class ARXBackend:
                 joint.set_drive_velocity_target(0.)
             self._apply_forces(side,entity,grip)
 
-    def execute(self, plan, log, remaining):
+    def execute(self, plan, log, remaining, *, stop_on_success=True):
         self.replan_reason=None
         if not isinstance(plan, Trajectory) or self.last_capture is None:
             raise ValueError("ARXBackend only accepts synchronized G2 trajectories")
@@ -360,7 +360,7 @@ class ARXBackend:
                     self.env.take_action_cnt+=1
                     self.completed+=1
                     return done+1
-                if self.success():
+                if stop_on_success and self.success():
                     # A successful partial waypoint still consumes its current policy action.
                     return done + 1
             if index in plan.waypoint_ticks:

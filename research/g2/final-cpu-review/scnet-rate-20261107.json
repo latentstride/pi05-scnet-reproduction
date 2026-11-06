@@ -1,0 +1,20 @@
+{
+  "source": "SCNet",
+  "observed_at": "2026-11-07T03:14:00+08:00",
+  "goods_id": "821418588551249920",
+  "url": "https://www.scnet.cn/ui/mall/detail/goods?type=base&goodsId=821418588551249920",
+  "resource": "NVIDIA 4090 24GB PCIe",
+  "delivery": "shared cluster queue",
+  "region": "昆山",
+  "hardware": "8*4090; 2*AMD 7543 32C",
+  "queue_spec_checked_in_console": "ksagnormal01",
+  "node": "gnode39",
+  "listed_yuan_per_gpu_hour": "3.60",
+  "crossed_out_yuan_per_gpu_hour": "7.00",
+  "planned_seconds": 29700,
+  "hard_cap_seconds": 34200,
+  "planned_yuan": "29.70",
+  "hard_cap_yuan": "34.20",
+  "source_scope": "Current displayed catalog price at observation time; product page gives no price guarantee or expiration timestamp",
+  "approval": "Separate user approval and current rate evidence required before allocated execution"
+}

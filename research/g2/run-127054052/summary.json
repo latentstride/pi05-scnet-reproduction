@@ -1,0 +1,214 @@
+{
+  "job_id": "127054052",
+  "ledger": "127054052|COMPLETED|0:0|01:04:44|2026-11-06T18:23:02|2026-11-06T19:27:46|gnode39",
+  "supervisor": {
+    "data_kind": "diagnostic",
+    "formal_score_eligible": false,
+    "passed": true,
+    "started_at": "2026-11-06T10:23:34.011+00:00",
+    "model_server_starts": 1,
+    "stages": {
+      "dynamic": {
+        "status": "passed",
+        "started_at": "2026-11-06T10:23:34.037+00:00",
+        "exit_code": 0,
+        "ended_at": "2026-11-06T10:40:44.834+00:00",
+        "wall_s": 1030.797165647149
+      },
+      "aloha": {
+        "status": "passed",
+        "started_at": "2026-11-06T10:40:44.853+00:00",
+        "exit_code": 0,
+        "ended_at": "2026-11-06T10:58:55.199+00:00",
+        "wall_s": 1090.3467766568065
+      },
+      "arx": {
+        "status": "passed",
+        "started_at": "2026-11-06T10:58:55.214+00:00",
+        "exit_code": 0,
+        "ended_at": "2026-11-06T11:07:16.065+00:00",
+        "wall_s": 500.8517551571131
+      },
+      "ablation": {
+        "status": "passed",
+        "started_at": "2026-11-06T11:07:16.086+00:00",
+        "exit_code": 0,
+        "ended_at": "2026-11-06T11:26:18.179+00:00",
+        "wall_s": 1142.0938906222582
+      },
+      "expert": {
+        "status": "passed",
+        "started_at": "2026-11-06T11:26:18.193+00:00",
+        "exit_code": 0,
+        "ended_at": "2026-11-06T11:27:40.027+00:00",
+        "wall_s": 81.8345649689436
+      },
+      "statistics": {
+        "status": "passed",
+        "started_at": "2026-11-06T11:27:40.048+00:00",
+        "exit_code": 0,
+        "ended_at": "2026-11-06T11:27:43.259+00:00",
+        "wall_s": 3.211158834397793
+      }
+    },
+    "model_server_pid": 150770,
+    "complete": true,
+    "observed_gpu_peak_mib": 14314,
+    "ended_at": "2026-11-06T11:27:45.968+00:00"
+  },
+  "graphics": {
+    "pass": true,
+    "changed_pixels": 2184,
+    "shape": [
+      120,
+      160,
+      3
+    ],
+    "gpu_name": "NVIDIA GeForce RTX 4090",
+    "pci_bus_id": "0000:c1:00.0",
+    "allocated_gpu_verified": true,
+    "renderer": "SAPIEN offscreen raster",
+    "elapsed_seconds": 12.25619276612997,
+    "versions": {
+      "sapien": "3.0.0b1",
+      "torch": "2.4.1+cu121"
+    }
+  },
+  "trials": [
+    {
+      "episode_id": "seed0-A-native-w1",
+      "outcome": "task_unsuccessful",
+      "failure": {
+        "stage": "termination",
+        "code": "episode_budget_or_expert_exhausted",
+        "detail": "success predicate remained false",
+        "step": 300,
+        "artifact": "<PROJECT_ROOT>/results/pace-g2-127054052/trials/seed0-A-native-w1/events.jsonl"
+      },
+      "actions": {
+        "windows": 300,
+        "requested": 300,
+        "executed": 300,
+        "sim_elapsed_s": 81.54000387294218
+      }
+    },
+    {
+      "episode_id": "seed0-A-native-w4",
+      "outcome": "task_unsuccessful",
+      "failure": {
+        "stage": "termination",
+        "code": "episode_budget_or_expert_exhausted",
+        "detail": "success predicate remained false",
+        "step": 300,
+        "artifact": "<PROJECT_ROOT>/results/pace-g2-127054052/trials/seed0-A-native-w4/events.jsonl"
+      },
+      "actions": {
+        "windows": 75,
+        "requested": 300,
+        "executed": 300,
+        "sim_elapsed_s": 71.2520033842884
+      }
+    },
+    {
+      "episode_id": "seed0-B-arx-w1",
+      "outcome": "planning_failed",
+      "failure": {
+        "stage": "planning",
+        "code": "collision",
+        "detail": "all temporally admissible IK pairs collide",
+        "step": 25,
+        "artifact": "<PROJECT_ROOT>/results/pace-g2-127054052/trials/seed0-B-arx-w1/events.jsonl"
+      },
+      "actions": {
+        "windows": 26,
+        "requested": 26,
+        "executed": 25,
+        "sim_elapsed_s": 19.960000948049128
+      }
+    },
+    {
+      "episode_id": "seed0-B-arx-w4",
+      "outcome": "planning_failed",
+      "failure": {
+        "stage": "planning",
+        "code": "collision",
+        "detail": "all temporally admissible IK pairs collide",
+        "step": 24,
+        "artifact": "<PROJECT_ROOT>/results/pace-g2-127054052/trials/seed0-B-arx-w4/events.jsonl"
+      },
+      "actions": {
+        "windows": 7,
+        "requested": 28,
+        "executed": 24,
+        "sim_elapsed_s": 18.740000890102237
+      }
+    },
+    {
+      "episode_id": "seed1-A-native-w1",
+      "outcome": "task_unsuccessful",
+      "failure": {
+        "stage": "termination",
+        "code": "episode_budget_or_expert_exhausted",
+        "detail": "success predicate remained false",
+        "step": 300,
+        "artifact": "<PROJECT_ROOT>/results/pace-g2-127054052/trials/seed1-A-native-w1/events.jsonl"
+      },
+      "actions": {
+        "windows": 300,
+        "requested": 300,
+        "executed": 300,
+        "sim_elapsed_s": 69.9200033210218
+      }
+    },
+    {
+      "episode_id": "seed1-A-native-w4",
+      "outcome": "task_unsuccessful",
+      "failure": {
+        "stage": "termination",
+        "code": "episode_budget_or_expert_exhausted",
+        "detail": "success predicate remained false",
+        "step": 300,
+        "artifact": "<PROJECT_ROOT>/results/pace-g2-127054052/trials/seed1-A-native-w4/events.jsonl"
+      },
+      "actions": {
+        "windows": 75,
+        "requested": 300,
+        "executed": 300,
+        "sim_elapsed_s": 65.78000312438235
+      }
+    },
+    {
+      "episode_id": "seed1-B-arx-w1",
+      "outcome": "adapter_error",
+      "failure": {
+        "stage": "observation",
+        "code": "collision",
+        "detail": "all temporally admissible IK pairs collide",
+        "step": 56,
+        "artifact": "<PROJECT_ROOT>/results/pace-g2-127054052/trials/seed1-B-arx-w1/events.jsonl"
+      },
+      "actions": {
+        "windows": 56,
+        "requested": 56,
+        "executed": 56,
+        "sim_elapsed_s": 41.62000197684392
+      }
+    },
+    {
+      "episode_id": "seed1-B-arx-w4",
+      "outcome": "planning_failed",
+      "failure": {
+        "stage": "planning",
+        "code": "collision",
+        "detail": "all temporally admissible IK pairs collide",
+        "step": 0,
+        "artifact": "<PROJECT_ROOT>/results/pace-g2-127054052/trials/seed1-B-arx-w4/events.jsonl"
+      },
+      "actions": null
+    }
+  ],
+  "expert_reference_passed": true,
+  "trial_count": 8,
+  "successful_trials": 0,
+  "entry_status": "2026-11-06T10:23:03Z\tentry\tstart\n2026-11-06T10:23:03Z\trelease_manifest\tstart\n2026-11-06T10:23:05Z\tallocation\tstart\n2026-11-06T10:23:08Z\tgraphics\tstart\n2026-11-06T10:23:33Z\tlaunch_plan\tstart\n2026-11-06T10:23:33Z\tsupervisor\tstart\n2026-11-06T11:27:46Z\tsupervisor\tcomplete\n"
+}

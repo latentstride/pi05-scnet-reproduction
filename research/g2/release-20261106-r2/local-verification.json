@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "manifest_sha256": "dbcb8d40ca88074751229302a0b35797698fa85cd56f43dc1c1eff4de963c09c",
+  "frozen_production_sources": 26,
+  "entry_cases": 9,
+  "regression_tests": 149,
+  "synthetic_episodes": 13,
+  "gpu_used": false
+}

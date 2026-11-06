@@ -1,0 +1,61 @@
+{
+  "scope": "phase by measured holder; elapsed intervals assigned to next event; per-call times from event bounds",
+  "totals": {
+    "elapsed_s": 1200.0414290810004,
+    "planning_s": 165.51575019722804,
+    "control_s": 1000.1588896489702,
+    "plan_calls": 251,
+    "control_calls": 5506,
+    "outcome": "timeout"
+  },
+  "phases": {
+    "approach": {
+      "wall_s": 263.50462818006054,
+      "control_interval_s": 241.61447169585153,
+      "physics_steps": 7937,
+      "control_calls": 1588,
+      "planning_calls": 59,
+      "control_calls_with_timing": 1588,
+      "mean_control_wall_s": 0.15494343498633747,
+      "median_control_wall_s": 0.1552700239699334,
+      "sim_s": 31.748,
+      "sim_s_per_wall_s": 0.1204836522958741
+    },
+    "left_holding": {
+      "wall_s": 609.7823424800299,
+      "control_interval_s": 490.0484006921761,
+      "physics_steps": 12924,
+      "control_calls": 2585,
+      "planning_calls": 119,
+      "control_calls_with_timing": 2585,
+      "mean_control_wall_s": 0.1949129279286779,
+      "median_control_wall_s": 0.19040123093873262,
+      "sim_s": 51.696,
+      "sim_s_per_wall_s": 0.08477779102252869
+    },
+    "both_holding": {
+      "wall_s": 105.45478664385155,
+      "control_interval_s": 79.50351847847924,
+      "physics_steps": 1959,
+      "control_calls": 392,
+      "planning_calls": 26,
+      "control_calls_with_timing": 392,
+      "mean_control_wall_s": 0.2111281145551736,
+      "median_control_wall_s": 0.20781629416160285,
+      "sim_s": 7.836,
+      "sim_s_per_wall_s": 0.07430672660183957
+    },
+    "right_holding": {
+      "wall_s": 216.54210534412414,
+      "control_interval_s": 173.8665210902691,
+      "physics_steps": 4704,
+      "control_calls": 941,
+      "planning_calls": 47,
+      "control_calls_with_timing": 941,
+      "mean_control_wall_s": 0.18995403858172874,
+      "median_control_wall_s": 0.1898679407313466,
+      "sim_s": 18.816,
+      "sim_s_per_wall_s": 0.08689303158892821
+    }
+  }
+}

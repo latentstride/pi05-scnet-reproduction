@@ -1,0 +1,106 @@
+{
+  "aloha-agilex": {
+    "left": {
+      "urdf_sha256": "097c59fb19a7b482249c6097df8319586ea7cfd268c015516f103b289a7e761a",
+      "configured_closed_m": -0.01,
+      "configured_open_m": 0.045,
+      "urdf_finger_limits_m": [
+        [
+          0.0,
+          0.04765
+        ],
+        [
+          0.0,
+          0.04765
+        ]
+      ],
+      "rule": "intersect configured endpoint with each URDF prismatic interval",
+      "final_closed_m": [
+        0.0,
+        0.0
+      ],
+      "final_opened_m": [
+        0.045,
+        0.045
+      ],
+      "calibration_scope": "nominal simulation geometry; contact dynamics unverified"
+    },
+    "right": {
+      "urdf_sha256": "097c59fb19a7b482249c6097df8319586ea7cfd268c015516f103b289a7e761a",
+      "configured_closed_m": -0.01,
+      "configured_open_m": 0.045,
+      "urdf_finger_limits_m": [
+        [
+          0.0,
+          0.04765
+        ],
+        [
+          0.0,
+          0.04765
+        ]
+      ],
+      "rule": "intersect configured endpoint with each URDF prismatic interval",
+      "final_closed_m": [
+        0.0,
+        0.0
+      ],
+      "final_opened_m": [
+        0.045,
+        0.045
+      ],
+      "calibration_scope": "nominal simulation geometry; contact dynamics unverified"
+    }
+  },
+  "ARX-X5": {
+    "left": {
+      "urdf_sha256": "7aaa308a1a5b6a213d914db86ba09ddd6252f25cb498ac9a148bfa6c7166a423",
+      "configured_closed_m": -0.01,
+      "configured_open_m": 0.045,
+      "urdf_finger_limits_m": [
+        [
+          0.0,
+          0.044
+        ],
+        [
+          0.0,
+          0.044
+        ]
+      ],
+      "rule": "intersect configured endpoint with each URDF prismatic interval",
+      "final_closed_m": [
+        0.0,
+        0.0
+      ],
+      "final_opened_m": [
+        0.044,
+        0.044
+      ],
+      "calibration_scope": "nominal simulation geometry; contact dynamics unverified"
+    },
+    "right": {
+      "urdf_sha256": "7aaa308a1a5b6a213d914db86ba09ddd6252f25cb498ac9a148bfa6c7166a423",
+      "configured_closed_m": -0.01,
+      "configured_open_m": 0.045,
+      "urdf_finger_limits_m": [
+        [
+          0.0,
+          0.044
+        ],
+        [
+          0.0,
+          0.044
+        ]
+      ],
+      "rule": "intersect configured endpoint with each URDF prismatic interval",
+      "final_closed_m": [
+        0.0,
+        0.0
+      ],
+      "final_opened_m": [
+        0.044,
+        0.044
+      ],
+      "calibration_scope": "nominal simulation geometry; contact dynamics unverified"
+    }
+  }
+}

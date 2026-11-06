@@ -1,0 +1,22 @@
+{
+  "data_kind": "diagnostic",
+  "formal_score_eligible": false,
+  "status": "development_only",
+  "contact_controller_integrated": true,
+  "source_policy_grip_semantics": "measured_finger_positions; differs from upstream drive-target getter",
+  "final_force_limit_n": null,
+  "dynamic_lift_accepted": false,
+  "dynamic_handover_accepted": false,
+  "thresholds_calibrated": false,
+  "gpu_release_ready": false,
+  "gpu_submitted": false,
+  "dynamic_lift_fixture_evidence": {
+    "force_limit_n": 20.0,
+    "rise_m": 0.04747566105100787,
+    "checks_passed": true,
+    "outer_process_exit": 0,
+    "scope": "single-condition CPU fixture repeat"
+  },
+  "acceptance_scope": "short lift fixture only; scalar grip proxy rejects observed asymmetry; no full task",
+  "next_policy_query_compatible": false
+}

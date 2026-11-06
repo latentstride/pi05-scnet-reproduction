@@ -1,0 +1,150 @@
+{
+  "status": "draft_not_frozen",
+  "task": "handover_block",
+  "gpu_submission_authorized": false,
+  "checkpoint": {
+    "pace_revision": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+    "openpi_revision": "f4e52e6de4cc487a11585a3a7414d610b2883dae",
+    "train": false,
+    "finetune": false
+  },
+  "conditions": [
+    {
+      "id": "aloha-agilex-w1",
+      "embodiment": "aloha-agilex",
+      "window_actions": 1
+    },
+    {
+      "id": "aloha-agilex-w4",
+      "embodiment": "aloha-agilex",
+      "window_actions": 4
+    },
+    {
+      "id": "arx-x5-w1",
+      "embodiment": "arx-x5",
+      "window_actions": 1
+    },
+    {
+      "id": "arx-x5-w4",
+      "embodiment": "arx-x5",
+      "window_actions": 4
+    },
+    {
+      "id": "expert-arx",
+      "embodiment": "arx-x5",
+      "representation": "expert_qpos",
+      "original_sample_period_s": null,
+      "retiming_required": true,
+      "original_time_semantics": {
+        "kind": "source_reconstructed_variable_frame_clock",
+        "physics_dt_s": 0.004,
+        "ordinary_frame_dt_s": 0.06,
+        "boundary_duplicates": true,
+        "evidence": "research/g2/expert-metadata-20261106/audit.json"
+      },
+      "joint_representation": "Aloha recorded-target FK -> calibrated ARX IK; per-embodiment joint values are not copied",
+      "retiming_method": "quintic_stop_at_saved_expert_waypoints"
+    }
+  ],
+  "scene_seed_is_not_pair_id": true,
+  "pair_count": null,
+  "max_control_steps": null,
+  "episode_timeout_s": null,
+  "gpu_time_limit_s": null,
+  "success_predicate": "fixed PACE handover_block.check_success: xy each < .03m, z < .01m, right requested gripper > .8",
+  "required_before_freeze": [
+    "actual_matched_scene_snapshots",
+    "common_workspace_collision_check",
+    "contact_and_finger_calibration",
+    "sourced_motion_limits",
+    "real_control_backend_cpu_import_regression",
+    "curobo_actual_path_dimension_regression",
+    "formal_evaluation_schema_export",
+    "shared_model_stage_supervisor",
+    "node_graphics_compatibility_preflight",
+    "memory_and_duration_budget",
+    "release_manifest_sha256",
+    "single_slurm_entrypoint",
+    "production control handling of contact-limited arm drive targets near target tray"
+  ],
+  "g1_reference": {
+    "job_id": "126905534",
+    "elapsed_s": 1160,
+    "peak_gpu_mib": 14488,
+    "total_gpu_mib": 24564,
+    "additional_arx_planner_peak_mib": null,
+    "steady_query_s": [
+      3.18754331022501,
+      2.749115936458111
+    ]
+  },
+  "success_predicate_source_sha256": "5439712296d7e143d41f8e78b4ab86cd4fad7fb98f40f5f5abb067a462d17650",
+  "task_block_mass_kg": 0.01,
+  "task_mass_source": "Actor wrapper default, overrides .72kg primitive density; source manifest includes actor_utils.py",
+  "native_expert_reference": {
+    "completed_physical_episodes": 3,
+    "successes": 3,
+    "hold_successes": 3,
+    "gpu_used": false,
+    "acceptance": "research/g2/native-expert-acceptance-20261106/acceptance.json",
+    "scope": "no-render CPU expert reconstruction; not policy evaluation"
+  },
+  "arx_expert_reference_status": "bounded aperture/center force2N: original10g task/hold/continuous contact guard3/3 verified; original independent PD2N counterexample retained",
+  "arx_expert_reference_acceptance": "research/g2/arx-centered-20261106/acceptance.json",
+  "formal_pair_selection_note": "Do not exclude seed0 on post-hoc expert outcome; retain its control failure. Original-mass paired physical initial snapshots still require current-scene geometry validation.",
+  "contact_controller": {
+    "mode": "bounded_aperture_center_force_v1",
+    "profile": "research/g2/arx-centered-20261106/contact-profile.json",
+    "diagnostic_configs": "research/g2/contact-configs-centered-20261106",
+    "validated_block_mass_kg": 0.01,
+    "production_collision_gate_verified": false,
+    "formal_release_ready": false
+  },
+  "production_planning_gate": {
+    "scope": "CPU original 10 g scene with real ARX meshes, expert commands, and synthetic camera inputs",
+    "functional_checks_passed": true,
+    "full_expert_placement_passed": false,
+    "first_blocking_checkpoint_tick": 28160,
+    "blocker": "right link7 intersects target tray in measured and projected drive geometry",
+    "acceptance_report": "docs/pace_g2_production_gate.md",
+    "tray_counterexample": "research/g2/production-gate-tray-check-20261106/tray-check.json",
+    "acceptance": "research/g2/production-gate-20261106-r3/acceptance.json",
+    "functional_checks_passed_count": 16,
+    "live_physics_steps": 27524,
+    "live_handover_completed": true,
+    "live_outcome": "timeout",
+    "live_cpu_deadline_s": 1200
+  },
+  "local_placement_cpu": {
+    "status": "passed_from_reconstructed_post_handover_checkpoint",
+    "gate_baseline": "production-gate-20261106-r3",
+    "checkpoint_tick": 27524,
+    "repeats": 2,
+    "physics_steps": 1570,
+    "fcl_checks": 2417,
+    "blocked": 0,
+    "full_task_rerun": false,
+    "report": "docs/pace_g2_placement_suffix.md"
+  },
+  "cpu_reset_candidates": {
+    "count": 3,
+    "archived_10g_object_poses_match": true,
+    "real_mesh_reset_clear_both_embodiments": true,
+    "first_arx_observation_passes": 3,
+    "formal_pair_ids_assigned": false,
+    "fixture_manifest": "research/g2/pair-candidates-20261106/fixtures.json",
+    "cpu_probe": "research/g2/pair-candidates-20261106/pair-probe.json",
+    "diagnostic_startup_roster": "research/g2/pair-candidates-20261106/startup-configs/diagnostic-roster.json",
+    "budget_sensitivity": "research/g2/pair-candidates-20261106/budget-sensitivity.json"
+  },
+  "prepared_gpu_release": {
+    "status": "cpu_preflight_passed_awaiting_explicit_submission_authorization",
+    "release": "tools/g2-release-20261106-r1",
+    "manifest_sha256": "9be1a27d3300bf76f7fe712a22354ef70889b35b416743b2eb4e6e6d8059f9e9",
+    "run_lock_sha256": "49281639cfcc7375e8f37be556b8c0d9349aeab1ebc969d1d7ca5638be759d67",
+    "formal_trials": 8,
+    "pairs": 2,
+    "hard_limit_s": 18000,
+    "estimated_historical_cost_yuan": 18.0
+  }
+}

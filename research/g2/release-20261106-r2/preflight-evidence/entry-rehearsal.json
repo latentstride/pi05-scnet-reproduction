@@ -1,0 +1,59 @@
+{
+  "passed": true,
+  "gpu_used": false,
+  "fixtures": [
+    "Slurm controller",
+    "graphics",
+    "model",
+    "GPU telemetry",
+    "simulator"
+  ],
+  "tested_source": {
+    "pace_g2.slurm": "5e6b0d179b6e978540972402d01f554f40581acd59f869156c9e272733e81b95",
+    "run_lock.json": "49281639cfcc7375e8f37be556b8c0d9349aeab1ebc969d1d7ca5638be759d67",
+    "scripts/g2_job_admission.py": "c9e8e509723eb0b58556b6ce205690a5498cb54149a6ef3f176d505b72a54c60",
+    "scripts/g2_single_launch.py": "5ab48b0851048bfb79a0634b3c7da72d8d9e4a710edfafbbf7825ed0c9fb54c3",
+    "scripts/run-admitted-g2-plan.sh": "b9d8a5171832e8f1ab56a7fb8b74ac2e8f53f40cb005f46c31669eb4278e627b",
+    "scripts/g2_host_supervisor.py": "0290389d8b8ee1923e4ff0e538a6ebbac6b920fb16e2f32734ec00d4b8c0fa12",
+    "scripts/pace_g1_orchestrate.py": "07d2921434db7d389464daa7cb7ab442baa74a5491f56d65280f270531e68e3d",
+    "scripts/g2_single_stage.py": "73ecddec651c4ed60e81be3aaef900d286009195d205b9b8032838b767b2b9f1"
+  },
+  "checks": {
+    "happy": {
+      "exit_code": 0,
+      "last_stage": "supervisor"
+    },
+    "transient": {
+      "exit_code": 0,
+      "last_stage": "supervisor"
+    },
+    "manifest_mismatch": {
+      "exit_code": 1,
+      "last_stage": "release_manifest"
+    },
+    "receipt_mismatch": {
+      "exit_code": 1,
+      "last_stage": "allocation"
+    },
+    "wrong_node": {
+      "exit_code": 1,
+      "last_stage": "allocation"
+    },
+    "short_wall": {
+      "exit_code": 1,
+      "last_stage": "allocation"
+    },
+    "long_wall": {
+      "exit_code": 1,
+      "last_stage": "allocation"
+    },
+    "graphics_failure": {
+      "exit_code": 15,
+      "last_stage": "graphics"
+    },
+    "model_failure": {
+      "exit_code": 1,
+      "last_stage": "supervisor"
+    }
+  }
+}

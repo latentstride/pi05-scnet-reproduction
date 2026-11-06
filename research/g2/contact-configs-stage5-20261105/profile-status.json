@@ -1,0 +1,18 @@
+{
+  "data_kind": "diagnostic",
+  "formal_score_eligible": false,
+  "status": "cpu_engineered_fixture_passed",
+  "grip_state_mode": "independent_aperture_v1",
+  "grip_scalar_mapping_accepted": true,
+  "physics_native_profile_matched": true,
+  "cpu_engineered_handover_fixture_passed": true,
+  "checks_passed": 8,
+  "physics_steps": 3023,
+  "experimental_force_limit_n": 20.0,
+  "final_hardware_force_limit_n": null,
+  "full_policy_closed_loop_passed": false,
+  "formal_task_passed": false,
+  "gpu_release_ready": false,
+  "gpu_submitted": false,
+  "evidence": "research/g2/handover-stage5-20261105-r8/contact-acceptance.json"
+}

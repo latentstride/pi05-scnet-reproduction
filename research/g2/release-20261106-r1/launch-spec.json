@@ -1,0 +1,24 @@
+{
+  "supervisor_timeout_s": 17450,
+  "graphics_timeout_s": 300,
+  "stage_timeout_s": {
+    "dynamic": 1850,
+    "aloha": 2530,
+    "arx": 5230,
+    "ablation": 7160,
+    "expert": 560,
+    "statistics": 120
+  },
+  "trial_timeout_s": {
+    "A-native-w1": 1250,
+    "A-native-w4": 950,
+    "B-arx-w1": 2600,
+    "B-arx-w4": 2600
+  },
+  "approved_allocation_s": 18000,
+  "approved_node": "gnode39",
+  "model_cpu_receipt": "<PROJECT_ROOT>/results/pace-preflight-02ff7dd/model/startup.json",
+  "model_cpu_receipt_sha256": "3d719b524ec6848897b17e71b16411e2fa2c221143c342dd127e24cf73c14e1a",
+  "seed_selection": "first two prequalified archive episodes in source order, before policy evaluation",
+  "expert_scope": "one live seed-0 original 10g CPU reference with centered grip and continuous contact guard"
+}

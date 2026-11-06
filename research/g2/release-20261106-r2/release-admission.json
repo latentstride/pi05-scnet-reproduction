@@ -1,0 +1,15 @@
+{
+  "status": "ready",
+  "gpu_release_ready": true,
+  "submission_authorized": false,
+  "scope": "pre-submit CPU admission; actual renderer and model startup gate inside same allocation",
+  "run_lock_sha256": "49281639cfcc7375e8f37be556b8c0d9349aeab1ebc969d1d7ca5638be759d67",
+  "launch_spec_sha256": "fae249eee882cf55dc9300071ad76a4b064820a27199d5ab6a5eb627618aa1b6",
+  "approved_node": "gnode39",
+  "approved_allocation_s": 18000,
+  "preflight": {
+    "host": "8a1a2e7743610f4df1adcb543a14d65215b1af487affe44a254b6ef8c723bcb2",
+    "simulator": "3ca0ed70d56bd07edf24e0fd061cbf5140fd30a892b019798ee1ca198dd21f56",
+    "entry_rehearsal": "58dbebbd9557a135edd468df3edde4efe6e15a99ce43e9df059317977f3949b5"
+  }
+}

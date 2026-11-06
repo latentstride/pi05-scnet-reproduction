@@ -1,0 +1,26 @@
+{
+  "status": "draft",
+  "gpu_release_ready": false,
+  "formal_run_lock_frozen": false,
+  "submission_authorized": false,
+  "allocation_candidate": {
+    "partition": "ksagnormal01",
+    "node": "gnode39",
+    "gpus": 1,
+    "cpus": 4,
+    "memory_gib": 32,
+    "comparison_candidate_pairs": 2,
+    "comparison_candidate_policy_trials": 8,
+    "illustrative_hard_wall_minutes": 300,
+    "historical_cost_at_illustrative_limit_yuan": 18.0
+  },
+  "entrypoint": "scripts/pace_g2.slurm",
+  "stage_order": ["dynamic", "aloha", "arx", "ablation", "expert", "statistics"],
+  "outstanding": [
+    "Freeze episode roster and per-condition action/time caps",
+    "Bind audited model/server launch commands and checkpoint preflight receipt",
+    "Bind in-allocation graphics probe and ARX/Aloha startup checks",
+    "Reconcile per-stage ceilings, expert scope, node memory margin and historical cost estimate",
+    "Build and independently verify the immutable release on SCNet"
+  ]
+}

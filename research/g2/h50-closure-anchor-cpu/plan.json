@@ -1,0 +1,35 @@
+{
+  "scope": "one CPU study isolating continued closure and offline acquisition-reference timing on reproduced H50 seed1",
+  "validated_baseline_commit": "20bd33de40872dd6cc1a00a7f34d57286398ff5a",
+  "frozen_execution_commit": "0842504a79682ed57606fba3ea6cde47ed05e84f",
+  "historical_first_holder_tick": 5088,
+  "historical_stop_tick": 5139,
+  "physical_conditions": ["original", "hold-gripper"],
+  "physical_intervention": {
+    "start_tick": 5089,
+    "left_gripper_position_drive_m": [0.021925857290625572, 0.021925857290625572],
+    "left_gripper_velocity_drive_m_s": [0.0, 0.0],
+    "arm_and_right_gripper_before_historical_stop": "unchanged original schedule",
+    "mechanical_joint_lock": false,
+    "force_limit_change": false
+  },
+  "maintenance_if_original_guard_passes": {
+    "end_tick": 5388,
+    "duration_from_first_hold_s": 1.2,
+    "basis": "300 physical ticks, same duration as frozen source expert closure segment",
+    "after_tick_5139": "hold last reconstructed arm/right-gripper position drives with zero velocity drives; keep left frozen gripper drive",
+    "original_policy_continuation_claim": false,
+    "stop": "first unchanged candidate/contact/slip/tracking protection or horizon"
+  },
+  "offline_anchor_observers": {
+    "delays_from_first_bilateral_impulse_ticks": [0, 12, 25, 37],
+    "contact_tracker": "unchanged NativeReleaseTracker and ContactLimits",
+    "can_authorize_physics_or_suppress_original_stop": false,
+    "interpretation": "a later anchor passing 5mm/5deg does not by itself prove stable grasp"
+  },
+  "baseline_validation": "same preregistered rules as research/g2/seed1-dynamics-replay/plan.json",
+  "prefix_requirement": "all newly recorded states identical through tick 5088 across physical conditions",
+  "gpu_operations": 0,
+  "model_inference": false,
+  "renderer_created": false
+}

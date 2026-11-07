@@ -1,0 +1,34 @@
+{
+  "cpu_only": true,
+  "gpu_operations": 0,
+  "physical_replays_completed": 3,
+  "accepted_historical_replays": 1,
+  "H50_baseline_accepted": true,
+  "H50_counterfactual_accepted": true,
+  "K31_baseline_accepted": false,
+  "K31_counterfactual_run": false,
+  "public_contact_replay": {
+    "passed": true,
+    "scope": "unchanged left contact tracker replay from published impulses and matrices; no physics simulation",
+    "branches": {
+      "original": {
+        "first_holder_tick": 5088,
+        "slip_stop_tick": 5139
+      },
+      "fixed-wrist": {
+        "first_holder_tick": 5088,
+        "slip_stop_tick": 5132
+      }
+    }
+  },
+  "existing_cpu_tests_passed": 238,
+  "cpu_archive_sha256": "f613f960266429167727b56ba00d7e9275fa5f1b597e36766721c0d100c7e7bb",
+  "cpu_archive_size": 5369640,
+  "executed_replay_script_sha256": "31793ab3a6008a6d4945167cfe9bd566c775d1417acc32bff0eaa396c00bec1b",
+  "setup_failures_before_physical_stepping": [
+    "metadata-only asset directory missing meshes",
+    "missing original Actor wrapper mass assignment; corrected to source default 0.01 kg"
+  ],
+  "task_success_evaluated": false,
+  "full_task_success_claim": false
+}

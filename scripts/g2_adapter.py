@@ -36,9 +36,9 @@ def positive(value):
     return x
 
 
-def bounds(q, limits):
+def bounds(q, limits, **diagnostic):
     if np.any((q < limits[:, 0]) | (q > limits[:, 1])):
-        raise G2Error(Status.LIMIT, "arm joint outside limits", q=q.tolist(), limits=limits.tolist())
+        raise G2Error(Status.LIMIT, "arm joint outside limits", q=q.tolist(), limits=limits.tolist(), **diagnostic)
 
 
 @dataclass(frozen=True)
@@ -182,7 +182,7 @@ def read_snapshot(snapshot, arms):
             raise ValueError("unexpected articulation instance")
         offset = arm.offset()
         q_i = select_joints(sample.names, sample.qpos, arm.chain.names)
-        bounds(q_i, arm.chain.limits)
+        bounds(q_i, arm.chain.limits, geometry="actual")
         native = select_joints(sample.names, sample.qpos, arm.grip.names)
         fingers.append(native)
         frames.append(task_world @ checked_pose(sample.world_base))
@@ -365,7 +365,7 @@ class Adapter:
                 raise ValueError("invalid action prefix")
             q, fingers, frames, _ = read_snapshot(snapshot, self.arx)
             for arm, value in zip(self.arx, fingers):
-                bounds(value, np.asarray(arm.grip.limits))
+                bounds(value, np.asarray(arm.grip.limits), geometry="actual")
             log.update(collision_world="target_collision", measured_start_q=q.tolist(),
                        measured_start_fingers=fingers.tolist())
             grip_log = log["grippers"] = []
@@ -381,10 +381,11 @@ class Adapter:
                     entry = dict(row=i, side=side, raw=raw, rule=self.grip_rule, normalized=None, native=None)
                     grip_log.append(entry)
                     if raw != g and (self.grip_rule == "reject" or abs(raw - g) > self.grip_max_clip):
-                        raise G2Error(Status.LIMIT, "normalized grip outside allowed envelope", side=side, row=i)
+                        raise G2Error(Status.LIMIT, "normalized grip outside allowed envelope", side=side, row=i,
+                                      geometry="candidate")
                     goal_fingers = target_arm.grip.target(g)
                     entry.update(normalized=g, native=goal_fingers.tolist())
-                    bounds(values[:6], arm.chain.limits)
+                    bounds(values[:6], arm.chain.limits, geometry="candidate")
                     tools.append(frame @ arm.chain.fk(values[:6]) @ arm.offset())
                     native.append(goal_fingers)
                 request = dict(row=i, task_tools=np.asarray(tools).tolist(),

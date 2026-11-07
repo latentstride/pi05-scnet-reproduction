@@ -1,0 +1,75 @@
+{
+  "gpu_used": false,
+  "model_inference": false,
+  "renderer_created": false,
+  "records": [
+    {
+      "stage": "host-verify",
+      "exit_code": 0,
+      "wall_s": 1.0715521313250065
+    },
+    {
+      "stage": "model-entry-help",
+      "exit_code": 0,
+      "wall_s": 10.105165429413319
+    },
+    {
+      "stage": "sim-entry-help",
+      "exit_code": 0,
+      "wall_s": 11.103086832910776
+    },
+    {
+      "stage": "assets-aloha-agilex",
+      "exit_code": 0,
+      "wall_s": 3.2361368760466576
+    },
+    {
+      "stage": "assets-ARX-X5",
+      "exit_code": 0,
+      "wall_s": 1.0212134160101414
+    },
+    {
+      "stage": "post-entry-hash-verify",
+      "exit_code": 0,
+      "wall_s": 0.3752353936433792
+    }
+  ],
+  "checkpoint_receipt_and_28_file_metadata_verified": true,
+  "passed": true,
+  "status": "READY_FOR_REVIEW",
+  "gpu_jobs_submitted_modified_cancelled": 0,
+  "cpu_tests": 217,
+  "synthetic_episodes": 13,
+  "initial_failure": "macOS AppleDouble metadata extracted as extra ._* files on Linux; manifest coverage rejected before startup",
+  "fixes": [
+    "archive exactly the manifest members using Python tarfile",
+    "preserve PYTHONDONTWRITEBYTECODE inside clean model container"
+  ],
+  "regression_scenarios": [
+    "model exits with error before readiness",
+    "silent model startup timeout",
+    "model phase stalls before readiness",
+    "batch argv and missing environment validation",
+    "archive metadata exclusion",
+    "clean-container bytecode setting"
+  ],
+  "model_startup_cap_s": 960,
+  "graphics_cap_s": 295,
+  "frozen_trials_and_budget_equal_to_583bd6a": true,
+  "release": {
+    "directory": "candidate-release-startup-final-20261107",
+    "manifest_sha256": "fa951fc1e6e4aa72b2a0e258e0761a4bfc8b3de3826b4c511eb72db2b39f77c1",
+    "archive_sha256": "f118664ebab8a3a3a1515bc8b9e761916c97bbb56ab142bf9c366318db9f6d8f",
+    "replaces_archive_sha256": "cfee63250057eccd3b448e75420313c5c43094c8080dd49775e607414872b978"
+  },
+  "evidence_sha256": {
+    "tests": "811fe49c7e70f3b0c23dc8226a45f23e0689cae0a67be2397de4ff8d81019512",
+    "synthetic": "af416ab503efa9f6133501eb219bf86fad56f886d0c869409b3869e65f72e7e4",
+    "remote_stdout": "147f665d3d9f4289f56a32ffb06687bb9502d6348f2d125a465981e165230d15"
+  },
+  "remaining_dynamic_checks": [
+    "CUDA initialization",
+    "checkpoint restore and first inference",
+    "real renderer and closed-loop dynamics"
+  ]
+}

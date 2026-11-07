@@ -8,7 +8,7 @@ import numpy as np
 
 from g2_adapter import G2Error, SIDES, Stamp, Snapshot, read_snapshot
 from g2_capture import capture_snapshot, capture_arms
-from g2_contact import finger_force_limits
+from g2_contact import contact_failure_kind, finger_force_limits
 from g2_finger_force import MODE as CENTERED_FORCE,centered_finger_force
 from g2_kinematics import pose_error, rotation_vector
 from g2_motion import Trajectory
@@ -237,7 +237,7 @@ class ARXBackend:
                 joint.set_drive_velocity_target(0.)
             self._apply_forces(side,entity,grip)
 
-    def execute(self, plan, log, remaining):
+    def execute(self, plan, log, remaining, *, stop_on_success=True):
         self.replan_reason=None
         if not isinstance(plan, Trajectory) or self.last_capture is None:
             raise ValueError("ARXBackend only accepts synchronized G2 trajectories")
@@ -260,14 +260,14 @@ class ARXBackend:
         for side, arm in enumerate(self.arms):
             limits = arm.chain.limits
             if np.any((plan.q[:, side] < limits[:, 0]) | (plan.q[:, side] > limits[:, 1])):
-                raise G2Error(Status.LIMIT, "trajectory exceeds arm limits")
+                raise G2Error(Status.LIMIT, "trajectory exceeds arm limits", geometry="candidate")
             grip_limits = arm.grip.limits
             if np.any((plan.fingers[:, side] < grip_limits[:, 0]) | (plan.fingers[:, side] > grip_limits[:, 1])):
-                raise G2Error(Status.LIMIT, "trajectory exceeds finger limits")
+                raise G2Error(Status.LIMIT, "trajectory exceeds finger limits", geometry="candidate")
             if plan.predicted_fingers is not None and np.any(
                     (plan.predicted_fingers[:,side]<grip_limits[:,0]) |
                     (plan.predicted_fingers[:,side]>grip_limits[:,1])):
-                raise G2Error(Status.LIMIT,"predicted contact geometry exceeds finger limits")
+                raise G2Error(Status.LIMIT,"predicted contact geometry exceeds finger limits", geometry="candidate")
         ratio = plan.period_s / self.dt
         substeps = round(ratio)
         if substeps < 1 or abs(substeps - ratio) > 1e-6:
@@ -299,7 +299,8 @@ class ARXBackend:
                          sim_s=self.tick*self.dt,target_arm=plan.q[index],target_fingers=plan.fingers[index],
                          predicted_fingers=geometry,collisions=collisions,
                          control_call_count=0,physics_step_count=0))
-                raise G2Error(Status.COLLISION, "scene changed after planning", tick=index,collisions=collisions)
+                raise G2Error(Status.COLLISION, "scene changed after planning", geometry="candidate",
+                              tick=index,collisions=collisions)
             before_holders=set(self.collision.tracker.holders) if self.contact_drive is not None else set()
             if self.contact_drive is not None:
                 self.collision.tracker.authorize_opening(self._drive_fingers(),plan.fingers[index],self.arms,self.collision.giver)
@@ -323,19 +324,26 @@ class ARXBackend:
                 snapshot = Snapshot(stamp, capture_arms(self.env.robot, stamp), {}, self.world_task)
                 q, native, frames, actual = read_snapshot(snapshot, self.arms)
                 contact_state=None
+                contact_error=None
                 if self.contact_drive is not None:
                     try:
                         contact_state=self._contact_observation(snapshot)
                         self.collision.refresh()
                         if not self.collision.measured_clear(q,native):
                             raise G2Error(Status.COLLISION,"measured state has non-permitted contact",
-                                          collisions=self.collision.last_collisions)
+                                          geometry="actual", collisions=self.collision.last_collisions)
                     except G2Error as error:
                         log(dict(tick=self.tick,sim_s=self.tick*self.dt,kind="contact_failure",
                                  actual_arm=q,actual_fingers=native,target_fingers=plan.fingers[index],
                                  contact_state=self.collision.tracker.snapshot(),detail=str(error),
                                  diagnostic=error.diagnostic,control_call_count=1 if substep==0 else 0,physics_step_count=1))
-                        raise
+                        kind=contact_failure_kind(error,self.collision.tracker,stamp)
+                        if kind is None:
+                            raise
+                        for arm, fingers in zip(self.arms, native):
+                            arm.grip.measure(fingers)
+                        self.collision.verify_contact_stop(q,native)
+                        contact_error=error
                 desired = np.array([frame @ arm.chain.fk(target) @ arm.offset()
                                     for frame, arm, target in zip(frames, self.arms, plan.q[index])])
                 residual = [pose_error(goal, real) for goal, real in zip(desired, actual)]
@@ -348,10 +356,15 @@ class ARXBackend:
                          finger_drive_properties=self.contact_drive,
                          applied_finger_force_n=self.applied_finger_force.copy() if self.contact_drive and self.contact_drive.get('mode')==CENTERED_FORCE else None,
                          target_tools_task=desired, position_error_m=p, orientation_error_deg=a,
-                         control_call_count=1 if substep == 0 else 0, physics_step_count=1))
+                         control_call_count=1 if substep == 0 and contact_error is None else 0,
+                         physics_step_count=1 if contact_error is None else 0))
                 if max(p) > self.position_tol or max(a) > self.angle_tol:
                     raise G2Error(Status.BACKEND_ERROR, "measured TCP tracking exceeded acceptance bounds",
-                                  position_error_m=p, orientation_error_deg=a)
+                                  geometry="actual", position_error_m=p, orientation_error_deg=a)
+                if contact_error is not None:
+                    remaining()
+                    contact_error.diagnostic.update(terminal_checks_passed=True,contact_loss=kind,contact_tick=self.tick)
+                    raise contact_error
                 g0=native
                 if self.contact_drive is not None and set(self.collision.tracker.holders)!=before_holders:
                     self.replan_reason=dict(reason="measured_contact_transition",tick=self.tick,
@@ -360,7 +373,7 @@ class ARXBackend:
                     self.env.take_action_cnt+=1
                     self.completed+=1
                     return done+1
-                if self.success():
+                if stop_on_success and self.success():
                     # A successful partial waypoint still consumes its current policy action.
                     return done + 1
             if index in plan.waypoint_ticks:

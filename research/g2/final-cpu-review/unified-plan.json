@@ -1,0 +1,413 @@
+{
+  "schema_version": 2,
+  "status": "CPU_PLAN_ONLY_NOT_SUBMISSION_READY",
+  "submission_allowed": false,
+  "protected_existing_job": "127081074",
+  "existing_job_must_not_be_modified": true,
+  "allocations_planned": 1,
+  "model_server_starts": 1,
+  "trials": [
+    {
+      "episode_id": "remaining-seed1-native-w31",
+      "seed": 1,
+      "pair_id": "paired-10g-01",
+      "condition": "native-w31",
+      "embodiment": "aloha-agilex",
+      "window": 31,
+      "method": "native_guard",
+      "hard_timeout_s": 1200,
+      "max_policy_actions": 300,
+      "reset_fixture_sha256": "89ef6e94fcd26f9c2b121dbe85ce75f495efe0003ae95b4abfabd8a123be9aaf",
+      "prompt": "Pick up the red block with the left arm, hand it to the right arm, and place it on the target.",
+      "policy_rng_seed": 20261107,
+      "checkpoint_revision": "17ef545270cf26ed81169893b60f845f80ce6557",
+      "recovery_cap": 0,
+      "data_kind": "diagnostic",
+      "formal_score_eligible": false
+    },
+    {
+      "episode_id": "remaining-seed0-native-w31",
+      "seed": 0,
+      "pair_id": "paired-10g-00",
+      "condition": "native-w31",
+      "embodiment": "aloha-agilex",
+      "window": 31,
+      "method": "native_guard",
+      "hard_timeout_s": 1200,
+      "max_policy_actions": 300,
+      "reset_fixture_sha256": "77629daa82a44c540ab08e35e25ec7f124167a909ff5c9251280c2bbabae2a43",
+      "prompt": "Pick up the red block with the left arm, hand it to the right arm, and place it on the target.",
+      "policy_rng_seed": 20261106,
+      "checkpoint_revision": "17ef545270cf26ed81169893b60f845f80ce6557",
+      "recovery_cap": 0,
+      "data_kind": "diagnostic",
+      "formal_score_eligible": false
+    },
+    {
+      "episode_id": "remaining-seed0-arx-full-w4",
+      "seed": 0,
+      "pair_id": "paired-10g-00",
+      "condition": "arx-full-w4",
+      "embodiment": "ARX-X5",
+      "window": 4,
+      "method": "bounded_recovery_and_router",
+      "hard_timeout_s": 2600,
+      "max_policy_actions": 300,
+      "reset_fixture_sha256": "77629daa82a44c540ab08e35e25ec7f124167a909ff5c9251280c2bbabae2a43",
+      "prompt": "Pick up the red block with the left arm, hand it to the right arm, and place it on the target.",
+      "policy_rng_seed": 20261106,
+      "checkpoint_revision": "17ef545270cf26ed81169893b60f845f80ce6557",
+      "recovery_cap": 4,
+      "data_kind": "diagnostic",
+      "formal_score_eligible": false
+    },
+    {
+      "episode_id": "remaining-seed1-arx-full-w4",
+      "seed": 1,
+      "pair_id": "paired-10g-01",
+      "condition": "arx-full-w4",
+      "embodiment": "ARX-X5",
+      "window": 4,
+      "method": "bounded_recovery_and_router",
+      "hard_timeout_s": 2600,
+      "max_policy_actions": 300,
+      "reset_fixture_sha256": "89ef6e94fcd26f9c2b121dbe85ce75f495efe0003ae95b4abfabd8a123be9aaf",
+      "prompt": "Pick up the red block with the left arm, hand it to the right arm, and place it on the target.",
+      "policy_rng_seed": 20261107,
+      "checkpoint_revision": "17ef545270cf26ed81169893b60f845f80ce6557",
+      "recovery_cap": 4,
+      "data_kind": "diagnostic",
+      "formal_score_eligible": false
+    },
+    {
+      "episode_id": "remaining-seed1-native-w26",
+      "seed": 1,
+      "pair_id": "paired-10g-01",
+      "condition": "native-w26",
+      "embodiment": "aloha-agilex",
+      "window": 26,
+      "method": "native_guard",
+      "hard_timeout_s": 1200,
+      "max_policy_actions": 300,
+      "reset_fixture_sha256": "89ef6e94fcd26f9c2b121dbe85ce75f495efe0003ae95b4abfabd8a123be9aaf",
+      "prompt": "Pick up the red block with the left arm, hand it to the right arm, and place it on the target.",
+      "policy_rng_seed": 20261107,
+      "checkpoint_revision": "17ef545270cf26ed81169893b60f845f80ce6557",
+      "recovery_cap": 0,
+      "data_kind": "diagnostic",
+      "formal_score_eligible": false
+    },
+    {
+      "episode_id": "remaining-seed0-native-w26",
+      "seed": 0,
+      "pair_id": "paired-10g-00",
+      "condition": "native-w26",
+      "embodiment": "aloha-agilex",
+      "window": 26,
+      "method": "native_guard",
+      "hard_timeout_s": 1200,
+      "max_policy_actions": 300,
+      "reset_fixture_sha256": "77629daa82a44c540ab08e35e25ec7f124167a909ff5c9251280c2bbabae2a43",
+      "prompt": "Pick up the red block with the left arm, hand it to the right arm, and place it on the target.",
+      "policy_rng_seed": 20261106,
+      "checkpoint_revision": "17ef545270cf26ed81169893b60f845f80ce6557",
+      "recovery_cap": 0,
+      "data_kind": "diagnostic",
+      "formal_score_eligible": false
+    },
+    {
+      "episode_id": "remaining-seed0-native-w4",
+      "seed": 0,
+      "pair_id": "paired-10g-00",
+      "condition": "native-w4",
+      "embodiment": "aloha-agilex",
+      "window": 4,
+      "method": "native_guard",
+      "hard_timeout_s": 1200,
+      "max_policy_actions": 300,
+      "reset_fixture_sha256": "77629daa82a44c540ab08e35e25ec7f124167a909ff5c9251280c2bbabae2a43",
+      "prompt": "Pick up the red block with the left arm, hand it to the right arm, and place it on the target.",
+      "policy_rng_seed": 20261106,
+      "checkpoint_revision": "17ef545270cf26ed81169893b60f845f80ce6557",
+      "recovery_cap": 0,
+      "data_kind": "diagnostic",
+      "formal_score_eligible": false
+    },
+    {
+      "episode_id": "remaining-seed1-native-w4",
+      "seed": 1,
+      "pair_id": "paired-10g-01",
+      "condition": "native-w4",
+      "embodiment": "aloha-agilex",
+      "window": 4,
+      "method": "native_guard",
+      "hard_timeout_s": 1200,
+      "max_policy_actions": 300,
+      "reset_fixture_sha256": "89ef6e94fcd26f9c2b121dbe85ce75f495efe0003ae95b4abfabd8a123be9aaf",
+      "prompt": "Pick up the red block with the left arm, hand it to the right arm, and place it on the target.",
+      "policy_rng_seed": 20261107,
+      "checkpoint_revision": "17ef545270cf26ed81169893b60f845f80ce6557",
+      "recovery_cap": 0,
+      "data_kind": "diagnostic",
+      "formal_score_eligible": false
+    },
+    {
+      "episode_id": "remaining-seed1-arx-expert-repaired",
+      "seed": 1,
+      "pair_id": "paired-10g-01",
+      "condition": "arx-expert-repaired",
+      "embodiment": "ARX-X5",
+      "window": 1,
+      "method": "official_expert_plus_placement_suffix",
+      "hard_timeout_s": 2200,
+      "max_policy_actions": null,
+      "reset_fixture_sha256": "89ef6e94fcd26f9c2b121dbe85ce75f495efe0003ae95b4abfabd8a123be9aaf",
+      "prompt": "Pick up the red block with the left arm, hand it to the right arm, and place it on the target.",
+      "policy_rng_seed": 20261107,
+      "checkpoint_revision": "17ef545270cf26ed81169893b60f845f80ce6557",
+      "recovery_cap": 0,
+      "data_kind": "diagnostic",
+      "formal_score_eligible": false
+    },
+    {
+      "episode_id": "remaining-seed0-arx-expert-repaired",
+      "seed": 0,
+      "pair_id": "paired-10g-00",
+      "condition": "arx-expert-repaired",
+      "embodiment": "ARX-X5",
+      "window": 1,
+      "method": "official_expert_plus_placement_suffix",
+      "hard_timeout_s": 2200,
+      "max_policy_actions": null,
+      "reset_fixture_sha256": "77629daa82a44c540ab08e35e25ec7f124167a909ff5c9251280c2bbabae2a43",
+      "prompt": "Pick up the red block with the left arm, hand it to the right arm, and place it on the target.",
+      "policy_rng_seed": 20261106,
+      "checkpoint_revision": "17ef545270cf26ed81169893b60f845f80ce6557",
+      "recovery_cap": 0,
+      "data_kind": "diagnostic",
+      "formal_score_eligible": false
+    },
+    {
+      "episode_id": "remaining-seed0-arx-recovery-no-route-w4",
+      "seed": 0,
+      "pair_id": "paired-10g-00",
+      "condition": "arx-recovery-no-route-w4",
+      "embodiment": "ARX-X5",
+      "window": 4,
+      "method": "bounded_recovery",
+      "hard_timeout_s": 2600,
+      "max_policy_actions": 300,
+      "reset_fixture_sha256": "77629daa82a44c540ab08e35e25ec7f124167a909ff5c9251280c2bbabae2a43",
+      "prompt": "Pick up the red block with the left arm, hand it to the right arm, and place it on the target.",
+      "policy_rng_seed": 20261106,
+      "checkpoint_revision": "17ef545270cf26ed81169893b60f845f80ce6557",
+      "recovery_cap": 4,
+      "data_kind": "diagnostic",
+      "formal_score_eligible": false
+    },
+    {
+      "episode_id": "remaining-seed1-arx-recovery-no-route-w4",
+      "seed": 1,
+      "pair_id": "paired-10g-01",
+      "condition": "arx-recovery-no-route-w4",
+      "embodiment": "ARX-X5",
+      "window": 4,
+      "method": "bounded_recovery",
+      "hard_timeout_s": 2600,
+      "max_policy_actions": 300,
+      "reset_fixture_sha256": "89ef6e94fcd26f9c2b121dbe85ce75f495efe0003ae95b4abfabd8a123be9aaf",
+      "prompt": "Pick up the red block with the left arm, hand it to the right arm, and place it on the target.",
+      "policy_rng_seed": 20261107,
+      "checkpoint_revision": "17ef545270cf26ed81169893b60f845f80ce6557",
+      "recovery_cap": 4,
+      "data_kind": "diagnostic",
+      "formal_score_eligible": false
+    },
+    {
+      "episode_id": "remaining-seed1-arx-baseline-w4",
+      "seed": 1,
+      "pair_id": "paired-10g-01",
+      "condition": "arx-baseline-w4",
+      "embodiment": "ARX-X5",
+      "window": 4,
+      "method": "frozen_exact_mapping",
+      "hard_timeout_s": 2600,
+      "max_policy_actions": 300,
+      "reset_fixture_sha256": "89ef6e94fcd26f9c2b121dbe85ce75f495efe0003ae95b4abfabd8a123be9aaf",
+      "prompt": "Pick up the red block with the left arm, hand it to the right arm, and place it on the target.",
+      "policy_rng_seed": 20261107,
+      "checkpoint_revision": "17ef545270cf26ed81169893b60f845f80ce6557",
+      "recovery_cap": 0,
+      "data_kind": "diagnostic",
+      "formal_score_eligible": false
+    },
+    {
+      "episode_id": "remaining-seed0-arx-baseline-w4",
+      "seed": 0,
+      "pair_id": "paired-10g-00",
+      "condition": "arx-baseline-w4",
+      "embodiment": "ARX-X5",
+      "window": 4,
+      "method": "frozen_exact_mapping",
+      "hard_timeout_s": 2600,
+      "max_policy_actions": 300,
+      "reset_fixture_sha256": "77629daa82a44c540ab08e35e25ec7f124167a909ff5c9251280c2bbabae2a43",
+      "prompt": "Pick up the red block with the left arm, hand it to the right arm, and place it on the target.",
+      "policy_rng_seed": 20261106,
+      "checkpoint_revision": "17ef545270cf26ed81169893b60f845f80ce6557",
+      "recovery_cap": 0,
+      "data_kind": "diagnostic",
+      "formal_score_eligible": false
+    }
+  ],
+  "stages": [
+    "same-allocation startup",
+    "native short startup and long-window diagnostic",
+    "cross-embodiment policy",
+    "recovery/router/window ablations",
+    "official expert control",
+    "statistics"
+  ],
+  "native_gate": "independent native safety and input admission; no native task-success prerequisite for ARX diagnostics",
+  "arx_gate": "independent same-allocation real initial/asset/geometry, actual state and proxy input contract admission for each seed",
+  "transfer_claim_gate": "matched K4 native predicate plus measured physical sequence and matching ARX evidence; otherwise diagnostic only",
+  "early_stop": [
+    "native task failure retains ARX diagnostics if independently admitted; unavailable conditions are not_run",
+    "model/process/time failure or actual unsafe state: stop campaign and report all remaining trials as not_run",
+    "candidate rejection ends only that trial; later predeclared condition may continue",
+    "recovery requires a fresh measured mapping; at most four per trial, one per failed observation",
+    "contact/holding forbids generic RRT and partial-goal recovery"
+  ],
+  "budget": {
+    "trials_s": 27200,
+    "overhead": {
+      "graphics_s": 300,
+      "shared_model_and_dynamic_entry_s": 1900,
+      "statistics_s": 180,
+      "cleanup_s": 120
+    },
+    "bounded_execution_s": 29700,
+    "proposed_allocation_s": 34200,
+    "unassigned_margin_s": 4500,
+    "gpu_count": 1,
+    "cpu_count": 4,
+    "memory_gib": 32,
+    "node": "gnode39",
+    "reference_price_yuan_per_gpu_hour": 3.6,
+    "rate_status": "historical_reference_only_live_quote_required",
+    "proposed_fee_cap_yuan": 34.2,
+    "prior_project_budget_yuan": 20.0,
+    "approved_remaining_campaign_budget_yuan": 34.2,
+    "budget_expansion_approved": true,
+    "budget_authorization": "2026-11-06 user: 可以扩大预算; scoped to proposed CNY34.20 remaining campaign",
+    "submission_authorized": false,
+    "fits_prior_total_budget": false
+  },
+  "comparisons": [
+    [
+      "native-w4",
+      "arx-full-w4"
+    ],
+    [
+      "native-w26",
+      "native-w31"
+    ],
+    [
+      "native-w4",
+      "native-w31"
+    ],
+    [
+      "arx-baseline-w4",
+      "arx-recovery-no-route-w4"
+    ],
+    [
+      "arx-recovery-no-route-w4",
+      "arx-full-w4"
+    ]
+  ],
+  "statistics": {
+    "experimental_units": "two locked environmental seeds, never individual correlated frames/actions",
+    "outcomes": [
+      "task predicate success",
+      "full physical sequence evidence",
+      "safety rejection",
+      "infrastructure interruption",
+      "not_run"
+    ],
+    "metrics": [
+      "original vs executed command pose deviation",
+      "source roundtrip residual",
+      "joint/TCP tracking",
+      "collision pair/depth",
+      "planning and rerouting calls/CPU wall",
+      "recovery actions vs policy actions",
+      "physics steps and real-time ratio",
+      "model latency and GPU peak"
+    ],
+    "scoring": "original task predicate, safety thresholds and schema unchanged; descriptive paired rows, no significance claim with n=2"
+  },
+  "existing_g2e_results": "external exploratory timing evidence only; do not silently pool separate allocation with matched primary native controls",
+  "unresolved_release_requirements": [
+    "dynamic recovery/placement acceptance beyond archived geometry",
+    "final end-to-end real-scene persistence harness and frozen model/runtime lock for new conditions",
+    "expanded CNY34.20 budget recorded; resource submission remains explicitly forbidden in this task"
+  ],
+  "trial_bindings": {
+    "remaining-seed1-native-w31": {
+      "status": "CPU_CONFIG_VALIDATED",
+      "config_sha256": "414a4d61a030d31277f413839534730f909f82ea01919934bbe8988b46904ed2"
+    },
+    "remaining-seed0-native-w31": {
+      "status": "CPU_CONFIG_VALIDATED",
+      "config_sha256": "8b04f1a1824bba19eb50b4853800f64bcb2a861ac9ecb2c5d11ade846ab6c677"
+    },
+    "remaining-seed0-arx-full-w4": {
+      "status": "CPU_CONFIG_VALIDATED",
+      "config_sha256": "39107f257f92502f0111698d565f1656bee8f87b62bc1c1aa8a3164307c632f4"
+    },
+    "remaining-seed1-arx-full-w4": {
+      "status": "CPU_CONFIG_VALIDATED",
+      "config_sha256": "02e18008f82b10bc678f15e51a0e54c6a5f35de0579c6a71104508b2b5c61163"
+    },
+    "remaining-seed1-native-w26": {
+      "status": "CPU_CONFIG_VALIDATED",
+      "config_sha256": "1e8bdaa4b34d4e4c9fb307b812674bdad09e832075127231f6f70e9fb3956a27"
+    },
+    "remaining-seed0-native-w26": {
+      "status": "CPU_CONFIG_VALIDATED",
+      "config_sha256": "1e2523d75ca4e0291a72347b878f270193a4046b69f051965445e19f3a55c616"
+    },
+    "remaining-seed0-native-w4": {
+      "status": "CPU_CONFIG_VALIDATED",
+      "config_sha256": "fcb67798cf4f599ddbabe90674066ee66e2e234ee78b2eda4c8c37f690062c38"
+    },
+    "remaining-seed1-native-w4": {
+      "status": "CPU_CONFIG_VALIDATED",
+      "config_sha256": "d375fbfefcff45cf79d275381e19189b2d9d27329707ba1c3618f733e17a053d"
+    },
+    "remaining-seed1-arx-expert-repaired": {
+      "status": "NOT_VERIFIED",
+      "reason": "live expert phase transition not admitted"
+    },
+    "remaining-seed0-arx-expert-repaired": {
+      "status": "NOT_VERIFIED",
+      "reason": "live expert phase transition not admitted"
+    },
+    "remaining-seed0-arx-recovery-no-route-w4": {
+      "status": "CPU_CONFIG_VALIDATED",
+      "config_sha256": "d554485d5384158538a6739072879e967c8d1f9d7bb1de22cc0d5194972908af"
+    },
+    "remaining-seed1-arx-recovery-no-route-w4": {
+      "status": "CPU_CONFIG_VALIDATED",
+      "config_sha256": "aae7437e67f966eec20a42c6202a83cffbae2a11a4423975d1229406e0edd393"
+    },
+    "remaining-seed1-arx-baseline-w4": {
+      "status": "CPU_CONFIG_VALIDATED",
+      "config_sha256": "d16498f426fee0f98d490a696ecfdb6d1102ebc7daac23b6d62a65e5b9c349bd"
+    },
+    "remaining-seed0-arx-baseline-w4": {
+      "status": "CPU_CONFIG_VALIDATED",
+      "config_sha256": "c642444cfe8f69a1ed031b0afcae702854e8dd10909e2d25b997c61100f8c858"
+    }
+  }
+}

@@ -36,6 +36,11 @@ def verify_runtime(pace_root, audit):
 
 
 def validate_config(config):
+    semantics = config.get("native_release_semantics")
+    if semantics is not None and (semantics != "physical_aperture_v1"
+            or config["contact_mode"] != CONTACT_MODE_NATIVE):
+        raise ValueError("native release semantics require guarded Aloha")
+
     if config["data_kind"] != "diagnostic" or config["task"] != TASK:
         raise ValueError("real scene entry currently accepts diagnostic handover_block only")
     if config["contact_mode"]==CONTACT_MODE_NATIVE:
@@ -62,16 +67,17 @@ def validate_config(config):
             raise ValueError("invalid episode budget")
 
 
-def inspect_assets(config, assets_root, asset_audit):
-    for robot in ("aloha-agilex","ARX-X5"):
+def inspect_assets(config, assets_root, asset_audit, *, native_only=False):
+    robots = ("aloha-agilex",) if native_only else ("aloha-agilex", "ARX-X5")
+    for robot in robots:
         load_arms(assets_root,asset_audit,robot,config["calibration"][robot])
     limits=config["control_limits"]
     QuinticMotion(config["control_period_s"],limits["arm_velocity_rad_s"],limits["arm_acceleration_rad_s2"],
                   limits["finger_velocity_m_s"],limits["finger_acceleration_m_s2"],
                   config["collision_joint_step_rad"],config["collision_finger_step_m"],
                   limits["source"],"preflight-only",max_ticks=config["max_plan_ticks"])
-    profile=audited_arx_self_profile(assets_root)
-    return {"calibration_assets_verified":True,"self_collision_policy_sha256":profile["sha256"],"contact_dynamics_verified":False}
+    profile = None if native_only else audited_arx_self_profile(assets_root)["sha256"]
+    return {"calibration_assets_verified":True,"self_collision_policy_sha256":profile,"contact_dynamics_verified":False}
 
 
 @contextmanager
@@ -92,10 +98,11 @@ class RuntimeSession:
         self.factory, self.context, self.backend, self.adapter = factory, None, None, None
 
     def reset(self, spec):
-        if self.context is not None:
+        if self.backend is not None:
             raise RuntimeError("one reset/session per episode")
-        self.context = self.factory(spec)
-        self.backend, self.adapter = self.context.__enter__()
+        context = self.factory(spec)
+        self.backend, self.adapter = context.__enter__()
+        self.context = context
         return self.backend.reset(spec)
 
     @property
@@ -124,11 +131,13 @@ class RuntimeSession:
             self.backend.hold()
 
     def close(self, output):
+        context, self.context = self.context, None
+        if context is None:
+            return
         try:
-            return self.backend.close(output) if self.backend is not None else None
+            return self.backend.close(output)
         finally:
-            if self.context is not None:
-                self.context.__exit__(None, None, None)
+            context.__exit__(None, None, None)
 
 
 class SessionAdapter:
@@ -200,14 +209,16 @@ def real_scene(config, spec, pace_root, assets_root, asset_audit, source_audit, 
             if embodiment == "aloha-agilex":
                 guard = None
                 if config.get("execution_protocol") == PROTOCOL:
-                    from g2e_native_guard import NativeGuard
+                    from g2e_native_guard import NativeGuard, NativeReleaseTracker
                     from g2_contact import ContactLimits
                     from mplib.sapien_utils.conversion import convert_object_name
                     entities=[env.robot.left_entity,env.robot.right_entity]
                     collision=JointCollisionWorld.from_scene(env.scene,entities,
                         [a.chain.names for a in arms],[a.grip.names for a in arms])
                     block=getattr(env.box,"actor",env.box)
-                    tracker=ContactTracker.from_scene(env.robot,block,arms,ContactLimits())
+                    tracker_type = (NativeReleaseTracker if config.get("native_release_semantics")
+                                    else ContactTracker)
+                    tracker=tracker_type.from_scene(env.robot,block,arms,ContactLimits())
                     actors=env.scene.get_all_actors()
                     collision=ContactWorld(collision,tracker,arms,
                         [np.linalg.inv(world_task)@sample.world_base for sample in actual],
@@ -218,6 +229,7 @@ def real_scene(config, spec, pace_root, assets_root, asset_audit, source_audit, 
                     guard=NativeGuard(collision,arms,config["collision_joint_step_rad"],
                                       config["tracking_position_limit_m"],config["tracking_angle_limit_deg"])
                     setup.update(execution_protocol=PROTOCOL,contact_limits_id=tracker.limits.profile_id,
+                                 native_release_semantics=config.get("native_release_semantics", "legacy_drive_delta"),
                                  native_gripper_scale_m={side:getattr(env.robot,side+"_gripper_scale") for side in SIDES})
                     save_json(output/"setup.json",setup)
                 backend = NativeBackend(env, arms, world_task, initial, video,guard=guard)
@@ -300,3 +312,4 @@ def real_scene(config, spec, pace_root, assets_root, asset_audit, source_audit, 
                     env.close_env(clear_cache=True)
                 except Exception as error:
                     save_json(output / "setup-cleanup-error.json", {"error":repr(error)})
+                    raise

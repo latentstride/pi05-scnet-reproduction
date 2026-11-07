@@ -33,7 +33,8 @@ def configure(base, row):
         formal_release_ready=False,
     )
     if row["embodiment"] == "aloha-agilex":
-        config.update(execution_protocol=PROTOCOL, contact_mode=CONTACT_MODE_NATIVE)
+        config.update(execution_protocol=PROTOCOL, contact_mode=CONTACT_MODE_NATIVE,
+                      native_release_semantics="physical_aperture_v1")
     elif "execution_protocol" in config:
         raise ValueError("native protocol cannot leak into ARX")
     validate_config(config)

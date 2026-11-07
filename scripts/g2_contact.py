@@ -8,6 +8,19 @@ from g2_adapter import G2Error, SIDES, positive
 from g2_kinematics import pose_error
 from robotwin_control_geometry import Status, checked_pose, finite_array, inverse_pose
 
+CONTACT_LOSSES = {
+    "object slipped relative to confirmed holder": "slip",
+    "confirmed holder lost bilateral contact": "bilateral_loss",
+}
+
+def contact_failure_kind(error,tracker,stamp):
+    """Recognize a tracker rejection only at its current measured stamp."""
+    if (error.status == Status.BACKEND_ERROR and tracker.last_stamp == stamp
+            and error.diagnostic.get("side") in SIDES
+            and isinstance(error.diagnostic.get("contact_state"),dict)):
+        return CONTACT_LOSSES.get(str(error))
+    return None
+
 
 @dataclass(frozen=True)
 class ContactLimits:
@@ -268,7 +281,7 @@ class ContactWorld:
             self.base.world.add_object(FCLObject(self.block_name,original_pose,original.shapes,original.shape_poses))
 
     def held_environment_collisions(self):
-        if not self.tracker.carrying:return []
+        if not self.tracker.carrying and not getattr(self,"_check_unheld",False):return []
         from mplib.collision_detection.fcl import collide
         from mplib.collision_detection import WorldCollisionResult
         block=self.base.world.get_object(self.block_name)
@@ -292,13 +305,23 @@ class ContactWorld:
             self.failure=dict(reason=str(error),**error.diagnostic)
             return False
 
-    def measured_clear(self,q,fingers):
+    def measured_clear(self,q,fingers,*,check_unheld=False):
         previous=getattr(self,"_measured",False)
+        previous_unheld=getattr(self,"_check_unheld",False)
         self._measured=True
+        self._check_unheld=check_unheld
         try:
             return self(q,fingers)
         finally:
             self._measured=previous
+            self._check_unheld=previous_unheld
+
+    def verify_contact_stop(self,q,fingers):
+        """Audit the stopped state, including the block even after it loses its holder."""
+        self.refresh()
+        if not self.measured_clear(q,fingers,check_unheld=True):
+            raise G2Error(Status.COLLISION,"measured contact-stop geometry blocked",
+                          geometry="actual",collisions=self.last_collisions)
 
     def finger_depth(self,q,fingers,side,finger):
         from mplib.collision_detection.fcl import collide
@@ -361,14 +384,14 @@ class ContactWorld:
                     if index==0:
                         if depth>self.limits.penetration_m:
                             raise G2Error(Status.COLLISION,"predicted finger start intersects task block",
-                                          side=SIDES[side],finger=finger, depth_m=depth,
+                                          geometry="candidate", side=SIDES[side],finger=finger, depth_m=depth,
                                           allowed_penetration_m=self.limits.penetration_m,
                                           start_native_m=opened, requested_native_m=desired)
                         threshold=max(threshold,depth)
                     if depth>threshold+1e-12:
                         if index==0:
                             raise G2Error(Status.COLLISION,"predicted finger start intersects task block",
-                                          side=SIDES[side],finger=finger, depth_m=depth,
+                                          geometry="candidate", side=SIDES[side],finger=finger, depth_m=depth,
                                           allowed_penetration_m=self.limits.penetration_m,
                                           start_native_m=opened, requested_native_m=desired)
                         lo,hi=previous_alpha,alpha

@@ -36,8 +36,31 @@ def save_array(path, writer, *args, **kwargs):
 def accepted(result, event):
     event(dict(status=result.status.value, detail=result.detail, **result.diagnostic))
     if not result.ok:
-        raise G2Error(result.status, result.detail)
+        raise G2Error(result.status, result.detail, **result.diagnostic)
     return result.payload
+
+
+def finish_episode(backend, output, record, event):
+    """Attempt all cleanup before emitting evidence, including on failed hold."""
+    failures = []
+    try:
+        if not record["success"]:
+            try:
+                backend.hold()
+            except (Exception, KeyboardInterrupt, SystemExit) as error:
+                failures.append(dict(kind="hold_failed", detail=repr(error)))
+    finally:
+        try:
+            record["video"] = backend.close(output)
+        except (Exception, KeyboardInterrupt, SystemExit) as error:
+            failures.append(dict(kind="close_failed", detail=repr(error)))
+    if failures:
+        record.update(success=False, outcome="environment_error", cleanup_failures=failures)
+        if not record.get("failure"):
+            first = failures[0]
+            record["failure"] = dict(phase="termination", code=first["kind"], detail=first["detail"])
+        for failure in failures:
+            event(failure)
 
 
 def native_prefix(chunk, window, limits, max_grip_clip, event):
@@ -50,7 +73,8 @@ def native_prefix(chunk, window, limits, max_grip_clip, event):
             event(dict(kind="gripper_target", row=i, side=side, raw=raw,
                        rule="bounded_clip", normalized=final if allowed else None))
             if not allowed or np.any((arm[:6] < lim[:, 0]) | (arm[:6] > lim[:, 1])):
-                raise G2Error(Status.LIMIT, "native Aloha target outside configured bounds")
+                raise G2Error(Status.LIMIT, "native Aloha target outside configured bounds",
+                              geometry="candidate")
             arm[6] = final
     return targets
 
@@ -263,20 +287,10 @@ def run_episode(spec, backend, policy, output, *, adapter=None, expert=None):
                 outcome = {"reset": "environment_error", "inference": "policy_failed",
                            "control": "control_error", "observation": "adapter_error",
                            "planning": "planning_failed"}[phase]
-            record.update(outcome=outcome, failure=dict(phase=phase, code=code, detail=str(exc) or code))
+            record.update(outcome=outcome, failure=dict(phase=phase, code=code, detail=str(exc) or code,
+                                                       diagnostic=getattr(exc, "diagnostic", {})))
         finally:
-            if not record["success"]:
-                try:
-                    backend.hold()
-                except Exception as exc:
-                    event(dict(kind="hold_failed", detail=repr(exc)))
-            try:
-                record["video"] = backend.close(output)
-            except Exception as exc:
-                event(dict(kind="close_failed", detail=repr(exc)))
-                if record["success"]:
-                    record.update(success=False, outcome="environment_error",
-                                  failure=dict(phase="termination", code="close_failed", detail=repr(exc)))
+            finish_episode(backend, output, record, event)
             record["elapsed_s"] = monotonic() - t0
             save_json(output / "result.json", record)
     return record

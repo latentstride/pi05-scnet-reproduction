@@ -1,0 +1,71 @@
+{
+  "job_id": "127139405",
+  "submitted_at": "2026-11-07T11:40:09.646927+08:00",
+  "state_at_submission": "PENDING",
+  "submitted_jobs": 1,
+  "previous_job_id": "127117141",
+  "previous_failure_and_fix": "admission-budget-verification-20261107.json",
+  "release_commit": "7e2e394c6d165c3c8c2712329703edd6f9092ab3",
+  "archive_sha256": "310a30164996a98e6de164fbacec68f3a1a8da038c0f1b7ff3edd3fc20643478",
+  "manifest_sha256": "9ff4c785f8c8dcd28c6e12fe63ed7438b2f0366a2456343142a7c16a7bc15f76",
+  "cluster_cpu_preflight": {
+    "passed": true,
+    "verified_manifest_files": 75,
+    "frozen_trials": 14,
+    "checkpoint_file_metadata_verified": 28
+  },
+  "resources": {
+    "gpu_count": 1,
+    "gpu_type": "RTX4090",
+    "cpu_count": 4,
+    "memory_gib": 32,
+    "wall_s": 34200,
+    "node": "gnode39",
+    "partition": "ksagnormal01"
+  },
+  "wall_time_limit": "09:30:00",
+  "requeue": 0,
+  "price_yuan_per_gpu_hour": "3.60",
+  "max_cost_yuan": "34.20",
+  "approval_window_days": 7,
+  "quote": {
+    "source": "SCNet",
+    "observed_at": "2026-11-07T03:38:56.708260+00:00",
+    "verification": "SCNet product page freshly opened while signed in before the authorized rerun",
+    "url": "https://www.scnet.cn/ui/mall/detail/goods?type=base&goodsId=821418588551249920",
+    "goods_id": "821418588551249920",
+    "region": "昆山",
+    "delivery": "shared cluster queue",
+    "hardware": "NVIDIA 4090 24GB PCIe; 2*AMD 7543 32C; 8*4090",
+    "displayed_yuan_per_gpu_hour": "3.60",
+    "crossed_out_price": "7.00",
+    "selected_partition": "ksagnormal01",
+    "selected_node": "gnode39",
+    "gpu_count": 1,
+    "wall_cap_s": 34200,
+    "max_cost_yuan": "34.20",
+    "scope": "Displayed current catalog price; no vendor-guaranteed expiration is published"
+  },
+  "slurm_submission_readback": {
+    "JobId": "127139405",
+    "JobState": "PENDING",
+    "Reason": "None",
+    "JobName": "cpf-pace-g2",
+    "Partition": "ksagnormal01",
+    "ReqNodeList": "gnode39",
+    "NumCPUs": "4",
+    "MinMemoryNode": "32G",
+    "TimeLimit": "09:30:00",
+    "TimeMin": "09:30:00",
+    "Requeue": "0",
+    "TresPerNode": "gres:gpu:1",
+    "TRES": "cpu=4,mem=32G,node=1,billing=4,gres/gpu=1",
+    "AllocTRES": null
+  },
+  "trial_plan": {
+    "aloha": 6,
+    "arx_policy": 6,
+    "arx_expert": 2,
+    "allocations": 1
+  }
+}

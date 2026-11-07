@@ -1,0 +1,427 @@
+{
+  "job_id": "127139405",
+  "previous_job_id": "127117141",
+  "release_commit": "7e2e394c6d165c3c8c2712329703edd6f9092ab3",
+  "submission_record": "submission-127139405.json",
+  "slurm": {
+    "state": "FAILED",
+    "exit_code": "1:0",
+    "elapsed": "00:41:45",
+    "start": "2026-11-07T12:03:50+08:00",
+    "end": "2026-11-07T12:45:35+08:00",
+    "node": "gnode39"
+  },
+  "outcome": {
+    "planned_trials": 14,
+    "completed_diagnostic_trials": 4,
+    "successful_task_predicates": 0,
+    "not_run": 10,
+    "formal_score_eligible": false,
+    "transfer_claim_eligible": false
+  },
+  "startup": {
+    "admitted": 4,
+    "probes": {
+      "remaining-seed1-native-w31": {
+        "status": "admitted",
+        "allowance_s": 1534.822035787627,
+        "wall_s": 363.94190936535597,
+        "episode_id": "remaining-seed1-native-w31",
+        "category": "admitted",
+        "physical_admitted": true,
+        "fresh_reset_verified": true,
+        "elapsed_s": 331.04874190688133
+      },
+      "remaining-seed0-native-w31": {
+        "status": "admitted",
+        "allowance_s": 1925.1030929709475,
+        "wall_s": 308.9154151454568,
+        "episode_id": "remaining-seed0-native-w31",
+        "category": "admitted",
+        "physical_admitted": true,
+        "fresh_reset_verified": true,
+        "elapsed_s": 272.93513621389866
+      },
+      "remaining-seed0-arx-full-w4": {
+        "status": "admitted",
+        "allowance_s": 2733.165207542479,
+        "wall_s": 150.51801647245884,
+        "episode_id": "remaining-seed0-arx-full-w4",
+        "category": "admitted",
+        "physical_admitted": true,
+        "fresh_reset_verified": true,
+        "elapsed_s": 123.68382669240236
+      },
+      "remaining-seed1-arx-full-w4": {
+        "status": "admitted",
+        "allowance_s": 5315.766692653298,
+        "wall_s": 152.98396065086126,
+        "episode_id": "remaining-seed1-arx-full-w4",
+        "category": "admitted",
+        "physical_admitted": true,
+        "fresh_reset_verified": true,
+        "elapsed_s": 123.30130874365568
+      }
+    },
+    "gpu_peak_mib": 14394
+  },
+  "stop_reason": "infrastructure_failure",
+  "stop_trigger": {
+    "episode_id": "remaining-seed1-arx-full-w4",
+    "outcome": "adapter_error",
+    "failure": {
+      "phase": "observation",
+      "code": "plan_failed",
+      "detail": "trial recovery cap exhausted",
+      "diagnostic": {}
+    },
+    "policy_actions": 156,
+    "recovery_actions": 4
+  },
+  "code_analysis": "Recovery cap exhaustion raises plan_failed during observation, producing adapter_error without the source_collision diagnostic required for trial-local classification. The supervisor treats the resulting infrastructure_failure as a campaign stop.",
+  "evidence_sources": [
+    "sacct job and batch records",
+    "supervisor/campaign.json",
+    "diagnostic-statistics.json",
+    "supervisor/probe-remaining-seed0-native-w31.log"
+  ],
+  "trials": [
+    {
+      "episode_id": "remaining-seed1-native-w31",
+      "status": "completed",
+      "reason": null,
+      "category": "controlled_contact_stop",
+      "outcome": "control_error",
+      "task_predicate": false,
+      "failure": {
+        "phase": "control",
+        "code": "backend_error",
+        "detail": "object slipped relative to confirmed holder"
+      },
+      "wall_s": 340.8073863387108,
+      "planning_s": 0.04072137922048569,
+      "inference_s": 6.399563767015934,
+      "control_s": 64.26824364066124,
+      "policy_actions": 57,
+      "recovery_actions": null,
+      "evidence": {
+        "physics_steps": 4777,
+        "control_calls": 4777,
+        "last_sim_s": 19.1080009075813,
+        "peak_tcp_position_error_m": 0.0030846627785842758,
+        "peak_tcp_orientation_error_deg": 0.5064244707186646,
+        "first_collision_records": [],
+        "measured_holder_transitions": [
+          {
+            "tick": 1,
+            "holders": []
+          },
+          {
+            "tick": 4568,
+            "holders": [
+              "left"
+            ]
+          }
+        ],
+        "sim_seconds_per_wall_second": 0.056066862613684224
+      }
+    },
+    {
+      "episode_id": "remaining-seed0-native-w31",
+      "status": "completed",
+      "reason": null,
+      "category": "diagnostic_complete",
+      "outcome": "control_error",
+      "task_predicate": false,
+      "failure": {
+        "phase": "control",
+        "code": "collision",
+        "detail": "predicted finger start intersects task block"
+      },
+      "wall_s": 300.1538431122899,
+      "planning_s": 0.01428939402103424,
+      "inference_s": 2.766673870384693,
+      "control_s": 41.1053898409009,
+      "policy_actions": 26,
+      "recovery_actions": null,
+      "evidence": {
+        "physics_steps": 3528,
+        "control_calls": 3528,
+        "last_sim_s": 14.112000670284033,
+        "peak_tcp_position_error_m": 0.0039626444563090535,
+        "peak_tcp_orientation_error_deg": 0.31462556990327617,
+        "first_collision_records": [],
+        "measured_holder_transitions": [
+          {
+            "tick": 1,
+            "holders": []
+          }
+        ],
+        "sim_seconds_per_wall_second": 0.04701589199710704
+      }
+    },
+    {
+      "episode_id": "remaining-seed0-arx-full-w4",
+      "status": "completed",
+      "reason": null,
+      "category": "diagnostic_complete",
+      "outcome": "planning_failed",
+      "task_predicate": false,
+      "failure": {
+        "phase": "planning",
+        "code": "collision",
+        "detail": "no safe bounded progress endpoint and full path",
+        "diagnostic": {
+          "attempts": [
+            {
+              "fraction": 1.0,
+              "status": "collision",
+              "detail": "bounded exact-pose refinements exhausted"
+            },
+            {
+              "fraction": 0.75,
+              "status": "collision",
+              "detail": "bounded exact-pose refinements exhausted"
+            },
+            {
+              "fraction": 0.5,
+              "status": "collision",
+              "detail": "bounded exact-pose refinements exhausted"
+            },
+            {
+              "fraction": 0.25,
+              "status": "collision",
+              "detail": "bounded exact-pose refinements exhausted"
+            },
+            {
+              "fraction": 0.125,
+              "status": "command_change_bound",
+              "detail": "changed endpoint exceeds 12mm/1deg envelope"
+            },
+            {
+              "fraction": 0.0625,
+              "status": "command_change_bound",
+              "detail": "changed endpoint exceeds 12mm/1deg envelope"
+            }
+          ]
+        }
+      },
+      "wall_s": 163.31884326785803,
+      "planning_s": 3.5485320910811424,
+      "inference_s": 8.508386619389057,
+      "control_s": 26.847031891345978,
+      "policy_actions": 25,
+      "recovery_actions": 0,
+      "evidence": {
+        "physics_steps": 4840,
+        "control_calls": 968,
+        "last_sim_s": 19.360000919550657,
+        "peak_tcp_position_error_m": 0.0037344955022918158,
+        "peak_tcp_orientation_error_deg": 0.3758457263800624,
+        "first_collision_records": [],
+        "measured_holder_transitions": [
+          {
+            "tick": 1,
+            "holders": []
+          }
+        ],
+        "sim_seconds_per_wall_second": 0.11854113421436903
+      }
+    },
+    {
+      "episode_id": "remaining-seed1-arx-full-w4",
+      "status": "completed",
+      "reason": null,
+      "category": "infrastructure_failure",
+      "outcome": "adapter_error",
+      "task_predicate": false,
+      "failure": {
+        "phase": "observation",
+        "code": "plan_failed",
+        "detail": "trial recovery cap exhausted",
+        "diagnostic": {}
+      },
+      "wall_s": 275.99335531145334,
+      "planning_s": 10.069465734064579,
+      "inference_s": 25.986642122268677,
+      "control_s": 104.69498068839312,
+      "policy_actions": 156,
+      "recovery_actions": 4,
+      "evidence": {
+        "physics_steps": 19360,
+        "control_calls": 3872,
+        "last_sim_s": 77.44000367820263,
+        "peak_tcp_position_error_m": 0.0030140527414458454,
+        "peak_tcp_orientation_error_deg": 0.6329227152420668,
+        "first_collision_records": [],
+        "measured_holder_transitions": [
+          {
+            "tick": 1,
+            "holders": []
+          }
+        ],
+        "sim_seconds_per_wall_second": 0.2805864785795768
+      }
+    },
+    {
+      "episode_id": "remaining-seed1-native-w26",
+      "status": "not_run",
+      "reason": "infrastructure_failure",
+      "category": null,
+      "outcome": null,
+      "task_predicate": null,
+      "failure": null,
+      "wall_s": null,
+      "planning_s": null,
+      "inference_s": null,
+      "control_s": null,
+      "policy_actions": null,
+      "recovery_actions": null,
+      "evidence": {}
+    },
+    {
+      "episode_id": "remaining-seed0-native-w26",
+      "status": "not_run",
+      "reason": "infrastructure_failure",
+      "category": null,
+      "outcome": null,
+      "task_predicate": null,
+      "failure": null,
+      "wall_s": null,
+      "planning_s": null,
+      "inference_s": null,
+      "control_s": null,
+      "policy_actions": null,
+      "recovery_actions": null,
+      "evidence": {}
+    },
+    {
+      "episode_id": "remaining-seed0-native-w4",
+      "status": "not_run",
+      "reason": "infrastructure_failure",
+      "category": null,
+      "outcome": null,
+      "task_predicate": null,
+      "failure": null,
+      "wall_s": null,
+      "planning_s": null,
+      "inference_s": null,
+      "control_s": null,
+      "policy_actions": null,
+      "recovery_actions": null,
+      "evidence": {}
+    },
+    {
+      "episode_id": "remaining-seed1-native-w4",
+      "status": "not_run",
+      "reason": "infrastructure_failure",
+      "category": null,
+      "outcome": null,
+      "task_predicate": null,
+      "failure": null,
+      "wall_s": null,
+      "planning_s": null,
+      "inference_s": null,
+      "control_s": null,
+      "policy_actions": null,
+      "recovery_actions": null,
+      "evidence": {}
+    },
+    {
+      "episode_id": "remaining-seed1-arx-expert-repaired",
+      "status": "not_run",
+      "reason": "infrastructure_failure",
+      "category": null,
+      "outcome": null,
+      "task_predicate": null,
+      "failure": null,
+      "wall_s": null,
+      "planning_s": null,
+      "inference_s": null,
+      "control_s": null,
+      "policy_actions": null,
+      "recovery_actions": null,
+      "evidence": {}
+    },
+    {
+      "episode_id": "remaining-seed0-arx-expert-repaired",
+      "status": "not_run",
+      "reason": "infrastructure_failure",
+      "category": null,
+      "outcome": null,
+      "task_predicate": null,
+      "failure": null,
+      "wall_s": null,
+      "planning_s": null,
+      "inference_s": null,
+      "control_s": null,
+      "policy_actions": null,
+      "recovery_actions": null,
+      "evidence": {}
+    },
+    {
+      "episode_id": "remaining-seed0-arx-recovery-no-route-w4",
+      "status": "not_run",
+      "reason": "infrastructure_failure",
+      "category": null,
+      "outcome": null,
+      "task_predicate": null,
+      "failure": null,
+      "wall_s": null,
+      "planning_s": null,
+      "inference_s": null,
+      "control_s": null,
+      "policy_actions": null,
+      "recovery_actions": null,
+      "evidence": {}
+    },
+    {
+      "episode_id": "remaining-seed1-arx-recovery-no-route-w4",
+      "status": "not_run",
+      "reason": "infrastructure_failure",
+      "category": null,
+      "outcome": null,
+      "task_predicate": null,
+      "failure": null,
+      "wall_s": null,
+      "planning_s": null,
+      "inference_s": null,
+      "control_s": null,
+      "policy_actions": null,
+      "recovery_actions": null,
+      "evidence": {}
+    },
+    {
+      "episode_id": "remaining-seed1-arx-baseline-w4",
+      "status": "not_run",
+      "reason": "infrastructure_failure",
+      "category": null,
+      "outcome": null,
+      "task_predicate": null,
+      "failure": null,
+      "wall_s": null,
+      "planning_s": null,
+      "inference_s": null,
+      "control_s": null,
+      "policy_actions": null,
+      "recovery_actions": null,
+      "evidence": {}
+    },
+    {
+      "episode_id": "remaining-seed0-arx-baseline-w4",
+      "status": "not_run",
+      "reason": "infrastructure_failure",
+      "category": null,
+      "outcome": null,
+      "task_predicate": null,
+      "failure": null,
+      "wall_s": null,
+      "planning_s": null,
+      "inference_s": null,
+      "control_s": null,
+      "policy_actions": null,
+      "recovery_actions": null,
+      "evidence": {}
+    }
+  ]
+}

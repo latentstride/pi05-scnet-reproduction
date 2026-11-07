@@ -6,10 +6,71 @@ remain exactly those issued by the pinned Aloha qpos controller.
 
 from time import monotonic
 import numpy as np
-from g2_adapter import G2Error
+from g2_adapter import G2Error, SIDES
+from g2_contact import ContactTracker
 from g2_kinematics import pose_error
 from g2e_protocol import PROTOCOL
 from robotwin_control_geometry import Status, finite_array
+
+
+class NativeReleaseTracker(ContactTracker):
+    """Use physical aperture to classify native Aloha release intent."""
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.opening_reference = {}
+
+    def observe(self, *args, **kwargs):
+        try:
+            return super().observe(*args, **kwargs)
+        finally:
+            self.opening_reference = {
+                side: value
+                for side, value in self.opening_reference.items()
+                if side in self.holders
+            }
+
+    @staticmethod
+    def opening_geometry(value, arm):
+        """Opening distance from the calibrated physical closed endpoint.
+
+        Aloha uses negative PD targets as closure preload although its physical
+        finger calibration ends at zero. Moving within that preload range does
+        not request positive aperture. No tolerance or force command is changed.
+        """
+        closed = np.asarray(arm.grip.closed)
+        direction = np.sign(np.asarray(arm.grip.opened) - closed)
+        return np.maximum(0.0, (np.asarray(value) - closed) * direction)
+
+    def guard_opening(self, previous, target, arms, giver="left"):
+        receiver = "right" if giver == "left" else "left"
+        if giver not in self.holders or receiver in self.holders:
+            return
+        i = SIDES.index(giver)
+        before = self.opening_geometry(previous[i], arms[i])
+        reference = np.minimum(self.opening_reference.get(giver, before), before)
+        opening = self.opening_geometry(target[i], arms[i])
+        if np.any(opening - reference > 1e-9):
+            raise G2Error(
+                Status.BACKEND_ERROR,
+                "donor opening before receiver contact confirmation",
+                geometry="candidate",
+                reason="premature_release",
+                contact_state=self.snapshot(),
+                opening_geometry_m=opening.tolist(),
+                opening_reference_m=reference.tolist(),
+            )
+
+    def authorize_opening(self, previous, target, arms, giver="left"):
+        self.guard_opening(previous, target, arms, giver)
+        for i, side in enumerate(SIDES):
+            if side in self.holders:
+                before = self.opening_geometry(previous[i], arms[i])
+                reference = np.minimum(self.opening_reference.get(side, before), before)
+                opening = self.opening_geometry(target[i], arms[i])
+                if np.any(opening - reference > 1e-9):
+                    self.releasing.add(side)
+                self.opening_reference[side] = np.minimum(reference, opening).copy()
 
 
 class NativeGuard:
@@ -42,6 +103,7 @@ class NativeGuard:
                 raise G2Error(
                     Status.LIMIT,
                     "measured fingers exceed original calibration tolerance",
+                    geometry="actual",
                 )
         self.collision.tracker.observe(stamp, contacts, tools, block_pose)
         self.collision.refresh()
@@ -58,6 +120,7 @@ class NativeGuard:
         """Check actual-to-intended drive segment before each physical advance."""
         started = monotonic()
         self.calls += 1
+        fraction = None
         try:
             check()
             if (
@@ -82,6 +145,10 @@ class NativeGuard:
             before = (
                 drive_fingers if self.previous_drive is None else self.previous_drive
             )
+            if self.previous_drive is None and self.collision.tracker.holders:
+                raise G2Error(
+                    Status.UNSYNCED, "native release history missing during holding"
+                )
             self.collision.tracker.guard_opening(before, drive_fingers, self.arms)
             self.collision.refresh()
             self.collision.set_start(fingers, drive_fingers)
@@ -122,6 +189,24 @@ class NativeGuard:
                 projection_changes=changes,
                 guard_samples=self.samples,
             )
+        except G2Error as error:
+            # A rejected interpolated drive was previously absent from the
+            # historical log. Preserve actual, intended and candidate geometry
+            # separately so a future checkpoint can be replayed exactly.
+            error.diagnostic.setdefault("geometry", "candidate")
+            error.diagnostic.update(
+                actual_arm=np.asarray(q).tolist(),
+                actual_fingers=np.asarray(fingers).tolist(),
+                drive_arm=np.asarray(drive_q).tolist(),
+                drive_fingers=np.asarray(drive_fingers).tolist(),
+                previous_drive=None
+                if self.previous_drive is None
+                else self.previous_drive.tolist(),
+                candidate_segment_fraction=None
+                if fraction is None
+                else float(fraction),
+            )
+            raise
         finally:
             self.wall_s += monotonic() - started
 
@@ -137,6 +222,7 @@ class NativeGuard:
             raise G2Error(
                 Status.BACKEND_ERROR,
                 "native tracking exceeds existing 30mm/10deg bounds",
+                geometry="actual",
                 position_error_m=[float(np.linalg.norm(e[:3])) for e in errors],
                 orientation_error_deg=[
                     float(np.rad2deg(np.linalg.norm(e[3:]))) for e in errors

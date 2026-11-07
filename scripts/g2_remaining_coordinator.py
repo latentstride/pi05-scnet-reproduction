@@ -13,9 +13,17 @@ from g2_remaining_geometry import refined_pair, bounded_progress
 from robotwin_control_geometry import Status
 
 
+class RecoveryBudgetExhausted(G2Error):
+    reason = "recovery_budget_exhausted"
+
+    def __init__(self, used, limit):
+        super().__init__(Status.PLAN_FAILED, "trial recovery cap exhausted",
+                         reason=self.reason, recoveries_used=used, recovery_limit=limit)
+
+
 class RecoveryCoordinator:
     def __init__(self, adapter, backend, max_recoveries=4):
-        if type(max_recoveries) is not int or max_recoveries < 0:
+        if type(max_recoveries) is not int or not 0 <= max_recoveries <= 4:
             raise ValueError("invalid recovery cap")
         self.adapter, self.backend = adapter, backend
         self.max_recoveries = max_recoveries
@@ -25,12 +33,14 @@ class RecoveryCoordinator:
 
     def _free(self):
         tracker = getattr(self.adapter.target_collision, "tracker", None)
-        if tracker is not None and (tracker.holders or tracker.releasing):
+        if tracker is not None and (tracker.holders or tracker.releasing or
+                any(getattr(tracker,"contact_fingers",{}).values())):
             raise G2Error(
-                Status.COLLISION, "generic recovery forbidden during holding/release"
+                Status.COLLISION, "generic recovery forbidden during holding/release",
+                reason="recovery_unsafe_contact",
             )
         if self.recoveries >= self.max_recoveries:
-            raise G2Error(Status.PLAN_FAILED, "trial recovery cap exhausted")
+            raise RecoveryBudgetExhausted(self.recoveries, self.max_recoveries)
 
     def _start(self, snapshot):
         q, g, frames, _ = read_snapshot(snapshot, self.adapter.arx)
@@ -70,10 +80,14 @@ class RecoveryCoordinator:
                 )
             ]
         )
-        goal, residual, meta = refined_pair(
-            self.adapter.arx, frames, tools, q, g, world, check
-        )
-        path = self.adapter.motion.plan(q, g, [(goal, g)], world, check)
+        try:
+            goal, residual, meta = refined_pair(
+                self.adapter.arx, frames, tools, q, g, world, check
+            )
+            path = self.adapter.motion.plan(q, g, [(goal, g)], world, check)
+        except G2Error as error:
+            error.diagnostic.setdefault("geometry", "candidate")
+            raise
         self.recoveries += 1
         log(
             dict(
@@ -185,7 +199,7 @@ class RecoveryCoordinator:
 
         validate_request(request)
         log(dict(kind="policy_request", snapshot=snapshot, request=request))
-        response = policy.infer(request)
+        response = getattr(policy,"infer_raw",policy.infer)(request)
         log(dict(kind="policy_response", response=response))
         chunk = validate_response(response)
         log(dict(kind="policy_validated"))

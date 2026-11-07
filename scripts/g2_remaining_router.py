@@ -31,6 +31,10 @@ class JointRouter:
         return getattr(self.motion, name)
 
     def route(self, start, goal, fingers, collision, check):
+        tracker=getattr(collision,"tracker",None)
+        if tracker is not None and (tracker.holders or tracker.releasing or
+                any(getattr(tracker,"contact_fingers",{}).values())):
+            raise G2Error(Status.COLLISION,"free-space rerouting forbidden during contact/holding")
         start = finite_array(start, (2, 6))
         goal = finite_array(goal, (2, 6))
         fingers = finite_array(fingers, (2, 2))
@@ -120,10 +124,11 @@ class JointRouter:
             self.last = dict(rerouted=False, wall_s=monotonic() - started)
             return path
         except G2Error as exc:
-            if exc.status != Status.COLLISION:
+            if exc.status != Status.COLLISION or exc.diagnostic.get("geometry") == "actual":
                 raise
         tracker = getattr(collision, "tracker", None)
-        if tracker is not None and (tracker.holders or tracker.releasing):
+        if tracker is not None and (tracker.holders or tracker.releasing or
+                any(getattr(tracker,"contact_fingers",{}).values())):
             raise G2Error(
                 Status.COLLISION,
                 "free-space rerouting forbidden during contact/holding",

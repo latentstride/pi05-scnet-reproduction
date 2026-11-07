@@ -5,6 +5,7 @@ import numpy as np
 
 from g2_adapter import G2Error, Snapshot, SIDES, Stamp, read_snapshot
 from g2_capture import capture_arms, capture_snapshot
+from g2_contact import contact_failure_kind
 from g2_initial import compare_initial, capture_initial
 from g2_kinematics import pose_error
 from pace_client_smoke import NativeState, encode
@@ -135,7 +136,17 @@ class NativeBackend:
                               points=[dict(position=p.position,separation=float(p.separation),
                                            normal=p.normal,impulse=p.impulse) for p in c.points]) for c in contacts],
                           control_call_count=0,physics_step_count=0))
-            self.guard.measured(stamp,q,fingers,actual,block_pose,contacts)
+            try:
+                self.guard.measured(stamp,q,fingers,actual,block_pose,contacts)
+            except G2Error as error:
+                kind=contact_failure_kind(error,self.guard.collision.tracker,stamp)
+                if kind is None:
+                    raise
+                self.guard.collision.verify_contact_stop(q,fingers)
+                self.guard.tracking(target_tools,actual)
+                self.remaining()
+                error.diagnostic.update(terminal_checks_passed=True,contact_loss=kind,contact_tick=self.tick)
+                raise
             self.log(dict(kind="native_guard_state",tick=self.tick, action_index=self.action_index,
                           control_call_count=0, physics_step_count=0, **self.guard.metrics()))
             self.guard.tracking(target_tools,actual)
@@ -153,7 +164,7 @@ class NativeBackend:
                 raise G2Error(Status.LIMIT,"native target outside calibrated bounds")
         self.log, self.remaining = log, remaining
         done = 0
-        if self.guard is not None and self.guard.previous_drive is None:
+        if self.guard is not None and self.tick == 0 and self.guard.previous_drive is None:
             self.guard.previous_drive = self._drive()[1].copy()
         try:
             for self.action_index,row in enumerate(array):
@@ -201,12 +212,14 @@ class NativeBackend:
         entity.set_qf(entity.compute_passive_force(gravity=True, coriolis_and_centrifugal=True))
 
     def close(self, output):
-        self.env.scene = self.actual_scene
         try:
-            # Always retain the final physical state, including early success.
-            if self.episode is not None:
-                self.video.frame(self.env.get_obs())
-            self.video.close()
+            try:
+                self.env.scene = self.actual_scene
+                # Always retain the final physical state, including early success.
+                if self.episode is not None:
+                    self.video.frame(self.env.get_obs())
+            finally:
+                self.video.close()
             return str(self.video.path)
         finally:
             self.env.close_env(clear_cache=True)

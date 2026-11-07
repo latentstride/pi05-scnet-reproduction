@@ -29,7 +29,11 @@ class ContactAbortTests(unittest.TestCase):
             w.frames=[s.world_base for s in capture_arms(b.env.robot,Stamp('mock',0,0.))]
             w.refresh=lambda:None
             w.planning_geometry=lambda q,g,previous,remaining:previous.copy()
-            w.measured_clear=lambda q,g:True
+            measured_checks=[]
+            def measured_clear(q,g,*,check_unheld=False):
+                measured_checks.append(check_unheld)
+                return True
+            w.measured_clear=measured_clear
             for i,(_,_,grip) in enumerate(b._joints()):
                 for f,joint in enumerate(grip):
                     joint.set_drive_property=lambda **kw:None
@@ -61,6 +65,7 @@ class ContactAbortTests(unittest.TestCase):
             self.assertEqual(result['outcome'],'control_error',result)
             self.assertEqual(result['control_calls'],1);self.assertEqual(result['executed'],0)
             self.assertEqual(len(stepped),1);self.assertEqual(backend.tick,1)
+            self.assertEqual(measured_checks,[True])
             self.assertEqual(closed,[1])
             self.assertTrue(all(np.all(state['speed']==0.) for state in states))
             np.testing.assert_array_equal(states[1]['target'][6:],[0.,0.])

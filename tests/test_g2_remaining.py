@@ -287,16 +287,16 @@ class RemainingHarnessTests(unittest.TestCase):
         self.assertEqual(plan["model_server_starts"], 1)
         self.assertEqual(len(plan["trials"]), 14)
         self.assertFalse(plan["submission_allowed"])
-        self.assertEqual(plan["budget"]["bounded_execution_s"], 32500)
+        self.assertEqual(plan["budget"]["bounded_execution_s"], 29700)
         self.assertEqual(plan["budget"]["proposed_fee_cap_yuan"], 34.2)
         self.assertTrue(plan["budget"]["budget_expansion_approved"])
         self.assertEqual(
             plan["budget"]["approved_remaining_campaign_budget_yuan"], 34.2
         )
         self.assertFalse(plan["budget"]["submission_authorized"])
-        self.assertLessEqual(32500, plan["budget"]["proposed_allocation_s"])
+        self.assertLessEqual(29700, plan["budget"]["proposed_allocation_s"])
         self.assertEqual(
-            len([r for r in plan["trials"] if r["embodiment"] == "aloha-agilex"]), 4
+            len([r for r in plan["trials"] if r["embodiment"] == "aloha-agilex"]), 6
         )
         self.assertEqual(
             len([r for r in plan["trials"] if "expert" in r["condition"]]), 2
@@ -309,7 +309,7 @@ class RemainingHarnessTests(unittest.TestCase):
 
 
 class UnifiedConditionTests(unittest.TestCase):
-    def test_all_twelve_policy_configs_bind_original_reset_and_validate(self):
+    def test_all_policy_configs_bind_original_reset_and_validate(self):
         import json
         from g2_remaining_conditions import configure
         from g2_remaining_plan import build

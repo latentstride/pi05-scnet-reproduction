@@ -98,7 +98,7 @@ class ExpertWaypoints:
         return chunk, len(rows)
 
 
-def run_episode(spec, backend, policy, output, *, adapter=None, expert=None):
+def run_episode(spec, backend, policy, output, *, adapter=None, expert=None, allow_native_h50=False):
     """Backend owns simulator reset, state capture, measured execution and hold.
 
     One execute call applies a native target or a synchronized trajectory prefix.
@@ -108,7 +108,7 @@ def run_episode(spec, backend, policy, output, *, adapter=None, expert=None):
     output = Path(output)
     output.mkdir(parents=True, exist_ok=False)
     window, max_actions = spec["window"], spec["max_actions"]
-    validate_window(window, spec.get("execution_protocol"))
+    validate_window(window, spec.get("execution_protocol"), allow_native_h50=allow_native_h50)
     if type(max_actions) is not int or max_actions < 1:
         raise ValueError("invalid episode bounds")
     if (expert is None) == (policy is None) or (expert is not None and adapter is None):

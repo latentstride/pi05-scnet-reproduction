@@ -13,8 +13,8 @@ from g2_task_runtime import RuntimeSession, SessionAdapter, real_scene, validate
 from pace_runtime import open_policy
 
 
-def execute(config, factory, policy, output, expert=None):
-    validate_config(config)
+def execute(config, factory, policy, output, expert=None, *, allow_native_h50=False):
+    validate_config(config, allow_native_h50=allow_native_h50)
     output = Path(output).resolve()
     spec = dict(data_kind=config["data_kind"], episode_id=config["episode_id"],
                 condition=config["condition"], prompt=config["prompt"], window=config["window"],
@@ -24,7 +24,7 @@ def execute(config, factory, policy, output, expert=None):
         spec["execution_protocol"] = config["execution_protocol"]
     session = RuntimeSession(factory)
     adapter = SessionAdapter(session) if config["embodiment"] == "ARX-X5" else None
-    return run_episode(spec, session, policy, output, adapter=adapter, expert=expert)
+    return run_episode(spec, session, policy, output, adapter=adapter, expert=expert, allow_native_h50=allow_native_h50)
 
 
 def main():

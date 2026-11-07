@@ -213,6 +213,10 @@ def supervise(plan, runtime, output, *, rehearsal=False, allocated=False):
                 if row["episode_id"] in runtime["commands"]
             )
             startup_deadline = deadline - trial_reserve
+            if "startup_cap_s" in runtime:
+                startup_deadline = min(
+                    startup_deadline, time.monotonic() + runtime["startup_cap_s"]
+                )
             if startup_deadline <= time.monotonic():
                 raise TimeoutError("no startup time remains after reserving trials")
             model_log = output / "model.log"
@@ -270,6 +274,11 @@ def supervise(plan, runtime, output, *, rehearsal=False, allocated=False):
                     active_entry = None
                     save()
                     runtime["admission"][key] = receipt
+                if "validate_startup" in runtime:
+                    runtime["validate_startup"](
+                        summary["startup"], runtime["admission"]
+                    )
+                    save()
                 samples = list(gpu_samples(output / "gpu-memory.csv"))
                 if (
                     monitor.poll() is not None
@@ -294,8 +303,8 @@ def supervise(plan, runtime, output, *, rehearsal=False, allocated=False):
                 else:
                     entry_ok = admitted(row)
                 if not entry_ok or episode not in runtime["commands"]:
-                    rows[episode]["reason"] = (
-                        "independent admission or executable unavailable"
+                    rows[episode]["reason"] = live.get(
+                        "reason", "independent admission or executable unavailable"
                     )
                     continue
                 remaining = deadline - time.monotonic()

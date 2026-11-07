@@ -7,7 +7,7 @@ from pathlib import Path
 from pace_g1_orchestrate import persist
 
 
-def steps(path):
+def steps(path, *, native_pair=False):
     if not path.exists():
         return {}
     count = calls = 0
@@ -15,6 +15,7 @@ def steps(path):
     position = angle = None
     pairs = []
     holder_transitions = []
+    close_requests = {"left": [], "right": []}
     with path.open() as stream:
         for line in stream:
             try:
@@ -33,6 +34,10 @@ def steps(path):
                 angle = max(angle or 0.0, *row["orientation_error_deg"])
             if len(pairs) < 10 and row.get("collisions"):
                 pairs.append(row["collisions"])
+            if native_pair and row.get("kind") == "native_action_request":
+                for side, index in (("left", 6), ("right", 13)):
+                    if row["normalized_qpos_request"][index] < 0.5:
+                        close_requests[side].append(row["action_index_in_episode"])
             contact = row.get("contact_state") or {}
             holders = contact.get("holders")
             if holders is not None and (
@@ -47,6 +52,7 @@ def steps(path):
         peak_tcp_orientation_error_deg=angle,
         first_collision_records=pairs,
         measured_holder_transitions=holder_transitions,
+        **({"close_request_indices": close_requests} if native_pair else {}),
     )
 
 
@@ -57,7 +63,10 @@ def summarize(plan, summary, output):
         row = summary["rows"][episode]
         receipt = row.get("result", {})
         result = receipt.get("result", receipt)
-        observation = steps(output / "trials" / episode / "episode/events.jsonl")
+        trial_dir = output / "trials" / episode
+        unified = plan.get("schema_version") == 3
+        native = unified and trial["embodiment"] == "aloha-agilex"
+        observation = steps(trial_dir / "episode/events.jsonl", native_pair=native)
         wall = result.get("elapsed_s")
         if wall and observation:
             observation["sim_seconds_per_wall_second"] = (
@@ -79,6 +88,16 @@ def summarize(plan, summary, output):
             recovery_actions=result.get("recovery_actions"),
             evidence=observation,
         )
+        if unified:
+            exchange = trial_dir / "first-exchange.json"
+            grouped[trial["seed"], trial["condition"]].update(
+                policy_queries=result.get("queries"),
+                first_exchange=json.loads(exchange.read_text())
+                if exchange.is_file()
+                else None,
+                cleanup=receipt.get("cleanup"),
+                process_group_reaped=row.get("process_group_reaped"),
+            )
     return dict(
         data_kind="diagnostic",
         formal_score_eligible=False,

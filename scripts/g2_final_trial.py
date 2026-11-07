@@ -10,6 +10,7 @@ import time
 from g2_adapter import G2Error, images_of
 from g2_contact import CONTACT_LOSSES
 from g2_episode import json_value
+from g2_initial import digest_json
 from g2_final_campaign import verified_contact_stop, verified_recovery_budget
 from g2_final_deploy import authorization
 from g2_final_expert import execute_expert, expert_prefix
@@ -190,7 +191,9 @@ def run(args):
     if approval.with_suffix(".used").read_text().strip() != job:
         raise PermissionError("allocation authorization is not active")
     plan = read(release / "unified-plan.json")
-    if job == plan["protected_existing_job"]:
+    unified = plan.get("schema_version") == 3
+    native_options = {"allow_native_h50": True} if unified else {}
+    if job in plan.get("protected_jobs", [plan["protected_existing_job"]]):
         raise PermissionError("the historical allocation is protected")
     row = next(r for r in plan["trials"] if r["episode_id"] == args.episode)
     binding = plan["trial_bindings"][args.episode]
@@ -213,6 +216,7 @@ def run(args):
             release / "asset-audit.json",
             source,
             evidence,
+            **native_options,
         ) as (backend, adapter):
             runtime_reset = RuntimeReset(
                 backend,
@@ -278,6 +282,11 @@ def run(args):
                     try:
                         probe_phase("verify_fresh_reset_and_geometry")
                         backend.reset(config)
+                        if unified and backend.success():
+                            raise G2Error(
+                                Status.INVALID,
+                                "task already successful at admission reset",
+                            )
                         receipt["physical_admitted"] = True
                         snap, state = backend.capture()
                         if adapter is None:
@@ -321,7 +330,17 @@ def run(args):
                                     policy, config["policy_rng_seed"], args.episode
                                 ),
                             )
-                            validate_response(policy.infer(request))
+                            response = policy.infer(request)
+                            validate_response(response)
+                            if unified and row["embodiment"] == "aloha-agilex":
+                                from g2_unified_exchange import exchange_receipt
+
+                                receipt["first_exchange"] = exchange_receipt(
+                                    request, response
+                                )
+                                receipt["initial_sha256"] = digest_json(
+                                    read(evidence / "initial-readback.json")
+                                )
                         receipt.update(category="admitted")
                     except InitialMismatch as error:
                         receipt.update(
@@ -390,7 +409,24 @@ def run(args):
                         args.output / "rng-reset.json",
                         reset_remote(policy, config["policy_rng_seed"], args.episode),
                     )
-                    result = run_condition(config, row, factory, policy, evidence)
+                    if unified and row["embodiment"] == "aloha-agilex":
+                        from g2_unified_exchange import CheckedFirstExchange
+
+                        reference_path = getattr(args, "expected_first_exchange", None)
+                        if reference_path is None:
+                            raise PermissionError(
+                                "unified native trial needs a verified first exchange"
+                            )
+                        reference = read(reference_path)
+                        policy = CheckedFirstExchange(
+                            policy,
+                            reference,
+                            args.output / "first-exchange.json",
+                            evidence / "initial-readback.json",
+                        )
+                    result = run_condition(
+                        config, row, factory, policy, evidence, **native_options
+                    )
                 receipt.update(
                     category=classify(
                         result, runtime_reset.contact_stop if runtime_reset else None
@@ -452,4 +488,5 @@ if __name__ == "__main__":
     for name in ("episode", "uri"):
         p.add_argument("--" + name, required=True)
     p.add_argument("--probe", action="store_true")
+    p.add_argument("--expected-first-exchange", type=Path)
     run(p.parse_args())

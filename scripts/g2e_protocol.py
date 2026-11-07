@@ -5,9 +5,11 @@ CONTACT_MODE_NATIVE = "g2e_native_measured_contact_v1"
 WINDOWS = (1, 4, 26, 31)
 
 
-def validate_window(window, protocol=None, embodiment="aloha-agilex"):
+def validate_window(window, protocol=None, embodiment="aloha-agilex", *, allow_native_h50=False):
     if protocol is not None and (protocol != PROTOCOL or embodiment != "aloha-agilex"):
         raise ValueError("G2-E protocol requires native Aloha")
     admitted = WINDOWS if protocol == PROTOCOL else (1, 4)
+    if allow_native_h50 and protocol == PROTOCOL:
+        admitted = (*admitted, 50)
     if type(window) is not int or window not in admitted:
         raise ValueError("invalid action window for the selected protocol")

@@ -35,7 +35,7 @@ def verify_runtime(pace_root, audit):
                 raise ValueError(f"PACE runtime source mismatch: {name}")
 
 
-def validate_config(config):
+def validate_config(config, *, allow_native_h50=False):
     semantics = config.get("native_release_semantics")
     if semantics is not None and (semantics != "physical_aperture_v1"
             or config["contact_mode"] != CONTACT_MODE_NATIVE):
@@ -59,7 +59,7 @@ def validate_config(config):
         raise ValueError("control bounds require an explicit source")
     if not np.allclose(matrix7(config["world_task"]), matrix7(config["source_world_task"]), atol=1e-9, rtol=0):
         raise ValueError("proxy collision scene currently requires identical source/target task frames")
-    validate_window(config["window"],config.get("execution_protocol"),config["embodiment"])
+    validate_window(config["window"],config.get("execution_protocol"),config["embodiment"], allow_native_h50=allow_native_h50)
     if type(config["max_actions"]) is not int:
         raise ValueError("maximum actions must be an integer")
     for name in ("max_actions", "timeout_s"):
@@ -155,9 +155,9 @@ class SessionAdapter:
 
 
 @contextmanager
-def real_scene(config, spec, pace_root, assets_root, asset_audit, source_audit, output):
+def real_scene(config, spec, pace_root, assets_root, asset_audit, source_audit, output, *, allow_native_h50=False):
     """Create the real renderer/scene only inside an already authorized allocation."""
-    validate_config(config)
+    validate_config(config, allow_native_h50=allow_native_h50)
     verify_runtime(pace_root, source_audit)
     if not os.environ.get("SLURM_JOB_ID") or os.environ.get("SLURM_JOB_NAME") != "cpf-pace-g2":
         raise RuntimeError("real scene initialization requires the existing G2 allocation")

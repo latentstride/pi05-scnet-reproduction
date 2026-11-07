@@ -1,0 +1,18 @@
+{
+  "data_kind": "synthetic",
+  "formal_score_eligible": false,
+  "gpu_used": false,
+  "simulator_run": false,
+  "outcome_counts": {
+    "success": 5,
+    "policy_failed": 2,
+    "task_unsuccessful": 1,
+    "environment_error": 1,
+    "control_error": 1,
+    "interrupted": 1,
+    "timeout": 1,
+    "planning_failed": 1
+  },
+  "note": "Mock success exercises control flow; it is not robot task success.",
+  "passed": true
+}

@@ -124,6 +124,41 @@ class PreloadTests(unittest.TestCase):
         )
         self.assertEqual(self.control.references["left"]["tick"], 7)
 
+    def test_negative_preload_relaxes_without_bypassing_physical_release_gate(self):
+        self.drive[:] = -0.01
+        self.acquire()
+        requested = self.drive.copy()
+        requested[0] = -0.0045
+        applied, velocity, event = self.control.select(
+            3, self.drive, requested, np.ones((2, 2))
+        )
+        np.testing.assert_array_equal(applied[0], requested[0])
+        np.testing.assert_array_equal(velocity[0], [1.0, 1.0])
+        self.assertEqual(event["modes"]["left"], "relaxing_preload")
+        self.tracker.authorize_opening(self.drive, applied, self.arms)
+        self.assertFalse(self.tracker.releasing)
+        self.drive = applied
+        self.observe(4)
+        opened = requested.copy()
+        opened[0] = 0.001
+        with self.assertRaisesRegex(G2Error, "donor opening"):
+            self.control.select(4, self.drive, opened, np.ones((2, 2)))
+        for tick in (5, 6, 7):
+            self.observe(tick, (1, 2, 3, 4))
+        applied, _, event = self.control.select(7, self.drive, opened, np.ones((2, 2)))
+        np.testing.assert_array_equal(applied[0], opened[0])
+        self.assertEqual(event["modes"]["left"], "release_requested")
+
+    def test_candidate_module_is_in_deployable_runtime_list(self):
+        from g2_final_prepare_review import RUNTIME_MODULES
+
+        self.assertIn("g2_native_preload", RUNTIME_MODULES)
+        self.assertTrue(
+            (
+                Path(__file__).resolve().parents[1] / "scripts/g2_native_preload.py"
+            ).is_file()
+        )
+
     def test_configuration_is_explicit_native_only_and_historical_default_unchanged(
         self,
     ):

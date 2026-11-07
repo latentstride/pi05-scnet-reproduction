@@ -65,8 +65,21 @@ class NativePreloadHold:
                     )
                 before = self.tracker.opening_geometry(ref["drive"], self.arms[i])
                 after = self.tracker.opening_geometry(requested[i], self.arms[i])
-                if np.any(after - before > 1e-9):
-                    modes[side] = "release_requested"
+                direction = np.sign(
+                    np.asarray(self.arms[i].grip.opened)
+                    - np.asarray(self.arms[i].grip.closed)
+                )
+                if np.any((requested[i] - ref["drive"]) * direction > 1e-9):
+                    # Native set_gripper rate-limits from the applied drive.
+                    # Restoring a negative preload here would prevent it from
+                    # ever reaching positive aperture on an opening request.
+                    # Relaxation alone never authorizes contact loss: the same
+                    # physical-aperture gate and measured tracker still apply.
+                    modes[side] = (
+                        "release_requested"
+                        if np.any(after - before > 1e-9)
+                        else "relaxing_preload"
+                    )
                 else:
                     applied[i], speeds[i] = ref["drive"], 0.0
                     modes[side] = "holding_preload"

@@ -1,0 +1,144 @@
+{
+  "status": "INTEGRATION_ASSESSMENT_ONLY",
+  "gpu_operations": 0,
+  "new_package_generated": false,
+  "submission_authorized": false,
+  "allocations_planned": 1,
+  "model_services": 1,
+  "trials": [
+    {
+      "episode_id": "unified-seed0-native-w50",
+      "embodiment": "aloha-agilex",
+      "window": 50,
+      "preload": "measured_contact_preload_hold_v1",
+      "changed_config_keys": [
+        "native_preload_control"
+      ],
+      "baseline_config_sha256": "86bf4f36c04ab75cf6a32258d75e7faec255ce83dc105a0515a13535f771678b",
+      "proposed_config_sha256": "abce39440f1730aa3d2303dfb19ba052721b2e1ec6a87c9b77f332a91a417dae",
+      "digest_encoding": "canonical JSON for assessment, not a frozen deploy config file"
+    },
+    {
+      "episode_id": "unified-seed0-native-w31",
+      "embodiment": "aloha-agilex",
+      "window": 31,
+      "preload": "measured_contact_preload_hold_v1",
+      "changed_config_keys": [
+        "native_preload_control"
+      ],
+      "baseline_config_sha256": "85cdfc90252a979b4c915ca78db476b4be05f9b282459effed2426fb655ea097",
+      "proposed_config_sha256": "6ef65f57efa2ccb8ecd5a3c4b16d1137a1d08db3948429dcef100c69f6f89f25",
+      "digest_encoding": "canonical JSON for assessment, not a frozen deploy config file"
+    },
+    {
+      "episode_id": "unified-seed1-native-w31",
+      "embodiment": "aloha-agilex",
+      "window": 31,
+      "preload": "measured_contact_preload_hold_v1",
+      "changed_config_keys": [
+        "native_preload_control"
+      ],
+      "baseline_config_sha256": "6ef85314a11e93b10fb694dac38ed62dc8245bbf86f0acf9538aa9c3609817e1",
+      "proposed_config_sha256": "445e2ef7573cf62b6f633d4b63afa5a00b4731b184662a33d763078e08777738",
+      "digest_encoding": "canonical JSON for assessment, not a frozen deploy config file"
+    },
+    {
+      "episode_id": "unified-seed1-native-w50",
+      "embodiment": "aloha-agilex",
+      "window": 50,
+      "preload": "measured_contact_preload_hold_v1",
+      "changed_config_keys": [
+        "native_preload_control"
+      ],
+      "baseline_config_sha256": "6976aa2b9f118180ad11148c0f5511e535620e80011203d94519a85e9d7d8f73",
+      "proposed_config_sha256": "c6a38ead3ad81f6761da311d9448d64b482b438f56dfc8b420959e527bd7828b",
+      "digest_encoding": "canonical JSON for assessment, not a frozen deploy config file"
+    },
+    {
+      "episode_id": "unified-seed0-native-w4",
+      "embodiment": "aloha-agilex",
+      "window": 4,
+      "preload": "measured_contact_preload_hold_v1",
+      "changed_config_keys": [
+        "native_preload_control"
+      ],
+      "baseline_config_sha256": "e5eb57c7cfb79dad3953272b5d67da9462ae7b69f54cd56bc7a0dba30cd05a19",
+      "proposed_config_sha256": "b6a14f58f718166c1b4149c3cee0b63bb2dc446609dac85baa75f2069d7b44ea",
+      "digest_encoding": "canonical JSON for assessment, not a frozen deploy config file"
+    },
+    {
+      "episode_id": "unified-seed0-arx-full-w4",
+      "embodiment": "ARX-X5",
+      "window": 4,
+      "preload": "unchanged ARX controller",
+      "changed_config_keys": [],
+      "baseline_config_sha256": "ed8d348ed69e36aab5a2859d378c5e06732c979e59b65635305f050916864c00",
+      "proposed_config_sha256": "1e4663034cd209fb7b25e3dab29fcf63fa4308a5426b77cc385c8d77ca722228",
+      "digest_encoding": "canonical JSON for assessment, not a frozen deploy config file"
+    },
+    {
+      "episode_id": "unified-seed1-arx-full-w4",
+      "embodiment": "ARX-X5",
+      "window": 4,
+      "preload": "unchanged ARX controller",
+      "changed_config_keys": [],
+      "baseline_config_sha256": "dea03decc1800cec3d18d5202a22c338fdef3dc682edf466d4f1b283dbd9c274",
+      "proposed_config_sha256": "4c3d8ff6622e638e479c5c85fc86aa16e76de033a5346e780f11cc8dac741b31",
+      "digest_encoding": "canonical JSON for assessment, not a frozen deploy config file"
+    },
+    {
+      "episode_id": "unified-seed1-native-w4",
+      "embodiment": "aloha-agilex",
+      "window": 4,
+      "preload": "measured_contact_preload_hold_v1",
+      "changed_config_keys": [
+        "native_preload_control"
+      ],
+      "baseline_config_sha256": "b28ab7ff64e11303d19324cc6d57484aa881231069acf1fbd3da1531f136ad60",
+      "proposed_config_sha256": "5fb31c9efe0e8a1a98ef1e9f8fa9f3ab825dadcb1e78f74cb02108cd5cd66e85",
+      "digest_encoding": "canonical JSON for assessment, not a frozen deploy config file"
+    },
+    {
+      "episode_id": "unified-seed1-arx-expert-repaired",
+      "embodiment": "ARX-X5",
+      "window": 1,
+      "preload": "unchanged ARX controller",
+      "changed_config_keys": [],
+      "baseline_config_sha256": "0e3d83311359f5d2f7c95477322688d985242053ff7da639e60fcdbf7ed7908f",
+      "proposed_config_sha256": "849faa6af162d2fe85505aae55274e0ce247654258b8a6a455a7317de837f015",
+      "digest_encoding": "canonical JSON for assessment, not a frozen deploy config file"
+    },
+    {
+      "episode_id": "unified-seed0-arx-expert-repaired",
+      "embodiment": "ARX-X5",
+      "window": 1,
+      "preload": "unchanged ARX controller",
+      "changed_config_keys": [],
+      "baseline_config_sha256": "78197e82e81c2fb538c951bbc591ce92506237b25b4069026f8ab96ddb0a9242",
+      "proposed_config_sha256": "2cbe64453cf9c8ece56826c8dab505d7cb67e7f78e96b76124bd0ce7e4e95310",
+      "digest_encoding": "canonical JSON for assessment, not a frozen deploy config file"
+    }
+  ],
+  "budget": {
+    "trials_s": 16800,
+    "overhead": {
+      "graphics_s": 300,
+      "shared_model_and_dynamic_entry_s": 3600,
+      "statistics_s": 180,
+      "cleanup_s": 120
+    },
+    "bounded_execution_s": 21000,
+    "proposed_allocation_s": 25200,
+    "proposed_fee_cap_yuan": 25.2,
+    "unassigned_margin_s": 4200,
+    "gpu_count": 1,
+    "cpu_count": 4,
+    "memory_gib": 32,
+    "node": "gnode39",
+    "reference_price_yuan_per_gpu_hour": 3.6,
+    "submission_authorized": false,
+    "rate_status": "historical_reference_only_live_quote_required"
+  },
+  "comparisons": "H50 vs K31 with the same preload control; native W4 vs ARX W4 retains different embodiment controllers; historical off vs new on is not a contemporaneous randomized comparison",
+  "paired_config_equality": true
+}

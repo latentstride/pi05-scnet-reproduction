@@ -1,0 +1,34 @@
+{
+  "original/result.json": {
+    "bytes": 1226,
+    "sha256": "f24f855b1288ece81cffbc25e515abbe09bf3fb8ef96514d6d4d706b86a98aac"
+  },
+  "original/trace.json": {
+    "bytes": 29177291,
+    "sha256": "f4c5b1eef730674196badbdfd83cd860c7e83e5df921a8ed1b64acbe47a83d7c"
+  },
+  "original/control-reconstruction.json": {
+    "bytes": 90,
+    "sha256": "1ec720994a7748188c0d88a922b337920f12ebfc52e4e772ff69edc9e4fc6e49"
+  },
+  "original/topp.log": {
+    "bytes": 1629,
+    "sha256": "bacadc68dffb904dec3c4cfaaea3be18970dc68994d748e0a2d2c051900b877b"
+  },
+  "hold-gripper/result.json": {
+    "bytes": 1172,
+    "sha256": "5350e1fd3efce19038b2d3d908c647b9783a56a420da96fd9db8cf20fc733a10"
+  },
+  "hold-gripper/trace.json": {
+    "bytes": 32054434,
+    "sha256": "76de4c6a3d4a6753b90a960f6d941f89cb1c7b136c1021fa3a901e2810bda39e"
+  },
+  "hold-gripper/control-reconstruction.json": {
+    "bytes": 90,
+    "sha256": "1ec720994a7748188c0d88a922b337920f12ebfc52e4e772ff69edc9e4fc6e49"
+  },
+  "hold-gripper/topp.log": {
+    "bytes": 1629,
+    "sha256": "bacadc68dffb904dec3c4cfaaea3be18970dc68994d748e0a2d2c051900b877b"
+  }
+}

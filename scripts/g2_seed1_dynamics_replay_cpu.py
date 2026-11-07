@@ -1,4 +1,4 @@
-"""Headless PhysX replay with frozen native methods and guarded wrist counterfactual."""
+"""Headless native CPU replay with guarded arm or gripper drive interventions."""
 
 import argparse
 import ast
@@ -58,6 +58,12 @@ def run(args):
     start = time.monotonic()
     name = f"unified-seed1-native-w{args.window}"
     config = json.loads((args.release / f"configs/{name}.json").read_text())
+    source_audit = json.loads((args.release / "source-audit.json").read_text())
+    for relative in ("envs/_base_task.py", "envs/robot/robot.py"):
+        assert (
+            sha256((args.pace / relative).read_bytes()).hexdigest()
+            == source_audit[relative]
+        )
     raw = args.raw / "trials" / name / "episode"
     audit = json.loads((args.release / "asset-audit.json").read_text())
     robot_audit = next(r for r in audit["robots"] if r["robot"] == "aloha-agilex")
@@ -301,6 +307,14 @@ def run(args):
             [[q[index[n]] for n in a.grip.names] for a in arms]
         )
 
+    original_stop_tick = last_tick
+    frozen_grip = controls[first_holder - 1, 0, 6:, 0].copy()
+    horizon = max(last_tick, first_holder + args.settle_ticks)
+    assert horizon <= 25000
+    if horizon > last_tick:
+        tail = np.repeat(controls[-1][None, :], horizon - last_tick, axis=0)
+        tail[:, :, :, 1] = 0.0
+        controls = np.concatenate([controls, tail])
     records = []
     acquired = None
     frozen = None
@@ -314,6 +328,9 @@ def run(args):
                 frozen = controls[first_holder - 1, 0, :6, 0].copy()
             command[0, :6, 0] = frozen
             command[0, :6, 1] = 0.0
+        if args.mode == "hold-gripper" and tick > first_holder:
+            command[0, 6:, 0] = frozen_grip
+            command[0, 6:, 1] = 0.0
         entity.set_qf(
             entity.compute_passive_force(gravity=True, coriolis_and_centrifugal=True)
         )
@@ -346,25 +363,30 @@ def run(args):
             finally:
                 if tracker.holders and acquired is None:
                     acquired = tick
-                maxq = max(
-                    maxq,
-                    float(np.max(np.abs(q - np.asarray(steps[tick]["actual_arm"])))),
-                )
-                maxg = max(
-                    maxg,
-                    float(
-                        np.max(np.abs(g - np.asarray(steps[tick]["actual_fingers"])))
-                    ),
-                )
-                maxblock = max(
-                    maxblock,
-                    float(
-                        np.linalg.norm(
-                            pose[:3, 3]
-                            - np.asarray(contacts[tick]["block_pose_task"])[:3, 3]
-                        )
-                    ),
-                )
+                if tick <= original_stop_tick:
+                    maxq = max(
+                        maxq,
+                        float(
+                            np.max(np.abs(q - np.asarray(steps[tick]["actual_arm"])))
+                        ),
+                    )
+                    maxg = max(
+                        maxg,
+                        float(
+                            np.max(
+                                np.abs(g - np.asarray(steps[tick]["actual_fingers"]))
+                            )
+                        ),
+                    )
+                    maxblock = max(
+                        maxblock,
+                        float(
+                            np.linalg.norm(
+                                pose[:3, 3]
+                                - np.asarray(contacts[tick]["block_pose_task"])[:3, 3]
+                            )
+                        ),
+                    )
                 anchor = tracker.holders.get("left")
                 err = (
                     pose_error(pose, tools[0] @ anchor)
@@ -375,6 +397,15 @@ def run(args):
                     dict(
                         tick=tick,
                         q=q.tolist(),
+                        arm_velocity_rad_s=[
+                            [float(entity.get_qvel()[index[n]]) for n in a.chain.names]
+                            for a in arms
+                        ],
+                        block_linear_velocity_m_s=body.linear_velocity.tolist(),
+                        block_angular_velocity_rad_s=body.angular_velocity.tolist(),
+                        drive_finger_velocity_m_s=command[:, 6:, 1].tolist(),
+                        contact_state=tracker.snapshot(),
+                        maintenance_tail=tick > original_stop_tick,
                         fingers=g.tolist(),
                         drive=command[:, 6:, 0].tolist(),
                         tool=tools[0].tolist(),
@@ -386,9 +417,15 @@ def run(args):
                             dict(
                                 names=[b.entity.name for b in c.bodies],
                                 impulses=[p.impulse.tolist() for p in c.points],
+                                normals=[p.normal.tolist() for p in c.points],
+                                positions=[p.position.tolist() for p in c.points],
+                                separations_m=[float(p.separation) for p in c.points],
                             )
                             for c in physical_contacts
-                            if any(b.entity.per_scene_id == block.per_scene_id for b in c.bodies)
+                            if any(
+                                b.entity.per_scene_id == block.per_scene_id
+                                for b in c.bodies
+                            )
                         ],
                     )
                 )
@@ -417,7 +454,13 @@ def run(args):
             mode=args.mode,
             first_holder_tick=acquired,
             historical_holder_tick=first_holder,
-            historical_stop_tick=last_tick,
+            historical_stop_tick=original_stop_tick,
+            horizon_tick=horizon,
+            settle_ticks_requested=args.settle_ticks,
+            grip_freeze_target_m=frozen_grip.tolist()
+            if args.mode == "hold-gripper"
+            else None,
+            safety_anchor_mode="unchanged live tracker; delayed anchors are offline observers only",
             failure=failure,
             steps=len(records),
             max_joint_difference_rad=maxq,
@@ -428,7 +471,11 @@ def run(args):
             control_reconstruction=dict(
                 arm_max_rad=drive_error, finger_max_m=finger_error
             ),
-            freeze_semantics="left six arm position drive targets at historical first-holder tick, zero arm velocity drive, unchanged gripper and right arm schedule",
+            freeze_semantics={
+                "original": "original reconstructed control schedule; optional protected maintenance tail",
+                "fixed-wrist": "left six arm position drive targets at historical first-holder tick, zero arm velocity drive, unchanged gripper and right arm schedule",
+                "hold-gripper": "left finger position drives at historical first-holder tick with zero finger velocity drive; arm and right gripper follow original schedule until protected maintenance tail",
+            }[args.mode],
             source_hashes={
                 str(p.relative_to(args.pace)): sha256(p.read_bytes()).hexdigest()
                 for p in [
@@ -446,5 +493,8 @@ if __name__ == "__main__":
     for n in ["raw", "release", "assets", "pace", "output"]:
         p.add_argument("--" + n, type=Path, required=True)
     p.add_argument("--window", type=int, choices=[31, 50], required=True)
-    p.add_argument("--mode", choices=["original", "fixed-wrist"], required=True)
+    p.add_argument(
+        "--mode", choices=["original", "fixed-wrist", "hold-gripper"], required=True
+    )
+    p.add_argument("--settle-ticks", type=int, default=0, choices=range(301))
     run(p.parse_args())

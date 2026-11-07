@@ -1,0 +1,417 @@
+{
+  "cpu_only": true,
+  "baseline_accepted": true,
+  "prefix_identical": true,
+  "prefix_fingerprints": {
+    "original": "f91cb2ea055ff0af0c16d4e69335b2245ad32b18a9084eb4def17e7903d497b7",
+    "hold-gripper": "f91cb2ea055ff0af0c16d4e69335b2245ad32b18a9084eb4def17e7903d497b7"
+  },
+  "live_anchor_unchanged": true,
+  "source_plan_sha256": "3bf6d7875439647f03a916261ed421f8fcc2dda4ca2bb7154e555262bc4bbcba",
+  "conditions": {
+    "original": {
+      "result": {
+        "cpu_only": true,
+        "renderer_created": false,
+        "model_used": false,
+        "window": 50,
+        "mode": "original",
+        "first_holder_tick": 5088,
+        "historical_holder_tick": 5088,
+        "historical_stop_tick": 5139,
+        "horizon_tick": 5388,
+        "settle_ticks_requested": 300,
+        "grip_freeze_target_m": null,
+        "safety_anchor_mode": "unchanged live tracker; delayed anchors are offline observers only",
+        "failure": {
+          "tick": 5139,
+          "code": "backend_error",
+          "detail": "object slipped relative to confirmed holder"
+        },
+        "steps": 5139,
+        "max_joint_difference_rad": 1.5497207641601562e-06,
+        "max_finger_difference_m": 4.353001713752747e-06,
+        "max_block_difference_m": 2.2674239620329106e-05,
+        "elapsed_s": 229.03633562102914,
+        "block_mass_kg": 0.009999999776482582,
+        "control_reconstruction": {
+          "arm_max_rad": 0.0,
+          "finger_max_m": 0.0
+        },
+        "source_hashes": {
+          "envs/_base_task.py": "448f7152b65cb9102217cf5463aa821d72810ca56f63d5a797ec7bd43e23e101",
+          "envs/robot/robot.py": "3dcd80acc8cab489a4c5edb507cc460dab1724be0226b8d5c4c1b218dee605cb"
+        }
+      },
+      "intervention_semantics": "original arm and gripper control schedule",
+      "summary": {
+        "last_tick": 5139,
+        "duration_after_acquisition_s": 0.20400000000000001,
+        "last_original_anchor_slip_mm": 5.0205722219583295,
+        "last_original_anchor_slip_deg": 4.385975120701266,
+        "last_block_linear_velocity_m_s": [
+          -0.015624718740582466,
+          0.018876804038882256,
+          0.001385618932545185
+        ],
+        "last_block_angular_velocity_rad_s": [
+          0.26015958189964294,
+          0.3510570526123047,
+          0.05886761099100113
+        ],
+        "last_actual_fingers_m": [
+          0.030094726011157036,
+          0.029647760093212128
+        ],
+        "last_drive_m": [
+          0.013313636183738708,
+          0.013313636183738708
+        ],
+        "terminal_contact_forces": {
+          "fl_link6|box": {
+            "normal_impulse_over_dt_n": 0.0,
+            "tangent_impulse_over_dt_n": 0.0
+          },
+          "fl_link7|box": {
+            "normal_impulse_over_dt_n": 17.34977779650394,
+            "tangent_impulse_over_dt_n": 1.3009425988943997e-06
+          },
+          "fl_link8|box": {
+            "normal_impulse_over_dt_n": 17.391864360181817,
+            "tangent_impulse_over_dt_n": 2.942547341943223e-06
+          },
+          "box|table": {
+            "normal_impulse_over_dt_n": 0.0,
+            "tangent_impulse_over_dt_n": 0.0
+          }
+        },
+        "last_02s_table_impulse_over_dt_peak_n": 2.297301311045885,
+        "last_02s_relative_change": {
+          "position_mm": 4.733854028024182,
+          "angle_deg": 4.166183622020784
+        },
+        "max_original_anchor_slip_mm": 5.0205722219583295,
+        "bilateral_contact_all_samples": true,
+        "wrist_change": {
+          "position_mm": 0.5428164985869965,
+          "angle_deg": 0.1770710483669641
+        },
+        "final_holders": [
+          "left"
+        ]
+      },
+      "offline_observers": [
+        {
+          "delay_ticks": 0,
+          "start_tick": 5086,
+          "acquisition_tick": 5088,
+          "observer_stop": {
+            "tick": 5139,
+            "detail": "object slipped relative to confirmed holder"
+          },
+          "drift_at_physical_end": {
+            "position_mm": 5.0205722219583215,
+            "angle_deg": 4.385975120701266
+          },
+          "physical_end_tick": 5139,
+          "can_authorize_physics": false
+        },
+        {
+          "delay_ticks": 12,
+          "start_tick": 5098,
+          "acquisition_tick": 5100,
+          "observer_stop": null,
+          "drift_at_physical_end": {
+            "position_mm": 3.8139667492236597,
+            "angle_deg": 3.3271847649225883
+          },
+          "physical_end_tick": 5139,
+          "can_authorize_physics": false
+        },
+        {
+          "delay_ticks": 25,
+          "start_tick": 5111,
+          "acquisition_tick": 5113,
+          "observer_stop": null,
+          "drift_at_physical_end": {
+            "position_mm": 3.1482656726402074,
+            "angle_deg": 2.6623686294638014
+          },
+          "physical_end_tick": 5139,
+          "can_authorize_physics": false
+        },
+        {
+          "delay_ticks": 37,
+          "start_tick": 5123,
+          "acquisition_tick": 5125,
+          "observer_stop": null,
+          "drift_at_physical_end": {
+            "position_mm": 2.2441967648903747,
+            "angle_deg": 1.827775695286052
+          },
+          "physical_end_tick": 5139,
+          "can_authorize_physics": false
+        }
+      ]
+    },
+    "hold-gripper": {
+      "result": {
+        "cpu_only": true,
+        "renderer_created": false,
+        "model_used": false,
+        "window": 50,
+        "mode": "hold-gripper",
+        "first_holder_tick": 5088,
+        "historical_holder_tick": 5088,
+        "historical_stop_tick": 5139,
+        "horizon_tick": 5388,
+        "settle_ticks_requested": 300,
+        "grip_freeze_target_m": [
+          0.021925857290625572,
+          0.021925857290625572
+        ],
+        "safety_anchor_mode": "unchanged live tracker; delayed anchors are offline observers only",
+        "failure": null,
+        "steps": 5388,
+        "max_joint_difference_rad": 0.00012513436377048492,
+        "max_finger_difference_m": 0.0003148633986711502,
+        "max_block_difference_m": 0.0012851985133097157,
+        "elapsed_s": 239.4249795251526,
+        "block_mass_kg": 0.009999999776482582,
+        "control_reconstruction": {
+          "arm_max_rad": 0.0,
+          "finger_max_m": 0.0
+        },
+        "source_hashes": {
+          "envs/_base_task.py": "448f7152b65cb9102217cf5463aa821d72810ca56f63d5a797ec7bd43e23e101",
+          "envs/robot/robot.py": "3dcd80acc8cab489a4c5edb507cc460dab1724be0226b8d5c4c1b218dee605cb"
+        }
+      },
+      "intervention_semantics": "freeze left finger position drive at first acquisition and zero finger velocity drive",
+      "summary": {
+        "last_tick": 5388,
+        "duration_after_acquisition_s": 1.2,
+        "last_original_anchor_slip_mm": 4.820406242222664,
+        "last_original_anchor_slip_deg": 4.255140597583368,
+        "last_block_linear_velocity_m_s": [
+          0.0016234726645052433,
+          0.00017328886315226555,
+          0.0007948428392410278
+        ],
+        "last_block_angular_velocity_rad_s": [
+          -0.008338148705661297,
+          0.010070472955703735,
+          -0.01684439554810524
+        ],
+        "last_actual_fingers_m": [
+          0.030258726328611374,
+          0.029666857793927193
+        ],
+        "last_drive_m": [
+          0.021925857290625572,
+          0.021925857290625572
+        ],
+        "terminal_contact_forces": {
+          "fl_link6|box": {
+            "normal_impulse_over_dt_n": 0.0,
+            "tangent_impulse_over_dt_n": 0.0
+          },
+          "fl_link7|box": {
+            "normal_impulse_over_dt_n": 8.207666573014869,
+            "tangent_impulse_over_dt_n": 6.018434694773196e-07
+          },
+          "fl_link8|box": {
+            "normal_impulse_over_dt_n": 8.239523829783252,
+            "tangent_impulse_over_dt_n": 6.804897960603172e-07
+          },
+          "box|table": {
+            "normal_impulse_over_dt_n": 0.0,
+            "tangent_impulse_over_dt_n": 0.0
+          }
+        },
+        "last_02s_table_impulse_over_dt_peak_n": 0.0,
+        "last_02s_relative_change": {
+          "position_mm": 0.02642659853085017,
+          "angle_deg": 0.02050089648576727
+        },
+        "max_original_anchor_slip_mm": 4.820406242222664,
+        "bilateral_contact_all_samples": true,
+        "wrist_change": {
+          "position_mm": 1.1629588363863985,
+          "angle_deg": 0.2701689389713325
+        },
+        "final_holders": [
+          "left"
+        ]
+      },
+      "offline_observers": [
+        {
+          "delay_ticks": 0,
+          "start_tick": 5086,
+          "acquisition_tick": 5088,
+          "observer_stop": null,
+          "drift_at_physical_end": {
+            "position_mm": 4.820406242222666,
+            "angle_deg": 4.255140597583368
+          },
+          "physical_end_tick": 5388,
+          "can_authorize_physics": false
+        },
+        {
+          "delay_ticks": 12,
+          "start_tick": 5098,
+          "acquisition_tick": 5100,
+          "observer_stop": null,
+          "drift_at_physical_end": {
+            "position_mm": 3.6276199023518134,
+            "angle_deg": 3.233662045826501
+          },
+          "physical_end_tick": 5388,
+          "can_authorize_physics": false
+        },
+        {
+          "delay_ticks": 25,
+          "start_tick": 5111,
+          "acquisition_tick": 5113,
+          "observer_stop": null,
+          "drift_at_physical_end": {
+            "position_mm": 3.0726843382683002,
+            "angle_deg": 2.6954923747319137
+          },
+          "physical_end_tick": 5388,
+          "can_authorize_physics": false
+        },
+        {
+          "delay_ticks": 37,
+          "start_tick": 5123,
+          "acquisition_tick": 5125,
+          "observer_stop": null,
+          "drift_at_physical_end": {
+            "position_mm": 2.542236567396343,
+            "angle_deg": 2.2125290905313673
+          },
+          "physical_end_tick": 5388,
+          "can_authorize_physics": false
+        }
+      ]
+    }
+  },
+  "common_tick": 5139,
+  "common_conditions": {
+    "original": {
+      "last_tick": 5139,
+      "duration_after_acquisition_s": 0.20400000000000001,
+      "last_original_anchor_slip_mm": 5.0205722219583295,
+      "last_original_anchor_slip_deg": 4.385975120701266,
+      "last_block_linear_velocity_m_s": [
+        -0.015624718740582466,
+        0.018876804038882256,
+        0.001385618932545185
+      ],
+      "last_block_angular_velocity_rad_s": [
+        0.26015958189964294,
+        0.3510570526123047,
+        0.05886761099100113
+      ],
+      "last_actual_fingers_m": [
+        0.030094726011157036,
+        0.029647760093212128
+      ],
+      "last_drive_m": [
+        0.013313636183738708,
+        0.013313636183738708
+      ],
+      "terminal_contact_forces": {
+        "fl_link6|box": {
+          "normal_impulse_over_dt_n": 0.0,
+          "tangent_impulse_over_dt_n": 0.0
+        },
+        "fl_link7|box": {
+          "normal_impulse_over_dt_n": 17.34977779650394,
+          "tangent_impulse_over_dt_n": 1.3009425988943997e-06
+        },
+        "fl_link8|box": {
+          "normal_impulse_over_dt_n": 17.391864360181817,
+          "tangent_impulse_over_dt_n": 2.942547341943223e-06
+        },
+        "box|table": {
+          "normal_impulse_over_dt_n": 0.0,
+          "tangent_impulse_over_dt_n": 0.0
+        }
+      },
+      "last_02s_table_impulse_over_dt_peak_n": 2.297301311045885,
+      "last_02s_relative_change": {
+        "position_mm": 4.733854028024182,
+        "angle_deg": 4.166183622020784
+      },
+      "max_original_anchor_slip_mm": 5.0205722219583295,
+      "bilateral_contact_all_samples": true,
+      "wrist_change": {
+        "position_mm": 0.5428164985869965,
+        "angle_deg": 0.1770710483669641
+      },
+      "final_holders": [
+        "left"
+      ]
+    },
+    "hold-gripper": {
+      "last_tick": 5139,
+      "duration_after_acquisition_s": 0.20400000000000001,
+      "last_original_anchor_slip_mm": 3.8405707701069245,
+      "last_original_anchor_slip_deg": 3.4430389482221533,
+      "last_block_linear_velocity_m_s": [
+        -0.05626942217350006,
+        0.005773366894572973,
+        0.03579886257648468
+      ],
+      "last_block_angular_velocity_rad_s": [
+        0.2476741224527359,
+        0.2123902440071106,
+        0.033185672014951706
+      ],
+      "last_actual_fingers_m": [
+        0.030213169753551483,
+        0.02995363250374794
+      ],
+      "last_drive_m": [
+        0.021925857290625572,
+        0.021925857290625572
+      ],
+      "terminal_contact_forces": {
+        "fl_link6|box": {
+          "normal_impulse_over_dt_n": 0.0,
+          "tangent_impulse_over_dt_n": 0.0
+        },
+        "fl_link7|box": {
+          "normal_impulse_over_dt_n": 7.728659559740223,
+          "tangent_impulse_over_dt_n": 7.864976300712685e-07
+        },
+        "fl_link8|box": {
+          "normal_impulse_over_dt_n": 7.714471290926463,
+          "tangent_impulse_over_dt_n": 1.625464865727045e-08
+        },
+        "box|table": {
+          "normal_impulse_over_dt_n": 0.0,
+          "tangent_impulse_over_dt_n": 0.0
+        }
+      },
+      "last_02s_table_impulse_over_dt_peak_n": 2.4566063657402992,
+      "last_02s_relative_change": {
+        "position_mm": 3.5454834484897444,
+        "angle_deg": 3.221636164583636
+      },
+      "max_original_anchor_slip_mm": 3.8405707701069245,
+      "bilateral_contact_all_samples": true,
+      "wrist_change": {
+        "position_mm": 0.547664344990102,
+        "angle_deg": 0.17931088811189996
+      },
+      "final_holders": [
+        "left"
+      ]
+    }
+  },
+  "original_guard_hold_horizon_completed": true,
+  "task_success_evaluated": false,
+  "late_anchor_passing_proves_stability": false
+}

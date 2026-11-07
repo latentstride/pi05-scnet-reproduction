@@ -8,7 +8,7 @@ from pathlib import Path
 from jsonschema import Draft202012Validator
 import numpy as np
 
-from g2_adapter import images_of, read_snapshot
+from g2_adapter import G2Error, images_of, read_snapshot
 from g2_collision import JointCollisionWorld
 from g2_episode import save_array, save_json
 from g2_export import episode_record
@@ -17,6 +17,7 @@ from g2_orchestrator import interrupt_signals
 from g2_run_task import execute
 from g2_task_runtime import inspect_assets, real_scene, validate_config, verify_runtime
 from pace_runtime import open_policy
+from robotwin_control_geometry import Status
 from summarize_experiments import LOCK_FIELDS, SCHEMA, decode, validate_episode
 
 SIDES = ('left', 'right')
@@ -123,7 +124,8 @@ def verify_real_scene(backend, snapshot, rgb):
             [arm.chain.names for arm in backend.arms], [arm.grip.names for arm in backend.arms])
         clear = collision(q, fingers)
     if not clear:
-        raise InitialMismatch(f'actual initial geometry blocked: {collision.last_collisions}')
+        raise G2Error(Status.COLLISION, 'actual initial geometry blocked',
+                      geometry='actual', collisions=collision.last_collisions)
     return dict(block_mass_kg=mass, fcl_clear=True, image_shapes={k:list(v.shape) for k,v in rgb.items()})
 
 

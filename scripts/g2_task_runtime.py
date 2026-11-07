@@ -98,10 +98,11 @@ class RuntimeSession:
         self.factory, self.context, self.backend, self.adapter = factory, None, None, None
 
     def reset(self, spec):
-        if self.context is not None:
+        if self.backend is not None:
             raise RuntimeError("one reset/session per episode")
-        self.context = self.factory(spec)
-        self.backend, self.adapter = self.context.__enter__()
+        context = self.factory(spec)
+        self.backend, self.adapter = context.__enter__()
+        self.context = context
         return self.backend.reset(spec)
 
     @property
@@ -130,11 +131,13 @@ class RuntimeSession:
             self.backend.hold()
 
     def close(self, output):
+        context, self.context = self.context, None
+        if context is None:
+            return
         try:
-            return self.backend.close(output) if self.backend is not None else None
+            return self.backend.close(output)
         finally:
-            if self.context is not None:
-                self.context.__exit__(None, None, None)
+            context.__exit__(None, None, None)
 
 
 class SessionAdapter:
@@ -309,3 +312,4 @@ def real_scene(config, spec, pace_root, assets_root, asset_audit, source_audit, 
                     env.close_env(clear_cache=True)
                 except Exception as error:
                     save_json(output / "setup-cleanup-error.json", {"error":repr(error)})
+                    raise

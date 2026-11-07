@@ -40,6 +40,73 @@ def process_group_gone(pid):
         time.sleep(0.025)
 
 
+def reap_process_group(proc):
+    stop_group(proc)
+    if not process_group_gone(proc.pid):
+        raise RuntimeError("process group cleanup unverified")
+
+
+def verified_scene_cleanup(receipt, *, probe=False):
+    cleanup = receipt.get("cleanup")
+    result = receipt.get("result") or {}
+    if (
+        not isinstance(cleanup, dict)
+        or receipt.get("cleanup_failures")
+        or result.get("cleanup_failures")
+    ):
+        return False
+    if (
+        probe
+        and receipt.get("category") == "not_admitted"
+        and receipt.get("admission_stage") == "assets"
+    ):
+        return cleanup.get("scene_opened") is False and not receipt.get(
+            "physical_admitted"
+        )
+    if not all(
+        cleanup.get(key) is True
+        for key in ("scene_opened", "close_complete", "scene_context_closed")
+    ):
+        return False
+    if probe:
+        if (
+            receipt.get("category") == "admitted"
+            or receipt.get("admission_stage") == "input_contract"
+        ):
+            return (
+                receipt.get("physical_admitted") is True
+                and receipt.get("fresh_reset_verified") is True
+            )
+        return (
+            receipt.get("admission_stage") == "initial_state"
+            and receipt.get("physical_admitted") is False
+            and receipt.get("fresh_reset_verified") is False
+        )
+    return (
+        receipt.get("fresh_reset_verified") is True
+        and type(receipt.get("success")) is bool
+        and (receipt["success"] or cleanup.get("hold_complete") is True)
+    )
+
+
+def verified_recovery_budget(result, expected_limit=None):
+    failure = result.get("failure") or {}
+    diagnostic = failure.get("diagnostic") or {}
+    used = diagnostic.get("recoveries_used")
+    limit = diagnostic.get("recovery_limit")
+    return (
+        result.get("outcome") == "recovery_budget_exhausted"
+        and result.get("success") is False
+        and failure.get("code") == "plan_failed"
+        and failure.get("phase") in ("observation", "planning")
+        and diagnostic.get("reason") == result["outcome"]
+        and type(used) is int
+        and type(limit) is int
+        and 0 <= used == limit <= 4
+        and (expected_limit is None or limit == expected_limit)
+    )
+
+
 def gpu_samples(path):
     for line in path.read_text().splitlines():
         fields = line.split(",")
@@ -107,19 +174,32 @@ def supervise(plan, runtime, output, *, rehearsal=False, allocated=False):
         return all(evidence.get(item) is True for item in required)
 
     def wait_trial(proc, stop_at):
-        while (
-            proc.poll() is None and model.poll() is None and time.monotonic() < stop_at
-        ):
+        while proc.poll() is None:
+            failure = service_failure()
+            if failure:
+                return failure
+            if time.monotonic() >= stop_at:
+                return "trial hard timeout"
             time.sleep(0.025)
-        if model.poll() is not None:
-            return "shared model exited"
-        if proc.poll() is None:
+        failure = service_failure()
+        if failure:
+            return failure
+        if time.monotonic() >= stop_at:
             return "trial hard timeout"
         if proc.returncode:
             return "trial process failure"
         return None
 
     reason = None
+    active_entry = None
+
+    def service_failure():
+        if model.poll() is not None:
+            return "shared model exited"
+        if monitor is not None and monitor.poll() is not None:
+            return "GPU monitor exited"
+        return None
+
     save()
     with interrupt_signals():
         try:
@@ -156,11 +236,12 @@ def supervise(plan, runtime, output, *, rehearsal=False, allocated=False):
                     if allowance <= 0:
                         raise TimeoutError("dynamic admission deadline")
                     entry = dict(status="running", allowance_s=allowance)
+                    active_entry = entry
                     summary["startup"][episode] = entry
                     save()
                     trial = launch(command, output / f"probe-{episode}.log")
                     reason = wait_trial(trial, began + allowance)
-                    stop_group(trial)
+                    reap_process_group(trial)
                     trial = None
                     entry.update(wall_s=time.monotonic() - began)
                     if reason:
@@ -169,13 +250,25 @@ def supervise(plan, runtime, output, *, rehearsal=False, allocated=False):
                         raise RuntimeError(f"dynamic admission {episode}: {reason}")
                     receipt = runtime["read_result"](episode, probe=True)
                     category = receipt.get("category")
-                    entry.update(receipt, status=category)
-                    save()
-                    if receipt.get("episode_id") != episode or category not in (
-                        "admitted",
-                        "not_admitted",
+                    if (
+                        receipt.get("episode_id") != episode
+                        or category
+                        not in (
+                            "admitted",
+                            "not_admitted",
+                        )
+                        or receipt.get("stop_campaign") is True
                     ):
+                        entry["result"] = receipt
                         raise RuntimeError(f"dynamic admission {episode}: {category}")
+                    if not verified_scene_cleanup(receipt, probe=True):
+                        entry["result"] = receipt
+                        raise RuntimeError(
+                            f"dynamic admission {episode}: cleanup or reset unverified"
+                        )
+                    entry.update(receipt, status=category, process_group_reaped=True)
+                    active_entry = None
+                    save()
                     runtime["admission"][key] = receipt
                 samples = list(gpu_samples(output / "gpu-memory.csv"))
                 if (
@@ -188,8 +281,8 @@ def supervise(plan, runtime, output, *, rehearsal=False, allocated=False):
                     )
             for row in roster:
                 episode = row["episode_id"]
-                if model.poll() is not None:
-                    reason = "shared model exited"
+                reason = service_failure()
+                if reason:
                     break
                 key = row["embodiment"], row["seed"]
                 live = runtime["admission"].get(key, {})
@@ -207,16 +300,14 @@ def supervise(plan, runtime, output, *, rehearsal=False, allocated=False):
                     continue
                 remaining = deadline - time.monotonic()
                 if remaining < row["hard_timeout_s"]:
-                    rows[episode]["reason"] = (
-                        "insufficient remaining time for full trial cap"
-                    )
-                    continue
+                    reason = "insufficient remaining time for full trial cap"
+                    break
                 rows[episode] = {"status": "running"}
+                active_entry = rows[episode]
                 save()
                 trial = launch(runtime["commands"][episode], output / f"{episode}.log")
                 reason = wait_trial(trial, time.monotonic() + row["hard_timeout_s"])
-                trial_pid = trial.pid
-                stop_group(trial)
+                reap_process_group(trial)
                 trial = None
                 if reason:
                     rows[episode] = {
@@ -232,46 +323,81 @@ def supervise(plan, runtime, output, *, rehearsal=False, allocated=False):
                     }
                     reason = "trial receipt mismatch"
                     break
-                rows[episode] = {"status": "completed", "result": receipt}
-                save()
+                active_entry.update(result=receipt, process_group_reaped=True)
                 category = receipt.get("category")
                 if receipt.get("stop_campaign") is True or category in (
                     "infrastructure_failure",
                     "actual_safety_stop",
                 ):
                     reason = (
-                        receipt.get("category")
-                        or "actual safety or input contract failure"
+                        category
+                        if category in ("infrastructure_failure", "actual_safety_stop")
+                        else "trial requested campaign stop"
                     )
+                    active_entry["status"] = (
+                        category
+                        if category in ("actual_safety_stop", "infrastructure_failure")
+                        else "infrastructure_failure"
+                    )
+                    active_entry["reason"] = reason
+                    break
+                if allocated and not verified_scene_cleanup(receipt):
+                    reason = "trial completion, independent reset or scene cleanup unverified"
+                    break
+                result = receipt.get("result") or {}
+                if (
+                    allocated
+                    and result.get("outcome") == "recovery_budget_exhausted"
+                    and not (
+                        receipt["success"] is False
+                        and verified_recovery_budget(result, row["recovery_cap"])
+                    )
+                ):
+                    reason = "recovery budget receipt differs from locked trial"
                     break
                 if category == "controlled_contact_stop":
                     if not (
                         receipt.get("fresh_reset_verified") is True
+                        and receipt.get("success") is False
                         and verified_contact_stop(receipt.get("contact_stop"))
-                        and process_group_gone(trial_pid)
                     ):
                         reason = "contact stop safety or cleanup unverified"
                         break
-                elif allocated and (
-                    category != "diagnostic_complete"
-                    or receipt.get("fresh_reset_verified") is not True
-                ):
+                elif allocated and category != "diagnostic_complete":
                     reason = "trial completion or independent reset unverified"
                     break
-        except (Exception, KeyboardInterrupt) as error:
-            reason = str(error)
-            for state in rows.values():
-                if state["status"] == "running":
-                    state.update(status="infrastructure_failure", reason=reason)
+                active_entry["status"] = "completed"
+                active_entry = None
+                save()
+            if reason is None:
+                reason = service_failure()
+        except (Exception, KeyboardInterrupt, SystemExit) as error:
+            reason = str(error) or type(error).__name__
         finally:
-            stop_group(trial)
-            stop_group(model)
-            stop_group(monitor)
+            cleanup_failures = []
+            for label, proc in (
+                ("trial", trial),
+                ("model", model),
+                ("monitor", monitor),
+            ):
+                if proc is not None:
+                    try:
+                        reap_process_group(proc)
+                    except (Exception, KeyboardInterrupt, SystemExit) as error:
+                        cleanup_failures.append(f"{label}: {error}")
             if monitor is not None:
-                summary["observed_gpu_peak_mib"] = max(
-                    (used for used, _ in gpu_samples(output / "gpu-memory.csv")),
-                    default=None,
-                )
+                try:
+                    summary["observed_gpu_peak_mib"] = max(
+                        (used for used, _ in gpu_samples(output / "gpu-memory.csv")),
+                        default=None,
+                    )
+                except OSError as error:
+                    cleanup_failures.append(f"GPU monitor log: {error}")
+            if cleanup_failures:
+                summary["cleanup_failures"] = cleanup_failures
+                reason = reason or "campaign cleanup unverified"
+            if active_entry is not None and active_entry["status"] == "running":
+                active_entry.update(status="infrastructure_failure", reason=reason)
             for state in rows.values():
                 if state["status"] == "not_run" and state["reason"] == "not reached":
                     state["reason"] = reason or "no trial receipt"

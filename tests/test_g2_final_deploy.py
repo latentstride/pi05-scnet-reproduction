@@ -121,15 +121,23 @@ class DeployTests(unittest.TestCase):
                 authorization(root, path, "9001")
 
     def test_candidate_and_measured_rejection_are_separate(self):
-        for detail, expected in [
-            ("native drive candidate blocked", "diagnostic_complete"),
-            ("measured state has non-permitted contact", "actual_safety_stop"),
+        for detail, geometry, expected in [
+            ("native drive candidate blocked", "candidate", "diagnostic_complete"),
+            (
+                "measured state has non-permitted contact",
+                "actual",
+                "actual_safety_stop",
+            ),
         ]:
             self.assertEqual(
                 classify(
                     dict(
                         outcome="control_error",
-                        failure=dict(detail=detail, code="collision"),
+                        failure=dict(
+                            detail=detail,
+                            code="collision",
+                            diagnostic=dict(geometry=geometry),
+                        ),
                     )
                 ),
                 expected,
@@ -150,9 +158,21 @@ class DeployTests(unittest.TestCase):
         }
 
         def receipt(episode, probe=False):
+            if probe and categories[episode] == "not_admitted":
+                return dict(
+                    episode_id=episode,
+                    category="not_admitted",
+                    admission_stage="assets",
+                    cleanup=dict(scene_opened=False),
+                )
             return dict(
                 episode_id=episode,
                 category=categories[episode] if probe else "actual_safety_stop",
+                physical_admitted=True,
+                fresh_reset_verified=True,
+                cleanup=dict(
+                    scene_opened=True, close_complete=True, scene_context_closed=True
+                ),
             )
 
         runtime = dict(

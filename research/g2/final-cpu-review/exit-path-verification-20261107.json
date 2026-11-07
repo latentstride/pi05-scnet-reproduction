@@ -1,0 +1,63 @@
+{
+  "status": "READY_FOR_REVIEW",
+  "submission_allowed": false,
+  "gpu_operations": 0,
+  "historical_reference": {
+    "job_id": "127139405",
+    "source_commit": "af5d6724f8b6a84808556b1837d9d9a007d745b1",
+    "record": "result-127139405.json",
+    "sha256": "00f64b39ccbbf3d6396ad089b95eeb4d9f9e8820ae7bb4f836bb210e0ffb74f7",
+    "executed_trials": 4,
+    "successful_task_predicates": 0,
+    "not_run": 10,
+    "field_cleanup_reconstructed": false
+  },
+  "cpu_acceptance": {
+    "tests_passed": 232,
+    "synthetic_episodes": 13,
+    "production_supervisor_cpu_simulated_trials": 14,
+    "batch_fault_injections": 22,
+    "historical_trigger_replay": {
+      "trial": "remaining-seed1-arx-full-w4",
+      "policy_actions": 156,
+      "recovery_actions": 4,
+      "outcome": "recovery_budget_exhausted",
+      "scene_cleanup_evidence": "CPU simulation only"
+    },
+    "tests_log_sha256": "4aa76160d61a90961fd7ff706d0b498620f72c092098f4530ec24e55ffdc11ab",
+    "synthetic_acceptance_sha256": "88751bc6b22735823854c8318fdff51ebde183367b59dec6b2f9409f1e097ce3",
+    "coverage_matrix": "docs/g2_exit_path_audit.md"
+  },
+  "frozen_release": {
+    "archive": "candidate-release-exit-path-20261107.tar.gz",
+    "archive_sha256": "b3d739ffe67e81968111f61380500bf08f75f99cc1bba5d429d841b99b55db1b",
+    "manifest_sha256": "1c93aac73ee3e3adc193e1ad4587fd1f915908f8d7bbc00469c4b41f4f0cec23",
+    "manifest_files_verified_after_unpack": 75,
+    "configs_verified": 14,
+    "deployment_verify_passed": true,
+    "batch_shell_syntax_passed": true,
+    "trial_order": [
+      "remaining-seed1-native-w31",
+      "remaining-seed0-native-w31",
+      "remaining-seed0-arx-full-w4",
+      "remaining-seed1-arx-full-w4",
+      "remaining-seed1-native-w26",
+      "remaining-seed0-native-w26",
+      "remaining-seed0-native-w4",
+      "remaining-seed1-native-w4",
+      "remaining-seed1-arx-expert-repaired",
+      "remaining-seed0-arx-expert-repaired",
+      "remaining-seed0-arx-recovery-no-route-w4",
+      "remaining-seed1-arx-recovery-no-route-w4",
+      "remaining-seed1-arx-baseline-w4",
+      "remaining-seed0-arx-baseline-w4"
+    ],
+    "allocation_wall_limit_s": 34200,
+    "budget_ceiling_yuan": "34.20"
+  },
+  "unverified_live": [
+    "CUDA, model inference, rendering and per-trial geometry admission under the new release",
+    "Physical fourth-trial stop and real simulator cleanup under the new release",
+    "Process-group behavior and exit evidence inside the cluster containers"
+  ]
+}

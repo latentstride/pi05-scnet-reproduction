@@ -10,7 +10,7 @@ import time
 from g2_adapter import G2Error, images_of
 from g2_contact import CONTACT_LOSSES
 from g2_episode import json_value
-from g2_final_campaign import verified_contact_stop
+from g2_final_campaign import verified_contact_stop, verified_recovery_budget
 from g2_final_deploy import authorization
 from g2_final_expert import execute_expert, expert_prefix
 from g2_locked_task import (
@@ -20,6 +20,7 @@ from g2_locked_task import (
     verify_real_scene,
 )
 from g2_remaining_conditions import run_condition
+from g2_remaining_coordinator import RecoveryBudgetExhausted
 from g2_task_runtime import inspect_assets, real_scene, verify_runtime
 from g2e_host_supervisor import interrupt_signals
 from g2e_model_entry import reset_remote
@@ -37,8 +38,11 @@ def classify(result, contact_stop=None):
     detail = failure.get("detail", "").lower()
     diagnostic = failure.get("diagnostic") or {}
     code = failure.get("code")
+    if result.get("cleanup_failures"):
+        return "infrastructure_failure"
     if (
         diagnostic.get("geometry") == "actual"
+        or diagnostic.get("reason") == "recovery_unsafe_contact"
         or any(
             s in detail
             for s in (
@@ -52,13 +56,21 @@ def classify(result, contact_stop=None):
         or code == Status.UNSYNCED.value
     ):
         return "actual_safety_stop"
-    if result["outcome"] in (
-        "timeout",
-        "interrupted",
-        "policy_failed",
-        "environment_error",
-        "export_failed",
+    if (
+        result["outcome"]
+        in (
+            "timeout",
+            "interrupted",
+            "policy_failed",
+            "environment_error",
+            "export_failed",
+        )
+        or code == Status.TIMEOUT.value
     ):
+        return "infrastructure_failure"
+    if result["outcome"] == RecoveryBudgetExhausted.reason:
+        if verified_recovery_budget(result):
+            return "diagnostic_complete"
         return "infrastructure_failure"
     if "object slipped" in detail or "lost bilateral" in detail:
         if (
@@ -76,24 +88,24 @@ def classify(result, contact_stop=None):
         Status.PLAN_FAILED.value,
         Status.VELOCITY.value,
     }
-    if diagnostic.get("geometry") == "candidate" and code in planning_codes | {
-        Status.LIMIT.value
-    }:
-        return "diagnostic_complete"
-    if (
-        code == Status.COLLISION.value
-        and detail
-        in (
-            "native drive candidate blocked",
-            "predicted finger start intersects task block",
-            "scene changed after planning",
-        )
-    ) or (
-        code == Status.BACKEND_ERROR.value
-        and detail.startswith("donor opening before receiver contact confirmation")
+    if diagnostic.get("geometry") == "candidate" and (
+        code in planning_codes | {Status.LIMIT.value}
+        or code == Status.BACKEND_ERROR.value
+        and diagnostic.get("reason") == "premature_release"
     ):
         return "diagnostic_complete"
-    if result["outcome"] in ("control_error", "joint_limit"):
+    # The frozen ARX ContactTracker reports this pre-drive gate in its original form.
+    if (
+        code == Status.BACKEND_ERROR.value
+        and detail == "donor opening before receiver contact confirmation"
+        and isinstance(diagnostic.get("contact_state"), dict)
+    ):
+        return "diagnostic_complete"
+    if result["outcome"] in ("control_error", "joint_limit") and code in (
+        Status.BACKEND_ERROR.value,
+        Status.LIMIT.value,
+        Status.COLLISION.value,
+    ):
         return "actual_safety_stop"
     if result["outcome"] in ("success", "task_unsuccessful"):
         return "diagnostic_complete"
@@ -115,11 +127,20 @@ class RuntimeReset(VerifiedReset):
         super().__init__(backend, expected, output, verify_scene)
         self.cleanup_failures = cleanup_failures
         self.contact_stop = {}
+        self.cleanup = dict(
+            scene_opened=True,
+            hold_complete=False,
+            close_complete=False,
+            scene_context_closed=False,
+        )
+        self.close_attempted = False
+        self.motion_attempted = False
 
     def execute(self, *args, **kwargs):
         if self.status != "matched" or self.contact_stop:
             raise G2Error(Status.UNSYNCED, "execution requires a fresh admitted scene")
         try:
+            self.motion_attempted = True
             return self.backend.execute(*args, **kwargs)
         except G2Error as error:
             kind = CONTACT_LOSSES.get(str(error))
@@ -139,12 +160,15 @@ class RuntimeReset(VerifiedReset):
         try:
             before = self.backend.tick
             value = action(*args)
+            if before != self.backend.tick:
+                raise RuntimeError(f"{key} advanced simulator time")
+            self.cleanup[key + "_complete"] = True
             if self.contact_stop:
                 self.contact_stop[key + "_complete"] = (
                     before == self.backend.tick == self.contact_stop["tick"]
                 )
             return value
-        except Exception as error:
+        except (Exception, KeyboardInterrupt, SystemExit) as error:
             self.cleanup_failures.append(f"{key}: {error}")
             raise
 
@@ -152,6 +176,7 @@ class RuntimeReset(VerifiedReset):
         return self._cleanup("hold", self.backend.hold)
 
     def close(self, output):
+        self.close_attempted = True
         return self._cleanup("close", self.backend.close, output)
 
 
@@ -196,7 +221,16 @@ def run(args):
                 verify_real_scene,
                 cleanup_failures,
             )
-            yield runtime_reset, adapter
+            try:
+                yield runtime_reset, adapter
+            finally:
+                if not runtime_reset.close_attempted:
+                    try:
+                        if runtime_reset.motion_attempted:
+                            runtime_reset.hold()
+                    finally:
+                        runtime_reset.close(evidence)
+        runtime_reset.cleanup["scene_context_closed"] = True
         if runtime_reset.contact_stop:
             runtime_reset.contact_stop["scene_context_closed"] = True
 
@@ -230,7 +264,12 @@ def run(args):
             except (ValueError, OSError) as error:
                 if not args.probe:
                     raise
-                receipt.update(category="not_admitted", detail=str(error))
+                receipt.update(
+                    category="not_admitted",
+                    admission_stage="assets",
+                    cleanup=dict(scene_opened=False),
+                    detail=str(error),
+                )
                 return
             if args.probe:
                 evidence.mkdir()
@@ -250,8 +289,26 @@ def run(args):
                         else:
                             result = adapter.observe(snap, config["prompt"], 30)
                             if not result.ok:
+                                failure = dict(
+                                    outcome="adapter_error",
+                                    failure=dict(
+                                        phase="observation",
+                                        code=result.status.value,
+                                        detail=result.detail,
+                                        diagnostic=result.diagnostic,
+                                    ),
+                                )
+                                if classify(failure) != "diagnostic_complete":
+                                    raise G2Error(
+                                        result.status,
+                                        result.detail,
+                                        **result.diagnostic,
+                                    )
                                 receipt.update(
-                                    category="not_admitted", detail=result.detail
+                                    category="not_admitted",
+                                    admission_stage="input_contract",
+                                    detail=result.detail,
+                                    diagnostic=result.diagnostic,
                                 )
                                 return
                             request = result.payload
@@ -266,6 +323,13 @@ def run(args):
                             )
                             validate_response(policy.infer(request))
                         receipt.update(category="admitted")
+                    except InitialMismatch as error:
+                        receipt.update(
+                            category="not_admitted",
+                            admission_stage="initial_state",
+                            physical_admitted=False,
+                            detail=str(error),
+                        )
                     finally:
                         probe_phase("close_scene")
                         backend.close(evidence)
@@ -281,8 +345,8 @@ def run(args):
                     return seconds
 
                 with (
-                    factory(config) as (backend, adapter),
                     (evidence / "events.jsonl").open("x", buffering=1) as stream,
+                    factory(config) as (backend, adapter),
                 ):
 
                     def log(record):
@@ -306,7 +370,10 @@ def run(args):
                             remaining,
                         )
                         receipt.update(
-                            category="diagnostic_complete", success=success, expert=True
+                            category="diagnostic_complete",
+                            success=success,
+                            expert=True,
+                            outcome="success" if success else "task_unsuccessful",
                         )
                     except G2Error as error:
                         expert_error = error
@@ -331,8 +398,9 @@ def run(args):
                     result=json.loads(
                         json.dumps(result, default=json_value, allow_nan=False)
                     ),
+                    success=result["success"],
                 )
-    except (Exception, KeyboardInterrupt) as error:
+    except (Exception, KeyboardInterrupt, SystemExit) as error:
         detail = str(error)
         if isinstance(error, G2Error):
             outcome = "control_error"
@@ -355,12 +423,9 @@ def run(args):
                 ),
                 runtime_reset.contact_stop if runtime_reset else None,
             )
+            receipt.update(outcome=outcome, code=error.status.value)
         else:
             category = "infrastructure_failure"
-        if args.probe and isinstance(error, InitialMismatch):
-            category = (
-                "actual_safety_stop" if "geometry blocked" in detail else "not_admitted"
-            )
         receipt.update(category=category, detail=detail, success=False)
         if isinstance(error, G2Error):
             receipt["diagnostic"] = json.loads(
@@ -368,6 +433,7 @@ def run(args):
             )
     finally:
         if runtime_reset is not None:
+            receipt["cleanup"] = runtime_reset.cleanup
             receipt["fresh_reset_verified"] = runtime_reset.status == "matched"
             if runtime_reset.contact_stop:
                 receipt["contact_stop"] = runtime_reset.contact_stop

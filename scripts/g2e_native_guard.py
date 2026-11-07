@@ -54,6 +54,8 @@ class NativeReleaseTracker(ContactTracker):
             raise G2Error(
                 Status.BACKEND_ERROR,
                 "donor opening before receiver contact confirmation",
+                geometry="candidate",
+                reason="premature_release",
                 contact_state=self.snapshot(),
                 opening_geometry_m=opening.tolist(),
                 opening_reference_m=reference.tolist(),
@@ -101,6 +103,7 @@ class NativeGuard:
                 raise G2Error(
                     Status.LIMIT,
                     "measured fingers exceed original calibration tolerance",
+                    geometry="actual",
                 )
         self.collision.tracker.observe(stamp, contacts, tools, block_pose)
         self.collision.refresh()
@@ -219,6 +222,7 @@ class NativeGuard:
             raise G2Error(
                 Status.BACKEND_ERROR,
                 "native tracking exceeds existing 30mm/10deg bounds",
+                geometry="actual",
                 position_error_m=[float(np.linalg.norm(e[:3])) for e in errors],
                 orientation_error_deg=[
                     float(np.rad2deg(np.linalg.norm(e[3:]))) for e in errors

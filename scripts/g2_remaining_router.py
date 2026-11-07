@@ -124,7 +124,7 @@ class JointRouter:
             self.last = dict(rerouted=False, wall_s=monotonic() - started)
             return path
         except G2Error as exc:
-            if exc.status != Status.COLLISION:
+            if exc.status != Status.COLLISION or exc.diagnostic.get("geometry") == "actual":
                 raise
         tracker = getattr(collision, "tracker", None)
         if tracker is not None and (tracker.holders or tracker.releasing or

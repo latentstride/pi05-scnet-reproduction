@@ -62,9 +62,9 @@ def execute_expert(backend, adapter, ticks, rows, target_pose, log, remaining):
             raise G2Error(observed.status, observed.detail, **observed.diagnostic)
         plan = adapter.actions(np.tile(row, (50, 1)), snapshot, 1, remaining())
         if not plan.ok:
-            raise G2Error(
-                plan.status, plan.detail, **dict(plan.diagnostic, geometry="candidate")
-            )
+            diagnostic = dict(plan.diagnostic)
+            diagnostic.setdefault("geometry", "candidate")
+            raise G2Error(plan.status, plan.detail, **diagnostic)
         log(dict(kind="expert_waypoint", source_tick=int(tick)))
         if backend.execute(plan.payload, log, remaining, stop_on_success=False) != 1:
             raise G2Error(Status.BACKEND_ERROR, "expert waypoint execution interrupted")

@@ -137,7 +137,7 @@ class ContactStopTests(unittest.TestCase):
         result, proof, failures = self.native_stop(close_fails=True)
         self.assertTrue(failures)
         self.assertFalse(verified_contact_stop(proof))
-        self.assertEqual(classify(result, proof), "actual_safety_stop")
+        self.assertEqual(classify(result, proof), "infrastructure_failure")
 
     def test_unverified_fresh_reset_cannot_execute(self):
         backend = Mock()
@@ -195,15 +195,30 @@ class ContactStopTests(unittest.TestCase):
         ):
             with self.subTest(scenario=scenario), tempfile.TemporaryDirectory() as temp:
                 observed = []
+                groups_checked = []
 
                 def receipt(episode, probe=False):
+                    cleanup = dict(
+                        scene_opened=True,
+                        close_complete=True,
+                        scene_context_closed=True,
+                        hold_complete=True,
+                    )
                     if probe:
-                        return dict(episode_id=episode, category="admitted")
+                        return dict(
+                            episode_id=episode,
+                            category="admitted",
+                            cleanup=cleanup,
+                            fresh_reset_verified=True,
+                            physical_admitted=True,
+                        )
                     observed.append(episode)
                     data = dict(
                         episode_id=episode,
                         category="diagnostic_complete",
                         fresh_reset_verified=True,
+                        success=False,
+                        cleanup=cleanup,
                     )
                     if episode == ids[0]:
                         data.update(
@@ -245,8 +260,13 @@ class ContactStopTests(unittest.TestCase):
                     commands={episode: command for episode in ids},
                     read_result=receipt,
                 )
+
+                def group_gone(pid):
+                    groups_checked.append(pid)
+                    return len(groups_checked) < 3
+
                 patch_group = patch(
-                    "g2_final_campaign.process_group_gone", return_value=False
+                    "g2_final_campaign.process_group_gone", side_effect=group_gone
                 )
                 if scenario == "group_alive":
                     with patch_group:
@@ -264,6 +284,8 @@ class ContactStopTests(unittest.TestCase):
                     if scenario == "next_reset_failed"
                     else ids[:1]
                 )
-                self.assertEqual(observed, expected)
+                self.assertEqual(
+                    observed, [] if scenario == "group_alive" else expected
+                )
                 self.assertEqual(summary["stop_reason"] is None, scenario == "verified")
                 self.assertEqual(summary["model_server_starts"], 1)

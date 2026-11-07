@@ -384,14 +384,14 @@ class ContactWorld:
                     if index==0:
                         if depth>self.limits.penetration_m:
                             raise G2Error(Status.COLLISION,"predicted finger start intersects task block",
-                                          side=SIDES[side],finger=finger, depth_m=depth,
+                                          geometry="candidate", side=SIDES[side],finger=finger, depth_m=depth,
                                           allowed_penetration_m=self.limits.penetration_m,
                                           start_native_m=opened, requested_native_m=desired)
                         threshold=max(threshold,depth)
                     if depth>threshold+1e-12:
                         if index==0:
                             raise G2Error(Status.COLLISION,"predicted finger start intersects task block",
-                                          side=SIDES[side],finger=finger, depth_m=depth,
+                                          geometry="candidate", side=SIDES[side],finger=finger, depth_m=depth,
                                           allowed_penetration_m=self.limits.penetration_m,
                                           start_native_m=opened, requested_native_m=desired)
                         lo,hi=previous_alpha,alpha

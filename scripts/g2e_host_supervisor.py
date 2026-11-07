@@ -24,7 +24,7 @@ def stop_group(proc, grace_s=2.0):
     try:
         os.killpg(proc.pid, signal.SIGTERM)
     except ProcessLookupError:
-        proc.wait()
+        proc.wait(timeout=grace_s)
         return
     try:
         proc.wait(timeout=grace_s)
@@ -34,7 +34,7 @@ def stop_group(proc, grace_s=2.0):
         os.killpg(proc.pid, signal.SIGKILL)
     except ProcessLookupError:
         pass
-    proc.wait()
+    proc.wait(timeout=grace_s)
 
 
 def argv(value):

@@ -212,12 +212,14 @@ class NativeBackend:
         entity.set_qf(entity.compute_passive_force(gravity=True, coriolis_and_centrifugal=True))
 
     def close(self, output):
-        self.env.scene = self.actual_scene
         try:
-            # Always retain the final physical state, including early success.
-            if self.episode is not None:
-                self.video.frame(self.env.get_obs())
-            self.video.close()
+            try:
+                self.env.scene = self.actual_scene
+                # Always retain the final physical state, including early success.
+                if self.episode is not None:
+                    self.video.frame(self.env.get_obs())
+            finally:
+                self.video.close()
             return str(self.video.path)
         finally:
             self.env.close_env(clear_cache=True)

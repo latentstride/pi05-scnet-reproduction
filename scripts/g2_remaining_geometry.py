@@ -50,7 +50,11 @@ def refined_pair(arms, frames, tools, seed, fingers, world, check, max_delta=Non
                 ),
             )
         except G2Error as exc:
-            if exc.status not in (Status.COLLISION, Status.IK_FAILED, Status.VELOCITY):
+            if exc.diagnostic.get("geometry") == "actual" or exc.status not in (
+                Status.COLLISION,
+                Status.IK_FAILED,
+                Status.VELOCITY,
+            ):
                 raise
             verdicts.append(
                 dict(
@@ -133,7 +137,7 @@ def bounded_progress(arms, frames, tools, q, fingers, requested, world, motion, 
                 attempts=attempts,
             )
         except G2Error as exc:
-            if exc.status not in (
+            if exc.diagnostic.get("geometry") == "actual" or exc.status not in (
                 Status.COLLISION,
                 Status.IK_FAILED,
                 Status.VELOCITY,

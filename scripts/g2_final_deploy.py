@@ -12,10 +12,10 @@ import re
 import subprocess
 import time
 
-from g2_final_campaign import supervise
+from g2_final_campaign import reap_process_group, supervise
 from g2_job_admission import read_allocation
 from g2_single_launch import OPENPI, PACE
-from g2e_host_supervisor import interrupt_signals, stop_group
+from g2e_host_supervisor import interrupt_signals
 from pace_g1_orchestrate import persist
 
 
@@ -304,6 +304,23 @@ def allocation_matches(fields):
     )
 
 
+def run_deployment_stage(command, log, timeout, *, cwd=None):
+    with interrupt_signals(), log.open("wb") as stream:
+        process = subprocess.Popen(
+            command,
+            stdin=subprocess.DEVNULL,
+            stdout=stream,
+            stderr=subprocess.STDOUT,
+            cwd=cwd,
+            start_new_session=True,
+        )
+        try:
+            if process.wait(timeout=timeout):
+                raise RuntimeError(f"{log.stem} process failed")
+        finally:
+            reap_process_group(process)
+
+
 def run(root, release, output, auth_path, plan):
     job = os.environ.get("SLURM_JOB_ID", "")
     if (
@@ -338,19 +355,7 @@ def run(root, release, output, auth_path, plan):
             str(release),
             str(output / "graphics"),
         ]
-        with interrupt_signals(), (output / "graphics.log").open("wb") as log:
-            renderer = subprocess.Popen(
-                graphics_command,
-                stdout=log,
-                stderr=subprocess.STDOUT,
-                cwd=root,
-                start_new_session=True,
-            )
-            try:
-                if renderer.wait(timeout=295):
-                    raise RuntimeError("graphics admission process failed")
-            finally:
-                stop_group(renderer)
+        run_deployment_stage(graphics_command, output / "graphics.log", 295, cwd=root)
         graphics = read(output / "graphics/sim-launch.json")
         budget = plan["budget"]["overhead"]
         timeout = end - time.time() - budget["cleanup_s"] - budget["statistics_s"]
@@ -366,18 +371,18 @@ def run(root, release, output, auth_path, plan):
             ),
         )
         summary = supervise(plan, runtime, output / "supervisor", allocated=True)
-        subprocess.run(
+        run_deployment_stage(
             [
                 "python3",
                 str(release / "scripts/g2_final_statistics.py"),
                 str(release / "unified-plan.json"),
                 str(output),
             ],
-            check=True,
-            timeout=budget["statistics_s"],
+            output / "statistics.log",
+            budget["statistics_s"],
         )
         return 1 if summary["stop_reason"] else 0
-    except (Exception, KeyboardInterrupt) as exc:
+    except (Exception, KeyboardInterrupt, SystemExit) as exc:
         persist(
             output / "deployment-failure.json",
             dict(detail=str(exc), formal_score_eligible=False),

@@ -10,8 +10,8 @@ from time import monotonic
 import json
 import numpy as np
 from g2_adapter import G2Error, images_of
-from g2_episode import save_json, json_value
-from g2_remaining_coordinator import RecoveryCoordinator
+from g2_episode import finish_episode, save_json, json_value
+from g2_remaining_coordinator import RecoveryBudgetExhausted, RecoveryCoordinator
 from robotwin_control_geometry import Status
 
 
@@ -163,13 +163,24 @@ def run(spec, backend, adapter, policy, output):
                     row.update(outcome="success", success=True)
                     break
             if not row["success"]:
-                row["outcome"] = "task_unsuccessful"
+                row.update(
+                    outcome="task_unsuccessful",
+                    failure=dict(
+                        phase="termination",
+                        code="action_budget_exhausted",
+                        detail="policy action or query budget ended before success",
+                    ),
+                )
         except (Exception, KeyboardInterrupt, SystemExit) as exc:
             row.update(
                 outcome="interrupted"
                 if isinstance(exc, (KeyboardInterrupt, SystemExit))
                 else "timeout"
-                if isinstance(exc, G2Error) and exc.status == Status.TIMEOUT
+                if isinstance(exc, TimeoutError)
+                or isinstance(exc, G2Error)
+                and exc.status == Status.TIMEOUT
+                else RecoveryBudgetExhausted.reason
+                if isinstance(exc, RecoveryBudgetExhausted)
                 else {
                     "inference": "policy_failed",
                     "planning": "planning_failed",
@@ -192,23 +203,7 @@ def run(spec, backend, adapter, policy, output):
                 policy_actions=coordinator.policy_actions,
                 recovery_actions=coordinator.recovery_actions,
             )
-            if not row["success"]:
-                try:
-                    backend.hold()
-                except Exception as exc:
-                    event(dict(kind="hold_failed", detail=repr(exc)))
-            try:
-                row["video"] = backend.close(output)
-            except Exception as exc:
-                event(dict(kind="close_failed", detail=repr(exc)))
-                if row["success"]:
-                    row.update(
-                        success=False,
-                        outcome="environment_error",
-                        failure=dict(
-                            phase="termination", code="close_failed", detail=repr(exc)
-                        ),
-                    )
+            finish_episode(backend, output, row, event)
             row["elapsed_s"] = monotonic() - started
             save_json(output / "result.json", row)
     return row

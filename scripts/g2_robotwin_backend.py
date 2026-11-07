@@ -260,14 +260,14 @@ class ARXBackend:
         for side, arm in enumerate(self.arms):
             limits = arm.chain.limits
             if np.any((plan.q[:, side] < limits[:, 0]) | (plan.q[:, side] > limits[:, 1])):
-                raise G2Error(Status.LIMIT, "trajectory exceeds arm limits")
+                raise G2Error(Status.LIMIT, "trajectory exceeds arm limits", geometry="candidate")
             grip_limits = arm.grip.limits
             if np.any((plan.fingers[:, side] < grip_limits[:, 0]) | (plan.fingers[:, side] > grip_limits[:, 1])):
-                raise G2Error(Status.LIMIT, "trajectory exceeds finger limits")
+                raise G2Error(Status.LIMIT, "trajectory exceeds finger limits", geometry="candidate")
             if plan.predicted_fingers is not None and np.any(
                     (plan.predicted_fingers[:,side]<grip_limits[:,0]) |
                     (plan.predicted_fingers[:,side]>grip_limits[:,1])):
-                raise G2Error(Status.LIMIT,"predicted contact geometry exceeds finger limits")
+                raise G2Error(Status.LIMIT,"predicted contact geometry exceeds finger limits", geometry="candidate")
         ratio = plan.period_s / self.dt
         substeps = round(ratio)
         if substeps < 1 or abs(substeps - ratio) > 1e-6:
@@ -299,7 +299,8 @@ class ARXBackend:
                          sim_s=self.tick*self.dt,target_arm=plan.q[index],target_fingers=plan.fingers[index],
                          predicted_fingers=geometry,collisions=collisions,
                          control_call_count=0,physics_step_count=0))
-                raise G2Error(Status.COLLISION, "scene changed after planning", tick=index,collisions=collisions)
+                raise G2Error(Status.COLLISION, "scene changed after planning", geometry="candidate",
+                              tick=index,collisions=collisions)
             before_holders=set(self.collision.tracker.holders) if self.contact_drive is not None else set()
             if self.contact_drive is not None:
                 self.collision.tracker.authorize_opening(self._drive_fingers(),plan.fingers[index],self.arms,self.collision.giver)
@@ -330,7 +331,7 @@ class ARXBackend:
                         self.collision.refresh()
                         if not self.collision.measured_clear(q,native):
                             raise G2Error(Status.COLLISION,"measured state has non-permitted contact",
-                                          collisions=self.collision.last_collisions)
+                                          geometry="actual", collisions=self.collision.last_collisions)
                     except G2Error as error:
                         log(dict(tick=self.tick,sim_s=self.tick*self.dt,kind="contact_failure",
                                  actual_arm=q,actual_fingers=native,target_fingers=plan.fingers[index],
@@ -359,7 +360,7 @@ class ARXBackend:
                          physics_step_count=1 if contact_error is None else 0))
                 if max(p) > self.position_tol or max(a) > self.angle_tol:
                     raise G2Error(Status.BACKEND_ERROR, "measured TCP tracking exceeded acceptance bounds",
-                                  position_error_m=p, orientation_error_deg=a)
+                                  geometry="actual", position_error_m=p, orientation_error_deg=a)
                 if contact_error is not None:
                     remaining()
                     contact_error.diagnostic.update(terminal_checks_passed=True,contact_loss=kind,contact_tick=self.tick)

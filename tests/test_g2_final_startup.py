@@ -76,6 +76,14 @@ class StartupTests(unittest.TestCase):
                 episode_id=episode,
                 category="admitted" if probe else "diagnostic_complete",
                 fresh_reset_verified=True,
+                physical_admitted=True,
+                success=False,
+                cleanup=dict(
+                    scene_opened=True,
+                    close_complete=True,
+                    scene_context_closed=True,
+                    hold_complete=True,
+                ),
             ),
         )
         with (
@@ -83,6 +91,7 @@ class StartupTests(unittest.TestCase):
             patch("g2_final_campaign.time", clock),
             patch("g2_final_campaign.subprocess.Popen", side_effect=spawn),
             patch("g2_final_campaign.stop_group"),
+            patch("g2_final_campaign.process_group_gone", return_value=True),
             patch(
                 "g2_final_campaign.wait_ready", side_effect=lambda *args: advance(320)
             ),

@@ -30,12 +30,18 @@ class SceneClock:
 
 
 class NativeBackend:
-    def __init__(self, env, arms, world_task, initial, video, guard=None):
+    def __init__(self, env, arms, world_task, initial, video, guard=None, preload_hold=False):
         if env.robot.left_entity is not env.robot.right_entity:
             raise ValueError("native Aloha must use its shared articulation")
         self.env, self.arms, self.world_task = env, tuple(arms), world_task
         self.initial, self.video = deepcopy(initial), video
         self.guard = guard
+        self.preload = None
+        if preload_hold:
+            if guard is None:
+                raise ValueError("preload hold requires the per-step native guard")
+            from g2_native_preload import NativePreloadHold
+            self.preload = NativePreloadHold(guard.collision.tracker, self.arms)
         self.execution_protocol = guard.protocol if guard is not None else None
         self.action_index = None
         self.dt = env.scene.get_timestep()
@@ -92,7 +98,23 @@ class NativeBackend:
         snap=Snapshot(stamp,capture_arms(self.env.robot,stamp),{},self.world_task)
         q,fingers,_,_=read_snapshot(snap,self.arms)
         targets,drive=self._drive()
+        intervention = None
+        if self.preload is not None:
+            joints = [{j.get_name(): j for j in getattr(self.env.robot, side+"_entity").get_active_joints()}
+                      for side in SIDES]
+            velocity = np.array([[float(lookup[n].get_drive_velocity_target()[0]) for n in arm.grip.names]
+                                 for lookup, arm in zip(joints, self.arms)])
+            previous = drive if self.guard.previous_drive is None else self.guard.previous_drive
+            drive, velocity, intervention = self.preload.select(self.tick, previous, drive, velocity)
         self.guard.candidate(q,fingers,targets,drive,self.remaining)
+        if intervention is not None:
+            for i, (lookup, arm) in enumerate(zip(joints, self.arms)):
+                for j, name in enumerate(arm.grip.names):
+                    lookup[name].set_drive_target(float(drive[i,j]))
+                    lookup[name].set_drive_velocity_target(float(velocity[i,j]))
+            self.log(dict(kind="native_preload_control", tick=self.tick,
+                          action_index=self.action_index, control_call_count=0,
+                          physics_step_count=0, **intervention))
 
     def _stepped(self):
         self.tick += 1
@@ -151,6 +173,8 @@ class NativeBackend:
                           control_call_count=0, physics_step_count=0, **self.guard.metrics()))
             self.guard.tracking(target_tools,actual)
         self.remaining()
+        if self.preload is not None:
+            self.preload.observe(self.tick, self._drive()[1])
 
     def execute(self, targets, log, remaining):
         array = np.asarray(targets)

@@ -1,0 +1,124 @@
+{
+  "data_kind": "synthetic",
+  "formal_score_eligible": false,
+  "gpu_used": false,
+  "simulator_run": false,
+  "outcome_counts": {
+    "success": 5,
+    "policy_failed": 2,
+    "task_unsuccessful": 1,
+    "environment_error": 1,
+    "control_error": 1,
+    "interrupted": 1,
+    "timeout": 1,
+    "planning_failed": 1
+  },
+  "note": "Mock success exercises control flow; it is not robot task success.",
+  "passed": true,
+  "episodes": [
+    {
+      "episode_id": "Aloha-window1",
+      "success": true,
+      "outcome": "success",
+      "requested": 4,
+      "executed": 4,
+      "queries": 4
+    },
+    {
+      "episode_id": "Aloha-window4",
+      "success": true,
+      "outcome": "success",
+      "requested": 4,
+      "executed": 4,
+      "queries": 1
+    },
+    {
+      "episode_id": "ARX-window1",
+      "success": true,
+      "outcome": "success",
+      "requested": 4,
+      "executed": 4,
+      "queries": 4
+    },
+    {
+      "episode_id": "ARX-window4",
+      "success": true,
+      "outcome": "success",
+      "requested": 4,
+      "executed": 4,
+      "queries": 1
+    },
+    {
+      "episode_id": "failure-model",
+      "success": false,
+      "outcome": "policy_failed",
+      "requested": 0,
+      "executed": 0,
+      "queries": 1
+    },
+    {
+      "episode_id": "failure-shape",
+      "success": false,
+      "outcome": "policy_failed",
+      "requested": 0,
+      "executed": 0,
+      "queries": 1
+    },
+    {
+      "episode_id": "failure-task",
+      "success": false,
+      "outcome": "task_unsuccessful",
+      "requested": 4,
+      "executed": 4,
+      "queries": 4
+    },
+    {
+      "episode_id": "failure-reset",
+      "success": false,
+      "outcome": "environment_error",
+      "requested": 0,
+      "executed": 0,
+      "queries": 0
+    },
+    {
+      "episode_id": "failure-control",
+      "success": false,
+      "outcome": "control_error",
+      "requested": 1,
+      "executed": 0,
+      "queries": 1
+    },
+    {
+      "episode_id": "failure-interrupt",
+      "success": false,
+      "outcome": "interrupted",
+      "requested": 1,
+      "executed": 0,
+      "queries": 1
+    },
+    {
+      "episode_id": "failure-timeout",
+      "success": false,
+      "outcome": "timeout",
+      "requested": 1,
+      "executed": 0,
+      "queries": 1
+    },
+    {
+      "episode_id": "failure-planning",
+      "success": false,
+      "outcome": "planning_failed",
+      "requested": 1,
+      "executed": 0,
+      "queries": 1
+    },
+    {
+      "episode_id": "expert-arx",
+      "success": true,
+      "outcome": "success",
+      "requested": 4,
+      "executed": 4,
+      "queries": 1
+    }
+  ]
+}

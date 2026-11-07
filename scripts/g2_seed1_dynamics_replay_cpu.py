@@ -20,6 +20,7 @@ from g2_collision import JointCollisionWorld
 from g2_contact import ContactLimits, ContactWorld
 from g2_initial import matrix7
 from g2_kinematics import pose_error
+from g2_native_backend import NativeBackend
 from g2_proxy_collision import collision_only_urdf
 from g2e_native_guard import NativeGuard, NativeReleaseTracker
 
@@ -29,7 +30,10 @@ class EndReplay(Exception):
 
 
 def save(path, value):
-    path.write_text(json.dumps(value, indent=2, allow_nan=False) + "\n")
+    path.write_text(
+        json.dumps(value, indent=2, allow_nan=False, default=lambda v: v.tolist())
+        + "\n"
+    )
 
 
 def methods(path, class_name, names):
@@ -309,7 +313,13 @@ def run(args):
 
     original_stop_tick = last_tick
     frozen_grip = controls[first_holder - 1, 0, 6:, 0].copy()
-    horizon = max(last_tick, first_holder + args.settle_ticks)
+    lift_m = getattr(args, "lift_m", 0.0)
+    lift_ticks = getattr(args, "lift_ticks", 500)
+    post_lift_ticks = getattr(args, "post_lift_ticks", 250)
+    if lift_m and args.mode != "candidate-preload":
+        raise ValueError("lift diagnostic requires the integrated preload candidate")
+    lift_start = max(last_tick, first_holder + args.settle_ticks)
+    horizon = lift_start + (lift_ticks + post_lift_ticks if lift_m else 0)
     assert horizon <= 25000
     if horizon > last_tick:
         tail = np.repeat(controls[-1][None, :], horizon - last_tick, axis=0)
@@ -320,6 +330,26 @@ def run(args):
     frozen = None
     failure = None
     maxq = maxg = maxblock = 0.0
+    backend = None
+    interventions = []
+    lift = None
+    if args.mode == "candidate-preload":
+        env.scene, env.box = scene, block
+        backend = NativeBackend(
+            env,
+            arms,
+            np.eye(4),
+            initial,
+            NS(frame=lambda obs: None),
+            guard=guard,
+            preload_hold=True,
+        )
+        backend.episode, backend.remaining = name, check
+        backend.log = (
+            lambda event: interventions.append(event)
+            if event.get("kind") == "native_preload_control"
+            else None
+        )
     for tick, command in enumerate(controls, 1):
         check()
         command = command.copy()
@@ -331,6 +361,33 @@ def run(args):
         if args.mode == "hold-gripper" and tick > first_holder:
             command[0, 6:, 0] = frozen_grip
             command[0, 6:, 1] = 0.0
+        if lift_m and tick > lift_start:
+            if lift is None:
+                start_q = controls[lift_start - 1, 0, :6, 0].copy()
+                goal = frames[0] @ arms[0].chain.fk(start_q) @ arms[0].offset()
+                goal[2, 3] += lift_m
+                local = (
+                    np.linalg.inv(frames[0]) @ goal @ np.linalg.inv(arms[0].offset())
+                )
+                candidate = next(arms[0].chain.ik(local, start_q, check), None)
+                if candidate is None:
+                    raise ValueError("CPU lift diagnostic IK unavailable")
+                lift = dict(
+                    start=start_q,
+                    end=candidate[0],
+                    residual=candidate[1],
+                    requested_m=lift_m,
+                    start_tick=lift_start,
+                    duration_ticks=lift_ticks,
+                )
+            u = min(1.0, (tick - lift_start) / lift_ticks)
+            delta = lift["end"] - lift["start"]
+            command[0, :6, 0] = lift["start"] + delta * (
+                10 * u**3 - 15 * u**4 + 6 * u**5
+            )
+            command[0, :6, 1] = (
+                delta * (30 * u**2 - 60 * u**3 + 30 * u**4) / (lift_ticks * 0.004)
+            )
         entity.set_qf(
             entity.compute_passive_force(gravity=True, coriolis_and_centrifugal=True)
         )
@@ -340,8 +397,27 @@ def run(args):
                 lookup[n].set_drive_velocity_target(float(command[side, j, 1]))
         q, g = measured()
         try:
-            guard.candidate(q, g, command[:, :6, 0], command[:, 6:, 0], check)
-            scene.step()
+            step_error = None
+            if backend is None:
+                guard.candidate(q, g, command[:, :6, 0], command[:, 6:, 0], check)
+                scene.step()
+            else:
+                try:
+                    env.scene.step()
+                except G2Error as exc:
+                    if backend.tick != tick:
+                        raise
+                    step_error = exc
+                command[:, 6:, 0] = backend._drive()[1]
+                command[:, 6:, 1] = np.array(
+                    [
+                        [
+                            float(lookup[n].get_drive_velocity_target()[0])
+                            for n in a.grip.names
+                        ]
+                        for a in arms
+                    ]
+                )
             q, g = measured()
             tools = np.array(
                 [
@@ -352,14 +428,17 @@ def run(args):
             pose = block.pose.to_transformation_matrix()
             physical_contacts = scene.get_contacts()
             try:
-                guard.measured(
-                    Stamp(name, tick, tick * 0.004),
-                    q,
-                    g,
-                    tools,
-                    pose,
-                    physical_contacts,
-                )
+                if backend is None:
+                    guard.measured(
+                        Stamp(name, tick, tick * 0.004),
+                        q,
+                        g,
+                        tools,
+                        pose,
+                        physical_contacts,
+                    )
+                elif step_error is not None:
+                    raise step_error
             finally:
                 if tracker.holders and acquired is None:
                     acquired = tick
@@ -444,6 +523,8 @@ def run(args):
         if tick % 1000 == 0:
             print("CPU_REPLAY", args.window, args.mode, tick, flush=True)
     save(args.output / "trace.json", records)
+    if backend is not None:
+        save(args.output / "preload-controls.json", interventions)
     save(
         args.output / "result.json",
         dict(
@@ -457,6 +538,13 @@ def run(args):
             historical_stop_tick=original_stop_tick,
             horizon_tick=horizon,
             settle_ticks_requested=args.settle_ticks,
+            integrated_native_backend=backend is not None,
+            lift_diagnostic=None
+            if lift is None
+            else {
+                k: v.tolist() if isinstance(v, np.ndarray) else v
+                for k, v in lift.items()
+            },
             grip_freeze_target_m=frozen_grip.tolist()
             if args.mode == "hold-gripper"
             else None,
@@ -475,6 +563,7 @@ def run(args):
                 "original": "original reconstructed control schedule; optional protected maintenance tail",
                 "fixed-wrist": "left six arm position drive targets at historical first-holder tick, zero arm velocity drive, unchanged gripper and right arm schedule",
                 "hold-gripper": "left finger position drives at historical first-holder tick with zero finger velocity drive; arm and right gripper follow original schedule until protected maintenance tail",
+                "candidate-preload": "opt-in NativeBackend per-step preload controller; unchanged live guards and contact anchor; optional deterministic lift diagnostic, no model continuation",
             }[args.mode],
             source_hashes={
                 str(p.relative_to(args.pace)): sha256(p.read_bytes()).hexdigest()
@@ -494,7 +583,12 @@ if __name__ == "__main__":
         p.add_argument("--" + n, type=Path, required=True)
     p.add_argument("--window", type=int, choices=[31, 50], required=True)
     p.add_argument(
-        "--mode", choices=["original", "fixed-wrist", "hold-gripper"], required=True
+        "--mode",
+        choices=["original", "fixed-wrist", "hold-gripper", "candidate-preload"],
+        required=True,
     )
     p.add_argument("--settle-ticks", type=int, default=0, choices=range(301))
+    p.add_argument("--lift-m", type=float, default=0.0, choices=[0.0, 0.03])
+    p.add_argument("--lift-ticks", type=int, default=500, choices=[500])
+    p.add_argument("--post-lift-ticks", type=int, default=250, choices=[250])
     run(p.parse_args())

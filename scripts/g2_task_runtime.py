@@ -36,6 +36,13 @@ def verify_runtime(pace_root, audit):
 
 
 def validate_config(config, *, allow_native_h50=False):
+    preload = config.get("native_preload_control")
+    if preload is not None:
+        from g2_native_preload import PRELOAD_PROTOCOL
+        if (preload != PRELOAD_PROTOCOL or config.get("native_release_semantics") != "physical_aperture_v1"
+                or config.get("contact_mode") != CONTACT_MODE_NATIVE
+                or config.get("embodiment") != "aloha-agilex"):
+            raise ValueError("native preload candidate requires guarded Aloha physical-aperture semantics")
     semantics = config.get("native_release_semantics")
     if semantics is not None and (semantics != "physical_aperture_v1"
             or config["contact_mode"] != CONTACT_MODE_NATIVE):
@@ -232,7 +239,10 @@ def real_scene(config, spec, pace_root, assets_root, asset_audit, source_audit, 
                                  native_release_semantics=config.get("native_release_semantics", "legacy_drive_delta"),
                                  native_gripper_scale_m={side:getattr(env.robot,side+"_gripper_scale") for side in SIDES})
                     save_json(output/"setup.json",setup)
-                backend = NativeBackend(env, arms, world_task, initial, video,guard=guard)
+                setup["native_preload_control"] = config.get("native_preload_control", "disabled")
+                save_json(output/"setup.json", setup)
+                backend = NativeBackend(env, arms, world_task, initial, video,guard=guard,
+                                        preload_hold=config.get("native_preload_control") is not None)
                 if guard is not None: backend.collision=guard.collision
                 adapter = None
             else:

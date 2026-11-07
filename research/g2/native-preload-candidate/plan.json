@@ -1,0 +1,36 @@
+{
+  "scope": "CPU integration of contact-confirmed native preload hold; unified Aloha-to-ARX study remains intact",
+  "base_commit": "abcebf17a9856fefdc82ca171d8f54c3f6cbfa5b",
+  "protocol": "measured_contact_preload_hold_v1",
+  "default": "disabled",
+  "activation": "after existing stable measured holder acquisition and all per-step checks pass",
+  "drive": "capture both native position targets; suppress further inward targets and zero finger velocity feedforward while holding",
+  "release": "raw opening intent first checked by unchanged guard; permitted outward requests pass through; original contact releasing state retires latch",
+  "anchors": "unchanged",
+  "physics": {
+    "gpu": false,
+    "renderer": false,
+    "model_inference": false,
+    "window": 50,
+    "real_history_job": "127147943",
+    "first_holder_tick": 5088,
+    "settle_ticks": 300,
+    "lift_m": 0.03,
+    "lift_ticks": 500,
+    "post_lift_ticks": 250,
+    "dt_s": 0.004,
+    "deadline_s": 1500
+  },
+  "acceptance": {
+    "prefix": "identical full measured prefix through acquisition compared to accepted original replay",
+    "hold": "unchanged limits and no baseline stop during maintenance",
+    "lift": "retain bilateral holder, original anchor and all checks throughout bounded diagnostic lift; stop on first rejection",
+    "release": "CPU contact-state and native hooks, including donor rejection and accepted receiver handover; physical full release remains unverified unless measured independently"
+  },
+  "frozen_parameters_changed": false,
+  "arx_backend_changed": false,
+  "task_success_claim": false,
+  "gpu_authorization": false,
+  "source_config_sha256": "6976aa2b9f118180ad11148c0f5511e535620e80011203d94519a85e9d7d8f73",
+  "deployment_scope": "Aloha native opt-in; ARX backend, mapping and expert controller unchanged; no extra allocation or experiment stage"
+}

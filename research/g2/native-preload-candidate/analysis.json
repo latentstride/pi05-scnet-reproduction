@@ -1,0 +1,107 @@
+{
+  "scope": "CPU physics and original native hooks; no model continuation, no full task success claim",
+  "source_job": "127147943",
+  "prefix_max_absolute_errors": {
+    "q": 0.0,
+    "fingers": 0.0,
+    "block": 0.0,
+    "tool": 0.0,
+    "arm_velocity_rad_s": 0.0,
+    "block_linear_velocity_m_s": 0.0,
+    "block_angular_velocity_rad_s": 0.0,
+    "drive_finger_velocity_m_s": 0.0,
+    "drive": 0.0
+  },
+  "prefix_records_identical": false,
+  "physical_prefix_identical": true,
+  "physical_prefix_sha256": "7e4101f36be08c1a7218d902bc7b50d2c2143dd36350bc319ade2b3f03e1fcf1",
+  "contact_geometry_impulse_multisets_identical": true,
+  "tracker_rotation_representation_max_abs": 6.737483049246151e-08,
+  "prefix_metadata_difference": "NativeBackend normalizes quaternion rotations in float64; old helper used float32 transform; contact list order can differ; measured physics is identical",
+  "prefix_fingerprint": "302481ce820f8154d8a7b195e34b23f9539ec936220996720d723ba5a136dd6e",
+  "baseline_prefix_fingerprint": "f91cb2ea055ff0af0c16d4e69335b2245ad32b18a9084eb4def17e7903d497b7",
+  "native_backend_hooks": true,
+  "first_holder_tick": 5088,
+  "preload_drive_m": [
+    0.021925857290625572,
+    0.021925857290625572
+  ],
+  "original_anchor_unchanged": true,
+  "maintenance_end": {
+    "tick": 5388,
+    "block_z_m": 0.841041088104248,
+    "tool_z_m": 0.9109386723113783,
+    "slip_mm": 4.820406242222546,
+    "slip_deg": 4.255140637615676,
+    "actual_left_fingers_mm": [
+      30.258726328611374,
+      29.666857793927193
+    ],
+    "drive_left_fingers_mm": [
+      21.925857290625572,
+      21.925857290625572
+    ],
+    "holders": [
+      "left"
+    ]
+  },
+  "final": {
+    "tick": 6138,
+    "block_z_m": 0.8706170916557312,
+    "tool_z_m": 0.9405187064864838,
+    "slip_mm": 4.807021179398475,
+    "slip_deg": 4.253245194046378,
+    "actual_left_fingers_mm": [
+      30.245911329984665,
+      29.679352417588234
+    ],
+    "drive_left_fingers_mm": [
+      21.925857290625572,
+      21.925857290625572
+    ],
+    "holders": [
+      "left"
+    ]
+  },
+  "failure": null,
+  "physical_lift_completed": true,
+  "physical_release_validated": false,
+  "release_validation": "real contact state machine and NativeBackend with synthetic contact receipts; not physical transfer",
+  "GPU_operations": 0,
+  "checkpoint_modified": false,
+  "thresholds_modified": false,
+  "source_hashes": {
+    "trace.json": "f9e96ea65a57699e22a97d2c89d1cfbc2cdfda3e66bdb9d0ef59817c572eee82",
+    "preload-controls.json": "5ab8306735c3b64efc5b9accfb7b8be35fbec131c71c2f0dbd2b1c491147d11b",
+    "result.json": "94c4d0ba0724ec392398931ca46beadbaa7235c145318b1a437cd76de14e7de0",
+    "robot.urdf": "933b788a0b649f96e29d2bdb72c669ff82611e4ae1ea10bf059ea347458a936f",
+    "topp.log": "bacadc68dffb904dec3c4cfaaea3be18970dc68994d748e0a2d2c051900b877b",
+    "control-reconstruction.json": "1ec720994a7748188c0d88a922b337920f12ebfc52e4e772ff69edc9e4fc6e49"
+  },
+  "measured_lift": {
+    "requested_mm": 30.0,
+    "tool_delta_mm": [
+      0.7591271277655603,
+      -0.43106449926180734,
+      29.580034175105574
+    ],
+    "block_delta_mm": [
+      0.7594823837280273,
+      -0.5063321441411972,
+      29.576003551483154
+    ],
+    "tool_delta_m": [
+      0.0007591271277655603,
+      -0.00043106449926180734,
+      0.029580034175105574
+    ],
+    "block_delta_m": [
+      0.0007594823837280273,
+      -0.0005063321441411972,
+      0.029576003551483154
+    ],
+    "max_slip_mm": 4.858206713051695,
+    "max_slip_deg": 4.255369626253625,
+    "bilateral_holder_all_samples": true
+  }
+}

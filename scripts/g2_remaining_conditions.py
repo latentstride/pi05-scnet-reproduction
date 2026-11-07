@@ -15,7 +15,7 @@ from g2e_protocol import PROTOCOL, CONTACT_MODE_NATIVE
 from g2_task_runtime import validate_config
 
 
-def configure(base, row):
+def configure(base, row, *, allow_native_h50=False):
     config = deepcopy(base)
     if row["embodiment"] != base["embodiment"] or row["seed"] != base["scene_seed"]:
         raise ValueError("condition reset/embodiment mismatch")
@@ -37,11 +37,11 @@ def configure(base, row):
                       native_release_semantics="physical_aperture_v1")
     elif "execution_protocol" in config:
         raise ValueError("native protocol cannot leak into ARX")
-    validate_config(config)
+    validate_config(config, allow_native_h50=allow_native_h50)
     return config
 
 
-def run_condition(config, row, factory, policy, output):
+def run_condition(config, row, factory, policy, output, *, allow_native_h50=False):
     """Injected factory must own cleanup if construction/reset fails."""
     from pathlib import Path
 
@@ -60,7 +60,7 @@ def run_condition(config, row, factory, policy, output):
     if row["embodiment"] == "aloha-agilex":
         from g2_run_task import execute
 
-        return execute(config, factory, policy, output)
+        return execute(config, factory, policy, output, allow_native_h50=allow_native_h50)
     # Defer scene creation until the harness has created its evidence directory,
     # just like RuntimeSession; this also permits normal reset/cleanup on faults.
     from g2_task_runtime import RuntimeSession, SessionAdapter

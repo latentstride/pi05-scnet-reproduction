@@ -57,6 +57,11 @@ def verify(release):
         or plan["submission_allowed"] is not False
     ):
         raise ValueError("the immutable candidate must have submission disabled")
+    unified = plan.get("schema_version") == 3
+    if unified:
+        from g2_unified_plan import validate
+
+        validate(plan)
     ids = {row["episode_id"] for row in plan["trials"]}
     counts = Counter(
         (r["seed"], r["embodiment"], "expert" in r["method"]) for r in plan["trials"]
@@ -73,14 +78,13 @@ def verify(release):
         }
     )
     if (
-        len(ids) != 14
-        or len(plan["trials"]) != 14
-        or counts != expected
+        len(ids) != len(plan["trials"])
+        or (not unified and (len(ids) != 14 or counts != expected))
         or ids != set(plan["trial_bindings"])
     ):
         raise ValueError("candidate trial roster differs")
     budget = plan["budget"]
-    if (
+    if not unified and (
         plan["allocations_planned"],
         plan["model_server_starts"],
         budget["gpu_count"],
@@ -100,7 +104,7 @@ def verify(release):
     if (
         sum(row["hard_timeout_s"] for row in plan["trials"])
         + sum(budget["overhead"].values())
-        != 29700
+        != budget["bounded_execution_s"]
     ):
         raise ValueError("trial and overhead sum differs")
     model = read(release / "pace_download_manifest.json")
@@ -110,6 +114,7 @@ def verify(release):
         manifest_sha256=declared["pace_download_manifest.json"],
     ):
         raise ValueError("frozen checkpoint identity differs")
+    native_pairs = {}
     for row in plan["trials"]:
         episode = row["episode_id"]
         binding = plan["trial_bindings"][episode]
@@ -147,6 +152,31 @@ def verify(release):
             )
         ):
             raise ValueError(f"trial configuration differs from roster: {episode}")
+        if unified and row["embodiment"] == "aloha-agilex":
+            from g2e_protocol import CONTACT_MODE_NATIVE, PROTOCOL, validate_window
+
+            validate_window(
+                cfg["window"],
+                cfg["execution_protocol"],
+                cfg["embodiment"],
+                allow_native_h50=True,
+            )
+            if (
+                cfg["execution_protocol"],
+                cfg["contact_mode"],
+                cfg.get("native_release_semantics"),
+            ) != (PROTOCOL, CONTACT_MODE_NATIVE, "physical_aperture_v1"):
+                raise ValueError("native safety mode differs from the frozen protocol")
+            shared = {
+                k: v
+                for k, v in cfg.items()
+                if k not in ("episode_id", "condition", "window")
+            }
+            previous = native_pairs.setdefault(
+                row["seed"], (shared, binding["expected_initial"])
+            )
+            if previous != (shared, binding["expected_initial"]):
+                raise ValueError("native pair differs outside the execution window")
         if "expert" in row["method"]:
             if binding["trace"] not in declared or binding["source"] not in declared:
                 raise ValueError("expert evidence is unbound")
@@ -178,6 +208,7 @@ def authorization(release, path, job, *, starting=True):
 
 
 def commands(root, release, output, job, plan, graphics, timeout, auth_path):
+    unified = plan.get("schema_version") == 3
     gpu = graphics["gpu_uuid"]
     if not re.fullmatch(r"GPU-[a-fA-F0-9-]{36}", gpu):
         raise ValueError("invalid graphics GPU identity")
@@ -250,14 +281,28 @@ def commands(root, release, output, job, plan, graphics, timeout, auth_path):
             "--model-startup",
             str(model_dir / "startup.json"),
         ]
-        return cmd + (["--probe"] if probe else [])
+        if probe:
+            return cmd + ["--probe"]
+        row = next(r for r in plan["trials"] if r["episode_id"] == episode)
+        if unified and row["embodiment"] == "aloha-agilex":
+            primary = f"unified-seed{row['seed']}-native-w31"
+            cmd += [
+                "--expected-first-exchange",
+                str(destination(primary, True) / "receipt.json"),
+            ]
+        return cmd
 
     probes = {}
     for row in plan["trials"]:
         episode = row["episode_id"]
         key = row["embodiment"], row["seed"]
+        if unified and row["embodiment"] == "aloha-agilex":
+            if row["window"] == 4:
+                continue
+            if row["window"] == 50:
+                key = (*key, 50)
         probes.setdefault(key, (episode, trial(episode, True)))
-    return dict(
+    runtime = dict(
         mode="allocated",
         timeout_s=timeout,
         model=model,
@@ -287,6 +332,16 @@ def commands(root, release, output, job, plan, graphics, timeout, auth_path):
             "--loop=1",
         ],
     )
+
+    if unified:
+        from functools import partial
+        from g2_unified_plan import validate_native_startup
+
+        runtime["startup_cap_s"] = plan["budget"]["overhead"][
+            "shared_model_and_dynamic_entry_s"
+        ]
+        runtime["validate_startup"] = partial(validate_native_startup, probes=probes)
+    return runtime
 
 
 def allocation_matches(fields):
@@ -326,18 +381,24 @@ def run(root, release, output, auth_path, plan):
     if (
         not job.isdigit()
         or os.environ.get("SLURM_JOB_NAME") != "cpf-pace-g2"
-        or job == plan["protected_existing_job"]
+        or job in plan.get("protected_jobs", [plan["protected_existing_job"]])
     ):
         raise PermissionError("a separately authorized G2 allocation is required")
     auth = authorization(release, auth_path, job)
+    unified = plan.get("schema_version") == 3
+    if unified and auth.get("job_id") != job:
+        raise PermissionError("unified approval must name the allocation")
     output.mkdir(parents=True, exist_ok=False)
     persist(output / "authorization-receipt.json", auth)
     fields, start, end = read_allocation(job, output)
+    allocation_s = plan["budget"]["proposed_allocation_s"]
+    bound_s = plan["budget"]["bounded_execution_s"]
+    min_duration = allocation_s if unified else bound_s
     if (
         not allocation_matches(fields)
         or not start <= time.time() < end
-        or not 29700 <= end - start <= 34200
-        or end - time.time() < 29700
+        or not min_duration <= end - start <= allocation_s
+        or end - time.time() < bound_s
     ):
         raise PermissionError("running allocation differs from the approved envelope")
     persist(output / "allocation-receipt.json", dict(job_id=job, start=start, end=end))

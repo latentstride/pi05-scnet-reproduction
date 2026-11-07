@@ -42,11 +42,16 @@ def archive_candidate(output, destination):
             archive.add(path, arcname=str(Path(output.name) / name), recursive=False)
 
 
-def prepare(project, output):
+def prepare(project, output, *, unified=False):
     output.mkdir(parents=True, exist_ok=False)
     configs = output / "configs"
     configs.mkdir()
-    plan = build(project)
+    if unified:
+        from g2_unified_plan import build as build_unified
+
+        plan = build_unified(project)
+    else:
+        plan = build(project)
     old = project / "research/g2/failure-audit-127054052-r1/release-context"
     prior = json.loads((old / "run_lock.json").read_text())
     manifest = json.loads((old / "pace_download_manifest.json").read_text())
@@ -66,7 +71,7 @@ def prepare(project, output):
         if "expert" in row["method"]:
             effective = dict(row, method="frozen_exact_mapping", max_policy_actions=300)
         path = configs / f"{episode}.json"
-        persist(path, configure(base, effective))
+        persist(path, configure(base, effective, allow_native_h50=unified))
         binding = dict(
             config_sha256=digest(path),
             expected_initial=prior["bindings"][key]["expected_initial"],
@@ -97,7 +102,7 @@ def prepare(project, output):
     )
     if not quote.is_file():
         quote = quote.with_name("scnet-rate-20261107.json")
-    if quote.is_file():
+    if quote.is_file() and not unified:
         shutil.copyfile(quote, output / "catalog-rate.json")
         plan["budget"].update(
             rate_status="catalog_verified_at_observation",
@@ -137,8 +142,10 @@ def prepare(project, output):
     runtime_files = [name + ".py" for name in RUNTIME_MODULES] + [
         "g2_graphics.sh",
         "pace_g1_model_env.sh",
-        "pace_g2_final.slurm",
+        "pace_g2_unified.slurm" if unified else "pace_g2_final.slurm",
     ]
+    if unified:
+        runtime_files += ["g2_unified_plan.py", "g2_unified_exchange.py"]
     for name in runtime_files:
         shutil.copy2(project / "scripts" / name, output / "scripts" / name)
     (output / "SHA256SUMS").write_text(
@@ -156,7 +163,10 @@ if __name__ == "__main__":
     parser.add_argument("project", type=Path)
     parser.add_argument("output", type=Path)
     parser.add_argument("--archive", type=Path)
+    parser.add_argument("--unified-transfer", action="store_true")
     args = parser.parse_args()
-    prepare(args.project.resolve(), args.output.resolve())
+    prepare(
+        args.project.resolve(), args.output.resolve(), unified=args.unified_transfer
+    )
     if args.archive:
         archive_candidate(args.output.resolve(), args.archive.resolve())

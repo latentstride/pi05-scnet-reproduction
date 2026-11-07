@@ -1,0 +1,53 @@
+{
+  "status": "READY_FOR_GPU_REVIEW",
+  "submission_allowed": false,
+  "gpu_operations": 0,
+  "baseline": {
+    "exit_audit": "c6b6b54460c566c75b640f7a8f5ce76195ded94d",
+    "protocol_audit": "5838304e76f33b924c89997ac24d830968906f4e"
+  },
+  "cpu": {
+    "passed": true,
+    "tests": 238,
+    "synthetic_episodes": 13,
+    "tests_log_sha256": "d22db480b498a62582c19f7386c5c0e301e7d64515b82bd783f8d2d76f5fba15",
+    "synthetic_receipt_sha256": "f3ec5c7014408663c06b8d110a728a56459c0b3af05db1c1cb61be46e42543cf",
+    "combined_roster_simulated": 10,
+    "no_actuation_probes_simulated": 6,
+    "allocation_launch_arguments_verified": true,
+    "budget_verified": true,
+    "frozen_configuration_values_verified": true,
+    "expert_inputs_byte_identical": true
+  },
+  "release": {
+    "archive": "g2-unified-transfer-candidate.tar.gz",
+    "archive_sha256": "fc9ba06855e81cc90c9d49f83936df714302c82febb72df326bf494394e388f9",
+    "manifest_sha256": "6d4edfe4064dd3dd3fc316922a46dd8fb12ac351876c6cd1de5d2e5f8aa8d3d9",
+    "verified_after_extraction": true,
+    "files": 72,
+    "locked_plan_sha256": "44f811cd2e0177d54ec545b9202053aa13c19de90115ed5fc1c5c2eac66875cc"
+  },
+  "resources": {
+    "gpu": "RTX 4090 24GB",
+    "gpu_count": 1,
+    "cpu": 4,
+    "memory_gib": 32,
+    "node": "gnode39",
+    "partition": "ksagnormal01",
+    "estimated_seconds": 10800,
+    "estimated_yuan": "10.80",
+    "stages_cap_seconds": 21000,
+    "allocation_hard_cap_seconds": 25200,
+    "allocation_fee_cap_yuan": "25.20",
+    "reference_rate_yuan_per_gpu_hour": "3.60",
+    "live_quote_verified": false
+  },
+  "historical_job_127139405_sha256": "00f64b39ccbbf3d6396ad089b95eeb4d9f9e8820ae7bb4f836bb210e0ffb74f7",
+  "gpu_deferred": [
+    "CUDA and first true model inference",
+    "bitwise rendered and inferred first exchange",
+    "real trial scene and contact admission",
+    "ARX production expert placement",
+    "cluster container process-group teardown"
+  ]
+}

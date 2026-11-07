@@ -62,6 +62,7 @@ def refined_pair(arms, frames, tools, seed, fingers, world, check, max_delta=Non
                     angle_rad=angle,
                     status=exc.status.value,
                     detail=str(exc),
+                    diagnostic=exc.diagnostic,
                 )
             )
     raise G2Error(
@@ -145,7 +146,12 @@ def bounded_progress(arms, frames, tools, q, fingers, requested, world, motion, 
             ):
                 raise
             attempts.append(
-                dict(fraction=fraction, status=exc.status.value, detail=str(exc))
+                dict(
+                    fraction=fraction,
+                    status=exc.status.value,
+                    detail=str(exc),
+                    diagnostic=exc.diagnostic,
+                )
             )
     raise G2Error(
         Status.COLLISION,

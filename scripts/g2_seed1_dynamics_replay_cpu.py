@@ -60,7 +60,7 @@ def run(args):
 
     args.output.mkdir(parents=True, exist_ok=False)
     start = time.monotonic()
-    name = f"unified-seed1-native-w{args.window}"
+    name = f"unified-seed{getattr(args, 'scene_seed', 1)}-native-w{args.window}"
     config = json.loads((args.release / f"configs/{name}.json").read_text())
     source_audit = json.loads((args.release / "source-audit.json").read_text())
     for relative in ("envs/_base_task.py", "envs/robot/robot.py"):
@@ -96,7 +96,10 @@ def run(args):
         ):
             first_holder = tick
     last_tick = max(steps)
-    assert first_holder in (4568, 5088) and last_tick in (4777, 5139)
+    if getattr(args, "scene_seed", 1) == 1:
+        assert first_holder in (4568, 5088) and last_tick in (4777, 5139)
+    else:
+        assert first_holder is None and last_tick == 3528
     # Headless scene. Primitive sizes and table thickness follow the pinned task.
     scene = sapien.Scene([sapien.physx.PhysxCpuSystem()])
     scene.set_timestep(0.004)
@@ -311,6 +314,10 @@ def run(args):
             [[q[index[n]] for n in a.grip.names] for a in arms]
         )
 
+    if getattr(args, "saved_actions", 0):
+        from g2_native_saved_actions_cpu import run_context
+
+        return run_context(locals())
     original_stop_tick = last_tick
     frozen_grip = controls[first_holder - 1, 0, 6:, 0].copy()
     lift_m = getattr(args, "lift_m", 0.0)
@@ -343,7 +350,17 @@ def run(args):
             NS(frame=lambda obs: None),
             guard=guard,
             preload_hold=True,
+            contact_preload=getattr(args, "production_contact_preload", False),
         )
+        if getattr(args, "contact_preload_gap_mm", 0):
+            from g2_contact_preload_probe import ContactPreloadProbe
+
+            backend.preload = ContactPreloadProbe(
+                tracker,
+                arms,
+                lambda: measured()[1],
+                args.contact_preload_gap_mm / 1000.0,
+            )
         backend.episode, backend.remaining = name, check
         backend.log = (
             lambda event: interventions.append(event)
@@ -539,6 +556,12 @@ def run(args):
             horizon_tick=horizon,
             settle_ticks_requested=args.settle_ticks,
             integrated_native_backend=backend is not None,
+            contact_preload_gap_mm=4
+            if getattr(args, "production_contact_preload", False)
+            else getattr(args, "contact_preload_gap_mm", 0),
+            production_contact_preload=getattr(
+                args, "production_contact_preload", False
+            ),
             lift_diagnostic=None
             if lift is None
             else {
@@ -588,7 +611,14 @@ if __name__ == "__main__":
         required=True,
     )
     p.add_argument("--settle-ticks", type=int, default=0, choices=range(301))
-    p.add_argument("--lift-m", type=float, default=0.0, choices=[0.0, 0.03])
-    p.add_argument("--lift-ticks", type=int, default=500, choices=[500])
-    p.add_argument("--post-lift-ticks", type=int, default=250, choices=[250])
+    p.add_argument("--lift-m", type=float, default=0.0, choices=[0.0, 0.03, 0.1])
+    p.add_argument("--lift-ticks", type=int, default=500, choices=[500, 1000])
+    p.add_argument("--post-lift-ticks", type=int, default=250, choices=[250, 500])
+    p.add_argument(
+        "--contact-preload-gap-mm", type=int, default=0, choices=[0, 1, 2, 4]
+    )
+    p.add_argument("--production-contact-preload", action="store_true")
+    p.add_argument("--scene-seed", type=int, choices=[0, 1], default=1)
+    p.add_argument("--saved-actions", type=int, choices=[0, 27, 50, 100], default=0)
+    p.add_argument("--saved-approach-repair", action="store_true")
     run(p.parse_args())

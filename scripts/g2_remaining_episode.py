@@ -52,7 +52,10 @@ def run(spec, backend, adapter, policy, output):
         initial_sim_s=None,
     )
     coordinator = RecoveryCoordinator(
-        adapter, backend, max_recoveries=spec.get("max_recoveries", 4)
+        adapter,
+        backend,
+        max_recoveries=spec.get("max_recoveries", 4),
+        approach_repair=spec.get("approach_repair", False),
     )
 
     def remaining():

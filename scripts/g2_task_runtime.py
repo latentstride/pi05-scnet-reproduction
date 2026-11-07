@@ -36,6 +36,20 @@ def verify_runtime(pace_root, audit):
 
 
 def validate_config(config, *, allow_native_h50=False):
+    from g2e_protocol import APPROACH_REPAIR
+    repair = config.get("free_space_approach_repair")
+    if repair is not None and (repair != APPROACH_REPAIR
+            or config.get("embodiment") not in ("aloha-agilex", "ARX-X5")):
+        raise ValueError("unknown bounded approach profile")
+    if repair is not None and ((config["embodiment"] == "aloha-agilex" and
+            (config.get("execution_protocol") != PROTOCOL or config.get("contact_mode") != CONTACT_MODE_NATIVE))
+            or (config["embodiment"] == "ARX-X5" and config.get("contact_mode") != CONTACT_MODE)):
+        raise ValueError("bounded approach requires its existing measured-contact guard")
+    from g2e_protocol import PRELOAD_ESTABLISHMENT, PRELOAD_PROTOCOL
+    establishment = config.get("native_preload_establishment")
+    if establishment is not None and (establishment != PRELOAD_ESTABLISHMENT
+            or config.get("native_preload_control") != PRELOAD_PROTOCOL):
+        raise ValueError("contact preload establishment requires the reviewed native hold profile")
     preload = config.get("native_preload_control")
     if preload is not None:
         from g2_native_preload import PRELOAD_PROTOCOL
@@ -208,6 +222,7 @@ def real_scene(config, spec, pace_root, assets_root, asset_audit, source_audit, 
                                       digest_json(fixture if fixture is not None else {"seed": config["scene_seed"]}),
                                       "diagnostic-unverified-workspace", workspace_pass=False)
             setup = dict(embodiment=embodiment, scene_seed=config["scene_seed"],
+                         free_space_approach_repair=config.get("free_space_approach_repair", "disabled"),
                          config_sha256=digest_json(config), actual_initial=initial,
                          contact_mode=config["contact_mode"], formal_score_eligible=False,
                          calibration_ids=[arm.calibration_id for arm in arms])
@@ -241,8 +256,12 @@ def real_scene(config, spec, pace_root, assets_root, asset_audit, source_audit, 
                     save_json(output/"setup.json",setup)
                 setup["native_preload_control"] = config.get("native_preload_control", "disabled")
                 save_json(output/"setup.json", setup)
+                setup["native_preload_establishment"] = config.get("native_preload_establishment", "disabled")
+                save_json(output/"setup.json", setup)
                 backend = NativeBackend(env, arms, world_task, initial, video,guard=guard,
-                                        preload_hold=config.get("native_preload_control") is not None)
+                                        preload_hold=config.get("native_preload_control") is not None,
+                                        contact_preload=config.get("native_preload_establishment") is not None,
+                                        approach_repair=config.get("free_space_approach_repair") is not None)
                 if guard is not None: backend.collision=guard.collision
                 adapter = None
             else:

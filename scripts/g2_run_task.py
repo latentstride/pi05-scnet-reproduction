@@ -20,6 +20,8 @@ def execute(config, factory, policy, output, expert=None, *, allow_native_h50=Fa
                 condition=config["condition"], prompt=config["prompt"], window=config["window"],
                 max_actions=config["max_actions"], timeout_s=config["timeout_s"],
                 native_grip_max_clip=config["native_grip_max_clip"])
+    if "free_space_approach_repair" in config:
+        spec["free_space_approach_repair"] = config["free_space_approach_repair"]
     if "execution_protocol" in config:
         spec["execution_protocol"] = config["execution_protocol"]
     session = RuntimeSession(factory)

@@ -62,6 +62,22 @@ def verify(release):
         from g2_unified_plan import validate
 
         validate(plan)
+    preload = plan.get("native_preload_control")
+    establishment = plan.get("native_preload_establishment")
+    approach_repair = plan.get("free_space_approach_repair")
+    if approach_repair is not None and (
+        not unified or "scripts/g2_bounded_approach.py" not in declared
+    ):
+        raise ValueError("bounded approach runtime is absent or not unified")
+    if preload is not None and (
+        not unified or "scripts/g2_native_preload.py" not in declared
+    ):
+        raise ValueError("native preload runtime is absent or not unified")
+    if (
+        establishment is not None
+        and "scripts/g2_native_contact_preload.py" not in declared
+    ):
+        raise ValueError("contact preload establishment runtime is absent")
     ids = {row["episode_id"] for row in plan["trials"]}
     counts = Counter(
         (r["seed"], r["embodiment"], "expert" in r["method"]) for r in plan["trials"]
@@ -120,6 +136,21 @@ def verify(release):
         binding = plan["trial_bindings"][episode]
         name = f"configs/{episode}.json"
         cfg = read(release / name)
+        if cfg.get("free_space_approach_repair") != (
+            approach_repair if "expert" not in row["method"] else None
+        ):
+            raise ValueError(
+                "trial bounded approach profile differs from unified release contract"
+            )
+        expected_preload = preload if row["embodiment"] == "aloha-agilex" else None
+        if cfg.get("native_preload_control") != expected_preload:
+            raise ValueError("trial preload mode differs from unified release contract")
+        if cfg.get("native_preload_establishment") != (
+            establishment if row["embodiment"] == "aloha-agilex" else None
+        ):
+            raise ValueError(
+                "trial contact preload differs from unified release contract"
+            )
         fixture = sha256(
             json.dumps(
                 cfg["reset_fixture"], sort_keys=True, separators=(",", ":")

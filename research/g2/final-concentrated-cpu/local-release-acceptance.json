@@ -1,0 +1,95 @@
+{
+  "roster_unchanged": true,
+  "budget_unchanged": true,
+  "checkpoint_unchanged": true,
+  "norm_stats_unchanged": true,
+  "expert_trace_and_config_unchanged": true,
+  "safety_parameters_unchanged": true,
+  "trial_changes": [
+    {
+      "episode_id": "unified-seed0-native-w50",
+      "changed_keys": [
+        "free_space_approach_repair",
+        "native_preload_control",
+        "native_preload_establishment"
+      ],
+      "config_sha256": "04f2e041cedb07a2eae69425175c60d235ed086095cce10600dfb9e492a8bae6"
+    },
+    {
+      "episode_id": "unified-seed0-native-w31",
+      "changed_keys": [
+        "free_space_approach_repair",
+        "native_preload_control",
+        "native_preload_establishment"
+      ],
+      "config_sha256": "2fec598cfa2e655e1b697155c6029f14a16a977b79a410e50dc8eca44d4b50bb"
+    },
+    {
+      "episode_id": "unified-seed1-native-w31",
+      "changed_keys": [
+        "free_space_approach_repair",
+        "native_preload_control",
+        "native_preload_establishment"
+      ],
+      "config_sha256": "917f63fb746df9166e738051199b5f15a60fc161bb14ac21b2b6a1dd402595fa"
+    },
+    {
+      "episode_id": "unified-seed1-native-w50",
+      "changed_keys": [
+        "free_space_approach_repair",
+        "native_preload_control",
+        "native_preload_establishment"
+      ],
+      "config_sha256": "468f1c8b27814e443fa8df4bc61a340d8cf5e58ac95b76ee0a5f44bf54f71c2a"
+    },
+    {
+      "episode_id": "unified-seed0-native-w4",
+      "changed_keys": [
+        "free_space_approach_repair",
+        "native_preload_control",
+        "native_preload_establishment"
+      ],
+      "config_sha256": "484ff9bee77afbad136f97d3ef720db2214c052f72f69bf241e023a6966ca334"
+    },
+    {
+      "episode_id": "unified-seed0-arx-full-w4",
+      "changed_keys": [
+        "free_space_approach_repair"
+      ],
+      "config_sha256": "186c32dc2ee9ea1efa5405b881a724211320eb25d5ccaa2dec23c2fc9d4941f5"
+    },
+    {
+      "episode_id": "unified-seed1-arx-full-w4",
+      "changed_keys": [
+        "free_space_approach_repair"
+      ],
+      "config_sha256": "7aff8c46bd8ad0472da14b11baf036398f79b750077ffc7b30538031c54857d1"
+    },
+    {
+      "episode_id": "unified-seed1-native-w4",
+      "changed_keys": [
+        "free_space_approach_repair",
+        "native_preload_control",
+        "native_preload_establishment"
+      ],
+      "config_sha256": "db397e1a41245106f62c9a17bdf05a12fb4b9bc0d259f921667939a5fac76c2e"
+    },
+    {
+      "episode_id": "unified-seed1-arx-expert-repaired",
+      "changed_keys": [],
+      "config_sha256": "0e3d83311359f5d2f7c95477322688d985242053ff7da639e60fcdbf7ed7908f"
+    },
+    {
+      "episode_id": "unified-seed0-arx-expert-repaired",
+      "changed_keys": [],
+      "config_sha256": "78197e82e81c2fb538c951bbc591ce92506237b25b4069026f8ab96ddb0a9242"
+    }
+  ],
+  "source_ast_shell_syntax_passed": true,
+  "submission_authorized": false,
+  "archive_sha256": "24e337e1f820d38d028e625c0eda7b9cf6b9f942763226d912efa20951422b8d",
+  "manifest_sha256": "40d5ca77dd7d3d202aa9528e0dcfb9158e6740b5518cef7eb63c281c37b64a67",
+  "runtime_dependency_closure_passed": true,
+  "builder_only_dependency_exception": "g2_unified_plan.build imports g2_remaining_plan only at CPU package construction, not deployment",
+  "native_stale_tail_regression_tests_passed": true
+}

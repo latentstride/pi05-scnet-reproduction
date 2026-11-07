@@ -1,0 +1,66 @@
+{
+  "status": "READY_FOR_GPU_REVIEW",
+  "meaning": "CPU candidate and concentrated evidence ready for human review; not submission permission or policy success",
+  "base_commit": "db1ceb95ea652fc8459a274f7ae2b956da38dd8b",
+  "source_job": "127147943",
+  "cpu_tests": {
+    "passed": 269,
+    "failed": 0
+  },
+  "synthetic_episodes": {
+    "accepted": 13,
+    "formal_score_eligible": false
+  },
+  "cluster_release": {
+    "cpu_only": true,
+    "gpu_operations": 0,
+    "archive_sha256": "24e337e1f820d38d028e625c0eda7b9cf6b9f942763226d912efa20951422b8d",
+    "manifest_sha256": "40d5ca77dd7d3d202aa9528e0dcfb9158e6740b5518cef7eb63c281c37b64a67",
+    "verified_files": 75,
+    "trials": 10,
+    "model_cpu_receipt_hash_verified": true,
+    "stdlib_verify": {
+      "trials": 10,
+      "checksums": "verified",
+      "submission_allowed": false,
+      "manifest_sha256": "40d5ca77dd7d3d202aa9528e0dcfb9158e6740b5518cef7eb63c281c37b64a67"
+    },
+    "source_ast_and_shell_syntax": true,
+    "submission_authorized": false
+  },
+  "roster_unchanged": true,
+  "allocations_planned": 1,
+  "model_services": 1,
+  "trials": 10,
+  "automatic_retry": false,
+  "protected_thresholds_and_exit_supervisor_unchanged": true,
+  "historical_policy_success": "0/8 unchanged",
+  "historical_arx_expert_success": "2/2 unchanged",
+  "resource": {
+    "gpu": "RTX4090",
+    "gpu_count": 1,
+    "cpu_count": 4,
+    "memory_gib": 32,
+    "hard_limit_s": 25200,
+    "bounded_execution_s": 21000,
+    "historical_reference_yuan_per_card_hour": 3.6,
+    "reference_hard_fee_yuan": 25.2,
+    "original_budget_yuan": 34.2,
+    "live_price_verified": false
+  },
+  "problems": {
+    "aloha_seed0": "bounded free-space corrected prefix physically replayed; stale tail discarded; new model continuation unverified",
+    "aloha_seed1": "4mm establishment and lift verified; realistic saved-motion minimum margin about 0.324mm remains small",
+    "arx_seed0": "corrected dense path and source round trip verified statically; future dynamics unverified",
+    "arx_seed1": "source-observability prefix admission and repeated-obstruction stop verified; new closed-loop task success unverified"
+  },
+  "deferred": [
+    "fresh model inference after native/ARX barriers",
+    "real rendering and paired first-exchange GPU hashes",
+    "ARX corrected-path contact dynamics",
+    "full physical handover, release and complete model task"
+  ],
+  "gpu_operations": 0,
+  "gpu_submission_allowed": false,
+  "main_merged": false
+}

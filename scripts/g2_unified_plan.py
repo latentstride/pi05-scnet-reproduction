@@ -85,6 +85,18 @@ def build(project):
 
 
 def validate(plan):
+    from g2e_protocol import PRELOAD_PROTOCOL, PRELOAD_ESTABLISHMENT, APPROACH_REPAIR
+
+    if plan.get("free_space_approach_repair") not in (None, APPROACH_REPAIR):
+        raise ValueError("unknown bounded approach profile in unified release")
+
+    if plan.get("native_preload_control") not in (None, PRELOAD_PROTOCOL):
+        raise ValueError("unknown native preload protocol in unified release")
+    if plan.get("native_preload_establishment") is not None and (
+        plan.get("native_preload_establishment") != PRELOAD_ESTABLISHMENT
+        or plan.get("native_preload_control") != PRELOAD_PROTOCOL
+    ):
+        raise ValueError("unknown contact preload establishment in unified release")
     budget = plan["budget"]
     if (
         plan.get("schema_version") != 3

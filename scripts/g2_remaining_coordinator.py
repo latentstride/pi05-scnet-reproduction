@@ -17,12 +17,17 @@ class RecoveryBudgetExhausted(G2Error):
     reason = "recovery_budget_exhausted"
 
     def __init__(self, used, limit):
-        super().__init__(Status.PLAN_FAILED, "trial recovery cap exhausted",
-                         reason=self.reason, recoveries_used=used, recovery_limit=limit)
+        super().__init__(
+            Status.PLAN_FAILED,
+            "trial recovery cap exhausted",
+            reason=self.reason,
+            recoveries_used=used,
+            recovery_limit=limit,
+        )
 
 
 class RecoveryCoordinator:
-    def __init__(self, adapter, backend, max_recoveries=4):
+    def __init__(self, adapter, backend, max_recoveries=4, approach_repair=False):
         if type(max_recoveries) is not int or not 0 <= max_recoveries <= 4:
             raise ValueError("invalid recovery cap")
         self.adapter, self.backend = adapter, backend
@@ -30,13 +35,19 @@ class RecoveryCoordinator:
         self.recoveries = 0
         self.recovery_actions = 0
         self.policy_actions = 0
+        self.approach_repair = approach_repair
+        self.source_obstructions = {}
 
     def _free(self):
         tracker = getattr(self.adapter.target_collision, "tracker", None)
-        if tracker is not None and (tracker.holders or tracker.releasing or
-                any(getattr(tracker,"contact_fingers",{}).values())):
+        if tracker is not None and (
+            tracker.holders
+            or tracker.releasing
+            or any(getattr(tracker, "contact_fingers", {}).values())
+        ):
             raise G2Error(
-                Status.COLLISION, "generic recovery forbidden during holding/release",
+                Status.COLLISION,
+                "generic recovery forbidden during holding/release",
                 reason="recovery_unsafe_contact",
             )
         if self.recoveries >= self.max_recoveries:
@@ -67,7 +78,29 @@ class RecoveryCoordinator:
             or original.diagnostic.get("collision_world") != "source_collision"
         ):
             raise G2Error(original.status, original.detail, **original.diagnostic)
+        if self.approach_repair and original.diagnostic.get("geometry") == "actual":
+            raise G2Error(original.status, original.detail, **original.diagnostic)
         self._free()
+        obstruction = None
+        if self.approach_repair:
+            from g2_bounded_approach import source_obstruction
+
+            obstruction = source_obstruction(original.diagnostic)
+            if obstruction is not None and obstruction[0] in self.source_obstructions:
+                previous = self.source_obstructions[obstruction[0]]
+                if obstruction[1] >= previous["penetration_m"]:
+                    raise G2Error(
+                        Status.PLAN_FAILED,
+                        "repeated source obstruction did not improve after physical recovery",
+                        geometry="candidate",
+                        collision_world="source_collision",
+                        reason="repeated_source_obstruction",
+                        collision_pairs=obstruction[0],
+                        penetration_m=obstruction[1],
+                        previous=previous,
+                        recoveries_used=self.recoveries,
+                        recovery_limit=self.max_recoveries,
+                    )
         check = deadline(remaining())
         q, g, frames, world = self._start(snapshot)
         # The last successful source seed is a real achieved reference, not a
@@ -104,6 +137,12 @@ class RecoveryCoordinator:
         if type(done) is not int or done != 1:
             raise G2Error(Status.BACKEND_ERROR, "proxy recovery prefix not completed")
         self.recovery_actions += done
+        if obstruction is not None:
+            self.source_obstructions[obstruction[0]] = dict(
+                penetration_m=obstruction[1],
+                attempt=self.recoveries,
+                policy_actions=self.policy_actions,
+            )
         fresh, _ = self.backend.capture()
         if (
             fresh.stamp.episode != snapshot.stamp.episode
@@ -126,6 +165,27 @@ class RecoveryCoordinator:
     def action_plan(self, chunk, snapshot, window, remaining, log):
         original = self.adapter.actions(chunk, snapshot, window, remaining())
         if original.ok:
+            if self.approach_repair:
+                from g2_bounded_approach import checked_prefix
+
+                prefix, barrier = checked_prefix(
+                    self.adapter, original.payload, snapshot, deadline(remaining())
+                )
+                if barrier is not None:
+                    self._free()
+                    if prefix is None:
+                        return self._upward_plan(
+                            chunk, snapshot, remaining, log, barrier, source_check=True
+                        )
+                    self.recoveries += 1
+                    log(
+                        dict(
+                            barrier,
+                            attempt=self.recoveries,
+                            approved_actions=len(prefix.waypoint_ticks),
+                        )
+                    )
+                    return prefix, dict(repaired=True, receipt=barrier)
             return original.payload, dict(repaired=False)
         log(
             dict(
@@ -138,6 +198,8 @@ class RecoveryCoordinator:
             original.status != Status.COLLISION
             or original.diagnostic.get("collision_world") != "target_collision"
         ):
+            raise G2Error(original.status, original.detail, **original.diagnostic)
+        if self.approach_repair and original.diagnostic.get("geometry") == "actual":
             raise G2Error(original.status, original.detail, **original.diagnostic)
         self._free()
         check = deadline(remaining())
@@ -157,17 +219,47 @@ class RecoveryCoordinator:
             prefix = self.adapter.actions(chunk, snapshot, failed_row, remaining())
             if not prefix.ok:
                 raise G2Error(prefix.status, prefix.detail, **prefix.diagnostic)
+            approved = prefix.payload
+            source_barrier = None
+            if self.approach_repair:
+                from g2_bounded_approach import checked_prefix
+
+                approved, source_barrier = checked_prefix(
+                    self.adapter, approved, snapshot, check
+                )
+                if approved is None:
+                    return self._upward_plan(
+                        chunk,
+                        snapshot,
+                        remaining,
+                        log,
+                        source_barrier,
+                        source_check=True,
+                    )
             self.recoveries += 1
             receipt = dict(
                 kind="safe_prefix_before_rejection",
-                approved_actions=failed_row,
+                approved_actions=len(approved.waypoint_ticks),
+                source_barrier=source_barrier,
                 failed_row=failed_row,
                 requires_new_observation=True,
                 attempt=self.recoveries,
             )
             log(receipt)
-            return prefix.payload, dict(repaired=True, receipt=receipt)
+            return approved, dict(repaired=True, receipt=receipt)
         request = requests[0]
+        if self.approach_repair:
+            from g2_bounded_approach import finger_start_blocked
+
+            if finger_start_blocked(original.diagnostic):
+                return self._upward_plan(
+                    chunk,
+                    snapshot,
+                    remaining,
+                    log,
+                    original.diagnostic,
+                    source_check=True,
+                )
         result = bounded_progress(
             self.adapter.arx,
             frames,
@@ -191,6 +283,60 @@ class RecoveryCoordinator:
         log(receipt)
         return path, dict(repaired=True, receipt=receipt)
 
+    def _upward_plan(self, chunk, snapshot, remaining, log, rejection, *, source_check):
+        from g2_bounded_approach import upward_endpoint, source_admissible
+
+        self._free()
+        q, g, frames, world = self._start(snapshot)
+        check = deadline(remaining())
+        if not world.measured_clear(q, g):
+            raise G2Error(
+                Status.COLLISION,
+                "measured bounded-approach start is blocked",
+                geometry="actual",
+                collisions=world.last_collisions,
+            )
+        row = np.asarray(chunk)[0].reshape(2, 7)
+        tools = np.array(
+            [
+                f @ a.chain.fk(v[:6]) @ a.offset()
+                for f, a, v in zip(self.adapter.source_frames, self.adapter.aloha, row)
+            ]
+        )
+        requested = np.array(
+            [
+                a.grip.target(float(np.clip(v[6], 0, 1)))
+                for a, v in zip(self.adapter.arx, row)
+            ]
+        )
+        goal, receipt = upward_endpoint(
+            self.adapter.arx, frames, tools, q, requested, world, check
+        )
+        path = self.adapter.motion.plan(q, g, [(goal, requested)], world, check)
+        if source_check:
+            predicted = (
+                path.predicted_fingers[-1]
+                if path.predicted_fingers is not None
+                else path.fingers[-1]
+            )
+            receipt["source_admission"] = source_admissible(
+                self.adapter,
+                goal,
+                predicted,
+                frames,
+                (len(path.q) - 1) * path.period_s,
+                check,
+            )
+        self.recoveries += 1
+        receipt.update(
+            attempt=self.recoveries,
+            original_rejection=rejection,
+            policy_actions_in_prefix=1,
+            requires_new_observation=True,
+        )
+        log(receipt)
+        return path, dict(repaired=True, receipt=receipt)
+
     def cycle(self, policy, prompt, window, remaining, log):
         """One query/execution; runner owns episode persistence, hold and close."""
         snapshot, _ = self.backend.capture()
@@ -199,7 +345,7 @@ class RecoveryCoordinator:
 
         validate_request(request)
         log(dict(kind="policy_request", snapshot=snapshot, request=request))
-        response = getattr(policy,"infer_raw",policy.infer)(request)
+        response = getattr(policy, "infer_raw", policy.infer)(request)
         log(dict(kind="policy_response", response=response))
         chunk = validate_response(response)
         log(dict(kind="policy_validated"))

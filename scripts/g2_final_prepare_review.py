@@ -13,10 +13,10 @@ from g2_remaining_plan import build
 from pace_g1_orchestrate import persist
 
 RUNTIME_MODULES = """
-g2_adapter g2_assets g2_capture g2_collision g2_contact g2_episode g2_export
+g2_adapter g2_assets g2_capture g2_collision g2_contact g2_episode g2_export g2_bounded_approach
 g2_final_campaign g2_final_deploy g2_final_expert g2_final_statistics g2_final_trial
 g2_finger_force g2_initial g2_job_admission g2_kinematics g2_locked_task g2_motion
-g2_native_backend g2_native_expert_cpu g2_native_preload g2_orchestrator g2_proxy_collision
+g2_native_backend g2_native_expert_cpu g2_native_preload g2_native_contact_preload g2_orchestrator g2_proxy_collision
 g2_remaining_conditions g2_remaining_coordinator g2_remaining_episode
 g2_remaining_geometry g2_remaining_router g2_robotwin_backend g2_run_task
 g2_single_launch g2_task_runtime g2e_host_supervisor g2e_model_entry
@@ -42,7 +42,23 @@ def archive_candidate(output, destination):
             archive.add(path, arcname=str(Path(output.name) / name), recursive=False)
 
 
-def prepare(project, output, *, unified=False):
+def prepare(
+    project,
+    output,
+    *,
+    unified=False,
+    native_preload=False,
+    contact_preload=False,
+    approach_repair=False,
+):
+    if approach_repair and not unified:
+        raise ValueError(
+            "bounded approach release belongs to the unchanged unified roster"
+        )
+    if contact_preload and not native_preload:
+        raise ValueError("contact preload needs the explicit hold candidate")
+    if native_preload and not unified:
+        raise ValueError("preload release belongs to the existing unified 10 trials")
     output.mkdir(parents=True, exist_ok=False)
     configs = output / "configs"
     configs.mkdir()
@@ -50,6 +66,18 @@ def prepare(project, output, *, unified=False):
         from g2_unified_plan import build as build_unified
 
         plan = build_unified(project)
+        if approach_repair:
+            from g2e_protocol import APPROACH_REPAIR
+
+            plan["free_space_approach_repair"] = APPROACH_REPAIR
+        if native_preload:
+            from g2e_protocol import PRELOAD_PROTOCOL
+
+            plan["native_preload_control"] = PRELOAD_PROTOCOL
+            if contact_preload:
+                from g2e_protocol import PRELOAD_ESTABLISHMENT
+
+                plan["native_preload_establishment"] = PRELOAD_ESTABLISHMENT
     else:
         plan = build(project)
     old = project / "research/g2/failure-audit-127054052-r1/release-context"
@@ -71,7 +99,19 @@ def prepare(project, output, *, unified=False):
         if "expert" in row["method"]:
             effective = dict(row, method="frozen_exact_mapping", max_policy_actions=300)
         path = configs / f"{episode}.json"
-        persist(path, configure(base, effective, allow_native_h50=unified))
+        config = configure(base, effective, allow_native_h50=unified)
+        if approach_repair and "expert" not in row["method"]:
+            config["free_space_approach_repair"] = plan["free_space_approach_repair"]
+        if native_preload and row["embodiment"] == "aloha-agilex":
+            config["native_preload_control"] = plan["native_preload_control"]
+            if contact_preload:
+                config["native_preload_establishment"] = plan[
+                    "native_preload_establishment"
+                ]
+        from g2_task_runtime import validate_config
+
+        validate_config(config, allow_native_h50=unified)
+        persist(path, config)
         binding = dict(
             config_sha256=digest(path),
             expected_initial=prior["bindings"][key]["expected_initial"],
@@ -164,9 +204,17 @@ if __name__ == "__main__":
     parser.add_argument("output", type=Path)
     parser.add_argument("--archive", type=Path)
     parser.add_argument("--unified-transfer", action="store_true")
+    parser.add_argument("--native-preload-hold", action="store_true")
+    parser.add_argument("--native-contact-preload", action="store_true")
+    parser.add_argument("--bounded-approach-repair", action="store_true")
     args = parser.parse_args()
     prepare(
-        args.project.resolve(), args.output.resolve(), unified=args.unified_transfer
+        args.project.resolve(),
+        args.output.resolve(),
+        unified=args.unified_transfer,
+        native_preload=args.native_preload_hold,
+        contact_preload=args.native_contact_preload,
+        approach_repair=args.bounded_approach_repair,
     )
     if args.archive:
         archive_candidate(args.output.resolve(), args.archive.resolve())

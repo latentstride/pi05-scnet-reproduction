@@ -1,0 +1,1132 @@
+{
+  "schema_version": 3,
+  "status": "CANDIDATE_DIAGNOSTIC_ONLY",
+  "submission_allowed": false,
+  "protected_existing_job": "127081074",
+  "protected_jobs": [
+    "127054052",
+    "127081074",
+    "127117141",
+    "127139405"
+  ],
+  "existing_job_must_not_be_modified": true,
+  "allocations_planned": 1,
+  "model_server_starts": 1,
+  "trials": [
+    {
+      "episode_id": "unified-seed0-native-w50",
+      "seed": 0,
+      "pair_id": "paired-10g-00",
+      "condition": "native-w50",
+      "embodiment": "aloha-agilex",
+      "window": 50,
+      "method": "native_guard",
+      "hard_timeout_s": 1200,
+      "max_policy_actions": 300,
+      "reset_fixture_sha256": "77629daa82a44c540ab08e35e25ec7f124167a909ff5c9251280c2bbabae2a43",
+      "prompt": "Pick up the red block with the left arm, hand it to the right arm, and place it on the target.",
+      "policy_rng_seed": 20261106,
+      "checkpoint_revision": "17ef545270cf26ed81169893b60f845f80ce6557",
+      "recovery_cap": 0,
+      "data_kind": "diagnostic",
+      "formal_score_eligible": false
+    },
+    {
+      "episode_id": "unified-seed0-native-w31",
+      "seed": 0,
+      "pair_id": "paired-10g-00",
+      "condition": "native-w31",
+      "embodiment": "aloha-agilex",
+      "window": 31,
+      "method": "native_guard",
+      "hard_timeout_s": 1200,
+      "max_policy_actions": 300,
+      "reset_fixture_sha256": "77629daa82a44c540ab08e35e25ec7f124167a909ff5c9251280c2bbabae2a43",
+      "prompt": "Pick up the red block with the left arm, hand it to the right arm, and place it on the target.",
+      "policy_rng_seed": 20261106,
+      "checkpoint_revision": "17ef545270cf26ed81169893b60f845f80ce6557",
+      "recovery_cap": 0,
+      "data_kind": "diagnostic",
+      "formal_score_eligible": false
+    },
+    {
+      "episode_id": "unified-seed1-native-w31",
+      "seed": 1,
+      "pair_id": "paired-10g-01",
+      "condition": "native-w31",
+      "embodiment": "aloha-agilex",
+      "window": 31,
+      "method": "native_guard",
+      "hard_timeout_s": 1200,
+      "max_policy_actions": 300,
+      "reset_fixture_sha256": "89ef6e94fcd26f9c2b121dbe85ce75f495efe0003ae95b4abfabd8a123be9aaf",
+      "prompt": "Pick up the red block with the left arm, hand it to the right arm, and place it on the target.",
+      "policy_rng_seed": 20261107,
+      "checkpoint_revision": "17ef545270cf26ed81169893b60f845f80ce6557",
+      "recovery_cap": 0,
+      "data_kind": "diagnostic",
+      "formal_score_eligible": false
+    },
+    {
+      "episode_id": "unified-seed1-native-w50",
+      "seed": 1,
+      "pair_id": "paired-10g-01",
+      "condition": "native-w50",
+      "embodiment": "aloha-agilex",
+      "window": 50,
+      "method": "native_guard",
+      "hard_timeout_s": 1200,
+      "max_policy_actions": 300,
+      "reset_fixture_sha256": "89ef6e94fcd26f9c2b121dbe85ce75f495efe0003ae95b4abfabd8a123be9aaf",
+      "prompt": "Pick up the red block with the left arm, hand it to the right arm, and place it on the target.",
+      "policy_rng_seed": 20261107,
+      "checkpoint_revision": "17ef545270cf26ed81169893b60f845f80ce6557",
+      "recovery_cap": 0,
+      "data_kind": "diagnostic",
+      "formal_score_eligible": false
+    },
+    {
+      "episode_id": "unified-seed0-native-w4",
+      "seed": 0,
+      "pair_id": "paired-10g-00",
+      "condition": "native-w4",
+      "embodiment": "aloha-agilex",
+      "window": 4,
+      "method": "native_guard",
+      "hard_timeout_s": 1200,
+      "max_policy_actions": 300,
+      "reset_fixture_sha256": "77629daa82a44c540ab08e35e25ec7f124167a909ff5c9251280c2bbabae2a43",
+      "prompt": "Pick up the red block with the left arm, hand it to the right arm, and place it on the target.",
+      "policy_rng_seed": 20261106,
+      "checkpoint_revision": "17ef545270cf26ed81169893b60f845f80ce6557",
+      "recovery_cap": 0,
+      "data_kind": "diagnostic",
+      "formal_score_eligible": false
+    },
+    {
+      "episode_id": "unified-seed0-arx-full-w4",
+      "seed": 0,
+      "pair_id": "paired-10g-00",
+      "condition": "arx-full-w4",
+      "embodiment": "ARX-X5",
+      "window": 4,
+      "method": "bounded_recovery_and_router",
+      "hard_timeout_s": 2600,
+      "max_policy_actions": 300,
+      "reset_fixture_sha256": "77629daa82a44c540ab08e35e25ec7f124167a909ff5c9251280c2bbabae2a43",
+      "prompt": "Pick up the red block with the left arm, hand it to the right arm, and place it on the target.",
+      "policy_rng_seed": 20261106,
+      "checkpoint_revision": "17ef545270cf26ed81169893b60f845f80ce6557",
+      "recovery_cap": 4,
+      "data_kind": "diagnostic",
+      "formal_score_eligible": false
+    },
+    {
+      "episode_id": "unified-seed1-arx-full-w4",
+      "seed": 1,
+      "pair_id": "paired-10g-01",
+      "condition": "arx-full-w4",
+      "embodiment": "ARX-X5",
+      "window": 4,
+      "method": "bounded_recovery_and_router",
+      "hard_timeout_s": 2600,
+      "max_policy_actions": 300,
+      "reset_fixture_sha256": "89ef6e94fcd26f9c2b121dbe85ce75f495efe0003ae95b4abfabd8a123be9aaf",
+      "prompt": "Pick up the red block with the left arm, hand it to the right arm, and place it on the target.",
+      "policy_rng_seed": 20261107,
+      "checkpoint_revision": "17ef545270cf26ed81169893b60f845f80ce6557",
+      "recovery_cap": 4,
+      "data_kind": "diagnostic",
+      "formal_score_eligible": false
+    },
+    {
+      "episode_id": "unified-seed1-native-w4",
+      "seed": 1,
+      "pair_id": "paired-10g-01",
+      "condition": "native-w4",
+      "embodiment": "aloha-agilex",
+      "window": 4,
+      "method": "native_guard",
+      "hard_timeout_s": 1200,
+      "max_policy_actions": 300,
+      "reset_fixture_sha256": "89ef6e94fcd26f9c2b121dbe85ce75f495efe0003ae95b4abfabd8a123be9aaf",
+      "prompt": "Pick up the red block with the left arm, hand it to the right arm, and place it on the target.",
+      "policy_rng_seed": 20261107,
+      "checkpoint_revision": "17ef545270cf26ed81169893b60f845f80ce6557",
+      "recovery_cap": 0,
+      "data_kind": "diagnostic",
+      "formal_score_eligible": false
+    },
+    {
+      "episode_id": "unified-seed1-arx-expert-repaired",
+      "seed": 1,
+      "pair_id": "paired-10g-01",
+      "condition": "arx-expert-repaired",
+      "embodiment": "ARX-X5",
+      "window": 1,
+      "method": "official_expert_plus_placement_suffix",
+      "hard_timeout_s": 2200,
+      "max_policy_actions": null,
+      "reset_fixture_sha256": "89ef6e94fcd26f9c2b121dbe85ce75f495efe0003ae95b4abfabd8a123be9aaf",
+      "prompt": "Pick up the red block with the left arm, hand it to the right arm, and place it on the target.",
+      "policy_rng_seed": 20261107,
+      "checkpoint_revision": "17ef545270cf26ed81169893b60f845f80ce6557",
+      "recovery_cap": 0,
+      "data_kind": "diagnostic",
+      "formal_score_eligible": false
+    },
+    {
+      "episode_id": "unified-seed0-arx-expert-repaired",
+      "seed": 0,
+      "pair_id": "paired-10g-00",
+      "condition": "arx-expert-repaired",
+      "embodiment": "ARX-X5",
+      "window": 1,
+      "method": "official_expert_plus_placement_suffix",
+      "hard_timeout_s": 2200,
+      "max_policy_actions": null,
+      "reset_fixture_sha256": "77629daa82a44c540ab08e35e25ec7f124167a909ff5c9251280c2bbabae2a43",
+      "prompt": "Pick up the red block with the left arm, hand it to the right arm, and place it on the target.",
+      "policy_rng_seed": 20261106,
+      "checkpoint_revision": "17ef545270cf26ed81169893b60f845f80ce6557",
+      "recovery_cap": 0,
+      "data_kind": "diagnostic",
+      "formal_score_eligible": false
+    }
+  ],
+  "comparisons": [
+    [
+      "native-w50",
+      "native-w31"
+    ],
+    [
+      "native-w4",
+      "arx-full-w4"
+    ],
+    [
+      "arx-full-w4",
+      "arx-expert-repaired"
+    ]
+  ],
+  "early_stop": [
+    "native H50/K31 first observation and prediction must match before motion",
+    "isolated native admission failure does not block independently admitted ARX",
+    "actual unsafe state, service failure, timeout or unverified cleanup stops the allocation",
+    "expected trial failures require verified cleanup before the next independent reset",
+    "verified same-tick contact stop and full cleanup end only that trial; the next trial repeats independent measured reset and geometry admission"
+  ],
+  "budget": {
+    "trials_s": 16800,
+    "overhead": {
+      "graphics_s": 300,
+      "shared_model_and_dynamic_entry_s": 3600,
+      "statistics_s": 180,
+      "cleanup_s": 120
+    },
+    "bounded_execution_s": 21000,
+    "proposed_allocation_s": 25200,
+    "proposed_fee_cap_yuan": 25.2,
+    "unassigned_margin_s": 4200,
+    "gpu_count": 1,
+    "cpu_count": 4,
+    "memory_gib": 32,
+    "node": "gnode39",
+    "reference_price_yuan_per_gpu_hour": 3.6,
+    "submission_authorized": false,
+    "rate_status": "historical_reference_only_live_quote_required"
+  },
+  "free_space_approach_repair": "bounded_free_space_approach_v1",
+  "native_preload_control": "measured_contact_preload_hold_v1",
+  "native_preload_establishment": "bilateral_contact_preload_4mm_v1",
+  "checkpoint": {
+    "revision": "17ef545270cf26ed81169893b60f845f80ce6557",
+    "manifest_sha256": "835d60676236e69276032f7bc1ea4837eb6fcda6d4f3dbab2043965063a3d97b",
+    "norm_stats_sha256": "8a1f114a8873dfa0788c7f512851ee3063224ef2b8af270421076a2e4e544960"
+  },
+  "trial_bindings": {
+    "unified-seed0-native-w50": {
+      "config_sha256": "04f2e041cedb07a2eae69425175c60d235ed086095cce10600dfb9e492a8bae6",
+      "expected_initial": {
+        "robot_base_world": {
+          "left": [
+            0.0,
+            -0.6499999761581421,
+            0.0,
+            0.7071067811865476,
+            0.0,
+            0.0,
+            0.7071067811865475
+          ],
+          "right": [
+            0.0,
+            -0.6499999761581421,
+            0.0,
+            0.7071067811865476,
+            0.0,
+            0.0,
+            0.7071067811865475
+          ]
+        },
+        "task_frame_world": [
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "actual_arm_qpos_rad": {
+          "left": [
+            -3.016260308186247e-08,
+            -5.668539984071685e-07,
+            -4.835977051698137e-06,
+            7.702591631186806e-08,
+            4.6315946633512795e-07,
+            -8.158984883266385e-07
+          ],
+          "right": [
+            -3.258066882949606e-08,
+            -5.65274206110189e-07,
+            -4.838918357563671e-06,
+            7.693390813301448e-08,
+            4.6469963876916154e-07,
+            -8.163781899384048e-07
+          ]
+        },
+        "actual_gripper": {
+          "left": 0.9830570883221097,
+          "right": 0.9830570055378809
+        },
+        "objects_task": {
+          "block": [
+            -0.17331258952617645,
+            0.19793014228343964,
+            0.840000569820404,
+            0.9939092006006811,
+            5.213939510099557e-06,
+            -5.030996466065737e-06,
+            0.11020209121799367
+          ],
+          "target": [
+            0.11306939274072647,
+            0.1510109156370163,
+            0.7409999966621399,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "table": [
+            0.0,
+            0.0,
+            0.7400000095367432,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "reset_fixture_sha256": "77629daa82a44c540ab08e35e25ec7f124167a909ff5c9251280c2bbabae2a43",
+        "workspace_check_id": "10g-reconstructed-reset",
+        "common_workspace_pass": false
+      }
+    },
+    "unified-seed0-native-w31": {
+      "config_sha256": "2fec598cfa2e655e1b697155c6029f14a16a977b79a410e50dc8eca44d4b50bb",
+      "expected_initial": {
+        "robot_base_world": {
+          "left": [
+            0.0,
+            -0.6499999761581421,
+            0.0,
+            0.7071067811865476,
+            0.0,
+            0.0,
+            0.7071067811865475
+          ],
+          "right": [
+            0.0,
+            -0.6499999761581421,
+            0.0,
+            0.7071067811865476,
+            0.0,
+            0.0,
+            0.7071067811865475
+          ]
+        },
+        "task_frame_world": [
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "actual_arm_qpos_rad": {
+          "left": [
+            -3.016260308186247e-08,
+            -5.668539984071685e-07,
+            -4.835977051698137e-06,
+            7.702591631186806e-08,
+            4.6315946633512795e-07,
+            -8.158984883266385e-07
+          ],
+          "right": [
+            -3.258066882949606e-08,
+            -5.65274206110189e-07,
+            -4.838918357563671e-06,
+            7.693390813301448e-08,
+            4.6469963876916154e-07,
+            -8.163781899384048e-07
+          ]
+        },
+        "actual_gripper": {
+          "left": 0.9830570883221097,
+          "right": 0.9830570055378809
+        },
+        "objects_task": {
+          "block": [
+            -0.17331258952617645,
+            0.19793014228343964,
+            0.840000569820404,
+            0.9939092006006811,
+            5.213939510099557e-06,
+            -5.030996466065737e-06,
+            0.11020209121799367
+          ],
+          "target": [
+            0.11306939274072647,
+            0.1510109156370163,
+            0.7409999966621399,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "table": [
+            0.0,
+            0.0,
+            0.7400000095367432,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "reset_fixture_sha256": "77629daa82a44c540ab08e35e25ec7f124167a909ff5c9251280c2bbabae2a43",
+        "workspace_check_id": "10g-reconstructed-reset",
+        "common_workspace_pass": false
+      }
+    },
+    "unified-seed1-native-w31": {
+      "config_sha256": "917f63fb746df9166e738051199b5f15a60fc161bb14ac21b2b6a1dd402595fa",
+      "expected_initial": {
+        "robot_base_world": {
+          "left": [
+            0.0,
+            -0.6499999761581421,
+            0.0,
+            0.7071067811865476,
+            0.0,
+            0.0,
+            0.7071067811865475
+          ],
+          "right": [
+            0.0,
+            -0.6499999761581421,
+            0.0,
+            0.7071067811865476,
+            0.0,
+            0.0,
+            0.7071067811865475
+          ]
+        },
+        "task_frame_world": [
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "actual_arm_qpos_rad": {
+          "left": [
+            -3.016260308186247e-08,
+            -5.668539984071685e-07,
+            -4.835977051698137e-06,
+            7.702591631186806e-08,
+            4.6315946633512795e-07,
+            -8.158984883266385e-07
+          ],
+          "right": [
+            -3.258066882949606e-08,
+            -5.65274206110189e-07,
+            -4.838918357563671e-06,
+            7.693390813301448e-08,
+            4.6469963876916154e-07,
+            -8.163781899384048e-07
+          ]
+        },
+        "actual_gripper": {
+          "left": 0.9830570883221097,
+          "right": 0.9830570055378809
+        },
+        "objects_task": {
+          "block": [
+            -0.07437734305858612,
+            0.006845563184469938,
+            0.8400006890296936,
+            0.9922851265801744,
+            6.05939609237794e-06,
+            -4.955273623636583e-06,
+            0.1239767216315074
+          ],
+          "target": [
+            0.1297152191400528,
+            0.19003723561763763,
+            0.7409999966621399,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "table": [
+            0.0,
+            0.0,
+            0.7400000095367432,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "reset_fixture_sha256": "89ef6e94fcd26f9c2b121dbe85ce75f495efe0003ae95b4abfabd8a123be9aaf",
+        "workspace_check_id": "10g-reconstructed-reset",
+        "common_workspace_pass": false
+      }
+    },
+    "unified-seed1-native-w50": {
+      "config_sha256": "468f1c8b27814e443fa8df4bc61a340d8cf5e58ac95b76ee0a5f44bf54f71c2a",
+      "expected_initial": {
+        "robot_base_world": {
+          "left": [
+            0.0,
+            -0.6499999761581421,
+            0.0,
+            0.7071067811865476,
+            0.0,
+            0.0,
+            0.7071067811865475
+          ],
+          "right": [
+            0.0,
+            -0.6499999761581421,
+            0.0,
+            0.7071067811865476,
+            0.0,
+            0.0,
+            0.7071067811865475
+          ]
+        },
+        "task_frame_world": [
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "actual_arm_qpos_rad": {
+          "left": [
+            -3.016260308186247e-08,
+            -5.668539984071685e-07,
+            -4.835977051698137e-06,
+            7.702591631186806e-08,
+            4.6315946633512795e-07,
+            -8.158984883266385e-07
+          ],
+          "right": [
+            -3.258066882949606e-08,
+            -5.65274206110189e-07,
+            -4.838918357563671e-06,
+            7.693390813301448e-08,
+            4.6469963876916154e-07,
+            -8.163781899384048e-07
+          ]
+        },
+        "actual_gripper": {
+          "left": 0.9830570883221097,
+          "right": 0.9830570055378809
+        },
+        "objects_task": {
+          "block": [
+            -0.07437734305858612,
+            0.006845563184469938,
+            0.8400006890296936,
+            0.9922851265801744,
+            6.05939609237794e-06,
+            -4.955273623636583e-06,
+            0.1239767216315074
+          ],
+          "target": [
+            0.1297152191400528,
+            0.19003723561763763,
+            0.7409999966621399,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "table": [
+            0.0,
+            0.0,
+            0.7400000095367432,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "reset_fixture_sha256": "89ef6e94fcd26f9c2b121dbe85ce75f495efe0003ae95b4abfabd8a123be9aaf",
+        "workspace_check_id": "10g-reconstructed-reset",
+        "common_workspace_pass": false
+      }
+    },
+    "unified-seed0-native-w4": {
+      "config_sha256": "484ff9bee77afbad136f97d3ef720db2214c052f72f69bf241e023a6966ca334",
+      "expected_initial": {
+        "robot_base_world": {
+          "left": [
+            0.0,
+            -0.6499999761581421,
+            0.0,
+            0.7071067811865476,
+            0.0,
+            0.0,
+            0.7071067811865475
+          ],
+          "right": [
+            0.0,
+            -0.6499999761581421,
+            0.0,
+            0.7071067811865476,
+            0.0,
+            0.0,
+            0.7071067811865475
+          ]
+        },
+        "task_frame_world": [
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "actual_arm_qpos_rad": {
+          "left": [
+            -3.016260308186247e-08,
+            -5.668539984071685e-07,
+            -4.835977051698137e-06,
+            7.702591631186806e-08,
+            4.6315946633512795e-07,
+            -8.158984883266385e-07
+          ],
+          "right": [
+            -3.258066882949606e-08,
+            -5.65274206110189e-07,
+            -4.838918357563671e-06,
+            7.693390813301448e-08,
+            4.6469963876916154e-07,
+            -8.163781899384048e-07
+          ]
+        },
+        "actual_gripper": {
+          "left": 0.9830570883221097,
+          "right": 0.9830570055378809
+        },
+        "objects_task": {
+          "block": [
+            -0.17331258952617645,
+            0.19793014228343964,
+            0.840000569820404,
+            0.9939092006006811,
+            5.213939510099557e-06,
+            -5.030996466065737e-06,
+            0.11020209121799367
+          ],
+          "target": [
+            0.11306939274072647,
+            0.1510109156370163,
+            0.7409999966621399,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "table": [
+            0.0,
+            0.0,
+            0.7400000095367432,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "reset_fixture_sha256": "77629daa82a44c540ab08e35e25ec7f124167a909ff5c9251280c2bbabae2a43",
+        "workspace_check_id": "10g-reconstructed-reset",
+        "common_workspace_pass": false
+      }
+    },
+    "unified-seed0-arx-full-w4": {
+      "config_sha256": "186c32dc2ee9ea1efa5405b881a724211320eb25d5ccaa2dec23c2fc9d4941f5",
+      "expected_initial": {
+        "robot_base_world": {
+          "left": [
+            -0.30000001192092896,
+            -0.3499999940395355,
+            0.7839999794960022,
+            0.7071067811865476,
+            0.0,
+            0.0,
+            0.7071067811865475
+          ],
+          "right": [
+            0.30000001192092896,
+            -0.3499999940395355,
+            0.7839999794960022,
+            0.7071067811865476,
+            0.0,
+            0.0,
+            0.7071067811865475
+          ]
+        },
+        "task_frame_world": [
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "actual_arm_qpos_rad": {
+          "left": [
+            -0.26346591114997864,
+            -0.6305378675460815,
+            0.1571831852197647,
+            -0.7877228260040283,
+            -0.28336942195892334,
+            -1.3242606655694544e-05
+          ],
+          "right": [
+            -0.6324052214622498,
+            -0.6228002905845642,
+            0.1452883630990982,
+            -0.7680932283401489,
+            -0.6423773765563965,
+            -1.4833736713626422e-05
+          ]
+        },
+        "actual_gripper": {
+          "left": 0.999999994581396,
+          "right": 0.999999994581396
+        },
+        "objects_task": {
+          "block": [
+            -0.17331258952617645,
+            0.19793014228343964,
+            0.840000569820404,
+            0.9939092006006811,
+            5.213939510099557e-06,
+            -5.030996466065737e-06,
+            0.11020209121799367
+          ],
+          "target": [
+            0.11306939274072647,
+            0.1510109156370163,
+            0.7409999966621399,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "table": [
+            0.0,
+            0.0,
+            0.7400000095367432,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "reset_fixture_sha256": "77629daa82a44c540ab08e35e25ec7f124167a909ff5c9251280c2bbabae2a43",
+        "workspace_check_id": "10g-reconstructed-reset",
+        "common_workspace_pass": false
+      }
+    },
+    "unified-seed1-arx-full-w4": {
+      "config_sha256": "7aff8c46bd8ad0472da14b11baf036398f79b750077ffc7b30538031c54857d1",
+      "expected_initial": {
+        "robot_base_world": {
+          "left": [
+            -0.30000001192092896,
+            -0.3499999940395355,
+            0.7839999794960022,
+            0.7071067811865476,
+            0.0,
+            0.0,
+            0.7071067811865475
+          ],
+          "right": [
+            0.30000001192092896,
+            -0.3499999940395355,
+            0.7839999794960022,
+            0.7071067811865476,
+            0.0,
+            0.0,
+            0.7071067811865475
+          ]
+        },
+        "task_frame_world": [
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "actual_arm_qpos_rad": {
+          "left": [
+            -0.26346591114997864,
+            -0.6305378675460815,
+            0.1571831852197647,
+            -0.7877228260040283,
+            -0.28336942195892334,
+            -1.3242606655694544e-05
+          ],
+          "right": [
+            -0.6324052214622498,
+            -0.6228002905845642,
+            0.1452883630990982,
+            -0.7680932283401489,
+            -0.6423773765563965,
+            -1.4833736713626422e-05
+          ]
+        },
+        "actual_gripper": {
+          "left": 0.999999994581396,
+          "right": 0.999999994581396
+        },
+        "objects_task": {
+          "block": [
+            -0.07437734305858612,
+            0.006845563184469938,
+            0.8400006890296936,
+            0.9922851265801744,
+            6.05939609237794e-06,
+            -4.955273623636583e-06,
+            0.1239767216315074
+          ],
+          "target": [
+            0.1297152191400528,
+            0.19003723561763763,
+            0.7409999966621399,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "table": [
+            0.0,
+            0.0,
+            0.7400000095367432,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "reset_fixture_sha256": "89ef6e94fcd26f9c2b121dbe85ce75f495efe0003ae95b4abfabd8a123be9aaf",
+        "workspace_check_id": "10g-reconstructed-reset",
+        "common_workspace_pass": false
+      }
+    },
+    "unified-seed1-native-w4": {
+      "config_sha256": "db397e1a41245106f62c9a17bdf05a12fb4b9bc0d259f921667939a5fac76c2e",
+      "expected_initial": {
+        "robot_base_world": {
+          "left": [
+            0.0,
+            -0.6499999761581421,
+            0.0,
+            0.7071067811865476,
+            0.0,
+            0.0,
+            0.7071067811865475
+          ],
+          "right": [
+            0.0,
+            -0.6499999761581421,
+            0.0,
+            0.7071067811865476,
+            0.0,
+            0.0,
+            0.7071067811865475
+          ]
+        },
+        "task_frame_world": [
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "actual_arm_qpos_rad": {
+          "left": [
+            -3.016260308186247e-08,
+            -5.668539984071685e-07,
+            -4.835977051698137e-06,
+            7.702591631186806e-08,
+            4.6315946633512795e-07,
+            -8.158984883266385e-07
+          ],
+          "right": [
+            -3.258066882949606e-08,
+            -5.65274206110189e-07,
+            -4.838918357563671e-06,
+            7.693390813301448e-08,
+            4.6469963876916154e-07,
+            -8.163781899384048e-07
+          ]
+        },
+        "actual_gripper": {
+          "left": 0.9830570883221097,
+          "right": 0.9830570055378809
+        },
+        "objects_task": {
+          "block": [
+            -0.07437734305858612,
+            0.006845563184469938,
+            0.8400006890296936,
+            0.9922851265801744,
+            6.05939609237794e-06,
+            -4.955273623636583e-06,
+            0.1239767216315074
+          ],
+          "target": [
+            0.1297152191400528,
+            0.19003723561763763,
+            0.7409999966621399,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "table": [
+            0.0,
+            0.0,
+            0.7400000095367432,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "reset_fixture_sha256": "89ef6e94fcd26f9c2b121dbe85ce75f495efe0003ae95b4abfabd8a123be9aaf",
+        "workspace_check_id": "10g-reconstructed-reset",
+        "common_workspace_pass": false
+      }
+    },
+    "unified-seed1-arx-expert-repaired": {
+      "config_sha256": "0e3d83311359f5d2f7c95477322688d985242053ff7da639e60fcdbf7ed7908f",
+      "expected_initial": {
+        "robot_base_world": {
+          "left": [
+            -0.30000001192092896,
+            -0.3499999940395355,
+            0.7839999794960022,
+            0.7071067811865476,
+            0.0,
+            0.0,
+            0.7071067811865475
+          ],
+          "right": [
+            0.30000001192092896,
+            -0.3499999940395355,
+            0.7839999794960022,
+            0.7071067811865476,
+            0.0,
+            0.0,
+            0.7071067811865475
+          ]
+        },
+        "task_frame_world": [
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "actual_arm_qpos_rad": {
+          "left": [
+            -0.26346591114997864,
+            -0.6305378675460815,
+            0.1571831852197647,
+            -0.7877228260040283,
+            -0.28336942195892334,
+            -1.3242606655694544e-05
+          ],
+          "right": [
+            -0.6324052214622498,
+            -0.6228002905845642,
+            0.1452883630990982,
+            -0.7680932283401489,
+            -0.6423773765563965,
+            -1.4833736713626422e-05
+          ]
+        },
+        "actual_gripper": {
+          "left": 0.999999994581396,
+          "right": 0.999999994581396
+        },
+        "objects_task": {
+          "block": [
+            -0.07437734305858612,
+            0.006845563184469938,
+            0.8400006890296936,
+            0.9922851265801744,
+            6.05939609237794e-06,
+            -4.955273623636583e-06,
+            0.1239767216315074
+          ],
+          "target": [
+            0.1297152191400528,
+            0.19003723561763763,
+            0.7409999966621399,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "table": [
+            0.0,
+            0.0,
+            0.7400000095367432,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "reset_fixture_sha256": "89ef6e94fcd26f9c2b121dbe85ce75f495efe0003ae95b4abfabd8a123be9aaf",
+        "workspace_check_id": "10g-reconstructed-reset",
+        "common_workspace_pass": false
+      },
+      "trace": "expert/seed1/runtime-trace.npz",
+      "source": "expert/seed1/input.json"
+    },
+    "unified-seed0-arx-expert-repaired": {
+      "config_sha256": "78197e82e81c2fb538c951bbc591ce92506237b25b4069026f8ab96ddb0a9242",
+      "expected_initial": {
+        "robot_base_world": {
+          "left": [
+            -0.30000001192092896,
+            -0.3499999940395355,
+            0.7839999794960022,
+            0.7071067811865476,
+            0.0,
+            0.0,
+            0.7071067811865475
+          ],
+          "right": [
+            0.30000001192092896,
+            -0.3499999940395355,
+            0.7839999794960022,
+            0.7071067811865476,
+            0.0,
+            0.0,
+            0.7071067811865475
+          ]
+        },
+        "task_frame_world": [
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "actual_arm_qpos_rad": {
+          "left": [
+            -0.26346591114997864,
+            -0.6305378675460815,
+            0.1571831852197647,
+            -0.7877228260040283,
+            -0.28336942195892334,
+            -1.3242606655694544e-05
+          ],
+          "right": [
+            -0.6324052214622498,
+            -0.6228002905845642,
+            0.1452883630990982,
+            -0.7680932283401489,
+            -0.6423773765563965,
+            -1.4833736713626422e-05
+          ]
+        },
+        "actual_gripper": {
+          "left": 0.999999994581396,
+          "right": 0.999999994581396
+        },
+        "objects_task": {
+          "block": [
+            -0.17331258952617645,
+            0.19793014228343964,
+            0.840000569820404,
+            0.9939092006006811,
+            5.213939510099557e-06,
+            -5.030996466065737e-06,
+            0.11020209121799367
+          ],
+          "target": [
+            0.11306939274072647,
+            0.1510109156370163,
+            0.7409999966621399,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "table": [
+            0.0,
+            0.0,
+            0.7400000095367432,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "reset_fixture_sha256": "77629daa82a44c540ab08e35e25ec7f124167a909ff5c9251280c2bbabae2a43",
+        "workspace_check_id": "10g-reconstructed-reset",
+        "common_workspace_pass": false
+      },
+      "trace": "expert/seed0/runtime-trace.npz",
+      "source": "expert/seed0/input.json"
+    }
+  }
+}

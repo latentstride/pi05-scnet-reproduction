@@ -4,10 +4,8 @@ import numpy as np
 
 from g2_adapter import G2Error, SIDES
 from g2e_native_guard import NativeReleaseTracker
+from g2e_protocol import PRELOAD_PROTOCOL
 from robotwin_control_geometry import Status, finite_array
-
-
-PRELOAD_PROTOCOL = "measured_contact_preload_hold_v1"
 
 
 class NativePreloadHold:
@@ -26,7 +24,7 @@ class NativePreloadHold:
         self.tracker, self.arms = tracker, tuple(arms)
         self.references = {}
 
-    def observe(self, tick, drive):
+    def observe(self, tick, drive, fingers=None):
         """Called only after all measured, tracking and deadline checks pass."""
         drive = finite_array(drive, (2, 2))
         self._clock(tick)

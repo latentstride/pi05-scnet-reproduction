@@ -16,6 +16,9 @@ def steps(path, *, native_pair=False):
     pairs = []
     holder_transitions = []
     close_requests = {"left": [], "right": []}
+    preload = None
+    final_measured = {}
+    repairs = {}
     with path.open() as stream:
         for line in stream:
             try:
@@ -25,6 +28,16 @@ def steps(path, *, native_pair=False):
                 if line.endswith("\n"):
                     raise
                 continue
+            if row.get("kind") in (
+                "native_approach_projection",
+                "native_approach_barrier",
+                "bounded_upward_approach",
+                "source_observability_barrier",
+                "safe_prefix_before_rejection",
+                "physical_proxy_recovery",
+            ):
+                kind = row["kind"]
+                repairs[kind] = repairs.get(kind, 0) + 1
             count += row.get("physics_step_count") or 0
             calls += row.get("control_call_count") or 0
             sim_s = max(sim_s, row.get("sim_s") or 0.0)
@@ -38,14 +51,54 @@ def steps(path, *, native_pair=False):
                 for side, index in (("left", 6), ("right", 13)):
                     if row["normalized_qpos_request"][index] < 0.5:
                         close_requests[side].append(row["action_index_in_episode"])
+            if native_pair and row.get("kind") == "native_preload_control":
+                if preload is None:
+                    preload = dict(
+                        protocol=row["protocol"],
+                        samples=0,
+                        modes={s: {} for s in ("left", "right")},
+                        position_interventions={s: 0 for s in ("left", "right")},
+                        velocity_interventions={s: 0 for s in ("left", "right")},
+                    )
+                if row["protocol"] != preload["protocol"]:
+                    raise ValueError("preload protocol changed during trial")
+                preload["samples"] += 1
+                for i, side in enumerate(("left", "right")):
+                    mode = row["modes"][side]
+                    preload["modes"][side][mode] = (
+                        preload["modes"][side].get(mode, 0) + 1
+                    )
+                    for target, requested, applied in (
+                        (
+                            "position_interventions",
+                            "requested_finger_drive_m",
+                            "applied_finger_drive_m",
+                        ),
+                        (
+                            "velocity_interventions",
+                            "requested_finger_velocity_m_s",
+                            "applied_finger_velocity_m_s",
+                        ),
+                    ):
+                        preload[target][side] += row[requested][i] != row[applied][i]
+                preload["last_requested_drive_m"] = row["requested_finger_drive_m"]
+                preload["last_applied_drive_m"] = row["applied_finger_drive_m"]
+            if native_pair and row.get("actual_fingers") is not None:
+                final_measured["actual_fingers_m"] = row["actual_fingers"]
+                final_measured["tick"] = row.get("tick")
+            if native_pair and row.get("kind") == "native_contact_sample":
+                final_measured["block_contacts"] = row["contacts"]
             contact = row.get("contact_state") or {}
             holders = contact.get("holders")
+            if native_pair and holders is not None:
+                final_measured["contact_state"] = contact
             if holders is not None and (
                 not holder_transitions or holder_transitions[-1]["holders"] != holders
             ):
                 holder_transitions.append(dict(tick=row.get("tick"), holders=holders))
     return dict(
         physics_steps=count,
+        control_repair_events=repairs,
         control_calls=calls,
         last_sim_s=sim_s,
         peak_tcp_position_error_m=position,
@@ -53,6 +106,15 @@ def steps(path, *, native_pair=False):
         first_collision_records=pairs,
         measured_holder_transitions=holder_transitions,
         **({"close_request_indices": close_requests} if native_pair else {}),
+        **(
+            dict(
+                native_preload_control=preload,
+                final_measured=final_measured,
+                physical_release_status="requires independent measured verification",
+            )
+            if preload is not None
+            else {}
+        ),
     )
 
 
@@ -91,6 +153,19 @@ def summarize(plan, summary, output):
         if unified:
             exchange = trial_dir / "first-exchange.json"
             grouped[trial["seed"], trial["condition"]].update(
+                declared_native_preload_control=plan.get("native_preload_control")
+                if native
+                else None,
+                declared_native_preload_establishment=plan.get(
+                    "native_preload_establishment"
+                )
+                if native
+                else None,
+                declared_free_space_approach_repair=plan.get(
+                    "free_space_approach_repair"
+                )
+                if "expert" not in trial.get("method", "")
+                else None,
                 policy_queries=result.get("queries"),
                 first_exchange=json.loads(exchange.read_text())
                 if exchange.is_file()

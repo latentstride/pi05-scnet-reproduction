@@ -9,6 +9,8 @@ import tempfile
 import tarfile
 import time
 import unittest
+from types import SimpleNamespace
+from unittest.mock import patch
 
 from g2_final_campaign import process_group_gone, supervise
 from g2_remaining_plan import build
@@ -18,6 +20,102 @@ PROJECT = Path(__file__).resolve().parents[1]
 
 
 class StartupTests(unittest.TestCase):
+    def rehearse_admission(self, later_scene_s):
+        plan = build(PROJECT)
+        clock = SimpleNamespace(now=0.0)
+        clock.monotonic = lambda: clock.now
+
+        def advance(seconds):
+            clock.now += seconds
+
+        clock.sleep = advance
+        probes = {}
+        for row in plan["trials"]:
+            episode = row["episode_id"]
+            probes.setdefault(
+                (row["embodiment"], row["seed"]), (episode, ["probe", episode])
+            )
+        durations = dict(
+            zip(
+                (episode for episode, _ in probes.values()),
+                (338, later_scene_s, 320, 320),
+            )
+        )
+        launched = []
+
+        def spawn(command, *, stdout, **kwargs):
+            stage = command[0]
+            launched.append(command)
+            if stage == "monitor":
+                stdout.write(b"timestamp, GPU-mock, 14314, 24564\n")
+            finish = float("inf")
+            if stage == "probe":
+                finish = clock.now + durations[command[1]]
+            elif stage == "trial":
+                finish = clock.now + 1
+            return SimpleNamespace(
+                pid=len(launched),
+                returncode=0,
+                poll=lambda: 0 if clock.now >= finish else None,
+            )
+
+        runtime = dict(
+            mode="allocated",
+            timeout_s=33600,
+            model_timeout_s=960,
+            ready_marker="READY",
+            model=["model"],
+            monitor=["monitor"],
+            probes=probes,
+            admission={},
+            commands={
+                row["episode_id"]: ["trial", row["episode_id"]]
+                for row in plan["trials"]
+            },
+            read_result=lambda episode, probe=False: dict(
+                episode_id=episode,
+                category="admitted" if probe else "diagnostic_complete",
+                fresh_reset_verified=True,
+            ),
+        )
+        with (
+            tempfile.TemporaryDirectory() as temp,
+            patch("g2_final_campaign.time", clock),
+            patch("g2_final_campaign.subprocess.Popen", side_effect=spawn),
+            patch("g2_final_campaign.stop_group"),
+            patch(
+                "g2_final_campaign.wait_ready", side_effect=lambda *args: advance(320)
+            ),
+        ):
+            summary = supervise(plan, runtime, Path(temp) / "run", allocated=True)
+        return summary, launched, clock.now
+
+    def test_slow_second_scene_admits_and_runs_all_trials_in_order(self):
+        result, launched, _ = self.rehearse_admission(275)
+        self.assertIsNone(result["stop_reason"])
+        self.assertEqual(result["model_server_starts"], 1)
+        self.assertEqual(
+            [command[1] for command in launched if command[0] == "trial"],
+            [row["episode_id"] for row in build(PROJECT)["trials"]],
+        )
+        second = result["startup"]["remaining-seed0-native-w31"]
+        self.assertGreater(second["wall_s"], 145)
+        self.assertGreater(second["allowance_s"], second["wall_s"])
+
+    def test_stalled_second_scene_remains_bounded_and_keeps_failure_evidence(self):
+        result, launched, elapsed = self.rehearse_admission(20000)
+        self.assertIn(
+            "remaining-seed0-native-w31: trial hard timeout", result["stop_reason"]
+        )
+        self.assertTrue(
+            all(row["status"] == "not_run" for row in result["rows"].values())
+        )
+        self.assertFalse(any(command[0] == "trial" for command in launched))
+        self.assertLess(elapsed, 6400)
+        second = result["startup"]["remaining-seed0-native-w31"]
+        self.assertEqual(second["status"], "failed")
+        self.assertAlmostEqual(second["allowance_s"], second["wall_s"], delta=0.03)
+
     def test_clean_model_container_receives_frozen_source_cache_setting(self):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)

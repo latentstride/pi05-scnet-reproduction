@@ -353,10 +353,7 @@ def run(root, release, output, auth_path, plan):
                 stop_group(renderer)
         graphics = read(output / "graphics/sim-launch.json")
         budget = plan["budget"]["overhead"]
-        timeout = min(
-            plan["budget"]["trials_s"] + budget["shared_model_and_dynamic_entry_s"],
-            end - time.time() - budget["cleanup_s"] - budget["statistics_s"],
-        )
+        timeout = end - time.time() - budget["cleanup_s"] - budget["statistics_s"]
         runtime = commands(
             root, release, output, job, plan, graphics, timeout, auth_path
         )

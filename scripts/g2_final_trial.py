@@ -202,8 +202,17 @@ def run(args):
 
     receipt = dict(episode_id=args.episode, category="infrastructure_failure")
     started = time.monotonic()
+
+    def probe_phase(name):
+        if args.probe:
+            print(
+                f"probe {args.episode} +{time.monotonic() - started:.1f}s {name}",
+                flush=True,
+            )
+
     try:
         with interrupt_signals():
+            probe_phase("verify_runtime_and_model")
             verify_runtime(args.pace, source)
             verify_model_receipt(
                 plan["checkpoint"],
@@ -211,6 +220,7 @@ def run(args):
                 args.model_startup,
             )
             try:
+                probe_phase("inspect_assets")
                 inspect_assets(
                     config,
                     assets,
@@ -224,8 +234,10 @@ def run(args):
                 return
             if args.probe:
                 evidence.mkdir()
+                probe_phase("construct_scene")
                 with factory(config) as (backend, adapter):
                     try:
+                        probe_phase("verify_fresh_reset_and_geometry")
                         backend.reset(config)
                         receipt["physical_admitted"] = True
                         snap, state = backend.capture()
@@ -244,6 +256,7 @@ def run(args):
                                 return
                             request = result.payload
                         validate_request(request)
+                        probe_phase("check_model_input_and_inference")
                         with open_policy(args.uri, "checkpoint", 390) as policy:
                             persist(
                                 args.output / "rng-reset.json",
@@ -254,6 +267,7 @@ def run(args):
                             validate_response(policy.infer(request))
                         receipt.update(category="admitted")
                     finally:
+                        probe_phase("close_scene")
                         backend.close(evidence)
             elif "expert" in row["method"]:
                 evidence.mkdir()

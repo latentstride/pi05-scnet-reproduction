@@ -78,9 +78,11 @@ def supervise(plan, runtime, output, *, rehearsal=False, allocated=False):
         formal_score_eligible=False,
         transfer_claim_eligible=False,
     )
-    deadline = time.monotonic() + min(
-        runtime["timeout_s"], budget["bounded_execution_s"]
+    overhead = budget["overhead"]
+    supervisor_cap = budget["proposed_allocation_s"] - sum(
+        overhead[key] for key in ("graphics_s", "statistics_s", "cleanup_s")
     )
+    deadline = time.monotonic() + min(runtime["timeout_s"], supervisor_cap)
     model = trial = monitor = None
 
     def save():
@@ -123,11 +125,16 @@ def supervise(plan, runtime, output, *, rehearsal=False, allocated=False):
         try:
             if allocated:
                 monitor = launch(runtime["monitor"], output / "gpu-memory.csv")
-            startup_deadline = min(
-                deadline,
-                time.monotonic()
-                + budget["overhead"]["shared_model_and_dynamic_entry_s"],
+            # Use spare allocation time for startup, while protecting every
+            # declared trial cap. Model and probes share this one deadline.
+            trial_reserve = sum(
+                row["hard_timeout_s"]
+                for row in roster
+                if row["episode_id"] in runtime["commands"]
             )
+            startup_deadline = deadline - trial_reserve
+            if startup_deadline <= time.monotonic():
+                raise TimeoutError("no startup time remains after reserving trials")
             model_log = output / "model.log"
             model = launch(runtime["model"], model_log)
             summary["model_server_starts"] = 1
@@ -142,26 +149,27 @@ def supervise(plan, runtime, output, *, rehearsal=False, allocated=False):
             )
             if allocated:
                 summary["startup"] = {}
-                for index, (key, (episode, command)) in enumerate(
-                    runtime["probes"].items()
-                ):
-                    if time.monotonic() >= startup_deadline:
+                probes = runtime["probes"]
+                for index, (key, (episode, command)) in enumerate(probes.items()):
+                    began = time.monotonic()
+                    allowance = (startup_deadline - began) / (len(probes) - index)
+                    if allowance <= 0:
                         raise TimeoutError("dynamic admission deadline")
+                    entry = dict(status="running", allowance_s=allowance)
+                    summary["startup"][episode] = entry
+                    save()
                     trial = launch(command, output / f"probe-{episode}.log")
-                    reason = wait_trial(
-                        trial,
-                        min(
-                            startup_deadline,
-                            time.monotonic() + (480 if index == 0 else 145),
-                        ),
-                    )
+                    reason = wait_trial(trial, began + allowance)
                     stop_group(trial)
                     trial = None
+                    entry.update(wall_s=time.monotonic() - began)
                     if reason:
+                        entry.update(status="failed", reason=reason)
+                        save()
                         raise RuntimeError(f"dynamic admission {episode}: {reason}")
                     receipt = runtime["read_result"](episode, probe=True)
                     category = receipt.get("category")
-                    summary["startup"][episode] = receipt
+                    entry.update(receipt, status=category)
                     save()
                     if receipt.get("episode_id") != episode or category not in (
                         "admitted",

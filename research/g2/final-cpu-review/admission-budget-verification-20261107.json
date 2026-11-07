@@ -1,0 +1,43 @@
+{
+  "status": "CPU_REVIEWED",
+  "source_job": {
+    "job_id": "127117141",
+    "status": "FAILED",
+    "exit_code": "1:0",
+    "wall_s": 833,
+    "formal_trials_started": 0,
+    "formal_trials_not_run": 14,
+    "stop_reason": "dynamic admission remaining-seed0-native-w31: trial hard timeout",
+    "first_probe_elapsed_s": 326.29147227853537,
+    "first_compile_and_inference_s": 58.86559232324362,
+    "second_probe_cap_s": 145,
+    "second_probe_signal": 15,
+    "second_probe_setup_json_present": false
+  },
+  "change": "reserve trial time; share remaining startup time among outstanding probes",
+  "cpu_tests": 219,
+  "synthetic_episodes": 13,
+  "cpu_scenarios": [
+    "second probe takes 275 seconds and all 14 trials keep their original order",
+    "stalled second probe hits its allocated deadline, records failure and leaves 14 trials not_run"
+  ],
+  "caps": {
+    "wall_s": 34200,
+    "trial_s": 27200,
+    "gpu_count": 1,
+    "fee_yuan": "34.20"
+  },
+  "frozen_inputs_verified": true,
+  "actual_gpu_startup_validated": false,
+  "gpu_operations": 0,
+  "release": {
+    "directory": "candidate-release-admission-budget-20261107",
+    "manifest_sha256": "9ff4c785f8c8dcd28c6e12fe63ed7438b2f0366a2456343142a7c16a7bc15f76",
+    "archive_sha256": "310a30164996a98e6de164fbacec68f3a1a8da038c0f1b7ff3edd3fc20643478",
+    "files": 75
+  },
+  "evidence_sha256": {
+    "tests": "15ae9b6c2ff01f9a2de824667d95e774510e3a0bcc297cb2979e93aa8cc5b50f",
+    "synthetic": "0974423a08be7459d7e45767733a7b7191f477899c55107b2c2d7b417384e473"
+  }
+}

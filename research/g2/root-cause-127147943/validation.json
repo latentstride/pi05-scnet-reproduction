@@ -1,0 +1,29 @@
+{
+  "cpu_only": true,
+  "gpu_operations": 0,
+  "runtime_changes": 0,
+  "python_ast": true,
+  "existing_cpu_tests": 238,
+  "existing_cpu_tests_passed": true,
+  "public_recomputation": {
+    "passed": true,
+    "trials": 10,
+    "raw_action_blocks": 72,
+    "slip_ticks": 262,
+    "fk_observation_and_endpoint_checks": 456,
+    "gpu_used": false,
+    "simulation_run": false
+  },
+  "new_synthetic_episodes_run": 0,
+  "first_test_invocation": {
+    "discovered_tests": 107,
+    "import_errors": 20,
+    "cause": "missing existing openpi_client PYTHONPATH",
+    "resolved_by": "include pinned openpi-client source path"
+  },
+  "raw_archive_sha256": "79b6c322dae6614d5a2b5a1301b893ff33c361a8640604702cbeddeae4ee9d86",
+  "raw_archive_size": 135431784,
+  "execution_commit": "0842504a79682ed57606fba3ea6cde47ed05e84f",
+  "source_revision_lock": "research/g2/protocol-audit/source-lock.json",
+  "validation_scope": "log and FK reconstruction, no new physical counterfactual, no policy inference"
+}

@@ -1,0 +1,1 @@
+{"passed": true, "scope": "unchanged left contact tracker replay from published impulses and matrices; no physics simulation", "branches": {"original": {"first_holder_tick": 5088, "slip_stop_tick": 5139}, "fixed-wrist": {"first_holder_tick": 5088, "slip_stop_tick": 5132}}}

@@ -1,0 +1,90 @@
+{
+  "archive": "dataset/handover_block/arx-x5_clean_50.zip",
+  "revision": "3dc3b798668feb99ac61cc9086d84cbcc3d79186",
+  "archive_lfs_sha256_metadata": "29958cc1583aa16bdf29ff7fb3a5b0e3f1bea9df6d412783f9be2dc71f49d559",
+  "http_bytes": 213651,
+  "http_requests": 6,
+  "episodes": [
+    {
+      "episode": 0,
+      "member": "arx-x5_clean_50/_traj_data/episode0.pkl",
+      "sha256": "718fcfd4b3b70e5f27f98b0c9cd60c680d3ac27868469a3fe93ebb541fda04c7",
+      "zip_crc32": "fa63937d",
+      "bytes": 66045,
+      "planner_counts": [
+        7,
+        4
+      ],
+      "recorded_frames": 195,
+      "reconstructed_frames": 195,
+      "max_target_abs_error": 0.0,
+      "physics_ticks": 2437,
+      "tick_spacing_counts": {
+        "0": 13,
+        "1": 14,
+        "4": 4,
+        "6": 1,
+        "7": 1,
+        "8": 1,
+        "9": 1,
+        "12": 1,
+        "14": 5,
+        "15": 153
+      }
+    },
+    {
+      "episode": 1,
+      "member": "arx-x5_clean_50/_traj_data/episode1.pkl",
+      "sha256": "1ef49d96c8287c01c13028c812370fc6b5ac3958831a78c7132fa9fac4e9b9e6",
+      "zip_crc32": "f469f053",
+      "bytes": 64029,
+      "planner_counts": [
+        7,
+        4
+      ],
+      "recorded_frames": 192,
+      "reconstructed_frames": 192,
+      "max_target_abs_error": 0.0,
+      "physics_ticks": 2401,
+      "tick_spacing_counts": {
+        "0": 14,
+        "1": 14,
+        "5": 2,
+        "6": 1,
+        "8": 1,
+        "10": 3,
+        "13": 1,
+        "14": 5,
+        "15": 150
+      }
+    },
+    {
+      "episode": 2,
+      "member": "arx-x5_clean_50/_traj_data/episode2.pkl",
+      "sha256": "d8959d10dee5a539bc9b82324c41c49424dfd1f7a9d7052165ad850c15945943",
+      "zip_crc32": "60d7f881",
+      "bytes": 65373,
+      "planner_counts": [
+        7,
+        4
+      ],
+      "recorded_frames": 194,
+      "reconstructed_frames": 194,
+      "max_target_abs_error": 0.0,
+      "physics_ticks": 2422,
+      "tick_spacing_counts": {
+        "0": 13,
+        "1": 15,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1,
+        "8": 2,
+        "11": 1,
+        "13": 1,
+        "14": 5,
+        "15": 152
+      }
+    }
+  ]
+}

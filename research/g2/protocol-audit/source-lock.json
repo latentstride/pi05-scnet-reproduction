@@ -1,0 +1,369 @@
+{
+  "project_base": "c6b6b54460c566c75b640f7a8f5ce76195ded94d",
+  "revisions": {
+    "pace": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+    "train": "ba9876639cb7a4bf0c7db00ec39eeb9c8efd8b12",
+    "runtime": "f4e52e6de4cc487a11585a3a7414d610b2883dae",
+    "checkpoint": "17ef545270cf26ed81169893b60f845f80ce6557",
+    "official_dataset": "3dc3b798668feb99ac61cc9086d84cbcc3d79186",
+    "robotwin_stable_base": "13c3c47ff4312dd62484bcd51be034af55c062d1",
+    "robotwin_probe_decoder": "ea8b21121ebb3cd201ff5b3fe361944ac94eda3f"
+  },
+  "paper": "https://arxiv.org/html/2606.00537v1",
+  "files": [
+    {
+      "file": "pace/README.md",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/README.md",
+      "git_blob_sha1": "ef04eceab2c3a0257b39d1db1fad0949ecc92b83",
+      "sha256": "bb43196f85749f19d1b8cff234ceb025eb96cb42793c29b445e08f56566f52f9"
+    },
+    {
+      "file": "pace/description/task_instruction/handover_block.json",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/description/task_instruction/handover_block.json",
+      "git_blob_sha1": "83a2d1ca32ffff3ebce0231d1c0068fe8ce71483",
+      "sha256": "8fed548a88ebeadc164889398e20532f622509c867c0a075653e2bf35b8daa19"
+    },
+    {
+      "file": "pace/description/utils/generate_episode_instructions.py",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/description/utils/generate_episode_instructions.py",
+      "git_blob_sha1": "f3f00c9b76475b784b2d47cdd8e3d610df058fdc",
+      "sha256": "ef428fa9066c3025d41e2fabcbf894d1d4313bd12bee0a300d19d3d7d1158f24"
+    },
+    {
+      "file": "pace/envs/_GLOBAL_CONFIGS.py",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/envs/_GLOBAL_CONFIGS.py",
+      "git_blob_sha1": "6e29ab9a8a3472979ec06f5a15ac5247e5f172c2",
+      "sha256": "f3640d4d132531e1c4a72f1f27dd6312c95aadcb72ab43c638458cf994b5a4d4"
+    },
+    {
+      "file": "pace/envs/_base_task.py",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/envs/_base_task.py",
+      "git_blob_sha1": "982e6ec53e9756c498c1e92706eab2bf970c62f9",
+      "sha256": "448f7152b65cb9102217cf5463aa821d72810ca56f63d5a797ec7bd43e23e101"
+    },
+    {
+      "file": "pace/envs/handover_block.py",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/envs/handover_block.py",
+      "git_blob_sha1": "219e3d53c59f7eda6ffc9cbc33370de97bf7d253",
+      "sha256": "5439712296d7e143d41f8e78b4ab86cd4fad7fb98f40f5f5abb067a462d17650"
+    },
+    {
+      "file": "pace/envs/robot/planner.py",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/envs/robot/planner.py",
+      "git_blob_sha1": "21ae43267859777734248561e405f5b9643a7462",
+      "sha256": "f1012345542483f4cfbac64880a266b7ee0d4a64362d5ec6fd6985ed9c34b564"
+    },
+    {
+      "file": "pace/envs/robot/robot.py",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/envs/robot/robot.py",
+      "git_blob_sha1": "9dfc08f5485d659abe65b0f6c7045457fafef788",
+      "sha256": "3dcd80acc8cab489a4c5edb507cc460dab1724be0226b8d5c4c1b218dee605cb"
+    },
+    {
+      "file": "pace/envs/utils/actor_utils.py",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/envs/utils/actor_utils.py",
+      "git_blob_sha1": "e0e6612d3651cb78a0753e4c2c4314afeabaccbb",
+      "sha256": "252d43c526b23adcf4ba549fec64a49f037fc4a24e9edd1998e5f60d3e13d5d9"
+    },
+    {
+      "file": "pace/envs/utils/parse_hdf5.py",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/envs/utils/parse_hdf5.py",
+      "git_blob_sha1": "95759190a2a43ccc9dda2e25f0a2a51f3feaac0f",
+      "sha256": "0a7c47157e38ad742aa8ef10192021264e66fbae03344b12be526262c0e13c51"
+    },
+    {
+      "file": "pace/envs/utils/pkl2hdf5.py",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/envs/utils/pkl2hdf5.py",
+      "git_blob_sha1": "267f421c3f2d023fb4003f46ceaea5d1edb42867",
+      "sha256": "e119b4093c25f881c535a041bf1895e182ba00564d6ca57f6d6fe4fb62b2666c"
+    },
+    {
+      "file": "pace/pace/configs/calibration/handover_block.json",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/pace/configs/calibration/handover_block.json",
+      "git_blob_sha1": "447d732aebfaf63f19a4de76186d0752eeac6ce9",
+      "sha256": "d66b55926fb3afc655199986710f84d8bc519e4443c11ceb51725814da98204f"
+    },
+    {
+      "file": "pace/pace/configs/expert_scenes.json",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/pace/configs/expert_scenes.json",
+      "git_blob_sha1": "60f54ece848ca1420e4d9b4c5ddca8a2c2ad528e",
+      "sha256": "12ac49e3913308901113cc8ddd9f71f0987ce8c9ebd83f03c308c759bdbeb939"
+    },
+    {
+      "file": "pace/pace/pyproject.toml",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/pace/pyproject.toml",
+      "git_blob_sha1": "3e4de78697fb15f58e95473f9b52eb9327f62068",
+      "sha256": "53b9d835b7108e72de2f28e6052156a8a8aa25f7fa12a90a0ba0be783680d9bd"
+    },
+    {
+      "file": "pace/pace/scripts/_eval_worker.py",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/pace/scripts/_eval_worker.py",
+      "git_blob_sha1": "b5d9e79f5747980d21ec1ab26aa0498c89a99bf6",
+      "sha256": "c5d75694db7e37542153dab7df880df3cd4ce6c8e13255d20460db921ef3b8c4"
+    },
+    {
+      "file": "pace/pace/scripts/calibrate.py",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/pace/scripts/calibrate.py",
+      "git_blob_sha1": "12aef7ddb0ceb48f20b40d672f64963edb0f68ba",
+      "sha256": "f142a3764bcd1d651f30b149647812df39b38f8da1296c0d8d2ce41dcfe1d39d"
+    },
+    {
+      "file": "pace/pace/scripts/eval.yaml",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/pace/scripts/eval.yaml",
+      "git_blob_sha1": "6448fb9d41fc92df495b4fd9ec6e785476560be9",
+      "sha256": "7f6d4c70b56f40cb3790530a9ff001270b0b172bf541052d71328eaebd40f177"
+    },
+    {
+      "file": "pace/pace/scripts/evaluate.py",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/pace/scripts/evaluate.py",
+      "git_blob_sha1": "c3f33d5898599de1b9d276499bd933b7ae6a5ec2",
+      "sha256": "94a3f5ab01beacba042c4625c545a689b52bd8b1ed536a35752b309a138c6bf4"
+    },
+    {
+      "file": "pace/pace/src/pace/core.py",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/pace/src/pace/core.py",
+      "git_blob_sha1": "ca9433f427631714cd17a09445ae03f523b8079d",
+      "sha256": "2681dc9221ae41852cbfb1bde20bea869e111e32d72e2bab3996777593b0e56e"
+    },
+    {
+      "file": "pace/pace/src/pace/datasets.py",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/pace/src/pace/datasets.py",
+      "git_blob_sha1": "8f3840611bf95a6eea81a6ee0074b0a2787b7abc",
+      "sha256": "348620d0d3e8e2f7e6c2238c1f49150dbacc65e18ff1ebb578b4a253d21a9517"
+    },
+    {
+      "file": "pace/pace/src/pace/robotwin.py",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/pace/src/pace/robotwin.py",
+      "git_blob_sha1": "33ab183c3df3d8ac04b1829d9e201603100bcec7",
+      "sha256": "3d2bc995065da352c8292a3109841f30dff79fb39e810844bbd14ecef85ef2eb"
+    },
+    {
+      "file": "pace/pace/src/pace/rollout.py",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/pace/src/pace/rollout.py",
+      "git_blob_sha1": "df2776d0083187d1cf309cc711d9d6b540e1c548",
+      "sha256": "6ea198bcf47d6b6e62bd9206b6c5694466ca6346b30ad9c20885e4009af91325"
+    },
+    {
+      "file": "pace/policy/pi05/examples/aloha_real/convert_aloha_data_to_lerobot_robotwin.py",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/policy/pi05/examples/aloha_real/convert_aloha_data_to_lerobot_robotwin.py",
+      "git_blob_sha1": "ebcd15ea7c803be22470f809cae439fbe92f7b0a",
+      "sha256": "b8f0829329e099b7246b3d6467cec3ea4d60767eedd219b825d0b7f26bb7c373"
+    },
+    {
+      "file": "pace/policy/pi05/process_data_pi05.sh",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/policy/pi05/process_data_pi05.sh",
+      "git_blob_sha1": "d414284d16b3b99943f9bc5c1ae6eb1a215e97e3",
+      "sha256": "868c92fbb76b9b7b2a8d1ecd630237df8d320c7aa3a37b5bd0e704d8c0d49bbe"
+    },
+    {
+      "file": "pace/policy/pi05/scripts/process_data.py",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/policy/pi05/scripts/process_data.py",
+      "git_blob_sha1": "985a5ec6e902cdae3c821a80bd1a75c8d1a87a40",
+      "sha256": "b462918bf3f41f6d2fc30c3498381ac3cc7d8ce7a8bd6333fafb925e7d9d5590"
+    },
+    {
+      "file": "pace/script/_install.sh",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/script/_install.sh",
+      "git_blob_sha1": "65ee7784231b8a578bf923feb1ffa4ba8afc1c3b",
+      "sha256": "34bf2e47427f4b89962c5744894f17c9ad216ac95d4f2978c18563b808e1835f"
+    },
+    {
+      "file": "pace/script/collect_data.py",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/script/collect_data.py",
+      "git_blob_sha1": "6bd9206f44d01992c68130258fad5342e6555280",
+      "sha256": "e51d8dca1afd843206187a72537dc467d1db07bd1c860055ad59e47b181c81ab"
+    },
+    {
+      "file": "pace/task_config/_camera_config.yml",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/task_config/_camera_config.yml",
+      "git_blob_sha1": "fc83ec6a4c3ef5b3953b34a87857255843aa8d51",
+      "sha256": "dc80a40552e0fad25d58cf0141302ceba66d22409b5091bed235ad2f10cbce7f"
+    },
+    {
+      "file": "pace/task_config/_embodiment_config.yml",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/task_config/_embodiment_config.yml",
+      "git_blob_sha1": "672c88e1c1e17cc51ac806261d77bfc793bf5baa",
+      "sha256": "b0a198ff27bf6bf6b73162d2d1adafc7e73fcdf53f39943e67e40fee15bd83fa"
+    },
+    {
+      "file": "pace/task_config/_eval_step_limit.yml",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/task_config/_eval_step_limit.yml",
+      "git_blob_sha1": "afd0153aa87931f387cac391a5f71cde69c76a07",
+      "sha256": "41c62bd26184977bae45aee555edd0cc21de5cddf560c2595921fc23a1e3b551"
+    },
+    {
+      "file": "pace/task_config/demo_clean.yml",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/task_config/demo_clean.yml",
+      "git_blob_sha1": "7e0de0aec1ad1b151570486120c7d25050be01c4",
+      "sha256": "8ee5d0d07daecf7599b8d89b44776b700c7c60da24cd6317e176e6798d8cb11e"
+    },
+    {
+      "file": "train/README.md",
+      "url": "https://raw.githubusercontent.com/niejunnan25/Openpi-PACE/ba9876639cb7a4bf0c7db00ec39eeb9c8efd8b12/README.md",
+      "git_blob_sha1": "1ae5805c8438fd7363c633449852731ffce3439a",
+      "sha256": "fa3af0760dc2fbaf1c47003aa2693410bee37c8779757a6c4a3a3f094b18c582"
+    },
+    {
+      "file": "train/pace/README.md",
+      "url": "https://raw.githubusercontent.com/niejunnan25/Openpi-PACE/ba9876639cb7a4bf0c7db00ec39eeb9c8efd8b12/pace/README.md",
+      "git_blob_sha1": "91877bdedbea88c11b84043959202c00bd074a9b",
+      "sha256": "750eea8662b58e3b87c93d5644976dd7362a0b7dffee72d38284670fbbd38ea1"
+    },
+    {
+      "file": "train/pace/src/openpi_pace/configs.py",
+      "url": "https://raw.githubusercontent.com/niejunnan25/Openpi-PACE/ba9876639cb7a4bf0c7db00ec39eeb9c8efd8b12/pace/src/openpi_pace/configs.py",
+      "git_blob_sha1": "1bbcc993980b88b6f90e29204acc2feccdfdedbe",
+      "sha256": "4f4678269417c7a9760ed7b2f37f77498af7d4e7791db29fb23e7d69f70257d1"
+    },
+    {
+      "file": "train/scripts/compute_norm_stats.py",
+      "url": "https://raw.githubusercontent.com/niejunnan25/Openpi-PACE/ba9876639cb7a4bf0c7db00ec39eeb9c8efd8b12/scripts/compute_norm_stats.py",
+      "git_blob_sha1": "1df35a835eff42a60ef905f497243db758415a1d",
+      "sha256": "573e1efce254e6f28c645ede6f22f9b2ab0506dbd79c2c2589a45c87c64a2b67"
+    },
+    {
+      "file": "train/scripts/serve_policy.py",
+      "url": "https://raw.githubusercontent.com/niejunnan25/Openpi-PACE/ba9876639cb7a4bf0c7db00ec39eeb9c8efd8b12/scripts/serve_policy.py",
+      "git_blob_sha1": "30f121a60ba6af3d21c287e5c5582da54072ea62",
+      "sha256": "eccc0448b4873fd30a1fff3355c5de7a7c227138e6db04b7dcaa5bb38a6a5809"
+    },
+    {
+      "file": "train/src/openpi/models/pi0_config.py",
+      "url": "https://raw.githubusercontent.com/niejunnan25/Openpi-PACE/ba9876639cb7a4bf0c7db00ec39eeb9c8efd8b12/src/openpi/models/pi0_config.py",
+      "git_blob_sha1": "b0f6b662ac1450e31721f9860145496720e26b5e",
+      "sha256": "e15d71586f1a561b35c5651227607613fb16d2df411f3708b1c9d36b02544285"
+    },
+    {
+      "file": "train/src/openpi/policies/aloha_policy.py",
+      "url": "https://raw.githubusercontent.com/niejunnan25/Openpi-PACE/ba9876639cb7a4bf0c7db00ec39eeb9c8efd8b12/src/openpi/policies/aloha_policy.py",
+      "git_blob_sha1": "f16be3334584692ba505553220ab20ff7b2719c5",
+      "sha256": "50d7ad972d80142ecb0f03b0780dacfd3af212946f4c9aac31a204b02db4543d"
+    },
+    {
+      "file": "train/src/openpi/policies/policy.py",
+      "url": "https://raw.githubusercontent.com/niejunnan25/Openpi-PACE/ba9876639cb7a4bf0c7db00ec39eeb9c8efd8b12/src/openpi/policies/policy.py",
+      "git_blob_sha1": "b9b708bdcaffa086be4b22b84a29b8cc00c710e4",
+      "sha256": "a2ac5236e23b11d0f5a840d4a8fef148d89dba921d5452ec5dfcd5a6ffa46f20"
+    },
+    {
+      "file": "train/src/openpi/policies/policy_config.py",
+      "url": "https://raw.githubusercontent.com/niejunnan25/Openpi-PACE/ba9876639cb7a4bf0c7db00ec39eeb9c8efd8b12/src/openpi/policies/policy_config.py",
+      "git_blob_sha1": "6570df05ed068f297d48326990a1cd10ee68ac5a",
+      "sha256": "aaf42ab04a33b6c91d2447926211646c33ebd8ebfa427f026d7b6c4f7c45ec52"
+    },
+    {
+      "file": "train/src/openpi/training/config.py",
+      "url": "https://raw.githubusercontent.com/niejunnan25/Openpi-PACE/ba9876639cb7a4bf0c7db00ec39eeb9c8efd8b12/src/openpi/training/config.py",
+      "git_blob_sha1": "b3da63e59b2e795efcdeb2821834b96a4d4ce0ab",
+      "sha256": "408150f2618ad53925f40b166ff89dcf9215c3f328024a6acac5f1cd6cc29505"
+    },
+    {
+      "file": "train/src/openpi/training/data_loader.py",
+      "url": "https://raw.githubusercontent.com/niejunnan25/Openpi-PACE/ba9876639cb7a4bf0c7db00ec39eeb9c8efd8b12/src/openpi/training/data_loader.py",
+      "git_blob_sha1": "035fa505dea977a569e3fa55db0dbe73c1b00b8a",
+      "sha256": "99221d1fec5eff2d3f54ea1a14015302164dac7e494e65bb339feb4630f57f4a"
+    },
+    {
+      "file": "train/src/openpi/transforms.py",
+      "url": "https://raw.githubusercontent.com/niejunnan25/Openpi-PACE/ba9876639cb7a4bf0c7db00ec39eeb9c8efd8b12/src/openpi/transforms.py",
+      "git_blob_sha1": "272375ea95a5e43a42a6c0ff14cf89d34da76a45",
+      "sha256": "a1b94e9e72849a18834778f229c6bb389a495eb7fbe0aa800edea728b9424ff4"
+    },
+    {
+      "file": "runtime/README.md",
+      "url": "https://raw.githubusercontent.com/niejunnan25/Openpi-PACE/f4e52e6de4cc487a11585a3a7414d610b2883dae/README.md",
+      "git_blob_sha1": "e148eda631e30b95f11d6c6c6c9e4ea4f8c1834a",
+      "sha256": "6bd29d51ab996af41d64e587bf9dd995a157530158386b61166582994bb75042"
+    },
+    {
+      "file": "runtime/pace/src/openpi_pace/configs.py",
+      "url": "https://raw.githubusercontent.com/niejunnan25/Openpi-PACE/f4e52e6de4cc487a11585a3a7414d610b2883dae/pace/src/openpi_pace/configs.py",
+      "git_blob_sha1": "1bbcc993980b88b6f90e29204acc2feccdfdedbe",
+      "sha256": "4f4678269417c7a9760ed7b2f37f77498af7d4e7791db29fb23e7d69f70257d1"
+    },
+    {
+      "file": "runtime/scripts/compute_norm_stats.py",
+      "url": "https://raw.githubusercontent.com/niejunnan25/Openpi-PACE/f4e52e6de4cc487a11585a3a7414d610b2883dae/scripts/compute_norm_stats.py",
+      "git_blob_sha1": "1df35a835eff42a60ef905f497243db758415a1d",
+      "sha256": "573e1efce254e6f28c645ede6f22f9b2ab0506dbd79c2c2589a45c87c64a2b67"
+    },
+    {
+      "file": "runtime/scripts/serve_policy.py",
+      "url": "https://raw.githubusercontent.com/niejunnan25/Openpi-PACE/f4e52e6de4cc487a11585a3a7414d610b2883dae/scripts/serve_policy.py",
+      "git_blob_sha1": "30f121a60ba6af3d21c287e5c5582da54072ea62",
+      "sha256": "eccc0448b4873fd30a1fff3355c5de7a7c227138e6db04b7dcaa5bb38a6a5809"
+    },
+    {
+      "file": "runtime/src/openpi/models/pi0_config.py",
+      "url": "https://raw.githubusercontent.com/niejunnan25/Openpi-PACE/f4e52e6de4cc487a11585a3a7414d610b2883dae/src/openpi/models/pi0_config.py",
+      "git_blob_sha1": "b0f6b662ac1450e31721f9860145496720e26b5e",
+      "sha256": "e15d71586f1a561b35c5651227607613fb16d2df411f3708b1c9d36b02544285"
+    },
+    {
+      "file": "runtime/src/openpi/policies/aloha_policy.py",
+      "url": "https://raw.githubusercontent.com/niejunnan25/Openpi-PACE/f4e52e6de4cc487a11585a3a7414d610b2883dae/src/openpi/policies/aloha_policy.py",
+      "git_blob_sha1": "f16be3334584692ba505553220ab20ff7b2719c5",
+      "sha256": "50d7ad972d80142ecb0f03b0780dacfd3af212946f4c9aac31a204b02db4543d"
+    },
+    {
+      "file": "runtime/src/openpi/policies/policy.py",
+      "url": "https://raw.githubusercontent.com/niejunnan25/Openpi-PACE/f4e52e6de4cc487a11585a3a7414d610b2883dae/src/openpi/policies/policy.py",
+      "git_blob_sha1": "b9b708bdcaffa086be4b22b84a29b8cc00c710e4",
+      "sha256": "a2ac5236e23b11d0f5a840d4a8fef148d89dba921d5452ec5dfcd5a6ffa46f20"
+    },
+    {
+      "file": "runtime/src/openpi/policies/policy_config.py",
+      "url": "https://raw.githubusercontent.com/niejunnan25/Openpi-PACE/f4e52e6de4cc487a11585a3a7414d610b2883dae/src/openpi/policies/policy_config.py",
+      "git_blob_sha1": "6570df05ed068f297d48326990a1cd10ee68ac5a",
+      "sha256": "aaf42ab04a33b6c91d2447926211646c33ebd8ebfa427f026d7b6c4f7c45ec52"
+    },
+    {
+      "file": "runtime/src/openpi/training/config.py",
+      "url": "https://raw.githubusercontent.com/niejunnan25/Openpi-PACE/f4e52e6de4cc487a11585a3a7414d610b2883dae/src/openpi/training/config.py",
+      "git_blob_sha1": "b3da63e59b2e795efcdeb2821834b96a4d4ce0ab",
+      "sha256": "408150f2618ad53925f40b166ff89dcf9215c3f328024a6acac5f1cd6cc29505"
+    },
+    {
+      "file": "runtime/src/openpi/training/data_loader.py",
+      "url": "https://raw.githubusercontent.com/niejunnan25/Openpi-PACE/f4e52e6de4cc487a11585a3a7414d610b2883dae/src/openpi/training/data_loader.py",
+      "git_blob_sha1": "035fa505dea977a569e3fa55db0dbe73c1b00b8a",
+      "sha256": "99221d1fec5eff2d3f54ea1a14015302164dac7e494e65bb339feb4630f57f4a"
+    },
+    {
+      "file": "runtime/src/openpi/transforms.py",
+      "url": "https://raw.githubusercontent.com/niejunnan25/Openpi-PACE/f4e52e6de4cc487a11585a3a7414d610b2883dae/src/openpi/transforms.py",
+      "git_blob_sha1": "272375ea95a5e43a42a6c0ff14cf89d34da76a45",
+      "sha256": "a1b94e9e72849a18834778f229c6bb389a495eb7fbe0aa800edea728b9424ff4"
+    },
+    {
+      "file": "hf-README.md",
+      "url": "https://huggingface.co/niejunnan25/pi05-robotwin/resolve/17ef545270cf26ed81169893b60f845f80ce6557/README.md",
+      "sha256": "83be10953a5396b9050c615e5db9d4a9d46ef30321cde2ead3886cd35e8830a0"
+    },
+    {
+      "file": "hf-manifest.json",
+      "url": "https://huggingface.co/niejunnan25/pi05-robotwin/resolve/17ef545270cf26ed81169893b60f845f80ce6557/manifest.json",
+      "sha256": "2337bd9e7244fc3f6d51b0b830a9cdfc8d6e683decf2c398a431bc5800696c41"
+    },
+    {
+      "file": "hf-norm_stats.json",
+      "url": "https://huggingface.co/niejunnan25/pi05-robotwin/resolve/17ef545270cf26ed81169893b60f845f80ce6557/handover_block/assets/robotwin/norm_stats.json",
+      "sha256": "8a1f114a8873dfa0788c7f512851ee3063224ef2b8af270421076a2e4e544960"
+    },
+    {
+      "file": "hf-data-handover_block.json",
+      "url": "https://huggingface.co/api/datasets/TianxingChen/RoboTwin2.0/tree/3dc3b798668feb99ac61cc9086d84cbcc3d79186/dataset/handover_block",
+      "sha256": "e7915aeeaacfe0a946a2573059ed69290d09c8f97e83d52a71fafb671eaa49c3"
+    },
+    {
+      "file": "hf-data-adjust_bottle.json",
+      "url": "https://huggingface.co/api/datasets/TianxingChen/RoboTwin2.0/tree/3dc3b798668feb99ac61cc9086d84cbcc3d79186/dataset/adjust_bottle",
+      "sha256": "e1075bc101c893b336d6334ebe6eb92ebeed9dfd5e5b8108550aafccc76199db"
+    },
+    {
+      "file": "hf-model-adjust_bottle.json",
+      "url": "https://huggingface.co/api/models/niejunnan25/pi05-robotwin/tree/17ef545270cf26ed81169893b60f845f80ce6557/adjust_bottle",
+      "sha256": "593a4ae08bbc2d5aec2dc2bae6b501290210ebe6bc3c602dbf811191d18f5cc7"
+    }
+  ]
+}

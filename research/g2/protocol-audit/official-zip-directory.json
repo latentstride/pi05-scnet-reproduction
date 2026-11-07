@@ -1,0 +1,776 @@
+[
+  {
+    "archive": "dataset/handover_block/aloha-agilex_clean_50.zip",
+    "hdf5": [
+      {
+        "member": "aloha-agilex_clean_50/data/episode0.hdf5",
+        "bytes": 16777930,
+        "crc32": "2942ac01"
+      },
+      {
+        "member": "aloha-agilex_clean_50/data/episode1.hdf5",
+        "bytes": 16286564,
+        "crc32": "0d65fcc2"
+      },
+      {
+        "member": "aloha-agilex_clean_50/data/episode2.hdf5",
+        "bytes": 15946288,
+        "crc32": "235f61f1"
+      },
+      {
+        "member": "aloha-agilex_clean_50/data/episode3.hdf5",
+        "bytes": 15974444,
+        "crc32": "ee3316f3"
+      },
+      {
+        "member": "aloha-agilex_clean_50/data/episode4.hdf5",
+        "bytes": 15691731,
+        "crc32": "ae367a66"
+      },
+      {
+        "member": "aloha-agilex_clean_50/data/episode5.hdf5",
+        "bytes": 16290560,
+        "crc32": "807e33c3"
+      },
+      {
+        "member": "aloha-agilex_clean_50/data/episode6.hdf5",
+        "bytes": 16349640,
+        "crc32": "82e445a7"
+      },
+      {
+        "member": "aloha-agilex_clean_50/data/episode7.hdf5",
+        "bytes": 16076598,
+        "crc32": "58218454"
+      },
+      {
+        "member": "aloha-agilex_clean_50/data/episode8.hdf5",
+        "bytes": 16209118,
+        "crc32": "ba8f0bf2"
+      },
+      {
+        "member": "aloha-agilex_clean_50/data/episode9.hdf5",
+        "bytes": 16171840,
+        "crc32": "028292af"
+      },
+      {
+        "member": "aloha-agilex_clean_50/data/episode10.hdf5",
+        "bytes": 16474141,
+        "crc32": "8fc23cd8"
+      },
+      {
+        "member": "aloha-agilex_clean_50/data/episode11.hdf5",
+        "bytes": 16235650,
+        "crc32": "04c5cfc0"
+      },
+      {
+        "member": "aloha-agilex_clean_50/data/episode12.hdf5",
+        "bytes": 16489738,
+        "crc32": "9b28ec42"
+      },
+      {
+        "member": "aloha-agilex_clean_50/data/episode13.hdf5",
+        "bytes": 16299704,
+        "crc32": "fe6b3421"
+      },
+      {
+        "member": "aloha-agilex_clean_50/data/episode14.hdf5",
+        "bytes": 16050194,
+        "crc32": "a0f55192"
+      },
+      {
+        "member": "aloha-agilex_clean_50/data/episode15.hdf5",
+        "bytes": 16324792,
+        "crc32": "5603c185"
+      },
+      {
+        "member": "aloha-agilex_clean_50/data/episode16.hdf5",
+        "bytes": 16673448,
+        "crc32": "15a6505c"
+      },
+      {
+        "member": "aloha-agilex_clean_50/data/episode17.hdf5",
+        "bytes": 15827104,
+        "crc32": "4a7c101c"
+      },
+      {
+        "member": "aloha-agilex_clean_50/data/episode18.hdf5",
+        "bytes": 16841068,
+        "crc32": "96c689c1"
+      },
+      {
+        "member": "aloha-agilex_clean_50/data/episode19.hdf5",
+        "bytes": 15761275,
+        "crc32": "d4f1716c"
+      },
+      {
+        "member": "aloha-agilex_clean_50/data/episode20.hdf5",
+        "bytes": 16025428,
+        "crc32": "816dbf36"
+      },
+      {
+        "member": "aloha-agilex_clean_50/data/episode21.hdf5",
+        "bytes": 17214556,
+        "crc32": "65bfd0a1"
+      },
+      {
+        "member": "aloha-agilex_clean_50/data/episode22.hdf5",
+        "bytes": 16161736,
+        "crc32": "5d89c998"
+      },
+      {
+        "member": "aloha-agilex_clean_50/data/episode23.hdf5",
+        "bytes": 15887874,
+        "crc32": "421a601b"
+      },
+      {
+        "member": "aloha-agilex_clean_50/data/episode24.hdf5",
+        "bytes": 15666214,
+        "crc32": "bdde23fe"
+      },
+      {
+        "member": "aloha-agilex_clean_50/data/episode25.hdf5",
+        "bytes": 16133075,
+        "crc32": "a95529f8"
+      },
+      {
+        "member": "aloha-agilex_clean_50/data/episode26.hdf5",
+        "bytes": 16366921,
+        "crc32": "d3e22beb"
+      },
+      {
+        "member": "aloha-agilex_clean_50/data/episode27.hdf5",
+        "bytes": 15905740,
+        "crc32": "09c4bf3c"
+      },
+      {
+        "member": "aloha-agilex_clean_50/data/episode28.hdf5",
+        "bytes": 16034353,
+        "crc32": "0ab960c2"
+      },
+      {
+        "member": "aloha-agilex_clean_50/data/episode29.hdf5",
+        "bytes": 18340090,
+        "crc32": "be09ccd3"
+      },
+      {
+        "member": "aloha-agilex_clean_50/data/episode30.hdf5",
+        "bytes": 16498500,
+        "crc32": "29562242"
+      },
+      {
+        "member": "aloha-agilex_clean_50/data/episode31.hdf5",
+        "bytes": 16034500,
+        "crc32": "627fbac7"
+      },
+      {
+        "member": "aloha-agilex_clean_50/data/episode32.hdf5",
+        "bytes": 16842894,
+        "crc32": "ec44838f"
+      },
+      {
+        "member": "aloha-agilex_clean_50/data/episode33.hdf5",
+        "bytes": 15831552,
+        "crc32": "7f5e2778"
+      },
+      {
+        "member": "aloha-agilex_clean_50/data/episode34.hdf5",
+        "bytes": 16486792,
+        "crc32": "35619035"
+      },
+      {
+        "member": "aloha-agilex_clean_50/data/episode35.hdf5",
+        "bytes": 17119528,
+        "crc32": "bda84bb5"
+      },
+      {
+        "member": "aloha-agilex_clean_50/data/episode36.hdf5",
+        "bytes": 16408680,
+        "crc32": "92cbac4a"
+      },
+      {
+        "member": "aloha-agilex_clean_50/data/episode37.hdf5",
+        "bytes": 16377266,
+        "crc32": "74bf8d99"
+      },
+      {
+        "member": "aloha-agilex_clean_50/data/episode38.hdf5",
+        "bytes": 16097096,
+        "crc32": "6ab1eb67"
+      },
+      {
+        "member": "aloha-agilex_clean_50/data/episode39.hdf5",
+        "bytes": 17337942,
+        "crc32": "a0e8c8ea"
+      },
+      {
+        "member": "aloha-agilex_clean_50/data/episode40.hdf5",
+        "bytes": 16038538,
+        "crc32": "babc8aeb"
+      },
+      {
+        "member": "aloha-agilex_clean_50/data/episode41.hdf5",
+        "bytes": 16078972,
+        "crc32": "78148f4f"
+      },
+      {
+        "member": "aloha-agilex_clean_50/data/episode42.hdf5",
+        "bytes": 16860420,
+        "crc32": "d3f7586e"
+      },
+      {
+        "member": "aloha-agilex_clean_50/data/episode43.hdf5",
+        "bytes": 16071181,
+        "crc32": "8de1d6e8"
+      },
+      {
+        "member": "aloha-agilex_clean_50/data/episode44.hdf5",
+        "bytes": 16402540,
+        "crc32": "bc891e25"
+      },
+      {
+        "member": "aloha-agilex_clean_50/data/episode45.hdf5",
+        "bytes": 16375090,
+        "crc32": "e914ab54"
+      },
+      {
+        "member": "aloha-agilex_clean_50/data/episode46.hdf5",
+        "bytes": 16176872,
+        "crc32": "fbd072b4"
+      },
+      {
+        "member": "aloha-agilex_clean_50/data/episode47.hdf5",
+        "bytes": 16042668,
+        "crc32": "de6ea21e"
+      },
+      {
+        "member": "aloha-agilex_clean_50/data/episode48.hdf5",
+        "bytes": 16107622,
+        "crc32": "fd39cc1b"
+      },
+      {
+        "member": "aloha-agilex_clean_50/data/episode49.hdf5",
+        "bytes": 16376596,
+        "crc32": "425caa71"
+      }
+    ],
+    "planner_pkl_count": 50,
+    "http_bytes": 23598,
+    "http_requests": 3
+  },
+  {
+    "archive": "dataset/handover_block/arx-x5_clean_50.zip",
+    "hdf5": [
+      {
+        "member": "arx-x5_clean_50/data/episode49.hdf5",
+        "bytes": 10455176,
+        "crc32": "ad3bac1d"
+      },
+      {
+        "member": "arx-x5_clean_50/data/episode39.hdf5",
+        "bytes": 10403287,
+        "crc32": "58aa5420"
+      },
+      {
+        "member": "arx-x5_clean_50/data/episode47.hdf5",
+        "bytes": 11207744,
+        "crc32": "538f7d49"
+      },
+      {
+        "member": "arx-x5_clean_50/data/episode8.hdf5",
+        "bytes": 10513544,
+        "crc32": "36bef855"
+      },
+      {
+        "member": "arx-x5_clean_50/data/episode16.hdf5",
+        "bytes": 10362200,
+        "crc32": "5c5a8f6b"
+      },
+      {
+        "member": "arx-x5_clean_50/data/episode45.hdf5",
+        "bytes": 10472934,
+        "crc32": "d75620d9"
+      },
+      {
+        "member": "arx-x5_clean_50/data/episode36.hdf5",
+        "bytes": 10405579,
+        "crc32": "177b193c"
+      },
+      {
+        "member": "arx-x5_clean_50/data/episode33.hdf5",
+        "bytes": 10318856,
+        "crc32": "4b05ba94"
+      },
+      {
+        "member": "arx-x5_clean_50/data/episode44.hdf5",
+        "bytes": 10213293,
+        "crc32": "cd360c81"
+      },
+      {
+        "member": "arx-x5_clean_50/data/episode11.hdf5",
+        "bytes": 10315390,
+        "crc32": "7b9a0cba"
+      },
+      {
+        "member": "arx-x5_clean_50/data/episode23.hdf5",
+        "bytes": 10582472,
+        "crc32": "c492eb48"
+      },
+      {
+        "member": "arx-x5_clean_50/data/episode15.hdf5",
+        "bytes": 10650248,
+        "crc32": "015281f5"
+      },
+      {
+        "member": "arx-x5_clean_50/data/episode25.hdf5",
+        "bytes": 10136544,
+        "crc32": "3589c14d"
+      },
+      {
+        "member": "arx-x5_clean_50/data/episode12.hdf5",
+        "bytes": 10528418,
+        "crc32": "ac908549"
+      },
+      {
+        "member": "arx-x5_clean_50/data/episode43.hdf5",
+        "bytes": 10959299,
+        "crc32": "4efccd23"
+      },
+      {
+        "member": "arx-x5_clean_50/data/episode42.hdf5",
+        "bytes": 10711496,
+        "crc32": "c9f94d29"
+      },
+      {
+        "member": "arx-x5_clean_50/data/episode20.hdf5",
+        "bytes": 10997898,
+        "crc32": "f27a1ba8"
+      },
+      {
+        "member": "arx-x5_clean_50/data/episode40.hdf5",
+        "bytes": 11118081,
+        "crc32": "0dfa03c3"
+      },
+      {
+        "member": "arx-x5_clean_50/data/episode17.hdf5",
+        "bytes": 10635228,
+        "crc32": "5f59884a"
+      },
+      {
+        "member": "arx-x5_clean_50/data/episode35.hdf5",
+        "bytes": 10598198,
+        "crc32": "4102e555"
+      },
+      {
+        "member": "arx-x5_clean_50/data/episode29.hdf5",
+        "bytes": 10576519,
+        "crc32": "360122ff"
+      },
+      {
+        "member": "arx-x5_clean_50/data/episode31.hdf5",
+        "bytes": 11336265,
+        "crc32": "c24345a2"
+      },
+      {
+        "member": "arx-x5_clean_50/data/episode27.hdf5",
+        "bytes": 10437660,
+        "crc32": "a1f7959f"
+      },
+      {
+        "member": "arx-x5_clean_50/data/episode22.hdf5",
+        "bytes": 10524988,
+        "crc32": "2dc55c41"
+      },
+      {
+        "member": "arx-x5_clean_50/data/episode3.hdf5",
+        "bytes": 10884214,
+        "crc32": "4ee77f5d"
+      },
+      {
+        "member": "arx-x5_clean_50/data/episode2.hdf5",
+        "bytes": 10356340,
+        "crc32": "a0ac0a5f"
+      },
+      {
+        "member": "arx-x5_clean_50/data/episode38.hdf5",
+        "bytes": 10674949,
+        "crc32": "ab655c4f"
+      },
+      {
+        "member": "arx-x5_clean_50/data/episode21.hdf5",
+        "bytes": 10640840,
+        "crc32": "a8a99373"
+      },
+      {
+        "member": "arx-x5_clean_50/data/episode9.hdf5",
+        "bytes": 10259534,
+        "crc32": "c863476d"
+      },
+      {
+        "member": "arx-x5_clean_50/data/episode18.hdf5",
+        "bytes": 10959874,
+        "crc32": "ae766f3d"
+      },
+      {
+        "member": "arx-x5_clean_50/data/episode7.hdf5",
+        "bytes": 10906100,
+        "crc32": "57eb810d"
+      },
+      {
+        "member": "arx-x5_clean_50/data/episode30.hdf5",
+        "bytes": 10328132,
+        "crc32": "b93ee26a"
+      },
+      {
+        "member": "arx-x5_clean_50/data/episode19.hdf5",
+        "bytes": 10771888,
+        "crc32": "5c8a2f25"
+      },
+      {
+        "member": "arx-x5_clean_50/data/episode46.hdf5",
+        "bytes": 10617780,
+        "crc32": "67547ae5"
+      },
+      {
+        "member": "arx-x5_clean_50/data/episode28.hdf5",
+        "bytes": 11112962,
+        "crc32": "ba12031e"
+      },
+      {
+        "member": "arx-x5_clean_50/data/episode10.hdf5",
+        "bytes": 10496495,
+        "crc32": "7e6060e5"
+      },
+      {
+        "member": "arx-x5_clean_50/data/episode0.hdf5",
+        "bytes": 10591772,
+        "crc32": "6c5157d7"
+      },
+      {
+        "member": "arx-x5_clean_50/data/episode14.hdf5",
+        "bytes": 10310079,
+        "crc32": "ac63df43"
+      },
+      {
+        "member": "arx-x5_clean_50/data/episode5.hdf5",
+        "bytes": 10330830,
+        "crc32": "38cb705b"
+      },
+      {
+        "member": "arx-x5_clean_50/data/episode32.hdf5",
+        "bytes": 10879880,
+        "crc32": "128c236d"
+      },
+      {
+        "member": "arx-x5_clean_50/data/episode6.hdf5",
+        "bytes": 10852895,
+        "crc32": "81ad7c8c"
+      },
+      {
+        "member": "arx-x5_clean_50/data/episode41.hdf5",
+        "bytes": 10210184,
+        "crc32": "6766633b"
+      },
+      {
+        "member": "arx-x5_clean_50/data/episode34.hdf5",
+        "bytes": 10562312,
+        "crc32": "3f6a4c5f"
+      },
+      {
+        "member": "arx-x5_clean_50/data/episode26.hdf5",
+        "bytes": 10337882,
+        "crc32": "d00b646d"
+      },
+      {
+        "member": "arx-x5_clean_50/data/episode4.hdf5",
+        "bytes": 10595720,
+        "crc32": "3f18fb5b"
+      },
+      {
+        "member": "arx-x5_clean_50/data/episode37.hdf5",
+        "bytes": 10431383,
+        "crc32": "9f4ef224"
+      },
+      {
+        "member": "arx-x5_clean_50/data/episode24.hdf5",
+        "bytes": 10924884,
+        "crc32": "8b3b73e8"
+      },
+      {
+        "member": "arx-x5_clean_50/data/episode13.hdf5",
+        "bytes": 10595819,
+        "crc32": "1cc0d648"
+      },
+      {
+        "member": "arx-x5_clean_50/data/episode1.hdf5",
+        "bytes": 10747592,
+        "crc32": "ddeebbb3"
+      },
+      {
+        "member": "arx-x5_clean_50/data/episode48.hdf5",
+        "bytes": 10729637,
+        "crc32": "c3cf132c"
+      }
+    ],
+    "planner_pkl_count": 50,
+    "http_bytes": 17043,
+    "http_requests": 3
+  },
+  {
+    "archive": "dataset/handover_block/demo_clean.zip",
+    "hdf5": [
+      {
+        "member": "handover_block/aloha_agilex/data/episode_0000000.hdf5",
+        "bytes": 16966946,
+        "crc32": "6eb77664"
+      },
+      {
+        "member": "handover_block/aloha_agilex/data/episode_0000001.hdf5",
+        "bytes": 16502384,
+        "crc32": "358f5eb2"
+      },
+      {
+        "member": "handover_block/aloha_agilex/data/episode_0000002.hdf5",
+        "bytes": 16165945,
+        "crc32": "f2f24e3e"
+      },
+      {
+        "member": "handover_block/aloha_agilex/data/episode_0000003.hdf5",
+        "bytes": 16079518,
+        "crc32": "cbda2963"
+      },
+      {
+        "member": "handover_block/aloha_agilex/data/episode_0000004.hdf5",
+        "bytes": 15842952,
+        "crc32": "32c678e5"
+      },
+      {
+        "member": "handover_block/aloha_agilex/data/episode_0000005.hdf5",
+        "bytes": 16501991,
+        "crc32": "ab6d9c92"
+      },
+      {
+        "member": "handover_block/aloha_agilex/data/episode_0000006.hdf5",
+        "bytes": 16447865,
+        "crc32": "025ad3f8"
+      },
+      {
+        "member": "handover_block/aloha_agilex/data/episode_0000007.hdf5",
+        "bytes": 16206788,
+        "crc32": "f20773b2"
+      },
+      {
+        "member": "handover_block/aloha_agilex/data/episode_0000008.hdf5",
+        "bytes": 16378766,
+        "crc32": "1ff3133b"
+      },
+      {
+        "member": "handover_block/aloha_agilex/data/episode_0000009.hdf5",
+        "bytes": 16341287,
+        "crc32": "0b42847e"
+      },
+      {
+        "member": "handover_block/aloha_agilex/data/episode_0000010.hdf5",
+        "bytes": 16637966,
+        "crc32": "a7a9351d"
+      },
+      {
+        "member": "handover_block/aloha_agilex/data/episode_0000011.hdf5",
+        "bytes": 16383870,
+        "crc32": "337093ac"
+      },
+      {
+        "member": "handover_block/aloha_agilex/data/episode_0000012.hdf5",
+        "bytes": 16749373,
+        "crc32": "853c8b8e"
+      },
+      {
+        "member": "handover_block/aloha_agilex/data/episode_0000013.hdf5",
+        "bytes": 16462609,
+        "crc32": "de465cf6"
+      },
+      {
+        "member": "handover_block/aloha_agilex/data/episode_0000014.hdf5",
+        "bytes": 16257366,
+        "crc32": "d2993cb2"
+      },
+      {
+        "member": "handover_block/aloha_agilex/data/episode_0000015.hdf5",
+        "bytes": 16543656,
+        "crc32": "1a0c5eba"
+      },
+      {
+        "member": "handover_block/aloha_agilex/data/episode_0000016.hdf5",
+        "bytes": 16854080,
+        "crc32": "73da567a"
+      },
+      {
+        "member": "handover_block/aloha_agilex/data/episode_0000017.hdf5",
+        "bytes": 16010822,
+        "crc32": "d397dea6"
+      },
+      {
+        "member": "handover_block/aloha_agilex/data/episode_0000018.hdf5",
+        "bytes": 17054528,
+        "crc32": "2607325a"
+      },
+      {
+        "member": "handover_block/aloha_agilex/data/episode_0000019.hdf5",
+        "bytes": 15932318,
+        "crc32": "c8dce23c"
+      },
+      {
+        "member": "handover_block/aloha_agilex/data/episode_0000020.hdf5",
+        "bytes": 16178576,
+        "crc32": "af756a63"
+      },
+      {
+        "member": "handover_block/aloha_agilex/data/episode_0000021.hdf5",
+        "bytes": 17432544,
+        "crc32": "9494bad4"
+      },
+      {
+        "member": "handover_block/aloha_agilex/data/episode_0000022.hdf5",
+        "bytes": 16332297,
+        "crc32": "12ce9d86"
+      },
+      {
+        "member": "handover_block/aloha_agilex/data/episode_0000023.hdf5",
+        "bytes": 16104350,
+        "crc32": "2fb5924f"
+      },
+      {
+        "member": "handover_block/aloha_agilex/data/episode_0000024.hdf5",
+        "bytes": 15812324,
+        "crc32": "f764f8bd"
+      },
+      {
+        "member": "handover_block/aloha_agilex/data/episode_0000025.hdf5",
+        "bytes": 16327700,
+        "crc32": "5c79366c"
+      },
+      {
+        "member": "handover_block/aloha_agilex/data/episode_0000026.hdf5",
+        "bytes": 16547216,
+        "crc32": "e92a32f1"
+      },
+      {
+        "member": "handover_block/aloha_agilex/data/episode_0000027.hdf5",
+        "bytes": 16035166,
+        "crc32": "5b46f63d"
+      },
+      {
+        "member": "handover_block/aloha_agilex/data/episode_0000028.hdf5",
+        "bytes": 16169692,
+        "crc32": "1c3f253d"
+      },
+      {
+        "member": "handover_block/aloha_agilex/data/episode_0000029.hdf5",
+        "bytes": 17348152,
+        "crc32": "14d7d055"
+      },
+      {
+        "member": "handover_block/aloha_agilex/data/episode_0000030.hdf5",
+        "bytes": 16715963,
+        "crc32": "b2356d89"
+      },
+      {
+        "member": "handover_block/aloha_agilex/data/episode_0000031.hdf5",
+        "bytes": 16256164,
+        "crc32": "02551e42"
+      },
+      {
+        "member": "handover_block/aloha_agilex/data/episode_0000032.hdf5",
+        "bytes": 16982966,
+        "crc32": "68fd0a99"
+      },
+      {
+        "member": "handover_block/aloha_agilex/data/episode_0000033.hdf5",
+        "bytes": 16047386,
+        "crc32": "6872084e"
+      },
+      {
+        "member": "handover_block/aloha_agilex/data/episode_0000034.hdf5",
+        "bytes": 16636105,
+        "crc32": "68654f0f"
+      },
+      {
+        "member": "handover_block/aloha_agilex/data/episode_0000035.hdf5",
+        "bytes": 17206087,
+        "crc32": "31736d85"
+      },
+      {
+        "member": "handover_block/aloha_agilex/data/episode_0000036.hdf5",
+        "bytes": 16495295,
+        "crc32": "ac5a602b"
+      },
+      {
+        "member": "handover_block/aloha_agilex/data/episode_0000037.hdf5",
+        "bytes": 16575625,
+        "crc32": "fc40ac85"
+      },
+      {
+        "member": "handover_block/aloha_agilex/data/episode_0000038.hdf5",
+        "bytes": 16271372,
+        "crc32": "14d019e5"
+      },
+      {
+        "member": "handover_block/aloha_agilex/data/episode_0000039.hdf5",
+        "bytes": 17497616,
+        "crc32": "eab66fcd"
+      },
+      {
+        "member": "handover_block/aloha_agilex/data/episode_0000040.hdf5",
+        "bytes": 16240860,
+        "crc32": "3f4d5631"
+      },
+      {
+        "member": "handover_block/aloha_agilex/data/episode_0000041.hdf5",
+        "bytes": 16219957,
+        "crc32": "10c69839"
+      },
+      {
+        "member": "handover_block/aloha_agilex/data/episode_0000042.hdf5",
+        "bytes": 16931097,
+        "crc32": "0abd72ed"
+      },
+      {
+        "member": "handover_block/aloha_agilex/data/episode_0000043.hdf5",
+        "bytes": 16206388,
+        "crc32": "b28940db"
+      },
+      {
+        "member": "handover_block/aloha_agilex/data/episode_0000044.hdf5",
+        "bytes": 16562891,
+        "crc32": "b87bb038"
+      },
+      {
+        "member": "handover_block/aloha_agilex/data/episode_0000045.hdf5",
+        "bytes": 16525896,
+        "crc32": "4d108e34"
+      },
+      {
+        "member": "handover_block/aloha_agilex/data/episode_0000046.hdf5",
+        "bytes": 16166216,
+        "crc32": "a87a3cc7"
+      },
+      {
+        "member": "handover_block/aloha_agilex/data/episode_0000047.hdf5",
+        "bytes": 16143536,
+        "crc32": "5e0c18f3"
+      },
+      {
+        "member": "handover_block/aloha_agilex/data/episode_0000048.hdf5",
+        "bytes": 16255916,
+        "crc32": "11dee46a"
+      },
+      {
+        "member": "handover_block/aloha_agilex/data/episode_0000049.hdf5",
+        "bytes": 16343441,
+        "crc32": "f28842da"
+      }
+    ],
+    "planner_pkl_count": 0,
+    "http_bytes": 15837,
+    "http_requests": 3
+  }
+]

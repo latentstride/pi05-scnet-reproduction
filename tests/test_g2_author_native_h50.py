@@ -9,8 +9,10 @@ import numpy as np
 from websockets.sync.server import serve
 
 from g2_adapter import G2Error
-from g2_author_native_h50 import MODE, contact_readback, may_continue
-from g2_author_native_h50_service import handler, shared_connection
+from g2_author_native_h50 import MODE, contact_readback
+from g2_author_h50_receipt import may_continue
+from g2_author_h50_limits import ResourceCensored
+from g2_author_native_h50_service import AuthorRemotePolicy, handler, shared_connection
 from g2_candidate_stop import failure_sha256
 from g2e_model_entry import reset_remote
 from pace_runtime import CAMERAS, open_policy
@@ -54,6 +56,26 @@ class AuthorH50Contract(unittest.TestCase):
             contact_readback(
                 Mock(get_contacts=Mock(side_effect=RuntimeError("engine")))
             )
+
+    def test_request_timeout_distinguishes_soft_limit_and_unconfirmed_inflight(self):
+        for limits, reason in (
+            ([2.0, 2.0, 2.0], "model_request_timeout"),
+            ([2.0, 2.0, ResourceCensored("soft_wall_clock")], "soft_wall_clock"),
+        ):
+            with self.subTest(reason=reason):
+                socket = Mock()
+                socket.recv.side_effect = TimeoutError("inference in flight")
+                remote = object.__new__(AuthorRemotePolicy)
+                remote.socket, remote.remaining, remote.request_s = (
+                    socket,
+                    Mock(side_effect=limits),
+                    390,
+                )
+                with self.assertRaises(ResourceCensored) as error:
+                    remote.exchange({"request": "CPU fake"})
+                self.assertEqual(error.exception.reason, reason)
+                self.assertTrue(error.exception.request_in_flight)
+                socket.send.assert_called_once()
 
     def test_author_service_request_identity_rng_chain_and_legacy_connection(self):
         policy = Policy()

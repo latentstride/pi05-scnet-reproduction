@@ -173,6 +173,27 @@ def summarize(plan, summary, output):
                 cleanup=receipt.get("cleanup"),
                 process_group_reaped=row.get("process_group_reaped"),
             )
+    author = summary["rows"].get("author-native-h50-seed100000")
+    author_result = {}
+    if author is not None:
+        receipt = author.get("result", {})
+        author_result["author_native_h50"] = dict(
+            status=author["status"],
+            category=receipt.get("category")
+            if author["status"] == "completed"
+            else author["status"],
+            outcome=receipt.get("outcome", author.get("outcome")),
+            reason=receipt.get("resource_reason", author.get("reason")),
+            task_predicate=receipt.get("success")
+            if author["status"] == "completed"
+            and receipt.get("outcome") in ("SUCCESS", "TASK_INCOMPLETE")
+            else None,
+            actions=receipt.get("completed_actions"),
+            physics_steps=receipt.get("physics_steps"),
+            queries=receipt.get("query_action_counts"),
+            cleanup=receipt.get("cleanup"),
+            process_group_reaped=author.get("process_group_reaped"),
+        )
     return dict(
         data_kind="diagnostic",
         formal_score_eligible=False,
@@ -180,6 +201,7 @@ def summarize(plan, summary, output):
         gpu_peak_mib=summary.get("observed_gpu_peak_mib"),
         stop_reason=summary["stop_reason"],
         trials=list(grouped.values()),
+        **author_result,
         comparisons=[
             dict(
                 seed=seed,

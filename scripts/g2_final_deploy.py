@@ -213,6 +213,10 @@ def verify(release):
                 raise ValueError("expert evidence is unbound")
             if read(release / binding["source"])["seed"] != row["seed"]:
                 raise ValueError("expert evidence belongs to a different seed")
+    if "author-h50-review.json" in declared:
+        from g2_author_h50_campaign import verify_overlay
+
+        verify_overlay(release, plan, declared)
     return plan
 
 
@@ -424,12 +428,23 @@ def run(root, release, output, auth_path, plan):
     fields, start, end = read_allocation(job, output)
     allocation_s = plan["budget"]["proposed_allocation_s"]
     bound_s = plan["budget"]["bounded_execution_s"]
+    author_review = release / "author-h50-review.json"
+    campaign_reserve = 0
+    if author_review.is_file():
+        from shutil import disk_usage
+        from g2_author_h50_campaign import CAMPAIGN_RESERVE_S, bind_runtime
+
+        review = read(author_review)
+        bound_s = review["ledgers"]["append"]["total_s"]
+        campaign_reserve = CAMPAIGN_RESERVE_S
+        if disk_usage(output).free < review["min_free_bytes"]:
+            raise OSError("insufficient evidence disk headroom for author H50 overlay")
     min_duration = allocation_s if unified else bound_s
     if (
         not allocation_matches(fields)
         or not start <= time.time() < end
         or not min_duration <= end - start <= allocation_s
-        or end - time.time() < bound_s
+        or end - time.time() < bound_s + campaign_reserve
     ):
         raise PermissionError("running allocation differs from the approved envelope")
     persist(output / "allocation-receipt.json", dict(job_id=job, start=start, end=end))
@@ -450,19 +465,33 @@ def run(root, release, output, auth_path, plan):
         run_deployment_stage(graphics_command, output / "graphics.log", 295, cwd=root)
         graphics = read(output / "graphics/sim-launch.json")
         budget = plan["budget"]["overhead"]
-        timeout = end - time.time() - budget["cleanup_s"] - budget["statistics_s"]
+        timeout = (
+            end
+            - time.time()
+            - budget["cleanup_s"]
+            - budget["statistics_s"]
+            - campaign_reserve
+        )
         runtime = commands(
             root, release, output, job, plan, graphics, timeout, auth_path
         )
+        execution_plan = plan
+        if campaign_reserve:
+            execution_plan, runtime = bind_runtime(
+                plan, runtime, release, output, review=review
+            )
         persist(
             output / "effective-launch.json",
             dict(
                 model=runtime["model"],
                 probes=list(runtime["probes"].values()),
                 trials=runtime["commands"],
+                **({"author_h50": review} if campaign_reserve else {}),
             ),
         )
-        summary = supervise(plan, runtime, output / "supervisor", allocated=True)
+        summary = supervise(
+            execution_plan, runtime, output / "supervisor", allocated=True
+        )
         run_deployment_stage(
             [
                 "python3",
@@ -499,6 +528,11 @@ def main():
                     checksums="verified",
                     submission_allowed=False,
                     manifest_sha256=digest(release / "SHA256SUMS"),
+                    **(
+                        {"author_h50": read(release / "author-h50-review.json")}
+                        if (release / "author-h50-review.json").is_file()
+                        else {}
+                    ),
                 )
             )
         )

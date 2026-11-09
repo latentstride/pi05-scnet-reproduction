@@ -1,0 +1,21 @@
+{
+  "baseline": "5f8cbf65e7ffc6924fe903a4d62b5667ad2fe115",
+  "status": "READY_FOR_REVIEW",
+  "submission_allowed": false,
+  "gpu_operations": 0,
+  "model_inferences": 0,
+  "candidate_archive_sha256": "c8eeff121eefb1bff98e8103cc3314ef6d95669e362889f3d68ac35507389e99",
+  "release_manifest_sha256": "9270db1e97eafedfb6f94711c8b8c9f33efd76d04ab800af99bf11a42556f19a",
+  "allocation_s": 25200,
+  "append_margin_after_all_reserves_s": 1140,
+  "original_ten_preserved": true,
+  "targeted_cpu_tests": 55,
+  "real_cpu_physics_cutoff": true,
+  "gpu_deferred": [
+    "Vulkan/EGL and real three-camera frames",
+    "checkpoint inference and live JAX RNG continuity including first author request and compilation",
+    "actual service and process exit on allocation, storage quota and latency",
+    "live 800-action completion, actual TOPP step demand and wall time"
+  ],
+  "recommendation": "append after the original ten in one future approved allocation"
+}

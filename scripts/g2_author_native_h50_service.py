@@ -1,19 +1,21 @@
 """Optional shared-service extension for the independent author H50 diagnostic."""
 
-from contextlib import nullcontext
+from contextlib import ExitStack, contextmanager, nullcontext
 from hashlib import sha256
 from time import monotonic
 
 import numpy as np
 from websockets.exceptions import ConnectionClosed
 
+from g2_author_h50_limits import BUDGET, ResourceCensored
 import g2e_model_entry as legacy
 import pace_model_smoke as base
 from pace_runtime import (
     TASK,
     decode,
     msgpack_numpy,
-    open_policy,
+    MAX_MESSAGE,
+    connect,
     validate_request,
     validate_response,
 )
@@ -167,8 +169,9 @@ def handler(policy, backend, diagnostics=None, *, jax_random=None):
 
 
 class AuthorRemotePolicy:
-    def __init__(self, remote, episode, remaining):
-        self.socket, self.episode, self.remaining = remote.socket, episode, remaining
+    def __init__(self, socket, episode, remaining, request_s):
+        self.socket, self.episode, self.remaining = socket, episode, remaining
+        self.request_s = request_s
         self.query = 0
         ack = self.exchange(dict(command=RESET, episode_id=episode))
         if set(ack) != {"command", "episode_id", "seed", "key"} or (
@@ -181,9 +184,26 @@ class AuthorRemotePolicy:
         self.reset_receipt = ack
 
     def exchange(self, request):
-        timeout = min(390.0, self.remaining())
+        limit = monotonic() + min(self.request_s, self.remaining())
         self.socket.send(msgpack_numpy.packb(request))
-        return decode(self.socket.recv(timeout=timeout))
+        try:
+            return decode(
+                self.socket.recv(
+                    timeout=max(0.0, min(limit - monotonic(), self.remaining()))
+                )
+            )
+        except (TimeoutError, ResourceCensored) as error:
+            # Once the request is sent a timed-out client cannot establish that
+            # the shared worker finished its inference or released its lease.
+            try:
+                self.remaining()
+            except ResourceCensored as elapsed:
+                raise ResourceCensored(
+                    elapsed.reason, request_in_flight=True
+                ) from error
+            raise ResourceCensored(
+                "model_request_timeout", request_in_flight=True
+            ) from error
 
     def infer(self, request):
         identity = request_hash(request)
@@ -210,16 +230,39 @@ class AuthorRemotePolicy:
         return response
 
 
-def shared_connection(uri, episode, remaining):
-    """Connection to an existing service. Never starts a service or allocation."""
-    from contextlib import contextmanager
+def shared_connection(uri, episode, remaining, *, request_s=BUDGET.request_s):
+    """Connection to an existing service with one bound for handshake and greeting."""
 
     @contextmanager
-    def connect():
-        with open_policy(uri, "checkpoint", min(390.0, remaining())) as remote:
-            yield AuthorRemotePolicy(remote, episode, remaining)
+    def connection():
+        limit = monotonic() + min(request_s, remaining())
+        with ExitStack() as stack:
+            try:
+                socket = stack.enter_context(
+                    connect(
+                        uri,
+                        open_timeout=max(0.0, limit - monotonic()),
+                        close_timeout=1,
+                        max_size=MAX_MESSAGE,
+                        compression=None,
+                        proxy=None,
+                    )
+                )
+                meta = decode(
+                    socket.recv(timeout=max(0.0, min(limit - monotonic(), remaining())))
+                )
+            except TimeoutError as error:
+                raise ResourceCensored("model_connection_timeout") from error
+            expected = dict(
+                backend="checkpoint", task=TASK, protocol=1, author_native_h50=1
+            )
+            if not isinstance(meta, dict) or any(
+                meta.get(k) != v for k, v in expected.items()
+            ):
+                raise ValueError("unexpected author H50 service metadata")
+            yield AuthorRemotePolicy(socket, episode, remaining, request_s)
 
-    return connect
+    return connection
 
 
 if __name__ == "__main__":

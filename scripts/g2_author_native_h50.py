@@ -5,7 +5,6 @@ from dataclasses import asdict, replace
 from hashlib import sha256
 import json
 import os
-import re
 import random
 from time import monotonic
 
@@ -13,6 +12,8 @@ import numpy as np
 
 from g2_adapter import G2Error, Snapshot, Stamp, read_snapshot
 from g2_assets import load_arms
+from g2_author_h50_limits import BUDGET, MAX_ACTIONS, MODE, WINDOW, ResourceCensored
+from g2_author_h50_receipt import clock_sha256, verified_resource_stop
 from g2_candidate_stop import (
     candidate_failure,
     failure_sha256,
@@ -20,8 +21,7 @@ from g2_candidate_stop import (
     verified_candidate_stop,
 )
 from g2_capture import capture_arms
-from g2_episode import json_value
-from g2_final_campaign import verified_scene_cleanup
+from g2_episode import json_value, save_json
 from g2_initial import capture_initial, compare_initial, digest_json
 from g2_native_backend import NativeBackend, SceneClock
 from g2_task_runtime import pace_context
@@ -35,10 +35,7 @@ from pace_runtime import (
 )
 from robotwin_control_geometry import Status, pose_from_wxyz
 
-MODE = "author_native_h50"
 SEED = 100000
-WINDOW = 50
-MAX_ACTIONS = 800
 ARCHIVE_CONFIG = "04f2e041cedb07a2eae69425175c60d235ed086095cce10600dfb9e492a8bae6"
 ASSET_AUDIT = "5ebfc07c82814757168bdb3f2b7ad4a9bec18f58afc28318f49e61af117122f2"
 PREFLIGHT = "b1ab4f6201174a872d00468489968313bb445f24be7ab8c9b7ebfe73849a3787"
@@ -171,6 +168,23 @@ class AuthorBackend(NativeBackend):
         )
         self.log(dict(kind="initial_physical_measurement", **self.initial_measurement))
 
+    def _before_step(self):
+        if self.tick >= self.guard.max_physics_steps:
+            raise ResourceCensored("physics_steps")
+        self.remaining()
+        super()._before_step()
+
+    def _stepped(self):
+        # NativeBackend checks its deadline even in the contact-failure
+        # handler. Preserve any measured safety exception before a soft cutoff.
+        remaining = self.remaining
+        self.remaining = lambda: None
+        try:
+            super()._stepped()
+        finally:
+            self.remaining = remaining
+        remaining()
+
     def take_action(self, action):
         self.remaining()
         before_count, before_tick = self.take_action_cnt, self.tick
@@ -294,9 +308,7 @@ def native_guard(env, arms, samples, config):
 
 
 @contextmanager
-def author_scene(
-    pace, release, reference, episode, log, remaining, *, configure_cpu=None
-):
+def author_scene(pace, release, reference, episode, log, clock, *, configure_cpu=None):
     from sapien.physx import PhysxRigidDynamicComponent
 
     require_checkout(pace, PACE_REVISION)
@@ -352,6 +364,7 @@ def author_scene(
             try:
                 env.check_stable = check_stable_with_clock
                 random.seed(SEED)
+                clock.remaining()
                 env.setup_demo(now_ep_num=0, seed=SEED, is_test=True, **settings)
                 if reset_steps != 2500:
                     raise ValueError("author reset physics witness incomplete")
@@ -394,8 +407,9 @@ def author_scene(
                 if mismatch:
                     raise ValueError(f"author reset mismatch: {mismatch}")
                 guard = native_guard(env, bound_arms, samples, config)
+                guard.max_physics_steps = clock.budget.physics_steps
                 backend = AuthorBackend(
-                    env, bound_arms, initial, guard, episode, log, remaining
+                    env, bound_arms, initial, guard, episode, log, clock.remaining
                 )
                 backend.grip_max_clip = config["native_grip_max_clip"]
                 backend.sample_initial(reset_steps)
@@ -476,16 +490,16 @@ def run_diagnostic(
     episode,
     policy_factory,
     *,
-    deadline,
+    clock,
     configure_cpu=None,
     inject=None,
 ):
     """Shared runtime for the live entry and the CPU physics acceptance."""
-    if not episode or not np.isfinite(deadline):
-        raise ValueError("diagnostic requires an episode and finite wall deadline")
+    if not episode:
+        raise ValueError("diagnostic requires an episode")
+    clock.validate_entry()
     output.mkdir(parents=True, exist_ok=False)
     started = monotonic()
-    deadline = min(deadline, started + 1150.0)
     cleanup = dict(
         scene_opened=False,
         hold_complete=False,
@@ -494,6 +508,7 @@ def run_diagnostic(
     )
     receipt = dict(
         mode=MODE,
+        trial_clock=clock.receipt(),
         episode_id=episode,
         cleanup=cleanup,
         cleanup_failures=[],
@@ -504,26 +519,20 @@ def run_diagnostic(
     )
     backend, proof = None, None
 
-    def remaining():
-        seconds = deadline - monotonic()
-        if seconds <= 0:
-            raise G2Error(Status.TIMEOUT, "author trial wall-clock budget reached")
-        return seconds
-
     with (output / "events.jsonl").open("x", buffering=1) as stream:
 
         def log(event):
             stream.write(json.dumps(event, default=json_value, allow_nan=False) + "\n")
 
         try:
-            remaining()
+            clock.remaining()
             with author_scene(
                 pace,
                 release,
                 reference,
                 episode,
                 log,
-                remaining,
+                clock,
                 configure_cpu=configure_cpu,
             ) as (backend, rollout):
                 cleanup["scene_opened"] = receipt["fresh_reset_verified"] = True
@@ -534,6 +543,7 @@ def run_diagnostic(
                     if k != "contacts"
                 }
                 try:
+                    clock.remaining()
                     if inject:
                         inject(backend)
                     with policy_factory() as policy:
@@ -570,6 +580,22 @@ def run_diagnostic(
                             else "TASK_INCOMPLETE",
                             success=result["success"],
                         )
+                except ResourceCensored as error:
+                    receipt.update(
+                        outcome="RESOURCE_CENSORED",
+                        resource_reason=error.reason,
+                        request_in_flight=error.request_in_flight,
+                    )
+                    if not error.request_in_flight and error.reason in (
+                        "soft_wall_clock",
+                        "physics_steps",
+                    ):
+                        try:
+                            proof = backend.terminal_sample()
+                        except Exception as exc:
+                            receipt["cleanup_failures"].append(
+                                f"resource terminal sample: {exc}"
+                            )
                 except G2Error as error:
                     failure = dict(
                         code=error.status.value,
@@ -581,7 +607,10 @@ def run_diagnostic(
                         error.status == Status.TIMEOUT
                         and error.diagnostic.get("geometry") != "actual"
                     ):
-                        receipt["outcome"] = "RESOURCE_CENSORED"
+                        receipt.update(
+                            outcome="RESOURCE_CENSORED",
+                            resource_reason="unverified_guard_timeout",
+                        )
                     else:
                         receipt.update(
                             category="actual_safety_stop", outcome="SAFETY_STOP"
@@ -613,11 +642,17 @@ def run_diagnostic(
                                 raise RuntimeError(
                                     "candidate hold changed the paused state or expected drive"
                                 )
-                            proof = dict(
-                                after,
-                                hold_complete=True,
-                                failure_sha256=failure_sha256(receipt["result"]),
-                            )
+                            proof = dict(after, hold_complete=True)
+                            if receipt.get("outcome") == "RESOURCE_CENSORED":
+                                proof.update(
+                                    kind="resource_stop",
+                                    resource_reason=receipt["resource_reason"],
+                                    trial_clock_sha256=clock_sha256(clock.receipt()),
+                                )
+                            else:
+                                proof["failure_sha256"] = failure_sha256(
+                                    receipt["result"]
+                                )
                     except Exception as exc:
                         proof = None
                         receipt["cleanup_failures"].append(f"hold: {exc}")
@@ -631,74 +666,39 @@ def run_diagnostic(
                 raise RuntimeError("author scene close advanced physics")
             cleanup["close_complete"] = cleanup["scene_context_closed"] = True
             if proof and not receipt["cleanup_failures"]:
-                receipt["candidate_stop"] = dict(
-                    proof, close_complete=True, scene_context_closed=True
-                )
-                if verified_candidate_stop(
-                    receipt["candidate_stop"], episode, receipt["result"]
-                ):
-                    receipt["category"] = "controlled_candidate_stop"
+                proof.update(close_complete=True, scene_context_closed=True)
+                if proof["kind"] == "resource_stop":
+                    receipt.update(resource_stop=proof, category="resource_censored")
+                else:
+                    receipt["candidate_stop"] = proof
+                    if verified_candidate_stop(proof, episode, receipt["result"]):
+                        receipt["category"] = "controlled_candidate_stop"
         except Exception as error:
+            if isinstance(error, ResourceCensored):
+                receipt.update(
+                    outcome="RESOURCE_CENSORED", resource_reason=error.reason
+                )
             if isinstance(error, ProtocolDeviation):
                 receipt["outcome"] = "PROTOCOL_DEVIATION"
             receipt["detail"] = f"{type(error).__name__}: {error}"
             receipt["category"] = "infrastructure_failure"
         if receipt["cleanup_failures"]:
             receipt["category"] = "infrastructure_failure"
-        receipt["elapsed_s"] = monotonic() - started
+        receipt["finished_at"] = monotonic()
+        if receipt["category"] == "resource_censored" and not verified_resource_stop(
+            receipt
+        ):
+            receipt["category"] = "infrastructure_failure"
+        receipt["elapsed_s"] = receipt["finished_at"] - started
         log(dict(kind="author_terminal", **receipt))
-    (output / "receipt.json").write_text(
-        json.dumps(receipt, default=json_value, indent=2, allow_nan=False) + "\n"
-    )
+    save_json(output / "receipt.json", receipt)
     return receipt
 
 
-def may_continue(
-    receipt, expected_episode, *, process_group_reaped, shared_service_alive
-):
-    """Continuation gate for a future host. Next trial still needs fresh admission."""
-    if (
-        process_group_reaped is not True
-        or shared_service_alive is not True
-        or receipt.get("mode") != MODE
-        or receipt.get("episode_id") != expected_episode
-        or not verified_scene_cleanup(receipt)
-    ):
-        return False
-    if receipt["category"] == "diagnostic_complete":
-        return receipt.get("outcome") in ("SUCCESS", "TASK_INCOMPLETE")
-    proof = receipt.get("candidate_stop")
-    return (
-        receipt["category"] == "controlled_candidate_stop"
-        and candidate_failure(receipt.get("result") or {})
-        and verified_candidate_stop(proof, expected_episode, receipt["result"])
-        and proof.get("contact_sample_measured") is True
-        and proof.get("contact_source") == "sapien.Scene.get_contacts"
-        and type(proof.get("contact_manifold_count")) is int
-        and proof["contact_manifold_count"] >= 0
-        and isinstance(proof.get("contact_sha256"), str)
-        and re.fullmatch("[a-f0-9]{64}", proof["contact_sha256"]) is not None
-        and (
-            proof["tick"] != 0
-            or (
-                receipt.get("initial_measurement", {}).get("status") == "measured"
-                and all(
-                    proof[key] == receipt["initial_measurement"].get(key)
-                    for key in ("state_sha256", "contact_sha256")
-                )
-            )
-        )
-    )
-
-
 def author_native_h50(
-    pace, release, reference, output, episode, uri, startup, *, deadline
+    pace, release, reference, output, episode, uri, startup, *, clock
 ):
-    """Run inside a future, explicitly admitted campaign's existing allocation.
-
-    This callable has no scheduler, roster, authorization or automatic retry
-    entry. The host must admit this diagnostic before calling it.
-    """
+    """Use the already approved host clock and existing shared service."""
     from g2_author_native_h50_service import shared_connection
     from g2_locked_task import verify_model_receipt
 
@@ -706,6 +706,9 @@ def author_native_h50(
         raise PermissionError(
             "author_native_h50 requires an existing approved allocation"
         )
+    if clock.budget != BUDGET:
+        raise ValueError("author runtime clock differs from the reviewed budget")
+    clock.validate_entry()
     plan = json.loads((release / "unified-plan.json").read_text())
     manifest = release / "pace_download_manifest.json"
     if (
@@ -714,20 +717,14 @@ def author_native_h50(
     ):
         raise ValueError("author H50 requires the frozen checkpoint manifest")
     verify_model_receipt(plan["checkpoint"], manifest, startup)
-    end = min(deadline, monotonic() + 1150.0)
-
-    def remaining():
-        seconds = end - monotonic()
-        if seconds <= 0:
-            raise G2Error(Status.TIMEOUT, "author shared-service deadline reached")
-        return seconds
-
     return run_diagnostic(
         pace,
         release,
         reference,
         output,
         episode,
-        shared_connection(uri, episode, remaining),
-        deadline=end,
+        shared_connection(
+            uri, episode, clock.remaining, request_s=clock.budget.request_s
+        ),
+        clock=clock,
     )

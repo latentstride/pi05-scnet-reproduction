@@ -34,17 +34,17 @@ def candidate_failure(result):
 
 
 def failure_sha256(result):
-    from g2_episode import json_value
-
     failure = result.get("failure") or {}
-    return sha256(
-        json.dumps(
-            dict(code=failure.get("code"), diagnostic=failure.get("diagnostic") or {}),
-            default=json_value,
-            sort_keys=True,
-            allow_nan=False,
-        ).encode()
-    ).hexdigest()
+    payload = dict(code=failure.get("code"), diagnostic=failure.get("diagnostic") or {})
+    try:
+        raw = json.dumps(payload, sort_keys=True, allow_nan=False)
+    except TypeError:
+        # The worker may hold NumPy values. The host reads plain JSON and
+        # must be able to verify its hash without simulator dependencies.
+        from g2_episode import json_value
+
+        raw = json.dumps(payload, default=json_value, sort_keys=True, allow_nan=False)
+    return sha256(raw.encode()).hexdigest()
 
 
 def verified_candidate_stop(proof, episode=None, result=None):

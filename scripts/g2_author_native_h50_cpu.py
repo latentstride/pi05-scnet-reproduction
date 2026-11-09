@@ -1,6 +1,7 @@
 """Run the isolated H50 code on CPU PhysX and original TOPP with fixed chunks."""
 
 import argparse
+from dataclasses import replace
 import ast
 from contextlib import contextmanager, nullcontext
 from functools import wraps
@@ -18,6 +19,7 @@ import numpy as np
 from g2_adapter import G2Error
 from g2_author_h50_reset_cpu import compiled, native_method, physical_factory
 from g2_author_native_h50 import run_diagnostic
+from g2_author_h50_limits import BUDGET, TrialClock
 from g2_proxy_collision import collision_only_urdf
 from robotwin_control_geometry import Status
 
@@ -209,11 +211,17 @@ def main():
     for name in ("pace", "release", "reference", "output"):
         parser.add_argument("--" + name, type=Path, required=True)
     parser.add_argument(
-        "--case", choices=("mid", "tick-zero", "missing", "actual"), required=True
+        "--case",
+        choices=("mid", "tick-zero", "missing", "actual", "physics-cutoff"),
+        required=True,
     )
     args = parser.parse_args()
     if os.environ.get("CUDA_VISIBLE_DEVICES") != "":
         raise ValueError("CPU probe requires hidden CUDA devices")
+    budget = (
+        replace(BUDGET, physics_steps=1) if args.case == "physics-cutoff" else BUDGET
+    )
+    began = monotonic()
     receipt = run_diagnostic(
         args.pace.resolve(),
         args.release.resolve(),
@@ -221,7 +229,7 @@ def main():
         args.output.resolve(),
         "cpu-" + args.case,
         lambda: nullcontext(FixedPolicy()),
-        deadline=monotonic() + 1080,
+        clock=TrialClock(budget, began, began + budget.hard_s),
         configure_cpu=Headless(args.output.resolve()),
         inject=lambda backend: fault(args.case, backend),
     )
@@ -238,7 +246,12 @@ def main():
         "tick-zero": "controlled_candidate_stop",
         "missing": "infrastructure_failure",
         "actual": "actual_safety_stop",
+        "physics-cutoff": "resource_censored",
     }
+    if args.case == "physics-cutoff" and (
+        receipt.get("physics_steps") != 1 or not receipt.get("resource_stop")
+    ):
+        raise AssertionError(receipt)
     if receipt["category"] != expected[args.case]:
         raise AssertionError(receipt)
 

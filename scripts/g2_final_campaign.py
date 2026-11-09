@@ -125,6 +125,24 @@ def supervise(plan, runtime, output, *, rehearsal=False, allocated=False):
     if len(ids) != len(set(ids)) or not 0 < len(ids) <= 14:
         raise ValueError("invalid locked roster")
     budget = plan["budget"]
+    author = runtime.get("author_h50_budget")
+    author_rows = [row for row in roster if row.get("method") == "author_native_h50"]
+    campaign_reserve = 0
+    if author is not None or author_rows:
+        from g2_author_h50_campaign import CAMPAIGN_RESERVE_S
+        from g2_author_h50_limits import BUDGET, EPISODE, TrialClock
+
+        if (
+            author != BUDGET
+            or len(author_rows) != 1
+            or author_rows[0] is not roster[-1]
+            or author_rows[0]["episode_id"] != EPISODE
+            or author_rows[0]["hard_timeout_s"] != author.hard_s
+            or set(runtime["commands"]) != set(ids)
+            or runtime.get("campaign_reserve_s") != CAMPAIGN_RESERVE_S
+        ):
+            raise ValueError("unbound author H50 campaign row or budget")
+        campaign_reserve = CAMPAIGN_RESERVE_S
     if (
         plan["allocations_planned"] != 1
         or plan["model_server_starts"] != 1
@@ -134,7 +152,8 @@ def supervise(plan, runtime, output, *, rehearsal=False, allocated=False):
         or sum(row["hard_timeout_s"] for row in roster)
         + sum(budget["overhead"].values())
         != budget["bounded_execution_s"]
-        or budget["bounded_execution_s"] > budget["proposed_allocation_s"]
+        or budget["bounded_execution_s"] + campaign_reserve
+        > budget["proposed_allocation_s"]
     ):
         raise ValueError("invalid campaign budget")
     if rehearsal == allocated:
@@ -154,7 +173,9 @@ def supervise(plan, runtime, output, *, rehearsal=False, allocated=False):
     supervisor_cap = budget["proposed_allocation_s"] - sum(
         overhead[key] for key in ("graphics_s", "statistics_s", "cleanup_s")
     )
-    deadline = time.monotonic() + min(runtime["timeout_s"], supervisor_cap)
+    deadline = time.monotonic() + min(
+        runtime["timeout_s"], supervisor_cap - campaign_reserve
+    )
     model = trial = monitor = None
 
     def save():
@@ -307,6 +328,11 @@ def supervise(plan, runtime, output, *, rehearsal=False, allocated=False):
                     )
                 else:
                     entry_ok = admitted(row)
+                author_row = author is not None and row is author_rows[0]
+                if author_row:
+                    # Its exact scene, physical readback, RGB and first exchange
+                    # are admitted inside its own bounded child before motion.
+                    entry_ok = True
                 if not entry_ok or episode not in runtime["commands"]:
                     rows[episode]["reason"] = live.get(
                         "reason", "independent admission or executable unavailable"
@@ -319,15 +345,55 @@ def supervise(plan, runtime, output, *, rehearsal=False, allocated=False):
                 rows[episode] = {"status": "running"}
                 active_entry = rows[episode]
                 save()
-                trial = launch(runtime["commands"][episode], output / f"{episode}.log")
-                reason = wait_trial(trial, time.monotonic() + row["hard_timeout_s"])
+                command = runtime["commands"][episode]
+                clock = None
+                if author_row:
+                    started = time.monotonic()
+                    clock = TrialClock(author, started, started + author.hard_s)
+                    if clock.hard > deadline:
+                        reason = "insufficient remaining time for full author trial and reap cap"
+                        break
+                    command = command + [
+                        "--trial-start",
+                        repr(clock.started),
+                        "--hard-deadline",
+                        repr(clock.hard),
+                    ]
+                trial = launch(command, output / f"{episode}.log")
+                reason = wait_trial(
+                    trial,
+                    clock.reap_at
+                    if clock
+                    else time.monotonic() + row["hard_timeout_s"],
+                )
+                if author_row and reason == "trial hard timeout":
+                    active_entry.update(
+                        status="infrastructure_failure",
+                        outcome="RESOURCE_CENSORED",
+                        reason=reason,
+                        resource_reason="host_hard_timeout",
+                        trial_clock=clock.receipt(),
+                        process_group_reaped=False,
+                    )
                 reap_process_group(trial)
                 trial = None
+                if author_row:
+                    active_entry["process_group_reaped"] = True
+                    if time.monotonic() >= clock.hard:
+                        reason = (
+                            reason
+                            or "author hard deadline expired during process cleanup"
+                        )
                 if reason:
-                    rows[episode] = {
-                        "status": "infrastructure_failure",
-                        "reason": reason,
-                    }
+                    if not author_row:
+                        rows[episode] = {
+                            "status": "infrastructure_failure",
+                            "reason": reason,
+                        }
+                    elif active_entry.get("outcome") != "RESOURCE_CENSORED":
+                        active_entry.update(
+                            status="infrastructure_failure", reason=reason
+                        )
                     break
                 receipt = runtime["read_result"](episode)
                 if receipt.get("episode_id") != episode:
@@ -361,6 +427,24 @@ def supervise(plan, runtime, output, *, rehearsal=False, allocated=False):
                     )
                     active_entry["reason"] = reason
                     break
+                if author_row:
+                    from g2_author_h50_receipt import may_continue
+
+                    if not may_continue(
+                        receipt,
+                        episode,
+                        process_group_reaped=True,
+                        shared_service_alive=service_failure() is None,
+                        clock=clock,
+                    ):
+                        reason = (
+                            "author trial outcome, stop proof or isolation unverified"
+                        )
+                        break
+                    active_entry["status"] = "completed"
+                    active_entry = None
+                    save()
+                    continue
                 if allocated and not verified_scene_cleanup(receipt):
                     reason = "trial completion, independent reset or scene cleanup unverified"
                     break

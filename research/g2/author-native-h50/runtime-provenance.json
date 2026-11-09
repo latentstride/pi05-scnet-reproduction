@@ -1,0 +1,28 @@
+{
+  "cpu_runtime_archive_sha256": "24e337e1f820d38d028e625c0eda7b9cf6b9f942763226d912efa20951422b8d",
+  "current_frozen_archive_sha256": "be7af44b4cb70ad49362b0475829c12e90de09075e545d45f0b39d93c75e8d71",
+  "identical_runtime_inputs": {
+    "scripts/g2_native_backend.py": "baa797e1098f86cae12f7073886cd1e50fcb3a5cd010a9a3f765c50d0aab08f6",
+    "scripts/g2e_native_guard.py": "4fe52f3f5be77feb2d3beda67fa6edc5692d15d03208e4a29f16b0403d8a9f37",
+    "scripts/g2_contact.py": "8369b9b25e760fb272fbf945220864432ec4f537e03c564d79605e7262ff3ffa",
+    "scripts/g2_initial.py": "3ba24573566334ad66b030ca939ac1d8f69a47a84e9a5ed1837df2cbf5e2b980",
+    "scripts/g2_capture.py": "de893903d659c3dd729dcfeafd6bcb8c25e32e7ea458dda29bd04f71ac4d413f",
+    "scripts/g2_collision.py": "3047aec1d3c0c4cd221a2bc860aada89cb91de151d6abc8eb155186010d2ec0e",
+    "scripts/g2_adapter.py": "de4c36da33fa64279378502f77af13085096bd82992fd1e7aa669a6d61e4326a",
+    "scripts/g2_assets.py": "ef712349bc246de2259da0f009eac7cee785ab1b439e484e291c697c0a4c1907",
+    "scripts/g2_unified_exchange.py": "899222b85a62c06ccfe284a1597ff2e1f562a6090175e891d0f165ac3fa8031b",
+    "scripts/g2e_model_entry.py": "ba2eaef1e5eb9c597d928d067ed4d380608f560dcbb58d27ed96ac06401eca47",
+    "asset-audit.json": "5ebfc07c82814757168bdb3f2b7ad4a9bec18f58afc28318f49e61af117122f2",
+    "configs/unified-seed0-native-w50.json": "04f2e041cedb07a2eae69425175c60d235ed086095cce10600dfb9e492a8bae6",
+    "pace_download_manifest.json": "835d60676236e69276032f7bc1ea4837eb6fcda6d4f3dbab2043965063a3d97b"
+  },
+  "stop_and_cleanup_modules_from_current_candidate": {
+    "scripts/g2_final_campaign.py": "0052f2c7f26308c7e618214c220647de5a9f90d82deca426f8ae872ade596e6f",
+    "scripts/g2_candidate_stop.py": "9487eca4094c74772bb6bec1af25f291688a12f19c715fbca5c6cd2b0abf8eb6"
+  },
+  "pace_context_ast_identical": true,
+  "preflight_reference_sha256": "b1ab4f6201174a872d00468489968313bb445f24be7ab8c9b7ebfe73849a3787",
+  "author_pace_revision": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+  "no_gpu_used": true,
+  "no_policy_checkpoint_loaded": true
+}

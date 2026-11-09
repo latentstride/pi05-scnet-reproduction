@@ -1,0 +1,150 @@
+{
+  "revision": "3dc3b798668feb99ac61cc9086d84cbcc3d79186",
+  "archive": "embodiments.zip",
+  "archive_bytes": 219847741,
+  "archive_lfs_sha256_metadata": "85ffeff55a5066def5931224a85cfa3f8abaa1fbf779bd17789a7fb3f85bc789",
+  "full_archive_hash_verified": false,
+  "members": [
+    {
+      "member": "embodiments/aloha-agilex/collision_aloha_left.yml",
+      "bytes": 4934,
+      "sha256": "19e21fbba8b6657ffc6d405ac53b277902ce118821b818aa77aad2e0b0d7f83d",
+      "zip_crc32": "5af4705d",
+      "crc_verified": true
+    },
+    {
+      "member": "__MACOSX/embodiments/aloha-agilex/._collision_aloha_left.yml",
+      "bytes": 176,
+      "sha256": "d1d91f54a11741db507426efd2cdb4e363f6b196d66959c1d2606dbf48a3b72e",
+      "zip_crc32": "d855f025",
+      "crc_verified": true
+    },
+    {
+      "member": "embodiments/aloha-agilex/curobo_left_tmp.yml",
+      "bytes": 2383,
+      "sha256": "5860346baf83c74da3dfacbc548f3165fe6caba5797fd28da158a618576556c8",
+      "zip_crc32": "b84d5295",
+      "crc_verified": true
+    },
+    {
+      "member": "__MACOSX/embodiments/aloha-agilex/._curobo_left_tmp.yml",
+      "bytes": 176,
+      "sha256": "d1d91f54a11741db507426efd2cdb4e363f6b196d66959c1d2606dbf48a3b72e",
+      "zip_crc32": "d855f025",
+      "crc_verified": true
+    },
+    {
+      "member": "embodiments/aloha-agilex/config.yml",
+      "bytes": 1210,
+      "sha256": "a4f043d2d4b44cca5ec47fb498a3194da3f87ff9530dcbfdcee1539a44423d57",
+      "zip_crc32": "9d1ae712",
+      "crc_verified": true
+    },
+    {
+      "member": "__MACOSX/embodiments/aloha-agilex/._config.yml",
+      "bytes": 176,
+      "sha256": "d1d91f54a11741db507426efd2cdb4e363f6b196d66959c1d2606dbf48a3b72e",
+      "zip_crc32": "d855f025",
+      "crc_verified": true
+    },
+    {
+      "member": "embodiments/aloha-agilex/collision_aloha_right.yml",
+      "bytes": 2340,
+      "sha256": "d22850769a5c28fec35434e12ffb597837853cb4dd916b74969e6e615faf5cdd",
+      "zip_crc32": "1e47d4a8",
+      "crc_verified": true
+    },
+    {
+      "member": "__MACOSX/embodiments/aloha-agilex/._collision_aloha_right.yml",
+      "bytes": 176,
+      "sha256": "d1d91f54a11741db507426efd2cdb4e363f6b196d66959c1d2606dbf48a3b72e",
+      "zip_crc32": "d855f025",
+      "crc_verified": true
+    },
+    {
+      "member": "embodiments/aloha-agilex/curobo_right_tmp.yml",
+      "bytes": 2391,
+      "sha256": "bebc418e0bb02cc70a4cb124b9cda6c4c12ce27c5bdbf1b4153654d781fb62f8",
+      "zip_crc32": "64155386",
+      "crc_verified": true
+    },
+    {
+      "member": "__MACOSX/embodiments/aloha-agilex/._curobo_right_tmp.yml",
+      "bytes": 176,
+      "sha256": "d1d91f54a11741db507426efd2cdb4e363f6b196d66959c1d2606dbf48a3b72e",
+      "zip_crc32": "d855f025",
+      "crc_verified": true
+    },
+    {
+      "member": "embodiments/ARX-X5/collision_X5A.yml",
+      "bytes": 2347,
+      "sha256": "f5f196ad5fee4ffb8814a21325692dd33e462258abbaaff5a0484e3481e79543",
+      "zip_crc32": "1599dddd",
+      "crc_verified": true
+    },
+    {
+      "member": "__MACOSX/embodiments/ARX-X5/._collision_X5A.yml",
+      "bytes": 176,
+      "sha256": "d1d91f54a11741db507426efd2cdb4e363f6b196d66959c1d2606dbf48a3b72e",
+      "zip_crc32": "d855f025",
+      "crc_verified": true
+    },
+    {
+      "member": "embodiments/ARX-X5/X5A.urdf",
+      "bytes": 9218,
+      "sha256": "7aaa308a1a5b6a213d914db86ba09ddd6252f25cb498ac9a148bfa6c7166a423",
+      "zip_crc32": "d4f7f9eb",
+      "crc_verified": true
+    },
+    {
+      "member": "__MACOSX/embodiments/ARX-X5/._X5A.urdf",
+      "bytes": 176,
+      "sha256": "d1d91f54a11741db507426efd2cdb4e363f6b196d66959c1d2606dbf48a3b72e",
+      "zip_crc32": "d855f025",
+      "crc_verified": true
+    },
+    {
+      "member": "embodiments/ARX-X5/config.yml",
+      "bytes": 1202,
+      "sha256": "0687270bb70652fb80072acbded5f134da4e930463024c856dd4f45aa5f35d03",
+      "zip_crc32": "2af07f6a",
+      "crc_verified": true
+    },
+    {
+      "member": "__MACOSX/embodiments/ARX-X5/._config.yml",
+      "bytes": 176,
+      "sha256": "d1d91f54a11741db507426efd2cdb4e363f6b196d66959c1d2606dbf48a3b72e",
+      "zip_crc32": "d855f025",
+      "crc_verified": true
+    },
+    {
+      "member": "embodiments/ARX-X5/curobo_tmp.yml",
+      "bytes": 1702,
+      "sha256": "07c7faf92f6c9c7e3b7c370cb4487494d236935910cf6d89333f89f0b56c0ddb",
+      "zip_crc32": "5158c96f",
+      "crc_verified": true
+    },
+    {
+      "member": "__MACOSX/embodiments/ARX-X5/._curobo_tmp.yml",
+      "bytes": 176,
+      "sha256": "d1d91f54a11741db507426efd2cdb4e363f6b196d66959c1d2606dbf48a3b72e",
+      "zip_crc32": "d855f025",
+      "crc_verified": true
+    },
+    {
+      "member": "embodiments/aloha-agilex/urdf/arx5_description_isaac.urdf",
+      "bytes": 61574,
+      "sha256": "097c59fb19a7b482249c6097df8319586ea7cfd268c015516f103b289a7e761a",
+      "zip_crc32": "7590d60f",
+      "crc_verified": true
+    },
+    {
+      "member": "__MACOSX/embodiments/aloha-agilex/urdf/._arx5_description_isaac.urdf",
+      "bytes": 176,
+      "sha256": "d1d91f54a11741db507426efd2cdb4e363f6b196d66959c1d2606dbf48a3b72e",
+      "zip_crc32": "d855f025",
+      "crc_verified": true
+    }
+  ],
+  "http_bytes_received": 128459
+}

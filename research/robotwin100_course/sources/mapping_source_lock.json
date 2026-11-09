@@ -1,0 +1,11 @@
+{
+  "commit": "0467a96258a2e3982196ae928a153ed85bddce8d",
+  "backend": "g2_urdf_damped_jacobian_v1",
+  "sha256": {
+    "g2_adapter.py": "de4c36da33fa64279378502f77af13085096bd82992fd1e7aa669a6d61e4326a",
+    "robotwin_control_geometry.py": "e3ede0d095ee30558451f14fe12789e8778b6caecd7c9edcd3d0925c07a2d788",
+    "verify_robotwin_fk.py": "4af616a6ae263f48e88e28a91c64dfb809a6d245698a0b7e432febd974188428",
+    "g2_assets.py": "ef712349bc246de2259da0f009eac7cee785ab1b439e484e291c697c0a4c1907",
+    "g2_kinematics.py": "bb21f17ffacd0ee603f79ab36f393ee4b8fda2efe44fdb2786a430233365a546"
+  }
+}

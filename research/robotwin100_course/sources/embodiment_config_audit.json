@@ -1,0 +1,200 @@
+{
+  "date": "2026-11-01",
+  "repository": "TianxingChen/RoboTwin2.0",
+  "revision": "3dc3b798668feb99ac61cc9086d84cbcc3d79186",
+  "archive": "embodiments.zip",
+  "http_bytes_received": 128459,
+  "archive_lfs_sha256_metadata": "85ffeff55a5066def5931224a85cfa3f8abaa1fbf779bd17789a7fb3f85bc789",
+  "full_archive_hash_verified": false,
+  "source": "Configuration and URDF sampled from official archive with ZIP CRC verification.",
+  "robots": [
+    {
+      "robot": "aloha-agilex",
+      "archive_config_member": "embodiments/aloha-agilex/config.yml",
+      "config_sha256": "a4f043d2d4b44cca5ec47fb498a3194da3f87ff9530dcbfdcee1539a44423d57",
+      "config_text": "urdf_path: \"./urdf/arx5_description_isaac.urdf\"\nsrdf_path: \"./srdf/arx5_description_isaac.srdf\"\njoint_stiffness: 1000\njoint_damping: 200\ngripper_stiffness: 1000\ngripper_damping: 200\nmove_group: [\"fl_link6\",\"fr_link6\"]\nee_joints: [\"fl_joint6\", \"fr_joint6\"]\narm_joints_name: [[\"fl_joint1\", \"fl_joint2\", \"fl_joint3\", \"fl_joint4\", \"fl_joint5\", \"fl_joint6\"], [\"fr_joint1\", \"fr_joint2\", \"fr_joint3\", \"fr_joint4\", \"fr_joint5\", \"fr_joint6\"]]\ngripper_name:\n  - base: \"fl_joint7\"\n    mimic: [[\"fl_joint8\", 1., 0.]]\n  - base: \"fr_joint7\"\n    mimic: [[\"fr_joint8\", 1., 0.]]\ngripper_bias: 0.12\ngripper_scale: [-0.01, 0.045]\nhomestate: [[0,0,0,0,0,0], [0,0,0,0,0,0]]\ndelta_matrix: [[1,0,0],[0,1,0],[0,0,1]]\nglobal_trans_matrix: [[1,0,0],[0,-1,0],[0,0,-1]]\nrobot_pose: [[0, -0.65, 0.0, 0.707, 0, 0, 0.707]]\n# planner: \"mplib_screw\"\nplanner: \"curobo\"\ndual_arm: True\nrotate_lim: [0, 1]\ngrasp_perfect_direction: ['front_right', 'front_left']\nstatic_camera_list: \n- name: head_camera\n  type: D435\n  position:\n  - -0.032\n  - -0.45\n  - 1.35\n  forward:\n  - 0\n  - 0.6\n  - -0.8\n  left:\n  - -1\n  - 0\n  - 0\n- name: front_camera\n  type: D435\n  position:\n  - 0\n  - -0.45\n  - 0.85\n  forward:\n  - 0\n  - 1\n  - -0.1\n  left:\n  - -1\n  - 0\n  - 0",
+      "urdf_member": "embodiments/aloha-agilex/urdf/arx5_description_isaac.urdf",
+      "urdf_sha256": "097c59fb19a7b482249c6097df8319586ea7cfd268c015516f103b289a7e761a",
+      "joint_names": [
+        [
+          "fl_joint1",
+          "fl_joint2",
+          "fl_joint3",
+          "fl_joint4",
+          "fl_joint5",
+          "fl_joint6"
+        ],
+        [
+          "fr_joint1",
+          "fr_joint2",
+          "fr_joint3",
+          "fr_joint4",
+          "fr_joint5",
+          "fr_joint6"
+        ]
+      ],
+      "ee_joints": [
+        "fl_joint6",
+        "fr_joint6"
+      ],
+      "move_group": [
+        "fl_link6",
+        "fr_link6"
+      ],
+      "dual_arm": true,
+      "gripper_scale": [
+        -0.01,
+        0.045
+      ],
+      "gripper_bias": 0.12,
+      "delta_matrix": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "global_trans_matrix": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          -1,
+          0
+        ],
+        [
+          0,
+          0,
+          -1
+        ]
+      ],
+      "robot_pose_wxyz": [
+        [
+          0,
+          -0.65,
+          0.0,
+          0.707,
+          0,
+          0,
+          0.707
+        ]
+      ],
+      "planner": "curobo",
+      "checks": {
+        "arm_joints_exist": true,
+        "ee_joints_exist": true,
+        "move_group_links_exist": true,
+        "six_arm_joints_each": true
+      }
+    },
+    {
+      "robot": "ARX-X5",
+      "archive_config_member": "embodiments/ARX-X5/config.yml",
+      "config_sha256": "0687270bb70652fb80072acbded5f134da4e930463024c856dd4f45aa5f35d03",
+      "config_text": "urdf_path: \"./X5A.urdf\"\n# srdf_path: \"./X5A.srdf\"\njoint_stiffness: 1000\njoint_damping: 200\ngripper_stiffnes: 1000\ngripper_damping: 200\nmove_group: [\"link6\",\"link6\"]\nee_joints: [\"joint6\",\"joint6\"]\narm_joints_name: [['joint1', 'joint2', 'joint3', 'joint4', 'joint5', 'joint6'],\n                  ['joint1', 'joint2', 'joint3', 'joint4', 'joint5', 'joint6']]\ngripper_name: \n  - base: \"joint7\"\n    mimic: [[\"joint8\", 1., 0.]]\n  - base: \"joint7\"\n    mimic: [[\"joint8\", 1., 0.]]\ngripper_bias: 0.12\ngripper_scale: [-0.01, 0.045]\nhomestate: [[0,0,0,0,0,0],[0,0,0,0,0,0]]\ndelta_matrix: [[1,0,0],[0,1,0],[0,0,1]]\n# global_trans_matrix: [[0,0,1],[0,1,0],[-1,0,0]] # for mplib\nglobal_trans_matrix: [[1,0,0],[0,-1,0],[0,0,-1]] # for curobo\nrobot_pose: [[0, -0.35, 0.784, 0.707, 0, 0, 0.707]]  # modify\n# planner: \"mplib_RRT\"\nplanner: \"curobo\"\ndual_arm: False\ngrasp_perfect_direction: ['front_right', 'front_left']\nstatic_camera_list: \n- name: head_camera\n  position:\n  - -0.032\n  - -0.45\n  - 1.35\n  forward:\n  - 0\n  - 0.6\n  - -0.8\n  left:\n  - -1\n  - 0\n  - 0\n# - name: front_camera\n#   type: D435\n#   position:\n#   - 0\n#   - -0.45\n#   - 0.85\n#   forward:\n#   - 0\n#   - 1\n#   - -0.1\n#   left:\n#   - -1\n#   - 0\n#   - 0",
+      "urdf_member": "embodiments/ARX-X5/X5A.urdf",
+      "urdf_sha256": "7aaa308a1a5b6a213d914db86ba09ddd6252f25cb498ac9a148bfa6c7166a423",
+      "joint_names": [
+        [
+          "joint1",
+          "joint2",
+          "joint3",
+          "joint4",
+          "joint5",
+          "joint6"
+        ],
+        [
+          "joint1",
+          "joint2",
+          "joint3",
+          "joint4",
+          "joint5",
+          "joint6"
+        ]
+      ],
+      "ee_joints": [
+        "joint6",
+        "joint6"
+      ],
+      "move_group": [
+        "link6",
+        "link6"
+      ],
+      "dual_arm": false,
+      "gripper_scale": [
+        -0.01,
+        0.045
+      ],
+      "gripper_bias": 0.12,
+      "delta_matrix": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "global_trans_matrix": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          -1,
+          0
+        ],
+        [
+          0,
+          0,
+          -1
+        ]
+      ],
+      "robot_pose_wxyz": [
+        [
+          0,
+          -0.35,
+          0.784,
+          0.707,
+          0,
+          0,
+          0.707
+        ]
+      ],
+      "planner": "curobo",
+      "checks": {
+        "arm_joints_exist": true,
+        "ee_joints_exist": true,
+        "move_group_links_exist": true,
+        "six_arm_joints_each": true
+      }
+    }
+  ],
+  "all_structural_checks_passed": true,
+  "fk_or_replay_verified": false,
+  "gpu_used": false,
+  "previous_approval_failure_resolved": true
+}

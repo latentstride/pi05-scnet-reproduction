@@ -1,0 +1,44 @@
+{
+  "base_commit": "0467a96258a2e3982196ae928a153ed85bddce8d",
+  "gpu_job_source_commit": "9eb42a97c29ce93e8c123f49540340e45c41875c",
+  "scope": "saved exchanges, FK, static CPU FCL, pinned source inspection and existing expert data only",
+  "gpu_used": false,
+  "model_inference": false,
+  "physics_steps": 0,
+  "related_cpu_tests": 22,
+  "related_cpu_tests_passed": true,
+  "source_lint_ast_passed": true,
+  "source_files": {
+    "scripts/g2_second_query_audit_cpu.py": "e426958fc71fe86fe2fda7a9c2056ffe14d710bfa2cda6dfe8f42e82c8085745",
+    "scripts/g2_second_query_geometry_cpu.py": "c44319bdac2e0fd39ed2cd24da9361eeda5b65a44ce090f97e33fa33a4c3bb4e",
+    "scripts/g2e_static_guard_cpu.py": "40754ee84a8145549174d467f0f0abf7bce2db9a131cda9bcd6a9a94b56af2b3"
+  },
+  "pinned_source_files_verified": 60,
+  "public_key_evidence_sha256": "68c29eb4ee50f358a515a4e35f2d6d25f8ed563654ee172a07e806886f71713e",
+  "private_original_archive_sha256": "846aeaf7aed5fb189e5ede4dd6472076ca0ac42e65d31b594323641529256962",
+  "private_original_archive_bytes": 522599,
+  "geometry_cpu_completion": {
+    "phase": "complete",
+    "exit_code": 0,
+    "elapsed_s": 70.75785064697266,
+    "gpu_used": false
+  },
+  "geometry_environment": {
+    "sapien": "3.0.0b1",
+    "mplib": "0.2.1"
+  },
+  "geometry_initial_attempt": "CPU container startup exceeded 100 seconds; no numeric result claimed for that attempt",
+  "geometry_initial_upload": "stdin transfer did not complete; no geometry result claimed",
+  "cpu_cleanup": "bounded dedicated CPU process completed with exit 0; no Slurm commands or GPU processes launched",
+  "historical_results_and_all_tracked_files_unchanged": true,
+  "unified_ten_trial_protocol_and_candidate_unchanged": true,
+  "unchanged_candidate_sha256": "be7af44b4cb70ad49362b0475829c12e90de09075e545d45f0b39d93c75e8d71",
+  "submission_authorized": false,
+  "unknowns": [
+    "actual checkpoint training sample identities, processed pixels and prompts",
+    "second model request server-side echo and normalization/denoising intermediate tensors",
+    "matched full expert state at policy query2",
+    "causal separation of policy capacity and author/project protocol differences",
+    "dynamic continuation of any expert goal from captured policy state"
+  ]
+}

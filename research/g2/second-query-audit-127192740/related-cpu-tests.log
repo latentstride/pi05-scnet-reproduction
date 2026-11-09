@@ -1,0 +1,27 @@
+test_analytic_jacobian (test_g2_adapter.AdapterTests.test_analytic_jacobian) ... ok
+test_atomic_failures_and_no_seed_advance (test_g2_adapter.AdapterTests.test_atomic_failures_and_no_seed_advance) ... ok
+test_duplicate_joint_and_mimic_mismatch (test_g2_adapter.AdapterTests.test_duplicate_joint_and_mimic_mismatch) ... ok
+test_fk_matches_independent_sapien_archive (test_g2_adapter.AdapterTests.test_fk_matches_independent_sapien_archive) ... ok
+test_gripper_audit_and_illegal_chunk (test_g2_adapter.AdapterTests.test_gripper_audit_and_illegal_chunk) ... ok
+test_known_pose_ik_with_perturbed_seed (test_g2_adapter.AdapterTests.test_known_pose_ik_with_perturbed_seed) ... ok
+test_limits_and_calibration_rejected (test_g2_adapter.AdapterTests.test_limits_and_calibration_rejected) ... ok
+test_no_solution_timeout_and_collision (test_g2_adapter.AdapterTests.test_no_solution_timeout_and_collision) ... ok
+test_observe_and_actions_roundtrip_with_real_urdfs (test_g2_adapter.AdapterTests.test_observe_and_actions_roundtrip_with_real_urdfs) ... ok
+test_retiming_and_midpath_collision (test_g2_adapter.AdapterTests.test_retiming_and_midpath_collision) ... ok
+test_stale_and_discontinuous_states (test_g2_adapter.AdapterTests.test_stale_and_discontinuous_states) ... ok
+test_stale_image_is_rejected (test_g2_adapter.AdapterTests.test_stale_image_is_rejected) ... ok
+test_task_frame_change_preserves_mapping (test_g2_adapter.AdapterTests.test_task_frame_change_preserves_mapping) ... ok
+test_complete_native_episodes_keep_qpos_and_true_scene_clock (test_g2_native_backend.NativeBackendTests.test_complete_native_episodes_keep_qpos_and_true_scene_clock) ... ok
+test_invalid_native_prefix_is_rejected_before_any_physics_step (test_g2_native_backend.NativeBackendTests.test_invalid_native_prefix_is_rejected_before_any_physics_step) ... ok
+test_native_partial_fault_holds_and_closes (test_g2_native_backend.NativeBackendTests.test_native_partial_fault_holds_and_closes) ... ok
+test_complete_roster_and_isolated_native_pair_rejection (test_g2_unified_review.UnifiedCampaignTests.test_complete_roster_and_isolated_native_pair_rejection) ... ok
+test_unsafe_or_unproven_completion_stops_immediately (test_g2_unified_review.UnifiedCampaignTests.test_unsafe_or_unproven_completion_stops_immediately) ... ok
+test_first_exchange_uses_content_and_blocks_motion_on_difference (test_g2_unified_review.UnifiedReviewTests.test_first_exchange_uses_content_and_blocks_motion_on_difference) ... ok
+test_h50_executes_late_close_and_guards_each_step (test_g2_unified_review.UnifiedReviewTests.test_h50_executes_late_close_and_guards_each_step) ... ok
+test_h50_late_envelope_and_physics_cap_are_fail_closed (test_g2_unified_review.UnifiedReviewTests.test_h50_late_envelope_and_physics_cap_are_fail_closed) ... ok
+test_roster_builds_guarded_candidate_without_changing_legacy (test_g2_unified_review.UnifiedReviewTests.test_roster_builds_guarded_candidate_without_changing_legacy) ... ok
+
+----------------------------------------------------------------------
+Ran 22 tests in 1.482s
+
+OK

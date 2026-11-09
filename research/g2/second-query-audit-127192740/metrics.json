@@ -1,0 +1,1086 @@
+{
+  "job": "127192740",
+  "audit_base": "0467a96258a2e3982196ae928a153ed85bddce8d",
+  "gpu_used": false,
+  "model_inference": false,
+  "physics_steps": 0,
+  "runtime_modified": false,
+  "model_files_match_frozen_manifest": true,
+  "norm_stats_sha256": "8a1f114a8873dfa0788c7f512851ee3063224ef2b8af270421076a2e4e544960",
+  "config_sha256": "04f2e041cedb07a2eae69425175c60d235ed086095cce10600dfb9e492a8bae6",
+  "config_canonical_sha256": "4128fd2c4a66a280a2aece4379b5c35fb84b1b1fdcfa3406c7729b83357ea6de",
+  "pinned_revisions": {
+    "pace": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+    "train": "ba9876639cb7a4bf0c7db00ec39eeb9c8efd8b12",
+    "runtime": "f4e52e6de4cc487a11585a3a7414d610b2883dae",
+    "checkpoint": "17ef545270cf26ed81169893b60f845f80ce6557",
+    "official_dataset": "3dc3b798668feb99ac61cc9086d84cbcc3d79186",
+    "robotwin_stable_base": "13c3c47ff4312dd62484bcd51be034af55c062d1",
+    "robotwin_probe_decoder": "ea8b21121ebb3cd201ff5b3fe361944ac94eda3f"
+  },
+  "pinned_source_files": {
+    "pace/README.md": {
+      "sha256": "bb43196f85749f19d1b8cff234ceb025eb96cb42793c29b445e08f56566f52f9",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/README.md"
+    },
+    "pace/description/task_instruction/handover_block.json": {
+      "sha256": "8fed548a88ebeadc164889398e20532f622509c867c0a075653e2bf35b8daa19",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/description/task_instruction/handover_block.json"
+    },
+    "pace/description/utils/generate_episode_instructions.py": {
+      "sha256": "ef428fa9066c3025d41e2fabcbf894d1d4313bd12bee0a300d19d3d7d1158f24",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/description/utils/generate_episode_instructions.py"
+    },
+    "pace/envs/_GLOBAL_CONFIGS.py": {
+      "sha256": "f3640d4d132531e1c4a72f1f27dd6312c95aadcb72ab43c638458cf994b5a4d4",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/envs/_GLOBAL_CONFIGS.py"
+    },
+    "pace/envs/_base_task.py": {
+      "sha256": "448f7152b65cb9102217cf5463aa821d72810ca56f63d5a797ec7bd43e23e101",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/envs/_base_task.py"
+    },
+    "pace/envs/handover_block.py": {
+      "sha256": "5439712296d7e143d41f8e78b4ab86cd4fad7fb98f40f5f5abb067a462d17650",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/envs/handover_block.py"
+    },
+    "pace/envs/robot/planner.py": {
+      "sha256": "f1012345542483f4cfbac64880a266b7ee0d4a64362d5ec6fd6985ed9c34b564",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/envs/robot/planner.py"
+    },
+    "pace/envs/robot/robot.py": {
+      "sha256": "3dcd80acc8cab489a4c5edb507cc460dab1724be0226b8d5c4c1b218dee605cb",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/envs/robot/robot.py"
+    },
+    "pace/envs/utils/actor_utils.py": {
+      "sha256": "252d43c526b23adcf4ba549fec64a49f037fc4a24e9edd1998e5f60d3e13d5d9",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/envs/utils/actor_utils.py"
+    },
+    "pace/envs/utils/parse_hdf5.py": {
+      "sha256": "0a7c47157e38ad742aa8ef10192021264e66fbae03344b12be526262c0e13c51",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/envs/utils/parse_hdf5.py"
+    },
+    "pace/envs/utils/pkl2hdf5.py": {
+      "sha256": "e119b4093c25f881c535a041bf1895e182ba00564d6ca57f6d6fe4fb62b2666c",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/envs/utils/pkl2hdf5.py"
+    },
+    "pace/pace/configs/calibration/handover_block.json": {
+      "sha256": "d66b55926fb3afc655199986710f84d8bc519e4443c11ceb51725814da98204f",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/pace/configs/calibration/handover_block.json"
+    },
+    "pace/pace/configs/expert_scenes.json": {
+      "sha256": "12ac49e3913308901113cc8ddd9f71f0987ce8c9ebd83f03c308c759bdbeb939",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/pace/configs/expert_scenes.json"
+    },
+    "pace/pace/pyproject.toml": {
+      "sha256": "53b9d835b7108e72de2f28e6052156a8a8aa25f7fa12a90a0ba0be783680d9bd",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/pace/pyproject.toml"
+    },
+    "pace/pace/scripts/_eval_worker.py": {
+      "sha256": "c5d75694db7e37542153dab7df880df3cd4ce6c8e13255d20460db921ef3b8c4",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/pace/scripts/_eval_worker.py"
+    },
+    "pace/pace/scripts/calibrate.py": {
+      "sha256": "f142a3764bcd1d651f30b149647812df39b38f8da1296c0d8d2ce41dcfe1d39d",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/pace/scripts/calibrate.py"
+    },
+    "pace/pace/scripts/eval.yaml": {
+      "sha256": "7f6d4c70b56f40cb3790530a9ff001270b0b172bf541052d71328eaebd40f177",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/pace/scripts/eval.yaml"
+    },
+    "pace/pace/scripts/evaluate.py": {
+      "sha256": "94a3f5ab01beacba042c4625c545a689b52bd8b1ed536a35752b309a138c6bf4",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/pace/scripts/evaluate.py"
+    },
+    "pace/pace/src/pace/core.py": {
+      "sha256": "2681dc9221ae41852cbfb1bde20bea869e111e32d72e2bab3996777593b0e56e",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/pace/src/pace/core.py"
+    },
+    "pace/pace/src/pace/datasets.py": {
+      "sha256": "348620d0d3e8e2f7e6c2238c1f49150dbacc65e18ff1ebb578b4a253d21a9517",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/pace/src/pace/datasets.py"
+    },
+    "pace/pace/src/pace/robotwin.py": {
+      "sha256": "3d2bc995065da352c8292a3109841f30dff79fb39e810844bbd14ecef85ef2eb",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/pace/src/pace/robotwin.py"
+    },
+    "pace/pace/src/pace/rollout.py": {
+      "sha256": "6ea198bcf47d6b6e62bd9206b6c5694466ca6346b30ad9c20885e4009af91325",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/pace/src/pace/rollout.py"
+    },
+    "pace/policy/pi05/examples/aloha_real/convert_aloha_data_to_lerobot_robotwin.py": {
+      "sha256": "b8f0829329e099b7246b3d6467cec3ea4d60767eedd219b825d0b7f26bb7c373",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/policy/pi05/examples/aloha_real/convert_aloha_data_to_lerobot_robotwin.py"
+    },
+    "pace/policy/pi05/process_data_pi05.sh": {
+      "sha256": "868c92fbb76b9b7b2a8d1ecd630237df8d320c7aa3a37b5bd0e704d8c0d49bbe",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/policy/pi05/process_data_pi05.sh"
+    },
+    "pace/policy/pi05/scripts/process_data.py": {
+      "sha256": "b462918bf3f41f6d2fc30c3498381ac3cc7d8ce7a8bd6333fafb925e7d9d5590",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/policy/pi05/scripts/process_data.py"
+    },
+    "pace/script/_install.sh": {
+      "sha256": "34bf2e47427f4b89962c5744894f17c9ad216ac95d4f2978c18563b808e1835f",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/script/_install.sh"
+    },
+    "pace/script/collect_data.py": {
+      "sha256": "e51d8dca1afd843206187a72537dc467d1db07bd1c860055ad59e47b181c81ab",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/script/collect_data.py"
+    },
+    "pace/task_config/_camera_config.yml": {
+      "sha256": "dc80a40552e0fad25d58cf0141302ceba66d22409b5091bed235ad2f10cbce7f",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/task_config/_camera_config.yml"
+    },
+    "pace/task_config/_embodiment_config.yml": {
+      "sha256": "b0a198ff27bf6bf6b73162d2d1adafc7e73fcdf53f39943e67e40fee15bd83fa",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/task_config/_embodiment_config.yml"
+    },
+    "pace/task_config/_eval_step_limit.yml": {
+      "sha256": "41c62bd26184977bae45aee555edd0cc21de5cddf560c2595921fc23a1e3b551",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/task_config/_eval_step_limit.yml"
+    },
+    "pace/task_config/demo_clean.yml": {
+      "sha256": "8ee5d0d07daecf7599b8d89b44776b700c7c60da24cd6317e176e6798d8cb11e",
+      "url": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/task_config/demo_clean.yml"
+    },
+    "train/README.md": {
+      "sha256": "fa3af0760dc2fbaf1c47003aa2693410bee37c8779757a6c4a3a3f094b18c582",
+      "url": "https://raw.githubusercontent.com/niejunnan25/Openpi-PACE/ba9876639cb7a4bf0c7db00ec39eeb9c8efd8b12/README.md"
+    },
+    "train/pace/README.md": {
+      "sha256": "750eea8662b58e3b87c93d5644976dd7362a0b7dffee72d38284670fbbd38ea1",
+      "url": "https://raw.githubusercontent.com/niejunnan25/Openpi-PACE/ba9876639cb7a4bf0c7db00ec39eeb9c8efd8b12/pace/README.md"
+    },
+    "train/pace/src/openpi_pace/configs.py": {
+      "sha256": "4f4678269417c7a9760ed7b2f37f77498af7d4e7791db29fb23e7d69f70257d1",
+      "url": "https://raw.githubusercontent.com/niejunnan25/Openpi-PACE/ba9876639cb7a4bf0c7db00ec39eeb9c8efd8b12/pace/src/openpi_pace/configs.py"
+    },
+    "train/scripts/compute_norm_stats.py": {
+      "sha256": "573e1efce254e6f28c645ede6f22f9b2ab0506dbd79c2c2589a45c87c64a2b67",
+      "url": "https://raw.githubusercontent.com/niejunnan25/Openpi-PACE/ba9876639cb7a4bf0c7db00ec39eeb9c8efd8b12/scripts/compute_norm_stats.py"
+    },
+    "train/scripts/serve_policy.py": {
+      "sha256": "eccc0448b4873fd30a1fff3355c5de7a7c227138e6db04b7dcaa5bb38a6a5809",
+      "url": "https://raw.githubusercontent.com/niejunnan25/Openpi-PACE/ba9876639cb7a4bf0c7db00ec39eeb9c8efd8b12/scripts/serve_policy.py"
+    },
+    "train/src/openpi/models/pi0_config.py": {
+      "sha256": "e15d71586f1a561b35c5651227607613fb16d2df411f3708b1c9d36b02544285",
+      "url": "https://raw.githubusercontent.com/niejunnan25/Openpi-PACE/ba9876639cb7a4bf0c7db00ec39eeb9c8efd8b12/src/openpi/models/pi0_config.py"
+    },
+    "train/src/openpi/policies/aloha_policy.py": {
+      "sha256": "50d7ad972d80142ecb0f03b0780dacfd3af212946f4c9aac31a204b02db4543d",
+      "url": "https://raw.githubusercontent.com/niejunnan25/Openpi-PACE/ba9876639cb7a4bf0c7db00ec39eeb9c8efd8b12/src/openpi/policies/aloha_policy.py"
+    },
+    "train/src/openpi/policies/policy.py": {
+      "sha256": "a2ac5236e23b11d0f5a840d4a8fef148d89dba921d5452ec5dfcd5a6ffa46f20",
+      "url": "https://raw.githubusercontent.com/niejunnan25/Openpi-PACE/ba9876639cb7a4bf0c7db00ec39eeb9c8efd8b12/src/openpi/policies/policy.py"
+    },
+    "train/src/openpi/policies/policy_config.py": {
+      "sha256": "aaf42ab04a33b6c91d2447926211646c33ebd8ebfa427f026d7b6c4f7c45ec52",
+      "url": "https://raw.githubusercontent.com/niejunnan25/Openpi-PACE/ba9876639cb7a4bf0c7db00ec39eeb9c8efd8b12/src/openpi/policies/policy_config.py"
+    },
+    "train/src/openpi/training/config.py": {
+      "sha256": "408150f2618ad53925f40b166ff89dcf9215c3f328024a6acac5f1cd6cc29505",
+      "url": "https://raw.githubusercontent.com/niejunnan25/Openpi-PACE/ba9876639cb7a4bf0c7db00ec39eeb9c8efd8b12/src/openpi/training/config.py"
+    },
+    "train/src/openpi/training/data_loader.py": {
+      "sha256": "99221d1fec5eff2d3f54ea1a14015302164dac7e494e65bb339feb4630f57f4a",
+      "url": "https://raw.githubusercontent.com/niejunnan25/Openpi-PACE/ba9876639cb7a4bf0c7db00ec39eeb9c8efd8b12/src/openpi/training/data_loader.py"
+    },
+    "train/src/openpi/transforms.py": {
+      "sha256": "a1b94e9e72849a18834778f229c6bb389a495eb7fbe0aa800edea728b9424ff4",
+      "url": "https://raw.githubusercontent.com/niejunnan25/Openpi-PACE/ba9876639cb7a4bf0c7db00ec39eeb9c8efd8b12/src/openpi/transforms.py"
+    },
+    "runtime/README.md": {
+      "sha256": "6bd29d51ab996af41d64e587bf9dd995a157530158386b61166582994bb75042",
+      "url": "https://raw.githubusercontent.com/niejunnan25/Openpi-PACE/f4e52e6de4cc487a11585a3a7414d610b2883dae/README.md"
+    },
+    "runtime/pace/src/openpi_pace/configs.py": {
+      "sha256": "4f4678269417c7a9760ed7b2f37f77498af7d4e7791db29fb23e7d69f70257d1",
+      "url": "https://raw.githubusercontent.com/niejunnan25/Openpi-PACE/f4e52e6de4cc487a11585a3a7414d610b2883dae/pace/src/openpi_pace/configs.py"
+    },
+    "runtime/scripts/compute_norm_stats.py": {
+      "sha256": "573e1efce254e6f28c645ede6f22f9b2ab0506dbd79c2c2589a45c87c64a2b67",
+      "url": "https://raw.githubusercontent.com/niejunnan25/Openpi-PACE/f4e52e6de4cc487a11585a3a7414d610b2883dae/scripts/compute_norm_stats.py"
+    },
+    "runtime/scripts/serve_policy.py": {
+      "sha256": "eccc0448b4873fd30a1fff3355c5de7a7c227138e6db04b7dcaa5bb38a6a5809",
+      "url": "https://raw.githubusercontent.com/niejunnan25/Openpi-PACE/f4e52e6de4cc487a11585a3a7414d610b2883dae/scripts/serve_policy.py"
+    },
+    "runtime/src/openpi/models/pi0_config.py": {
+      "sha256": "e15d71586f1a561b35c5651227607613fb16d2df411f3708b1c9d36b02544285",
+      "url": "https://raw.githubusercontent.com/niejunnan25/Openpi-PACE/f4e52e6de4cc487a11585a3a7414d610b2883dae/src/openpi/models/pi0_config.py"
+    },
+    "runtime/src/openpi/policies/aloha_policy.py": {
+      "sha256": "50d7ad972d80142ecb0f03b0780dacfd3af212946f4c9aac31a204b02db4543d",
+      "url": "https://raw.githubusercontent.com/niejunnan25/Openpi-PACE/f4e52e6de4cc487a11585a3a7414d610b2883dae/src/openpi/policies/aloha_policy.py"
+    },
+    "runtime/src/openpi/policies/policy.py": {
+      "sha256": "a2ac5236e23b11d0f5a840d4a8fef148d89dba921d5452ec5dfcd5a6ffa46f20",
+      "url": "https://raw.githubusercontent.com/niejunnan25/Openpi-PACE/f4e52e6de4cc487a11585a3a7414d610b2883dae/src/openpi/policies/policy.py"
+    },
+    "runtime/src/openpi/policies/policy_config.py": {
+      "sha256": "aaf42ab04a33b6c91d2447926211646c33ebd8ebfa427f026d7b6c4f7c45ec52",
+      "url": "https://raw.githubusercontent.com/niejunnan25/Openpi-PACE/f4e52e6de4cc487a11585a3a7414d610b2883dae/src/openpi/policies/policy_config.py"
+    },
+    "runtime/src/openpi/training/config.py": {
+      "sha256": "408150f2618ad53925f40b166ff89dcf9215c3f328024a6acac5f1cd6cc29505",
+      "url": "https://raw.githubusercontent.com/niejunnan25/Openpi-PACE/f4e52e6de4cc487a11585a3a7414d610b2883dae/src/openpi/training/config.py"
+    },
+    "runtime/src/openpi/training/data_loader.py": {
+      "sha256": "99221d1fec5eff2d3f54ea1a14015302164dac7e494e65bb339feb4630f57f4a",
+      "url": "https://raw.githubusercontent.com/niejunnan25/Openpi-PACE/f4e52e6de4cc487a11585a3a7414d610b2883dae/src/openpi/training/data_loader.py"
+    },
+    "runtime/src/openpi/transforms.py": {
+      "sha256": "a1b94e9e72849a18834778f229c6bb389a495eb7fbe0aa800edea728b9424ff4",
+      "url": "https://raw.githubusercontent.com/niejunnan25/Openpi-PACE/f4e52e6de4cc487a11585a3a7414d610b2883dae/src/openpi/transforms.py"
+    },
+    "hf-README.md": {
+      "sha256": "83be10953a5396b9050c615e5db9d4a9d46ef30321cde2ead3886cd35e8830a0",
+      "url": "https://huggingface.co/niejunnan25/pi05-robotwin/resolve/17ef545270cf26ed81169893b60f845f80ce6557/README.md"
+    },
+    "hf-manifest.json": {
+      "sha256": "2337bd9e7244fc3f6d51b0b830a9cdfc8d6e683decf2c398a431bc5800696c41",
+      "url": "https://huggingface.co/niejunnan25/pi05-robotwin/resolve/17ef545270cf26ed81169893b60f845f80ce6557/manifest.json"
+    },
+    "hf-norm_stats.json": {
+      "sha256": "8a1f114a8873dfa0788c7f512851ee3063224ef2b8af270421076a2e4e544960",
+      "url": "https://huggingface.co/niejunnan25/pi05-robotwin/resolve/17ef545270cf26ed81169893b60f845f80ce6557/handover_block/assets/robotwin/norm_stats.json"
+    },
+    "hf-data-handover_block.json": {
+      "sha256": "e7915aeeaacfe0a946a2573059ed69290d09c8f97e83d52a71fafb671eaa49c3",
+      "url": "https://huggingface.co/api/datasets/TianxingChen/RoboTwin2.0/tree/3dc3b798668feb99ac61cc9086d84cbcc3d79186/dataset/handover_block"
+    },
+    "hf-data-adjust_bottle.json": {
+      "sha256": "e1075bc101c893b336d6334ebe6eb92ebeed9dfd5e5b8108550aafccc76199db",
+      "url": "https://huggingface.co/api/datasets/TianxingChen/RoboTwin2.0/tree/3dc3b798668feb99ac61cc9086d84cbcc3d79186/dataset/adjust_bottle"
+    },
+    "hf-model-adjust_bottle.json": {
+      "sha256": "593a4ae08bbc2d5aec2dc2bae6b501290210ebe6bc3c602dbf811191d18f5cc7",
+      "url": "https://huggingface.co/api/models/niejunnan25/pi05-robotwin/tree/17ef545270cf26ed81169893b60f845f80ce6557/adjust_bottle"
+    }
+  },
+  "input": {
+    "camera_stats": [
+      {
+        "cam_high": {
+          "shape": [
+            3,
+            240,
+            320
+          ],
+          "dtype": "uint8",
+          "array_sha256": "c44f9e64da6b1561004d9740dc6ba4f36164a3ea31e2189b376d0787875e372d",
+          "mean_channels": [
+            243.75567708333332,
+            231.49235677083334,
+            236.39885416666667
+          ],
+          "red_dominant_pixels": 1975
+        },
+        "cam_left_wrist": {
+          "shape": [
+            3,
+            240,
+            320
+          ],
+          "dtype": "uint8",
+          "array_sha256": "e9d283af9df25ae407995175e49dad5588f804aac46a3e5c970204cd5f4ab860",
+          "mean_channels": [
+            240.65571614583334,
+            199.19052083333332,
+            199.4366015625
+          ],
+          "red_dominant_pixels": 9826
+        },
+        "cam_right_wrist": {
+          "shape": [
+            3,
+            240,
+            320
+          ],
+          "dtype": "uint8",
+          "array_sha256": "2585b4e50af83901f5b3feac716bbbbda81013982e37c55ddffa6f054aac86f2",
+          "mean_channels": [
+            228.56865885416667,
+            219.0435546875,
+            231.45893229166666
+          ],
+          "red_dominant_pixels": 0
+        }
+      },
+      {
+        "cam_high": {
+          "shape": [
+            3,
+            240,
+            320
+          ],
+          "dtype": "uint8",
+          "array_sha256": "343d9dff7ede7f788816d3050e92bcd3d0e91b68227a742f46bbf8abcb03409f",
+          "mean_channels": [
+            227.28811197916667,
+            216.26528645833332,
+            221.10029947916667
+          ],
+          "red_dominant_pixels": 1700
+        },
+        "cam_left_wrist": {
+          "shape": [
+            3,
+            240,
+            320
+          ],
+          "dtype": "uint8",
+          "array_sha256": "edff4553e776ce1169327558d88ae61d93b7ed81920aaf8a7385fa9907a1f34d",
+          "mean_channels": [
+            230.961015625,
+            209.83303385416667,
+            210.26510416666667
+          ],
+          "red_dominant_pixels": 146
+        },
+        "cam_right_wrist": {
+          "shape": [
+            3,
+            240,
+            320
+          ],
+          "dtype": "uint8",
+          "array_sha256": "28fc3698c88f06b15833b5c0caabf948a8c89d719703f981422a24cba1c36bc1",
+          "mean_channels": [
+            227.924765625,
+            218.29518229166666,
+            230.49903645833334
+          ],
+          "red_dominant_pixels": 0
+        }
+      }
+    ],
+    "states": [
+      {
+        "state": [
+          -3.016260308186247e-08,
+          -5.668539984071685e-07,
+          -4.835977051698137e-06,
+          7.702591631186806e-08,
+          4.6315946633512795e-07,
+          -8.158984883266385e-07,
+          0.9830570816993713,
+          -3.258066882949606e-08,
+          -5.65274206110189e-07,
+          -4.838918357563671e-06,
+          7.693390813301448e-08,
+          4.6469963876916154e-07,
+          -8.163781899384048e-07,
+          0.9830570220947266
+        ],
+        "normalized_using_matching_stats": [
+          0.6529376287352922,
+          -0.9999697863841874,
+          -0.999974184035874,
+          -0.999910019663837,
+          -0.09398989094098598,
+          -0.27467995328056916,
+          0.9665054979928431,
+          -1.0000000776687383,
+          -1.0000004102264188,
+          -1.0000060784095777,
+          -0.999999885917137,
+          -0.9999984837793954,
+          -0.3220281622157881,
+          0.9665053787598263
+        ],
+        "max_abs_normalized": 1.0000060784095777,
+        "outside_q01_q99": [
+          7,
+          8,
+          9
+        ]
+      },
+      {
+        "state": [
+          -0.2735578119754791,
+          2.0902347564697266,
+          1.2195793390274048,
+          0.8471267223358154,
+          -0.43273863196372986,
+          0.014549327082931995,
+          0.9969423413276672,
+          0.0006814830703660846,
+          0.0032370793633162975,
+          0.0010825104545801878,
+          0.00016138750652316958,
+          6.9837762566749e-05,
+          -5.242291990725789e-06,
+          1.0
+        ],
+        "normalized_using_matching_stats": [
+          0.1646988451968343,
+          0.5347450140845149,
+          0.061638139227200295,
+          0.44430066965438497,
+          -0.429841072080388,
+          -0.09823702192150996,
+          0.9942815446827262,
+          -0.9983754191620826,
+          -0.9976508118359154,
+          -0.998640203981777,
+          -0.999760683562663,
+          -0.9997721335552043,
+          -0.3223046534324363,
+          1.000398079217764
+        ],
+        "max_abs_normalized": 1.000398079217764,
+        "outside_q01_q99": [
+          13
+        ]
+      }
+    ],
+    "prompt": "Pick up the red block with the left arm, hand it to the right arm, and place it on the target.",
+    "prompt_in_seen": false,
+    "prompt_in_unseen": false,
+    "first_exchange_independently_reproduced": {
+      "request_sha256": "d95cf892329727cab67694e7180e7a27432e1bc03a88f658ae22e1ffea5e5fdc",
+      "chunk_sha256": "cc7de23c051e93aa47177831149eaf88eb7723ebd6e22669d74b551404894dcf"
+    },
+    "second_server_input_echo_available": false,
+    "snapshot_lines": [
+      1,
+      14433
+    ],
+    "policy_input_lines": [
+      2,
+      14434
+    ],
+    "second_tick": 3575,
+    "barrier_tick": 3575,
+    "discarded_old_tail": 23,
+    "second_state_tracks_approved_arm_float32_exactly": true,
+    "source_state_semantics": "drive targets + requested normalized grippers, not actual arm joints",
+    "normalized_values_are_distribution_indicators_not_training_membership_tests": true
+  },
+  "output": {
+    "chunks": [
+      {
+        "query": 1,
+        "raw_file_sha256": "b4e6bca1d9934ea9dd6a08ee56e4ec3f34f622eb44aa547a77d6efa8664e9928",
+        "plan_file_sha256": "e3b1f4ca76faf0bc695835e2166f1333148fe93225a3329a171d7f2118ec337c",
+        "raw_array_sha256": "cc7de23c051e93aa47177831149eaf88eb7723ebd6e22669d74b551404894dcf",
+        "shape": [
+          50,
+          14
+        ],
+        "dtype": "float64",
+        "first_row": [
+          -0.001148066967297301,
+          0.006663594118839869,
+          -0.0004158471888387576,
+          -0.0030882700650615665,
+          -0.005555603359387651,
+          -0.00010544486289582045,
+          0.9981113062180281,
+          0.0007085487521535048,
+          0.0002702276056104235,
+          -0.0003347108256376168,
+          0.0006888636688560812,
+          -0.00047622566106632775,
+          9.20574400937145e-06,
+          0.9993432082375289
+        ],
+        "first_tcp_task": [
+          [
+            [
+              -0.02440421081390686,
+              0.9997021401290574,
+              0.0002559608029348195,
+              -0.30091043238511544
+            ],
+            [
+              0.9996504744293413,
+              0.024405551826463954,
+              -0.010163563018887956,
+              -0.1934293969674606
+            ],
+            [
+              -0.010166782565960403,
+              7.83760355573807e-06,
+              -0.9999483168998428,
+              0.939792758339459
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          [
+            [
+              -0.011184544775208565,
+              0.9999374509705762,
+              1.0229257348085602e-05,
+              0.30500128888974015
+            ],
+            [
+              0.999937447515052,
+              0.011184543878506968,
+              8.387676740409346e-05,
+              -0.19277140101178278
+            ],
+            [
+              8.375711141604698e-05,
+              1.1166740943250146e-05,
+              -0.9999999964300251,
+              0.9409408578400462
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        ],
+        "final_tcp_task": [
+          [
+            [
+              -0.2210352551310227,
+              0.9752650141818429,
+              0.0012522388165507514,
+              -0.22041390059985405
+            ],
+            [
+              0.9752413512387029,
+              0.22102043270009128,
+              0.0073671679207726595,
+              0.22921116307009615
+            ],
+            [
+              0.006908170761654422,
+              0.0028496389164875467,
+              -0.9999720779775673,
+              0.9184128682870635
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          [
+            [
+              -0.008001409287545197,
+              0.9999679784228891,
+              0.00013992231283385778,
+              0.30559282932849025
+            ],
+            [
+              0.999961162172546,
+              0.008000837570538974,
+              0.0036960444668471715,
+              -0.1929096282588353
+            ],
+            [
+              0.0036948066179767936,
+              0.00016949044307942602,
+              -0.9999931598151286,
+              0.9421812921915669
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        ],
+        "first_left_close_index_zero_based": null,
+        "first_right_close_index_zero_based": null,
+        "clipped_gripper_values": 32,
+        "first_row_directly_matches_raw": true,
+        "arm_targets_byte_equal_to_raw": true
+      },
+      {
+        "query": 2,
+        "raw_file_sha256": "ca15fa31c2386005eba959e764fc95f36c67478d28b9f59c25f13d79a33fcaa3",
+        "plan_file_sha256": "69494b59bf8340f6985af67529033411bc769f7328494d0070a879465196b039",
+        "raw_array_sha256": "08c933f4d31fda970aa3a933046a7f81cf44b05b361482972c5b868fbc575e9d",
+        "shape": [
+          50,
+          14
+        ],
+        "dtype": "float64",
+        "first_row": [
+          -0.2809425598794709,
+          2.1553232518280865,
+          1.2552970704410797,
+          0.8734450107086791,
+          -0.44238623541291267,
+          0.01459111598233466,
+          0.999266333546877,
+          0.001290804045865174,
+          0.0018246353383928706,
+          0.0006325079959185794,
+          -0.0007389313587360145,
+          0.0003928854706782328,
+          3.8052347958643026e-05,
+          0.9998067209072113
+        ],
+        "first_tcp_task": [
+          [
+            [
+              -0.2044444818856319,
+              0.9788449240442438,
+              -0.00806650477804014,
+              -0.21871452313344159
+            ],
+            [
+              0.9784256552771051,
+              0.20409249945776772,
+              -0.03208564726865312,
+              0.15272089327611627
+            ],
+            [
+              -0.02976055984155689,
+              -0.014452208755054726,
+              -0.9994525715310444,
+              0.940450312615874
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          [
+            [
+              -0.010897681116707445,
+              0.9999406185047764,
+              -3.2501386338272084e-06,
+              0.30499971907215623
+            ],
+            [
+              0.999938753710737,
+              0.01089765451617591,
+              -0.0019313087438304602,
+              -0.19273558967966098
+            ],
+            [
+              -0.001931158640941552,
+              -2.429672640306948e-05,
+              -0.9999981350162471,
+              0.9407661051467562
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        ],
+        "final_tcp_task": [
+          [
+            [
+              -0.19389758838116658,
+              0.9810107571877323,
+              -0.0046496776145870345,
+              -0.2141114249965794
+            ],
+            [
+              0.9809816118263887,
+              0.19384458420783784,
+              -0.009967669325904977,
+              0.24087923670199893
+            ],
+            [
+              -0.008877076008903006,
+              -0.006493955284904613,
+              -0.9999395112036974,
+              0.9000693217905941
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          [
+            [
+              -0.008924228084643927,
+              0.9999601774047889,
+              4.19246500367675e-05,
+              0.3054351491814696
+            ],
+            [
+              0.9999574124028529,
+              0.008924302003796158,
+              -0.0023516407752610627,
+              -0.1926897687719645
+            ],
+            [
+              -0.0023519212750607197,
+              2.093628591508261e-05,
+              -0.9999972340101686,
+              0.9406112899844122
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        ],
+        "first_left_close_index_zero_based": 35,
+        "first_right_close_index_zero_based": null,
+        "clipped_gripper_values": 46,
+        "first_row_directly_matches_raw": true,
+        "arm_targets_byte_equal_to_raw": true
+      }
+    ],
+    "all_100_predicted_tcp_file": "predicted-tcp.npz",
+    "all_100_predicted_tcp_sha256": "48805dc91c2d3c75143ce5e3e1fc067c117d8d8f961c0d618a87938bd161c6ba",
+    "all_100_predicted_tcp_shape": [
+      2,
+      50,
+      2,
+      4,
+      4
+    ],
+    "two_prediction_arrays_identical": false,
+    "approved_prefix_requests_match_logged_requests": true,
+    "second_raw_tcp_delta_from_query_state_mm": [
+      5.023142540529685,
+      8.968365370822962,
+      -15.53437491288323
+    ],
+    "second_raw_rotation_delta_from_state": {
+      "position_mm": 18.62740836351293,
+      "angle_deg": 0.2597440277160954
+    },
+    "second_state_vs_actual_tcp": {
+      "position_mm": 3.8951065417957746,
+      "angle_deg": 0.2987419877251786
+    },
+    "second_raw_tcp": [
+      [
+        -0.2044444818856319,
+        0.9788449240442438,
+        -0.00806650477804014,
+        -0.21871452313344159
+      ],
+      [
+        0.9784256552771051,
+        0.20409249945776772,
+        -0.03208564726865312,
+        0.15272089327611627
+      ],
+      [
+        -0.02976055984155689,
+        -0.014452208755054726,
+        -0.9994525715310444,
+        0.940450312615874
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "logged_corrected_candidate_tcp": [
+      [
+        -0.20444438033933135,
+        0.9788449435495306,
+        -0.00806671154703039,
+        -0.21871499309653578
+      ],
+      [
+        0.9784256989066749,
+        0.20409240208288965,
+        -0.03208493620098194,
+        0.15271922646903527
+      ],
+      [
+        -0.029759823027897283,
+        -0.014452262783118487,
+        -0.9994525926895163,
+        0.9519500976210613
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "corrected_vs_raw_mm": [
+      -0.00046996309419067295,
+      -0.0016668070809966462,
+      11.499785005187334
+    ],
+    "corrected_refinement_residual": {
+      "position_mm": 0.0017450885148367538,
+      "angle_deg": 4.281320004236888e-05
+    },
+    "final_rejection_refers_to": "plus-z refinement candidate, not the untouched raw goal",
+    "logged_corrected_depth_m": 0.004735735245049,
+    "second_actions_executed": 0
+  },
+  "expert": {
+    "source_trace_sha256": "749c82d3d4ccca01a8eba522848b04856ed98ca504e97f1f6f1c55f12b3ebcd7",
+    "measured_trace_sha256": "0a77363bbf190c5275c6ee7aa28e86e45094cdb19ff263d133347c9f28cc9fee",
+    "recorded_joint_frame_to_tcp_offset_m": 0.12,
+    "recorded_joint_frame_to_tcp_right_rotation": [
+      [
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        -1.0
+      ]
+    ],
+    "maximum_convention_conversion_element_error": 8.334125940201442e-07,
+    "settled_block_position_exact_match": true,
+    "pregrasp_references": [
+      {
+        "expert_tick": 576,
+        "model_state_time_aligned": false,
+        "expert_command_tcp": [
+          [
+            0.9711348114046542,
+            0.2385312936192441,
+            6.509722032450273e-06,
+            -0.25366540752774225
+          ],
+          [
+            0.23853129363245842,
+            -0.971134811422324,
+            -1.3238637235129983e-06,
+            0.18358299499333564
+          ],
+          [
+            6.006034751840909e-06,
+            2.8384225650831873e-06,
+            -0.9999999999779354,
+            0.9099988800331082
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "expert_measured_tcp": [
+          [
+            0.9721330687807362,
+            0.2344279900972182,
+            0.0009022427204919195,
+            -0.24993921310660694
+          ],
+          [
+            0.23442896229497437,
+            -0.9721128748524109,
+            -0.0062944565676539355,
+            0.18323400233934659
+          ],
+          [
+            -0.0005985150370772534,
+            0.006330561204123482,
+            -0.9999797826829256,
+            0.9084130546156504
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "expert_gripper": [
+          1.0,
+          1.0
+        ],
+        "reference_only_difference": {
+          "position_mm": 67.11032120876905,
+          "angle_deg": 88.34667550332986
+        }
+      },
+      {
+        "expert_tick": 709,
+        "model_state_time_aligned": false,
+        "expert_command_tcp": [
+          [
+            0.9711330006860411,
+            0.23853866558156564,
+            1.0446483628153253e-06,
+            -0.1856860148321704
+          ],
+          [
+            0.2385386655797113,
+            -0.9711330006856738,
+            1.6399191056412193e-06,
+            0.20028268684194153
+          ],
+          [
+            1.4056766143495263e-06,
+            -1.3433905353973946e-06,
+            -0.9999999999981097,
+            0.9100005202555852
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "expert_measured_tcp": [
+          [
+            0.970707628115492,
+            0.24026375465703761,
+            -0.00017004851728899585,
+            -0.18809933446951227
+          ],
+          [
+            0.24026350669732646,
+            -0.9707050065546594,
+            0.002288580176124833,
+            0.20000778877274883
+          ],
+          [
+            0.0003847959188597939,
+            -0.0022623986875908255,
+            -0.9999973667386726,
+            0.9114505564821878
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "expert_gripper": [
+          1.0,
+          1.0
+        ],
+        "reference_only_difference": {
+          "position_mm": 82.91850300219278,
+          "angle_deg": 88.00670527444281
+        }
+      }
+    ],
+    "nearest_pregrasp_measured_position_tick": 454,
+    "nearest_full_pose_difference": {
+      "position_mm": 32.0776146191473,
+      "angle_deg": 84.04904572638036
+    },
+    "exact_matched_expert_state_available": false,
+    "warning": "No time-index action subtraction or expert next-action label at the policy state; endpoint comparison is a phase reference only."
+  },
+  "raw_manifest": {
+    "trials/unified-seed0-native-w50/episode/action-00001.npy": {
+      "bytes": 5728,
+      "sha256": "b4e6bca1d9934ea9dd6a08ee56e4ec3f34f622eb44aa547a77d6efa8664e9928"
+    },
+    "trials/unified-seed0-native-w50/episode/action-00002.npy": {
+      "bytes": 5728,
+      "sha256": "ca15fa31c2386005eba959e764fc95f36c67478d28b9f59c25f13d79a33fcaa3"
+    },
+    "trials/unified-seed0-native-w50/episode/plan-00001.npy": {
+      "bytes": 5728,
+      "sha256": "e3b1f4ca76faf0bc695835e2166f1333148fe93225a3329a171d7f2118ec337c"
+    },
+    "trials/unified-seed0-native-w50/episode/plan-00002.npy": {
+      "bytes": 5728,
+      "sha256": "69494b59bf8340f6985af67529033411bc769f7328494d0070a879465196b039"
+    },
+    "trials/unified-seed0-native-w50/episode/observation-00001.npz": {
+      "bytes": 134642,
+      "sha256": "f691777e92c5d4fa258da8e8389befbad4f49e63e11360d6c594156602f94cd3"
+    },
+    "trials/unified-seed0-native-w50/episode/observation-00002.npz": {
+      "bytes": 155278,
+      "sha256": "629bcfba1e29c3af6e60d22a6c4b438e04a0b3d5c9adb2a8500095ab8e99cae2"
+    },
+    "trials/unified-seed0-native-w50/episode/initial-readback.json": {
+      "bytes": 1611,
+      "sha256": "4731bda8be282b62eb03d1380bf2b4f2cec286e404075b008ed9f68fab0e540d"
+    },
+    "trials/unified-seed0-native-w50/episode/initial-verification.json": {
+      "bytes": 286,
+      "sha256": "c14d62c0634543a4b6186262f3b07b15ff30c59e8da05bf2aafc6212abe9648d"
+    },
+    "trials/unified-seed0-native-w50/episode/setup.json": {
+      "bytes": 2788,
+      "sha256": "18cdfb312d87e88e7f44c5107481813ac98146985b86a567a0d5e9706afa2b12"
+    },
+    "trials/unified-seed0-native-w50/episode/result.json": {
+      "bytes": 89898,
+      "sha256": "d0a81c5305b1b6533f1c488fc24cf4281529097b12448fd4ec05adf263c62670"
+    },
+    "trials/unified-seed0-native-w50/receipt.json": {
+      "bytes": 95261,
+      "sha256": "3c92400ebe610eab5677bdb4f0290086e03776d5c18d93490a463c79c6d34be3"
+    },
+    "trials/unified-seed0-native-w50/first-exchange.json": {
+      "bytes": 647,
+      "sha256": "26985d1d3f2a58a7e3d74698bdaeb0900f94f4257b4c950590cc05092f3dc068"
+    },
+    "trials/unified-seed0-native-w50/rng-reset.json": {
+      "bytes": 97,
+      "sha256": "e137ec0d311308fd2fef4d8cda824b24de618eb59b64c8bb9e68c9a9546d23a8"
+    },
+    "model/startup.json": {
+      "bytes": 5617,
+      "sha256": "d92a0a8119285d9d6b0a02453a08f05e7eb9f3539eaf8552bcbd2c29e1ce31f0"
+    },
+    "model/phases.jsonl": {
+      "bytes": 2452,
+      "sha256": "9256ee29a497e2f2be4116defbbf1dae74a5215e761c398c05473e4b775440c3"
+    },
+    "startup/unified-seed0-native-w50/receipt.json": {
+      "bytes": 595,
+      "sha256": "422ca4bdbc7c6bac0579e16d315dcac6c3cf3bc2fe26a74d3012c1d02867ff8f"
+    },
+    "effective-launch.json": {
+      "bytes": 128469,
+      "sha256": "a8199d123c40f8ab45c840e0ec5eb29de462887ed65b57954357de69e9e00e08"
+    },
+    "trials/unified-seed0-native-w50/episode/events.jsonl": {
+      "bytes": 98710774,
+      "sha256": "53fdba86fd289360a5ae2ae99240d012d189d4417577237b272fb9b48b7950ca",
+      "counts": {
+        "snapshot": 2,
+        "policy_input": 2,
+        "gripper_target": 200,
+        "native_action_request": 28,
+        "native_preload_control": 3575,
+        "executed_step": 3575,
+        "native_contact_sample": 3575,
+        "native_guard_state": 3575,
+        "native_approach_projection": 1,
+        "native_approach_barrier": 1,
+        "contact_replan": 1,
+        "native_guard_rejection": 1,
+        "partial_prefix_abort": 1
+      }
+    }
+  },
+  "source_script_sha256": "e426958fc71fe86fe2fda7a9c2056ffe14d710bfa2cda6dfe8f42e82c8085745"
+}

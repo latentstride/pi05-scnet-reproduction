@@ -1,0 +1,198 @@
+{
+  "archive": {
+    "source_job": "126905534",
+    "archive_sha256": "d2c409bde5d944ff0add3ae18c7457815e3656fcc48bfbedec8aa08580b3ce55",
+    "original_npz_member": "pace-g1-126905534/g1_3/initial_observation.npz",
+    "original_npz_sha256": "e109f647173236b68aa3b92204de79b3a2008a841793e7fa80470a885e8ef6cc",
+    "scene_seed": 100000,
+    "cache_sha256": "12ac49e3913308901113cc8ddd9f71f0987ce8c9ebd83f03c308c759bdbeb939",
+    "pace_revision": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+    "initial_poses": {
+      "left_robot_base": {
+        "position": [
+          0.0,
+          -0.6499999761581421,
+          0.0
+        ],
+        "quaternion_wxyz": [
+          0.7071068286895752,
+          0.0,
+          0.0,
+          0.7071068286895752
+        ]
+      },
+      "right_robot_base": {
+        "position": [
+          0.0,
+          -0.6499999761581421,
+          0.0
+        ],
+        "quaternion_wxyz": [
+          0.7071068286895752,
+          0.0,
+          0.0,
+          0.7071068286895752
+        ]
+      },
+      "block": {
+        "position": [
+          -0.1521603763103485,
+          0.2279314547777176,
+          0.8400001525878906
+        ],
+        "quaternion_wxyz": [
+          0.9719521403312683,
+          2.1625764645705203e-07,
+          -3.435390226513846e-06,
+          0.23517878353595734
+        ]
+      },
+      "target": {
+        "position": [
+          0.16532817482948303,
+          0.16106395423412323,
+          0.7409999966621399
+        ],
+        "quaternion_wxyz": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "table": {
+        "position": [
+          0.0,
+          0.0,
+          0.7400000095367432
+        ],
+        "quaternion_wxyz": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "drive_state": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "cameras": {
+      "cam_high": {
+        "shape": [
+          3,
+          240,
+          320
+        ],
+        "dtype": "uint8",
+        "sha256": "d8bc92421b8635e2af2987edafd7c9c76f2c99b332b6bd7bfbc544756b6a8ce6",
+        "min": 0,
+        "max": 255
+      },
+      "cam_left_wrist": {
+        "shape": [
+          3,
+          240,
+          320
+        ],
+        "dtype": "uint8",
+        "sha256": "7252a695da050cbc4b908c71b372ab66546ba5916aca56c91409f5bfa8683459",
+        "min": 0,
+        "max": 255
+      },
+      "cam_right_wrist": {
+        "shape": [
+          3,
+          240,
+          320
+        ],
+        "dtype": "uint8",
+        "sha256": "f5b7401786fbf4329935f557fb0d66694e72d504bc2e27f6998f73d4d2f8d1b8",
+        "min": 0,
+        "max": 255
+      }
+    },
+    "prompt": "Grab the red block with the left arm.",
+    "control_steps": 8,
+    "scope": "Archived real first frame of the G1 interface smoke; not a current live reset or a Fixed H50 result."
+  },
+  "spawn_rng": {
+    "block_spawn_m": [
+      -0.15215970288601827,
+      0.22793164308959243,
+      0.842
+    ],
+    "block_random_euler_rad": [
+      0.0,
+      0.0,
+      0.08236666400168074
+    ],
+    "target_spawn_m": [
+      0.1653281773362243,
+      0.16106395968130255,
+      0.741
+    ],
+    "archived_settled_xy_errors_m": {
+      "block": 6.992579572460746e-07,
+      "target": 5.996291709874081e-09
+    },
+    "static_camera_count": 2,
+    "scope": "Random draw reconstruction only. Settled state is not computed by this check."
+  },
+  "physical_cpu_comparison": {
+    "archived_vs_cpu_pose_errors": {
+      "left_robot_base": {
+        "position_m": 0.0,
+        "angle_deg": 2.8249000307521015e-30
+      },
+      "right_robot_base": {
+        "position_m": 0.0,
+        "angle_deg": 2.8249000307521015e-30
+      },
+      "block": {
+        "position_m": 0.0,
+        "angle_deg": 1.213285324654967e-20
+      },
+      "target": {
+        "position_m": 0.0,
+        "angle_deg": 0.0
+      },
+      "table": {
+        "position_m": 0.0,
+        "angle_deg": 0.0
+      }
+    },
+    "drive_state_max_absolute_difference": 0.0,
+    "existing_pose_tolerance_m": 0.001,
+    "existing_pose_tolerance_deg": 0.1,
+    "pose_matches_within_existing_initial_tolerances": true,
+    "scope": "Physical pose comparison against historical first-frame metadata only; no new rendering."
+  },
+  "tick_zero": {
+    "candidate_provenance_preserved": true,
+    "physics_steps": 0,
+    "hold_and_close_called": true,
+    "stop_receipt_issued": false,
+    "stop_proof_error": "candidate stop lacks current physical contact sample",
+    "cleanup_failures": [
+      "candidate terminal check: candidate stop lacks current physical contact sample"
+    ],
+    "campaign_continuation_admissible": false,
+    "scope": "Injected CPU test of current wrapper semantics; no claim of a physical collision at scene 100000."
+  },
+  "gpu_used": false,
+  "model_requests": 0
+}

@@ -1,0 +1,207 @@
+{
+  "kind": "CPU protocol review only; not a trial manifest or execution authorization",
+  "baseline_commit": "fa649eef190a22174b5c80432eff852b37f744d7",
+  "revisions": {
+    "pace": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+    "train": "ba9876639cb7a4bf0c7db00ec39eeb9c8efd8b12",
+    "runtime": "f4e52e6de4cc487a11585a3a7414d610b2883dae",
+    "checkpoint": "17ef545270cf26ed81169893b60f845f80ce6557",
+    "official_dataset": "3dc3b798668feb99ac61cc9086d84cbcc3d79186",
+    "robotwin_stable_base": "13c3c47ff4312dd62484bcd51be034af55c062d1",
+    "robotwin_probe_decoder": "ea8b21121ebb3cd201ff5b3fe361944ac94eda3f"
+  },
+  "scene": {
+    "task": "handover_block",
+    "task_config": "demo_clean",
+    "cache_shard": 0,
+    "index": 0,
+    "cache_sha256": "12ac49e3913308901113cc8ddd9f71f0987ce8c9ebd83f03c308c759bdbeb939",
+    "scene_seed": 100000,
+    "episode_info": {},
+    "apply_project_fixture": false
+  },
+  "actor_generation": {
+    "block_spawn_x_m": [
+      -0.25,
+      -0.05
+    ],
+    "block_spawn_y_m": [
+      0,
+      0.25
+    ],
+    "block_spawn_z_m": 0.842,
+    "block_yaw_random_limit_rad": 0.2,
+    "block_half_size_m": [
+      0.03,
+      0.03,
+      0.1
+    ],
+    "block_mass_kg": 0.01,
+    "target_x_m": [
+      0.1,
+      0.25
+    ],
+    "target_y_m": [
+      0.15,
+      0.2
+    ],
+    "target_half_size_m": [
+      0.05,
+      0.05,
+      0.005
+    ],
+    "table_surface_z_m": 0.74,
+    "table_size_m": [
+      1.2,
+      0.7,
+      0.05
+    ],
+    "coordinate_convention": "RoboTwin world, metre, quaternion wxyz"
+  },
+  "embodiment": {
+    "name": "aloha-agilex",
+    "dual_arm_shared_articulation": true,
+    "home_targets_rad": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "arm_joint_names": [
+      [
+        "fl_joint1",
+        "fl_joint2",
+        "fl_joint3",
+        "fl_joint4",
+        "fl_joint5",
+        "fl_joint6"
+      ],
+      [
+        "fr_joint1",
+        "fr_joint2",
+        "fr_joint3",
+        "fr_joint4",
+        "fr_joint5",
+        "fr_joint6"
+      ]
+    ],
+    "urdf_member": "embodiments/aloha-agilex/urdf/arx5_description_isaac.urdf",
+    "urdf_sha256": "097c59fb19a7b482249c6097df8319586ea7cfd268c015516f103b289a7e761a",
+    "config_member": "embodiments/aloha-agilex/config.yml",
+    "config_sha256": "a4f043d2d4b44cca5ec47fb498a3194da3f87ff9530dcbfdcee1539a44423d57",
+    "terminal_joints": [
+      "fl_joint6",
+      "fr_joint6"
+    ],
+    "move_group": [
+      "fl_link6",
+      "fr_link6"
+    ],
+    "global_trans_matrix": [
+      [
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        -1,
+        0
+      ],
+      [
+        0,
+        0,
+        -1
+      ]
+    ],
+    "delta_matrix": [
+      [
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        1
+      ]
+    ],
+    "gripper_bias_m": 0.12,
+    "native_gripper_scale_m": [
+      -0.01,
+      0.045
+    ],
+    "action_space": "absolute native qpos"
+  },
+  "cameras": {
+    "type": "D435",
+    "width": 320,
+    "height": 240,
+    "fovy_deg": 37,
+    "keys": [
+      "cam_high",
+      "cam_left_wrist",
+      "cam_right_wrist"
+    ],
+    "domain_randomization": {
+      "random_background": false,
+      "cluttered_table": false,
+      "random_head_camera_dis": 0,
+      "random_table_height": 0,
+      "random_light": false
+    },
+    "metadata_source": "PACE camera config, source lock and archive; live rendering deferred"
+  },
+  "language": {
+    "split": "unseen",
+    "generation_limit": 100,
+    "reconstruction_python_seed": 100000,
+    "public_pool_unique_seen": 50,
+    "public_pool_unique_unseen": 9,
+    "diagnostic_generator_example": "Grab the red block with the left arm, switch to the right arm, and set it on the blue pad.",
+    "example_scope": "The CPU audit used a fresh NumPy generator. The actual source-protocol prompt is sampled after setup_demo, which consumes RNG."
+  },
+  "author_control": {
+    "policy_initial_jax_key": 0,
+    "each_query": "split policy RNG once; no reset within rollout",
+    "action_shape": [
+      50,
+      14
+    ],
+    "fixed_window": 50,
+    "action_limit": 800,
+    "physics_dt_s": 0.004,
+    "early_stop": "native success or 800 commands; added mandatory safety stops must be labeled separately"
+  },
+  "project_comparison": {
+    "scene_seed": 0,
+    "policy_rng_seed": 20261106,
+    "nominal_window": 50,
+    "action_limit": 300,
+    "timeout_s": 1150,
+    "approach_repair": "bounded_free_space_approach_v1",
+    "preload": "measured_contact_preload_hold_v1",
+    "preload_establishment": "bilateral_contact_preload_4mm_v1"
+  },
+  "archived_real_first_frame": "offline-check.json",
+  "frozen_safety": {
+    "position_tracking_limit_m": 0.03,
+    "angle_tracking_limit_deg": 10,
+    "collision_joint_step_rad": 0.02,
+    "physical_steps_ceiling": 25000,
+    "project_grip_max_clip": 0.01
+  }
+}

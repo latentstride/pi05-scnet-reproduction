@@ -1,0 +1,357 @@
+{
+  "scope": "Real CPU PhysX physical readback from author setup_demo with headless adapters; no images",
+  "cache": {
+    "sha256": "12ac49e3913308901113cc8ddd9f71f0987ce8c9ebd83f03c308c759bdbeb939",
+    "shard": 0,
+    "index": 0,
+    "scene_seed": 100000,
+    "episode_info": {}
+  },
+  "checkpoint_loaded": false,
+  "gpu_used": false,
+  "model_requests": 0,
+  "source_revision": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+  "source_sha256": {
+    "envs/_base_task.py": "448f7152b65cb9102217cf5463aa821d72810ca56f63d5a797ec7bd43e23e101",
+    "envs/handover_block.py": "5439712296d7e143d41f8e78b4ab86cd4fad7fb98f40f5f5abb067a462d17650",
+    "envs/camera/camera.py": "e4d17e99c8a68f44a12bef248a2164f52206efeaf24168172b778cc1e32832dd",
+    "envs/robot/robot.py": "3dcd80acc8cab489a4c5edb507cc460dab1724be0226b8d5c4c1b218dee605cb",
+    "envs/robot/planner.py": "f1012345542483f4cfbac64880a266b7ee0d4a64362d5ec6fd6985ed9c34b564",
+    "envs/utils/create_actor.py": "6bababee8e70da2460b2bbf47d3b5fbb20ccf73368782a7be596a63c962dce6d",
+    "envs/utils/actor_utils.py": "252d43c526b23adcf4ba549fec64a49f037fc4a24e9edd1998e5f60d3e13d5d9",
+    "envs/utils/rand_create_actor.py": "6c409ff1d97528b9dc654d39cc34683f51af6e797c1c5d92c076c29c09f9bedb",
+    "pace/src/pace/robotwin.py": "3d2bc995065da352c8292a3109841f30dff79fb39e810844bbd14ecef85ef2eb",
+    "pace/configs/expert_scenes.json": "12ac49e3913308901113cc8ddd9f71f0987ce8c9ebd83f03c308c759bdbeb939",
+    "description/utils/generate_episode_instructions.py": "ef428fa9066c3025d41e2fabcbf894d1d4313bd12bee0a300d19d3d7d1158f24",
+    "description/task_instruction/handover_block.json": "8fed548a88ebeadc164889398e20532f622509c867c0a075653e2bf35b8daa19",
+    "task_config/demo_clean.yml": "8ee5d0d07daecf7599b8d89b44776b700c7c60da24cd6317e176e6798d8cb11e",
+    "task_config/_camera_config.yml": "dc80a40552e0fad25d58cf0141302ceba66d22409b5091bed235ad2f10cbce7f",
+    "task_config/_eval_step_limit.yml": "41c62bd26184977bae45aee555edd0cc21de5cddf560c2595921fc23a1e3b551"
+  },
+  "asset_sha256": {
+    "embodiments/aloha-agilex/urdf/arx5_description_isaac.urdf": "097c59fb19a7b482249c6097df8319586ea7cfd268c015516f103b289a7e761a",
+    "embodiments/aloha-agilex/config.yml": "a4f043d2d4b44cca5ec47fb498a3194da3f87ff9530dcbfdcee1539a44423d57"
+  },
+  "timestep_s": 0.004000000189989805,
+  "sapien": "3.0.0b1",
+  "mplib": "0.2.1",
+  "authored_settings": {
+    "camera": {
+      "head_camera_type": "D435",
+      "wrist_camera_type": "D435",
+      "collect_head_camera": true,
+      "collect_wrist_camera": true
+    },
+    "domain_randomization": {
+      "random_background": false,
+      "cluttered_table": false,
+      "clean_background_rate": 1,
+      "random_head_camera_dis": 0,
+      "random_table_height": 0,
+      "random_light": false,
+      "crazy_random_light_rate": 0
+    },
+    "embodiment": [
+      "aloha-agilex"
+    ],
+    "data_type": {
+      "rgb": true,
+      "third_view": false,
+      "depth": false,
+      "pointcloud": false,
+      "observer": false,
+      "endpose": false,
+      "qpos": true,
+      "mesh_segmentation": false,
+      "actor_segmentation": false
+    }
+  },
+  "reconstruction_python_seed": 100000,
+  "instruction": "Grab the red block using the left arm.",
+  "task_success_at_reset": false,
+  "task_action_count": 0,
+  "initial": {
+    "robot_base_world": {
+      "left": [
+        0.0,
+        -0.6499999761581421,
+        0.0,
+        0.7071067811865476,
+        0.0,
+        0.0,
+        0.7071067811865475
+      ],
+      "right": [
+        0.0,
+        -0.6499999761581421,
+        0.0,
+        0.7071067811865476,
+        0.0,
+        0.0,
+        0.7071067811865475
+      ]
+    },
+    "task_frame_world": [
+      0.0,
+      0.0,
+      0.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "actual_arm_qpos_rad": {
+      "left": [
+        -3.016615224282759e-08,
+        -5.666987590302597e-07,
+        -4.835828804061748e-06,
+        7.701128623693876e-08,
+        4.63164752773082e-07,
+        -8.158995683515968e-07
+      ],
+      "right": [
+        -3.258066882949606e-08,
+        -5.65274206110189e-07,
+        -4.838918357563671e-06,
+        7.693390813301448e-08,
+        4.6469963876916154e-07,
+        -8.163781899384048e-07
+      ]
+    },
+    "actual_gripper": {
+      "left": 0.9830570883221097,
+      "right": 0.9830570055378809
+    },
+    "objects_task": {
+      "block": [
+        -0.1521603763103485,
+        0.2279314547777176,
+        0.8400001525878906,
+        0.9719521289925551,
+        2.162576439342082e-07,
+        -3.4353901864368678e-06,
+        0.2351787807923811
+      ],
+      "target": [
+        0.16532817482948303,
+        0.16106395423412323,
+        0.7409999966621399,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "table": [
+        0.0,
+        0.0,
+        0.7400000095367432,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "reset_fixture_sha256": "213ac7121101c08b5932ffa4ce5dc3bec6b14a046df3ee8f1eb65edd6e184401",
+    "workspace_check_id": "author-cpu-measured",
+    "common_workspace_pass": false
+  },
+  "block_mass_kg": 0.009999999776482582,
+  "normalized_gripper_measurements": [
+    {
+      "normalized": 0.9830570883221097,
+      "raw_normalized": 0.9830570883221097,
+      "state_mode": "strict_mimic",
+      "state_source": "",
+      "native_m": [
+        0.044236842542886734,
+        0.044238295406103134
+      ],
+      "equivalent_symmetric_native_m": [
+        0.044237568974494934,
+        0.044237568974494934
+      ],
+      "reduction_residual_m": [
+        -7.264316082000732e-07,
+        7.264316082000732e-07
+      ],
+      "aperture_increase_m": 0.08847513794898987,
+      "center_shift_from_symmetric_m": -7.264316082000732e-07,
+      "scalar_clipped": false
+    },
+    {
+      "normalized": 0.9830570055378809,
+      "raw_normalized": 0.9830570055378809,
+      "state_mode": "strict_mimic",
+      "state_source": "",
+      "native_m": [
+        0.04423683509230614,
+        0.044238295406103134
+      ],
+      "equivalent_symmetric_native_m": [
+        0.044237565249204636,
+        0.044237565249204636
+      ],
+      "reduction_residual_m": [
+        -7.301568984985352e-07,
+        7.301568984985352e-07
+      ],
+      "aperture_increase_m": 0.08847513049840927,
+      "center_shift_from_symmetric_m": -7.301568984985352e-07,
+      "scalar_clipped": false
+    }
+  ],
+  "actual_fingers_m": [
+    [
+      0.044236842542886734,
+      0.044238295406103134
+    ],
+    [
+      0.04423683509230614,
+      0.044238295406103134
+    ]
+  ],
+  "measured_tcp_world": [
+    [
+      [
+        -0.019998173425708952,
+        0.9998000164127412,
+        1.5515071254277465e-05,
+        -0.30032361745290437
+      ],
+      [
+        0.9998000165238403,
+        0.01999817348998909,
+        -3.9990470767482454e-06,
+        -0.19382775573491745
+      ],
+      [
+        -4.308520419620805e-06,
+        1.543199485941679e-05,
+        -0.9999999998716451,
+        0.9419978749680159
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    [
+      [
+        -0.009999336043406377,
+        0.9999500052698741,
+        1.5474779762351478e-05,
+        0.30523323409584346
+      ],
+      [
+        0.9999500053803128,
+        0.0099993361088671,
+        -4.158581874417311e-06,
+        -0.19280580335559128
+      ],
+      [
+        -4.313111491293243e-06,
+        1.543242304899621e-05,
+        -0.9999999998716187,
+        0.9409978732295595
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ]
+  ],
+  "model_state_from_native_getters": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+  ],
+  "native_gripper_scale_m": [
+    [
+      -0.01,
+      0.045
+    ],
+    [
+      -0.01,
+      0.045
+    ]
+  ],
+  "measured_fcl_clear": true,
+  "stopped_geometry_clear_including_unheld_block": true,
+  "fcl_collisions": [],
+  "cameras": [
+    {
+      "name": "left_camera",
+      "width": 320,
+      "height": 240,
+      "fovy": 0.6457718232379019,
+      "near": 0.1,
+      "far": 100,
+      "world_pose": [
+        -0.3313181698322296,
+        -0.24445751309394836,
+        1.00699782371521,
+        -0.6860480904579163,
+        0.14188504219055176,
+        -0.13906490802764893,
+        -0.6999054551124573
+      ]
+    },
+    {
+      "name": "right_camera",
+      "width": 320,
+      "height": 240,
+      "fovy": 0.6457718232379019,
+      "near": 0.1,
+      "far": 100,
+      "world_pose": [
+        0.27373379468917847,
+        -0.24312293529510498,
+        1.0059975385665894,
+        -0.6895389556884766,
+        0.14118796586990356,
+        -0.13977259397506714,
+        -0.6964666247367859
+      ]
+    },
+    {
+      "name": "head_camera",
+      "width": 320,
+      "height": 240,
+      "fovy": 0.6457718232379019,
+      "near": 0.1,
+      "far": 100,
+      "world_pose": [
+        -0.03200000151991844,
+        -0.44999998807907104,
+        1.350000023841858,
+        0.6324555277824402,
+        -0.3162277638912201,
+        0.3162277638912201,
+        0.6324555277824402
+      ]
+    }
+  ],
+  "real_rgb_available": false,
+  "headless_substitutions": [
+    "CPU scene without visual systems",
+    "same camera setup with metadata-only camera handles",
+    "visual-only actor/URDF data omitted",
+    "CuRobo warmup replaced by author gripper method"
+  ],
+  "author_close_env_returned": true
+}

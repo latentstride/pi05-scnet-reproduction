@@ -1,0 +1,46 @@
+{
+  "cpu_environment": {
+    "platform": "Linux CPU container",
+    "sapien": "3.0.0b1",
+    "torch": "2.4.1+cu121",
+    "torch_cuda_available": false
+  },
+  "unadapted_planner_import": {
+    "exit": {
+      "exit_code": 1,
+      "process_group_gone": true,
+      "elapsed_s": 256.70570534898434,
+      "gpu_used": false
+    },
+    "failed_stage": "import envs.robot.planner before setup_demo",
+    "error": "CuRobo import evaluates Pose.from_list and initializes CUDA, raising RuntimeError; subsequent import of CuroboPlanner fails",
+    "source_log_sha256": "2693e33d295f8b8a0b989f58fea1829e0eb840b3fc9379251e825368215314da"
+  },
+  "native_gpu_graphics_tested_this_turn": false,
+  "headless_physical_reset": {
+    "exit": {
+      "exit_code": 0,
+      "process_group_gone": true,
+      "elapsed_s": 240.51894688303582,
+      "gpu_used": false
+    },
+    "probe_sha256": "a5227c12990f3c68e294c330965af40eaae86f571b6f11f2628c7d11f715c411",
+    "readback_sha256": "b1ab4f6201174a872d00468489968313bb445f24be7ab8c9b7ebfe73849a3787",
+    "raw_run_log_sha256": "74ad0e9c11b92d7b1e9af134f156e0b7f3d27c52c8a82ca4be2f01799380b668",
+    "runtime_input_archive_sha256": "24e337e1f820d38d028e625c0eda7b9cf6b9f942763226d912efa20951422b8d",
+    "current_candidate_archive_sha256": "be7af44b4cb70ad49362b0475829c12e90de09075e545d45f0b39d93c75e8d71",
+    "identical_inputs_to_both_archives": {
+      "asset-audit.json": "5ebfc07c82814757168bdb3f2b7ad4a9bec18f58afc28318f49e61af117122f2",
+      "configs/unified-seed0-native-w50.json": "04f2e041cedb07a2eae69425175c60d235ed086095cce10600dfb9e492a8bae6",
+      "scripts/g2_adapter.py": "de4c36da33fa64279378502f77af13085096bd82992fd1e7aa669a6d61e4326a",
+      "scripts/g2_assets.py": "ef712349bc246de2259da0f009eac7cee785ab1b439e484e291c697c0a4c1907",
+      "scripts/g2_capture.py": "de893903d659c3dd729dcfeafd6bcb8c25e32e7ea458dda29bd04f71ac4d413f",
+      "scripts/g2_collision.py": "3047aec1d3c0c4cd221a2bc860aada89cb91de151d6abc8eb155186010d2ec0e",
+      "scripts/g2_contact.py": "8369b9b25e760fb272fbf945220864432ec4f537e03c564d79605e7262ff3ffa",
+      "scripts/g2_initial.py": "3ba24573566334ad66b030ca939ac1d8f69a47a84e9a5ed1837df2cbf5e2b980",
+      "scripts/g2_proxy_collision.py": "636ff63de9be6b3f49cfceda5fe9c101cfaf3b28645569f6f38634e5c0879af2",
+      "scripts/g2e_native_guard.py": "4fe52f3f5be77feb2d3beda67fa6edc5692d15d03208e4a29f16b0403d8a9f37"
+    },
+    "scope": "Headless CPU PhysX author scene, explicit renderer and optional CUDA warmup substitutes. Real physical readback and static geometry only."
+  }
+}

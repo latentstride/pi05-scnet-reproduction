@@ -1,0 +1,42 @@
+test_actual_nested_failure_never_becomes_candidate (test_g2_candidate_stop.CandidateStopTests.test_actual_nested_failure_never_becomes_candidate) ... ok
+test_arx_retains_grip_drive_and_checks_stop_without_advancing (test_g2_candidate_stop.CandidateStopTests.test_arx_retains_grip_drive_and_checks_stop_without_advancing) ... ok
+test_bounded_wrapper_preserves_provenance_and_nested_actual_stops (test_g2_candidate_stop.CandidateStopTests.test_bounded_wrapper_preserves_provenance_and_nested_actual_stops) ... ok
+test_faults_at_different_positions_stop_global_schedule (test_g2_candidate_stop.CandidateStopTests.test_faults_at_different_positions_stop_global_schedule) ... ok
+test_live_check_hold_readback_and_cleanup_create_bound_proof_without_steps (test_g2_candidate_stop.CandidateStopTests.test_live_check_hold_readback_and_cleanup_create_bound_proof_without_steps) ... ok
+test_original_ten_rows_continue_only_after_proved_stop (test_g2_candidate_stop.CandidateStopTests.test_original_ten_rows_continue_only_after_proved_stop) ... ok
+test_real_failure_refinement_preserves_candidate_provenance (test_g2_candidate_stop.CandidateStopTests.test_real_failure_refinement_preserves_candidate_provenance) ... ok
+test_same_tick_slip_is_rechecked_without_resetting_live_anchor (test_g2_candidate_stop.CandidateStopTests.test_same_tick_slip_is_rechecked_without_resetting_live_anchor) ... ok
+test_terminal_hold_close_or_context_failure_never_has_complete_proof (test_g2_candidate_stop.CandidateStopTests.test_terminal_hold_close_or_context_failure_never_has_complete_proof) ... ok
+test_all_14_continue_after_fourth_recovery_cap (test_g2_final_exit_audit.CampaignExitTests.test_all_14_continue_after_fourth_recovery_cap) ... ok
+test_global_failures_never_launch_a_later_trial (test_g2_final_exit_audit.CampaignExitTests.test_global_failures_never_launch_a_later_trial) ... ok
+test_actual_collision_is_not_retried_as_a_planning_candidate (test_g2_final_exit_audit.ExitPathTests.test_actual_collision_is_not_retried_as_a_planning_candidate) ... ok
+test_archived_recovery_cap_requires_structured_result_and_new_cleanup (test_g2_final_exit_audit.ExitPathTests.test_archived_recovery_cap_requires_structured_result_and_new_cleanup) ... ok
+test_classifier_exit_paths (test_g2_final_exit_audit.ExitPathTests.test_classifier_exit_paths) ... ok
+test_cleanup_must_not_advance_physics (test_g2_final_exit_audit.ExitPathTests.test_cleanup_must_not_advance_physics) ... ok
+test_deployment_stage_timeout_reaps_process_and_preserves_log (test_g2_final_exit_audit.ExitPathTests.test_deployment_stage_timeout_reaps_process_and_preserves_log) ... ok
+test_expert_preserves_actual_provenance_and_requires_measured_handoff (test_g2_final_exit_audit.ExitPathTests.test_expert_preserves_actual_provenance_and_requires_measured_handoff) ... ok
+test_finish_attempts_close_even_when_hold_fails (test_g2_final_exit_audit.ExitPathTests.test_finish_attempts_close_even_when_hold_fails) ... ok
+test_historical_four_receipts_cannot_authorize_continuation (test_g2_final_exit_audit.ExitPathTests.test_historical_four_receipts_cannot_authorize_continuation) ... ok
+test_recovery_cap_and_contact_precedence (test_g2_final_exit_audit.ExitPathTests.test_recovery_cap_and_contact_precedence) ... ok
+test_session_exits_once_even_when_close_fails (test_g2_final_exit_audit.ExitPathTests.test_session_exits_once_even_when_close_fails) ... ok
+test_expert_and_probe_receipts_require_real_context_exit (test_g2_final_exit_audit.TrialReceiptTests.test_expert_and_probe_receipts_require_real_context_exit) ... probe example +0.0s verify_runtime_and_model
+probe example +0.0s inspect_assets
+probe example +0.0s construct_scene
+probe example +0.0s verify_fresh_reset_and_geometry
+probe example +0.0s close_scene
+probe example +0.0s verify_runtime_and_model
+probe example +0.0s inspect_assets
+probe example +0.0s construct_scene
+probe example +0.0s verify_fresh_reset_and_geometry
+probe example +0.0s close_scene
+probe example +0.0s verify_runtime_and_model
+probe example +0.0s inspect_assets
+probe example +0.0s construct_scene
+probe example +0.0s verify_fresh_reset_and_geometry
+probe example +0.0s close_scene
+ok
+
+----------------------------------------------------------------------
+Ran 22 tests in 3.784s
+
+OK

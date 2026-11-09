@@ -1,0 +1,5 @@
+CPU_SOURCE_AND_PLANNERS_VERIFIED
+CPU_AUTHOR_SETUP_BEGIN
+CPU_AUTHOR_SETUP_COMPLETE
+CPU_AUTHOR_RESET_COMPLETE True True
+{"elapsed_s": 240.51894688303582, "exit_code": 0, "gpu_used": false, "process_group_gone": true}

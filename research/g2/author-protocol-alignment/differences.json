@@ -1,0 +1,259 @@
+[
+  {
+    "id": "01_checkpoint",
+    "status": "MATCH",
+    "effect": "generation",
+    "author": "公开任务资产为 π₀.₅ handover_block，Orbax、独立 robotwin 统计和 tokenizer。",
+    "job_127192740": "启动回执 28 项与锁定清单路径、大小、哈希一致。",
+    "interpretation": "核对公开资产和加载契约。论文九批实际启动指纹另列为未知。",
+    "source_ids": [
+      "runtime/pace/src/openpi_pace/configs.py:70-76",
+      "runtime/src/openpi/policies/policy_config.py:49-64",
+      "job/scripts/pace_model_smoke.py:71-136"
+    ]
+  },
+  {
+    "id": "02_sampling_defaults",
+    "status": "MATCH",
+    "effect": "generation",
+    "author": "公开服务使用默认 JAX bf16 restore，gemma_2b/300m，π₀.₅ 内部动作维 32，默认 10 去噪步且正态噪声。",
+    "job_127192740": "同配置、同 create_trained_policy，infer 未显式传 num_steps 或 noise。",
+    "interpretation": "默认调用一致，具体噪声流和历史运行数值见 03/16。",
+    "source_ids": [
+      "runtime/scripts/serve_policy.py:88-117",
+      "runtime/src/openpi/models/pi0_config.py:20-39",
+      "runtime/src/openpi/models/pi0.py:217-231",
+      "job/scripts/g2e_model_entry.py:73-77"
+    ]
+  },
+  {
+    "id": "03_policy_rng",
+    "status": "DIFFERENT",
+    "effect": "generation",
+    "author": "公开入口 JAX key(0) 初始化，逐 infer split，评测循环跨场景复用对象，无逐场景重置。",
+    "job_127192740": "每试次连接明确重置，首项回执 seed=20261106，第二次沿该流 split。",
+    "interpretation": "相同输入可采样不同 chunk。作者论文各批噪声状态及请求序列未发布。",
+    "source_ids": [
+      "runtime/src/openpi/policies/policy.py:65-75",
+      "pace/pace/scripts/evaluate.py:127-140",
+      "job/scripts/g2e_model_entry.py:20-29",
+      "job/scripts/g2_final_trial.py:355-410"
+    ]
+  },
+  {
+    "id": "04_cameras",
+    "status": "MATCH",
+    "effect": "input",
+    "author": "D435 头/左腕/右腕 320×240，RGB HWC 转 CHW，以三路 key 绑定；AlohaInputs 转回 HWC，resize-with-pad 224。",
+    "job_127192740": "两次保存均三路 3×240×320 uint8，作者 encoder 用同保存像素/状态重打包得到同哈希。",
+    "interpretation": "字段与代码一致。不能据此推出不同场景像素、FOV 实测或服务端张量一致。",
+    "source_ids": [
+      "pace/task_config/demo_clean.yml:18-21",
+      "pace/task_config/_camera_config.yml:11-14",
+      "pace/pace/src/pace/rollout.py:8-21",
+      "pace/envs/camera/camera.py:323-332",
+      "runtime/packages/openpi-client/src/openpi_client/image_tools.py:15-38",
+      "runtime/src/openpi/models/model.py:115-120",
+      "runtime/src/openpi/policies/aloha_policy.py:165-176",
+      "runtime/src/openpi/training/config.py:125-135",
+      "job/scripts/g2_capture.py:39-39"
+    ]
+  },
+  {
+    "id": "05_state",
+    "status": "MATCH",
+    "effect": "input",
+    "author": "左六臂 rad、左归一化夹爪、右六臂 rad、右归一化夹爪，臂是 drive target。",
+    "job_127192740": "相同 getter 语义，记录为 float32；query2 臂与修正后驱动一致。",
+    "interpretation": "源码与字段一致，物理关节实测状态独立用于门禁。",
+    "source_ids": [
+      "pace/envs/_base_task.py:487-494",
+      "pace/envs/robot/robot.py:494-508",
+      "job/scripts/pace_client_smoke.py:241-256"
+    ]
+  },
+  {
+    "id": "06_norm_tokens",
+    "status": "MATCH",
+    "effect": "input",
+    "author": "checkpoint assets/robotwin quantile Normalize，PI05 离散状态与 prompt 共编码；adapt_to_pi=False。",
+    "job_127192740": "统计哈希与公开 release 一致，走相同变换。",
+    "interpretation": "确认配置和加载源码，历史中间张量未保存。",
+    "source_ids": [
+      "runtime/src/openpi/policies/policy_config.py:64-86",
+      "runtime/src/openpi/training/config.py:186-186",
+      "runtime/src/openpi/training/config.py:125-135",
+      "runtime/src/openpi/models/tokenizer.py:22-29",
+      "job/scripts/pace_model_smoke.py:112-136"
+    ]
+  },
+  {
+    "id": "07_language",
+    "status": "DIFFERENT",
+    "effect": "input",
+    "author": "generate_episode_descriptions 读任务 seen/unseen，基于专家 info 过滤替换并洗牌，np.random.choice 从 unseen 池抽样。",
+    "job_127192740": "两个请求均固定为同一项目 prompt。公开列表及三个分片空 info 的实际生成池均无该字符串。",
+    "interpretation": "提示 token 可改变输出，训练时实际 prompt 快照未知。",
+    "source_ids": [
+      "pace/pace/scripts/evaluate.py:31-31",
+      "pace/pace/scripts/evaluate.py:221-227",
+      "pace/pace/src/pace/robotwin.py:51-55",
+      "pace/description/utils/generate_episode_instructions.py:184-235",
+      "job/scripts/g2_task_runtime.py:214-214"
+    ]
+  },
+  {
+    "id": "08_scene_selection",
+    "status": "DIFFERENT",
+    "effect": "input,statistics",
+    "author": "demo_clean 双臂 Aloha。在线从 100000/200000/300000 起筛专家通过，再 reset；可选缓存每分片 100 个。",
+    "job_127192740": "首项 scene_seed=0，套锁定夹具；seed 0 不在已发布的 300 个候选中。",
+    "interpretation": "改变初态采样和统计母体。不能推知某一作者场景实际像素。",
+    "source_ids": [
+      "pace/pace/src/pace/robotwin.py:23-48",
+      "pace/pace/src/pace/robotwin.py:58-80",
+      "pace/pace/scripts/evaluate.py:161-221",
+      "job/scripts/g2_task_runtime.py:210-219"
+    ]
+  },
+  {
+    "id": "09_reset_physics",
+    "status": "DIFFERENT",
+    "effect": "input,execution",
+    "author": "setup_demo 用 scene seed 重置 NumPy/Torch，Python random.seed 在该处注释，原生生成物体及稳定检查。",
+    "job_127192740": "setup 后覆写实测锁定的块/托盘/桌、机器人基座和 qpos，速度归零并同步 drive/夹爪请求。",
+    "interpretation": "复位程序确实不同。作者各场景的精确初始读回、Python 随机状态未知。",
+    "source_ids": [
+      "pace/envs/_base_task.py:58-58",
+      "pace/envs/handover_block.py:13-49",
+      "job/scripts/g2_initial.py:84-139"
+    ]
+  },
+  {
+    "id": "10_action_contract",
+    "status": "MATCH",
+    "effect": "generation",
+    "author": "公开输出 50×14；反归一化、臂 delta 加回状态、仅取 14 列，夹爪绝对值，0 闭 1 开。",
+    "job_127192740": "同样两块 50×14 绝对关节和夹爪。原生路径使用 qpos，臂无二次累加。",
+    "interpretation": "后续夹爪裁剪和单步修正另计。",
+    "source_ids": [
+      "runtime/src/openpi/training/config.py:263-266",
+      "runtime/src/openpi/policies/policy_config.py:84-87",
+      "runtime/src/openpi/policies/aloha_policy.py:91-101",
+      "pace/envs/_base_task.py:1479-1487",
+      "job/scripts/g2_episode.py:66-79"
+    ]
+  },
+  {
+    "id": "11_window",
+    "status": "DIFFERENT",
+    "effect": "execution,input",
+    "author": "Fixed H50 消费 50 行后重查，任务成功或动作上限可提前结束；PACE 分支另选自适应窗口。",
+    "job_127192740": "名义 H50，修正第 27 行后屏障在 tick 3575 丢弃 23 行并重查。",
+    "interpretation": "会改变下一帧观测与观测到噪声的配对，不能把 query2 与作者的第二块直接逐值对齐。",
+    "source_ids": [
+      "pace/pace/scripts/evaluate.py:78-86",
+      "pace/pace/src/pace/rollout.py:29-47",
+      "job/scripts/g2_native_backend.py:230-235",
+      "job/scripts/g2_episode.py:174-179"
+    ]
+  },
+  {
+    "id": "12_guard",
+    "status": "DIFFERENT",
+    "effect": "execution,input",
+    "author": "公开 rollout 直接交给原生 take_action，由 TOPP 与原夹爪/任务逻辑执行。",
+    "job_127192740": "加入前缀限位/裁剪、候选和实测几何、接触/跟踪、预载与接近屏障。",
+    "interpretation": "门禁直接影响执行或终止，干预也会改变后续观测。已观察到 query2 在物理推进前拒绝。",
+    "source_ids": [
+      "pace/pace/src/pace/rollout.py:45-48",
+      "pace/envs/_base_task.py:1538-1566",
+      "job/scripts/g2_native_backend.py:107-134",
+      "job/scripts/g2_native_backend.py:223-224"
+    ]
+  },
+  {
+    "id": "13_success_predicate",
+    "status": "MATCH",
+    "effect": "statistics",
+    "author": "块功能点到目标功能点 XY 各 <30 mm、Z <10 mm 且右夹爪请求 >0.8。",
+    "job_127192740": "复用相同任务源码及 env.check_success；额外安全退出单独记录。",
+    "interpretation": "任务成功谓词相同，实际可到达的评测终态有别。",
+    "source_ids": [
+      "pace/envs/handover_block.py:111-116",
+      "pace/envs/robot/robot.py:541-542",
+      "pace/envs/_base_task.py:1657-1658",
+      "job/scripts/g2_native_backend.py:95-96"
+    ]
+  },
+  {
+    "id": "14_budgets",
+    "status": "DIFFERENT",
+    "effect": "execution,statistics",
+    "author": "handover_block 800 take_action；公开 worker 有服务启动时限，rollout 未见逐 episode 墙钟或独立物理步预算。",
+    "job_127192740": "300 动作，单试次软上限 1150 s，物理上限 25000，外层另有试次硬时限和一次 7 h 分配。",
+    "interpretation": "上限和故障口径影响完成率。此次失败由候选拒绝触发。",
+    "source_ids": [
+      "pace/task_config/_eval_step_limit.yml:9-9",
+      "pace/pace/scripts/_eval_worker.py:259-259",
+      "job/scripts/g2_native_backend.py:110-110",
+      "job/scripts/g2_episode.py:119-119",
+      "job/scripts/g2_final_campaign.py:176-182"
+    ]
+  },
+  {
+    "id": "15_population",
+    "status": "DIFFERENT",
+    "effect": "statistics",
+    "author": "论文 B.2/B.3 三分片各三批每批 100；固定 H50 52.6%，PACE 53.1%。",
+    "job_127192740": "127192740 原十项为不同条件，仅首项 Aloha H50 实际运行并失败，余九未运行。",
+    "interpretation": "同一成功谓词无法抵消场景、闭环规则与停止口径差异。",
+    "source_ids": [
+      "pace/pace/scripts/evaluate.py:62-62",
+      "pace/pace/scripts/evaluate.py:255-269"
+    ]
+  },
+  {
+    "id": "16_live_tensor_and_paper_provenance",
+    "status": "UNKNOWN",
+    "effect": "unknown",
+    "author": "公开源码给出接口、默认采样和可选 PolicyRecorder。论文九批的启动命令、环境精确版本、每次 RNG/输入/输出无配对回执。",
+    "job_127192740": "客户端两次请求可重算，首请求与动态准入对照一致。query2 没有服务端 request hash 回显、预处理张量、采样 key/noise 或 pre-Unnormalize 输出。",
+    "interpretation": "可复算的请求身份只覆盖客户端。不能声称服务端逐值或论文历史批次已复现。",
+    "source_ids": [
+      "runtime/scripts/serve_policy.py:104-105",
+      "runtime/src/openpi/policies/policy.py:113-126",
+      "job/scripts/g2_unified_exchange.py:35-61",
+      "job/scripts/g2e_model_entry.py:46-81"
+    ]
+  },
+  {
+    "id": "17_state_dtype",
+    "status": "DIFFERENT",
+    "effect": "input",
+    "author": "Base_Task 构造 NumPy 向量，公开 encode_observation 保留其 dtype，正常 getter 含 Python float。",
+    "job_127192740": "客户端在 encode 和请求构造时显式转成 float32。",
+    "interpretation": "协议精度差异。可能在量化边界影响离散 token 或在绝对动作恢复中产生舍入。没有同一作者帧的原始值或服务张量证明这里实际出现差异。",
+    "source_ids": [
+      "pace/envs/_base_task.py:487-494",
+      "pace/pace/src/pace/rollout.py:8-21",
+      "job/scripts/pace_client_smoke.py:33-43",
+      "runtime/src/openpi/models/tokenizer.py:22-29"
+    ]
+  },
+  {
+    "id": "18_render_and_init_readback",
+    "status": "UNKNOWN",
+    "effect": "input",
+    "author": "公开 demo_clean 禁用背景、光照、桌高和头相机扰动。缓存是 seed/episode_info。",
+    "job_127192740": "同 load_environment，实际三路图像、物体/机器人锁定初态可读回。",
+    "interpretation": "没有成功论文 episode 的场景状态、相机内外参、实际 RGB、渲染器版本及 GPU 驱动配对数据，无法证实同场景逐像素重建。",
+    "source_ids": [
+      "pace/task_config/demo_clean.yml:9-21",
+      "pace/envs/_base_task.py:437-450",
+      "pace/envs/camera/camera.py:286-293",
+      "pace/pace/src/pace/robotwin.py:58-80",
+      "job/scripts/g2_task_runtime.py:201-221"
+    ]
+  }
+]

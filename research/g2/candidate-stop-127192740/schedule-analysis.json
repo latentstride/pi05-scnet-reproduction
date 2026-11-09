@@ -1,0 +1,283 @@
+{
+  "source_job": "127192740",
+  "source_receipt_sha256": "3c92400ebe610eab5677bdb4f0290086e03776d5c18d93490a463c79c6d34be3",
+  "public_fixture_sha256": "7671a323c2832e8048b5eb3e7317eaa41dbfe84783dc43e681a8f01d400d2ea8",
+  "historical_category": "actual_safety_stop",
+  "historical_live_stop_proof_present": false,
+  "reproduced_geometry": "candidate",
+  "all_nested_attempts_preserved": true,
+  "candidate_marker_without_stop_proof_allows_continuation": false,
+  "synthetic_schedule_only": true,
+  "physical_stop_validated": false,
+  "historical_result_modified": false,
+  "original_ten_in_order": [
+    "unified-seed0-native-w50",
+    "unified-seed0-native-w31",
+    "unified-seed1-native-w31",
+    "unified-seed1-native-w50",
+    "unified-seed0-native-w4",
+    "unified-seed0-arx-full-w4",
+    "unified-seed1-arx-full-w4",
+    "unified-seed1-native-w4",
+    "unified-seed1-arx-expert-repaired",
+    "unified-seed0-arx-expert-repaired"
+  ],
+  "shared_model_starts": 1,
+  "startup_admissions": 6,
+  "simulated_completed": 10,
+  "faults": [
+    {
+      "fault": "actual",
+      "position": 0,
+      "launched": [
+        "unified-seed0-native-w50"
+      ],
+      "stop_reason": "actual_safety_stop",
+      "passed": true
+    },
+    {
+      "fault": "nested_actual",
+      "position": 3,
+      "launched": [
+        "unified-seed0-native-w50",
+        "unified-seed0-native-w31",
+        "unified-seed1-native-w31",
+        "unified-seed1-native-w50"
+      ],
+      "stop_reason": "actual_safety_stop",
+      "passed": true
+    },
+    {
+      "fault": "unknown",
+      "position": 6,
+      "launched": [
+        "unified-seed0-native-w50",
+        "unified-seed0-native-w31",
+        "unified-seed1-native-w31",
+        "unified-seed1-native-w50",
+        "unified-seed0-native-w4",
+        "unified-seed0-arx-full-w4",
+        "unified-seed1-arx-full-w4"
+      ],
+      "stop_reason": "infrastructure_failure",
+      "passed": true
+    },
+    {
+      "fault": "terminal_checks_passed",
+      "position": 9,
+      "launched": [
+        "unified-seed0-native-w50",
+        "unified-seed0-native-w31",
+        "unified-seed1-native-w31",
+        "unified-seed1-native-w50",
+        "unified-seed0-native-w4",
+        "unified-seed0-arx-full-w4",
+        "unified-seed1-arx-full-w4",
+        "unified-seed1-native-w4",
+        "unified-seed1-arx-expert-repaired",
+        "unified-seed0-arx-expert-repaired"
+      ],
+      "stop_reason": "actual_safety_stop",
+      "passed": true
+    },
+    {
+      "fault": "hold_verified",
+      "position": 0,
+      "launched": [
+        "unified-seed0-native-w50"
+      ],
+      "stop_reason": "actual_safety_stop",
+      "passed": true
+    },
+    {
+      "fault": "no_physics_advance",
+      "position": 3,
+      "launched": [
+        "unified-seed0-native-w50",
+        "unified-seed0-native-w31",
+        "unified-seed1-native-w31",
+        "unified-seed1-native-w50"
+      ],
+      "stop_reason": "actual_safety_stop",
+      "passed": true
+    },
+    {
+      "fault": "close_complete",
+      "position": 6,
+      "launched": [
+        "unified-seed0-native-w50",
+        "unified-seed0-native-w31",
+        "unified-seed1-native-w31",
+        "unified-seed1-native-w50",
+        "unified-seed0-native-w4",
+        "unified-seed0-arx-full-w4",
+        "unified-seed1-arx-full-w4"
+      ],
+      "stop_reason": "actual_safety_stop",
+      "passed": true
+    },
+    {
+      "fault": "scene_context_closed",
+      "position": 9,
+      "launched": [
+        "unified-seed0-native-w50",
+        "unified-seed0-native-w31",
+        "unified-seed1-native-w31",
+        "unified-seed1-native-w50",
+        "unified-seed0-native-w4",
+        "unified-seed0-arx-full-w4",
+        "unified-seed1-arx-full-w4",
+        "unified-seed1-native-w4",
+        "unified-seed1-arx-expert-repaired",
+        "unified-seed0-arx-expert-repaired"
+      ],
+      "stop_reason": "actual_safety_stop",
+      "passed": true
+    },
+    {
+      "fault": "missing_proof",
+      "position": 0,
+      "launched": [
+        "unified-seed0-native-w50"
+      ],
+      "stop_reason": "actual_safety_stop",
+      "passed": true
+    },
+    {
+      "fault": "wrong_episode",
+      "position": 3,
+      "launched": [
+        "unified-seed0-native-w50",
+        "unified-seed0-native-w31",
+        "unified-seed1-native-w31",
+        "unified-seed1-native-w50"
+      ],
+      "stop_reason": "candidate stop safety or cleanup unverified",
+      "passed": true
+    },
+    {
+      "fault": "wrong_failure",
+      "position": 6,
+      "launched": [
+        "unified-seed0-native-w50",
+        "unified-seed0-native-w31",
+        "unified-seed1-native-w31",
+        "unified-seed1-native-w50",
+        "unified-seed0-native-w4",
+        "unified-seed0-arx-full-w4",
+        "unified-seed1-arx-full-w4"
+      ],
+      "stop_reason": "actual_safety_stop",
+      "passed": true
+    },
+    {
+      "fault": "cleanup",
+      "position": 9,
+      "launched": [
+        "unified-seed0-native-w50",
+        "unified-seed0-native-w31",
+        "unified-seed1-native-w31",
+        "unified-seed1-native-w50",
+        "unified-seed0-native-w4",
+        "unified-seed0-arx-full-w4",
+        "unified-seed1-arx-full-w4",
+        "unified-seed1-native-w4",
+        "unified-seed1-arx-expert-repaired",
+        "unified-seed0-arx-expert-repaired"
+      ],
+      "stop_reason": "trial completion, independent reset or scene cleanup unverified",
+      "passed": true
+    },
+    {
+      "fault": "reset",
+      "position": 0,
+      "launched": [
+        "unified-seed0-native-w50"
+      ],
+      "stop_reason": "trial completion, independent reset or scene cleanup unverified",
+      "passed": true
+    },
+    {
+      "fault": "group_alive",
+      "position": 3,
+      "launched": [
+        "unified-seed0-native-w50",
+        "unified-seed0-native-w31",
+        "unified-seed1-native-w31",
+        "unified-seed1-native-w50"
+      ],
+      "stop_reason": "process group cleanup unverified",
+      "passed": true
+    },
+    {
+      "fault": "timeout",
+      "position": 6,
+      "launched": [
+        "unified-seed0-native-w50",
+        "unified-seed0-native-w31",
+        "unified-seed1-native-w31",
+        "unified-seed1-native-w50",
+        "unified-seed0-native-w4",
+        "unified-seed0-arx-full-w4",
+        "unified-seed1-arx-full-w4"
+      ],
+      "stop_reason": "trial hard timeout",
+      "passed": true
+    },
+    {
+      "fault": "service_exit",
+      "position": 9,
+      "launched": [
+        "unified-seed0-native-w50",
+        "unified-seed0-native-w31",
+        "unified-seed1-native-w31",
+        "unified-seed1-native-w50",
+        "unified-seed0-native-w4",
+        "unified-seed0-arx-full-w4",
+        "unified-seed1-arx-full-w4",
+        "unified-seed1-native-w4",
+        "unified-seed1-arx-expert-repaired",
+        "unified-seed0-arx-expert-repaired"
+      ],
+      "stop_reason": "shared model exited",
+      "passed": true
+    },
+    {
+      "fault": "forged_diagnostic",
+      "position": 0,
+      "launched": [
+        "unified-seed0-native-w50"
+      ],
+      "stop_reason": "candidate stop safety or cleanup unverified",
+      "passed": true
+    },
+    {
+      "fault": "forged_controlled_actual",
+      "position": 3,
+      "launched": [
+        "unified-seed0-native-w50",
+        "unified-seed0-native-w31",
+        "unified-seed1-native-w31",
+        "unified-seed1-native-w50"
+      ],
+      "stop_reason": "actual_safety_stop",
+      "passed": true
+    },
+    {
+      "fault": "forged_controlled_unknown",
+      "position": 6,
+      "launched": [
+        "unified-seed0-native-w50",
+        "unified-seed0-native-w31",
+        "unified-seed1-native-w31",
+        "unified-seed1-native-w50",
+        "unified-seed0-native-w4",
+        "unified-seed0-arx-full-w4",
+        "unified-seed1-arx-full-w4"
+      ],
+      "stop_reason": "candidate stop safety or cleanup unverified",
+      "passed": true
+    }
+  ],
+  "gpu_used": false
+}

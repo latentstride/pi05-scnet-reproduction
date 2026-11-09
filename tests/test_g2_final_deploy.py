@@ -122,7 +122,7 @@ class DeployTests(unittest.TestCase):
 
     def test_candidate_and_measured_rejection_are_separate(self):
         for detail, geometry, expected in [
-            ("native drive candidate blocked", "candidate", "diagnostic_complete"),
+            ("native drive candidate blocked", "candidate", "actual_safety_stop"),
             (
                 "measured state has non-permitted contact",
                 "actual",

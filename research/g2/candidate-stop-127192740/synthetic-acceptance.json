@@ -1,0 +1,1828 @@
+{
+  "data_kind": "synthetic",
+  "formal_score_eligible": false,
+  "gpu_used": false,
+  "simulator_run": false,
+  "episodes": [
+    {
+      "data_kind": "synthetic",
+      "formal_score_eligible": false,
+      "episode_id": "Aloha-window1",
+      "condition": "A_Aloha-window1",
+      "window": 1,
+      "success": true,
+      "outcome": "success",
+      "requested": 4,
+      "executed": 4,
+      "queries": 4,
+      "inference_s": 0.0010846670484170318,
+      "planning_s": 0.0011993760708719492,
+      "control_s": 0.00011516595259308815,
+      "plan_calls": 4,
+      "plan_failures": 0,
+      "initial": {
+        "robot_base_world": {
+          "left": [
+            -0.5,
+            -0.65,
+            0.0,
+            0.7071067811865477,
+            0.0,
+            0.0,
+            0.7071067811865475
+          ],
+          "right": [
+            0.5,
+            -0.65,
+            0.0,
+            0.7071067811865477,
+            0.0,
+            0.0,
+            0.7071067811865475
+          ]
+        },
+        "task_frame_world": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "actual_arm_qpos_rad": {
+          "left": [
+            0.2,
+            0.3,
+            -0.4,
+            0.3,
+            0.4,
+            -0.2
+          ],
+          "right": [
+            -0.2,
+            0.4,
+            -0.3,
+            0.2,
+            -0.3,
+            0.2
+          ]
+        },
+        "actual_gripper": {
+          "left": 0.5,
+          "right": 0.5
+        },
+        "objects_task": {
+          "synthetic_block": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "reset_fixture_sha256": "8056313da2bafe7b572847633ce335d4642e6fdd03be7a896b9472f4b952f74e",
+        "workspace_check_id": "synthetic_aligned_fixture_only",
+        "common_workspace_pass": true
+      },
+      "failure": null,
+      "video": "REDACTED_TEST_PATH/head.mp4",
+      "control_calls": 4,
+      "initial_sim_s": 0.0,
+      "elapsed_s": 0.05129695899086073
+    },
+    {
+      "data_kind": "synthetic",
+      "formal_score_eligible": false,
+      "episode_id": "Aloha-window4",
+      "condition": "A_Aloha-window4",
+      "window": 4,
+      "success": true,
+      "outcome": "success",
+      "requested": 4,
+      "executed": 4,
+      "queries": 1,
+      "inference_s": 0.00031874998239800334,
+      "planning_s": 0.00037341704592108727,
+      "control_s": 7.566699059680104e-05,
+      "plan_calls": 1,
+      "plan_failures": 0,
+      "initial": {
+        "robot_base_world": {
+          "left": [
+            -0.5,
+            -0.65,
+            0.0,
+            0.7071067811865477,
+            0.0,
+            0.0,
+            0.7071067811865475
+          ],
+          "right": [
+            0.5,
+            -0.65,
+            0.0,
+            0.7071067811865477,
+            0.0,
+            0.0,
+            0.7071067811865475
+          ]
+        },
+        "task_frame_world": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "actual_arm_qpos_rad": {
+          "left": [
+            0.2,
+            0.3,
+            -0.4,
+            0.3,
+            0.4,
+            -0.2
+          ],
+          "right": [
+            -0.2,
+            0.4,
+            -0.3,
+            0.2,
+            -0.3,
+            0.2
+          ]
+        },
+        "actual_gripper": {
+          "left": 0.5,
+          "right": 0.5
+        },
+        "objects_task": {
+          "synthetic_block": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "reset_fixture_sha256": "8056313da2bafe7b572847633ce335d4642e6fdd03be7a896b9472f4b952f74e",
+        "workspace_check_id": "synthetic_aligned_fixture_only",
+        "common_workspace_pass": true
+      },
+      "failure": null,
+      "video": "REDACTED_TEST_PATH/head.mp4",
+      "control_calls": 4,
+      "initial_sim_s": 0.0,
+      "elapsed_s": 0.018550584034528583
+    },
+    {
+      "data_kind": "synthetic",
+      "formal_score_eligible": false,
+      "episode_id": "ARX-window1",
+      "condition": "B_ARX-window1",
+      "window": 1,
+      "success": true,
+      "outcome": "success",
+      "requested": 4,
+      "executed": 4,
+      "queries": 4,
+      "inference_s": 0.0016976670012809336,
+      "planning_s": 0.012227709055878222,
+      "control_s": 0.0001982920221053064,
+      "plan_calls": 4,
+      "plan_failures": 0,
+      "initial": {
+        "robot_base_world": {
+          "left": [
+            -0.7879842426728185,
+            -0.4466905880162899,
+            0.7699487079735338,
+            0.747917436801104,
+            -0.17227283553641917,
+            0.0339138917773708,
+            0.6401495339447036
+          ],
+          "right": [
+            0.795024135537383,
+            -0.4480789874101389,
+            0.7677334728567448,
+            0.760824024828891,
+            -0.10233808354398366,
+            0.10991498771796378,
+            0.6313417579842723
+          ]
+        },
+        "task_frame_world": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "actual_arm_qpos_rad": {
+          "left": [
+            0.3,
+            0.2,
+            -0.3,
+            0.4,
+            0.3,
+            -0.1
+          ],
+          "right": [
+            -0.1,
+            0.3,
+            -0.2,
+            0.3,
+            -0.4,
+            0.2
+          ]
+        },
+        "actual_gripper": {
+          "left": 0.5,
+          "right": 0.5
+        },
+        "objects_task": {
+          "synthetic_block": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "reset_fixture_sha256": "8056313da2bafe7b572847633ce335d4642e6fdd03be7a896b9472f4b952f74e",
+        "workspace_check_id": "synthetic_aligned_fixture_only",
+        "common_workspace_pass": true
+      },
+      "failure": null,
+      "video": "REDACTED_TEST_PATH/head.mp4",
+      "control_calls": 4,
+      "initial_sim_s": 0.0,
+      "elapsed_s": 0.04636116698384285
+    },
+    {
+      "data_kind": "synthetic",
+      "formal_score_eligible": false,
+      "episode_id": "ARX-window4",
+      "condition": "B_ARX-window4",
+      "window": 4,
+      "success": true,
+      "outcome": "success",
+      "requested": 4,
+      "executed": 4,
+      "queries": 1,
+      "inference_s": 0.0005272499984130263,
+      "planning_s": 0.00831737497355789,
+      "control_s": 0.00011187500786036253,
+      "plan_calls": 1,
+      "plan_failures": 0,
+      "initial": {
+        "robot_base_world": {
+          "left": [
+            -0.7879842426728185,
+            -0.4466905880162899,
+            0.7699487079735338,
+            0.747917436801104,
+            -0.17227283553641917,
+            0.0339138917773708,
+            0.6401495339447036
+          ],
+          "right": [
+            0.795024135537383,
+            -0.4480789874101389,
+            0.7677334728567448,
+            0.760824024828891,
+            -0.10233808354398366,
+            0.10991498771796378,
+            0.6313417579842723
+          ]
+        },
+        "task_frame_world": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "actual_arm_qpos_rad": {
+          "left": [
+            0.3,
+            0.2,
+            -0.3,
+            0.4,
+            0.3,
+            -0.1
+          ],
+          "right": [
+            -0.1,
+            0.3,
+            -0.2,
+            0.3,
+            -0.4,
+            0.2
+          ]
+        },
+        "actual_gripper": {
+          "left": 0.5,
+          "right": 0.5
+        },
+        "objects_task": {
+          "synthetic_block": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "reset_fixture_sha256": "8056313da2bafe7b572847633ce335d4642e6fdd03be7a896b9472f4b952f74e",
+        "workspace_check_id": "synthetic_aligned_fixture_only",
+        "common_workspace_pass": true
+      },
+      "failure": null,
+      "video": "REDACTED_TEST_PATH/head.mp4",
+      "control_calls": 4,
+      "initial_sim_s": 0.0,
+      "elapsed_s": 0.030741666036192328
+    },
+    {
+      "data_kind": "synthetic",
+      "formal_score_eligible": false,
+      "episode_id": "failure-model",
+      "condition": "B_ARX-window1",
+      "window": 1,
+      "success": false,
+      "outcome": "policy_failed",
+      "requested": 0,
+      "executed": 0,
+      "queries": 1,
+      "inference_s": 1.2375006917864084e-05,
+      "planning_s": 0.0,
+      "control_s": 0.0,
+      "plan_calls": 0,
+      "plan_failures": 0,
+      "initial": {
+        "robot_base_world": {
+          "left": [
+            -0.7879842426728185,
+            -0.4466905880162899,
+            0.7699487079735338,
+            0.747917436801104,
+            -0.17227283553641917,
+            0.0339138917773708,
+            0.6401495339447036
+          ],
+          "right": [
+            0.795024135537383,
+            -0.4480789874101389,
+            0.7677334728567448,
+            0.760824024828891,
+            -0.10233808354398366,
+            0.10991498771796378,
+            0.6313417579842723
+          ]
+        },
+        "task_frame_world": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "actual_arm_qpos_rad": {
+          "left": [
+            0.3,
+            0.2,
+            -0.3,
+            0.4,
+            0.3,
+            -0.1
+          ],
+          "right": [
+            -0.1,
+            0.3,
+            -0.2,
+            0.3,
+            -0.4,
+            0.2
+          ]
+        },
+        "actual_gripper": {
+          "left": 0.5,
+          "right": 0.5
+        },
+        "objects_task": {
+          "synthetic_block": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "reset_fixture_sha256": "8056313da2bafe7b572847633ce335d4642e6fdd03be7a896b9472f4b952f74e",
+        "workspace_check_id": "synthetic_aligned_fixture_only",
+        "common_workspace_pass": true
+      },
+      "failure": {
+        "phase": "inference",
+        "code": "RuntimeError",
+        "detail": "injected model failure",
+        "diagnostic": {}
+      },
+      "video": "REDACTED_TEST_PATH/head.mp4",
+      "control_calls": 0,
+      "initial_sim_s": 0.0,
+      "elapsed_s": 0.020361084025353193
+    },
+    {
+      "data_kind": "synthetic",
+      "formal_score_eligible": false,
+      "episode_id": "failure-shape",
+      "condition": "B_ARX-window1",
+      "window": 1,
+      "success": false,
+      "outcome": "policy_failed",
+      "requested": 0,
+      "executed": 0,
+      "queries": 1,
+      "inference_s": 0.0004236670210957527,
+      "planning_s": 0.0,
+      "control_s": 0.0,
+      "plan_calls": 0,
+      "plan_failures": 0,
+      "initial": {
+        "robot_base_world": {
+          "left": [
+            -0.7879842426728185,
+            -0.4466905880162899,
+            0.7699487079735338,
+            0.747917436801104,
+            -0.17227283553641917,
+            0.0339138917773708,
+            0.6401495339447036
+          ],
+          "right": [
+            0.795024135537383,
+            -0.4480789874101389,
+            0.7677334728567448,
+            0.760824024828891,
+            -0.10233808354398366,
+            0.10991498771796378,
+            0.6313417579842723
+          ]
+        },
+        "task_frame_world": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "actual_arm_qpos_rad": {
+          "left": [
+            0.3,
+            0.2,
+            -0.3,
+            0.4,
+            0.3,
+            -0.1
+          ],
+          "right": [
+            -0.1,
+            0.3,
+            -0.2,
+            0.3,
+            -0.4,
+            0.2
+          ]
+        },
+        "actual_gripper": {
+          "left": 0.5,
+          "right": 0.5
+        },
+        "objects_task": {
+          "synthetic_block": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "reset_fixture_sha256": "8056313da2bafe7b572847633ce335d4642e6fdd03be7a896b9472f4b952f74e",
+        "workspace_check_id": "synthetic_aligned_fixture_only",
+        "common_workspace_pass": true
+      },
+      "failure": {
+        "phase": "inference",
+        "code": "ValueError",
+        "detail": "expected finite float array (50, 14)",
+        "diagnostic": {}
+      },
+      "video": "REDACTED_TEST_PATH/head.mp4",
+      "control_calls": 0,
+      "initial_sim_s": 0.0,
+      "elapsed_s": 0.02252149995183572
+    },
+    {
+      "data_kind": "synthetic",
+      "formal_score_eligible": false,
+      "episode_id": "failure-task",
+      "condition": "B_ARX-window1",
+      "window": 1,
+      "success": false,
+      "outcome": "task_unsuccessful",
+      "requested": 4,
+      "executed": 4,
+      "queries": 4,
+      "inference_s": 0.0014672090183012187,
+      "planning_s": 0.011646958999335766,
+      "control_s": 0.00013870903057977557,
+      "plan_calls": 4,
+      "plan_failures": 0,
+      "initial": {
+        "robot_base_world": {
+          "left": [
+            -0.7879842426728185,
+            -0.4466905880162899,
+            0.7699487079735338,
+            0.747917436801104,
+            -0.17227283553641917,
+            0.0339138917773708,
+            0.6401495339447036
+          ],
+          "right": [
+            0.795024135537383,
+            -0.4480789874101389,
+            0.7677334728567448,
+            0.760824024828891,
+            -0.10233808354398366,
+            0.10991498771796378,
+            0.6313417579842723
+          ]
+        },
+        "task_frame_world": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "actual_arm_qpos_rad": {
+          "left": [
+            0.3,
+            0.2,
+            -0.3,
+            0.4,
+            0.3,
+            -0.1
+          ],
+          "right": [
+            -0.1,
+            0.3,
+            -0.2,
+            0.3,
+            -0.4,
+            0.2
+          ]
+        },
+        "actual_gripper": {
+          "left": 0.5,
+          "right": 0.5
+        },
+        "objects_task": {
+          "synthetic_block": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "reset_fixture_sha256": "8056313da2bafe7b572847633ce335d4642e6fdd03be7a896b9472f4b952f74e",
+        "workspace_check_id": "synthetic_aligned_fixture_only",
+        "common_workspace_pass": true
+      },
+      "failure": {
+        "phase": "termination",
+        "code": "episode_budget_or_expert_exhausted",
+        "detail": "success predicate remained false"
+      },
+      "video": "REDACTED_TEST_PATH/head.mp4",
+      "control_calls": 4,
+      "initial_sim_s": 0.0,
+      "elapsed_s": 0.044593208003789186
+    },
+    {
+      "data_kind": "synthetic",
+      "formal_score_eligible": false,
+      "episode_id": "failure-reset",
+      "condition": "B_ARX-window1",
+      "window": 1,
+      "success": false,
+      "outcome": "environment_error",
+      "requested": 0,
+      "executed": 0,
+      "queries": 0,
+      "inference_s": 0.0,
+      "planning_s": 0.0,
+      "control_s": 0.0,
+      "plan_calls": 0,
+      "plan_failures": 0,
+      "initial": null,
+      "failure": {
+        "phase": "reset",
+        "code": "RuntimeError",
+        "detail": "injected reset failure",
+        "diagnostic": {}
+      },
+      "video": "REDACTED_TEST_PATH/head.mp4",
+      "control_calls": 0,
+      "elapsed_s": 0.018181040999479592
+    },
+    {
+      "data_kind": "synthetic",
+      "formal_score_eligible": false,
+      "episode_id": "failure-control",
+      "condition": "B_ARX-window1",
+      "window": 1,
+      "success": false,
+      "outcome": "control_error",
+      "requested": 1,
+      "executed": 0,
+      "queries": 1,
+      "inference_s": 0.0005662090261466801,
+      "planning_s": 0.0033172910334542394,
+      "control_s": 1.108401920646429e-05,
+      "plan_calls": 1,
+      "plan_failures": 0,
+      "initial": {
+        "robot_base_world": {
+          "left": [
+            -0.7879842426728185,
+            -0.4466905880162899,
+            0.7699487079735338,
+            0.747917436801104,
+            -0.17227283553641917,
+            0.0339138917773708,
+            0.6401495339447036
+          ],
+          "right": [
+            0.795024135537383,
+            -0.4480789874101389,
+            0.7677334728567448,
+            0.760824024828891,
+            -0.10233808354398366,
+            0.10991498771796378,
+            0.6313417579842723
+          ]
+        },
+        "task_frame_world": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "actual_arm_qpos_rad": {
+          "left": [
+            0.3,
+            0.2,
+            -0.3,
+            0.4,
+            0.3,
+            -0.1
+          ],
+          "right": [
+            -0.1,
+            0.3,
+            -0.2,
+            0.3,
+            -0.4,
+            0.2
+          ]
+        },
+        "actual_gripper": {
+          "left": 0.5,
+          "right": 0.5
+        },
+        "objects_task": {
+          "synthetic_block": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "reset_fixture_sha256": "8056313da2bafe7b572847633ce335d4642e6fdd03be7a896b9472f4b952f74e",
+        "workspace_check_id": "synthetic_aligned_fixture_only",
+        "common_workspace_pass": true
+      },
+      "failure": {
+        "phase": "control",
+        "code": "RuntimeError",
+        "detail": "injected control failure",
+        "diagnostic": {}
+      },
+      "video": "REDACTED_TEST_PATH/head.mp4",
+      "control_calls": null,
+      "initial_sim_s": 0.0,
+      "elapsed_s": 0.02579587500076741
+    },
+    {
+      "data_kind": "synthetic",
+      "formal_score_eligible": false,
+      "episode_id": "failure-interrupt",
+      "condition": "B_ARX-window1",
+      "window": 1,
+      "success": false,
+      "outcome": "interrupted",
+      "requested": 1,
+      "executed": 0,
+      "queries": 1,
+      "inference_s": 0.0003494169795885682,
+      "planning_s": 0.003457667015027255,
+      "control_s": 5.125009920448065e-06,
+      "plan_calls": 1,
+      "plan_failures": 0,
+      "initial": {
+        "robot_base_world": {
+          "left": [
+            -0.7879842426728185,
+            -0.4466905880162899,
+            0.7699487079735338,
+            0.747917436801104,
+            -0.17227283553641917,
+            0.0339138917773708,
+            0.6401495339447036
+          ],
+          "right": [
+            0.795024135537383,
+            -0.4480789874101389,
+            0.7677334728567448,
+            0.760824024828891,
+            -0.10233808354398366,
+            0.10991498771796378,
+            0.6313417579842723
+          ]
+        },
+        "task_frame_world": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "actual_arm_qpos_rad": {
+          "left": [
+            0.3,
+            0.2,
+            -0.3,
+            0.4,
+            0.3,
+            -0.1
+          ],
+          "right": [
+            -0.1,
+            0.3,
+            -0.2,
+            0.3,
+            -0.4,
+            0.2
+          ]
+        },
+        "actual_gripper": {
+          "left": 0.5,
+          "right": 0.5
+        },
+        "objects_task": {
+          "synthetic_block": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "reset_fixture_sha256": "8056313da2bafe7b572847633ce335d4642e6fdd03be7a896b9472f4b952f74e",
+        "workspace_check_id": "synthetic_aligned_fixture_only",
+        "common_workspace_pass": true
+      },
+      "failure": {
+        "phase": "control",
+        "code": "KeyboardInterrupt",
+        "detail": "injected interrupt",
+        "diagnostic": {}
+      },
+      "video": "REDACTED_TEST_PATH/head.mp4",
+      "control_calls": null,
+      "initial_sim_s": 0.0,
+      "elapsed_s": 0.024221708008553833
+    },
+    {
+      "data_kind": "synthetic",
+      "formal_score_eligible": false,
+      "episode_id": "failure-timeout",
+      "condition": "B_ARX-window1",
+      "window": 1,
+      "success": false,
+      "outcome": "timeout",
+      "requested": 1,
+      "executed": 0,
+      "queries": 1,
+      "inference_s": 0.0004125830018892884,
+      "planning_s": 0.0033232909627258778,
+      "control_s": 0.09009508299641311,
+      "plan_calls": 1,
+      "plan_failures": 0,
+      "initial": {
+        "robot_base_world": {
+          "left": [
+            -0.7879842426728185,
+            -0.4466905880162899,
+            0.7699487079735338,
+            0.747917436801104,
+            -0.17227283553641917,
+            0.0339138917773708,
+            0.6401495339447036
+          ],
+          "right": [
+            0.795024135537383,
+            -0.4480789874101389,
+            0.7677334728567448,
+            0.760824024828891,
+            -0.10233808354398366,
+            0.10991498771796378,
+            0.6313417579842723
+          ]
+        },
+        "task_frame_world": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "actual_arm_qpos_rad": {
+          "left": [
+            0.3,
+            0.2,
+            -0.3,
+            0.4,
+            0.3,
+            -0.1
+          ],
+          "right": [
+            -0.1,
+            0.3,
+            -0.2,
+            0.3,
+            -0.4,
+            0.2
+          ]
+        },
+        "actual_gripper": {
+          "left": 0.5,
+          "right": 0.5
+        },
+        "objects_task": {
+          "synthetic_block": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "reset_fixture_sha256": "8056313da2bafe7b572847633ce335d4642e6fdd03be7a896b9472f4b952f74e",
+        "workspace_check_id": "synthetic_aligned_fixture_only",
+        "common_workspace_pass": true
+      },
+      "failure": {
+        "phase": "control",
+        "code": "timeout",
+        "detail": "episode timed out in control",
+        "diagnostic": {}
+      },
+      "video": "REDACTED_TEST_PATH/head.mp4",
+      "control_calls": null,
+      "initial_sim_s": 0.0,
+      "elapsed_s": 0.11192258301889524
+    },
+    {
+      "data_kind": "synthetic",
+      "formal_score_eligible": false,
+      "episode_id": "failure-planning",
+      "condition": "B_ARX-window1",
+      "window": 1,
+      "success": false,
+      "outcome": "planning_failed",
+      "requested": 1,
+      "executed": 0,
+      "queries": 1,
+      "inference_s": 0.0005842499667778611,
+      "planning_s": 0.01843033399200067,
+      "control_s": 0.0,
+      "plan_calls": 1,
+      "plan_failures": 1,
+      "initial": {
+        "robot_base_world": {
+          "left": [
+            -0.7879842426728185,
+            -0.4466905880162899,
+            0.7699487079735338,
+            0.747917436801104,
+            -0.17227283553641917,
+            0.0339138917773708,
+            0.6401495339447036
+          ],
+          "right": [
+            0.795024135537383,
+            -0.4480789874101389,
+            0.7677334728567448,
+            0.760824024828891,
+            -0.10233808354398366,
+            0.10991498771796378,
+            0.6313417579842723
+          ]
+        },
+        "task_frame_world": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "actual_arm_qpos_rad": {
+          "left": [
+            0.3,
+            0.2,
+            -0.3,
+            0.4,
+            0.3,
+            -0.1
+          ],
+          "right": [
+            -0.1,
+            0.3,
+            -0.2,
+            0.3,
+            -0.4,
+            0.2
+          ]
+        },
+        "actual_gripper": {
+          "left": 0.5,
+          "right": 0.5
+        },
+        "objects_task": {
+          "synthetic_block": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "reset_fixture_sha256": "8056313da2bafe7b572847633ce335d4642e6fdd03be7a896b9472f4b952f74e",
+        "workspace_check_id": "synthetic_aligned_fixture_only",
+        "common_workspace_pass": true
+      },
+      "failure": {
+        "phase": "planning",
+        "code": "collision",
+        "detail": "all temporally admissible IK pairs collide",
+        "diagnostic": {
+          "phase": "action",
+          "stamp": {
+            "episode": "failure-planning",
+            "tick": 0,
+            "sim_s": 0.0
+          },
+          "ik_backend": "g2_urdf_damped_jacobian_v1",
+          "collision_world": "target_collision",
+          "measured_start_q": [
+            [
+              0.3,
+              0.2,
+              -0.3,
+              0.4,
+              0.3,
+              -0.1
+            ],
+            [
+              -0.1,
+              0.3,
+              -0.2,
+              0.3,
+              -0.4,
+              0.2
+            ]
+          ],
+          "measured_start_fingers": [
+            [
+              0.02,
+              0.02
+            ],
+            [
+              0.02,
+              0.02
+            ]
+          ],
+          "grippers": [
+            {
+              "row": 0,
+              "side": "left",
+              "raw": 0.5,
+              "rule": "clip",
+              "normalized": 0.5,
+              "native": [
+                0.02,
+                0.02
+              ]
+            },
+            {
+              "row": 0,
+              "side": "right",
+              "raw": 0.5,
+              "rule": "clip",
+              "normalized": 0.5,
+              "native": [
+                0.02,
+                0.02
+              ]
+            }
+          ],
+          "requests": [
+            {
+              "row": 0,
+              "task_tools": [
+                [
+                  [
+                    0.19487042423974166,
+                    0.9412152979193219,
+                    0.2759334715457064,
+                    -0.7798943177031149
+                  ],
+                  [
+                    0.9126703153282353,
+                    -0.07096399486500209,
+                    -0.4024885177883447,
+                    -0.22096310774058456
+                  ],
+                  [
+                    -0.3592470087214115,
+                    0.33026939669827415,
+                    -0.8728480465288765,
+                    0.7668248557437605
+                  ],
+                  [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                  ]
+                ],
+                [
+                  [
+                    -0.1318993267899675,
+                    0.9490073151999189,
+                    -0.28633491454832166,
+                    0.8005195122192628
+                  ],
+                  [
+                    0.8793308059993525,
+                    -0.021323392075495037,
+                    -0.47573379801200094,
+                    -0.21914011499963942
+                  ],
+                  [
+                    -0.4575804860490469,
+                    -0.3145320788845488,
+                    -0.8316788263143903,
+                    0.7696745683529436
+                  ],
+                  [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                  ]
+                ]
+              ],
+              "ik_start": [
+                [
+                  0.3,
+                  0.2,
+                  -0.3,
+                  0.4,
+                  0.3,
+                  -0.1
+                ],
+                [
+                  -0.1,
+                  0.3,
+                  -0.2,
+                  0.3,
+                  -0.4,
+                  0.2
+                ]
+              ],
+              "fingers": [
+                [
+                  0.02,
+                  0.02
+                ],
+                [
+                  0.02,
+                  0.02
+                ]
+              ]
+            }
+          ],
+          "rejected_pairs": 16,
+          "collision_examples": [
+            {
+              "candidate_q": [
+                [
+                  0.3,
+                  0.2,
+                  -0.3,
+                  0.4,
+                  0.3,
+                  -0.1
+                ],
+                [
+                  -0.1,
+                  0.3,
+                  -0.2,
+                  0.3,
+                  -0.4,
+                  0.2
+                ]
+              ],
+              "collisions": null
+            },
+            {
+              "candidate_q": [
+                [
+                  0.3,
+                  0.2,
+                  -0.3,
+                  0.4,
+                  0.3,
+                  -0.1
+                ],
+                [
+                  -0.09998460125287201,
+                  0.2736783345681103,
+                  -0.1987708597154158,
+                  0.27243861549399156,
+                  -0.39995372661689227,
+                  0.199998707681834
+                ]
+              ],
+              "collisions": null
+            },
+            {
+              "candidate_q": [
+                [
+                  0.2998343675740409,
+                  -1.7135946969816318,
+                  -0.14951530567134969,
+                  -1.6642513016077154,
+                  0.2998392835920679,
+                  -0.09996512321417551
+                ],
+                [
+                  -0.1,
+                  0.3,
+                  -0.2,
+                  0.3,
+                  -0.4,
+                  0.2
+                ]
+              ],
+              "collisions": null
+            },
+            {
+              "candidate_q": [
+                [
+                  0.2998343675740409,
+                  -1.7135946969816318,
+                  -0.14951530567134969,
+                  -1.6642513016077154,
+                  0.2998392835920679,
+                  -0.09996512321417551
+                ],
+                [
+                  -0.09998460125287201,
+                  0.2736783345681103,
+                  -0.1987708597154158,
+                  0.27243861549399156,
+                  -0.39995372661689227,
+                  0.199998707681834
+                ]
+              ],
+              "collisions": null
+            },
+            {
+              "candidate_q": [
+                [
+                  0.3,
+                  0.2,
+                  -0.3,
+                  0.4,
+                  0.3,
+                  -0.1
+                ],
+                [
+                  6.183218806626131,
+                  6.559605761913175,
+                  6.084281611212666,
+                  6.558499565094972,
+                  5.883249730881816,
+                  0.20000007967358888
+                ]
+              ],
+              "collisions": null
+            },
+            {
+              "candidate_q": [
+                [
+                  -5.983221781378605,
+                  -6.079155237954774,
+                  -6.583234647880862,
+                  -5.879112877719012,
+                  -5.9832284450285975,
+                  -0.10000074821842422
+                ],
+                [
+                  -0.1,
+                  0.3,
+                  -0.2,
+                  0.3,
+                  -0.4,
+                  0.2
+                ]
+              ],
+              "collisions": null
+            },
+            {
+              "candidate_q": [
+                [
+                  -5.983221781378605,
+                  -6.079155237954774,
+                  -6.583234647880862,
+                  -5.879112877719012,
+                  -5.9832284450285975,
+                  -0.10000074821842422
+                ],
+                [
+                  -0.09998460125287201,
+                  0.2736783345681103,
+                  -0.1987708597154158,
+                  0.27243861549399156,
+                  -0.39995372661689227,
+                  0.199998707681834
+                ]
+              ],
+              "collisions": null
+            },
+            {
+              "candidate_q": [
+                [
+                  6.583076218908444,
+                  6.487382143935658,
+                  5.983084795833696,
+                  6.687480440213209,
+                  6.583071598336422,
+                  -0.09999562257706059
+                ],
+                [
+                  -0.1,
+                  0.3,
+                  -0.2,
+                  0.3,
+                  -0.4,
+                  0.2
+                ]
+              ],
+              "collisions": null
+            }
+          ],
+          "candidate_verdicts": [
+            {
+              "candidate_q": [
+                [
+                  0.3,
+                  0.2,
+                  -0.3,
+                  0.4,
+                  0.3,
+                  -0.1
+                ],
+                [
+                  -0.1,
+                  0.3,
+                  -0.2,
+                  0.3,
+                  -0.4,
+                  0.2
+                ]
+              ],
+              "reason": "collision",
+              "collisions": null
+            },
+            {
+              "candidate_q": [
+                [
+                  0.3,
+                  0.2,
+                  -0.3,
+                  0.4,
+                  0.3,
+                  -0.1
+                ],
+                [
+                  -0.09998460125287201,
+                  0.2736783345681103,
+                  -0.1987708597154158,
+                  0.27243861549399156,
+                  -0.39995372661689227,
+                  0.199998707681834
+                ]
+              ],
+              "reason": "collision",
+              "collisions": null
+            },
+            {
+              "candidate_q": [
+                [
+                  0.2998343675740409,
+                  -1.7135946969816318,
+                  -0.14951530567134969,
+                  -1.6642513016077154,
+                  0.2998392835920679,
+                  -0.09996512321417551
+                ],
+                [
+                  -0.1,
+                  0.3,
+                  -0.2,
+                  0.3,
+                  -0.4,
+                  0.2
+                ]
+              ],
+              "reason": "collision",
+              "collisions": null
+            },
+            {
+              "candidate_q": [
+                [
+                  0.2998343675740409,
+                  -1.7135946969816318,
+                  -0.14951530567134969,
+                  -1.6642513016077154,
+                  0.2998392835920679,
+                  -0.09996512321417551
+                ],
+                [
+                  -0.09998460125287201,
+                  0.2736783345681103,
+                  -0.1987708597154158,
+                  0.27243861549399156,
+                  -0.39995372661689227,
+                  0.199998707681834
+                ]
+              ],
+              "reason": "collision",
+              "collisions": null
+            },
+            {
+              "candidate_q": [
+                [
+                  0.3,
+                  0.2,
+                  -0.3,
+                  0.4,
+                  0.3,
+                  -0.1
+                ],
+                [
+                  6.183218806626131,
+                  6.559605761913175,
+                  6.084281611212666,
+                  6.558499565094972,
+                  5.883249730881816,
+                  0.20000007967358888
+                ]
+              ],
+              "reason": "collision",
+              "collisions": null
+            },
+            {
+              "candidate_q": [
+                [
+                  -5.983221781378605,
+                  -6.079155237954774,
+                  -6.583234647880862,
+                  -5.879112877719012,
+                  -5.9832284450285975,
+                  -0.10000074821842422
+                ],
+                [
+                  -0.1,
+                  0.3,
+                  -0.2,
+                  0.3,
+                  -0.4,
+                  0.2
+                ]
+              ],
+              "reason": "collision",
+              "collisions": null
+            },
+            {
+              "candidate_q": [
+                [
+                  -5.983221781378605,
+                  -6.079155237954774,
+                  -6.583234647880862,
+                  -5.879112877719012,
+                  -5.9832284450285975,
+                  -0.10000074821842422
+                ],
+                [
+                  -0.09998460125287201,
+                  0.2736783345681103,
+                  -0.1987708597154158,
+                  0.27243861549399156,
+                  -0.39995372661689227,
+                  0.199998707681834
+                ]
+              ],
+              "reason": "collision",
+              "collisions": null
+            },
+            {
+              "candidate_q": [
+                [
+                  6.583076218908444,
+                  6.487382143935658,
+                  5.983084795833696,
+                  6.687480440213209,
+                  6.583071598336422,
+                  -0.09999562257706059
+                ],
+                [
+                  -0.1,
+                  0.3,
+                  -0.2,
+                  0.3,
+                  -0.4,
+                  0.2
+                ]
+              ],
+              "reason": "collision",
+              "collisions": null
+            },
+            {
+              "candidate_q": [
+                [
+                  6.583076218908444,
+                  6.487382143935658,
+                  5.983084795833696,
+                  6.687480440213209,
+                  6.583071598336422,
+                  -0.09999562257706059
+                ],
+                [
+                  -0.09998460125287201,
+                  0.2736783345681103,
+                  -0.1987708597154158,
+                  0.27243861549399156,
+                  -0.39995372661689227,
+                  0.199998707681834
+                ]
+              ],
+              "reason": "collision",
+              "collisions": null
+            },
+            {
+              "candidate_q": [
+                [
+                  0.3,
+                  0.2,
+                  -0.3,
+                  0.4,
+                  0.3,
+                  -0.1
+                ],
+                [
+                  -6.3831704921210335,
+                  -6.009492053699337,
+                  -6.481957864910966,
+                  -6.01073004256009,
+                  -6.683139258672535,
+                  0.19999863280739355
+                ]
+              ],
+              "reason": "collision",
+              "collisions": null
+            },
+            {
+              "candidate_q": [
+                [
+                  0.2998343675740409,
+                  -1.7135946969816318,
+                  -0.14951530567134969,
+                  -1.6642513016077154,
+                  0.2998392835920679,
+                  -0.09996512321417551
+                ],
+                [
+                  6.183218806626131,
+                  6.559605761913175,
+                  6.084281611212666,
+                  6.558499565094972,
+                  5.883249730881816,
+                  0.20000007967358888
+                ]
+              ],
+              "reason": "collision",
+              "collisions": null
+            },
+            {
+              "candidate_q": [
+                [
+                  0.2998343675740409,
+                  -1.7135946969816318,
+                  -0.14951530567134969,
+                  -1.6642513016077154,
+                  0.2998392835920679,
+                  -0.09996512321417551
+                ],
+                [
+                  -6.3831704921210335,
+                  -6.009492053699337,
+                  -6.481957864910966,
+                  -6.01073004256009,
+                  -6.683139258672535,
+                  0.19999863280739355
+                ]
+              ],
+              "reason": "collision",
+              "collisions": null
+            },
+            {
+              "candidate_q": [
+                [
+                  -5.983221781378605,
+                  -6.079155237954774,
+                  -6.583234647880862,
+                  -5.879112877719012,
+                  -5.9832284450285975,
+                  -0.10000074821842422
+                ],
+                [
+                  6.183218806626131,
+                  6.559605761913175,
+                  6.084281611212666,
+                  6.558499565094972,
+                  5.883249730881816,
+                  0.20000007967358888
+                ]
+              ],
+              "reason": "collision",
+              "collisions": null
+            },
+            {
+              "candidate_q": [
+                [
+                  6.583076218908444,
+                  6.487382143935658,
+                  5.983084795833696,
+                  6.687480440213209,
+                  6.583071598336422,
+                  -0.09999562257706059
+                ],
+                [
+                  6.183218806626131,
+                  6.559605761913175,
+                  6.084281611212666,
+                  6.558499565094972,
+                  5.883249730881816,
+                  0.20000007967358888
+                ]
+              ],
+              "reason": "collision",
+              "collisions": null
+            },
+            {
+              "candidate_q": [
+                [
+                  -5.983221781378605,
+                  -6.079155237954774,
+                  -6.583234647880862,
+                  -5.879112877719012,
+                  -5.9832284450285975,
+                  -0.10000074821842422
+                ],
+                [
+                  -6.3831704921210335,
+                  -6.009492053699337,
+                  -6.481957864910966,
+                  -6.01073004256009,
+                  -6.683139258672535,
+                  0.19999863280739355
+                ]
+              ],
+              "reason": "collision",
+              "collisions": null
+            },
+            {
+              "candidate_q": [
+                [
+                  6.583076218908444,
+                  6.487382143935658,
+                  5.983084795833696,
+                  6.687480440213209,
+                  6.583071598336422,
+                  -0.09999562257706059
+                ],
+                [
+                  -6.3831704921210335,
+                  -6.009492053699337,
+                  -6.481957864910966,
+                  -6.01073004256009,
+                  -6.683139258672535,
+                  0.19999863280739355
+                ]
+              ],
+              "reason": "collision",
+              "collisions": null
+            }
+          ],
+          "continuity_rejected": 0,
+          "ik_solutions_per_side": [
+            4,
+            4
+          ],
+          "wall_s": 0.018188332964200526
+        }
+      },
+      "video": "REDACTED_TEST_PATH/head.mp4",
+      "control_calls": 0,
+      "initial_sim_s": 0.0,
+      "elapsed_s": 0.04108979203738272
+    },
+    {
+      "data_kind": "synthetic",
+      "formal_score_eligible": false,
+      "episode_id": "expert-arx",
+      "condition": "expert-arx",
+      "window": 4,
+      "success": true,
+      "outcome": "success",
+      "requested": 4,
+      "executed": 4,
+      "queries": 1,
+      "inference_s": 0.0,
+      "planning_s": 0.008127166016492993,
+      "control_s": 9.254104224964976e-05,
+      "plan_calls": 1,
+      "plan_failures": 0,
+      "initial": {
+        "robot_base_world": {
+          "left": [
+            -0.7879842426728185,
+            -0.4466905880162899,
+            0.7699487079735338,
+            0.747917436801104,
+            -0.17227283553641917,
+            0.0339138917773708,
+            0.6401495339447036
+          ],
+          "right": [
+            0.795024135537383,
+            -0.4480789874101389,
+            0.7677334728567448,
+            0.760824024828891,
+            -0.10233808354398366,
+            0.10991498771796378,
+            0.6313417579842723
+          ]
+        },
+        "task_frame_world": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "actual_arm_qpos_rad": {
+          "left": [
+            0.3,
+            0.2,
+            -0.3,
+            0.4,
+            0.3,
+            -0.1
+          ],
+          "right": [
+            -0.1,
+            0.3,
+            -0.2,
+            0.3,
+            -0.4,
+            0.2
+          ]
+        },
+        "actual_gripper": {
+          "left": 0.5,
+          "right": 0.5
+        },
+        "objects_task": {
+          "synthetic_block": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "reset_fixture_sha256": "8056313da2bafe7b572847633ce335d4642e6fdd03be7a896b9472f4b952f74e",
+        "workspace_check_id": "synthetic_aligned_fixture_only",
+        "common_workspace_pass": true
+      },
+      "failure": null,
+      "video": "REDACTED_TEST_PATH/head.mp4",
+      "control_calls": 4,
+      "initial_sim_s": 0.0,
+      "elapsed_s": 0.029041708970908076
+    }
+  ],
+  "outcome_counts": {
+    "success": 5,
+    "policy_failed": 2,
+    "task_unsuccessful": 1,
+    "environment_error": 1,
+    "control_error": 1,
+    "interrupted": 1,
+    "timeout": 1,
+    "planning_failed": 1
+  },
+  "note": "Mock success exercises control flow; it is not robot task success.",
+  "passed": true
+}

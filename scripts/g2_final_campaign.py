@@ -5,6 +5,11 @@ from pathlib import Path
 import subprocess
 import time
 
+from g2_candidate_stop import (
+    actual_provenance,
+    candidate_failure,
+    verified_candidate_stop,
+)
 from g2e_host_supervisor import argv, interrupt_signals, stop_group
 from pace_g1_orchestrate import persist, wait_ready
 
@@ -334,6 +339,12 @@ def supervise(plan, runtime, output, *, rehearsal=False, allocated=False):
                     break
                 active_entry.update(result=receipt, process_group_reaped=True)
                 category = receipt.get("category")
+                if actual_provenance(
+                    ((receipt.get("result") or {}).get("failure") or {}).get(
+                        "diagnostic"
+                    )
+                ):
+                    category = "actual_safety_stop"
                 if receipt.get("stop_campaign") is True or category in (
                     "infrastructure_failure",
                     "actual_safety_stop",
@@ -364,7 +375,18 @@ def supervise(plan, runtime, output, *, rehearsal=False, allocated=False):
                 ):
                     reason = "recovery budget receipt differs from locked trial"
                     break
-                if category == "controlled_contact_stop":
+                if category == "controlled_candidate_stop" or candidate_failure(result):
+                    if not (
+                        category == "controlled_candidate_stop"
+                        and candidate_failure(result)
+                        and receipt.get("success") is False
+                        and verified_candidate_stop(
+                            receipt.get("candidate_stop"), episode, result
+                        )
+                    ):
+                        reason = "candidate stop safety or cleanup unverified"
+                        break
+                elif category == "controlled_contact_stop":
                     if not (
                         receipt.get("fresh_reset_verified") is True
                         and receipt.get("success") is False

@@ -43,6 +43,12 @@ def accepted(result, event):
 def finish_episode(backend, output, record, event):
     """Attempt all cleanup before emitting evidence, including on failed hold."""
     failures = []
+    note_failure = getattr(backend, "note_failure", None)
+    try:
+        if callable(note_failure) and record.get("failure"):
+            note_failure(record)
+    except (Exception, KeyboardInterrupt, SystemExit) as error:
+        failures.append(dict(kind="stop_receipt_failed", detail=repr(error)))
     try:
         if not record["success"]:
             try:

@@ -13,7 +13,7 @@ from g2_remaining_plan import build
 from pace_g1_orchestrate import persist
 
 RUNTIME_MODULES = """
-g2_adapter g2_assets g2_capture g2_collision g2_contact g2_episode g2_export g2_bounded_approach
+g2_candidate_stop g2_adapter g2_assets g2_capture g2_collision g2_contact g2_episode g2_export g2_bounded_approach
 g2_final_campaign g2_final_deploy g2_final_expert g2_final_statistics g2_final_trial
 g2_finger_force g2_initial g2_job_admission g2_kinematics g2_locked_task g2_motion
 g2_native_backend g2_native_expert_cpu g2_native_preload g2_native_contact_preload g2_orchestrator g2_proxy_collision

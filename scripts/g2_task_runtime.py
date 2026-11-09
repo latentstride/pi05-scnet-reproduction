@@ -147,6 +147,11 @@ class RuntimeSession:
     def success(self):
         return self.backend.success() if self.backend is not None else False
 
+    def note_failure(self, result):
+        note = getattr(self.backend, "note_failure", None)
+        if callable(note):
+            note(result)
+
     def hold(self):
         if self.backend is not None:
             self.backend.hold()

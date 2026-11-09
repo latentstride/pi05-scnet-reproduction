@@ -10,6 +10,7 @@ from g2_adapter import G2Error, solve_pair
 from g2_kinematics import rotation_vector, pose_error
 from verify_robotwin_fk import rot
 from robotwin_control_geometry import checked_pose, finite_array, Status
+from g2_candidate_stop import actual_provenance
 
 
 class RefinedChain:
@@ -50,7 +51,7 @@ def refined_pair(arms, frames, tools, seed, fingers, world, check, max_delta=Non
                 ),
             )
         except G2Error as exc:
-            if exc.diagnostic.get("geometry") == "actual" or exc.status not in (
+            if actual_provenance(exc.diagnostic) or exc.status not in (
                 Status.COLLISION,
                 Status.IK_FAILED,
                 Status.VELOCITY,
@@ -66,7 +67,11 @@ def refined_pair(arms, frames, tools, seed, fingers, world, check, max_delta=Non
                 )
             )
     raise G2Error(
-        Status.COLLISION, "bounded exact-pose refinements exhausted", attempts=verdicts
+        Status.COLLISION,
+        "bounded exact-pose refinements exhausted",
+        geometry="candidate",
+        reason="exact_pose_refinements_exhausted",
+        attempts=verdicts,
     )
 
 
@@ -138,7 +143,7 @@ def bounded_progress(arms, frames, tools, q, fingers, requested, world, motion, 
                 attempts=attempts,
             )
         except G2Error as exc:
-            if exc.diagnostic.get("geometry") == "actual" or exc.status not in (
+            if actual_provenance(exc.diagnostic) or exc.status not in (
                 Status.COLLISION,
                 Status.IK_FAILED,
                 Status.VELOCITY,
@@ -156,5 +161,7 @@ def bounded_progress(arms, frames, tools, q, fingers, requested, world, motion, 
     raise G2Error(
         Status.COLLISION,
         "no safe bounded progress endpoint and full path",
+        geometry="candidate",
+        reason="bounded_progress_exhausted",
         attempts=attempts,
     )

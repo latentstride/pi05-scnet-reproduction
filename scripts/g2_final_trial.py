@@ -7,6 +7,13 @@ import os
 from pathlib import Path
 import time
 
+from g2_candidate_stop import (
+    actual_provenance,
+    candidate_failure,
+    measure_stop,
+    failure_sha256,
+    verified_candidate_stop,
+)
 from g2_adapter import G2Error, images_of
 from g2_contact import CONTACT_LOSSES
 from g2_episode import json_value
@@ -34,7 +41,7 @@ def read(path):
     return json.loads(path.read_text())
 
 
-def classify(result, contact_stop=None):
+def classify(result, contact_stop=None, candidate_stop=None):
     failure = result.get("failure") or {}
     detail = failure.get("detail", "").lower()
     diagnostic = failure.get("diagnostic") or {}
@@ -42,7 +49,7 @@ def classify(result, contact_stop=None):
     if result.get("cleanup_failures"):
         return "infrastructure_failure"
     if (
-        diagnostic.get("geometry") == "actual"
+        actual_provenance(diagnostic)
         or diagnostic.get("reason") == "recovery_unsafe_contact"
         or any(
             s in detail
@@ -94,6 +101,12 @@ def classify(result, contact_stop=None):
         or code == Status.BACKEND_ERROR.value
         and diagnostic.get("reason") == "premature_release"
     ):
+        if candidate_failure(result):
+            return (
+                "controlled_candidate_stop"
+                if verified_candidate_stop(candidate_stop, result=result)
+                else "actual_safety_stop"
+            )
         return "diagnostic_complete"
     # The frozen ARX ContactTracker reports this pre-drive gate in its original form.
     if (
@@ -128,6 +141,9 @@ class RuntimeReset(VerifiedReset):
         super().__init__(backend, expected, output, verify_scene)
         self.cleanup_failures = cleanup_failures
         self.contact_stop = {}
+        self.candidate_stop = {}
+        self.candidate_rejected = False
+        self.candidate_failure_hash = None
         self.cleanup = dict(
             scene_opened=True,
             hold_complete=False,
@@ -138,12 +154,23 @@ class RuntimeReset(VerifiedReset):
         self.motion_attempted = False
 
     def execute(self, *args, **kwargs):
-        if self.status != "matched" or self.contact_stop:
+        if self.status != "matched" or self.contact_stop or self.candidate_rejected:
             raise G2Error(Status.UNSYNCED, "execution requires a fresh admitted scene")
         try:
             self.motion_attempted = True
             return self.backend.execute(*args, **kwargs)
         except G2Error as error:
+            self.candidate_rejected = candidate_failure(
+                dict(failure=dict(code=error.status.value, diagnostic=error.diagnostic))
+            )
+            if self.candidate_rejected:
+                self.candidate_failure_hash = failure_sha256(
+                    dict(
+                        failure=dict(
+                            code=error.status.value, diagnostic=error.diagnostic
+                        )
+                    )
+                )
             kind = CONTACT_LOSSES.get(str(error))
             if (
                 error.status == Status.BACKEND_ERROR
@@ -157,6 +184,11 @@ class RuntimeReset(VerifiedReset):
                 )
             raise
 
+    def note_failure(self, result):
+        if candidate_failure(result):
+            self.candidate_rejected = True
+            self.candidate_failure_hash = failure_sha256(result)
+
     def _cleanup(self, key, action, *args):
         try:
             before = self.backend.tick
@@ -164,6 +196,10 @@ class RuntimeReset(VerifiedReset):
             if before != self.backend.tick:
                 raise RuntimeError(f"{key} advanced simulator time")
             self.cleanup[key + "_complete"] = True
+            if self.candidate_stop:
+                if before != self.candidate_stop["tick"]:
+                    raise RuntimeError("candidate cleanup tick changed")
+                self.candidate_stop[key + "_complete"] = True
             if self.contact_stop:
                 self.contact_stop[key + "_complete"] = (
                     before == self.backend.tick == self.contact_stop["tick"]
@@ -174,7 +210,41 @@ class RuntimeReset(VerifiedReset):
             raise
 
     def hold(self):
-        return self._cleanup("hold", self.backend.hold)
+        if not self.candidate_rejected:
+            return self._cleanup("hold", self.backend.hold)
+        before = None
+        try:
+            before = measure_stop(self.backend)
+        except (Exception, KeyboardInterrupt, SystemExit) as error:
+            self.cleanup_failures.append(f"candidate terminal check: {error}")
+            raise
+        finally:
+            # Still attempt hold on a failed terminal check; close is attempted
+            # by the existing episode/context finally path. No proof on failure.
+            self._cleanup("hold", self.backend.hold)
+        try:
+            after = measure_stop(self.backend, held=True)
+            if (before["tick"], before["state_sha256"]) != (
+                after["tick"],
+                after["state_sha256"],
+            ):
+                raise G2Error(
+                    Status.UNSYNCED,
+                    "candidate hold changed physical state",
+                    geometry="actual",
+                )
+            if before["expected_hold_finger_m"] != after["finger_drive_m"]:
+                raise G2Error(
+                    Status.UNSYNCED,
+                    "candidate hold changed retained finger target",
+                    geometry="actual",
+                )
+            self.candidate_stop = dict(
+                after, hold_complete=True, failure_sha256=self.candidate_failure_hash
+            )
+        except (Exception, KeyboardInterrupt, SystemExit) as error:
+            self.cleanup_failures.append(f"candidate hold verification: {error}")
+            raise
 
     def close(self, output):
         self.close_attempted = True
@@ -237,6 +307,8 @@ def run(args):
         runtime_reset.cleanup["scene_context_closed"] = True
         if runtime_reset.contact_stop:
             runtime_reset.contact_stop["scene_context_closed"] = True
+        if runtime_reset.candidate_stop:
+            runtime_reset.candidate_stop["scene_context_closed"] = True
 
     receipt = dict(episode_id=args.episode, category="infrastructure_failure")
     started = time.monotonic()
@@ -395,6 +467,13 @@ def run(args):
                             outcome="success" if success else "task_unsuccessful",
                         )
                     except G2Error as error:
+                        backend.note_failure(
+                            dict(
+                                failure=dict(
+                                    code=error.status.value, diagnostic=error.diagnostic
+                                )
+                            )
+                        )
                         expert_error = error
                     finally:
                         try:
@@ -429,7 +508,9 @@ def run(args):
                     )
                 receipt.update(
                     category=classify(
-                        result, runtime_reset.contact_stop if runtime_reset else None
+                        result,
+                        runtime_reset.contact_stop if runtime_reset else None,
+                        runtime_reset.candidate_stop if runtime_reset else None,
                     ),
                     result=json.loads(
                         json.dumps(result, default=json_value, allow_nan=False)
@@ -448,18 +529,27 @@ def run(args):
                 Status.UNREACHABLE,
             ):
                 outcome = "planning_failed"
-            category = classify(
-                dict(
-                    outcome=outcome,
-                    failure=dict(
-                        detail=detail,
-                        code=error.status.value,
-                        diagnostic=error.diagnostic,
-                    ),
+            result = dict(
+                success=False,
+                outcome=outcome,
+                failure=dict(
+                    detail=detail,
+                    code=error.status.value,
+                    diagnostic=error.diagnostic,
                 ),
-                runtime_reset.contact_stop if runtime_reset else None,
             )
-            receipt.update(outcome=outcome, code=error.status.value)
+            category = classify(
+                result,
+                runtime_reset.contact_stop if runtime_reset else None,
+                runtime_reset.candidate_stop if runtime_reset else None,
+            )
+            receipt.update(
+                outcome=outcome,
+                code=error.status.value,
+                result=json.loads(
+                    json.dumps(result, default=json_value, allow_nan=False)
+                ),
+            )
         else:
             category = "infrastructure_failure"
         receipt.update(category=category, detail=detail, success=False)
@@ -473,6 +563,8 @@ def run(args):
             receipt["fresh_reset_verified"] = runtime_reset.status == "matched"
             if runtime_reset.contact_stop:
                 receipt["contact_stop"] = runtime_reset.contact_stop
+            if runtime_reset.candidate_stop:
+                receipt["candidate_stop"] = runtime_reset.candidate_stop
         if cleanup_failures:
             receipt.update(
                 category="infrastructure_failure", cleanup_failures=cleanup_failures

@@ -14,6 +14,8 @@ from unittest.mock import Mock, patch
 import numpy as np
 
 from g2_adapter import G2Error
+from g2_candidate_stop import candidate_failure, verified_candidate_stop
+from g2_candidate_schedule_cpu import proof_for
 from g2_episode import finish_episode
 from g2_final_campaign import process_group_gone, supervise, verified_scene_cleanup
 from g2_final_deploy import run_deployment_stage
@@ -279,13 +281,13 @@ class ExitPathTests(unittest.TestCase):
                 "control_error",
                 "collision",
                 {"geometry": "candidate"},
-                "diagnostic_complete",
+                "actual_safety_stop",
             ),
             (
                 "control_error",
                 Status.LIMIT.value,
                 {"geometry": "candidate"},
-                "diagnostic_complete",
+                "actual_safety_stop",
             ),
             ("planning_failed", "ik_failed", {}, "diagnostic_complete"),
             ("planning_failed", "unreachable", {}, "diagnostic_complete"),
@@ -369,6 +371,7 @@ class TrialReceiptTests(unittest.TestCase):
     def test_expert_and_probe_receipts_require_real_context_exit(self):
         for kind, injected, expected in (
             ("expert", "task_failure", "diagnostic_complete"),
+            ("expert", "candidate", "controlled_candidate_stop"),
             ("expert", "invalid_trace", "infrastructure_failure"),
             ("expert", "hold", "infrastructure_failure"),
             ("expert", "close", "infrastructure_failure"),
@@ -414,6 +417,10 @@ class TrialReceiptTests(unittest.TestCase):
                     getattr(backend, injected).side_effect = OSError(injected)
                 if injected == "task_failure":
                     expert_error = G2Error(Status.PLAN_FAILED, "expert holder missing")
+                elif injected == "candidate":
+                    expert_error = G2Error(
+                        Status.COLLISION, "CPU candidate", geometry="candidate"
+                    )
                 else:
                     expert_error = None
                 trace_error = (
@@ -458,6 +465,21 @@ class TrialReceiptTests(unittest.TestCase):
                     patch("g2_final_trial.verify_runtime"),
                     patch("g2_final_trial.verify_model_receipt"),
                     patch("g2_final_trial.inspect_assets"),
+                    patch(
+                        "g2_final_trial.measure_stop",
+                        side_effect=lambda *a, held=False: dict(
+                            proof_for(
+                                terminal(
+                                    "control_error", "collision", geometry="candidate"
+                                ),
+                                "example",
+                            ),
+                            hold_verified=held,
+                            tick=0,
+                            expected_hold_finger_m=[],
+                            finger_drive_m=[],
+                        ),
+                    ),
                     patch("g2_final_trial.real_scene", side_effect=scene),
                     patch.object(RuntimeReset, "reset", reset),
                     patch(
@@ -474,6 +496,16 @@ class TrialReceiptTests(unittest.TestCase):
                     run_trial(args)
                 receipt = json.loads((args.output / "receipt.json").read_text())
                 self.assertEqual(receipt["category"], expected)
+                if injected == "candidate":
+                    self.assertEqual(
+                        receipt["result"]["failure"]["diagnostic"]["geometry"],
+                        "candidate",
+                    )
+                    self.assertTrue(
+                        verified_candidate_stop(
+                            receipt["candidate_stop"], "example", receipt["result"]
+                        )
+                    )
                 backend.close.assert_called_once()
                 if kind == "expert":
                     backend.hold.assert_called_once()
@@ -610,9 +642,12 @@ class CampaignExitTests(unittest.TestCase):
                     result["failure"]["diagnostic"].update(
                         recovery_limit=3, recoveries_used=3
                     )
+            # Explicitly synthetic safety evidence for the updated candidate gate.
+            if candidate_failure(result):
+                fields["candidate_stop"] = proof_for(result, episode)
             return dict(
                 fields,
-                category=classify(result),
+                category=classify(result, candidate_stop=fields.get("candidate_stop")),
                 success=result["success"],
                 result=result,
             )

@@ -19,6 +19,17 @@
 
 ## 审查与一次提交
 
+新候选已暂存在 SCNet 项目相对路径 `tools/g2-standalone-seven-20261111/stage`。登录节点针对七份包运行的 `sbatch --test-only` 全部通过，读回可用磁盘约 73.91 GiB。试算未创建作业。[SCNet 回执](../research/g2/standalone-seven/scnet-test-only.json)
+
+从本次提交复建同一份候选时，指定全新的输出目录：
+
+```bash
+python3 -B scripts/g2_parallel_package.py . \
+  research/g2/standalone-review/g2-standalone-author.tar.gz \
+  research/g2/parallel-batch "$NEW_STAGE"
+```
+
+
 [七包冻结清单](../research/g2/standalone-seven/batch.json) · [七条实际 hold 命令模板](../research/g2/standalone-seven/sbatch-preview.txt) · [CPU 回归](../research/g2/standalone-seven/targeted-tests.txt)
 
 ```bash

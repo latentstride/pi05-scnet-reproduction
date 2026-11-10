@@ -23,6 +23,7 @@ class FakeSlurm:
         self.cancelled = []
         self.bindings = set()
         self.count = 0
+        self.commands = {}
         self.fail_submit = fail_submit
         self.fail_release = fail_release
 
@@ -32,6 +33,7 @@ class FakeSlurm:
             assert not any("dependency" in a or "array" in a for a in args)
             self.count += 1
             job = str(1000 + self.count)
+            self.commands[job] = args
             self.held[job] = next(
                 a.split("=", 1)[1] for a in args if a.startswith("--comment=")
             )
@@ -72,6 +74,12 @@ class FakeSlurm:
             TimeMin="02:00:00",
             MinMemoryNode="32G",
             TresPerNode="gres/gpu:1",
+            WorkDir=next(
+                a.split("=", 1)[1]
+                for a in self.commands[job]
+                if a.startswith("--chdir=")
+            ),
+            Command=self.commands[job][-1],
         )
 
 
@@ -166,7 +174,7 @@ def test_release_failure_leaves_already_released_untouched(tmp_path):
 
 def test_duplicate_comment_neither_submits_nor_cancels(tmp_path):
     scheduler = FakeSlurm()
-    scheduler.held["777"] = f"cpf-g2-p7-{'0' * 20}-G4"
+    scheduler.held["777"] = f"cpf-g2-s7-{'0' * 20}-G4"
     with pytest.raises(RuntimeError, match="duplicate"):
         batch(tmp_path, scheduler)
     assert scheduler.count == 0 and scheduler.cancelled == []

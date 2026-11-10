@@ -1,5 +1,7 @@
 # G2 七项启动失败与复发防护
 
+后续发布采用七项独立单作业入口。本文的两级探针方案作为历史提案保留，当前执行说明见[独立作业发布](g2_standalone_seven_submission.md)。
+
 11 月 10 日至 11 日，七项均在计算节点 `gnode39` 以 `FAILED / 1:0` 退出。七份原始 `result.json`、分配回执、日志摘要、文件清单与哈希均已从 SCNet 读取。[现场证据](../research/g2/parallel-startup-failure/seven-jobs.json)
 
 | 作业 | Job ID | 耗时 | 最后成功阶段 | 第一个致命失败 | 置信度 |

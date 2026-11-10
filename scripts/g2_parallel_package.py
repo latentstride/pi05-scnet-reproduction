@@ -8,7 +8,7 @@ import shutil
 import tarfile
 from tempfile import TemporaryDirectory
 
-from g2_parallel_deploy import CONFIG, verify_package
+from g2_standalone_matrix import CONFIG, verify_package
 from g2_parallel_spec import digest, extract, specs
 from g2_standalone_deploy import verify_standalone
 
@@ -16,10 +16,11 @@ PARENT_ARCHIVE = "1d60de6eeaffacab0962119186d8bc7aac4755537cfba1aa900c325664585a
 BASE = "a5a67cfb27a787da5562f82e03c3e8d67c257ec3"
 OVERLAY = (
     "g2_parallel_spec.py",
-    "g2_parallel_deploy.py",
-    "g2_parallel_startup.py",
+    "g2_standalone_deploy.py",
+    "g2_standalone_matrix.py",
+    "g2_final_campaign.py",
+    "g2_standalone_startup.py",
     "g2_parallel_bootstrap.py",
-    "g2_parallel_identity.py",
     "g2_parallel_worker.py",
     "g2_author_native_entry.py",
     "g2_author_native_h50.py",

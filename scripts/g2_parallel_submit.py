@@ -11,11 +11,14 @@ import re
 from shutil import disk_usage
 import subprocess
 
-from g2_final_deploy import authorization
-from g2_parallel_deploy import CONFIG, MIN_DISK_GIB, verify_package
+from g2_standalone_matrix import (
+    CONFIG,
+    MIN_DISK_GIB,
+    bound_authorization,
+    verify_package,
+)
 from g2_parallel_spec import RESOURCES, digest, extract, specs
 from g2_parallel_identity import runtime_preflight
-from g2_parallel_startup import validate_probe
 from g2_standalone_submit import fields, query, read, require, save, seconds
 
 GOODS = "821418588551249920"
@@ -45,7 +48,9 @@ def budget(stage, batch_path):
         and rate.is_finite()
         and cap.is_finite()
         and 0 < rate <= MAX_RATE
-        and ceiling <= cap
+        and ceiling <= cap <= Decimal("50.40")
+        and Decimal(str(q["account_available_yuan"])) >= ceiling
+        and permit.get("submission_scheme") == "standalone-seven-v1"
         and permit.get("approved") is True
         and permit.get("allocations_authorized") == 7
         and permit.get("automatic_retry") is False
@@ -76,7 +81,8 @@ def packages(stage):
         require(digest(archive_path) == row["archive_sha256"], f"{key} archive differs")
         if not release.exists():
             extract(archive_path, stage, name)
-        _, loaded = verify_package(release)
+        _, selected = verify_package(release)
+        loaded = selected["config"]
         require(
             loaded == spec
             and digest(release / CONFIG) == row["config_sha256"]
@@ -221,14 +227,24 @@ def command(root, entry, account, qos, comment, *, test):
 
 
 class Scheduler:
+    def __init__(self, root):
+        self.root = root
+
     def call(self, *args):
         env = {
             k: v
             for k, v in os.environ.items()
-            if not k.startswith("SBATCH_") and k != "SLURM_CLUSTERS"
+            if not k.startswith("SBATCH_")
+            and k not in ("SLURM_CLUSTERS", "SLURM_DEPENDENCY")
         }
         result = subprocess.run(
-            args, env=env, check=True, text=True, capture_output=True, timeout=40
+            args,
+            env=env,
+            cwd=self.root,
+            check=True,
+            text=True,
+            capture_output=True,
+            timeout=40,
         )
         return (
             result.stdout + result.stderr if "--test-only" in args else result.stdout
@@ -248,7 +264,7 @@ class Scheduler:
         ]
 
 
-def verify_held(f, job, account, qos, comment):
+def verify_held(f, job, account, qos, comment, root, release):
     r = RESOURCES
     expected = dict(
         JobId=job,
@@ -264,6 +280,8 @@ def verify_held(f, job, account, qos, comment):
         Requeue="0",
         Dependency="(null)",
         Comment=comment,
+        WorkDir=str(root),
+        Command=str(release / "scripts/pace_g2_parallel.slurm"),
     )
     require(
         all(f.get(k) == v for k, v in expected.items())
@@ -275,9 +293,7 @@ def verify_held(f, job, account, qos, comment):
     )
 
 
-def bind(
-    entry, job, comment, batch_sha, quote, quote_path, observed, probe_sha, probe_job
-):
+def bind(entry, job, comment, batch_sha, quote, quote_path, observed):
     row, spec, approval = entry["row"], entry["spec"], entry["approval"]
     with approval.with_suffix(".quote").open("xb") as f:
         f.write(quote_path.read_bytes())
@@ -292,8 +308,8 @@ def bind(
             archive_sha256=row["archive_sha256"],
             configuration_sha256=row["config_sha256"],
             batch_sha256=batch_sha,
-            startup_probe_sha256=probe_sha,
-            startup_probe_job_id=probe_job,
+            standalone_mode="matrix",
+            allocation_s=spec["resources"]["wall_s"],
             node=RESOURCES["node"],
             resources=RESOURCES,
             quote_source="SCNet",
@@ -306,18 +322,19 @@ def bind(
         ),
         exclusive=True,
     )
-    authorization(entry["release"], approval, job)
+    bound_authorization(entry["release"], approval, job, spec)
 
 
 def submit_all(
     scheduler, entries, root, account, qos, batch_sha, receipt_path, binding
 ):
+    require(not receipt_path.exists(), "submission receipt already exists")
     rows = [
         dict(
             experiment=e["spec"]["id"],
             job_id=None,
             state="not_submitted",
-            comment=f"cpf-g2-p7-{batch_sha[:20]}-{e['spec']['id']}",
+            comment=f"cpf-g2-s7-{batch_sha[:20]}-{e['spec']['id']}",
             archive_sha256=e["row"]["archive_sha256"],
             config_sha256=e["row"]["config_sha256"],
         )
@@ -343,7 +360,9 @@ def submit_all(
             row["job_id"] = match[1]
             store()
             f = scheduler.record(row["job_id"])
-            verify_held(f, row["job_id"], account, qos, row["comment"])
+            verify_held(
+                f, row["job_id"], account, qos, row["comment"], root, entry["release"]
+            )
             row.update(state="held", submit_time=f.get("SubmitTime"))
             store()
         require(len({row["job_id"] for row in rows}) == len(rows), "duplicate job ID")
@@ -405,7 +424,6 @@ def main():
     p.add_argument("--stage", type=Path, required=True)
     p.add_argument("--account", required=True)
     p.add_argument("--qos", required=True)
-    p.add_argument("--probe-job-id")
     mode = p.add_mutually_exclusive_group()
     mode.add_argument("--dry-run", action="store_true")
     mode.add_argument("--scheduler-test", action="store_true")
@@ -419,11 +437,9 @@ def main():
     batch_path = stage / "batch.json"
     batch_sha = digest(batch_path)
     entries = packages(stage)
-    scheduler = Scheduler()
+    scheduler = Scheduler(root)
     tests = []
     if a.execute:
-        require(a.probe_job_id, "an approved successful compute-node probe is required")
-        _, probe_sha = validate_probe(root, a.probe_job_id, batch_path, query)
         quote, _, total, observed = budget(stage, batch_path)
         require(
             all(e["cpu_ok"] for e in entries),
@@ -439,8 +455,8 @@ def main():
             entry,
             a.account,
             a.qos,
-            f"cpf-g2-p7-{batch_sha[:20]}-{key}",
-            test=True,
+            f"cpf-g2-s7-{batch_sha[:20]}-{key}",
+            test=a.scheduler_test or a.execute,
         )
         row = dict(experiment=key, cpu_ok=entry["cpu_ok"], argv=cmd)
         if a.scheduler_test or a.execute:
@@ -450,7 +466,7 @@ def main():
                 row["error"] = str(error)
                 row["stderr"] = str(error.stderr)
         tests.append(row)
-    print(json.dumps(tests, indent=2))
+    print(json.dumps(tests, indent=2), flush=True)
     if a.scheduler_test or a.execute:
         save(stage / "scheduler-test.json", tests)
         require(not any("error" in row for row in tests), "scheduler dry-run failed")
@@ -499,12 +515,16 @@ def main():
             == old_jobs,
             "historical roster is not fully confirmed failed",
         )
+    require(
+        not (intent_dir / f"{roster_sha}-startup-v2.json").exists(),
+        "an earlier replacement batch already has a durable intent",
+    )
     save(
-        intent_dir / f"{roster_sha}-startup-v2.json",
+        intent_dir / f"{roster_sha}-standalone-v1.json",
         dict(batch=batch_sha, roster_sha256=roster_sha, stage=str(stage)),
         exclusive=True,
     )
-    submit_all(
+    receipt = submit_all(
         scheduler,
         entries,
         root,
@@ -520,10 +540,9 @@ def main():
             quote,
             stage / "platform-quote.json",
             observed,
-            probe_sha,
-            a.probe_job_id,
         ),
     )
+    print(json.dumps(receipt, indent=2), flush=True)
 
 
 if __name__ == "__main__":

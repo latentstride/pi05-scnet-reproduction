@@ -17,7 +17,7 @@ from g2_author_physx_observer import ObserveScene
 from g2e_host_supervisor import interrupt_signals
 from g2_final_deploy import read
 from g2_locked_task import verify_model_receipt
-from g2_parallel_deploy import bound_authorization
+from g2_standalone_matrix import bound_authorization
 from g2_parallel_spec import digest, load
 from pace_g1_orchestrate import persist
 from pace_runtime import validate_request
@@ -164,7 +164,8 @@ def main():
     for key in ("release", "pace", "output", "model-startup", "authorization"):
         p.add_argument("--" + key, type=Path, required=True)
     p.add_argument("--uri", required=True)
-    p.add_argument("--started", type=float, required=True)
+    p.add_argument("--trial-start", type=float, required=True)
+    p.add_argument("--hard-deadline", type=float, required=True)
     a = p.parse_args()
     job = os.environ.get("SLURM_JOB_ID", "")
     spec = load(a.release / "parallel-config.json")
@@ -182,7 +183,7 @@ def main():
         hard_s=r["trial_hard_s"],
         request_s=r["request_s"],
     )
-    clock = TrialClock(budget, a.started, a.started + budget.hard_s)
+    clock = TrialClock(budget, a.trial_start, a.hard_deadline)
     factory = shared_connection(
         a.uri, spec["episode_id"], clock.remaining, request_s=budget.request_s
     )

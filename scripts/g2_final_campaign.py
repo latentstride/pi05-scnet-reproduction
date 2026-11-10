@@ -143,6 +143,22 @@ def supervise(plan, runtime, output, *, rehearsal=False, allocated=False):
         ):
             raise ValueError("unbound author H50 campaign row or budget")
         campaign_reserve = CAMPAIGN_RESERVE_S
+    standalone = runtime.get("standalone_trial")
+    if standalone is not None:
+        from g2_author_h50_campaign import CAMPAIGN_RESERVE_S
+        from g2_author_h50_limits import TrialClock
+
+        if (
+            not allocated
+            or author is not None
+            or len(roster) != 1
+            or ids != [standalone["episode"]]
+            or set(runtime["commands"]) != set(ids)
+            or runtime["probes"]
+            or standalone["budget"].hard_s != roster[0]["hard_timeout_s"]
+        ):
+            raise ValueError("invalid independent standalone trial binding")
+        campaign_reserve = CAMPAIGN_RESERVE_S
     if (
         plan["allocations_planned"] != 1
         or plan["model_server_starts"] != 1
@@ -329,7 +345,7 @@ def supervise(plan, runtime, output, *, rehearsal=False, allocated=False):
                 else:
                     entry_ok = admitted(row)
                 author_row = author is not None and row is author_rows[0]
-                if author_row:
+                if author_row or standalone is not None:
                     # Its exact scene, physical readback, RGB and first exchange
                     # are admitted inside its own bounded child before motion.
                     entry_ok = True
@@ -347,9 +363,14 @@ def supervise(plan, runtime, output, *, rehearsal=False, allocated=False):
                 save()
                 command = runtime["commands"][episode]
                 clock = None
-                if author_row:
+                if author_row or standalone is not None:
                     started = time.monotonic()
-                    clock = TrialClock(author, started, started + author.hard_s)
+                    trial_budget = (
+                        standalone["budget"] if standalone is not None else author
+                    )
+                    clock = TrialClock(
+                        trial_budget, started, started + trial_budget.hard_s
+                    )
                     if clock.hard > deadline:
                         reason = "insufficient remaining time for full author trial and reap cap"
                         break
@@ -366,7 +387,7 @@ def supervise(plan, runtime, output, *, rehearsal=False, allocated=False):
                     if clock
                     else time.monotonic() + row["hard_timeout_s"],
                 )
-                if author_row and reason == "trial hard timeout":
+                if clock and reason == "trial hard timeout":
                     active_entry.update(
                         status="infrastructure_failure",
                         outcome="RESOURCE_CENSORED",
@@ -377,7 +398,7 @@ def supervise(plan, runtime, output, *, rehearsal=False, allocated=False):
                     )
                 reap_process_group(trial)
                 trial = None
-                if author_row:
+                if clock:
                     active_entry["process_group_reaped"] = True
                     if time.monotonic() >= clock.hard:
                         reason = (
@@ -385,7 +406,7 @@ def supervise(plan, runtime, output, *, rehearsal=False, allocated=False):
                             or "author hard deadline expired during process cleanup"
                         )
                 if reason:
-                    if not author_row:
+                    if not clock:
                         rows[episode] = {
                             "status": "infrastructure_failure",
                             "reason": reason,
@@ -427,6 +448,16 @@ def supervise(plan, runtime, output, *, rehearsal=False, allocated=False):
                     )
                     active_entry["reason"] = reason
                     break
+                if standalone is not None:
+                    if not standalone["accept"](
+                        receipt, clock, service_failure() is None
+                    ):
+                        reason = "standalone trial outcome or cleanup unverified"
+                        break
+                    active_entry["status"] = "completed"
+                    active_entry = None
+                    save()
+                    continue
                 if author_row:
                     from g2_author_h50_receipt import may_continue
 

@@ -34,12 +34,11 @@ release="$G2_FINAL_RELEASE"
 approval="$G2_FINAL_APPROVAL"
 phase=python_preflight
 test -r "$release/scripts/g2_parallel_bootstrap.py"
-test -r "$release/scripts/g2_parallel_deploy.py"
+test -r "$release/scripts/g2_standalone_deploy.py"
 test -r "$approval"
 phase=python_entry
 args=("$release" --root "$root" --authorization "$approval")
-if [[ ${G2_STARTUP_PROBE_BATCH+x} ]]; then args+=(--probe-batch "$G2_STARTUP_PROBE_BATCH"); fi
-python3 -u "$release/scripts/g2_parallel_bootstrap.py" "$release/scripts/g2_parallel_deploy.py" "${args[@]}" &
+python3 -u "$release/scripts/g2_parallel_bootstrap.py" "$release/scripts/g2_standalone_deploy.py" "${args[@]}" &
 child=$!
 trap 'kill -TERM "$child" 2>/dev/null || true; wait "$child" || true; exit 143' TERM INT
 wait "$child"

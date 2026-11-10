@@ -10,7 +10,8 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
 from g2_parallel_spec import digest  # noqa: E402
-from g2_parallel_startup import PROBE_STAGES, read_parallel_allocation, validate_probe  # noqa: E402
+from g2_parallel_startup import PROBE_STAGES, validate_probe  # noqa: E402
+from g2_standalone_startup import read_parallel_allocation  # noqa: E402
 from g2_parallel_status import monitor  # noqa: E402
 
 
@@ -154,7 +155,7 @@ def test_shell_uses_execution_directory_not_submit_directory(tmp_path):
     project.mkdir()
     approval = runner / "approval.json"
     approval.write_text("{}")
-    (scripts / "g2_parallel_deploy.py").touch()
+    (scripts / "g2_standalone_deploy.py").touch()
     (scripts / "g2_parallel_bootstrap.py").write_text(
         "import os,sys; assert sys.argv[sys.argv.index('--root')+1] == os.getcwd(); print('ROOT_OK')"
     )

@@ -81,12 +81,19 @@ def verify_standalone(release):
 
 
 def isolated_port(selected, job):
-    return selected["port_base"] + int(job) % 4000
+    width = 2000 if selected["mode"] == "matrix" else 4000
+    return selected["port_base"] + int(job) % width
 
 
 def bind(plan, runtime, release, output, selected, job):
     mode, episode = selected["mode"], selected["episode"]
-    if mode == "author":
+    if mode == "matrix":
+        from g2_standalone_matrix import trial_runtime
+
+        plan, runtime = trial_runtime(
+            plan, runtime, release, output, selected, job, isolated_port(selected, job)
+        )
+    elif mode == "author":
         plan, runtime = bind_runtime(
             plan, runtime, release, output, review=read(release / REVIEW_FILE)
         )
@@ -115,6 +122,8 @@ def bind(plan, runtime, release, output, selected, job):
             proposed_fee_cap_yuan=float(selected["fee_cap"]),
         ),
     )
+    if mode == "matrix":
+        return execution, runtime
     old_port = 50000 + int(job) % 14000
     port = isolated_port(selected, job)
     old_uri, uri = (f"ws://127.0.0.1:{p}" for p in (old_port, port))
@@ -146,6 +155,8 @@ def bind(plan, runtime, release, output, selected, job):
 
 
 def output_for(root, selected, job):
+    if selected["mode"] == "matrix":
+        return root / selected["config"]["output_dir"] / job
     return root / "results" / f"pace-g2-standalone-{selected['mode']}-{job}"
 
 
@@ -157,7 +168,21 @@ def run(root, release, approval, plan, selected):
         or os.environ.get("SLURM_JOB_NAME") != "cpf-pace-g2"
     ):
         raise PermissionError("standalone entry requires its own allocated job")
-    auth = authorization(release, approval, job)
+    matrix = selected["mode"] == "matrix"
+    if matrix:
+        from g2_standalone_matrix import bound_authorization
+        from g2_standalone_startup import event, read_parallel_allocation
+
+        if root != Path.cwd().resolve() or str(root) != os.environ.get(
+            "G2_PROJECT_ROOT"
+        ):
+            raise PermissionError(
+                "standalone execution root differs from its launch binding"
+            )
+        event("standalone_authorization", job_id=job)
+        auth = bound_authorization(release, approval, job, selected["config"])
+    else:
+        auth = authorization(release, approval, job)
     if (
         auth.get("job_id") != job
         or auth.get("standalone_mode") != selected["mode"]
@@ -170,8 +195,17 @@ def run(root, release, approval, plan, selected):
     output = output_for(root, selected, job)
     output.mkdir(parents=True, exist_ok=False)
     persist(output / "authorization-receipt.json", auth)
+    stage = "allocation"
     try:
-        fields, start, end = read_allocation(job, output)
+        if matrix:
+            event(stage, job_id=job)
+            fields, start, end = read_parallel_allocation(job, output)
+            if fields.get("Comment") != auth["comment"] or fields.get("WorkDir") != str(
+                root
+            ):
+                raise PermissionError("Slurm comment or work directory differs")
+        else:
+            fields, start, end = read_allocation(job, output)
         minimum = (
             selected["hard_s"]
             + selected["startup_s"]
@@ -207,6 +241,13 @@ def run(root, release, approval, plan, selected):
             output / "allocation-receipt.json", dict(job_id=job, start=start, end=end)
         )
         with interrupt_signals():
+            stage = "graphics"
+            if matrix:
+                event(
+                    stage,
+                    job_id=job,
+                    script_sha256=digest(release / "scripts/g2_graphics.sh"),
+                )
             run_deployment_stage(
                 [
                     "env",
@@ -248,6 +289,9 @@ def run(root, release, approval, plan, selected):
                     selected=selected,
                 ),
             )
+            stage = "standalone_supervisor"
+            if matrix:
+                event(stage, job_id=job)
             result = supervise(
                 execution, runtime, output / "supervisor", allocated=True
             )
@@ -266,6 +310,8 @@ def run(root, release, approval, plan, selected):
                 or (detail.get("failure") or {}).get("code") == "timeout"
             ):
                 outcome = "RESOURCE_CENSORED"
+            if matrix and not outcome:
+                outcome = "INFRASTRUCTURE_FAILURE"
             persist(
                 output / "standalone-result.json",
                 dict(
@@ -277,19 +323,21 @@ def run(root, release, approval, plan, selected):
                 ),
             )
             if (
-                selected["mode"] == "author"
+                selected["mode"] in ("author", "matrix")
                 and receipt
-                and list((output / "trials" / EPISODE).glob("request-*.npz"))
+                and list(
+                    (output / "trials" / selected["episode"]).glob("request-*.npz")
+                )
             ):
-                child = runtime["commands"][EPISODE]
-                py = child[
-                    : child.index(str(release / "scripts/g2_author_h50_trial.py"))
-                ]
+                episode = selected["episode"]
+                child = runtime["commands"][episode]
+                worker = "g2_parallel_worker.py" if matrix else "g2_author_h50_trial.py"
+                py = child[: child.index(str(release / "scripts" / worker))]
                 run_deployment_stage(
                     py
                     + [
                         str(release / "scripts/g2_standalone_video.py"),
-                        str(output / "trials" / EPISODE),
+                        str(output / "trials" / episode),
                     ],
                     output / "query-video.log",
                     100,
@@ -299,7 +347,12 @@ def run(root, release, approval, plan, selected):
     except (Exception, KeyboardInterrupt, SystemExit) as e:
         persist(
             output / "deployment-failure.json",
-            dict(error=type(e).__name__, detail=str(e)),
+            dict(
+                error=type(e).__name__,
+                detail=str(e),
+                stage=stage,
+                outcome="INFRASTRUCTURE_FAILURE",
+            ),
         )
         raise
 
@@ -312,7 +365,14 @@ def main():
     p.add_argument("--authorization", type=Path)
     a = p.parse_args()
     release = a.release.resolve()
-    plan, selected = verify_standalone(release)
+    if (release / "parallel-config.json").is_file():
+        from g2_standalone_startup import event
+        from g2_standalone_matrix import verify_package
+
+        event("standalone_package_verification")
+        plan, selected = verify_package(release)
+    else:
+        plan, selected = verify_standalone(release)
     if a.verify:
         print(
             json.dumps(

@@ -1,0 +1,7 @@
+test_exact_rows_and_first_new_observation_at_fifty (test_g2_author_native_entry.AuthorNativeTests.test_exact_rows_and_first_new_observation_at_fifty) ... ok
+test_upstream_success_ends_block_and_800_limit_is_native (test_g2_author_native_entry.AuthorNativeTests.test_upstream_success_ends_block_and_800_limit_is_native) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.024s
+
+OK

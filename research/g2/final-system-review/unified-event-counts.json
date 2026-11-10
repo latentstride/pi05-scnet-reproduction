@@ -1,0 +1,32 @@
+{
+  "unified-seed0-arx-full-w4": {
+    "event_physics_steps": 4965,
+    "last_physics_tick": 4965,
+    "events_sha256": "ba106255d2cc061784ca15d082d6c1f92cf8151b671f7a283f0407d0f7760f3d"
+  },
+  "unified-seed0-native-w31": {
+    "event_physics_steps": 3568,
+    "last_physics_tick": 3568,
+    "events_sha256": "4d4ecfd974173e918657324643de073a880b51491396568bc8627fe44c93f198"
+  },
+  "unified-seed0-native-w4": {
+    "event_physics_steps": 3542,
+    "last_physics_tick": 3542,
+    "events_sha256": "ff7f4fcf60c4ca519e38a03420a60c7121263a8b18391d0c7f4d2a8c78b27092"
+  },
+  "unified-seed0-native-w50": {
+    "event_physics_steps": 3568,
+    "last_physics_tick": 3568,
+    "events_sha256": "e51cf43315693475f45ee05ae9dd30628ffadc03b00a52957eb5d9dacc0a6303"
+  },
+  "unified-seed1-native-w31": {
+    "event_physics_steps": 10988,
+    "last_physics_tick": 10988,
+    "events_sha256": "d4d024a81fb00c888a64d1322b2f112de617b1da936296077bc41879e3ee844f"
+  },
+  "unified-seed1-native-w50": {
+    "event_physics_steps": 12422,
+    "last_physics_tick": 12422,
+    "events_sha256": "a78357e92bb0312a1ca6cc24323f2555e834605fb390e2653d7690302d414040"
+  }
+}

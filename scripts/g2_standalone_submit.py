@@ -93,12 +93,12 @@ def platform(root, duration, comment, mode):
         and a_receipt["roster"][-1] == MODES["author"][0],
         "A receipt is not the frozen 11-trial candidate",
     )
-    if parent["JobState"] != "PENDING":
-        outcome = root / "results" / f"pace-g2-unified-{A}" / "campaign.json"
-        require(
-            mode != "author" or not outcome.exists(),
-            "A has written its final result; review author outcome before duplicate submission",
+    if mode == "author" and parent["JobState"] != "PENDING":
+        outcome = (
+            root / "results" / f"pace-g2-unified-{A}" / "trials" / MODES["author"][0] / "receipt.json"
         )
+        require(not outcome.exists() or read(outcome).get("success") is False,
+                "A already wrote a successful or unverified author result; review before duplicating")
     part = fields(query("scontrol", "show", "partition", PARTITION, "-o"))
     node = fields(query("scontrol", "show", "node", NODE, "-o"))
     require(

@@ -1,0 +1,29 @@
+{
+  "mode": "author",
+  "archive_sha256": "1d60de6eeaffacab0962119186d8bc7aac4755537cfba1aa900c325664585a6e",
+  "manifest_sha256": "2451670b0410b7411de06527518f6282835b9b006d995b7488d13b5914a9c1a6",
+  "configuration_sha256": "5767eb0ab6e90929a8e7476d080f4366d0907f279e8403145bc00d776ac67d2c",
+  "frozen_arx_config_sha256": null,
+  "spec": {
+    "mode": "author",
+    "episode": "author-native-h50-seed100000",
+    "wall_s": 4800,
+    "startup_s": 1080,
+    "hard_s": 2700,
+    "port_base": 35000,
+    "min_disk_gib": 12,
+    "fee_cap": "4.80",
+    "submission_allowed": false,
+    "base_manifest_sha256": "9270db1e97eafedfb6f94711c8b8c9f33efd76d04ab800af99bf11a42556f19a",
+    "base_archive_sha256": "c8eeff121eefb1bff98e8103cc3314ef6d95669e362889f3d68ac35507389e99",
+    "overhead": {
+      "graphics_s": 300,
+      "statistics_s": 120,
+      "cleanup_s": 120
+    },
+    "host_reserve_s": 360,
+    "allocations": 1,
+    "model_services": 1,
+    "automatic_retry": false
+  }
+}

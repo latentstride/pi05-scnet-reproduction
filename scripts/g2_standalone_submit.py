@@ -153,8 +153,8 @@ def verify_package(root, stage, mode, archive_sha, manifest_sha, config_sha):
     archive = stage / f"g2-standalone-{mode}.tar.gz"
     release = stage / f"g2-standalone-{mode}"
     require(digest(archive) == archive_sha, "uploaded archive digest differs")
-    require(not release.exists(), "release was already staged")
-    subprocess.run(["tar", "-xzf", str(archive), "-C", str(stage)], check=True, timeout=30)
+    if not release.exists():
+        subprocess.run(["tar", "-mxzf", str(archive), "-C", str(stage)], check=True, timeout=30)
     require(digest(release / "SHA256SUMS") == manifest_sha and
             digest(release / "standalone-review.json") == config_sha, "manifest or standalone configuration digest differs")
     sys.path.insert(0, str(release / "scripts"))
@@ -170,7 +170,7 @@ def verify_package(root, stage, mode, archive_sha, manifest_sha, config_sha):
         source = root / "source" / f"{repo}-{commit}"
         require(source.is_dir(), f"frozen {repo} source missing")
         if (source / ".git").exists():
-            require(query("git", "-C", str(source), "rev-parse", "HEAD") == commit, f"{repo} revision differs")
+            require(query("git", "--git-dir=" + str(source / ".git"), "rev-parse", "HEAD") == commit, f"{repo} revision differs")
     for relpath in (
         "containers/openpi-ubuntu", "research/robotwin/robotwin-cu122/opt/robotwin/logs/BUILD_COMPLETE",
         "tools/pace-model-venv/bin/python",

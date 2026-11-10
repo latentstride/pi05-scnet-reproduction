@@ -1,11 +1,11 @@
-"""Bind one frozen G1–G7 condition to the existing standalone supervisor."""
+"""Bind one frozen G1–G6 condition to the existing standalone supervisor."""
 
 from dataclasses import replace
 
 from g2_author_h50_limits import BUDGET
 from g2_author_h50_receipt import may_continue
 from g2_final_deploy import authorization, read, verify
-from g2_parallel_spec import digest, load
+from g2_parallel_spec import JOB_FEE_CAP, digest, load
 
 CONFIG = "parallel-config.json"
 MIN_DISK_GIB = 8
@@ -24,8 +24,12 @@ def verify_package(release):
         not in (release / "scripts/g2_graphics.sh").read_text()
     ):
         raise ValueError("standalone matrix package identity differs")
+    return plan, selection(spec)
+
+
+def selection(spec):
     r = spec["resources"]
-    selected = dict(
+    return dict(
         mode="matrix",
         episode=spec["episode_id"],
         config=spec,
@@ -34,9 +38,13 @@ def verify_package(release):
         hard_s=r["trial_hard_s"],
         port_base=spec["port_base"],
         min_disk_gib=MIN_DISK_GIB,
-        fee_cap="7.20",
+        fee_cap=str(JOB_FEE_CAP),
+        overhead=dict(
+            graphics_s=r["graphics_s"],
+            statistics_s=120,
+            cleanup_s=r["cleanup_s"] - 120,
+        ),
     )
-    return plan, selected
 
 
 def bound_authorization(release, path, job, spec, *, starting=True):
@@ -62,16 +70,21 @@ def bound_authorization(release, path, job, spec, *, starting=True):
     return auth
 
 
-def trial_runtime(plan, runtime, release, output, selected, job, port):
-    """Only change the model URI and single child/receipt binding."""
-    spec = selected["config"]
-    episode, r = spec["episode_id"], spec["resources"]
-    budget = replace(
+def trial_budget(spec):
+    r = spec["resources"]
+    return replace(
         BUDGET,
         soft_s=r["trial_soft_s"],
         hard_s=r["trial_hard_s"],
         request_s=r["request_s"],
     )
+
+
+def trial_runtime(plan, runtime, release, output, selected, job, port):
+    """Only change the model URI and single child/receipt binding."""
+    spec = selected["config"]
+    episode, r = spec["episode_id"], spec["resources"]
+    budget = trial_budget(spec)
     template = next(iter(runtime["commands"].values()))
     sim = template[: template.index(str(release / "scripts/g2_final_trial.py"))]
     pace = template[template.index("--pace") + 1]

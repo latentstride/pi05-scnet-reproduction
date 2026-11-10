@@ -85,6 +85,17 @@ def isolated_port(selected, job):
     return selected["port_base"] + int(job) % width
 
 
+def execution_overhead(selected):
+    return dict(
+        selected.get("overhead", OVERHEAD),
+        shared_model_and_dynamic_entry_s=selected["startup_s"],
+    )
+
+
+def allocation_minimum(selected, overhead):
+    return selected["hard_s"] + sum(overhead.values()) + CAMPAIGN_RESERVE_S
+
+
 def bind(plan, runtime, release, output, selected, job):
     mode, episode = selected["mode"], selected["episode"]
     if mode == "matrix":
@@ -106,9 +117,9 @@ def bind(plan, runtime, release, output, selected, job):
     (row,) = [r for r in plan["trials"] if r["episode_id"] == episode]
     if row["hard_timeout_s"] != selected["hard_s"]:
         raise ValueError("standalone trial deadline differs")
-    overhead = dict(OVERHEAD, shared_model_and_dynamic_entry_s=selected["startup_s"])
+    overhead = execution_overhead(selected)
     bounded = row["hard_timeout_s"] + sum(overhead.values())
-    if bounded + CAMPAIGN_RESERVE_S > selected["wall_s"]:
+    if allocation_minimum(selected, overhead) > selected["wall_s"]:
         raise ValueError("standalone allocation cannot cover its full budget")
     execution = dict(
         plan,
@@ -206,12 +217,8 @@ def run(root, release, approval, plan, selected):
                 raise PermissionError("Slurm comment or work directory differs")
         else:
             fields, start, end = read_allocation(job, output)
-        minimum = (
-            selected["hard_s"]
-            + selected["startup_s"]
-            + sum(OVERHEAD.values())
-            + CAMPAIGN_RESERVE_S
-        )
+        overhead = execution_overhead(selected)
+        minimum = allocation_minimum(selected, overhead)
         if (
             not allocation_matches(fields)
             or end - start != selected["wall_s"]
@@ -259,14 +266,14 @@ def run(root, release, approval, plan, selected):
                     str(output / "graphics"),
                 ],
                 output / "graphics.log",
-                295,
+                overhead["graphics_s"] - 5,
                 cwd=root,
             )
             timeout = (
                 end
                 - time.time()
-                - OVERHEAD["statistics_s"]
-                - OVERHEAD["cleanup_s"]
+                - overhead["statistics_s"]
+                - overhead["cleanup_s"]
                 - CAMPAIGN_RESERVE_S
             )
             runtime = commands(

@@ -1,4 +1,4 @@
-"""Exercise the seven standalone package entry points and existing supervisor."""
+"""Exercise the six standalone package entry points and existing supervisor."""
 
 import json
 from pathlib import Path
@@ -11,11 +11,17 @@ import pytest
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
+from g2_author_h50_limits import ResourceCensored, TrialClock  # noqa: E402
 from g2_final_campaign import supervise  # noqa: E402
 from g2_final_deploy import commands  # noqa: E402
 from g2_parallel_package import package  # noqa: E402
 from g2_parallel_spec import digest, extract  # noqa: E402
-from g2_standalone_deploy import bind, output_for  # noqa: E402
+from g2_standalone_deploy import (  # noqa: E402
+    allocation_minimum,
+    bind,
+    execution_overhead,
+    output_for,
+)
 from g2_standalone_matrix import verify_package  # noqa: E402
 
 
@@ -23,7 +29,7 @@ from g2_standalone_matrix import verify_package  # noqa: E402
 def releases(tmp_path_factory):
     path = tmp_path_factory.mktemp("matrix").resolve()
     parent = ROOT / "research/g2/standalone-review/g2-standalone-author.tar.gz"
-    evidence = ROOT / "research/g2/parallel-batch"
+    evidence = ROOT / "research/g2/standalone-six-4h"
     result = package(ROOT, parent, evidence, path)
     for row in result["rows"]:
         extract(path / (row["name"] + ".tar.gz"), path, row["name"])
@@ -103,15 +109,34 @@ def test_all_packages_use_historical_standalone_chain(releases, tmp_path):
             len(plan["trials"]) == len(runtime["commands"]) == 1
             and not runtime["probes"]
         )
-        assert runtime["standalone_trial"]["budget"].hard_s == 4500
-        assert runtime["standalone_trial"]["budget"].soft_s == 4200
-        assert plan["budget"]["proposed_allocation_s"] == 7200
+        assert runtime["standalone_trial"]["budget"].hard_s == 12000
+        assert runtime["standalone_trial"]["budget"].soft_s == 11400
+        assert plan["budget"]["proposed_allocation_s"] == 14400
+        assert runtime["standalone_trial"]["budget"].request_s == 390
+        assert runtime["standalone_trial"]["budget"].physics_steps == 130_000
+        assert runtime["startup_cap_s"] == 900
+        assert plan["budget"]["proposed_fee_cap_yuan"] == 14.40
+        _, selected = verify_package(release)
+        overhead = execution_overhead(selected)
+        assert overhead == dict(
+            graphics_s=300,
+            statistics_s=120,
+            cleanup_s=360,
+            shared_model_and_dynamic_entry_s=900,
+        )
+        assert allocation_minimum(selected, overhead) == 14040
+        assert plan["budget"]["bounded_execution_s"] == 13680
+        receipt = json.loads((release / "parallel-cpu-receipt.json").read_text())
+        assert receipt["source_config_sha256"] != receipt["config_sha256"]
+        assert digest(release / "parallel-cpu-receipt.json") == row["cpu_sha256"]
+        assert receipt["resource_acceptance"]["unassigned_s"] == 360
         ports.add(runtime["model"][runtime["model"].index("--port") + 1])
         directories.add(out)
-    assert len(ports) == len(directories) == 7
+    assert len(ports) == len(directories) == 6
 
 
-def test_real_supervisor_runs_one_matrix_trial(releases, tmp_path):
+@pytest.mark.parametrize("outcome", ["SUCCESS", "RESOURCE_CENSORED"])
+def test_real_supervisor_runs_one_matrix_trial(releases, tmp_path, outcome):
     path, manifest = releases
     release = path / manifest["rows"][0]["name"]
     plan, runtime, out = runtime_for(tmp_path, release, "17")
@@ -138,12 +163,13 @@ def test_real_supervisor_runs_one_matrix_trial(releases, tmp_path):
     fixture = """import json,sys
 from pathlib import Path
 from g2_author_h50_limits import AuthorBudget,TrialClock
-target, episode, *_ = sys.argv[1:]
+target, episode, outcome, *_ = sys.argv[1:]
 start = float(sys.argv[sys.argv.index('--trial-start')+1])
 hard = float(sys.argv[sys.argv.index('--hard-deadline')+1])
-clock = TrialClock(AuthorBudget(soft_s=4200,hard_s=4500),start,hard)
+clock = TrialClock(AuthorBudget(soft_s=11400,hard_s=12000),start,hard)
 Path(target).write_text(json.dumps(dict(mode='author_native',method='fixed_h50',scene_closed=True,
-episode_id=episode,trial_clock=clock.receipt(),outcome='SUCCESS',completed_actions=1,success=True)))
+episode_id=episode,trial_clock=clock.receipt(),outcome=outcome,completed_actions=1,
+success=outcome=='SUCCESS',request_in_flight=False)))
 """
     target = out / "trials" / episode / "receipt.json"
     target.parent.mkdir()
@@ -156,9 +182,26 @@ episode_id=episode,trial_clock=clock.receipt(),outcome='SUCCESS',completed_actio
         + fixture,
         str(target),
         episode,
+        outcome,
     ]
     result = supervise(plan, runtime, out / "supervisor", allocated=True)
     assert result["model_server_starts"] == 1
     assert result["stop_reason"] is None
     assert result["rows"][episode]["status"] == "completed"
+    assert result["rows"][episode]["result"]["outcome"] == outcome
     assert result["rows"][episode]["process_group_reaped"] is True
+
+
+def test_clock_crosses_previous_cutoff_and_censors_at_new_soft_limit(
+    releases, tmp_path
+):
+    path, manifest = releases
+    _, runtime, _ = runtime_for(tmp_path, path / manifest["rows"][0]["name"], "9")
+    budget = runtime["standalone_trial"]["budget"]
+    clock = TrialClock(budget, 100, 12100)
+    with patch("g2_author_h50_limits.monotonic", return_value=4601):
+        assert clock.remaining() == 6899
+    with patch("g2_author_h50_limits.monotonic", return_value=11500):
+        with pytest.raises(ResourceCensored, match="soft_wall_clock"):
+            clock.remaining()
+    assert clock.reap_at == 12090

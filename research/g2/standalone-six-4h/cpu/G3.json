@@ -1,0 +1,25 @@
+{
+  "id": "G3",
+  "admission": "PASS",
+  "config_sha256": "83689aea1ebdaf92a01026d0d0be4da8107b44d051743ef7ee44ebebd6ef1a83",
+  "evidence_scope": "prior CPU scene and policy substitute; fresh resource ledger check",
+  "source_batch_sha256": "616fc754e36acc5b2c89b6fb302eb254b340b751e4834fe84368d1ad74fb87e3",
+  "source_config_sha256": "cfee31587680e7fe771e567ecdd83a5277eca14a11165fa7fadc1e7022115dda",
+  "source_cpu_sha256": "5a5a9754210aa144f944b8860e3f96dc8e6d07fb24ac6589d1a21416777e5881",
+  "resource_acceptance": {
+    "overhead": {
+      "graphics_s": 300,
+      "statistics_s": 120,
+      "cleanup_s": 360,
+      "shared_model_and_dynamic_entry_s": 900
+    },
+    "host_reserve_s": 360,
+    "slurm_signal_s": 120,
+    "minimum_s": 14040,
+    "unassigned_s": 360,
+    "soft_s": 11400,
+    "hard_s": 12000,
+    "request_s": 390,
+    "physics_steps": 130000
+  }
+}

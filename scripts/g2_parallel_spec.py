@@ -1,5 +1,6 @@
-"""Frozen seven-condition design. No scheduler or model dependencies."""
+"""Frozen six-condition, four-hour design. No scheduler or model dependencies."""
 
+from decimal import Decimal
 from hashlib import sha256
 import json
 from pathlib import Path, PurePosixPath
@@ -22,14 +23,19 @@ RESOURCES = dict(
     cpus=4,
     memory_mib=32768,
     gpus=1,
-    wall_s=7200,
+    wall_s=14400,
     graphics_s=300,
     model_start_s=900,
-    trial_soft_s=4200,
-    trial_hard_s=4500,
+    trial_soft_s=11400,
+    trial_hard_s=12000,
     cleanup_s=480,
     request_s=390,
 )
+BATCH_SIZE = 2 * len(SCENES)
+BATCH_SCHEME = "standalone-six-4h-v1"
+MAX_RATE = Decimal("3.60")
+JOB_FEE_CAP = MAX_RATE * RESOURCES["wall_s"] / 3600
+BATCH_FEE_CAP = JOB_FEE_CAP * BATCH_SIZE
 SELECTION = "first expert-accepted scene of each fixed cache shard (index 0)"
 
 
@@ -71,9 +77,8 @@ def extract(archive_path, directory, expected_name):
 def specs():
     result = []
     for i, (mode, method, shard) in enumerate(
-        [("author_native", "fixed_h50", j) for j in range(3)]
-        + [("author_native", "pace", j) for j in range(3)]
-        + [("protected", "fixed_h50", 1)],
+        [("author_native", "fixed_h50", j) for j in range(len(SCENES))]
+        + [("author_native", "pace", j) for j in range(len(SCENES))],
         1,
     ):
         key = f"g{i}-{mode}-{method}-{SCENES[shard]}"
@@ -107,7 +112,7 @@ def specs():
 def load(path):
     item = json.loads(path.read_text())
     if item not in specs():
-        raise ValueError("configuration differs from the frozen seven-condition design")
+        raise ValueError("configuration differs from the frozen six-condition design")
     return item
 
 

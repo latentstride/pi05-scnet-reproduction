@@ -1,4 +1,4 @@
-"""Verify, hold, bind and release the seven independent jobs exactly once."""
+"""Verify, hold, bind and release the six independent jobs exactly once."""
 
 import argparse
 from datetime import datetime, timedelta, timezone
@@ -17,14 +17,22 @@ from g2_standalone_matrix import (
     bound_authorization,
     verify_package,
 )
-from g2_parallel_spec import RESOURCES, digest, extract, specs
+from g2_parallel_spec import (
+    BATCH_FEE_CAP,
+    BATCH_SCHEME,
+    BATCH_SIZE,
+    MAX_RATE,
+    RESOURCES,
+    digest,
+    extract,
+    specs,
+)
 from g2_parallel_identity import runtime_preflight
 from g2_standalone_submit import fields, query, read, require, save, seconds
 
 GOODS = "821418588551249920"
 PROJECT_BASE = "a5a67cfb27a787da5562f82e03c3e8d67c257ec3"
-MAX_RATE = Decimal("3.60")
-MIN_FREE_GIB = 7 * MIN_DISK_GIB + 4
+MIN_FREE_GIB = BATCH_SIZE * MIN_DISK_GIB + 12
 JOB_NAME = "cpf-pace-g2"
 
 
@@ -34,7 +42,7 @@ def budget(stage, batch_path):
     observed = datetime.fromisoformat(q["observed_at"])
     rate = Decimal(q["displayed_yuan_per_gpu_hour"])
     cap = Decimal(permit["approved_total_cap_yuan"])
-    ceiling = rate * Decimal(7 * RESOURCES["wall_s"]) / 3600
+    ceiling = rate * Decimal(BATCH_SIZE * RESOURCES["wall_s"]) / 3600
     proof = stage / "platform-quote-evidence"
     require(
         q["source"] == "SCNet"
@@ -48,11 +56,11 @@ def budget(stage, batch_path):
         and rate.is_finite()
         and cap.is_finite()
         and 0 < rate <= MAX_RATE
-        and ceiling <= cap <= Decimal("50.40")
+        and ceiling <= cap <= BATCH_FEE_CAP
         and Decimal(str(q["account_available_yuan"])) >= ceiling
-        and permit.get("submission_scheme") == "standalone-seven-v1"
+        and permit.get("submission_scheme") == BATCH_SCHEME
         and permit.get("approved") is True
-        and permit.get("allocations_authorized") == 7
+        and permit.get("allocations_authorized") == BATCH_SIZE
         and permit.get("automatic_retry") is False
         and permit["batch_sha256"] == digest(batch_path)
         and permit["quote_sha256"] == digest(stage / "platform-quote.json")
@@ -68,6 +76,7 @@ def packages(stage):
     require(
         batch.get("submission_allowed") is False
         and batch.get("baseline") == PROJECT_BASE
+        and batch.get("submission_scheme") == BATCH_SCHEME
         and [r["id"] for r in batch["rows"]] == [s["id"] for s in specs()],
         "batch roster differs",
     )
@@ -185,10 +194,10 @@ def platform(root, account, qos):
     require(
         submit
         and run
-        and len(active) + 7 <= min(submit)
+        and len(active) + BATCH_SIZE <= min(submit)
         and not any(a[5] or a[6] for a in assoc)
         and not any(q[2] or q[3] for q in qrows),
-        "seven submission slots or account-wide limits unverified",
+        "six submission slots or account-wide limits unverified",
     )
     free = disk_usage(root / "results").free
     quota = query("quota", "-s")
@@ -328,13 +337,17 @@ def bind(entry, job, comment, batch_sha, quote, quote_path, observed):
 def submit_all(
     scheduler, entries, root, account, qos, batch_sha, receipt_path, binding
 ):
+    require(
+        [e["spec"]["id"] for e in entries] == [s["id"] for s in specs()],
+        "submission roster differs",
+    )
     require(not receipt_path.exists(), "submission receipt already exists")
     rows = [
         dict(
             experiment=e["spec"]["id"],
             job_id=None,
             state="not_submitted",
-            comment=f"cpf-g2-s7-{batch_sha[:20]}-{e['spec']['id']}",
+            comment=f"cpf-g2-s6h4-{batch_sha[:20]}-{e['spec']['id']}",
             archive_sha256=e["row"]["archive_sha256"],
             config_sha256=e["row"]["config_sha256"],
         )
@@ -455,7 +468,7 @@ def main():
             entry,
             a.account,
             a.qos,
-            f"cpf-g2-s7-{batch_sha[:20]}-{key}",
+            f"cpf-g2-s6h4-{batch_sha[:20]}-{key}",
             test=a.scheduler_test or a.execute,
         )
         row = dict(experiment=key, cpu_ok=entry["cpu_ok"], argv=cmd)
@@ -479,48 +492,8 @@ def main():
     roster_sha = sha256(
         "\n".join(e["row"]["config_sha256"] for e in entries).encode()
     ).hexdigest()
-    legacy_intent = intent_dir / f"{roster_sha}.json"
-    if legacy_intent.exists():
-        historical_batch = (
-            "9ae1fb32d441b23d80311c71c9594ec946829f1a8d8ab8dca9adb193999fcc7d"
-        )
-        require(
-            read(legacy_intent)["batch"] == historical_batch
-            and batch_sha != historical_batch,
-            "an earlier intent for this roster cannot be superseded",
-        )
-        old_jobs = {
-            "127556961",
-            "127556962",
-            "127556963",
-            "127556966",
-            "127556967",
-            "127556975",
-            "127556977",
-        }
-        old_rows = [
-            line.split("|")
-            for line in query(
-                "sacct",
-                "-X",
-                "-nP",
-                "-j",
-                ",".join(sorted(old_jobs)),
-                "-o",
-                "JobIDRaw,State",
-            ).splitlines()
-        ]
-        require(
-            {row[0] for row in old_rows if row[0] in old_jobs and row[1] == "FAILED"}
-            == old_jobs,
-            "historical roster is not fully confirmed failed",
-        )
-    require(
-        not (intent_dir / f"{roster_sha}-startup-v2.json").exists(),
-        "an earlier replacement batch already has a durable intent",
-    )
     save(
-        intent_dir / f"{roster_sha}-standalone-v1.json",
+        intent_dir / f"{roster_sha}-{BATCH_SCHEME}.json",
         dict(batch=batch_sha, roster_sha256=roster_sha, stage=str(stage)),
         exclusive=True,
     )

@@ -1,5 +1,7 @@
-"""CPU-only fault injection for seven independent Slurm jobs and process groups."""
+"""CPU-only fault injection for six independent Slurm jobs and process groups."""
 
+from datetime import datetime, timezone
+from decimal import Decimal
 from pathlib import Path
 import subprocess
 import sys
@@ -11,9 +13,9 @@ SCRIPTS = Path(__file__).resolve().parents[1] / "scripts"
 sys.path.insert(0, str(SCRIPTS))
 
 from g2_parallel_deploy import run_trial  # noqa: E402
-from g2_parallel_spec import RESOURCES, specs  # noqa: E402
-from g2_parallel_submit import command, submit_all  # noqa: E402
-from g2_standalone_submit import read  # noqa: E402
+from g2_parallel_spec import BATCH_SCHEME, RESOURCES, digest, specs  # noqa: E402
+from g2_parallel_submit import budget, command, submit_all  # noqa: E402
+from g2_standalone_submit import read, save  # noqa: E402
 
 
 class FakeSlurm:
@@ -41,7 +43,7 @@ class FakeSlurm:
                 raise subprocess.TimeoutExpired(args, 40)
             return job
         if args[:2] == ("scontrol", "release"):
-            assert len(self.bindings) == 7
+            assert len(self.bindings) == 6
             if args[2] == self.fail_release:
                 raise RuntimeError("simulated release failure")
             self.active.add(args[2])
@@ -70,8 +72,8 @@ class FakeSlurm:
             Requeue="0",
             Dependency="(null)",
             Comment=self.held[job],
-            TimeLimit="02:00:00",
-            TimeMin="02:00:00",
+            TimeLimit="04:00:00",
+            TimeMin="04:00:00",
             MinMemoryNode="32G",
             TresPerNode="gres/gpu:1",
             WorkDir=next(
@@ -119,7 +121,7 @@ def test_isolated_roster_and_hold_before_release(tmp_path):
     assert (
         len({s["episode_id"] for s in frozen})
         == len({s["output_dir"] for s in frozen})
-        == 7
+        == 6
     )
     assert all(
         b["port_base"] - a["port_base"] == 2000 for a, b in zip(frozen, frozen[1:])
@@ -134,9 +136,9 @@ def test_isolated_roster_and_hold_before_release(tmp_path):
         assert all(frozen[i][k] == frozen[i + 3][k] for k in shared)
     scheduler = FakeSlurm()
     receipt = batch(tmp_path, scheduler)
-    assert len(scheduler.active) == 7
+    assert len(scheduler.active) == 6
     assert {x["state"] for x in receipt["rows"]} == {"released"}
-    assert len({r["result_dir"] for r in receipt["rows"]}) == 7
+    assert len({r["result_dir"] for r in receipt["rows"]}) == 6
     assert "--test-only" in command(
         tmp_path, entries(tmp_path)[0], "test", "qos", "x", test=True
     )
@@ -161,7 +163,7 @@ def test_auth_failure_releases_none(tmp_path):
     with pytest.raises(RuntimeError, match="authorization invalid"):
         batch(tmp_path, scheduler, fail_bind=True)
     assert not scheduler.active
-    assert len(scheduler.cancelled) == 7
+    assert len(scheduler.cancelled) == 6
 
 
 def test_release_failure_leaves_already_released_untouched(tmp_path):
@@ -169,12 +171,12 @@ def test_release_failure_leaves_already_released_untouched(tmp_path):
     with pytest.raises(RuntimeError, match="release failure"):
         batch(tmp_path, scheduler)
     assert scheduler.active == {"1001", "1002"}
-    assert scheduler.cancelled == ["1003", "1004", "1005", "1006", "1007"]
+    assert scheduler.cancelled == ["1003", "1004", "1005", "1006"]
 
 
 def test_duplicate_comment_neither_submits_nor_cancels(tmp_path):
     scheduler = FakeSlurm()
-    scheduler.held["777"] = f"cpf-g2-s7-{'0' * 20}-G4"
+    scheduler.held["777"] = f"cpf-g2-s6h4-{'0' * 20}-G4"
     with pytest.raises(RuntimeError, match="duplicate"):
         batch(tmp_path, scheduler)
     assert scheduler.count == 0 and scheduler.cancelled == []
@@ -228,3 +230,52 @@ def test_model_death_reaps_its_own_trial(tmp_path):
             proof,
         )
     assert proof == {"trial_group_reaped": True}
+
+
+def test_new_cost_scope_requires_fresh_six_job_approval(tmp_path):
+    path = tmp_path / "batch.json"
+    save(path, {"submission_allowed": False})
+    proof = tmp_path / "platform-quote-evidence"
+    proof.write_text("simulated quote")
+    quote = tmp_path / "platform-quote.json"
+    save(
+        quote,
+        dict(
+            source="SCNet",
+            goods_id="821418588551249920",
+            region="华东一区【昆山】",
+            account_funds_cover_batch=True,
+            account_available_yuan="86.40",
+            observed_at=datetime.now(timezone.utc).isoformat(),
+            displayed_yuan_per_gpu_hour="3.60",
+            evidence_sha256=digest(proof),
+        ),
+    )
+    permit = tmp_path / "batch-approval.json"
+    approval = dict(
+        approved=True,
+        automatic_retry=False,
+        approved_total_cap_yuan="86.40",
+        allocations_authorized=6,
+        submission_scheme=BATCH_SCHEME,
+        batch_sha256=digest(path),
+        quote_sha256=digest(quote),
+    )
+    save(permit, approval)
+    assert budget(tmp_path, path)[2] == Decimal("86.40")
+    save(
+        permit,
+        dict(
+            approval,
+            allocations_authorized=7,
+            submission_scheme="standalone-seven-v1",
+            approved_total_cap_yuan="50.40",
+        ),
+    )
+    with pytest.raises(RuntimeError, match="aggregate approval"):
+        budget(tmp_path, path)
+    save(permit, approval)
+    save(quote, dict(read(quote), account_available_yuan="86.39"))
+    save(permit, dict(approval, quote_sha256=digest(quote)))
+    with pytest.raises(RuntimeError, match="available funds"):
+        budget(tmp_path, path)

@@ -1,0 +1,35 @@
+{
+  "job_id": "127510335",
+  "result_dir": "results/pace-g2-standalone-author-127510335",
+  "original_archive_access": "verified_read_only",
+  "raw_trial_sha256": {
+    "events.jsonl": "57c85f137765343759730dda1c875b48e6e0a840a3ee1916295926e14ae8bf8a",
+    "receipt.json": "801115687dbd6596ab0d09f7d4f85fe52b5024e49ac4ab3a579087ae774f0b79",
+    "request-00.npz": "442f7d47cde94712201239dca6d5ff25aa7a161222f69ccba1bb382d8d445269",
+    "chunk-00.npy": "e1ac8bd5119a1cb24e9761d301aa971ec6e11706eae715be468c5cc4babe14e8",
+    "query-cameras.mp4": "1e22ed7648cdb73a15b4574e93b85ed24be6f2c53905934da10110dfa925b516"
+  },
+  "PACE_commit": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+  "Openpi_PACE_runtime_commit": "f4e52e6de4cc487a11585a3a7414d610b2883dae",
+  "deployment_code_commit": "fae63f80ec65ce6121f486f0eac57ea4bdb16724",
+  "dataset_commit": "3dc3b798668feb99ac61cc9086d84cbcc3d79186",
+  "inspected_expert_seed_manifests": {
+    "aloha-agilex": {
+      "seed_manifest_sha256": "b989f0d6533be35fc0193843cb22acd04213ee4b2865641d75c9afc0b5a66ec5",
+      "count": 50,
+      "min": 0,
+      "max": 56,
+      "contains_100000": false
+    },
+    "arx-x5": {
+      "seed_manifest_sha256": "df07ba86f6a0adf64e96e480d03d157afb0efaea7d43cd4e33ec18ed2bec814f",
+      "count": 50,
+      "min": 0,
+      "max": 53,
+      "contains_100000": false
+    }
+  },
+  "scene_seed": 100000,
+  "expert_gold": "UNKNOWN: cached acceptance without a matching recorded trajectory",
+  "same_scene_reference": "G1 126905534 reset evidence only; policy, not expert"
+}

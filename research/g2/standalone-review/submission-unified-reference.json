@@ -1,0 +1,39 @@
+{
+  "job_id": "127408633",
+  "job_state": "PENDING",
+  "reason": "None",
+  "resources": {
+    "gpu_count": 1,
+    "gpu_type": "RTX4090",
+    "cpu_count": 4,
+    "memory_gib": 32,
+    "wall_s": 25200,
+    "node": "gnode39",
+    "partition": "ksagnormal01"
+  },
+  "archive_sha256": "c8eeff121eefb1bff98e8103cc3314ef6d95669e362889f3d68ac35507389e99",
+  "manifest_sha256": "9270db1e97eafedfb6f94711c8b8c9f33efd76d04ab800af99bf11a42556f19a",
+  "commit": "93b6c0691e236d0b871745852f358a4cea85416b",
+  "roster": [
+    "unified-seed0-native-w50",
+    "unified-seed0-native-w31",
+    "unified-seed1-native-w31",
+    "unified-seed1-native-w50",
+    "unified-seed0-native-w4",
+    "unified-seed0-arx-full-w4",
+    "unified-seed1-arx-full-w4",
+    "unified-seed1-native-w4",
+    "unified-seed1-arx-expert-repaired",
+    "unified-seed0-arx-expert-repaired",
+    "author-native-h50-seed100000"
+  ],
+  "allocations": 1,
+  "model_services": 1,
+  "submissions": 1,
+  "authorization_bound_before_release": true,
+  "price_yuan_per_gpu_hour": "3.60",
+  "max_cost_yuan": "25.20",
+  "quote_valid_until": "2026-11-16T09:06:00+00:00",
+  "submit_time": "2026-11-09T17:10:19",
+  "result_directory": "results/pace-g2-unified-127408633"
+}

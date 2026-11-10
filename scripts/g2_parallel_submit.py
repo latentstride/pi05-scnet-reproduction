@@ -14,6 +14,8 @@ import subprocess
 from g2_final_deploy import authorization
 from g2_parallel_deploy import CONFIG, MIN_DISK_GIB, verify_package
 from g2_parallel_spec import RESOURCES, digest, extract, specs
+from g2_parallel_identity import runtime_preflight
+from g2_parallel_startup import validate_probe
 from g2_standalone_submit import fields, query, read, require, save, seconds
 
 GOODS = "821418588551249920"
@@ -198,57 +200,10 @@ def platform(root, account, qos):
     )
 
 
-def runtime_preflight(root, release):
-    from pace_download import load_manifest, local_path
-
-    r = read(release / "launch-spec.json")
-    for folder in (
-        "containers/openpi-ubuntu",
-        "research/robotwin/robotwin-cu122/opt/robotwin/logs/BUILD_COMPLETE",
-        "tools/pace-model-venv/bin/python",
-    ):
-        require((root / folder).exists(), f"missing deployed runtime: {folder}")
-    for name, commit in (
-        ("PACE", specs()[0]["pace_revision"]),
-        ("Openpi-PACE", specs()[0]["openpi_pace_revision"]),
-    ):
-        source = root / "source" / f"{name}-{commit}"
-        require(source.is_dir(), f"{name} missing")
-        git = ("git", f"--git-dir={source / '.git'}", f"--work-tree={source}")
-        require(
-            query(*git, "rev-parse", "HEAD") == commit
-            and not query(*git, "status", "--porcelain", "-uno"),
-            f"{name} tracked source or revision differs",
-        )
-    model = load_manifest()
-    require(
-        model == read(release / "pace_download_manifest.json"), "model manifest differs"
-    )
-    receipt_path = root / r["model_cpu_receipt"].split("<PROJECT_ROOT>/", 1)[1]
-    require(
-        digest(receipt_path) == r["model_cpu_receipt_sha256"],
-        "frozen model CPU receipt hash differs",
-    )
-    receipt = read(receipt_path)
-    cache = root / "cache/pace-handover"
-    snapshot = {}
-    for item in model["files"]:
-        path = local_path(cache, item["path"])
-        stat = path.stat()
-        snapshot[item["path"]] = [stat.st_size, stat.st_mtime_ns, item["sha256"]]
-    require(
-        snapshot == receipt["checkpoint_files"]
-        and digest(cache / model["norm_stats"]) == model["norm_stats_sha256"]
-        and digest(root / "cache/openpi-pace/big_vision/paligemma_tokenizer.model")
-        == snapshot["tokenizer.model"][2],
-        "checkpoint, norm stats or tokenizer differs",
-    )
-
-
 def command(root, entry, account, qos, comment, *, test):
     release, approval = entry["release"], entry["approval"]
     require(
-        not any(c in str(release) + str(approval) for c in ",\n\r"),
+        not any(c in str(root) + str(release) + str(approval) for c in ",\n\r"),
         "staging paths cannot contain Slurm export delimiters",
     )
     return [
@@ -259,7 +214,7 @@ def command(root, entry, account, qos, comment, *, test):
         "--account=" + account,
         "--qos=" + qos,
         "--chdir=" + str(root),
-        f"--export=ALL,G2_FINAL_RELEASE={release},G2_FINAL_APPROVAL={approval}",
+        f"--export=ALL,G2_PROJECT_ROOT={root},G2_FINAL_RELEASE={release},G2_FINAL_APPROVAL={approval}",
         "--output=" + str(approval.parent / "slurm-%j.out"),
         str(release / "scripts/pace_g2_parallel.slurm"),
     ]
@@ -320,7 +275,9 @@ def verify_held(f, job, account, qos, comment):
     )
 
 
-def bind(entry, job, comment, batch_sha, quote, quote_path, observed):
+def bind(
+    entry, job, comment, batch_sha, quote, quote_path, observed, probe_sha, probe_job
+):
     row, spec, approval = entry["row"], entry["spec"], entry["approval"]
     with approval.with_suffix(".quote").open("xb") as f:
         f.write(quote_path.read_bytes())
@@ -335,6 +292,8 @@ def bind(entry, job, comment, batch_sha, quote, quote_path, observed):
             archive_sha256=row["archive_sha256"],
             configuration_sha256=row["config_sha256"],
             batch_sha256=batch_sha,
+            startup_probe_sha256=probe_sha,
+            startup_probe_job_id=probe_job,
             node=RESOURCES["node"],
             resources=RESOURCES,
             quote_source="SCNet",
@@ -446,6 +405,7 @@ def main():
     p.add_argument("--stage", type=Path, required=True)
     p.add_argument("--account", required=True)
     p.add_argument("--qos", required=True)
+    p.add_argument("--probe-job-id")
     mode = p.add_mutually_exclusive_group()
     mode.add_argument("--dry-run", action="store_true")
     mode.add_argument("--scheduler-test", action="store_true")
@@ -462,6 +422,8 @@ def main():
     scheduler = Scheduler()
     tests = []
     if a.execute:
+        require(a.probe_job_id, "an approved successful compute-node probe is required")
+        _, probe_sha = validate_probe(root, a.probe_job_id, batch_path, query)
         quote, _, total, observed = budget(stage, batch_path)
         require(
             all(e["cpu_ok"] for e in entries),
@@ -501,8 +463,44 @@ def main():
     roster_sha = sha256(
         "\n".join(e["row"]["config_sha256"] for e in entries).encode()
     ).hexdigest()
+    legacy_intent = intent_dir / f"{roster_sha}.json"
+    if legacy_intent.exists():
+        historical_batch = (
+            "9ae1fb32d441b23d80311c71c9594ec946829f1a8d8ab8dca9adb193999fcc7d"
+        )
+        require(
+            read(legacy_intent)["batch"] == historical_batch
+            and batch_sha != historical_batch,
+            "an earlier intent for this roster cannot be superseded",
+        )
+        old_jobs = {
+            "127556961",
+            "127556962",
+            "127556963",
+            "127556966",
+            "127556967",
+            "127556975",
+            "127556977",
+        }
+        old_rows = [
+            line.split("|")
+            for line in query(
+                "sacct",
+                "-X",
+                "-nP",
+                "-j",
+                ",".join(sorted(old_jobs)),
+                "-o",
+                "JobIDRaw,State",
+            ).splitlines()
+        ]
+        require(
+            {row[0] for row in old_rows if row[0] in old_jobs and row[1] == "FAILED"}
+            == old_jobs,
+            "historical roster is not fully confirmed failed",
+        )
     save(
-        intent_dir / f"{roster_sha}.json",
+        intent_dir / f"{roster_sha}-startup-v2.json",
         dict(batch=batch_sha, roster_sha256=roster_sha, stage=str(stage)),
         exclusive=True,
     )
@@ -515,7 +513,15 @@ def main():
         batch_sha,
         stage / "submission.json",
         lambda e, job, tag: bind(
-            e, job, tag, batch_sha, quote, stage / "platform-quote.json", observed
+            e,
+            job,
+            tag,
+            batch_sha,
+            quote,
+            stage / "platform-quote.json",
+            observed,
+            probe_sha,
+            a.probe_job_id,
         ),
     )
 

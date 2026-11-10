@@ -1,0 +1,69 @@
+{
+  "baseline": "a5a67cfb27a787da5562f82e03c3e8d67c257ec3",
+  "submission_allowed": false,
+  "rows": [
+    {
+      "id": "G1",
+      "name": "g2-parallel-G1",
+      "config_sha256": "6ef84cc0b7dfc1398713d5984da3a502f8646a09f795f57e69b4fc596dffff64",
+      "archive_sha256": "4497b2ddbc5102a549ef209cdf6a3249e5c6577c6807b496bebb9334af9ba89c",
+      "manifest_sha256": "9657d8e5729c4045cafec8511911752bd77aa91f62d48b8f1216f60424945594",
+      "cpu_sha256": "4594d140d209882f0ec303b32c71f82e5cffd9f8f456b52858b50b67957939fb",
+      "members": 97
+    },
+    {
+      "id": "G2",
+      "name": "g2-parallel-G2",
+      "config_sha256": "32607a0334dd078a5c53422a287c35734f7597b88df67e7f0d65ed38be73f948",
+      "archive_sha256": "378785e47289011e7422df5b2ea666fc20385add8d83fcf539ddb4770a45942d",
+      "manifest_sha256": "779d94f09230dc569cdf9c723f1a45879f3227e8852ee4bf0fde4e46e581ad57",
+      "cpu_sha256": "9ccfd30962ff9f75cfc764ae9305b908fd664c45609e2594019a8ff71adb9e9b",
+      "members": 97
+    },
+    {
+      "id": "G3",
+      "name": "g2-parallel-G3",
+      "config_sha256": "cfee31587680e7fe771e567ecdd83a5277eca14a11165fa7fadc1e7022115dda",
+      "archive_sha256": "cfb5e574f51c857fdc2999950b682538cfc5d49426d671d4b188ee4a3f2b44a2",
+      "manifest_sha256": "93c982db67e3247cbe85c9f3a00d76c2c19055b8058a0e242b16eebc8ce89146",
+      "cpu_sha256": "5a5a9754210aa144f944b8860e3f96dc8e6d07fb24ac6589d1a21416777e5881",
+      "members": 97
+    },
+    {
+      "id": "G4",
+      "name": "g2-parallel-G4",
+      "config_sha256": "43e80a100f76f9282a3143a8664059691ce2e5657c60b01759d7176a37b46a03",
+      "archive_sha256": "e48cec7989b047113ef1c1b0382d7b33e447b6075f8529d882cb282c9ceda93c",
+      "manifest_sha256": "d1bc1a604d483041d240f0beacb538c1d82437c642be3002671d461686d3a207",
+      "cpu_sha256": "652106bea74d5ba724a0e431aaa1451322b8362f88f6e7f2031db90b14541877",
+      "members": 97
+    },
+    {
+      "id": "G5",
+      "name": "g2-parallel-G5",
+      "config_sha256": "d6f4224e389cf66095a8c0da0ac17103e958e1a18d3ae633d7b5192ee978df5d",
+      "archive_sha256": "ee1947341a8148330af9a6cbcf2ba71f1561a52c4bd6d598aeaf1e241619a5ef",
+      "manifest_sha256": "d01df0b6e81de641d574f93fb4d209773ff0d6b943cd9ad2dc041126083cb515",
+      "cpu_sha256": "a125bbeb8934251625e030f641019f499b8ea6a302920af7ef429ab968bdb08a",
+      "members": 97
+    },
+    {
+      "id": "G6",
+      "name": "g2-parallel-G6",
+      "config_sha256": "f1e35ddd7caed498ab136f2071859c2968214ef6ac564afc62da8447de4a77cc",
+      "archive_sha256": "2005ff465a4e57c4698978fdd6626875ef7ae20457dcb3f1ff89c472913ded2f",
+      "manifest_sha256": "9a3a92eadb1a63313d7412e1736dbc241d61b6f45fd8e3d279544734adcacbf2",
+      "cpu_sha256": "7df0c550671bb4424f473d789e93fb893f796ee08cd183654a736651c70ff73e",
+      "members": 97
+    },
+    {
+      "id": "G7",
+      "name": "g2-parallel-G7",
+      "config_sha256": "5009f9bb043a7dabee971f1d72bd47100dcd87ffbed5ec22954501646e7408a6",
+      "archive_sha256": "084b62d2dc75696e675538d3a23d6a9090e9d6249e182f90cde44c1187e93e15",
+      "manifest_sha256": "9a7ab02660a17ae757a013f35fbfc87dfcc77197e3b54ef1a833c4716bc6bf86",
+      "cpu_sha256": "f7ba8f21118ab65c4e0487fd8858f0eb6a9d908b85f76d617e8353b7e47df125",
+      "members": 98
+    }
+  ]
+}

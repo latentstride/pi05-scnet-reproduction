@@ -17,6 +17,9 @@ BASE = "a5a67cfb27a787da5562f82e03c3e8d67c257ec3"
 OVERLAY = (
     "g2_parallel_spec.py",
     "g2_parallel_deploy.py",
+    "g2_parallel_startup.py",
+    "g2_parallel_bootstrap.py",
+    "g2_parallel_identity.py",
     "g2_parallel_worker.py",
     "g2_author_native_entry.py",
     "g2_author_native_h50.py",
@@ -50,6 +53,15 @@ def package(project, parent, evidence, output):
                 "scripts/pace_g2_unified.slurm",
             ):
                 (release / old).unlink()
+            graphics = release / "scripts/g2_graphics.sh"
+            old_root = 'cd "${SLURM_SUBMIT_DIR:?Submit from personal project root}"'
+            new_root = (
+                'cd "${G2_PROJECT_ROOT:?Explicit parallel project root required}"'
+            )
+            script = graphics.read_text()
+            if script.count(old_root) != 1:
+                raise ValueError("expected one graphics working-directory binding")
+            graphics.write_text(script.replace(old_root, new_root))
             conf = evidence / "configs" / f"{key}.json"
             shutil.copyfile(conf, release / CONFIG)
             (release / "parallel-admission.json").write_text(

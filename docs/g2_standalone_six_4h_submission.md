@@ -48,9 +48,10 @@ python3 -B scripts/g2_parallel_package.py . \
 
 [六条独立 `sbatch` 命令](../research/g2/standalone-six-4h/sbatch-preview.txt) · [候选包及批次 SHA256](../research/g2/standalone-six-4h/SHA256SUMS)
 
-获批后通过已暂存的提交脚本运行。脚本连续进行六次独立的 `sbatch --hold`，核对每个 Job ID 的分配、包和授权后放行，无跨作业依赖。部分提交失败时，保留已有 Job ID 并按现有回执规则核对本批次的未放行作业。
+获批后在 SCNet 登录节点运行。使用已验收且能找到 Slurm 管理命令 `sacctmgr` 的环境，并从已解包的 G1 加载提交工具所需模块。脚本连续进行六次独立的 `sbatch --hold`，核对每个 Job ID 的分配、包和授权后放行，无跨作业依赖。部分提交失败时，保留已有 Job ID 并按现有回执规则核对本批次的未放行作业。
 
 ```bash
-bash "$STAGE/scripts/submit_g2_parallel_batch.sh" --root "$ROOT" --stage "$STAGE" \
+PYTHONPATH="$STAGE/g2-parallel-G1/scripts" \
+  bash "$STAGE/scripts/submit_g2_parallel_batch.sh" --root "$ROOT" --stage "$STAGE" \
   --account "$ACCOUNT" --qos "$QOS" --execute
 ```

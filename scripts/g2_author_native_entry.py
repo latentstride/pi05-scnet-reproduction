@@ -28,7 +28,7 @@ class CounterfactualBoundary(Exception):
 
 
 @contextmanager
-def author_scene(pace, release, *, configure_cpu=None):
+def author_scene(pace, release, *, configure_cpu=None, scene=None):
     from pace_runtime import require_checkout
 
     require_checkout(pace, PACE)
@@ -53,24 +53,23 @@ def author_scene(pace, release, *, configure_cpu=None):
             )
             from pace.rollout import run_episode
 
-            cache, identity = load_cached_scenes(TASK, 0, 1)
-            if (
-                cache != [{"scene_seed": SEED, "episode_info": {}}]
-                or identity["sha256"] != CACHE
-            ):
-                raise ValueError("author scene cache mismatch")
+            from g2_parallel_spec import cache_row, legacy_scene
+
+            scene = legacy_scene() if scene is None else scene
+            seed, index = scene["scene_seed"], scene["scene_cache_index"]
+            cached, _ = cache_row(scene, load_cached_scenes)
             env, settings = load_environment(TASK)
             if settings["embodiment"] != ["aloha-agilex"]:
                 raise ValueError("expected native Aloha")
             if configure_cpu:
                 configure_cpu.settings(settings)
             try:
-                random.seed(SEED)
-                env.setup_demo(now_ep_num=0, seed=SEED, is_test=True, **settings)
-                restore_cached_scene_state(TASK, env, cache[0]["episode_info"])
+                random.seed(seed)
+                env.setup_demo(now_ep_num=index, seed=seed, is_test=True, **settings)
+                restore_cached_scene_state(TASK, env, cached["episode_info"])
                 env.set_instruction(
                     sample_instruction(
-                        TASK, {"info": cache[0]["episode_info"]}, 100, "unseen"
+                        TASK, {"info": cached["episode_info"]}, 100, "unseen"
                     )
                 )
                 if (
@@ -82,7 +81,9 @@ def author_scene(pace, release, *, configure_cpu=None):
                 yield env, run_episode
             finally:
                 if hasattr(env, "scene"):
-                    env.close_env(clear_cache=(2 % settings["clear_cache_freq"] == 0))
+                    env.close_env(
+                        clear_cache=((index + 2) % settings["clear_cache_freq"] == 0)
+                    )
     finally:
         os.chdir(previous_cwd)
         sys.path[:] = previous_path
@@ -92,6 +93,35 @@ def fixed_h50(actions):
     if actions.shape != (WINDOW, 14):
         raise ValueError("expected the paper's 50 x 14 policy output")
     return WINDOW
+
+
+def choose_horizon(pace_root, spec):
+    """Delegate adaptive selection to the exact author implementation."""
+    from dataclasses import asdict
+    from pace import PaceConfig, select_horizon
+
+    if spec["method"] == "fixed_h50":
+        return fixed_h50, {"selector": "fixed", "horizon": 50}
+    config = PaceConfig()
+    file = pace_root / "pace/configs/calibration/handover_block.json"
+    raw = file.read_bytes()
+    if sha256(raw).hexdigest() != spec["calibration_sha256"]:
+        raise ValueError("author calibration differs")
+    calibration = json.loads(raw)
+    if calibration["task"] != TASK or calibration["selector"] != asdict(config):
+        raise ValueError("calibration contract differs")
+    threshold = calibration["threshold"]
+
+    def choose(actions):
+        fixed_h50(actions)
+        return select_horizon(actions, threshold, max_horizon=50, config=config)
+
+    return choose, {
+        "selector": "pace",
+        "threshold": threshold,
+        "config": asdict(config),
+        "calibration_sha256": spec["calibration_sha256"],
+    }
 
 
 class ArchivedFirstChunk:
@@ -125,11 +155,25 @@ class RecordedPolicy:
                 **request["images"],
             )
         self.log(dict(kind="request", query=index))
+        from time import monotonic
+
+        started = monotonic()
         response = self.policy.infer(request)
         actions = np.asarray(response["actions"])
         with (self.output / f"chunk-{index:02d}.npy").open("xb") as stream:
             np.save(stream, actions, allow_pickle=False)
-        self.log(dict(kind="response", query=index, rng=response.get("author_rng")))
+        self.log(
+            dict(
+                kind="response",
+                query=index,
+                rng=response.get("author_rng"),
+                chunk_sha256=sha256(
+                    (self.output / f"chunk-{index:02d}.npy").read_bytes()
+                ).hexdigest(),
+                round_trip_s=monotonic() - started,
+                service_inference_s=response.get("service_inference_s"),
+            )
+        )
         self.queries += 1
         return response
 

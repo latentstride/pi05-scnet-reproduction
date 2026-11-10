@@ -92,7 +92,8 @@ class StandaloneDeployTests(unittest.TestCase):
         author, arx = self.releases.values()
         self.assertEqual(
             digest(author / "scripts/g2_author_native_h50.py"),
-            digest(ROOT / "scripts/g2_author_native_h50.py"),
+            # The deployed historical member predates the opt-in parallel overlay.
+            "1be0dbc09b08dee4ff25b0ffacb6c437c239e83ffde8d1aa8518e5e277e9d1c8",
         )
         self.assertEqual(
             digest(author / f"configs/{ARX}.json"), digest(arx / f"configs/{ARX}.json")

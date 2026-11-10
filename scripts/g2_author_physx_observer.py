@@ -11,9 +11,10 @@ FINGERS = ("fl_link7", "fl_link8", "fr_link7", "fr_link8")
 class ObserveScene:
     """Only read the state after the original step returns. Never veto a step."""
 
-    def __init__(self, scene, env, stream):
+    def __init__(self, scene, env, stream, *, extended=False):
         self.original, self.env, self.stream = scene, env, stream
         self.tick = 0
+        self.extended = extended
         self.actor = env.box.actor
         self.block = self.actor.find_component_by_type(PhysxRigidDynamicComponent)
         self.entity = env.robot.left_entity
@@ -75,6 +76,24 @@ class ObserveScene:
                 for name, entity in self.links.items()
             },
         )
+        if self.extended:
+            robot = self.env.robot
+            row["tcp"] = [
+                np.asarray(robot.get_left_tcp_pose()).tolist(),
+                np.asarray(robot.get_right_tcp_pose()).tolist(),
+            ]
+            row["normalized_gripper_command"] = [
+                float(robot.get_left_gripper_val()),
+                float(robot.get_right_gripper_val()),
+            ]
+            row["aperture_m"] = [
+                float(
+                    np.linalg.norm(
+                        self.links[a].get_pose().p - self.links[b].get_pose().p
+                    )
+                )
+                for a, b in (FINGERS[:2], FINGERS[2:])
+            ]
         if self.tick == 0:
             row["target_pose"] = np.asarray(
                 self.env.target_box.actor.get_pose().to_transformation_matrix()

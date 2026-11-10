@@ -1,0 +1,147 @@
+{
+  "id": "G7",
+  "method": "fixed_h50",
+  "mode": "protected",
+  "config_sha256": "5009f9bb043a7dabee971f1d72bd47100dcd87ffbed5ec22954501646e7408a6",
+  "model": "cpu_substitute",
+  "receipt": {
+    "mode": "author_native_h50",
+    "trial_clock": {
+      "started": 1147311.499233252,
+      "soft": 1149711.499233252,
+      "hard": 1150011.499233252,
+      "reap_at": 1150001.499233252,
+      "budget": {
+        "physics_steps": 3,
+        "soft_s": 2400,
+        "hard_s": 2700,
+        "reap_s": 10,
+        "request_s": 390
+      }
+    },
+    "episode_id": "g7-protected-fixed_h50-200000",
+    "cleanup": {
+      "scene_opened": true,
+      "hold_complete": true,
+      "close_complete": true,
+      "scene_context_closed": true
+    },
+    "cleanup_failures": [],
+    "fresh_reset_verified": true,
+    "success": false,
+    "category": "resource_censored",
+    "policy_kind": "cpu_substitute",
+    "prompt": "Grab the red block with the left arm, switch to the right, and place it on the blue pad.",
+    "initial_measurement": {
+      "source": "sapien.Scene.get_contacts after last real setup_demo physics step",
+      "status": "measured",
+      "stamp": {
+        "episode": "g7-protected-fixed_h50-200000",
+        "tick": 0,
+        "sim_s": 0.0
+      },
+      "author_stability_physics_steps": 2500,
+      "state_sha256": "5d9c92b64c52e4749f71aa1a58b6501ba79aaedcea928d6d276f528d42dce202",
+      "contact_sha256": "eb0c44ae89b66ec04c32fe6fdc96ae739ca080b51c272de50cbd55ecaca41394",
+      "manifold_count": 33
+    },
+    "outcome": "RESOURCE_CENSORED",
+    "resource_reason": "physics_steps",
+    "request_in_flight": false,
+    "completed_actions": 0,
+    "native_action_count": 1,
+    "physics_steps": 3,
+    "query_action_counts": [
+      0
+    ],
+    "resource_stop": {
+      "kind": "resource_stop",
+      "finger_drive_m": [
+        [
+          0.044250037521123886,
+          0.04425155371427536
+        ],
+        [
+          0.04425003379583359,
+          0.04425155371427536
+        ]
+      ],
+      "expected_hold_finger_m": [
+        [
+          0.044250037521123886,
+          0.04425155371427536
+        ],
+        [
+          0.04425003379583359,
+          0.04425155371427536
+        ]
+      ],
+      "episode": "g7-protected-fixed_h50-200000",
+      "tick": 3,
+      "state_sha256": "b51414707bce3551924c7ce9c1e61f2fdd6e5d49c42f0bc92ee8c392634718eb",
+      "terminal_checks_passed": true,
+      "hold_verified": true,
+      "no_physics_advance": true,
+      "contact_sha256": "b44f38066c92ceebe1c011b661933e9a1fef1531e74413f8abb34069fb4f5fad",
+      "contact_manifold_count": 33,
+      "contact_source": "sapien.Scene.get_contacts",
+      "contact_sample_measured": true,
+      "hold_complete": true,
+      "resource_reason": "physics_steps",
+      "trial_clock_sha256": "46ca9c34a5e7b4b9c8213d94c1569957e81d77065db838c424844b217c83a60d",
+      "close_complete": true,
+      "scene_context_closed": true
+    },
+    "finished_at": 1147502.577302529,
+    "elapsed_s": 191.06541036209092
+  },
+  "protected_cpu_budget_injected": true,
+  "requests": [
+    {
+      "prompt": "Grab the red block with the left arm, switch to the right, and place it on the blue pad.",
+      "state": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "cameras": {
+        "cam_high": {
+          "shape": [
+            3,
+            240,
+            320
+          ],
+          "dtype": "uint8"
+        },
+        "cam_left_wrist": {
+          "shape": [
+            3,
+            240,
+            320
+          ],
+          "dtype": "uint8"
+        },
+        "cam_right_wrist": {
+          "shape": [
+            3,
+            240,
+            320
+          ],
+          "dtype": "uint8"
+        }
+      }
+    }
+  ],
+  "admission": "PASS"
+}

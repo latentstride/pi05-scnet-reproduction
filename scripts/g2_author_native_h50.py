@@ -308,11 +308,24 @@ def native_guard(env, arms, samples, config):
 
 
 @contextmanager
-def author_scene(pace, release, reference, episode, log, clock, *, configure_cpu=None):
+def author_scene(
+    pace,
+    release,
+    reference,
+    episode,
+    log,
+    clock,
+    *,
+    configure_cpu=None,
+    scene=None,
+    reference_sha256=None,
+):
     from sapien.physx import PhysxRigidDynamicComponent
 
     require_checkout(pace, PACE_REVISION)
-    baseline = locked_json(reference, PREFLIGHT)
+    if scene is not None and (scene["mode"] != "protected" or not reference_sha256):
+        raise ValueError("protected scene requires an explicit hashed reset reference")
+    baseline = locked_json(reference, PREFLIGHT if scene is None else reference_sha256)
     config = locked_json(
         release / "configs/unified-seed0-native-w50.json", ARCHIVE_CONFIG
     )
@@ -335,11 +348,18 @@ def author_scene(pace, release, reference, episode, log, clock, *, configure_cpu
             )
             from pace.rollout import run_episode
 
-            cached, info = load_cached_scenes(TASK, 0, 1)
-            if (
-                cached != [{"scene_seed": SEED, "episode_info": {}}]
-                or info["sha256"] != baseline["cache"]["sha256"]
-            ):
+            if scene is None:
+                seed, index = SEED, 0
+                cached, info = load_cached_scenes(TASK, 0, 1)
+                if cached != [{"scene_seed": SEED, "episode_info": {}}]:
+                    raise ValueError("historical author cache mismatch")
+                row = cached[0]
+            else:
+                from g2_parallel_spec import cache_row
+
+                seed, index = scene["scene_seed"], scene["scene_cache_index"]
+                row, info = cache_row(scene, load_cached_scenes)
+            if info["sha256"] != baseline["cache"]["sha256"]:
                 raise ValueError("author scene cache mismatch")
             env, settings = load_environment(TASK)
             if settings["embodiment"] != ["aloha-agilex"]:
@@ -363,15 +383,15 @@ def author_scene(pace, release, reference, episode, log, clock, *, configure_cpu
 
             try:
                 env.check_stable = check_stable_with_clock
-                random.seed(SEED)
+                random.seed(seed)
                 clock.remaining()
-                env.setup_demo(now_ep_num=0, seed=SEED, is_test=True, **settings)
+                env.setup_demo(now_ep_num=index, seed=seed, is_test=True, **settings)
                 if reset_steps != 2500:
                     raise ValueError("author reset physics witness incomplete")
-                restore_cached_scene_state(TASK, env, cached[0]["episode_info"])
+                restore_cached_scene_state(TASK, env, row["episode_info"])
                 env.set_instruction(
                     sample_instruction(
-                        TASK, {"info": cached[0]["episode_info"]}, 100, "unseen"
+                        TASK, {"info": row["episode_info"]}, 100, "unseen"
                     )
                 )
                 if (
@@ -399,7 +419,7 @@ def author_scene(pace, release, reference, episode, log, clock, *, configure_cpu
                     bound_arms,
                     np.eye(4),
                     episode,
-                    digest_json(cached[0]),
+                    digest_json(row),
                     "author-native-h50-reset",
                     False,
                 )
@@ -416,7 +436,7 @@ def author_scene(pace, release, reference, episode, log, clock, *, configure_cpu
                 log(
                     dict(
                         kind="author_reset_admitted",
-                        scene_seed=SEED,
+                        scene_seed=seed,
                         cache_sha256=info["sha256"],
                         initial=initial,
                         block_mass_kg=mass,
@@ -426,7 +446,10 @@ def author_scene(pace, release, reference, episode, log, clock, *, configure_cpu
                 yield backend, run_episode
             finally:
                 if hasattr(env, "scene"):
-                    env.close_env(clear_cache=configure_cpu is None)
+                    clear = configure_cpu is None
+                    if scene is not None:
+                        clear = (index + 2) % settings["clear_cache_freq"] == 0
+                    env.close_env(clear_cache=clear)
 
 
 class RecordedPolicy:
@@ -477,6 +500,7 @@ class RecordedPolicy:
                 query=q,
                 sha256=hash_array(actions),
                 rng=response.get("author_rng"),
+                service_inference_s=response.get("service_inference_s"),
             )
         )
         return response
@@ -493,6 +517,8 @@ def run_diagnostic(
     clock,
     configure_cpu=None,
     inject=None,
+    scene=None,
+    reference_sha256=None,
 ):
     """Shared runtime for the live entry and the CPU physics acceptance."""
     if not episode:
@@ -534,6 +560,8 @@ def run_diagnostic(
                 log,
                 clock,
                 configure_cpu=configure_cpu,
+                scene=scene,
+                reference_sha256=reference_sha256,
             ) as (backend, rollout):
                 cleanup["scene_opened"] = receipt["fresh_reset_verified"] = True
                 receipt["prompt"] = backend.get_instruction()

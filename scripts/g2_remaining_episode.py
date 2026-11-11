@@ -5,6 +5,7 @@ loads a model. Real scenes may only be instantiated by a separately approved
 future unified job, never by this module's import.
 """
 
+from dataclasses import asdict
 from pathlib import Path
 from time import monotonic
 import json
@@ -56,7 +57,10 @@ def run(spec, backend, adapter, policy, output):
         backend,
         max_recoveries=spec.get("max_recoveries", 4),
         approach_repair=spec.get("approach_repair", False),
+        task_tcp_projection=spec.get("task_tcp_projection"),
     )
+    if coordinator.task_tcp_projection:
+        row["task_tcp_projection"] = coordinator.task_tcp_projection
 
     def remaining():
         if monotonic() >= end:
@@ -111,6 +115,9 @@ def run(spec, backend, adapter, policy, output):
                     state=request["state"],
                     prompt=request["prompt"],
                 )
+                if coordinator.task_tcp_projection:
+                    payload.update(actual=[asdict(arm) for arm in snap.arms],
+                                   world_task=snap.world_task, objects_task=snap.objects_task)
             elif kind == "policy_response":
                 response = payload.pop("response")
                 raw = response.get("actions") if isinstance(response, dict) else None

@@ -9,6 +9,7 @@ from time import monotonic
 import numpy as np
 from dataclasses import asdict
 from g2_adapter import G2Error, deadline, read_snapshot
+from g2_candidate_stop import actual_provenance
 from g2_remaining_geometry import refined_pair, bounded_progress
 from robotwin_control_geometry import Status
 
@@ -27,7 +28,8 @@ class RecoveryBudgetExhausted(G2Error):
 
 
 class RecoveryCoordinator:
-    def __init__(self, adapter, backend, max_recoveries=4, approach_repair=False):
+    def __init__(self, adapter, backend, max_recoveries=4, approach_repair=False,
+                 task_tcp_projection=None):
         if type(max_recoveries) is not int or not 0 <= max_recoveries <= 4:
             raise ValueError("invalid recovery cap")
         self.adapter, self.backend = adapter, backend
@@ -37,6 +39,13 @@ class RecoveryCoordinator:
         self.policy_actions = 0
         self.approach_repair = approach_repair
         self.source_obstructions = {}
+        if task_tcp_projection is not None:
+            from g2_task_tcp_projection import METHOD
+
+            if task_tcp_projection != METHOD or not approach_repair or not max_recoveries:
+                raise ValueError("TCP projection requires bounded ARX recovery")
+        self.task_tcp_projection = task_tcp_projection
+        self.projected_from = None
 
     def _free(self):
         tracker = getattr(self.adapter.target_collision, "tracker", None)
@@ -73,6 +82,11 @@ class RecoveryCoordinator:
                 diagnostic=original.diagnostic,
             )
         )
+        if self.task_tcp_projection:
+            diagnostic = dict(original.diagnostic)
+            if self.projected_from is not None:
+                diagnostic["projection_stop_reason"] = "fresh_source_mapping_rejected"
+            raise G2Error(original.status, original.detail, **diagnostic)
         if (
             original.status != Status.COLLISION
             or original.diagnostic.get("collision_world") != "source_collision"
@@ -172,6 +186,10 @@ class RecoveryCoordinator:
                     self.adapter, original.payload, snapshot, deadline(remaining())
                 )
                 if barrier is not None:
+                    if self.task_tcp_projection:
+                        log(barrier)
+                        return self._project(chunk, snapshot, window, remaining, log,
+                                             Status(barrier["source_status"]), barrier)
                     self._free()
                     if prefix is None:
                         return self._upward_plan(
@@ -194,6 +212,16 @@ class RecoveryCoordinator:
                 diagnostic=original.diagnostic,
             )
         )
+        if self.task_tcp_projection:
+            diagnostic = original.diagnostic
+            if (original.status in (Status.COLLISION, Status.IK_FAILED, Status.UNREACHABLE,
+                                    Status.VELOCITY, Status.PLAN_FAILED)
+                    and diagnostic.get("collision_world") == "target_collision"
+                    and diagnostic.get("requests") and diagnostic.get("tick") != 0
+                    and not actual_provenance(diagnostic)):
+                return self._project(chunk, snapshot, window, remaining, log,
+                                     original.status, diagnostic)
+            raise G2Error(original.status, original.detail, **diagnostic)
         if (
             original.status != Status.COLLISION
             or original.diagnostic.get("collision_world") != "target_collision"
@@ -283,6 +311,36 @@ class RecoveryCoordinator:
         log(receipt)
         return path, dict(repaired=True, receipt=receipt)
 
+    def _project(self, chunk, snapshot, window, remaining, log, status, rejection):
+        from g2_bounded_approach import free_space
+        from g2_task_tcp_projection import plan_projection
+
+        world = self.adapter.target_collision
+        if (not free_space(world) or world.tracker.phase != "approach"
+                or "contact_barrier" in rejection):
+            raise G2Error(status, "TCP projection blocked by contact or release phase",
+                          reason="recovery_unsafe_contact", original_rejection=rejection)
+        if actual_provenance(rejection):
+            raise G2Error(status, "original plan rejected measured geometry", **rejection)
+        if self.projected_from is not None:
+            raise G2Error(status, "fresh policy action failed its original planning gate",
+                          geometry="candidate", projection_stop_reason="fresh_action_rejected",
+                          original_rejection=rejection)
+        self._free()
+        self._start(snapshot)
+        try:
+            plan, receipt = plan_projection(self.adapter, snapshot, chunk, window,
+                                            min(120., remaining()))
+        except G2Error as error:
+            log(dict(kind="task_tcp_projection_rejected", stamp=asdict(snapshot.stamp),
+                     status=error.status.value, detail=str(error), diagnostic=error.diagnostic))
+            raise
+        self.recoveries += 1
+        receipt.update(kind="task_tcp_projection", attempt=self.recoveries,
+                       original_rejection=rejection, stamp=asdict(snapshot.stamp))
+        log(receipt)
+        return plan, dict(repaired=True, receipt=receipt)
+
     def _upward_plan(self, chunk, snapshot, remaining, log, rejection, *, source_check):
         from g2_bounded_approach import upward_endpoint, source_admissible
 
@@ -340,11 +398,24 @@ class RecoveryCoordinator:
     def cycle(self, policy, prompt, window, remaining, log):
         """One query/execution; runner owns episode persistence, hold and close."""
         snapshot, _ = self.backend.capture()
+        if self.projected_from is not None:
+            prior = self.projected_from
+            stamp = snapshot.stamp
+            if (stamp.episode != prior.episode or stamp.tick <= prior.tick
+                    or not stamp.sim_s > prior.sim_s):
+                raise G2Error(Status.UNSYNCED, "projection requires an advanced measured observation",
+                              projection_stop_reason="stale_observation")
+            if not snapshot.objects_task or not {"block", "target"} <= snapshot.objects_task.keys():
+                raise G2Error(Status.INVALID, "post-projection observation lacks measured task objects",
+                              projection_stop_reason="missing_task_objects")
         snapshot, request = self.mapped_observation(snapshot, prompt, remaining, log)
         from pace_runtime import validate_request, validate_response
 
         validate_request(request)
-        log(dict(kind="policy_request", snapshot=snapshot, request=request))
+        event = dict(kind="policy_request", snapshot=snapshot, request=request)
+        if self.projected_from is not None:
+            event["after_projection_from"] = asdict(self.projected_from)
+        log(event)
         response = getattr(policy, "infer_raw", policy.infer)(request)
         log(dict(kind="policy_response", response=response))
         chunk = validate_response(response)
@@ -387,6 +458,13 @@ class RecoveryCoordinator:
         if reason is not None:
             log(dict(kind="measured_replan", reason=reason, executed_actions=done))
         self.policy_actions += done
+        if self.task_tcp_projection:
+            if receipt.get("receipt", {}).get("method") == self.task_tcp_projection:
+                self.projected_from = snapshot.stamp
+                log(dict(kind="projection_chunk_discarded", stamp=asdict(snapshot.stamp),
+                         executed_actions=done, discarded_rows=len(chunk) - done))
+            else:
+                self.projected_from = None
         return dict(
             snapshot=snapshot,
             request=request,

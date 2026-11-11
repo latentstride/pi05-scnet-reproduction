@@ -1,7 +1,7 @@
-"""Opt-in CPU candidate: bounded task-frame TCP projection in free space.
+"""Opt-in bounded task-frame TCP projection for the ARX approach phase.
 
-No default controller wiring. The caller must discard the remaining chunk and
-capture a real observation after executing this corrected prefix.
+The coordinator discards the remaining chunk and captures a fresh observation
+after executing a corrected prefix.
 """
 import numpy as np
 
@@ -9,6 +9,8 @@ from g2_adapter import G2Error, bounds, deadline, read_snapshot, solve_pair
 from g2_bounded_approach import checked_prefix, free_space
 from g2_kinematics import pose_error
 from robotwin_control_geometry import Status, finite_array
+
+METHOD = "bounded_task_tcp_projection_v1"
 
 
 def plan_projection(adapter, snapshot, chunk, window=4, budget_s=120):
@@ -23,10 +25,13 @@ def plan_projection(adapter, snapshot, chunk, window=4, budget_s=120):
     if type(window) is not int or not 1 <= window <= 4:
         raise ValueError("projection window outside existing 1..4 contract")
     data = finite_array(chunk, (50, 14))
-    if not free_space(adapter.target_collision):
-        raise G2Error(Status.COLLISION, "TCP projection forbidden during contact")
-    q, fingers, frames, _ = read_snapshot(snapshot, adapter.arx)
     world = adapter.target_collision
+    if not free_space(world) or world.tracker.phase != "approach":
+        raise G2Error(Status.COLLISION, "TCP projection requires a contact-free approach",
+                      reason="recovery_unsafe_contact")
+    q, fingers, frames, _ = read_snapshot(snapshot, adapter.arx)
+    for arm, values in zip(adapter.arx, fingers):
+        bounds(values, np.asarray(arm.grip.limits), geometry="actual")
     world.refresh()
     if not world.measured_clear(q, fingers):
         raise G2Error(Status.COLLISION, "projection start is not clear", geometry="actual")
@@ -77,7 +82,7 @@ def plan_projection(adapter, snapshot, chunk, window=4, budget_s=120):
                         raise G2Error(Status.PLAN_FAILED, "projected prefix remains source-blocked", barrier=barrier)
                     record.update(accepted=True, errors=errors, control_ticks=len(plan.q))
                     attempts.append(record)
-                    return plan, dict(method="bounded_task_tcp_projection_v1", attempts=attempts,
+                    return plan, dict(method=METHOD, attempts=attempts,
                                       requires_real_reobservation=True, original_goal_reached=False,
                                       expert_actions_used=False, left_task_translation_m=shift.tolist())
                 except G2Error as error:

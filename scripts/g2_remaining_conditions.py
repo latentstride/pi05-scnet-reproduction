@@ -49,6 +49,11 @@ def run_condition(config, row, factory, policy, output, *, allow_native_h50=Fals
     from pathlib import Path
 
     output = Path(output)
+    projection = config.get("task_tcp_projection")
+    if projection is not None and (row["embodiment"] != "ARX-X5"
+            or row["method"] not in ("bounded_recovery", "bounded_recovery_and_router")
+            or not row["recovery_cap"]):
+        raise ValueError("TCP projection requires an ARX policy recovery trial")
     spec = dict(
         data_kind="diagnostic",
         episode_id=config["episode_id"],
@@ -60,6 +65,7 @@ def run_condition(config, row, factory, policy, output, *, allow_native_h50=Fals
         max_recoveries=row["recovery_cap"],
         native_grip_max_clip=config["native_grip_max_clip"],
         approach_repair=config.get("free_space_approach_repair") is not None,
+        task_tcp_projection=projection,
     )
     if row["embodiment"] == "aloha-agilex":
         from g2_run_task import execute

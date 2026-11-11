@@ -14,6 +14,8 @@ import sys
 import time
 
 A = "127408633"
+ARX_REFERENCE = "127510363"
+ARX_AUTHORIZATION_SHA = "06de3ce0f1e8a924ecf2b2d8b4f50c49c6d8ff5a2ea9e9ac325c722725047c3b"
 NODE = "gnode39"
 PARTITION = "ksagnormal01"
 PARENT = "93b6c0691e236d0b871745852f358a4cea85416b"
@@ -73,7 +75,21 @@ def job_record(job):
             time.sleep(3)
 
 
-def platform(root, duration, comment, mode):
+def archived_arx_reference(root):
+    receipt = root / "results" / f"pace-g2-standalone-arx-{ARX_REFERENCE}" / "authorization-receipt.json"
+    require(digest(receipt) == ARX_AUTHORIZATION_SHA, "historical ARX authorization receipt differs")
+    rows = query("sacct", "-nPX", "-j", ARX_REFERENCE, "-o",
+                 "JobIDRaw,User,Account,QOS,Partition,NodeList,Timelimit,State,ExitCode,Submit").splitlines()
+    require(len(rows) == 1, "historical ARX allocation is ambiguous or missing")
+    job, user, account, qos, partition, node, limit, state, exit_code, submitted = rows[0].split("|")
+    require((job, user, partition, node, seconds(limit), state, exit_code)
+            == (ARX_REFERENCE, os.environ["USER"], PARTITION, NODE, MODES["arx"][1],
+                "COMPLETED", "0:0") and account and qos and submitted,
+            "historical ARX accounting record differs")
+    return dict(Account=account, QOS=qos, JobState=state, SubmitTime=submitted)
+
+
+def unified_reference(root, mode):
     parent = fields(job_record(A))
     require(
         parent["Comment"] == "cpf-g2-93b6c06-c8eeff12-20261109-single"
@@ -99,6 +115,13 @@ def platform(root, duration, comment, mode):
         )
         require(not outcome.exists() or read(outcome).get("success") is False,
                 "A already wrote a successful or unverified author result; review before duplicating")
+    return parent
+
+
+def platform(root, duration, comment, mode, *, projection=False):
+    require(not projection or mode == "arx", "projection requires standalone ARX mode")
+    parent = archived_arx_reference(root) if projection else unified_reference(root, mode)
+    reference_job = ARX_REFERENCE if projection else A
     part = fields(query("scontrol", "show", "partition", PARTITION, "-o"))
     node = fields(query("scontrol", "show", "node", NODE, "-o"))
     require(
@@ -141,7 +164,7 @@ def platform(root, duration, comment, mode):
     quota = query("quota", "-s")
     require(free >= 32 * 1024**3 and (not quota or "none" in quota.lower()), "insufficient aggregate output headroom or unverified disk quota")
     return parent, dict(
-        original_job=A, original_state=parent["JobState"], original_submit=parent["SubmitTime"],
+        original_job=reference_job, original_state=parent["JobState"], original_submit=parent["SubmitTime"],
         prior_active_jobs=len(jobs), max_active_submissions_per_user=max_submitted,
         max_running_per_user=max_running, available_result_bytes=free,
         disk_reserve_gib=32, partition_max_time=part["MaxTime"], node_state=node["State"],
@@ -213,7 +236,9 @@ def submit(root, stage, mode, archive_sha, manifest_sha, config_sha, commit):
 
     episode, duration, cap = MODES[mode]
     comment = f"cpf-g2-standalone-{mode}-{archive_sha[:12]}-single"
-    parent, live = platform(root, duration, comment, mode)
+    config = read(release / "configs" / f"{episode}.json") if mode == "arx" else {}
+    parent, live = platform(root, duration, comment, mode,
+                            projection=config.get("task_tcp_projection") == "bounded_task_tcp_projection_v1")
     quote_path = stage / "approval.quote"
     q = read(quote_path)
     now = datetime.now(timezone.utc)

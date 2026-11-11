@@ -18,7 +18,7 @@ def save(path, data):
     path.write_text(json.dumps(data, indent=2, allow_nan=False, default=lambda x:x.tolist())+'\n')
 
 
-def dynamic_restart(scene, adapter, snap, drive, plan, config, initial, assets, output):
+def restart_backend(scene, adapter, snap, drive, config, initial, assets):
     """Use the existing guarded backend, declaring unavailable historical velocities."""
     import sapien
     from g2_static_failure_replay import matrix
@@ -40,6 +40,11 @@ def dynamic_restart(scene, adapter, snap, drive, plan, config, initial, assets, 
     backend.episode=snap.stamp.episode;backend.tick=snap.stamp.tick;backend.last_capture=snap
     for (_,_,grip),values in zip(backend._joints(),drive):
         for joint,value in zip(grip,values):joint.set_drive_target(float(value))
+    return backend, robot, physical
+
+
+def dynamic_restart(scene, adapter, snap, drive, plan, config, initial, assets, output):
+    backend, robot, physical = restart_backend(scene, adapter, snap, drive, config, initial, assets)
     peak=[0.,0.];counts={}
     with (output/'dynamic-events.jsonl').open('w') as stream:
         def log(row):

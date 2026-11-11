@@ -38,6 +38,14 @@ def verify_runtime(pace_root, audit):
 def validate_config(config, *, allow_native_h50=False):
     from g2e_protocol import APPROACH_REPAIR
     repair = config.get("free_space_approach_repair")
+    projection = config.get("task_tcp_projection")
+    if projection is not None:
+        from g2_task_tcp_projection import METHOD
+
+        if (projection != METHOD or config.get("embodiment") != "ARX-X5"
+                or config.get("contact_mode") != CONTACT_MODE
+                or repair != APPROACH_REPAIR):
+            raise ValueError("TCP projection requires guarded ARX approach recovery")
     if repair is not None and (repair != APPROACH_REPAIR
             or config.get("embodiment") not in ("aloha-agilex", "ARX-X5")):
         raise ValueError("unknown bounded approach profile")

@@ -1,0 +1,136 @@
+{
+  "job_id": null,
+  "episode": "unified-seed1-arx-expert-repaired",
+  "action_source": "expert",
+  "counters": {
+    "policy_actions": null,
+    "executed": null,
+    "recovery_actions": null,
+    "requested_prefix_rows": null,
+    "result_queries": null,
+    "logged_model_requests": 0,
+    "evidence": null
+  },
+  "activity": {
+    "queries": [],
+    "counts": {
+      "expert_waypoint": 232,
+      "executed_step": 27802,
+      "expert_measured_transition": 3,
+      "expert_placement_admitted": 1,
+      "expert_placement_phase": 25,
+      "expert_placement_settled": 1
+    },
+    "physical_steps": 27802,
+    "contact_phase_ticks": {
+      "approach": 7011,
+      "left_holding": 11137,
+      "both_holding": 1956,
+      "right_holding": 7162,
+      "free_after_hold": 536
+    },
+    "finger_contact_ticks": {
+      "left": 13354,
+      "right": 9362
+    },
+    "holder_ticks": {
+      "left": 13093,
+      "right": 9118
+    },
+    "stages": {
+      "left_contact": {
+        "tick": 6780,
+        "sim_s": 27.12000128813088,
+        "query": null,
+        "line": 6831
+      },
+      "grasp": {
+        "tick": 7012,
+        "sim_s": 28.048001332208514,
+        "query": null,
+        "line": 7065
+      },
+      "right_contact": {
+        "tick": 17923,
+        "sim_s": 71.69200340518728,
+        "query": null,
+        "line": 18074
+      },
+      "shared_hold": {
+        "tick": 18149,
+        "sim_s": 72.59600344812497,
+        "query": null,
+        "line": 18302
+      },
+      "right_hold": {
+        "tick": 20105,
+        "sim_s": 80.42000381974503,
+        "query": null,
+        "line": 20284
+      },
+      "handover": {
+        "tick": 20105,
+        "sim_s": 80.42000381974503,
+        "query": null,
+        "line": 20284
+      },
+      "released": {
+        "tick": 27267,
+        "sim_s": 109.06800518045202,
+        "query": null,
+        "line": 27506
+      }
+    },
+    "projection_plans": [],
+    "rejection_events": [],
+    "observation_rejections": [],
+    "last_measured": {
+      "tick": 27802,
+      "sim_s": 111.20800528209656,
+      "query": null,
+      "line": 28063
+    },
+    "partial_final_line": null
+  },
+  "collision_audits": {
+    "target": null,
+    "source_proxy": null
+  },
+  "startup": {},
+  "termination": {
+    "finalized": true,
+    "task_success": true,
+    "outcome": "success",
+    "worker_outcome": null,
+    "category": "diagnostic_complete",
+    "supervisor_status": null,
+    "supervisor_reason": null,
+    "failure_phase": null,
+    "failure_code": null,
+    "budget_stop": null,
+    "failure_detail": null,
+    "geometry": null,
+    "collision_world": null,
+    "collision_world_evidence": null,
+    "terminal_link_pairs": [],
+    "continuity_rejected": null,
+    "collision_candidates_rejected": null,
+    "projection_stop_reason": null,
+    "cleanup": {
+      "scene_opened": true,
+      "hold_complete": true,
+      "close_complete": true,
+      "scene_context_closed": true
+    },
+    "process_group_reaped": null
+  },
+  "placement": {
+    "native_success_predicate": true,
+    "last_measured_tick": 27802
+  },
+  "source_sha256": {
+    "trials/unified-seed1-arx-expert-repaired/receipt.json": "1e91fc066f1b8e702105adaaf12a6f8cf39c338ccb250eefede92a883a9da0d1",
+    "trials/unified-seed1-arx-expert-repaired/episode/events.jsonl": "457f95f36d481fae07b7d5b32023605099f253fbe0fc5c222ea83e6756f902a7"
+  },
+  "verified_source_members": []
+}

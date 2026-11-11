@@ -1,0 +1,931 @@
+{
+  "job_id": "127510363",
+  "episode": "unified-seed1-arx-full-w4",
+  "action_source": "policy",
+  "counters": {
+    "policy_actions": 138,
+    "executed": 138,
+    "recovery_actions": 0,
+    "requested_prefix_rows": 144,
+    "result_queries": 36,
+    "logged_model_requests": 36,
+    "evidence": "worker receipt"
+  },
+  "activity": {
+    "queries": [
+      {
+        "query": 1,
+        "stamp": {
+          "episode": "unified-seed1-arx-full-w4",
+          "tick": 0,
+          "sim_s": 0.0
+        },
+        "response_logged": true,
+        "response_validated": true,
+        "approved_plan": true,
+        "physical_steps": 595,
+        "completed_actions_logged": null,
+        "after_projection_from": null,
+        "action_file": "action-00001.npy",
+        "saved_action_valid": true,
+        "first_gripper_row_at_or_below_0_5": [
+          null,
+          null
+        ],
+        "observation_file": null
+      },
+      {
+        "query": 2,
+        "stamp": {
+          "episode": "unified-seed1-arx-full-w4",
+          "tick": 595,
+          "sim_s": 2.380000113043934
+        },
+        "response_logged": true,
+        "response_validated": true,
+        "approved_plan": true,
+        "physical_steps": 755,
+        "completed_actions_logged": null,
+        "after_projection_from": null,
+        "action_file": "action-00002.npy",
+        "saved_action_valid": true,
+        "first_gripper_row_at_or_below_0_5": [
+          null,
+          null
+        ],
+        "observation_file": null
+      },
+      {
+        "query": 3,
+        "stamp": {
+          "episode": "unified-seed1-arx-full-w4",
+          "tick": 1350,
+          "sim_s": 5.400000256486237
+        },
+        "response_logged": true,
+        "response_validated": true,
+        "approved_plan": true,
+        "physical_steps": 855,
+        "completed_actions_logged": null,
+        "after_projection_from": null,
+        "action_file": "action-00003.npy",
+        "saved_action_valid": true,
+        "first_gripper_row_at_or_below_0_5": [
+          47,
+          null
+        ],
+        "observation_file": null
+      },
+      {
+        "query": 4,
+        "stamp": {
+          "episode": "unified-seed1-arx-full-w4",
+          "tick": 2205,
+          "sim_s": 8.82000041892752
+        },
+        "response_logged": true,
+        "response_validated": true,
+        "approved_plan": true,
+        "physical_steps": 895,
+        "completed_actions_logged": null,
+        "after_projection_from": null,
+        "action_file": "action-00004.npy",
+        "saved_action_valid": true,
+        "first_gripper_row_at_or_below_0_5": [
+          43,
+          null
+        ],
+        "observation_file": null
+      },
+      {
+        "query": 5,
+        "stamp": {
+          "episode": "unified-seed1-arx-full-w4",
+          "tick": 3100,
+          "sim_s": 12.400000588968396
+        },
+        "response_logged": true,
+        "response_validated": true,
+        "approved_plan": true,
+        "physical_steps": 835,
+        "completed_actions_logged": null,
+        "after_projection_from": null,
+        "action_file": "action-00005.npy",
+        "saved_action_valid": true,
+        "first_gripper_row_at_or_below_0_5": [
+          39,
+          null
+        ],
+        "observation_file": null
+      },
+      {
+        "query": 6,
+        "stamp": {
+          "episode": "unified-seed1-arx-full-w4",
+          "tick": 3935,
+          "sim_s": 15.740000747609884
+        },
+        "response_logged": true,
+        "response_validated": true,
+        "approved_plan": true,
+        "physical_steps": 700,
+        "completed_actions_logged": null,
+        "after_projection_from": null,
+        "action_file": "action-00006.npy",
+        "saved_action_valid": true,
+        "first_gripper_row_at_or_below_0_5": [
+          35,
+          null
+        ],
+        "observation_file": null
+      },
+      {
+        "query": 7,
+        "stamp": {
+          "episode": "unified-seed1-arx-full-w4",
+          "tick": 4635,
+          "sim_s": 18.540000880602747
+        },
+        "response_logged": true,
+        "response_validated": true,
+        "approved_plan": true,
+        "physical_steps": 435,
+        "completed_actions_logged": null,
+        "after_projection_from": null,
+        "action_file": "action-00007.npy",
+        "saved_action_valid": true,
+        "first_gripper_row_at_or_below_0_5": [
+          31,
+          null
+        ],
+        "observation_file": null
+      },
+      {
+        "query": 8,
+        "stamp": {
+          "episode": "unified-seed1-arx-full-w4",
+          "tick": 5070,
+          "sim_s": 20.280000963248312
+        },
+        "response_logged": true,
+        "response_validated": true,
+        "approved_plan": true,
+        "physical_steps": 165,
+        "completed_actions_logged": null,
+        "after_projection_from": null,
+        "action_file": "action-00008.npy",
+        "saved_action_valid": true,
+        "first_gripper_row_at_or_below_0_5": [
+          27,
+          null
+        ],
+        "observation_file": null
+      },
+      {
+        "query": 9,
+        "stamp": {
+          "episode": "unified-seed1-arx-full-w4",
+          "tick": 5235,
+          "sim_s": 20.94000099459663
+        },
+        "response_logged": true,
+        "response_validated": true,
+        "approved_plan": true,
+        "physical_steps": 170,
+        "completed_actions_logged": null,
+        "after_projection_from": null,
+        "action_file": "action-00009.npy",
+        "saved_action_valid": true,
+        "first_gripper_row_at_or_below_0_5": [
+          27,
+          null
+        ],
+        "observation_file": null
+      },
+      {
+        "query": 10,
+        "stamp": {
+          "episode": "unified-seed1-arx-full-w4",
+          "tick": 5405,
+          "sim_s": 21.620001026894897
+        },
+        "response_logged": true,
+        "response_validated": true,
+        "approved_plan": true,
+        "physical_steps": 205,
+        "completed_actions_logged": null,
+        "after_projection_from": null,
+        "action_file": "action-00010.npy",
+        "saved_action_valid": true,
+        "first_gripper_row_at_or_below_0_5": [
+          27,
+          null
+        ],
+        "observation_file": null
+      },
+      {
+        "query": 11,
+        "stamp": {
+          "episode": "unified-seed1-arx-full-w4",
+          "tick": 5610,
+          "sim_s": 22.440001065842807
+        },
+        "response_logged": true,
+        "response_validated": true,
+        "approved_plan": true,
+        "physical_steps": 185,
+        "completed_actions_logged": null,
+        "after_projection_from": null,
+        "action_file": "action-00011.npy",
+        "saved_action_valid": true,
+        "first_gripper_row_at_or_below_0_5": [
+          27,
+          null
+        ],
+        "observation_file": null
+      },
+      {
+        "query": 12,
+        "stamp": {
+          "episode": "unified-seed1-arx-full-w4",
+          "tick": 5795,
+          "sim_s": 23.18000110099092
+        },
+        "response_logged": true,
+        "response_validated": true,
+        "approved_plan": true,
+        "physical_steps": 170,
+        "completed_actions_logged": null,
+        "after_projection_from": null,
+        "action_file": "action-00012.npy",
+        "saved_action_valid": true,
+        "first_gripper_row_at_or_below_0_5": [
+          27,
+          null
+        ],
+        "observation_file": null
+      },
+      {
+        "query": 13,
+        "stamp": {
+          "episode": "unified-seed1-arx-full-w4",
+          "tick": 5965,
+          "sim_s": 23.860001133289188
+        },
+        "response_logged": true,
+        "response_validated": true,
+        "approved_plan": true,
+        "physical_steps": 175,
+        "completed_actions_logged": null,
+        "after_projection_from": null,
+        "action_file": "action-00013.npy",
+        "saved_action_valid": true,
+        "first_gripper_row_at_or_below_0_5": [
+          26,
+          null
+        ],
+        "observation_file": null
+      },
+      {
+        "query": 14,
+        "stamp": {
+          "episode": "unified-seed1-arx-full-w4",
+          "tick": 6140,
+          "sim_s": 24.560001166537404
+        },
+        "response_logged": true,
+        "response_validated": true,
+        "approved_plan": true,
+        "physical_steps": 200,
+        "completed_actions_logged": null,
+        "after_projection_from": null,
+        "action_file": "action-00014.npy",
+        "saved_action_valid": true,
+        "first_gripper_row_at_or_below_0_5": [
+          27,
+          null
+        ],
+        "observation_file": null
+      },
+      {
+        "query": 15,
+        "stamp": {
+          "episode": "unified-seed1-arx-full-w4",
+          "tick": 6340,
+          "sim_s": 25.360001204535365
+        },
+        "response_logged": true,
+        "response_validated": true,
+        "approved_plan": true,
+        "physical_steps": 190,
+        "completed_actions_logged": null,
+        "after_projection_from": null,
+        "action_file": "action-00015.npy",
+        "saved_action_valid": true,
+        "first_gripper_row_at_or_below_0_5": [
+          27,
+          null
+        ],
+        "observation_file": null
+      },
+      {
+        "query": 16,
+        "stamp": {
+          "episode": "unified-seed1-arx-full-w4",
+          "tick": 6530,
+          "sim_s": 26.120001240633428
+        },
+        "response_logged": true,
+        "response_validated": true,
+        "approved_plan": true,
+        "physical_steps": 185,
+        "completed_actions_logged": null,
+        "after_projection_from": null,
+        "action_file": "action-00016.npy",
+        "saved_action_valid": true,
+        "first_gripper_row_at_or_below_0_5": [
+          26,
+          null
+        ],
+        "observation_file": null
+      },
+      {
+        "query": 17,
+        "stamp": {
+          "episode": "unified-seed1-arx-full-w4",
+          "tick": 6715,
+          "sim_s": 26.860001275781542
+        },
+        "response_logged": true,
+        "response_validated": true,
+        "approved_plan": true,
+        "physical_steps": 315,
+        "completed_actions_logged": null,
+        "after_projection_from": null,
+        "action_file": "action-00017.npy",
+        "saved_action_valid": true,
+        "first_gripper_row_at_or_below_0_5": [
+          27,
+          null
+        ],
+        "observation_file": null
+      },
+      {
+        "query": 18,
+        "stamp": {
+          "episode": "unified-seed1-arx-full-w4",
+          "tick": 7030,
+          "sim_s": 28.12000133562833
+        },
+        "response_logged": true,
+        "response_validated": true,
+        "approved_plan": true,
+        "physical_steps": 260,
+        "completed_actions_logged": null,
+        "after_projection_from": null,
+        "action_file": "action-00018.npy",
+        "saved_action_valid": true,
+        "first_gripper_row_at_or_below_0_5": [
+          27,
+          null
+        ],
+        "observation_file": null
+      },
+      {
+        "query": 19,
+        "stamp": {
+          "episode": "unified-seed1-arx-full-w4",
+          "tick": 7290,
+          "sim_s": 29.16000138502568
+        },
+        "response_logged": true,
+        "response_validated": true,
+        "approved_plan": true,
+        "physical_steps": 260,
+        "completed_actions_logged": null,
+        "after_projection_from": null,
+        "action_file": "action-00019.npy",
+        "saved_action_valid": true,
+        "first_gripper_row_at_or_below_0_5": [
+          27,
+          null
+        ],
+        "observation_file": null
+      },
+      {
+        "query": 20,
+        "stamp": {
+          "episode": "unified-seed1-arx-full-w4",
+          "tick": 7550,
+          "sim_s": 30.20000143442303
+        },
+        "response_logged": true,
+        "response_validated": true,
+        "approved_plan": true,
+        "physical_steps": 295,
+        "completed_actions_logged": null,
+        "after_projection_from": null,
+        "action_file": "action-00020.npy",
+        "saved_action_valid": true,
+        "first_gripper_row_at_or_below_0_5": [
+          28,
+          null
+        ],
+        "observation_file": null
+      },
+      {
+        "query": 21,
+        "stamp": {
+          "episode": "unified-seed1-arx-full-w4",
+          "tick": 7845,
+          "sim_s": 31.380001490470022
+        },
+        "response_logged": true,
+        "response_validated": true,
+        "approved_plan": true,
+        "physical_steps": 360,
+        "completed_actions_logged": null,
+        "after_projection_from": null,
+        "action_file": "action-00021.npy",
+        "saved_action_valid": true,
+        "first_gripper_row_at_or_below_0_5": [
+          27,
+          null
+        ],
+        "observation_file": null
+      },
+      {
+        "query": 22,
+        "stamp": {
+          "episode": "unified-seed1-arx-full-w4",
+          "tick": 8205,
+          "sim_s": 32.82000155886635
+        },
+        "response_logged": true,
+        "response_validated": true,
+        "approved_plan": true,
+        "physical_steps": 335,
+        "completed_actions_logged": null,
+        "after_projection_from": null,
+        "action_file": "action-00022.npy",
+        "saved_action_valid": true,
+        "first_gripper_row_at_or_below_0_5": [
+          28,
+          null
+        ],
+        "observation_file": null
+      },
+      {
+        "query": 23,
+        "stamp": {
+          "episode": "unified-seed1-arx-full-w4",
+          "tick": 8540,
+          "sim_s": 34.16000162251294
+        },
+        "response_logged": true,
+        "response_validated": true,
+        "approved_plan": true,
+        "physical_steps": 255,
+        "completed_actions_logged": null,
+        "after_projection_from": null,
+        "action_file": "action-00023.npy",
+        "saved_action_valid": true,
+        "first_gripper_row_at_or_below_0_5": [
+          27,
+          null
+        ],
+        "observation_file": null
+      },
+      {
+        "query": 24,
+        "stamp": {
+          "episode": "unified-seed1-arx-full-w4",
+          "tick": 8795,
+          "sim_s": 35.18000167096034
+        },
+        "response_logged": true,
+        "response_validated": true,
+        "approved_plan": true,
+        "physical_steps": 385,
+        "completed_actions_logged": null,
+        "after_projection_from": null,
+        "action_file": "action-00024.npy",
+        "saved_action_valid": true,
+        "first_gripper_row_at_or_below_0_5": [
+          27,
+          null
+        ],
+        "observation_file": null
+      },
+      {
+        "query": 25,
+        "stamp": {
+          "episode": "unified-seed1-arx-full-w4",
+          "tick": 9180,
+          "sim_s": 36.72000174410641
+        },
+        "response_logged": true,
+        "response_validated": true,
+        "approved_plan": true,
+        "physical_steps": 390,
+        "completed_actions_logged": null,
+        "after_projection_from": null,
+        "action_file": "action-00025.npy",
+        "saved_action_valid": true,
+        "first_gripper_row_at_or_below_0_5": [
+          27,
+          null
+        ],
+        "observation_file": null
+      },
+      {
+        "query": 26,
+        "stamp": {
+          "episode": "unified-seed1-arx-full-w4",
+          "tick": 9570,
+          "sim_s": 38.280001818202436
+        },
+        "response_logged": true,
+        "response_validated": true,
+        "approved_plan": true,
+        "physical_steps": 410,
+        "completed_actions_logged": null,
+        "after_projection_from": null,
+        "action_file": "action-00026.npy",
+        "saved_action_valid": true,
+        "first_gripper_row_at_or_below_0_5": [
+          28,
+          null
+        ],
+        "observation_file": null
+      },
+      {
+        "query": 27,
+        "stamp": {
+          "episode": "unified-seed1-arx-full-w4",
+          "tick": 9980,
+          "sim_s": 39.920001896098256
+        },
+        "response_logged": true,
+        "response_validated": true,
+        "approved_plan": true,
+        "physical_steps": 385,
+        "completed_actions_logged": null,
+        "after_projection_from": null,
+        "action_file": "action-00027.npy",
+        "saved_action_valid": true,
+        "first_gripper_row_at_or_below_0_5": [
+          28,
+          null
+        ],
+        "observation_file": null
+      },
+      {
+        "query": 28,
+        "stamp": {
+          "episode": "unified-seed1-arx-full-w4",
+          "tick": 10365,
+          "sim_s": 41.46000196924433
+        },
+        "response_logged": true,
+        "response_validated": true,
+        "approved_plan": true,
+        "physical_steps": 430,
+        "completed_actions_logged": null,
+        "after_projection_from": null,
+        "action_file": "action-00028.npy",
+        "saved_action_valid": true,
+        "first_gripper_row_at_or_below_0_5": [
+          28,
+          null
+        ],
+        "observation_file": null
+      },
+      {
+        "query": 29,
+        "stamp": {
+          "episode": "unified-seed1-arx-full-w4",
+          "tick": 10795,
+          "sim_s": 43.18000205093995
+        },
+        "response_logged": true,
+        "response_validated": true,
+        "approved_plan": true,
+        "physical_steps": 525,
+        "completed_actions_logged": null,
+        "after_projection_from": null,
+        "action_file": "action-00029.npy",
+        "saved_action_valid": true,
+        "first_gripper_row_at_or_below_0_5": [
+          28,
+          null
+        ],
+        "observation_file": null
+      },
+      {
+        "query": 30,
+        "stamp": {
+          "episode": "unified-seed1-arx-full-w4",
+          "tick": 11320,
+          "sim_s": 45.280002150684595
+        },
+        "response_logged": true,
+        "response_validated": true,
+        "approved_plan": true,
+        "physical_steps": 580,
+        "completed_actions_logged": null,
+        "after_projection_from": null,
+        "action_file": "action-00030.npy",
+        "saved_action_valid": true,
+        "first_gripper_row_at_or_below_0_5": [
+          28,
+          null
+        ],
+        "observation_file": null
+      },
+      {
+        "query": 31,
+        "stamp": {
+          "episode": "unified-seed1-arx-full-w4",
+          "tick": 11900,
+          "sim_s": 47.60000226087868
+        },
+        "response_logged": true,
+        "response_validated": true,
+        "approved_plan": true,
+        "physical_steps": 610,
+        "completed_actions_logged": null,
+        "after_projection_from": null,
+        "action_file": "action-00031.npy",
+        "saved_action_valid": true,
+        "first_gripper_row_at_or_below_0_5": [
+          28,
+          null
+        ],
+        "observation_file": null
+      },
+      {
+        "query": 32,
+        "stamp": {
+          "episode": "unified-seed1-arx-full-w4",
+          "tick": 12510,
+          "sim_s": 50.04000237677246
+        },
+        "response_logged": true,
+        "response_validated": true,
+        "approved_plan": true,
+        "physical_steps": 675,
+        "completed_actions_logged": null,
+        "after_projection_from": null,
+        "action_file": "action-00032.npy",
+        "saved_action_valid": true,
+        "first_gripper_row_at_or_below_0_5": [
+          28,
+          null
+        ],
+        "observation_file": null
+      },
+      {
+        "query": 33,
+        "stamp": {
+          "episode": "unified-seed1-arx-full-w4",
+          "tick": 13185,
+          "sim_s": 52.74000250501558
+        },
+        "response_logged": true,
+        "response_validated": true,
+        "approved_plan": true,
+        "physical_steps": 1740,
+        "completed_actions_logged": null,
+        "after_projection_from": null,
+        "action_file": "action-00033.npy",
+        "saved_action_valid": true,
+        "first_gripper_row_at_or_below_0_5": [
+          28,
+          null
+        ],
+        "observation_file": null
+      },
+      {
+        "query": 34,
+        "stamp": {
+          "episode": "unified-seed1-arx-full-w4",
+          "tick": 14925,
+          "sim_s": 59.70000283559784
+        },
+        "response_logged": true,
+        "response_validated": true,
+        "approved_plan": true,
+        "physical_steps": 930,
+        "completed_actions_logged": null,
+        "after_projection_from": null,
+        "action_file": "action-00034.npy",
+        "saved_action_valid": true,
+        "first_gripper_row_at_or_below_0_5": [
+          28,
+          48
+        ],
+        "observation_file": null
+      },
+      {
+        "query": 35,
+        "stamp": {
+          "episode": "unified-seed1-arx-full-w4",
+          "tick": 15855,
+          "sim_s": 63.42000301228836
+        },
+        "response_logged": true,
+        "response_validated": true,
+        "approved_plan": true,
+        "physical_steps": 305,
+        "completed_actions_logged": null,
+        "after_projection_from": null,
+        "action_file": "action-00035.npy",
+        "saved_action_valid": true,
+        "first_gripper_row_at_or_below_0_5": [
+          27,
+          null
+        ],
+        "observation_file": null
+      },
+      {
+        "query": 36,
+        "stamp": {
+          "episode": "unified-seed1-arx-full-w4",
+          "tick": 16160,
+          "sim_s": 64.64000307023525
+        },
+        "response_logged": true,
+        "response_validated": true,
+        "approved_plan": false,
+        "physical_steps": 0,
+        "completed_actions_logged": null,
+        "after_projection_from": null,
+        "action_file": "action-00036.npy",
+        "saved_action_valid": true,
+        "first_gripper_row_at_or_below_0_5": [
+          28,
+          48
+        ],
+        "observation_file": null
+      }
+    ],
+    "counts": {
+      "policy_request": 36,
+      "policy_response": 36,
+      "policy_validated": 36,
+      "approved_plan": 35,
+      "executed_step": 16160,
+      "source_observability_barrier": 1
+    },
+    "physical_steps": 16160,
+    "contact_phase_ticks": {
+      "approach": 16160
+    },
+    "finger_contact_ticks": {},
+    "holder_ticks": {},
+    "stages": {},
+    "projection_plans": [],
+    "rejection_events": [
+      {
+        "kind": "source_observability_barrier",
+        "tick": null,
+        "sim_s": null,
+        "query": 35,
+        "line": 15995,
+        "status": "collision",
+        "geometry": "candidate",
+        "world": "source_collision",
+        "link_pairs": [
+          "fl_link4 / fl_link6"
+        ],
+        "continuity_rejected": 12,
+        "collision_candidates_rejected": 4
+      }
+    ],
+    "observation_rejections": [],
+    "last_measured": {
+      "tick": 16160,
+      "sim_s": 64.64000307023525,
+      "query": 35,
+      "line": 16301
+    },
+    "partial_final_line": null
+  },
+  "collision_audits": {
+    "target": {
+      "checks": 22978,
+      "blocked_checks": 0,
+      "link_pairs": {},
+      "partial_final_line": false,
+      "scope": "FCL audit calls, including planning and/or measured checks"
+    },
+    "source_proxy": {
+      "checks": 189,
+      "blocked_checks": 15,
+      "link_pairs": {
+        "fl_link4 / fl_link6": 15
+      },
+      "partial_final_line": false,
+      "scope": "FCL audit calls, including planning and/or measured checks"
+    }
+  },
+  "startup": {
+    "category": "admitted",
+    "physical_admitted": true,
+    "fresh_reset_verified": true
+  },
+  "termination": {
+    "finalized": true,
+    "task_success": false,
+    "outcome": "planning_failed",
+    "worker_outcome": "planning_failed",
+    "category": "diagnostic_complete",
+    "supervisor_status": "completed",
+    "supervisor_reason": null,
+    "failure_phase": "planning",
+    "failure_code": "collision",
+    "budget_stop": null,
+    "failure_detail": "all temporally admissible IK pairs collide",
+    "geometry": null,
+    "collision_world": "source_collision",
+    "collision_world_evidence": "terminal collision object names",
+    "terminal_link_pairs": [
+      "fl_link4 / fl_link6"
+    ],
+    "continuity_rejected": 12,
+    "collision_candidates_rejected": 4,
+    "projection_stop_reason": null,
+    "cleanup": {
+      "scene_opened": true,
+      "hold_complete": true,
+      "close_complete": true,
+      "scene_context_closed": true
+    },
+    "process_group_reaped": true
+  },
+  "placement": {
+    "native_success_predicate": false,
+    "last_measured_tick": null
+  },
+  "source_sha256": {
+    "standalone-result.json": "5791f05894ff0285322973c84e8db50c6a20a106b1892b1b0cc2ad52a185f06a",
+    "authorization-receipt.json": "06de3ce0f1e8a924ecf2b2d8b4f50c49c6d8ff5a2ea9e9ac325c722725047c3b",
+    "supervisor/campaign.json": "389274714b0a28935d3a0a58909c3fce6e5d740c43c1eb78c14a56ac1c05a6c0",
+    "startup/unified-seed1-arx-full-w4/receipt.json": "527d02add2ca24dc6af0364fd79a5d0633166d7213cb58d6531fe3126efa158c",
+    "trials/unified-seed1-arx-full-w4/receipt.json": "f387ddb71fd2f366604ac56bcccd8657be7719e36b0b87217364447f40c79b58",
+    "trials/unified-seed1-arx-full-w4/episode/result.json": "89fc29063e6c09e4763b9af07af06f9a5f1fff600784e10e89839f259bde6f1b",
+    "trials/unified-seed1-arx-full-w4/episode/events.jsonl": "caff22769d635c8d75d75700eb61ac3e2fe34ffe1267549cf9d6c9c84548fb7d",
+    "trials/unified-seed1-arx-full-w4/episode/action-00001.npy": "686e19f0f9f42d595d24fb44afd931f26454ef2d94c0bf30b5279e004094f399",
+    "trials/unified-seed1-arx-full-w4/episode/action-00002.npy": "c2ac1b3f4c5c6a1b2633305b35e450d6b305669c053a48eb45da415890b16ad8",
+    "trials/unified-seed1-arx-full-w4/episode/action-00003.npy": "8cb61afd04264b5678bc7da07918bd2a9b6736eb25900a9bfc40ceb52c1d32f9",
+    "trials/unified-seed1-arx-full-w4/episode/action-00004.npy": "52470c076f3b31a8adb3613b42177f1ec478afefeceadce5d3ed178863fc0046",
+    "trials/unified-seed1-arx-full-w4/episode/action-00005.npy": "f4579c7750869c86d2f24a1ae1a066ac09cf722c2fb274d2893805728f04837d",
+    "trials/unified-seed1-arx-full-w4/episode/action-00006.npy": "ff7e055e407a816e7eb0810062314fed4b19f3911651bd6071e07512c54528b0",
+    "trials/unified-seed1-arx-full-w4/episode/action-00007.npy": "1a6cbb9967447b29b7f92e54e3927cfb7944e9171bb1afab64b31de7ebeb6b24",
+    "trials/unified-seed1-arx-full-w4/episode/action-00008.npy": "9ced24939f3b0858a39117da36069986d66fdffd4de48515c79b18dcdacf0046",
+    "trials/unified-seed1-arx-full-w4/episode/action-00009.npy": "cf40feda6d5350303a545241e29768851881c83d651fc41ae0e48dbba18541a0",
+    "trials/unified-seed1-arx-full-w4/episode/action-00010.npy": "5725df7a9da7518738b82d2d8755b8a99139d3c2674b26719c4114e0a71c17fc",
+    "trials/unified-seed1-arx-full-w4/episode/action-00011.npy": "87ebe07d7f5d1947a2cc5a932bf9e4072aecddad3f15e39e1342495ddfb25df6",
+    "trials/unified-seed1-arx-full-w4/episode/action-00012.npy": "c2b917d5954c4960fb9a334de98c4bd95c069289787a063239ffe50ec1ffa74c",
+    "trials/unified-seed1-arx-full-w4/episode/action-00013.npy": "305eb6a5fa7b1359cf3d431a6a048ab5ba234394f17692257096bc292e565e4f",
+    "trials/unified-seed1-arx-full-w4/episode/action-00014.npy": "7f00c9eb21ec984ce32e148e5a4631f80a4218556f8519a97ada16c2e732c792",
+    "trials/unified-seed1-arx-full-w4/episode/action-00015.npy": "76f85871fa533a7f3393533d08cf0d0098199e320bd4a3b67d41c279af129019",
+    "trials/unified-seed1-arx-full-w4/episode/action-00016.npy": "34caebbac204406054e01a2136763d2d9085f682842bb70a6f354de4d0798e3e",
+    "trials/unified-seed1-arx-full-w4/episode/action-00017.npy": "cc31eaab76a18d9b719e70363b1a228ef5ab0c37fede4e2e805547583fbf1906",
+    "trials/unified-seed1-arx-full-w4/episode/action-00018.npy": "9c2d288261f0ec57529f055d0ce03c2bbb4f6813a40b278d6ae05b2051d8269b",
+    "trials/unified-seed1-arx-full-w4/episode/action-00019.npy": "ecd6e9e70af23805a675170e22f243b48fac6a4447abe33f6036d3482928f055",
+    "trials/unified-seed1-arx-full-w4/episode/action-00020.npy": "5e9496ce8c0a1821014ff701ef1192dc75038ad8c85118f35eb64974b5fb1680",
+    "trials/unified-seed1-arx-full-w4/episode/action-00021.npy": "d440b09e1d42018acedb5e6ea0ce4b768cb3584f50e70cd3989c10f5bbad9b93",
+    "trials/unified-seed1-arx-full-w4/episode/action-00022.npy": "eafc3537272086b0f9e875be586da3641d571600e6c2e4589abea5e56d2b2bfe",
+    "trials/unified-seed1-arx-full-w4/episode/action-00023.npy": "03586cabbc5c2f99dfa819afeacd895b599cb4cd8eff113d156c8cacdcc804b9",
+    "trials/unified-seed1-arx-full-w4/episode/action-00024.npy": "1ffa62ce89a1ab4306dcbcdaa6b07920728eb9b34fdf6852b394b22193b9a1d9",
+    "trials/unified-seed1-arx-full-w4/episode/action-00025.npy": "8e45f1d0edf855f7787f05d3c936397e6ce6126a245d93931a0afb420fa6e4e2",
+    "trials/unified-seed1-arx-full-w4/episode/action-00026.npy": "0fa84306d0ce53bfbbe43d663ffe7959693f8670b527454e6aa70df2939d7b26",
+    "trials/unified-seed1-arx-full-w4/episode/action-00027.npy": "67dfa4457fbcb8a7fce3f78e692514563580ae47086250666812d1b889d30f18",
+    "trials/unified-seed1-arx-full-w4/episode/action-00028.npy": "7f7502fdef7552865aaebfd7c6dbefba9349647cb5953d041b406a7c3a3f2d85",
+    "trials/unified-seed1-arx-full-w4/episode/action-00029.npy": "9f76e0e3224ee9a3d88d5c9690ece2e17c2cf7a5a0d82184af415c9de21dd3b2",
+    "trials/unified-seed1-arx-full-w4/episode/action-00030.npy": "a413e8ad69fdd1867c2e9bb12fdb47939d614ef1d35ca3c406488e939fad35e9",
+    "trials/unified-seed1-arx-full-w4/episode/action-00031.npy": "3dda6b07019871c7e6ebb707bb818c1c60a24b880f0c297a4479c96d03ac4de0",
+    "trials/unified-seed1-arx-full-w4/episode/action-00032.npy": "a86db935e9dda1d379fd2374fbcc67c65d11e4a07a5b324149784093908e765a",
+    "trials/unified-seed1-arx-full-w4/episode/action-00033.npy": "48076dcef720e9dd15b553766056039e2dfa5467450ff0cddfad7671150c7f08",
+    "trials/unified-seed1-arx-full-w4/episode/action-00034.npy": "994e598e05c33469c0dcc777b457892888eff470e0b6b135a411acc767026b5f",
+    "trials/unified-seed1-arx-full-w4/episode/action-00035.npy": "ec043abf826c0adb00e7290b899f760665a86770ee638d5b640843a6f6f271fe",
+    "trials/unified-seed1-arx-full-w4/episode/action-00036.npy": "8399ff83235dd30d6f4b8c28477d3c5936ed3d2ee9bae9d0d801ed7d8fedf39c",
+    "trials/unified-seed1-arx-full-w4/episode/collision-checks.jsonl": "6408bf721ce4a4c8a283121e6706754daab07b32c9dd8e435a31388fc54179b9",
+    "trials/unified-seed1-arx-full-w4/episode/proxy-collision-checks.jsonl": "adac64d77decec3d40ab90a76bb212e4e70c0788db1d5ddf8a3c8161b366f794"
+  },
+  "verified_source_members": [
+    "authorization-receipt.json",
+    "standalone-result.json",
+    "startup/unified-seed1-arx-full-w4/receipt.json",
+    "supervisor/campaign.json",
+    "trials/unified-seed1-arx-full-w4/episode/action-00035.npy",
+    "trials/unified-seed1-arx-full-w4/episode/action-00036.npy",
+    "trials/unified-seed1-arx-full-w4/episode/collision-checks.jsonl",
+    "trials/unified-seed1-arx-full-w4/episode/events.jsonl",
+    "trials/unified-seed1-arx-full-w4/episode/proxy-collision-checks.jsonl",
+    "trials/unified-seed1-arx-full-w4/episode/result.json",
+    "trials/unified-seed1-arx-full-w4/receipt.json"
+  ]
+}

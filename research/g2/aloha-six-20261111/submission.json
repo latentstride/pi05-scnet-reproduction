@@ -1,0 +1,78 @@
+{
+  "batch_sha256": "8af2ba1cf5c07234c9189982ba3527c6c8d69aa4fb59ef09aa2578f75427f831",
+  "retries": 0,
+  "rows": [
+    {
+      "experiment": "G1",
+      "job_id": "127589584",
+      "state": "released",
+      "comment": "cpf-g2-s6h4-8af2ba1cf5c07234c918-G1",
+      "archive_sha256": "ed321978eae3a325658b6092f4fc1089b7339ea9b3b4b9e27cc1002cff32246b",
+      "config_sha256": "52219b9ebd63fb204f2ad56173b20912c9950e831fb192d5041e6929fbee0eef",
+      "submit_time": "2026-11-11T04:13:26",
+      "queue_state": "PENDING",
+      "queue_reason": "Priority",
+      "result_dir": "results/pace-g2-parallel/g1-author_native-fixed_h50-100000/127589584"
+    },
+    {
+      "experiment": "G2",
+      "job_id": "127589587",
+      "state": "released",
+      "comment": "cpf-g2-s6h4-8af2ba1cf5c07234c918-G2",
+      "archive_sha256": "33117f3e91321bfe0d8cf95ceca38b0de834a6c0cbdb21b99b85a7e45e45412e",
+      "config_sha256": "f3e4c95c659066df26d336441dda654c25e01badd343aa5bc74dea417d5a7f4c",
+      "submit_time": "2026-11-11T04:13:27",
+      "queue_state": "PENDING",
+      "queue_reason": "None",
+      "result_dir": "results/pace-g2-parallel/g2-author_native-fixed_h50-200000/127589587"
+    },
+    {
+      "experiment": "G3",
+      "job_id": "127589590",
+      "state": "released",
+      "comment": "cpf-g2-s6h4-8af2ba1cf5c07234c918-G3",
+      "archive_sha256": "ba96d753829aa380d53610ba71d435d1673b5fc3313f43f8dfb8361ed2731e01",
+      "config_sha256": "83689aea1ebdaf92a01026d0d0be4da8107b44d051743ef7ee44ebebd6ef1a83",
+      "submit_time": "2026-11-11T04:13:27",
+      "queue_state": "PENDING",
+      "queue_reason": "None",
+      "result_dir": "results/pace-g2-parallel/g3-author_native-fixed_h50-300000/127589590"
+    },
+    {
+      "experiment": "G4",
+      "job_id": "127589593",
+      "state": "released",
+      "comment": "cpf-g2-s6h4-8af2ba1cf5c07234c918-G4",
+      "archive_sha256": "5d037ce16f63e75846f4c77c4e2beafd07a1da6d7a3697d0695c8f88b7eeb1a4",
+      "config_sha256": "a407cf29318d0e5697a61ffca762bc9be4495bc7e35a94a0b90f0da47bfc4c02",
+      "submit_time": "2026-11-11T04:13:28",
+      "queue_state": "PENDING",
+      "queue_reason": "None",
+      "result_dir": "results/pace-g2-parallel/g4-author_native-pace-100000/127589593"
+    },
+    {
+      "experiment": "G5",
+      "job_id": "127589595",
+      "state": "released",
+      "comment": "cpf-g2-s6h4-8af2ba1cf5c07234c918-G5",
+      "archive_sha256": "212725364edd0a51d4cf8abb6d157f35b730349586d601fa359ce4f129126add",
+      "config_sha256": "c9d39a7cb8aa28a492cc7026272d01f900cbebb0374348007d8de5849930abe9",
+      "submit_time": "2026-11-11T04:13:28",
+      "queue_state": "PENDING",
+      "queue_reason": "None",
+      "result_dir": "results/pace-g2-parallel/g5-author_native-pace-200000/127589595"
+    },
+    {
+      "experiment": "G6",
+      "job_id": "127589596",
+      "state": "released",
+      "comment": "cpf-g2-s6h4-8af2ba1cf5c07234c918-G6",
+      "archive_sha256": "0036b305ad9ac2a565bd9bbe1546e9cf88df8471bf8d69cb67d214db64cad3b7",
+      "config_sha256": "0862664302b812c4a4c04e82bd9447eb5d3bae6eb1e2b6167793f33fc5ea0578",
+      "submit_time": "2026-11-11T04:13:29",
+      "queue_state": "PENDING",
+      "queue_reason": "None",
+      "result_dir": "results/pace-g2-parallel/g6-author_native-pace-300000/127589596"
+    }
+  ]
+}

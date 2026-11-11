@@ -1,0 +1,33 @@
+{
+  "mode": "author_native",
+  "method": "fixed_h50",
+  "scene_seed": 200000,
+  "episode_id": "g2-author_native-fixed_h50-200000",
+  "success": true,
+  "scene_closed": true,
+  "outcome": "SUCCESS",
+  "trial_clock": {
+    "started": 65639751.23986779,
+    "soft": 65651151.23986779,
+    "hard": 65651751.23986779,
+    "reap_at": 65651741.23986779,
+    "budget": {
+      "physics_steps": 130000,
+      "soft_s": 11400,
+      "hard_s": 12000,
+      "reap_s": 10,
+      "request_s": 390
+    }
+  },
+  "prompt": "Grab the red block with the left arm, switch to the right, and place it on the blue pad.",
+  "selector": {
+    "selector": "fixed",
+    "horizon": 50
+  },
+  "steps": 280,
+  "queries": 6,
+  "completed_actions": 280,
+  "native_action_count": 280,
+  "physics_steps": 18948,
+  "elapsed_s": 365.500655926764
+}

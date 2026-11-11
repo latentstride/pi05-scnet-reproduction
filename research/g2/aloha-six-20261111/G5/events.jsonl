@@ -1,0 +1,313 @@
+{"kind": "reset", "prompt": "Grab the red block with the left arm, switch to the right, and place it on the blue pad.", "selector": {"selector": "pace", "threshold": 0.008204944897443056, "config": {"fps": 50.0, "min_distance": 10, "smoothing_window": 11, "polynomial_order": 3}, "calibration_sha256": "d66b55926fb3afc655199986710f84d8bc519e4443c11ceb51725814da98204f"}}
+{"kind": "rng_reset", "receipt": {"command": "author_h50_reset", "episode_id": "g5-author_native-pace-200000", "seed": 0, "key": {"impl": "threefry2x32", "words": [0, 0]}}}
+{"kind": "request_identity", "query": 0, "request_sha256": "4f7c8b0a3a1b312bb7a2a188614e687c97ce805a83df64830a6f2e6890bfff47"}
+{"kind": "request", "query": 0}
+{"kind": "response", "query": 0, "rng": {"episode_id": "g5-author_native-pace-200000", "query": 0, "request_sha256": "4f7c8b0a3a1b312bb7a2a188614e687c97ce805a83df64830a6f2e6890bfff47", "before": {"impl": "threefry2x32", "words": [0, 0]}, "sample": {"impl": "threefry2x32", "words": [928981903, 3453687069]}, "after": {"impl": "threefry2x32", "words": [1797259609, 2579123966]}}, "chunk_sha256": "45ae767f9de7f0cb8be34d7e572a39810bdc76c11b131d315b3e0ab98ef56a54", "round_trip_s": 60.277668200433254, "service_inference_s": 54.62498069554567}
+{"kind": "block", "step": 0, "horizon": 35, "selected_grippers": [[0.9989335674440861, 1.001918450781584], [0.9987700448462964, 1.0004566398035288], [0.9988830923565031, 1.0014898594830037], [0.9997422415155173, 0.999600053134203], [1.0000224467833043, 1.0002622481439114], [0.9989901805883646, 1.0007894059063196], [0.9999874062266351, 1.001632167049885], [1.0002755969274044, 1.0003695151541234], [1.000545313865304, 0.9994103693044782], [1.000274881814003, 0.9999145838452578], [1.0007407781950235, 0.9996021388816237], [1.000075007618308, 1.000613368824005], [1.0016927133178712, 1.0008793910093308], [1.0005749910714627, 1.000785234411478], [0.9997660190361143, 1.0000116008967161], [0.9998782322473526, 1.0001334085460902], [0.998930111062646, 1.001460420647979], [0.9995822944847346, 1.0011536369987726], [0.9988575270524025, 1.0004364974427224], [0.9994533952941299, 0.9997032678351403], [0.9982359743210077, 1.0003962127211095], [0.9990831453305483, 1.0014271678748132], [1.000100751700759, 1.0004181428654195], [0.9991679458613992, 1.0004312532777786], [0.999467280412674, 1.0000589175667762], [0.9993924318766595, 1.0002550970098973], [1.0003165967624188, 1.0010760471947193], [1.000630769916773, 1.0011932066069842], [1.0002988381129503, 1.0002817945768834], [1.0013660256789922, 1.001662440183878], [1.0017043935034275, 1.0020490781629086], [1.0005703428343535, 1.0014568450809718], [1.0002381726593972, 1.0006963219785692], [1.0026945871932507, 0.9984009271456004], [1.000474756009698, 0.9999821620616913]]}
+{"kind": "action_complete", "action": 1, "tick": 40, "physics_steps": 40, "gripper_request": [0.9989335674440861, 1.001918450781584]}
+{"kind": "action_complete", "action": 2, "tick": 89, "physics_steps": 49, "gripper_request": [0.9987700448462964, 1.0004566398035288]}
+{"kind": "action_complete", "action": 3, "tick": 142, "physics_steps": 53, "gripper_request": [0.9988830923565031, 1.0014898594830037]}
+{"kind": "action_complete", "action": 4, "tick": 202, "physics_steps": 60, "gripper_request": [0.9997422415155173, 0.999600053134203]}
+{"kind": "action_complete", "action": 5, "tick": 288, "physics_steps": 86, "gripper_request": [1.0000224467833043, 1.0002622481439114]}
+{"kind": "action_complete", "action": 6, "tick": 390, "physics_steps": 102, "gripper_request": [0.9989901805883646, 1.0007894059063196]}
+{"kind": "action_complete", "action": 7, "tick": 504, "physics_steps": 114, "gripper_request": [0.9999874062266351, 1.001632167049885]}
+{"kind": "action_complete", "action": 8, "tick": 632, "physics_steps": 128, "gripper_request": [1.0002755969274044, 1.0003695151541234]}
+{"kind": "action_complete", "action": 9, "tick": 768, "physics_steps": 136, "gripper_request": [1.000545313865304, 0.9994103693044782]}
+{"kind": "action_complete", "action": 10, "tick": 904, "physics_steps": 136, "gripper_request": [1.000274881814003, 0.9999145838452578]}
+{"kind": "action_complete", "action": 11, "tick": 1054, "physics_steps": 150, "gripper_request": [1.0007407781950235, 0.9996021388816237]}
+{"kind": "action_complete", "action": 12, "tick": 1210, "physics_steps": 156, "gripper_request": [1.000075007618308, 1.000613368824005]}
+{"kind": "action_complete", "action": 13, "tick": 1367, "physics_steps": 157, "gripper_request": [1.0016927133178712, 1.0008793910093308]}
+{"kind": "action_complete", "action": 14, "tick": 1530, "physics_steps": 163, "gripper_request": [1.0005749910714627, 1.000785234411478]}
+{"kind": "action_complete", "action": 15, "tick": 1696, "physics_steps": 166, "gripper_request": [0.9997660190361143, 1.0000116008967161]}
+{"kind": "action_complete", "action": 16, "tick": 1867, "physics_steps": 171, "gripper_request": [0.9998782322473526, 1.0001334085460902]}
+{"kind": "action_complete", "action": 17, "tick": 2033, "physics_steps": 166, "gripper_request": [0.998930111062646, 1.001460420647979]}
+{"kind": "action_complete", "action": 18, "tick": 2204, "physics_steps": 171, "gripper_request": [0.9995822944847346, 1.0011536369987726]}
+{"kind": "action_complete", "action": 19, "tick": 2369, "physics_steps": 165, "gripper_request": [0.9988575270524025, 1.0004364974427224]}
+{"kind": "action_complete", "action": 20, "tick": 2534, "physics_steps": 165, "gripper_request": [0.9994533952941299, 0.9997032678351403]}
+{"kind": "action_complete", "action": 21, "tick": 2694, "physics_steps": 160, "gripper_request": [0.9982359743210077, 1.0003962127211095]}
+{"kind": "action_complete", "action": 22, "tick": 2853, "physics_steps": 159, "gripper_request": [0.9990831453305483, 1.0014271678748132]}
+{"kind": "action_complete", "action": 23, "tick": 3009, "physics_steps": 156, "gripper_request": [1.000100751700759, 1.0004181428654195]}
+{"kind": "action_complete", "action": 24, "tick": 3161, "physics_steps": 152, "gripper_request": [0.9991679458613992, 1.0004312532777786]}
+{"kind": "action_complete", "action": 25, "tick": 3305, "physics_steps": 144, "gripper_request": [0.999467280412674, 1.0000589175667762]}
+{"kind": "action_complete", "action": 26, "tick": 3449, "physics_steps": 144, "gripper_request": [0.9993924318766595, 1.0002550970098973]}
+{"kind": "action_complete", "action": 27, "tick": 3587, "physics_steps": 138, "gripper_request": [1.0003165967624188, 1.0010760471947193]}
+{"kind": "action_complete", "action": 28, "tick": 3717, "physics_steps": 130, "gripper_request": [1.000630769916773, 1.0011932066069842]}
+{"kind": "action_complete", "action": 29, "tick": 3840, "physics_steps": 123, "gripper_request": [1.0002988381129503, 1.0002817945768834]}
+{"kind": "action_complete", "action": 30, "tick": 3941, "physics_steps": 101, "gripper_request": [1.0013660256789922, 1.001662440183878]}
+{"kind": "action_complete", "action": 31, "tick": 4030, "physics_steps": 89, "gripper_request": [1.0017043935034275, 1.0020490781629086]}
+{"kind": "action_complete", "action": 32, "tick": 4108, "physics_steps": 78, "gripper_request": [1.0005703428343535, 1.0014568450809718]}
+{"kind": "action_complete", "action": 33, "tick": 4169, "physics_steps": 61, "gripper_request": [1.0002381726593972, 1.0006963219785692]}
+{"kind": "action_complete", "action": 34, "tick": 4230, "physics_steps": 61, "gripper_request": [1.0026945871932507, 0.9984009271456004]}
+{"kind": "action_complete", "action": 35, "tick": 4270, "physics_steps": 40, "gripper_request": [1.000474756009698, 0.9999821620616913]}
+{"kind": "request_identity", "query": 1, "request_sha256": "ec4e916063683c0ea7b445f4fb117476c2eb88579a309f4198c3959ee2620dbe"}
+{"kind": "request", "query": 1}
+{"kind": "response", "query": 1, "rng": {"episode_id": "g5-author_native-pace-200000", "query": 1, "request_sha256": "ec4e916063683c0ea7b445f4fb117476c2eb88579a309f4198c3959ee2620dbe", "before": {"impl": "threefry2x32", "words": [1797259609, 2579123966]}, "sample": {"impl": "threefry2x32", "words": [1353695780, 2116000888]}, "after": {"impl": "threefry2x32", "words": [4165894930, 804218099]}}, "chunk_sha256": "e58602d5874288e5f4ea64af16dc12a195b40bc794fc71b72e71d31a6fd6ea12", "round_trip_s": 0.9488682150840759, "service_inference_s": 0.432728573679924}
+{"kind": "block", "step": 35, "horizon": 11, "selected_grippers": [[1.0012874823904039, 1.0011685351946353], [1.0010532827514411, 1.0007187288651467], [1.0003241054531335, 0.9992218773304224], [0.9999182785978318, 1.0003496111644508], [0.9994463037528992, 1.0000797750409842], [1.0016853238127232, 1.0012302733182907], [1.0005968020302058, 1.0001394870100022], [1.0005716538755893, 1.0009625825350286], [0.9999602319173814, 1.0010054893391134], [0.9990397021914125, 1.0009114519268274], [1.0002887073397637, 1.0013191857511998]]}
+{"kind": "action_complete", "action": 36, "tick": 4337, "physics_steps": 67, "gripper_request": [1.0012874823904039, 1.0011685351946353]}
+{"kind": "action_complete", "action": 37, "tick": 4411, "physics_steps": 74, "gripper_request": [1.0010532827514411, 1.0007187288651467]}
+{"kind": "action_complete", "action": 38, "tick": 4487, "physics_steps": 76, "gripper_request": [1.0003241054531335, 0.9992218773304224]}
+{"kind": "action_complete", "action": 39, "tick": 4568, "physics_steps": 81, "gripper_request": [0.9999182785978318, 1.0003496111644508]}
+{"kind": "action_complete", "action": 40, "tick": 4647, "physics_steps": 79, "gripper_request": [0.9994463037528992, 1.0000797750409842]}
+{"kind": "action_complete", "action": 41, "tick": 4726, "physics_steps": 79, "gripper_request": [1.0016853238127232, 1.0012302733182907]}
+{"kind": "action_complete", "action": 42, "tick": 4797, "physics_steps": 71, "gripper_request": [1.0005968020302058, 1.0001394870100022]}
+{"kind": "action_complete", "action": 43, "tick": 4852, "physics_steps": 55, "gripper_request": [1.0005716538755893, 1.0009625825350286]}
+{"kind": "action_complete", "action": 44, "tick": 4893, "physics_steps": 41, "gripper_request": [0.9999602319173814, 1.0010054893391134]}
+{"kind": "action_complete", "action": 45, "tick": 4915, "physics_steps": 22, "gripper_request": [0.9990397021914125, 1.0009114519268274]}
+{"kind": "action_complete", "action": 46, "tick": 4937, "physics_steps": 22, "gripper_request": [1.0002887073397637, 1.0013191857511998]}
+{"kind": "request_identity", "query": 2, "request_sha256": "2008eab49e9efc71359fb32397aec4771502303b3a79dcc161a819d419c37b3c"}
+{"kind": "request", "query": 2}
+{"kind": "response", "query": 2, "rng": {"episode_id": "g5-author_native-pace-200000", "query": 2, "request_sha256": "2008eab49e9efc71359fb32397aec4771502303b3a79dcc161a819d419c37b3c", "before": {"impl": "threefry2x32", "words": [4165894930, 804218099]}, "sample": {"impl": "threefry2x32", "words": [3531307783, 465290248]}, "after": {"impl": "threefry2x32", "words": [683029726, 1624662641]}}, "chunk_sha256": "f9f42131695cf702302f5da4ae47c4a19d0e8bb2216096342f4cf98bc511e310", "round_trip_s": 0.11792238056659698, "service_inference_s": 0.09868371486663818}
+{"kind": "block", "step": 46, "horizon": 5, "selected_grippers": [[0.9979279988161326, 0.9998922961442471], [0.9972512631672621, 1.001044820576191], [0.9983238736765981, 1.0001363881852627], [0.9985265487331152, 1.00004723738122], [0.9958178183541299, 1.0001044464533329]]}
+{"kind": "action_complete", "action": 47, "tick": 4980, "physics_steps": 43, "gripper_request": [0.9979279988161326, 0.9998922961442471]}
+{"kind": "action_complete", "action": 48, "tick": 5020, "physics_steps": 40, "gripper_request": [0.9972512631672621, 1.001044820576191]}
+{"kind": "action_complete", "action": 49, "tick": 5045, "physics_steps": 25, "gripper_request": [0.9983238736765981, 1.0001363881852627]}
+{"kind": "action_complete", "action": 50, "tick": 5064, "physics_steps": 19, "gripper_request": [0.9985265487331152, 1.00004723738122]}
+{"kind": "action_complete", "action": 51, "tick": 5082, "physics_steps": 18, "gripper_request": [0.9958178183541299, 1.0001044464533329]}
+{"kind": "request_identity", "query": 3, "request_sha256": "dd46bce2108a9c1d038d7323a08b1ab93fd96b582b1f0ab4be1ebf36f8016c39"}
+{"kind": "request", "query": 3}
+{"kind": "response", "query": 3, "rng": {"episode_id": "g5-author_native-pace-200000", "query": 3, "request_sha256": "dd46bce2108a9c1d038d7323a08b1ab93fd96b582b1f0ab4be1ebf36f8016c39", "before": {"impl": "threefry2x32", "words": [683029726, 1624662641]}, "sample": {"impl": "threefry2x32", "words": [1539457558, 118255239]}, "after": {"impl": "threefry2x32", "words": [1113701576, 1346130448]}}, "chunk_sha256": "7d2ef580bcf7e8ecc0623a47fb479f3e63de5ded9f8b79091fb02ec41407e512", "round_trip_s": 0.09410206228494644, "service_inference_s": 0.08661726862192154}
+{"kind": "block", "step": 51, "horizon": 13, "selected_grippers": [[0.9981022481149435, 0.9994767556652427], [0.9992892767685057, 1.000417546937585], [0.9996890251598954, 1.0002857277005912], [0.9996785964227916, 0.999495825355947], [0.9431106234741211, 0.9991239067944289], [0.8682490366399884, 0.9997355075309873], [0.7956803417419196, 0.9991655025572778], [0.7234630654878617, 0.99991565651536], [0.6468343738460541, 0.9988895879698992], [0.5702256457867027, 0.9986187983618975], [0.49107638797965647, 0.9982564146457314], [0.4150890636697412, 0.9988105083462596], [0.3396535983309746, 0.9997449827835561]]}
+{"kind": "action_complete", "action": 52, "tick": 5115, "physics_steps": 33, "gripper_request": [0.9981022481149435, 0.9994767556652427]}
+{"kind": "action_complete", "action": 53, "tick": 5152, "physics_steps": 37, "gripper_request": [0.9992892767685057, 1.000417546937585]}
+{"kind": "action_complete", "action": 54, "tick": 5175, "physics_steps": 23, "gripper_request": [0.9996890251598954, 1.0002857277005912]}
+{"kind": "action_complete", "action": 55, "tick": 5196, "physics_steps": 21, "gripper_request": [0.9996785964227916, 0.999495825355947]}
+{"kind": "action_complete", "action": 56, "tick": 5224, "physics_steps": 28, "gripper_request": [0.9431106234741211, 0.9991239067944289]}
+{"kind": "action_complete", "action": 57, "tick": 5251, "physics_steps": 27, "gripper_request": [0.8682490366399884, 0.9997355075309873]}
+{"kind": "action_complete", "action": 58, "tick": 5277, "physics_steps": 26, "gripper_request": [0.7956803417419196, 0.9991655025572778]}
+{"kind": "action_complete", "action": 59, "tick": 5305, "physics_steps": 28, "gripper_request": [0.7234630654878617, 0.99991565651536]}
+{"kind": "action_complete", "action": 60, "tick": 5323, "physics_steps": 18, "gripper_request": [0.6468343738460541, 0.9988895879698992]}
+{"kind": "action_complete", "action": 61, "tick": 5342, "physics_steps": 19, "gripper_request": [0.5702256457867027, 0.9986187983618975]}
+{"kind": "action_complete", "action": 62, "tick": 5360, "physics_steps": 18, "gripper_request": [0.49107638797965647, 0.9982564146457314]}
+{"kind": "action_complete", "action": 63, "tick": 5375, "physics_steps": 15, "gripper_request": [0.4150890636697412, 0.9988105083462596]}
+{"kind": "action_complete", "action": 64, "tick": 5394, "physics_steps": 19, "gripper_request": [0.3396535983309746, 0.9997449827835561]}
+{"kind": "request_identity", "query": 4, "request_sha256": "4af82f2acb7a08874f20b4630944ae48dfb64c244efdcf2fac81cab8a313acdc"}
+{"kind": "request", "query": 4}
+{"kind": "response", "query": 4, "rng": {"episode_id": "g5-author_native-pace-200000", "query": 4, "request_sha256": "4af82f2acb7a08874f20b4630944ae48dfb64c244efdcf2fac81cab8a313acdc", "before": {"impl": "threefry2x32", "words": [1113701576, 1346130448]}, "sample": {"impl": "threefry2x32", "words": [4274742258, 3380111416]}, "after": {"impl": "threefry2x32", "words": [3952908011, 3835524538]}}, "chunk_sha256": "a592e5429afb78cc770c715f616e48a054c58d74d6da3fd5b09801e2d20a236b", "round_trip_s": 0.2897075265645981, "service_inference_s": 0.15272188186645508}
+{"kind": "block", "step": 64, "horizon": 25, "selected_grippers": [[0.26060007633054255, 1.0002670155665876], [0.1906087693167329, 1.0001568881027698], [0.12364483529502154, 0.9992936270416976], [0.04700047075116635, 0.9988442974544764], [0.005874894963741303, 0.9999562987936735], [0.0005671445201039315, 0.9990101441708208], [-0.0011220129268169404, 0.9989386924234629], [-0.0009010428857803345, 0.9996190632321239], [-0.0006144611901640892, 0.9986246384546758], [4.767422676086426e-06, 0.9989031751245261], [-0.00017699056684970855, 0.9987891741297842], [-0.0011301175453662872, 0.9990110380625725], [0.00039724549448490144, 0.99943492153126], [8.384704631567002e-05, 0.9986314320319891], [0.0007004833730757236, 0.9988441782689095], [0.00019099487096071245, 1.0003496111644508], [0.0016781327819824219, 1.00028346317482], [0.0009294090507030487, 1.0005597353188993], [0.0009931733289957048, 0.999352743082881], [0.0008474987698495388, 0.9996473698042632], [0.0003503161775171757, 1.0007442345764637], [0.001427366349220276, 1.0001084987626077], [0.0016020923902988434, 0.9995449894022942], [0.0015755438052713871, 0.9998932496287823], [0.0020334249569177627, 0.9992637710571886]]}
+{"kind": "action_complete", "action": 65, "tick": 5418, "physics_steps": 24, "gripper_request": [0.26060007633054255, 1.0002670155665876]}
+{"kind": "action_complete", "action": 66, "tick": 5443, "physics_steps": 25, "gripper_request": [0.1906087693167329, 1.0001568881027698]}
+{"kind": "action_complete", "action": 67, "tick": 5463, "physics_steps": 20, "gripper_request": [0.12364483529502154, 0.9992936270416976]}
+{"kind": "action_complete", "action": 68, "tick": 5489, "physics_steps": 26, "gripper_request": [0.04700047075116635, 0.9988442974544764]}
+{"kind": "action_complete", "action": 69, "tick": 5512, "physics_steps": 23, "gripper_request": [0.005874894963741303, 0.9999562987936735]}
+{"kind": "action_complete", "action": 70, "tick": 5530, "physics_steps": 18, "gripper_request": [0.0005671445201039315, 0.9990101441708208]}
+{"kind": "action_complete", "action": 71, "tick": 5546, "physics_steps": 16, "gripper_request": [-0.0011220129268169404, 0.9989386924234629]}
+{"kind": "action_complete", "action": 72, "tick": 5563, "physics_steps": 17, "gripper_request": [-0.0009010428857803345, 0.9996190632321239]}
+{"kind": "action_complete", "action": 73, "tick": 5584, "physics_steps": 21, "gripper_request": [-0.0006144611901640892, 0.9986246384546758]}
+{"kind": "action_complete", "action": 74, "tick": 5606, "physics_steps": 22, "gripper_request": [4.767422676086426e-06, 0.9989031751245261]}
+{"kind": "action_complete", "action": 75, "tick": 5630, "physics_steps": 24, "gripper_request": [-0.00017699056684970855, 0.9987891741297842]}
+{"kind": "action_complete", "action": 76, "tick": 5655, "physics_steps": 25, "gripper_request": [-0.0011301175453662872, 0.9990110380625725]}
+{"kind": "action_complete", "action": 77, "tick": 5667, "physics_steps": 12, "gripper_request": [0.00039724549448490144, 0.99943492153126]}
+{"kind": "action_complete", "action": 78, "tick": 5692, "physics_steps": 25, "gripper_request": [8.384704631567002e-05, 0.9986314320319891]}
+{"kind": "action_complete", "action": 79, "tick": 5738, "physics_steps": 46, "gripper_request": [0.0007004833730757236, 0.9988441782689095]}
+{"kind": "action_complete", "action": 80, "tick": 5807, "physics_steps": 69, "gripper_request": [0.00019099487096071245, 1.0003496111644508]}
+{"kind": "action_complete", "action": 81, "tick": 5895, "physics_steps": 88, "gripper_request": [0.0016781327819824219, 1.00028346317482]}
+{"kind": "action_complete", "action": 82, "tick": 5989, "physics_steps": 94, "gripper_request": [0.0009294090507030487, 1.0005597353188993]}
+{"kind": "action_complete", "action": 83, "tick": 6095, "physics_steps": 106, "gripper_request": [0.0009931733289957048, 0.999352743082881]}
+{"kind": "action_complete", "action": 84, "tick": 6207, "physics_steps": 112, "gripper_request": [0.0008474987698495388, 0.9996473698042632]}
+{"kind": "action_complete", "action": 85, "tick": 6310, "physics_steps": 103, "gripper_request": [0.0003503161775171757, 1.0007442345764637]}
+{"kind": "action_complete", "action": 86, "tick": 6400, "physics_steps": 90, "gripper_request": [0.001427366349220276, 1.0001084987626077]}
+{"kind": "action_complete", "action": 87, "tick": 6477, "physics_steps": 77, "gripper_request": [0.0016020923902988434, 0.9995449894022942]}
+{"kind": "action_complete", "action": 88, "tick": 6526, "physics_steps": 49, "gripper_request": [0.0015755438052713871, 0.9998932496287823]}
+{"kind": "action_complete", "action": 89, "tick": 6544, "physics_steps": 18, "gripper_request": [0.0020334249569177627, 0.9992637710571886]}
+{"kind": "request_identity", "query": 5, "request_sha256": "f72fa9a167592531b213690ad543fea6d07cb05c8522ed066cc2dde9fe5844e8"}
+{"kind": "request", "query": 5}
+{"kind": "response", "query": 5, "rng": {"episode_id": "g5-author_native-pace-200000", "query": 5, "request_sha256": "f72fa9a167592531b213690ad543fea6d07cb05c8522ed066cc2dde9fe5844e8", "before": {"impl": "threefry2x32", "words": [3952908011, 3835524538]}, "sample": {"impl": "threefry2x32", "words": [1093704277, 2843913905]}, "after": {"impl": "threefry2x32", "words": [1846506472, 1430574090]}}, "chunk_sha256": "cbdd7f3dcc9b280bd2b82f535a3732020a0c085e046c0a567c1d3f80a9298e10", "round_trip_s": 0.3729531839489937, "service_inference_s": 0.09705246984958649}
+{"kind": "block", "step": 89, "horizon": 15, "selected_grippers": [[0.00047149810266494755, 1.000324939752102], [0.0004331203501224518, 0.9998492701545955], [0.001292388694703579, 1.0004252939994336], [0.000958549921810627, 0.999388141196251], [0.0005270385768413544, 0.9979434333470464], [0.0011723092360496521, 0.9985418640784621], [0.0005871676953434945, 0.9993361762890817], [0.0008510445404648782, 0.9979303229346872], [0.00025493792760372165, 0.9989155704234839], [0.0009613507826328278, 0.9988163484390379], [0.0008887071796059609, 0.9987659329442382], [0.0010134646717607975, 0.9988282074029446], [0.00022347293794155123, 0.9994480915364028], [0.00022537990701198578, 0.9987094389855267], [0.0005429498500227929, 0.9982675584962368]]}
+{"kind": "action_complete", "action": 90, "tick": 6603, "physics_steps": 59, "gripper_request": [0.00047149810266494755, 1.000324939752102]}
+{"kind": "action_complete", "action": 91, "tick": 6690, "physics_steps": 87, "gripper_request": [0.0004331203501224518, 0.9998492701545955]}
+{"kind": "action_complete", "action": 92, "tick": 6787, "physics_steps": 97, "gripper_request": [0.001292388694703579, 1.0004252939994336]}
+{"kind": "action_complete", "action": 93, "tick": 6886, "physics_steps": 99, "gripper_request": [0.000958549921810627, 0.999388141196251]}
+{"kind": "action_complete", "action": 94, "tick": 6995, "physics_steps": 109, "gripper_request": [0.0005270385768413544, 0.9979434333470464]}
+{"kind": "action_complete", "action": 95, "tick": 7105, "physics_steps": 110, "gripper_request": [0.0011723092360496521, 0.9985418640784621]}
+{"kind": "action_complete", "action": 96, "tick": 7220, "physics_steps": 115, "gripper_request": [0.0005871676953434945, 0.9993361762890817]}
+{"kind": "action_complete", "action": 97, "tick": 7338, "physics_steps": 118, "gripper_request": [0.0008510445404648782, 0.9979303229346872]}
+{"kind": "action_complete", "action": 98, "tick": 7450, "physics_steps": 112, "gripper_request": [0.00025493792760372165, 0.9989155704234839]}
+{"kind": "action_complete", "action": 99, "tick": 7556, "physics_steps": 106, "gripper_request": [0.0009613507826328278, 0.9988163484390379]}
+{"kind": "action_complete", "action": 100, "tick": 7655, "physics_steps": 99, "gripper_request": [0.0008887071796059609, 0.9987659329442382]}
+{"kind": "action_complete", "action": 101, "tick": 7739, "physics_steps": 84, "gripper_request": [0.0010134646717607975, 0.9988282074029446]}
+{"kind": "action_complete", "action": 102, "tick": 7797, "physics_steps": 58, "gripper_request": [0.00022347293794155123, 0.9994480915364028]}
+{"kind": "action_complete", "action": 103, "tick": 7820, "physics_steps": 23, "gripper_request": [0.00022537990701198578, 0.9987094389855267]}
+{"kind": "action_complete", "action": 104, "tick": 7842, "physics_steps": 22, "gripper_request": [0.0005429498500227929, 0.9982675584962368]}
+{"kind": "request_identity", "query": 6, "request_sha256": "591e9ef2af3c7a4fd7425d97afd995a897d4e646f07144700dd76b31d7b7b6a9"}
+{"kind": "request", "query": 6}
+{"kind": "response", "query": 6, "rng": {"episode_id": "g5-author_native-pace-200000", "query": 6, "request_sha256": "591e9ef2af3c7a4fd7425d97afd995a897d4e646f07144700dd76b31d7b7b6a9", "before": {"impl": "threefry2x32", "words": [1846506472, 1430574090]}, "sample": {"impl": "threefry2x32", "words": [3905300018, 1047965080]}, "after": {"impl": "threefry2x32", "words": [3362813952, 1555611411]}}, "chunk_sha256": "93e3154f24be2fed66006e30ad1302114aae27028e272cec0ff00de6424aca54", "round_trip_s": 0.3327566534280777, "service_inference_s": 0.19512585550546646}
+{"kind": "block", "step": 104, "horizon": 27, "selected_grippers": [[-0.0002274060616493225, 1.0024800531728268], [0.0005020394041836262, 1.0007437578341962], [-0.0007226220921278, 1.0007406590094567], [-0.0004828803243041039, 1.000626836793065], [0.0011177222464084627, 1.0002620097727777], [-0.00043329912847280504, 1.0004008609582187], [0.00027329250490665437, 0.9998433108762503], [-3.5755670070648194e-07, 1.0005886974116565], [0.0002880119224190712, 1.0005883398549558], [-0.00046661149442195896, 1.0012095350296497], [0.001026783658862114, 1.0010674658339025], [-9.63019380569458e-05, 1.0012479127821923], [-0.0007695216127038002, 0.9999203047524691], [-0.0013313027822971345, 1.000506459370494], [-0.000914808818757534, 1.0005119419065713], [-0.0010552094165682793, 1.0006312466590406], [0.0007149942158460618, 0.9996007682476045], [-5.446780407428742e-05, 0.9993763418251277], [-0.0002831849069595337, 1.0002100448656082], [-0.0003977222367525101, 0.9993899289797545], [-0.0008915080404281616, 1.0005179011849166], [-0.0003431352471113205, 0.9997871744742394], [-0.0010448998650312423, 1.000584525916815], [0.0001400728375017643, 1.0009940475246908], [-0.00021548750495910645, 1.0005926305353643], [-0.0007382354013919831, 1.0003400763190986], [-0.0016129978696703912, 0.9999328192369938]]}
+{"kind": "action_complete", "action": 105, "tick": 7908, "physics_steps": 66, "gripper_request": [-0.0002274060616493225, 1.0024800531728268]}
+{"kind": "action_complete", "action": 106, "tick": 7998, "physics_steps": 90, "gripper_request": [0.0005020394041836262, 1.0007437578341962]}
+{"kind": "action_complete", "action": 107, "tick": 8101, "physics_steps": 103, "gripper_request": [-0.0007226220921278, 1.0007406590094567]}
+{"kind": "action_complete", "action": 108, "tick": 8218, "physics_steps": 117, "gripper_request": [-0.0004828803243041039, 1.000626836793065]}
+{"kind": "action_complete", "action": 109, "tick": 8343, "physics_steps": 125, "gripper_request": [0.0011177222464084627, 1.0002620097727777]}
+{"kind": "action_complete", "action": 110, "tick": 8475, "physics_steps": 132, "gripper_request": [-0.00043329912847280504, 1.0004008609582187]}
+{"kind": "action_complete", "action": 111, "tick": 8621, "physics_steps": 146, "gripper_request": [0.00027329250490665437, 0.9998433108762503]}
+{"kind": "action_complete", "action": 112, "tick": 8773, "physics_steps": 152, "gripper_request": [-3.5755670070648194e-07, 1.0005886974116565]}
+{"kind": "action_complete", "action": 113, "tick": 8929, "physics_steps": 156, "gripper_request": [0.0002880119224190712, 1.0005883398549558]}
+{"kind": "action_complete", "action": 114, "tick": 9090, "physics_steps": 161, "gripper_request": [-0.00046661149442195896, 1.0012095350296497]}
+{"kind": "action_complete", "action": 115, "tick": 9253, "physics_steps": 163, "gripper_request": [0.001026783658862114, 1.0010674658339025]}
+{"kind": "action_complete", "action": 116, "tick": 9415, "physics_steps": 162, "gripper_request": [-9.63019380569458e-05, 1.0012479127821923]}
+{"kind": "action_complete", "action": 117, "tick": 9579, "physics_steps": 164, "gripper_request": [-0.0007695216127038002, 0.9999203047524691]}
+{"kind": "action_complete", "action": 118, "tick": 9740, "physics_steps": 161, "gripper_request": [-0.0013313027822971345, 1.000506459370494]}
+{"kind": "action_complete", "action": 119, "tick": 9898, "physics_steps": 158, "gripper_request": [-0.000914808818757534, 1.0005119419065713]}
+{"kind": "action_complete", "action": 120, "tick": 10054, "physics_steps": 156, "gripper_request": [-0.0010552094165682793, 1.0006312466590406]}
+{"kind": "action_complete", "action": 121, "tick": 10205, "physics_steps": 151, "gripper_request": [0.0007149942158460618, 0.9996007682476045]}
+{"kind": "action_complete", "action": 122, "tick": 10349, "physics_steps": 144, "gripper_request": [-5.446780407428742e-05, 0.9993763418251277]}
+{"kind": "action_complete", "action": 123, "tick": 10487, "physics_steps": 138, "gripper_request": [-0.0002831849069595337, 1.0002100448656082]}
+{"kind": "action_complete", "action": 124, "tick": 10617, "physics_steps": 130, "gripper_request": [-0.0003977222367525101, 0.9993899289797545]}
+{"kind": "action_complete", "action": 125, "tick": 10741, "physics_steps": 124, "gripper_request": [-0.0008915080404281616, 1.0005179011849166]}
+{"kind": "action_complete", "action": 126, "tick": 10851, "physics_steps": 110, "gripper_request": [-0.0003431352471113205, 0.9997871744742394]}
+{"kind": "action_complete", "action": 127, "tick": 10951, "physics_steps": 100, "gripper_request": [-0.0010448998650312423, 1.000584525916815]}
+{"kind": "action_complete", "action": 128, "tick": 11033, "physics_steps": 82, "gripper_request": [0.0001400728375017643, 1.0009940475246908]}
+{"kind": "action_complete", "action": 129, "tick": 11104, "physics_steps": 71, "gripper_request": [-0.00021548750495910645, 1.0005926305353643]}
+{"kind": "action_complete", "action": 130, "tick": 11153, "physics_steps": 49, "gripper_request": [-0.0007382354013919831, 1.0003400763190986]}
+{"kind": "action_complete", "action": 131, "tick": 11179, "physics_steps": 26, "gripper_request": [-0.0016129978696703912, 0.9999328192369938]}
+{"kind": "request_identity", "query": 7, "request_sha256": "916b0abdb30fb82862076ac4431aa7b641b6b927071880575d0171906ee76acf"}
+{"kind": "request", "query": 7}
+{"kind": "response", "query": 7, "rng": {"episode_id": "g5-author_native-pace-200000", "query": 7, "request_sha256": "916b0abdb30fb82862076ac4431aa7b641b6b927071880575d0171906ee76acf", "before": {"impl": "threefry2x32", "words": [3362813952, 1555611411]}, "sample": {"impl": "threefry2x32", "words": [3381965182, 2262451415]}, "after": {"impl": "threefry2x32", "words": [1208885692, 670972364]}}, "chunk_sha256": "bd83018018199787ca4fe28ef60fa93a5b8de987e39e0ac537870b40c0bd2850", "round_trip_s": 0.5006085485219955, "service_inference_s": 0.32298221439123154}
+{"kind": "block", "step": 131, "horizon": 23, "selected_grippers": [[0.0009727925970554352, 1.0011243173493147], [-0.0005334745974540711, 1.000049382721424], [8.253600507974625e-05, 1.0003349513397217], [-0.0004846085150241852, 1.0006861912053824], [-5.6017216444015504e-05, 1.0004387619684936], [7.031948447227479e-05, 1.0001095714327097], [-0.0010912034577727318, 1.00104255605042], [-0.0010557457516193391, 1.0011853403595687], [-0.0007726800302267075, 1.0000767954018117], [-0.0004594603604078293, 1.0003646285458803], [-0.0021021354362368585, 1.0004367358138562], [-0.00013170005142688752, 1.0006004967827797], [-0.0008935341950654984, 1.0002282802573443], [-0.0008687435971498489, 1.0017701839363575], [-0.0010403708134889603, 1.0033679856462479], [-0.0009944843702316285, 1.0030521438939572], [-0.001518543307900429, 1.0021227348432542], [-0.0012872637153267862, 1.002206879853487], [-0.0011983512824177743, 0.9991730112479925], [-0.0010729680660367012, 0.9989272506090403], [-0.0009388843032717705, 0.9265985358499289], [-0.0016079324830770494, 0.8505560584189297], [-0.0020381327868103983, 0.7737499590607881]]}
+{"kind": "action_complete", "action": 132, "tick": 11217, "physics_steps": 38, "gripper_request": [0.0009727925970554352, 1.0011243173493147]}
+{"kind": "action_complete", "action": 133, "tick": 11244, "physics_steps": 27, "gripper_request": [-0.0005334745974540711, 1.000049382721424]}
+{"kind": "action_complete", "action": 134, "tick": 11270, "physics_steps": 26, "gripper_request": [8.253600507974625e-05, 1.0003349513397217]}
+{"kind": "action_complete", "action": 135, "tick": 11293, "physics_steps": 23, "gripper_request": [-0.0004846085150241852, 1.0006861912053824]}
+{"kind": "action_complete", "action": 136, "tick": 11314, "physics_steps": 21, "gripper_request": [-5.6017216444015504e-05, 1.0004387619684936]}
+{"kind": "action_complete", "action": 137, "tick": 11338, "physics_steps": 24, "gripper_request": [7.031948447227479e-05, 1.0001095714327097]}
+{"kind": "action_complete", "action": 138, "tick": 11382, "physics_steps": 44, "gripper_request": [-0.0010912034577727318, 1.00104255605042]}
+{"kind": "action_complete", "action": 139, "tick": 11448, "physics_steps": 66, "gripper_request": [-0.0010557457516193391, 1.0011853403595687]}
+{"kind": "action_complete", "action": 140, "tick": 11530, "physics_steps": 82, "gripper_request": [-0.0007726800302267075, 1.0000767954018117]}
+{"kind": "action_complete", "action": 141, "tick": 11621, "physics_steps": 91, "gripper_request": [-0.0004594603604078293, 1.0003646285458803]}
+{"kind": "action_complete", "action": 142, "tick": 11716, "physics_steps": 95, "gripper_request": [-0.0021021354362368585, 1.0004367358138562]}
+{"kind": "action_complete", "action": 143, "tick": 11811, "physics_steps": 95, "gripper_request": [-0.00013170005142688752, 1.0006004967827797]}
+{"kind": "action_complete", "action": 144, "tick": 11908, "physics_steps": 97, "gripper_request": [-0.0008935341950654984, 1.0002282802573443]}
+{"kind": "action_complete", "action": 145, "tick": 12003, "physics_steps": 95, "gripper_request": [-0.0008687435971498489, 1.0017701839363575]}
+{"kind": "action_complete", "action": 146, "tick": 12094, "physics_steps": 91, "gripper_request": [-0.0010403708134889603, 1.0033679856462479]}
+{"kind": "action_complete", "action": 147, "tick": 12160, "physics_steps": 66, "gripper_request": [-0.0009944843702316285, 1.0030521438939572]}
+{"kind": "action_complete", "action": 148, "tick": 12205, "physics_steps": 45, "gripper_request": [-0.001518543307900429, 1.0021227348432542]}
+{"kind": "action_complete", "action": 149, "tick": 12239, "physics_steps": 34, "gripper_request": [-0.0012872637153267862, 1.002206879853487]}
+{"kind": "action_complete", "action": 150, "tick": 12270, "physics_steps": 31, "gripper_request": [-0.0011983512824177743, 0.9991730112479925]}
+{"kind": "action_complete", "action": 151, "tick": 12299, "physics_steps": 29, "gripper_request": [-0.0010729680660367012, 0.9989272506090403]}
+{"kind": "action_complete", "action": 152, "tick": 12323, "physics_steps": 24, "gripper_request": [-0.0009388843032717705, 0.9265985358499289]}
+{"kind": "action_complete", "action": 153, "tick": 12345, "physics_steps": 22, "gripper_request": [-0.0016079324830770494, 0.8505560584189297]}
+{"kind": "action_complete", "action": 154, "tick": 12362, "physics_steps": 17, "gripper_request": [-0.0020381327868103983, 0.7737499590607881]}
+{"kind": "request_identity", "query": 8, "request_sha256": "ef2508929269a6e74bb9202c594a380d3bfeceb4a53bc13bb7e6910c2a617a16"}
+{"kind": "request", "query": 8}
+{"kind": "response", "query": 8, "rng": {"episode_id": "g5-author_native-pace-200000", "query": 8, "request_sha256": "ef2508929269a6e74bb9202c594a380d3bfeceb4a53bc13bb7e6910c2a617a16", "before": {"impl": "threefry2x32", "words": [1208885692, 670972364]}, "sample": {"impl": "threefry2x32", "words": [2772760534, 1150241264]}, "after": {"impl": "threefry2x32", "words": [1861711324, 429891021]}}, "chunk_sha256": "6f2373ae003c5c677bdc6c7bd20485b968996648b500d0ce950664e3b0c876e0", "round_trip_s": 0.3045288175344467, "service_inference_s": 0.20104755461215973}
+{"kind": "block", "step": 154, "horizon": 50, "selected_grippers": [[-0.0007430624168515206, 0.6981591353355646], [-0.00027794074201583865, 0.619859223674655], [-0.0012132494782805443, 0.5461556438085438], [-0.001302698246240616, 0.4690913885124922], [-0.0017097169572114945, 0.39617604239308835], [-0.0007139215457439423, 0.3223188323312402], [-0.0014131236739754677, 0.24565900346007943], [-0.0007725012518763543, 0.17092837176758052], [-0.002217387879431248, 0.08937147611993551], [-0.0008669558136463165, 0.015215527434647083], [0.0006767356488704681, 0.0009413276073932649], [0.0004947392882108688, -0.00041869889652729035], [0.0006848402674198151, -0.0007962787724733353], [0.0013445323802232744, 0.0006807283653616906], [0.0006667240612506866, 0.0010864360350966455], [-4.1119020581245425e-05, 0.0003714418192505837], [-0.0025413938430547717, -0.000666247318983078], [-0.0013077636328339577, 4.0880649447441106e-05], [-0.003943612037658691, -6.793577313423157e-05], [0.0794167996083498, -0.0005036782057285309], [0.1564246801312566, -0.0005507565046548844], [0.230483790543437, -0.00010214203083515168], [0.30507417062008385, -6.352590715885163e-05], [0.38177070864585044, -0.0005806124891638756], [0.457817715128392, -0.0007427644529342652], [0.5322487738984824, 5.184572160243988e-06], [0.6066603756247759, 0.0007236947622299195], [0.6807215717843771, 0.0001749942086040974], [0.7557832115925551, -0.00023616620081663134], [0.8277189119448066, 0.0011832445118129253], [0.9042939700815082, -0.00038175137078762055], [0.9833637013190389, -7.049826282262803e-05], [0.9980813310479523, 0.00015738454109430315], [1.0000879988451004, 0.0006110644015073776], [1.000022685154438, 0.0001463002833724022], [1.000220294824362, 0.0003944446336627007], [1.0011149016895295, 4.3323953568935394e-05], [1.000438285226226, 0.0010875087051987649], [1.000632915256977, 0.0023647608329057696], [1.0005424534116985, 0.002383711338043213], [1.000706095195055, 0.0005596954221725464], [1.000611223483801, 0.0008490183858275414], [1.0004944216282368, 0.0010640887413024902], [1.0010088265349866, 0.0005084456284046174], [1.0016362193591595, 0.0006587386282682419], [1.0001928821439743, 0.0005564476154744626], [1.0000536734018326, 4.797219067811966e-06], [1.0012753254625797, -0.0003640523141026497], [1.0022037810287476, -0.0002446283760666847], [1.003873570821047, -0.0025492004976868632]]}
+{"kind": "action_complete", "action": 155, "tick": 12386, "physics_steps": 24, "gripper_request": [-0.0007430624168515206, 0.6981591353355646]}
+{"kind": "action_complete", "action": 156, "tick": 12418, "physics_steps": 32, "gripper_request": [-0.00027794074201583865, 0.619859223674655]}
+{"kind": "action_complete", "action": 157, "tick": 12446, "physics_steps": 28, "gripper_request": [-0.0012132494782805443, 0.5461556438085438]}
+{"kind": "action_complete", "action": 158, "tick": 12470, "physics_steps": 24, "gripper_request": [-0.001302698246240616, 0.4690913885124922]}
+{"kind": "action_complete", "action": 159, "tick": 12494, "physics_steps": 24, "gripper_request": [-0.0017097169572114945, 0.39617604239308835]}
+{"kind": "action_complete", "action": 160, "tick": 12513, "physics_steps": 19, "gripper_request": [-0.0007139215457439423, 0.3223188323312402]}
+{"kind": "action_complete", "action": 161, "tick": 12532, "physics_steps": 19, "gripper_request": [-0.0014131236739754677, 0.24565900346007943]}
+{"kind": "action_complete", "action": 162, "tick": 12551, "physics_steps": 19, "gripper_request": [-0.0007725012518763543, 0.17092837176758052]}
+{"kind": "action_complete", "action": 163, "tick": 12574, "physics_steps": 23, "gripper_request": [-0.002217387879431248, 0.08937147611993551]}
+{"kind": "action_complete", "action": 164, "tick": 12600, "physics_steps": 26, "gripper_request": [-0.0008669558136463165, 0.015215527434647083]}
+{"kind": "action_complete", "action": 165, "tick": 12619, "physics_steps": 19, "gripper_request": [0.0006767356488704681, 0.0009413276073932649]}
+{"kind": "action_complete", "action": 166, "tick": 12649, "physics_steps": 30, "gripper_request": [0.0004947392882108688, -0.00041869889652729035]}
+{"kind": "action_complete", "action": 167, "tick": 12668, "physics_steps": 19, "gripper_request": [0.0006848402674198151, -0.0007962787724733353]}
+{"kind": "action_complete", "action": 168, "tick": 12693, "physics_steps": 25, "gripper_request": [0.0013445323802232744, 0.0006807283653616906]}
+{"kind": "action_complete", "action": 169, "tick": 12719, "physics_steps": 26, "gripper_request": [0.0006667240612506866, 0.0010864360350966455]}
+{"kind": "action_complete", "action": 170, "tick": 12743, "physics_steps": 24, "gripper_request": [-4.1119020581245425e-05, 0.0003714418192505837]}
+{"kind": "action_complete", "action": 171, "tick": 12760, "physics_steps": 17, "gripper_request": [-0.0025413938430547717, -0.000666247318983078]}
+{"kind": "action_complete", "action": 172, "tick": 12784, "physics_steps": 24, "gripper_request": [-0.0013077636328339577, 4.0880649447441106e-05]}
+{"kind": "action_complete", "action": 173, "tick": 12805, "physics_steps": 21, "gripper_request": [-0.003943612037658691, -6.793577313423157e-05]}
+{"kind": "action_complete", "action": 174, "tick": 12828, "physics_steps": 23, "gripper_request": [0.0794167996083498, -0.0005036782057285309]}
+{"kind": "action_complete", "action": 175, "tick": 12845, "physics_steps": 17, "gripper_request": [0.1564246801312566, -0.0005507565046548844]}
+{"kind": "action_complete", "action": 176, "tick": 12869, "physics_steps": 24, "gripper_request": [0.230483790543437, -0.00010214203083515168]}
+{"kind": "action_complete", "action": 177, "tick": 12885, "physics_steps": 16, "gripper_request": [0.30507417062008385, -6.352590715885163e-05]}
+{"kind": "action_complete", "action": 178, "tick": 12906, "physics_steps": 21, "gripper_request": [0.38177070864585044, -0.0005806124891638756]}
+{"kind": "action_complete", "action": 179, "tick": 12924, "physics_steps": 18, "gripper_request": [0.457817715128392, -0.0007427644529342652]}
+{"kind": "action_complete", "action": 180, "tick": 12956, "physics_steps": 32, "gripper_request": [0.5322487738984824, 5.184572160243988e-06]}
+{"kind": "action_complete", "action": 181, "tick": 12983, "physics_steps": 27, "gripper_request": [0.6066603756247759, 0.0007236947622299195]}
+{"kind": "action_complete", "action": 182, "tick": 13005, "physics_steps": 22, "gripper_request": [0.6807215717843771, 0.0001749942086040974]}
+{"kind": "action_complete", "action": 183, "tick": 13019, "physics_steps": 14, "gripper_request": [0.7557832115925551, -0.00023616620081663134]}
+{"kind": "action_complete", "action": 184, "tick": 13035, "physics_steps": 16, "gripper_request": [0.8277189119448066, 0.0011832445118129253]}
+{"kind": "action_complete", "action": 185, "tick": 13069, "physics_steps": 34, "gripper_request": [0.9042939700815082, -0.00038175137078762055]}
+{"kind": "action_complete", "action": 186, "tick": 13106, "physics_steps": 37, "gripper_request": [0.9833637013190389, -7.049826282262803e-05]}
+{"kind": "action_complete", "action": 187, "tick": 13131, "physics_steps": 25, "gripper_request": [0.9980813310479523, 0.00015738454109430315]}
+{"kind": "action_complete", "action": 188, "tick": 13151, "physics_steps": 20, "gripper_request": [1.0000879988451004, 0.0006110644015073776]}
+{"kind": "action_complete", "action": 189, "tick": 13171, "physics_steps": 20, "gripper_request": [1.000022685154438, 0.0001463002833724022]}
+{"kind": "action_complete", "action": 190, "tick": 13194, "physics_steps": 23, "gripper_request": [1.000220294824362, 0.0003944446336627007]}
+{"kind": "action_complete", "action": 191, "tick": 13216, "physics_steps": 22, "gripper_request": [1.0011149016895295, 4.3323953568935394e-05]}
+{"kind": "action_complete", "action": 192, "tick": 13241, "physics_steps": 25, "gripper_request": [1.000438285226226, 0.0010875087051987649]}
+{"kind": "action_complete", "action": 193, "tick": 13256, "physics_steps": 15, "gripper_request": [1.000632915256977, 0.0023647608329057696]}
+{"kind": "action_complete", "action": 194, "tick": 13286, "physics_steps": 30, "gripper_request": [1.0005424534116985, 0.002383711338043213]}
+{"kind": "action_complete", "action": 195, "tick": 13323, "physics_steps": 37, "gripper_request": [1.000706095195055, 0.0005596954221725464]}
+{"kind": "action_complete", "action": 196, "tick": 13356, "physics_steps": 33, "gripper_request": [1.000611223483801, 0.0008490183858275414]}
+{"kind": "action_complete", "action": 197, "tick": 13419, "physics_steps": 63, "gripper_request": [1.0004944216282368, 0.0010640887413024902]}
+{"kind": "action_complete", "action": 198, "tick": 13490, "physics_steps": 71, "gripper_request": [1.0010088265349866, 0.0005084456284046174]}
+{"kind": "action_complete", "action": 199, "tick": 13578, "physics_steps": 88, "gripper_request": [1.0016362193591595, 0.0006587386282682419]}
+{"kind": "action_complete", "action": 200, "tick": 13674, "physics_steps": 96, "gripper_request": [1.0001928821439743, 0.0005564476154744626]}
+{"kind": "action_complete", "action": 201, "tick": 13767, "physics_steps": 93, "gripper_request": [1.0000536734018326, 4.797219067811966e-06]}
+{"kind": "action_complete", "action": 202, "tick": 13857, "physics_steps": 90, "gripper_request": [1.0012753254625797, -0.0003640523141026497]}
+{"kind": "action_complete", "action": 203, "tick": 13952, "physics_steps": 95, "gripper_request": [1.0022037810287476, -0.0002446283760666847]}
+{"kind": "action_complete", "action": 204, "tick": 14038, "physics_steps": 86, "gripper_request": [1.003873570821047, -0.0025492004976868632]}
+{"kind": "request_identity", "query": 9, "request_sha256": "e054a5ea28fd99fa2265bcd3d66d1ce50726ca6e9ead0e30a1939a199335f462"}
+{"kind": "request", "query": 9}
+{"kind": "response", "query": 9, "rng": {"episode_id": "g5-author_native-pace-200000", "query": 9, "request_sha256": "e054a5ea28fd99fa2265bcd3d66d1ce50726ca6e9ead0e30a1939a199335f462", "before": {"impl": "threefry2x32", "words": [1861711324, 429891021]}, "sample": {"impl": "threefry2x32", "words": [3949573971, 553583122]}, "after": {"impl": "threefry2x32", "words": [4175023959, 2560315463]}}, "chunk_sha256": "f0bd98c71386b26301aa5302ceb49f30dbed99e18668f84241b8f103069271d8", "round_trip_s": 0.1390678584575653, "service_inference_s": 0.11522918194532394}
+{"kind": "block", "step": 204, "horizon": 25, "selected_grippers": [[1.0003642709891796, 0.0005878232159614563], [1.0003239862675668, -0.00038747227799892426], [0.9990760537893176, -0.0013863665142059326], [0.9993193711241484, -0.0009478828135728837], [0.9996503494434357, -0.0001583976184129715], [0.9993948155879975, -0.0010875682979822159], [1.000017798546195, -0.001465863287329674], [0.999647608175397, -0.0008619500198364258], [0.9995258005260229, -0.000654328762292862], [0.9995582785930038, -0.00018330740189552309], [0.9991370767995715, -0.001178149328827858], [0.9994076876292229, -0.001612103977918625], [0.9996287768558264, -0.0005946167932748794], [0.998526250769198, -0.0016375500964522362], [0.998868551717341, -0.0012527594937086107], [0.9991289125882388, 0.00017466644829511644], [0.9983515247281194, -0.0015203310914039612], [0.9991817117943764, -0.001238993560731411], [0.9992999438767434, -0.0018328952406048776], [0.9994529781446457, -0.0005011753088235855], [0.9996638174124957, -0.0007932991333007812], [1.0003769046592712, -0.0007439563086032867], [0.9996635790413618, -0.0009214832105040551], [0.9999414005978108, -0.0011025856794118882], [0.9997978415824772, -0.00030451912343502045]]}
+{"kind": "action_complete", "action": 205, "tick": 14067, "physics_steps": 29, "gripper_request": [1.0003642709891796, 0.0005878232159614563]}
+{"kind": "action_complete", "action": 206, "tick": 14118, "physics_steps": 51, "gripper_request": [1.0003239862675668, -0.00038747227799892426]}
+{"kind": "action_complete", "action": 207, "tick": 14191, "physics_steps": 73, "gripper_request": [0.9990760537893176, -0.0013863665142059326]}
+{"kind": "action_complete", "action": 208, "tick": 14274, "physics_steps": 83, "gripper_request": [0.9993193711241484, -0.0009478828135728837]}
+{"kind": "action_complete", "action": 209, "tick": 14373, "physics_steps": 99, "gripper_request": [0.9996503494434357, -0.0001583976184129715]}
+{"kind": "action_complete", "action": 210, "tick": 14484, "physics_steps": 111, "gripper_request": [0.9993948155879975, -0.0010875682979822159]}
+{"kind": "action_complete", "action": 211, "tick": 14603, "physics_steps": 119, "gripper_request": [1.000017798546195, -0.001465863287329674]}
+{"kind": "action_complete", "action": 212, "tick": 14729, "physics_steps": 126, "gripper_request": [0.999647608175397, -0.0008619500198364258]}
+{"kind": "action_complete", "action": 213, "tick": 14872, "physics_steps": 143, "gripper_request": [0.9995258005260229, -0.000654328762292862]}
+{"kind": "action_complete", "action": 214, "tick": 15014, "physics_steps": 142, "gripper_request": [0.9995582785930038, -0.00018330740189552309]}
+{"kind": "action_complete", "action": 215, "tick": 15162, "physics_steps": 148, "gripper_request": [0.9991370767995715, -0.001178149328827858]}
+{"kind": "action_complete", "action": 216, "tick": 15315, "physics_steps": 153, "gripper_request": [0.9994076876292229, -0.001612103977918625]}
+{"kind": "action_complete", "action": 217, "tick": 15468, "physics_steps": 153, "gripper_request": [0.9996287768558264, -0.0005946167932748794]}
+{"kind": "action_complete", "action": 218, "tick": 15625, "physics_steps": 157, "gripper_request": [0.998526250769198, -0.0016375500964522362]}
+{"kind": "action_complete", "action": 219, "tick": 15779, "physics_steps": 154, "gripper_request": [0.998868551717341, -0.0012527594937086107]}
+{"kind": "action_complete", "action": 220, "tick": 15938, "physics_steps": 159, "gripper_request": [0.9991289125882388, 0.00017466644829511644]}
+{"kind": "action_complete", "action": 221, "tick": 16093, "physics_steps": 155, "gripper_request": [0.9983515247281194, -0.0015203310914039612]}
+{"kind": "action_complete", "action": 222, "tick": 16239, "physics_steps": 146, "gripper_request": [0.9991817117943764, -0.001238993560731411]}
+{"kind": "action_complete", "action": 223, "tick": 16381, "physics_steps": 142, "gripper_request": [0.9992999438767434, -0.0018328952406048776]}
+{"kind": "action_complete", "action": 224, "tick": 16507, "physics_steps": 126, "gripper_request": [0.9994529781446457, -0.0005011753088235855]}
+{"kind": "action_complete", "action": 225, "tick": 16628, "physics_steps": 121, "gripper_request": [0.9996638174124957, -0.0007932991333007812]}
+{"kind": "action_complete", "action": 226, "tick": 16734, "physics_steps": 106, "gripper_request": [1.0003769046592712, -0.0007439563086032867]}
+{"kind": "action_complete", "action": 227, "tick": 16830, "physics_steps": 96, "gripper_request": [0.9996635790413618, -0.0009214832105040551]}
+{"kind": "action_complete", "action": 228, "tick": 16907, "physics_steps": 77, "gripper_request": [0.9999414005978108, -0.0011025856794118882]}
+{"kind": "action_complete", "action": 229, "tick": 16962, "physics_steps": 55, "gripper_request": [0.9997978415824772, -0.00030451912343502045]}
+{"kind": "request_identity", "query": 10, "request_sha256": "60ad3ee87b05248ab30ba0aad820b15e60469986c9d0f843aca9cba9f557a00e"}
+{"kind": "request", "query": 10}
+{"kind": "response", "query": 10, "rng": {"episode_id": "g5-author_native-pace-200000", "query": 10, "request_sha256": "60ad3ee87b05248ab30ba0aad820b15e60469986c9d0f843aca9cba9f557a00e", "before": {"impl": "threefry2x32", "words": [4175023959, 2560315463]}, "sample": {"impl": "threefry2x32", "words": [3789552139, 2399770011]}, "after": {"impl": "threefry2x32", "words": [197075234, 2075500836]}}, "chunk_sha256": "69515e232cf49c871ed728a0d88780b8861f3f8b10cba922f5505ffc1103c5db", "round_trip_s": 0.8083755448460579, "service_inference_s": 0.5830187052488327}
+{"kind": "block", "step": 229, "horizon": 14, "selected_grippers": [[0.9998050523092747, 0.0010946598392128945], [1.000294309061408, 0.0006463433293104172], [1.00035425940156, 0.00035958285534381867], [1.0021847113380433, -0.0007273895148038864], [0.9999993247833252, 0.0009365601847171784], [0.999995987587452, -0.0007727992157936097], [1.0003421024737358, -0.0016541764830350877], [1.0016958121426105, -0.0025946101986765863], [1.000850071359873, -0.0024173812606930736], [1.001739195688963, -0.0023834133741259577], [1.0004451979891062, -0.0006583214787840843], [1.0000688099688293, 0.0003146498966217041], [1.0005773747828006, -0.0006598708911538124], [0.998931183732748, -0.0018663267921209337]]}
+{"kind": "action_complete", "action": 230, "tick": 17003, "physics_steps": 41, "gripper_request": [0.9998050523092747, 0.0010946598392128945]}
+{"kind": "action_complete", "action": 231, "tick": 17036, "physics_steps": 33, "gripper_request": [1.000294309061408, 0.0006463433293104172]}
+{"kind": "action_complete", "action": 232, "tick": 17084, "physics_steps": 48, "gripper_request": [1.00035425940156, 0.00035958285534381867]}
+{"kind": "action_complete", "action": 233, "tick": 17130, "physics_steps": 46, "gripper_request": [1.0021847113380433, -0.0007273895148038864]}
+{"kind": "action_complete", "action": 234, "tick": 17182, "physics_steps": 52, "gripper_request": [0.9999993247833252, 0.0009365601847171784]}
+{"kind": "action_complete", "action": 235, "tick": 17231, "physics_steps": 49, "gripper_request": [0.999995987587452, -0.0007727992157936097]}
+{"kind": "action_complete", "action": 236, "tick": 17294, "physics_steps": 63, "gripper_request": [1.0003421024737358, -0.0016541764830350877]}
+{"kind": "action_complete", "action": 237, "tick": 17361, "physics_steps": 67, "gripper_request": [1.0016958121426105, -0.0025946101986765863]}
+{"kind": "action_complete", "action": 238, "tick": 17437, "physics_steps": 76, "gripper_request": [1.000850071359873, -0.0024173812606930736]}
+{"kind": "action_complete", "action": 239, "tick": 17518, "physics_steps": 81, "gripper_request": [1.001739195688963, -0.0023834133741259577]}
+{"kind": "action_complete", "action": 240, "tick": 17589, "physics_steps": 71, "gripper_request": [1.0004451979891062, -0.0006583214787840843]}
+{"kind": "action_complete", "action": 241, "tick": 17638, "physics_steps": 49, "gripper_request": [1.0000688099688293, 0.0003146498966217041]}
+{"kind": "action_complete", "action": 242, "tick": 17656, "physics_steps": 18, "gripper_request": [1.0005773747828006, -0.0006598708911538124]}
+{"kind": "action_complete", "action": 243, "tick": 17675, "physics_steps": 19, "gripper_request": [0.998931183732748, -0.0018663267921209337]}
+{"kind": "request_identity", "query": 11, "request_sha256": "223db733dc87af556d14a4fff0f982c6ecd27cf50c10ed005b6274617e7ae220"}
+{"kind": "request", "query": 11}
+{"kind": "response", "query": 11, "rng": {"episode_id": "g5-author_native-pace-200000", "query": 11, "request_sha256": "223db733dc87af556d14a4fff0f982c6ecd27cf50c10ed005b6274617e7ae220", "before": {"impl": "threefry2x32", "words": [197075234, 2075500836]}, "sample": {"impl": "threefry2x32", "words": [3499959921, 3652298783]}, "after": {"impl": "threefry2x32", "words": [2234728722, 1518742019]}}, "chunk_sha256": "754effaf2cf66989911647692f3dabe3395a6e59089f482dc1a99f0b609e8ae0", "round_trip_s": 0.16689307242631912, "service_inference_s": 0.09538440406322479}
+{"kind": "block", "step": 243, "horizon": 11, "selected_grippers": [[1.0017582653796673, -0.001455553735792637], [1.0021345342143775, -0.0009842344114780427], [1.00011302781415, -0.0026104022862911227], [1.000508843081832, 0.014302089249908926], [0.9995322365466357, 0.09182067992699147], [1.000121370803833, 0.1644341885982156], [1.0006689092981815, 0.2394272073162496], [0.9990461382120253, 0.3138570146378875], [0.9999318657524586, 0.3897203561618328], [1.000552822556019, 0.468305627866298], [0.9997995101804138, 0.5422490388894081]]}
+{"kind": "action_complete", "action": 244, "tick": 17708, "physics_steps": 33, "gripper_request": [1.0017582653796673, -0.001455553735792637]}
+{"kind": "action_complete", "action": 245, "tick": 17733, "physics_steps": 25, "gripper_request": [1.0021345342143775, -0.0009842344114780427]}
+{"kind": "action_complete", "action": 246, "tick": 17756, "physics_steps": 23, "gripper_request": [1.00011302781415, -0.0026104022862911227]}
+{"kind": "action_complete", "action": 247, "tick": 17782, "physics_steps": 26, "gripper_request": [1.000508843081832, 0.014302089249908926]}
+{"kind": "action_complete", "action": 248, "tick": 17814, "physics_steps": 32, "gripper_request": [0.9995322365466357, 0.09182067992699147]}
+{"kind": "action_complete", "action": 249, "tick": 17852, "physics_steps": 38, "gripper_request": [1.000121370803833, 0.1644341885982156]}
+{"kind": "action_complete", "action": 250, "tick": 17889, "physics_steps": 37, "gripper_request": [1.0006689092981815, 0.2394272073162496]}
+{"kind": "action_complete", "action": 251, "tick": 17933, "physics_steps": 44, "gripper_request": [0.9990461382120253, 0.3138570146378875]}
+{"kind": "action_complete", "action": 252, "tick": 17957, "physics_steps": 24, "gripper_request": [0.9999318657524586, 0.3897203561618328]}
+{"kind": "action_complete", "action": 253, "tick": 17975, "physics_steps": 18, "gripper_request": [1.000552822556019, 0.468305627866298]}
+{"kind": "action_complete", "action": 254, "tick": 17999, "physics_steps": 24, "gripper_request": [0.9997995101804138, 0.5422490388894081]}
+{"kind": "request_identity", "query": 12, "request_sha256": "e73d70815c3adb0faa64a98ad3041e258725918637e20dba148df662c22721df"}
+{"kind": "request", "query": 12}
+{"kind": "response", "query": 12, "rng": {"episode_id": "g5-author_native-pace-200000", "query": 12, "request_sha256": "e73d70815c3adb0faa64a98ad3041e258725918637e20dba148df662c22721df", "before": {"impl": "threefry2x32", "words": [2234728722, 1518742019]}, "sample": {"impl": "threefry2x32", "words": [312422605, 4273504752]}, "after": {"impl": "threefry2x32", "words": [3028032349, 3757460125]}}, "chunk_sha256": "666d2dc6b0e38798fbf77ab696c6f5663b6107cf8e18d3325325b7bf61d4456d", "round_trip_s": 0.27001478523015976, "service_inference_s": 0.19932635128498077}
+{"kind": "block", "step": 254, "horizon": 8, "selected_grippers": [[0.998655984258771, 0.6052767503786087], [0.9991657409284115, 0.6869338810880184], [0.9999385401442051, 0.7596155043107271], [0.999604403407395, 0.8302601866022945], [0.9996129251754284, 0.9031218992165924], [0.999018367974937, 0.9800384835952521], [0.9994147195776701, 0.9989950671966077], [1.0002304255975485, 1.0007161067826749]]}
+{"kind": "action_complete", "action": 255, "tick": 18025, "physics_steps": 26, "gripper_request": [0.998655984258771, 0.6052767503786087]}
+{"kind": "action_complete", "action": 256, "tick": 18042, "physics_steps": 17, "gripper_request": [0.9991657409284115, 0.6869338810880184]}
+{"kind": "action_complete", "action": 257, "tick": 18062, "physics_steps": 20, "gripper_request": [0.9999385401442051, 0.7596155043107271]}
+{"kind": "action_complete", "action": 258, "tick": 18078, "physics_steps": 16, "gripper_request": [0.999604403407395, 0.8302601866022945]}
+{"kind": "terminal", "mode": "author_native", "method": "pace", "scene_seed": 200000, "episode_id": "g5-author_native-pace-200000", "success": true, "scene_closed": true, "outcome": "SUCCESS", "trial_clock": {"started": 65641988.81426647, "soft": 65653388.81426647, "hard": 65653988.81426647, "reap_at": 65653978.81426647, "budget": {"physics_steps": 130000, "soft_s": 11400, "hard_s": 12000, "reap_s": 10, "request_s": 390}}, "prompt": "Grab the red block with the left arm, switch to the right, and place it on the blue pad.", "selector": {"selector": "pace", "threshold": 0.008204944897443056, "config": {"fps": 50.0, "min_distance": 10, "smoothing_window": 11, "polynomial_order": 3}, "calibration_sha256": "d66b55926fb3afc655199986710f84d8bc519e4443c11ceb51725814da98204f"}, "steps": 258, "queries": 13, "completed_actions": 258, "native_action_count": 258, "physics_steps": 18078, "elapsed_s": 350.3530213832855}

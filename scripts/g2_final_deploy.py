@@ -136,6 +136,25 @@ def verify(release):
         binding = plan["trial_bindings"][episode]
         name = f"configs/{episode}.json"
         cfg = read(release / name)
+        if unified and (
+            row.get("task_tcp_projection") is not None or cfg.get("task_tcp_projection") is not None
+        ):
+            # Old projection packages used the configuration flag alone with
+            # the default 300-action roster. Bind the new 800-action profile
+            # explicitly and only inside its selected standalone allocation.
+            from g2_unified_plan import ARX_PROJECTION_ACTION_CAP, ARX_PROJECTION_METHOD
+
+            standalone = read(release / "standalone-review.json")
+            projection = row.get("task_tcp_projection")
+            expected_actions = 300 if projection is None else ARX_PROJECTION_ACTION_CAP
+            if (
+                (standalone.get("mode"), standalone.get("episode")) != ("arx", episode)
+                or cfg.get("task_tcp_projection") != ARX_PROJECTION_METHOD
+                or type(cfg["max_actions"]) is not int
+                or cfg["max_actions"] != expected_actions
+                or row["max_policy_actions"] != expected_actions
+            ):
+                raise ValueError(f"TCP projection configuration differs from standalone roster: {episode}")
         if cfg.get("free_space_approach_repair") != (
             approach_repair if "expert" not in row["method"] else None
         ):

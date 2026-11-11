@@ -21,7 +21,13 @@ def run(spec, backend, adapter, policy, output):
         "window"
     ] not in (1, 4):
         raise ValueError("diagnostic original-window scope required")
-    if type(spec["max_actions"]) is not int or not 0 < spec["max_actions"] <= 300:
+    action_limit = 300
+    if spec.get("task_tcp_projection") is not None:
+        from g2_unified_plan import ARX_PROJECTION_ACTION_CAP, ARX_PROJECTION_METHOD
+
+        if spec["task_tcp_projection"] == ARX_PROJECTION_METHOD:
+            action_limit = ARX_PROJECTION_ACTION_CAP
+    if type(spec["max_actions"]) is not int or not 0 < spec["max_actions"] <= action_limit:
         raise ValueError("policy action cap required")
     output = Path(output)
     output.mkdir(parents=True, exist_ok=False)

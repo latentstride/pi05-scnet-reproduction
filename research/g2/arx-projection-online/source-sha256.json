@@ -1,12 +1,15 @@
 {
-  "scripts/g2_remaining_coordinator.py": "429293d6c73c1b553b181bc241a797a66974072b03d6cf0fbbdea3a1e0b21ca0",
-  "scripts/g2_remaining_conditions.py": "f6462a34b19c3aec54ecaccb05e9268165a4b1a2c307612b0b8559b7456c700e",
-  "scripts/g2_remaining_episode.py": "788f201e6cad2ba144a9a362a307800563bc170fc3853ae40c79e987955a5ce7",
-  "scripts/g2_task_runtime.py": "715795f4443dd962d155583ab11c4ed572ed8292213847caf6053a28eb512839",
-  "scripts/g2_task_tcp_projection.py": "12e920ab9a59f7d42ead515b6dc7e736cdadae865e899298839a8f65e85dfbfd",
-  "scripts/g2_standalone_package.py": "e1cb3261f29cea6e19b5f57b04602297ccc1764795b5474624ffc78a7e8fc6f9",
-  "scripts/g2_standalone_submit.py": "6de1c0b5e3cee7028df7a2753188526f6cc7a6ffbb4d0544c17c8af53d54d793",
+  "research/g2/arx-projection-online/replay.py": "c50c6da4358d3d26f3daec21a4f5811adad82a0475dbb7ff88846ac7463a34fc",
   "scripts/g2_arx_transfer_probe_cpu.py": "d6bbafbccc40f9ce4fbbaa040660558a96dbdd8b0a40817cee3846d1cc3992ce",
+  "scripts/g2_final_deploy.py": "015d9c4a3044549cb1d964d01ddfb7f6771b4636dfa7dfaf806d3ae3e2ded473",
+  "scripts/g2_remaining_conditions.py": "f6462a34b19c3aec54ecaccb05e9268165a4b1a2c307612b0b8559b7456c700e",
+  "scripts/g2_remaining_coordinator.py": "429293d6c73c1b553b181bc241a797a66974072b03d6cf0fbbdea3a1e0b21ca0",
+  "scripts/g2_remaining_episode.py": "c8157af434f4139480a5025f2fd832aa24cab493e100ed6ef6a02c93bf84ee48",
+  "scripts/g2_standalone_package.py": "0a9f8a235a9c79da1e0523ed3153573d806b65b9491e574cae75784a76fb59d3",
+  "scripts/g2_standalone_submit.py": "6de1c0b5e3cee7028df7a2753188526f6cc7a6ffbb4d0544c17c8af53d54d793",
+  "scripts/g2_task_runtime.py": "e9434905f2daa24e0e2769e7e9faa5f6d4827685e5422cbaaebd282d7566709e",
+  "scripts/g2_task_tcp_projection.py": "12e920ab9a59f7d42ead515b6dc7e736cdadae865e899298839a8f65e85dfbfd",
+  "scripts/g2_unified_plan.py": "cd64530ef4da2a5503ebecbda582333f31cccb42629b617e3d4487ce9d591ceb",
   "tests/test_g2_arx_projection.py": "27677c8a6aff2e0cb8445694286a4f6db7bff953f6c9cbd0e75945991566e9be",
-  "research/g2/arx-projection-online/replay.py": "c50c6da4358d3d26f3daec21a4f5811adad82a0475dbb7ff88846ac7463a34fc"
+  "tests/test_g2_arx_projection_budget.py": "f49906bbd2e5b2a5c049193fdd8a0a35e3aa7f9996e0f5ec33f5b553061720b3"
 }

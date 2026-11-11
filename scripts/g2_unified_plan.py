@@ -29,6 +29,9 @@ TRIALS_S = sum(CONDITIONS[label][-1] for _, label in ORDER)
 BOUND_S = TRIALS_S + sum(OVERHEAD.values())
 ALLOCATION_S = 25200
 FEE = 25.20
+ARX_PROJECTION_EPISODE = "unified-seed1-arx-full-w4"
+ARX_PROJECTION_METHOD = "bounded_task_tcp_projection_v1"
+ARX_PROJECTION_ACTION_CAP = 800
 PROTECTED_JOBS = ("127054052", "127081074", "127117141", "127139405")
 COMPARISONS = [
     ["native-w50", "native-w31"],
@@ -123,12 +126,21 @@ def validate(plan):
         raise ValueError("unified review roster or resource envelope differs")
     for row in plan["trials"]:
         label, seed = row["condition"], row["seed"]
+        projection = row.get("task_tcp_projection")
+        if projection is not None and (
+            projection != ARX_PROJECTION_METHOD
+            or (seed, label, row["episode_id"]) != (1, "arx-full-w4", ARX_PROJECTION_EPISODE)
+        ):
+            raise ValueError("TCP projection action cap is restricted to the standalone ARX trial")
+        expected_actions = None if "expert" in label else 300
+        if projection is not None:
+            expected_actions = ARX_PROJECTION_ACTION_CAP
         if (
             tuple(row[k] for k in ("embodiment", "window", "method", "hard_timeout_s"))
             != CONDITIONS[label]
             or row["episode_id"] != f"unified-seed{seed}-{label}"
             or row["recovery_cap"] != (4 if label == "arx-full-w4" else 0)
-            or row["max_policy_actions"] != (None if "expert" in label else 300)
+            or row["max_policy_actions"] != expected_actions
             or row["formal_score_eligible"] is not False
         ):
             raise ValueError("unified trial differs from frozen condition")

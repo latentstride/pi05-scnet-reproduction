@@ -1,0 +1,11 @@
+Local CPU budget fixtures. Unused transport and export imports use stand-ins.
+test_action_cap_completes_at_800_and_query_cap_stays_at_300 (test_g2_arx_projection_budget.ProjectionBudgetTests.test_action_cap_completes_at_800_and_query_cap_stays_at_300) ... ok
+test_hard_deadline_reaps_worker_and_is_resource_censored (test_g2_arx_projection_budget.ProjectionBudgetTests.test_hard_deadline_reaps_worker_and_is_resource_censored) ... ok
+test_release_binds_only_projection_action_cap (test_g2_arx_projection_budget.ProjectionBudgetTests.test_release_binds_only_projection_action_cap) ... ok
+test_release_rejects_mismatched_cap_even_with_updated_hashes (test_g2_arx_projection_budget.ProjectionBudgetTests.test_release_rejects_mismatched_cap_even_with_updated_hashes) ... ok
+test_soft_deadline_stops_and_is_resource_censored (test_g2_arx_projection_budget.ProjectionBudgetTests.test_soft_deadline_stops_and_is_resource_censored) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 2.486s
+
+OK

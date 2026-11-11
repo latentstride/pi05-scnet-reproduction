@@ -27,7 +27,7 @@
 
 | 配置项 | 值 |
 | --- | --- |
-| 任务 | RoboTwin `handover_block`，ARX-X5，历史 seed 1 夹具，W4，最多 300 策略动作 |
+| 任务 | RoboTwin `handover_block`，ARX-X5，历史 seed 1 夹具，W4，最多 800 策略动作和 300 次模型查询 |
 | 资源 | `ksagnormal01/gnode39`，1×RTX 4090 24 GB，4 CPU，32 GiB，90 分钟 |
 | 流程 | 一个作业、一个模型服务、原动态准入、一个独立试次、最多四次恢复 |
 | 时限 | 图形 300 s，启动及准入 1,680 s，试次软／硬限 2,550／2,600 s，统计及清理各 120 s，宿主预留 360 s，剩余 220 s |
@@ -35,6 +35,8 @@
 | 授权状态 | 待授权，已提交 0 项 |
 
 SCNet 已完成只读分区、节点、账号关联、QoS、磁盘与重复任务预检，完整候选通过 89 个成员校验。Slurm 控制器中的历史作业记录已过期。提交助手仅为此投影候选从已验证的 `127510363` 授权回执和 Slurm 账务记录解析账号与 QoS，仍对当前分区、节点、账号、并发和磁盘执行原检查。实际提交时需要当次授权及通过原报价和余额门禁。[包配置与哈希](../research/g2/arx-projection-online/package.json) · [SCNet 预检](../research/g2/arx-projection-online/platform-preflight.json) · [历史官方报价回执](../research/g2/standalone-review/scnet-quote.json)
+
+800 动作上限仅绑定到独立 ARX 投影试次。配置与运行清单须同时通过校验。定向 CPU 测试中，W4 在 200 次查询完成 800 动作并归类为 `task_unsuccessful / action_budget_exhausted`。W1 在第 300 次查询结束。模拟试次软截止与缩短时钟的宿主硬截止均归类为 `RESOURCE_CENSORED`，后者由原监督器终止并回收超时子进程。[预算边界测试](../tests/test_g2_arx_projection_budget.py) · [测试回执](../research/g2/arx-projection-online/action-budget-800-tests.txt)
 
 构建使用与作业 `127510363` 对应的原单作业归档，保留原 Slurm 脚本、模型入口和控制后端。新包更新 ARX 试次配置与其哈希绑定，移除仅由作者模式消费且绑定旧计划字节的 H50 覆盖声明。源文件哈希见[清单](../research/g2/arx-projection-online/source-sha256.json)。
 

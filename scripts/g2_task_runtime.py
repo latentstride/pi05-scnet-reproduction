@@ -41,11 +41,14 @@ def validate_config(config, *, allow_native_h50=False):
     projection = config.get("task_tcp_projection")
     if projection is not None:
         from g2_task_tcp_projection import METHOD
+        from g2_unified_plan import ARX_PROJECTION_ACTION_CAP
 
         if (projection != METHOD or config.get("embodiment") != "ARX-X5"
                 or config.get("contact_mode") != CONTACT_MODE
                 or repair != APPROACH_REPAIR):
             raise ValueError("TCP projection requires guarded ARX approach recovery")
+        if type(config["max_actions"]) is not int or not 0 < config["max_actions"] <= ARX_PROJECTION_ACTION_CAP:
+            raise ValueError("invalid TCP projection policy action cap")
     if repair is not None and (repair != APPROACH_REPAIR
             or config.get("embodiment") not in ("aloha-agilex", "ARX-X5")):
         raise ValueError("unknown bounded approach profile")

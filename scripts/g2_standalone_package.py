@@ -17,17 +17,19 @@ from g2_standalone_deploy import (
     spec,
     verify_standalone,
 )
+from g2_unified_plan import ARX_PROJECTION_ACTION_CAP, ARX_PROJECTION_METHOD
 
 CHANGED = ("scripts/g2_graphics.sh", "scripts/pace_g1_model_env.sh")
 ADDED = ("g2_standalone_deploy.py", "g2_standalone_video.py")
 DEPLOYED_ARX_ARCHIVE = "608982ae51ac552e93eb72635a96b53fa685a4f574af11b656b3e3b7b7d89043"
-PROJECTION = "bounded_task_tcp_projection_v1"
 PROJECTION_SCRIPTS = (
+    "scripts/g2_final_deploy.py",
     "scripts/g2_remaining_conditions.py",
     "scripts/g2_remaining_coordinator.py",
     "scripts/g2_remaining_episode.py",
     "scripts/g2_task_runtime.py",
     "scripts/g2_task_tcp_projection.py",
+    "scripts/g2_unified_plan.py",
 )
 
 
@@ -115,8 +117,10 @@ def package_projection(project, parent, output):
         config_path = f"configs/{episode}.json"
         config_file = release / config_path
         config = json.loads(config_file.read_text())
-        config["task_tcp_projection"] = PROJECTION
+        config.update(task_tcp_projection=ARX_PROJECTION_METHOD, max_actions=ARX_PROJECTION_ACTION_CAP)
         config_file.write_text(json.dumps(config, indent=2) + "\n")
+        (trial,) = [row for row in plan["trials"] if row["episode_id"] == episode]
+        trial.update(task_tcp_projection=ARX_PROJECTION_METHOD, max_policy_actions=ARX_PROJECTION_ACTION_CAP)
         plan["trial_bindings"][episode]["config_sha256"] = digest(config_file)
         (release / "unified-plan.json").write_text(json.dumps(plan, indent=2) + "\n")
         # This declaration binds the old unified plan's exact bytes and is
@@ -132,7 +136,8 @@ def package_projection(project, parent, output):
         write_archive(release, output, "arx")
         return dict(
             mode="arx",
-            projection=PROJECTION,
+            projection=ARX_PROJECTION_METHOD,
+            max_policy_actions=ARX_PROJECTION_ACTION_CAP,
             archive_sha256=digest(output),
             manifest_sha256=digest(release / "SHA256SUMS"),
             configuration_sha256=digest(release / SPEC_FILE),

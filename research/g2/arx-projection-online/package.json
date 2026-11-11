@@ -1,10 +1,11 @@
 {
   "mode": "arx",
   "projection": "bounded_task_tcp_projection_v1",
-  "archive_sha256": "d7909bd445e47d3b1f57ac7994b026f55a2e4919185980d344896fa429e0f1f6",
-  "manifest_sha256": "2952482434ebc859ade06ddc3a0da4c178bc5e4bbed98374fb533a7c0de3f08a",
+  "max_policy_actions": 800,
+  "archive_sha256": "9f827fa8f74c13469cc8b7e7ddb89f2e5de3176405971d86030f9e1abb57c6c3",
+  "manifest_sha256": "7b472e3e4e750311b7148ef814ccb2c26dbc8ed7705173fc6fa3f307a9a10bf6",
   "configuration_sha256": "d0494e5d6d96a866537dc3360fcdcaf6da472ca7b20367dc4bd49ed2a146a10a",
-  "trial_config_sha256": "f935500dd20fba919b1331085cf04bbbf2aefc66ede5c73bf67e9b1290217124",
+  "trial_config_sha256": "0e823f5cdd6596e7c498670d3eee2b633972798ece60d16d0db8064e44311586",
   "parent_archive_sha256": "608982ae51ac552e93eb72635a96b53fa685a4f574af11b656b3e3b7b7d89043",
   "spec": {
     "mode": "arx",

@@ -238,7 +238,8 @@ def submit(root, stage, mode, archive_sha, manifest_sha, config_sha, commit):
     comment = f"cpf-g2-standalone-{mode}-{archive_sha[:12]}-single"
     config = read(release / "configs" / f"{episode}.json") if mode == "arx" else {}
     parent, live = platform(root, duration, comment, mode,
-                            projection=config.get("task_tcp_projection") == "bounded_task_tcp_projection_v1")
+                            projection=(config.get("task_tcp_projection") == "bounded_task_tcp_projection_v1"
+                                        or config.get("arx_direct") == "arx_direct_v1"))
     quote_path = stage / "approval.quote"
     q = read(quote_path)
     now = datetime.now(timezone.utc)

@@ -126,20 +126,28 @@ def validate(plan):
         raise ValueError("unified review roster or resource envelope differs")
     for row in plan["trials"]:
         label, seed = row["condition"], row["seed"]
+        direct = row.get("arx_direct")
+        if direct is not None:
+            from g2_arx_direct_profile import MODE, PREFIX_CAP
         projection = row.get("task_tcp_projection")
+        if direct is not None and (
+            direct != MODE or projection is not None
+            or (seed, label, row["episode_id"]) != (1, "arx-full-w4", ARX_PROJECTION_EPISODE)
+        ):
+            raise ValueError("direct ARX is restricted to the standalone seed 1 trial")
         if projection is not None and (
             projection != ARX_PROJECTION_METHOD
             or (seed, label, row["episode_id"]) != (1, "arx-full-w4", ARX_PROJECTION_EPISODE)
         ):
             raise ValueError("TCP projection action cap is restricted to the standalone ARX trial")
         expected_actions = None if "expert" in label else 300
-        if projection is not None:
+        if projection is not None or direct is not None:
             expected_actions = ARX_PROJECTION_ACTION_CAP
         if (
             tuple(row[k] for k in ("embodiment", "window", "method", "hard_timeout_s"))
-            != CONDITIONS[label]
+            != (("ARX-X5", PREFIX_CAP, MODE, 2600) if direct else CONDITIONS[label])
             or row["episode_id"] != f"unified-seed{seed}-{label}"
-            or row["recovery_cap"] != (4 if label == "arx-full-w4" else 0)
+            or row["recovery_cap"] != (4 if label == "arx-full-w4" and not direct else 0)
             or row["max_policy_actions"] != expected_actions
             or row["formal_score_eligible"] is not False
         ):

@@ -206,6 +206,15 @@ class ARXBackend:
         self.video.frame(observation)
         return snapshot, None
 
+    def capture_state(self):
+        """Refresh the physical start of an already queried action block."""
+        stamp = Stamp(self.episode, self.tick, self.tick * self.dt)
+        snapshot = Snapshot(stamp, capture_arms(self.env.robot, stamp), {}, self.world_task)
+        if self.contact_drive is not None:
+            self._contact_observation(snapshot)
+        self.last_capture = snapshot
+        return snapshot
+
     def success(self):
         # Same frozen task predicate for both robots, including its gripper rule.
         return bool(self.env.check_success())
@@ -237,7 +246,7 @@ class ARXBackend:
                 joint.set_drive_velocity_target(0.)
             self._apply_forces(side,entity,grip)
 
-    def execute(self, plan, log, remaining, *, stop_on_success=True):
+    def execute(self, plan, log, remaining, *, stop_on_success=True, stop_on_contact=False):
         self.replan_reason=None
         if not isinstance(plan, Trajectory) or self.last_capture is None:
             raise ValueError("ARXBackend only accepts synchronized G2 trajectories")
@@ -302,6 +311,10 @@ class ARXBackend:
                 raise G2Error(Status.COLLISION, "scene changed after planning", geometry="candidate",
                               tick=index,collisions=collisions)
             before_holders=set(self.collision.tracker.holders) if self.contact_drive is not None else set()
+            before_contact = (
+                any(self.collision.tracker.contact_fingers.values())
+                if stop_on_contact and self.contact_drive is not None else False
+            )
             if self.contact_drive is not None:
                 self.collision.tracker.authorize_opening(self._drive_fingers(),plan.fingers[index],self.arms,self.collision.giver)
             # Submit both arms and all native finger drives before any scene.step().
@@ -373,6 +386,13 @@ class ARXBackend:
                     self.env.take_action_cnt+=1
                     self.completed+=1
                     return done+1
+                if (stop_on_contact and self.contact_drive is not None and not before_contact
+                        and any(self.collision.tracker.contact_fingers.values())):
+                    self.replan_reason = dict(reason="measured_first_contact", tick=self.tick,
+                                              interrupted_waypoint=True)
+                    self.env.take_action_cnt += 1
+                    self.completed += 1
+                    return done + 1
                 if stop_on_success and self.success():
                     # A successful partial waypoint still consumes its current policy action.
                     return done + 1

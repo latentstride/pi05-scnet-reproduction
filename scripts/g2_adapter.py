@@ -356,9 +356,12 @@ class Adapter:
         return guarded("expert_observation", snapshot.stamp, work)
 
     def actions(self, chunk, snapshot, window, budget_s):
+        return self._actions(chunk, snapshot, window, budget_s)
+
+    def _actions(self, chunk, snapshot, window, budget_s, *, require_observation=True):
         def work(log):
             check = deadline(budget_s)
-            if snapshot.stamp != self.last_stamp:
+            if require_observation and snapshot.stamp != self.last_stamp:
                 raise G2Error(Status.UNSYNCED, "actions must start from the mapped observation")
             chunk_array = finite_array(chunk, (50, 14))
             if type(window) is not int or not 1 <= window <= 4:

@@ -147,6 +147,59 @@ def package_projection(project, parent, output):
         )
 
 
+def package_direct(project, parent, output, parent_sha256):
+    """Derive a separate diagnostic archive from an exact standalone ARX parent."""
+    from g2_arx_direct_profile import MODE, PREFIX_CAP
+
+    if digest(parent) != parent_sha256:
+        raise ValueError("direct ARX parent digest differs")
+    changed = (
+        "scripts/g2_adapter.py",
+        "scripts/g2_arx_direct.py",
+        "scripts/g2_arx_direct_profile.py",
+        "scripts/g2_final_deploy.py",
+        "scripts/g2_remaining_conditions.py",
+        "scripts/g2_remaining_episode.py",
+        "scripts/g2_robotwin_backend.py",
+        "scripts/g2_task_runtime.py",
+        "scripts/g2_unified_plan.py",
+    )
+    with TemporaryDirectory() as temporary:
+        with tarfile.open(parent) as archive:
+            archive.extractall(temporary, filter="data")
+        release = Path(temporary).resolve() / "g2-standalone-arx"
+        plan, selected = verify_standalone(release)
+        if selected["mode"] != "arx":
+            raise ValueError("direct mode requires a standalone ARX parent")
+        episode = selected["episode"]
+        config_path = f"configs/{episode}.json"
+        config_file = release / config_path
+        config = json.loads(config_file.read_text())
+        config.pop("task_tcp_projection", None)
+        config.pop("free_space_approach_repair", None)
+        config.update(arx_direct=MODE, window=PREFIX_CAP, max_actions=800)
+        config_file.write_text(json.dumps(config, indent=2) + "\n")
+        (trial,) = [row for row in plan["trials"] if row["episode_id"] == episode]
+        trial.pop("task_tcp_projection", None)
+        trial.update(arx_direct=MODE, method=MODE, window=PREFIX_CAP,
+                     max_policy_actions=800, recovery_cap=0)
+        plan["trial_bindings"][episode]["config_sha256"] = digest(config_file)
+        (release / "unified-plan.json").write_text(json.dumps(plan, indent=2) + "\n")
+        base_path = release / "standalone-base-members.json"
+        base = json.loads(base_path.read_text())
+        for name in (*changed, config_path, "unified-plan.json", REVIEW_FILE):
+            base["members"].pop(name, None)
+        base_path.write_text(json.dumps(base, indent=2) + "\n")
+        (release / REVIEW_FILE).unlink(missing_ok=True)
+        for name in changed:
+            (release / name).write_bytes((project / name).read_bytes())
+        write_archive(release, output, "arx")
+        return dict(mode=MODE, archive_sha256=digest(output),
+                    parent_archive_sha256=parent_sha256,
+                    manifest_sha256=digest(release / "SHA256SUMS"),
+                    configuration_sha256=digest(release / SPEC_FILE))
+
+
 def package(project, parent, output, mode):
     if digest(parent) != BASE_ARCHIVE:
         raise ValueError("expected the exact 93b6c06 unified archive")
@@ -203,10 +256,15 @@ if __name__ == "__main__":
     p.add_argument("project", type=Path)
     p.add_argument("parent", type=Path)
     p.add_argument("output", type=Path)
-    p.add_argument("--arx-projection", action="store_true")
+    profiles = p.add_mutually_exclusive_group()
+    profiles.add_argument("--arx-projection", action="store_true")
+    profiles.add_argument("--arx-direct-parent-sha256")
     a = p.parse_args()
-    if a.arx_projection and a.mode != "arx":
-        p.error("--arx-projection requires arx mode")
+    if (a.arx_projection or a.arx_direct_parent_sha256) and a.mode != "arx":
+        p.error("ARX profiles require arx mode")
+    if a.arx_direct_parent_sha256:
+        print(json.dumps(package_direct(a.project, a.parent, a.output, a.arx_direct_parent_sha256), indent=2))
+        p.exit()
     receipt = (package_projection(a.project, a.parent, a.output) if a.arx_projection
                else package(a.project, a.parent, a.output, a.mode))
     print(json.dumps(receipt, indent=2))

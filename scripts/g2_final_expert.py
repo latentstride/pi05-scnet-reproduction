@@ -71,6 +71,13 @@ def execute_expert(backend, adapter, ticks, rows, target_pose, log, remaining):
         transition = backend.take_replan()
         if transition:
             log(dict(kind="expert_measured_transition", transition=transition))
+    return execute_placement(backend, adapter, target_pose, log, remaining)
+
+
+def execute_placement(backend, adapter, target_pose, log, remaining):
+    """Finish the expert reference using the live post-handover state."""
+    world = adapter.target_collision
+    tracker = world.tracker
     # Entry to placement requires an observed transfer, not an injected holder.
     backend.capture()
     require_holders(tracker, ["right"], "placement")

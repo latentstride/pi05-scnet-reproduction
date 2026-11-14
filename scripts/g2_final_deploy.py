@@ -155,8 +155,16 @@ def verify(release):
                 or row["max_policy_actions"] != expected_actions
             ):
                 raise ValueError(f"TCP projection configuration differs from standalone roster: {episode}")
+        direct = row.get("arx_direct")
+        if cfg.get("arx_direct") != direct or direct is not None and (
+            not unified or cfg.get("task_tcp_projection") is not None
+            or cfg.get("max_actions") != row["max_policy_actions"]
+            or (read(release / "standalone-review.json")["mode"],
+                read(release / "standalone-review.json")["episode"]) != ("arx", episode)
+        ):
+            raise ValueError("direct ARX profile is not bound to the standalone trial")
         if cfg.get("free_space_approach_repair") != (
-            approach_repair if "expert" not in row["method"] else None
+            approach_repair if "expert" not in row["method"] and direct is None else None
         ):
             raise ValueError(
                 "trial bounded approach profile differs from unified release contract"

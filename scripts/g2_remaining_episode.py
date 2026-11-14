@@ -16,12 +16,21 @@ from g2_remaining_coordinator import RecoveryBudgetExhausted, RecoveryCoordinato
 from robotwin_control_geometry import Status
 
 
-def run(spec, backend, adapter, policy, output):
+def run(spec, backend, adapter, policy, output, *, direct=False):
+    if direct:
+        from g2_arx_direct import DirectController, PREFIX_CAP
+
+        allowed_windows = (PREFIX_CAP,)
+    else:
+        allowed_windows = (1, 4)
     if spec.get("data_kind") not in ("synthetic", "diagnostic") or spec[
         "window"
-    ] not in (1, 4):
-        raise ValueError("diagnostic original-window scope required")
-    action_limit = 300
+    ] not in allowed_windows:
+        raise ValueError("invalid diagnostic window for the selected ARX controller")
+    action_limit = 800 if direct else 300
+    if direct and (spec.get("task_tcp_projection") is not None
+                   or spec.get("approach_repair") or spec.get("max_recoveries", 0)):
+        raise ValueError("direct ARX cannot use legacy recovery")
     if spec.get("task_tcp_projection") is not None:
         from g2_unified_plan import ARX_PROJECTION_ACTION_CAP, ARX_PROJECTION_METHOD
 
@@ -58,15 +67,19 @@ def run(spec, backend, adapter, policy, output):
         initial=None,
         initial_sim_s=None,
     )
-    coordinator = RecoveryCoordinator(
-        adapter,
-        backend,
-        max_recoveries=spec.get("max_recoveries", 4),
-        approach_repair=spec.get("approach_repair", False),
-        task_tcp_projection=spec.get("task_tcp_projection"),
-    )
-    if coordinator.task_tcp_projection:
-        row["task_tcp_projection"] = coordinator.task_tcp_projection
+    if direct:
+        coordinator = DirectController(adapter, backend)
+        row["arx_direct"] = True
+    else:
+        coordinator = RecoveryCoordinator(
+            adapter,
+            backend,
+            max_recoveries=spec.get("max_recoveries", 4),
+            approach_repair=spec.get("approach_repair", False),
+            task_tcp_projection=spec.get("task_tcp_projection"),
+        )
+        if coordinator.task_tcp_projection:
+            row["task_tcp_projection"] = coordinator.task_tcp_projection
 
     def remaining():
         if monotonic() >= end:
@@ -121,7 +134,7 @@ def run(spec, backend, adapter, policy, output):
                     state=request["state"],
                     prompt=request["prompt"],
                 )
-                if coordinator.task_tcp_projection:
+                if direct or coordinator.task_tcp_projection:
                     payload.update(actual=[asdict(arm) for arm in snap.arms],
                                    world_task=snap.world_task, objects_task=snap.objects_task)
             elif kind == "policy_response":
@@ -137,11 +150,14 @@ def run(spec, backend, adapter, policy, output):
             elif kind == "policy_validated":
                 transition("planning")
                 row["plan_calls"] += 1
+            elif kind == "direct_row_planning":
+                transition("planning")
             elif kind == "approved_plan":
                 transition("control")
                 trajectory = payload.pop("trajectory")
                 np.savez_compressed(
-                    output / f"plan-{row['queries']:05}.npz",
+                    output / (f"plan-{row['queries']:05}-{payload['row_in_prefix']:02}.npz"
+                              if direct else f"plan-{row['queries']:05}.npz"),
                     **{k: v for k, v in trajectory.items() if v is not None},
                 )
             stream.write(

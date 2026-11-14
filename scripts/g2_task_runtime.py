@@ -39,6 +39,16 @@ def validate_config(config, *, allow_native_h50=False):
     from g2e_protocol import APPROACH_REPAIR
     repair = config.get("free_space_approach_repair")
     projection = config.get("task_tcp_projection")
+    direct = config.get("arx_direct")
+    if direct is not None:
+        from g2_arx_direct_profile import MODE, PREFIX_CAP
+
+        if (direct != MODE or config["embodiment"] != "ARX-X5"
+                or config["contact_mode"] != CONTACT_MODE or repair is not None
+                or projection is not None or config.get("execution_protocol") is not None
+                or type(config["window"]) is not int or config["window"] != PREFIX_CAP
+                or type(config["max_actions"]) is not int or not 0 < config["max_actions"] <= 800):
+            raise ValueError("invalid direct ARX controls")
     if projection is not None:
         from g2_task_tcp_projection import METHOD
         from g2_unified_plan import ARX_PROJECTION_ACTION_CAP
@@ -91,7 +101,8 @@ def validate_config(config, *, allow_native_h50=False):
         raise ValueError("control bounds require an explicit source")
     if not np.allclose(matrix7(config["world_task"]), matrix7(config["source_world_task"]), atol=1e-9, rtol=0):
         raise ValueError("proxy collision scene currently requires identical source/target task frames")
-    validate_window(config["window"],config.get("execution_protocol"),config["embodiment"], allow_native_h50=allow_native_h50)
+    if direct is None:
+        validate_window(config["window"],config.get("execution_protocol"),config["embodiment"], allow_native_h50=allow_native_h50)
     if type(config["max_actions"]) is not int:
         raise ValueError("maximum actions must be an integer")
     for name in ("max_actions", "timeout_s"):
@@ -148,8 +159,13 @@ class RuntimeSession:
     def capture(self):
         return self.backend.capture()
 
-    def execute(self, *args):
-        return self.backend.execute(*args)
+    def __getattr__(self, name):
+        if name in ("arms", "capture_state", "collision", "tick", "dt") and self.backend is not None:
+            return getattr(self.backend, name)
+        raise AttributeError(name)
+
+    def execute(self, *args, **kwargs):
+        return self.backend.execute(*args, **kwargs)
 
     def take_replan(self):
         take=getattr(self.backend,"take_replan",None)
@@ -292,15 +308,17 @@ def real_scene(config, spec, pace_root, assets_root, asset_audit, source_audit, 
                 save_json(output/"setup.json",setup)
                 source_arms = load_arms(assets_root, asset_audit, "aloha-agilex", calibration["aloha-agilex"])
                 bases = [matrix7(value) for value in config["source_base_world"]]
-                if not np.allclose(bases[0], bases[1], atol=1e-9, rtol=0):
-                    raise ValueError("Aloha proxy requires its shared root")
-                source_row, = [row for row in json.loads(Path(asset_audit).read_text())["robots"]
-                                if row["robot"] == "aloha-agilex"]
-                base_pose = pose7(bases[0])
-                proxy = ProxyCollisionWorld(env.scene, assets_root / source_row["urdf_member"],
-                                            source_row["urdf_sha256"], sapien.Pose(base_pose[:3], base_pose[3:]),
-                                            source_arms, output / "proxy-collision.urdf")
-                proxy.checker.audit_path=output/"proxy-collision-checks.jsonl"
+                direct = config.get("arx_direct") is not None
+                if not direct:
+                    if not np.allclose(bases[0], bases[1], atol=1e-9, rtol=0):
+                        raise ValueError("Aloha proxy requires its shared root")
+                    source_row, = [row for row in json.loads(Path(asset_audit).read_text())["robots"]
+                                    if row["robot"] == "aloha-agilex"]
+                    base_pose = pose7(bases[0])
+                    proxy = ProxyCollisionWorld(env.scene, assets_root / source_row["urdf_member"],
+                                                source_row["urdf_sha256"], sapien.Pose(base_pose[:3], base_pose[3:]),
+                                                source_arms, output / "proxy-collision.urdf")
+                    proxy.checker.audit_path=output/"proxy-collision-checks.jsonl"
                 contact_drive=None
                 if config["contact_mode"]==CONTACT_MODE:
                     from mplib.sapien_utils.conversion import convert_object_name
@@ -319,12 +337,13 @@ def real_scene(config, spec, pace_root, assets_root, asset_audit, source_audit, 
                                            [[entity.find_joint_by_name(name).child_link.name for name in arm.grip.names]
                                             for entity,arm in zip(entities,arms)],supports,world_task=world_task)
                     collision.giver=config["contact_profile"]["giver"]
-                    source_collision=ContactWorld(proxy.checker,tracker,source_arms,
-                                                  [np.linalg.inv(world_task)@base for base in bases],
-                                                  convert_object_name(block),environment,
-                                                  [[proxy.entity.find_joint_by_name(name).child_link.name for name in arm.grip.names]
-                                                   for arm in source_arms],supports,world_task=world_task)
-                    source_collision.refresh=proxy.refresh
+                    if not direct:
+                        source_collision=ContactWorld(proxy.checker,tracker,source_arms,
+                                                      [np.linalg.inv(world_task)@base for base in bases],
+                                                      convert_object_name(block),environment,
+                                                      [[proxy.entity.find_joint_by_name(name).child_link.name for name in arm.grip.names]
+                                                       for arm in source_arms],supports,world_task=world_task)
+                        source_collision.refresh=proxy.refresh
                     setup.update(contact_profile=config["contact_profile"],contact_profile_id=collision.profile_id,
                                  grip_state_semantics=[arm.grip.state_mode for arm in arms],actual_block_mass_kg=actual_mass)
                     save_json(output/"setup.json",setup)
@@ -336,16 +355,27 @@ def real_scene(config, spec, pace_root, assets_root, asset_audit, source_audit, 
                                        limits["finger_acceleration_m_s2"], config["collision_joint_step_rad"],
                                        config["collision_finger_step_m"], limits["source"],
                                        "sapien3.0.0b1_mplib0.2.1_real_scene_FCL", max_ticks=config["max_plan_ticks"])
-                adapter = Adapter(source_arms, arms, bases, matrix7(config["source_world_task"]),
-                                  config["source_proxy_seed_rad"], config["source_proxy_velocity_rad_s"],
-                                  source_collision, collision, motion, grip_rule=config["grip_rule"],
-                                  grip_max_clip=config["grip_max_clip"])
+                if direct:
+                    from g2_arx_direct import DirectAdapter
+
+                    adapter = DirectAdapter(
+                        source_arms, arms, bases, matrix7(config["source_world_task"]),
+                        config["source_proxy_seed_rad"], config["source_proxy_velocity_rad_s"],
+                        target_collision=collision, motion=motion, grip_rule=config["grip_rule"],
+                        grip_max_clip=config["grip_max_clip"],
+                    )
+                else:
+                    adapter = Adapter(source_arms, arms, bases, matrix7(config["source_world_task"]),
+                                      config["source_proxy_seed_rad"], config["source_proxy_velocity_rad_s"],
+                                      source_collision, collision, motion, grip_rule=config["grip_rule"],
+                                      grip_max_clip=config["grip_max_clip"])
                 backend = ARXBackend(env, arms, collision, world_task, env.scene.get_timestep(), initial,
                                      config["tracking_position_limit_m"], config["tracking_angle_limit_deg"], video,contact_drive)
-                # Refresh both physical and virtual collision worlds before every observation.
+                # Refresh the target world and any legacy proxy before observation.
                 original_capture = backend.capture
                 def capture():
-                    proxy.refresh()
+                    if not direct:
+                        proxy.refresh()
                     collision.refresh()
                     return original_capture()
                 backend.capture = capture

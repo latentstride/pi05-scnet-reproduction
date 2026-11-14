@@ -1,0 +1,78 @@
+{
+  "success": false,
+  "source": "native ARX expert",
+  "prefix_lengths": [
+    24
+  ],
+  "phases": {
+    "approach": 4775
+  },
+  "rgb": "fixture",
+  "error": {
+    "detail": "predicted finger start intersects task block",
+    "status": "collision",
+    "diagnostic": {
+      "geometry": "candidate",
+      "phase": "expert_plan",
+      "stamp": {
+        "episode": "arx-direct-cpu",
+        "tick": 4775,
+        "sim_s": 19.1
+      },
+      "ik_backend": "g2_urdf_damped_jacobian_v1",
+      "side": "left",
+      "finger": 1,
+      "depth_m": 0.008756947703659534,
+      "allowed_penetration_m": 0.002,
+      "start_native_m": 0.04380030184984207,
+      "requested_native_m": 0.044,
+      "wall_s": 0.004502676427364349
+    }
+  },
+  "physics_ticks": 4775,
+  "expert_row_cursor": 25,
+  "expert_rows": 232,
+  "holder_transitions": [],
+  "terminal_contact": {
+    "phase": "approach",
+    "holders": [],
+    "contact_fingers": {
+      "left": [],
+      "right": []
+    },
+    "stable_counts": {
+      "left": 0,
+      "right": 0
+    },
+    "saw_shared_hold": false,
+    "releasing": [],
+    "block_pose_task": [
+      [
+        0.9692595376639996,
+        -0.24604054255751656,
+        -8.085329825340091e-06,
+        -0.07437732070684433
+      ],
+      [
+        0.2460405424372769,
+        0.9692595376341487,
+        -1.3505804149223883e-05,
+        0.006845525000244379
+      ],
+      [
+        1.115975842867933e-05,
+        1.1101310549446299e-05,
+        0.9999999998761103,
+        0.8400006294250488
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "tool_block": {},
+    "tool_block_measured": {}
+  }
+}

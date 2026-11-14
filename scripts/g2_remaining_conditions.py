@@ -77,6 +77,21 @@ def run_condition(config, row, factory, policy, output, *, allow_native_h50=Fals
     # just like RuntimeSession; this also permits normal reset/cleanup on faults.
     from g2_task_runtime import RuntimeSession, SessionAdapter
 
+    if config.get("arx_direct") is not None:
+        from g2_arx_direct_profile import MODE, PREFIX_CAP
+
+        validate_config(config)
+        if (row["embodiment"] != "ARX-X5" or row["window"] != PREFIX_CAP
+                or row["method"] != MODE or row["recovery_cap"]):
+            raise ValueError("direct ARX requires a matching no-recovery roster")
+        session = RuntimeSession(factory)
+
+        class DirectSessionAdapter:
+            def __getattr__(self, name):
+                return getattr(session.adapter, name)
+
+        return run_recovery(spec, session, DirectSessionAdapter(), policy, output, direct=True)
+
     session = RuntimeSession(factory)
     session._drive_fingers = lambda: session.backend._drive_fingers()
     original = session.reset

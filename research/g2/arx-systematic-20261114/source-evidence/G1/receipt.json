@@ -1,0 +1,33 @@
+{
+  "mode": "author_native",
+  "method": "fixed_h50",
+  "scene_seed": 100000,
+  "episode_id": "g1-author_native-fixed_h50-100000",
+  "success": true,
+  "scene_closed": true,
+  "outcome": "SUCCESS",
+  "trial_clock": {
+    "started": 65638978.495778166,
+    "soft": 65650378.495778166,
+    "hard": 65650978.495778166,
+    "reap_at": 65650968.495778166,
+    "budget": {
+      "physics_steps": 130000,
+      "soft_s": 11400,
+      "hard_s": 12000,
+      "reap_s": 10,
+      "request_s": 390
+    }
+  },
+  "prompt": "Grab the red block using the left arm.",
+  "selector": {
+    "selector": "fixed",
+    "horizon": 50
+  },
+  "steps": 285,
+  "queries": 6,
+  "completed_actions": 285,
+  "native_action_count": 285,
+  "physics_steps": 20154,
+  "elapsed_s": 409.29276003688574
+}

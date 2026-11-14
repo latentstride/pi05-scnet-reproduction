@@ -1,0 +1,37 @@
+{
+  "decision": "FAIL",
+  "gpu_readiness": "NOT_READY_FOR_GPU",
+  "new_gpu_submissions": 0,
+  "new_model_inference_calls": 0,
+  "runtime_files_changed": [],
+  "confirmed_control_fixes": [],
+  "primary_observed_failure": "ARX target candidate collision before effective gripper closure; contact reobservation repeatedly discards later closure commands",
+  "causal_identification": "not uniquely resolved among policy generalization, grasp-semantic mapping and conservative static contact prediction",
+  "accepted_cpu_cases": {
+    "q2-online_boundary": {
+      "rows": 1,
+      "physics_steps": 1
+    },
+    "q2-retain_checked_block": {
+      "rows": 7,
+      "physics_steps": 330
+    },
+    "q1-retain_checked_block": {
+      "rows": 35,
+      "physics_steps": 5710
+    }
+  },
+  "additional_endpoint_attempts": {
+    "target": {
+      "wrapper_exit_code": 1,
+      "accepted_receipt": false
+    },
+    "source": {
+      "wrapper_exit_code": 1,
+      "accepted_receipt": false
+    },
+    "configured_timeout_s": 450,
+    "failure_detail": "transport logs only contain environment/locale startup messages; exact inner failure not established; no endpoint evidence accepted"
+  },
+  "executed_cpu_overlay_sha256": "25fef0a4dde0ccc4cacb076346301cb521eb2811c8ba13b8cb2a5fc9441de6ea"
+}

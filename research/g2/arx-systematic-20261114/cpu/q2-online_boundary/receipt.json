@@ -1,0 +1,32 @@
+{
+  "job": "127999421",
+  "query": 2,
+  "mode": "online_boundary",
+  "action_sha256": "8f4598640c636a9b5062e2a66f5c55a797327646263fc4946fc820330fced277",
+  "start_tick": 5783,
+  "restart_scope": "archived actual joints, fingers, drive and object pose; zero velocity; no solver cache",
+  "rgb": "fixture; no model inference",
+  "stable_grasp": false,
+  "completed_rows": 1,
+  "contacts": {
+    "left": 1
+  },
+  "holders": {},
+  "max_fingers": [
+    1,
+    0
+  ],
+  "safety": "unchanged target ARX collision, contact, joints, motion and slip gates",
+  "boundary": {
+    "completed": 1,
+    "stamp": {
+      "episode": "unified-seed1-arx-full-w4",
+      "tick": 5784,
+      "sim_s": 23.136
+    },
+    "reason": "measured_first_contact"
+  },
+  "end_tick": 5784,
+  "physical_steps": 1,
+  "hold_no_advance": true
+}

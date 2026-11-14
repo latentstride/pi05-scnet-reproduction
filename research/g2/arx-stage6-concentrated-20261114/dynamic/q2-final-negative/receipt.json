@@ -1,0 +1,120 @@
+{
+  "job": "127999421",
+  "mode": "negative",
+  "policy_source_sha256": "8f4598640c636a9b5062e2a66f5c55a797327646263fc4946fc820330fced277",
+  "first_row": 8,
+  "start_tick": 6113,
+  "completed_rows": [],
+  "safe_segments": 0,
+  "contact_steps": [
+    0,
+    0
+  ],
+  "max_contact_fingers": [
+    0,
+    0
+  ],
+  "stable_grasp": false,
+  "min_measured_aperture": [
+    1.0,
+    1.0
+  ],
+  "min_drive_aperture": [
+    1.0,
+    1.0
+  ],
+  "rgb": "CPU fixture only; actual RGB/model inference GPU_REQUIRED",
+  "initial_request_state": [
+    -0.041812822222709656,
+    2.104128837585449,
+    0.9698253273963928,
+    1.0850130319595337,
+    1.2742276191711426,
+    0.04453323036432266,
+    0.9976359009742737,
+    0.0010081306099891663,
+    0.005489132832735777,
+    0.00323616829700768,
+    0.005980287212878466,
+    0.0004178251256234944,
+    0.0004091011069249362,
+    0.9979737997055054
+  ],
+  "real_arx_collision_rejected": true,
+  "collision_diagnostic": {
+    "geometry": "actual",
+    "collisions": [
+      {
+        "collision_type": "self_sceneobject",
+        "object_name1": "arx_left_4",
+        "link_name1": "link4",
+        "object_name2": "stage6_fault_probe_28",
+        "link_name2": "stage6_fault_probe_28",
+        "max_penetration_m": 0.031971514225006104
+      },
+      {
+        "collision_type": "self_sceneobject",
+        "object_name1": "arx_left_4",
+        "link_name1": "link5",
+        "object_name2": "stage6_fault_probe_28",
+        "link_name2": "stage6_fault_probe_28",
+        "max_penetration_m": 0.04509113356471062
+      },
+      {
+        "collision_type": "self_sceneobject",
+        "object_name1": "arx_left_4",
+        "link_name1": "link6",
+        "object_name2": "stage6_fault_probe_28",
+        "link_name2": "stage6_fault_probe_28",
+        "max_penetration_m": 0.029999928548932076
+      }
+    ]
+  },
+  "end_tick": 6113,
+  "physical_steps": 0,
+  "hold_no_advance": true,
+  "contact_state": {
+    "phase": "approach",
+    "holders": [],
+    "contact_fingers": {
+      "left": [],
+      "right": []
+    },
+    "stable_counts": {
+      "left": 0,
+      "right": 0
+    },
+    "saw_shared_hold": false,
+    "releasing": [],
+    "block_pose_task": [
+      [
+        0.9692531008665458,
+        -0.24606585119986396,
+        0.00015275428627819888,
+        -0.07434848695993423
+      ],
+      [
+        0.24606584976316764,
+        0.9692531128515922,
+        2.8422331777011216e-05,
+        0.006856200750917196
+      ],
+      [
+        -0.00015505133273836273,
+        1.0039180049285309e-05,
+        0.9999999879291495,
+        0.840005099773407
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "tool_block": {},
+    "tool_block_measured": {}
+  },
+  "holder_transitions": [],
+  "elapsed_s": 0.028645388083532453
+}

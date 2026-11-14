@@ -15,6 +15,36 @@ def kinematic_pair(_q, _fingers):
     return True
 
 
+class UnexecutedContactProposal:
+    """Defer only movable-block/finger prediction in an unexecuted proposal.
+
+    Other robot/environment collisions stay checked. The distinct profile makes
+    this proposal invalid for ARXBackend.execute; a returned segment is always
+    replanned against the original world before it can be executed.
+    """
+    def __init__(self,world):
+        self.world=world
+        self.profile_id=world.profile_id+':unexecuted_contact_proposal'
+
+    def __getattr__(self,name):return getattr(self.world,name)
+
+    def allows(self,row):
+        a=(row['object_name1'],row['link_name1'])
+        b=(row['object_name2'],row['link_name2'])
+        if row.get('max_penetration_m') is not None and (
+            (a[0]==self.world.block_name and b in self.world.allowed_pairs)
+            or (b[0]==self.world.block_name and a in self.world.allowed_pairs)):
+            return True
+        return self.world.allows(row)
+
+    def __call__(self,q,fingers):
+        return self.world.base.evaluate(q,fingers,contact=self)
+
+    def planning_geometry(self,q,requested,previous,check):
+        check()
+        return requested.copy()
+
+
 class DirectAdapter(Adapter):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, source_collision=kinematic_pair, **kwargs)
@@ -22,13 +52,71 @@ class DirectAdapter(Adapter):
     def policy_row(self, row, snapshot, remaining):
         # The row belongs to the last queried block. Its physical start is
         # refreshed independently, without committing a new source IK seed.
-        return self._actions(
+        original = self._actions(
             np.broadcast_to(row, (50, 14)),
             snapshot,
             1,
             remaining(),
             require_observation=False,
         )
+        world=self.target_collision
+        if (original.ok or original.status!=Status.COLLISION
+                or not hasattr(world,'tracker') or not hasattr(world,'base')):
+            return original
+        contact=world.tracker.snapshot()
+        if contact.get('phase')!='approach' or contact['holders'] or contact['releasing']:
+            return original
+        rejected=[c for verdict in original.diagnostic.get('candidate_verdicts',[])
+                  for c in (verdict.get('collisions') or [])]
+        rejected+=world.last_collisions
+        if not any(c.get('reason')=='predicted finger start intersects task block' for c in rejected):
+            return original
+        return guarded('action',snapshot.stamp,
+            lambda log:self._contact_segment(original,snapshot,remaining,log))
+
+    def _contact_segment(self,original,snapshot,remaining,log):
+        check=deadline(remaining())
+        world=self.target_collision
+        q,g,_,_=read_snapshot(snapshot,self.arx)
+        request=original.diagnostic['requests'][-1]
+        fingers=finite_array(request['fingers'],(2,2))
+        candidates=([request['ik_target']] if 'ik_target' in request else
+                    [v['candidate_q'] for v in original.diagnostic.get('candidate_verdicts',[])])
+        future=UnexecutedContactProposal(world)
+        goal=None
+        for candidate in candidates:
+            check()
+            candidate=finite_array(candidate,(2,6))
+            if future(candidate,fingers):
+                goal=candidate
+                break
+        if goal is None:
+            raise G2Error(Status.COLLISION,'no non-finger-safe original IK branch',
+                          geometry='candidate',collisions=world.last_collisions)
+        # No new IK search, TCP offset, finger target or joint path: reuse the
+        # original residual-checked candidates and original quintic interpolation.
+        nominal=self.motion.plan(q,g,[(goal,fingers)],future,check)
+        geometry=g.copy();last=None
+        for index in range(1,len(nominal.q)):
+            check()
+            try:
+                geometry=world.planning_geometry(nominal.q[index],nominal.fingers[index],geometry,check)
+                if not world(nominal.q[index],geometry):break
+            except G2Error as error:
+                if error.status!=Status.COLLISION:raise
+                break
+            last=index
+        if last is None:
+            raise G2Error(Status.COLLISION,'no safe progress on original contact segment',
+                          geometry='candidate',collisions=world.last_collisions)
+        plan=self.motion.plan(q,g,[(nominal.q[last],nominal.fingers[last])],world,check)
+        log.update(collision_world='target_collision',contact_motion='measured_safe_prefix_v1',
+            original_rejection=original.detail,original_request=request,
+            original_ik_target=goal.tolist(),segment_ik_target=plan.q[-1].tolist(),
+            partial_policy_row=last<len(nominal.q)-1,
+            row_duration_limit_s=self.motion.max_ticks*self.motion.period,
+            proposal_contact_profile=future.profile_id,executed_contact_profile=plan.contact_profile_id)
+        return plan
 
     def expert_row(self, row, snapshot, remaining):
         """Native ARX expert input, isolated from the policy exchange."""
@@ -82,56 +170,78 @@ def execute_prefix(backend, snapshot, rows, plan_row, remaining, log, consumed):
         or contact_at_start["releasing"]
         or any(contact_at_start["contact_fingers"].values())
     )
+    observed_sides = (set(contact_at_start['holders']) | set(contact_at_start['releasing'])
+                      | {side for side, fingers in contact_at_start['contact_fingers'].items() if fingers})
     for i, row in enumerate(rows):
-        if i:
-            snapshot = backend.capture_state()
-        world.refresh()
-        log(dict(kind="direct_row_planning", row_in_prefix=i + 1))
-        q, fingers, _, _ = read_snapshot(snapshot, backend.arms)
-        if not world.measured_clear(q, fingers):
-            raise G2Error(
-                Status.COLLISION,
-                "measured ARX state blocks the next row",
-                geometry="actual",
-                collisions=world.last_collisions,
+        row_start = backend.tick
+        segment = 0
+        row_limit = None
+        while True:
+            if i or segment:
+                snapshot = backend.capture_state()
+            world.refresh()
+            log(dict(kind="direct_row_planning", row_in_prefix=i + 1))
+            q, fingers, _, _ = read_snapshot(snapshot, backend.arms)
+            if not world.measured_clear(q, fingers):
+                raise G2Error(
+                    Status.COLLISION,
+                    "measured ARX state blocks the next row",
+                    geometry="actual",
+                    collisions=world.last_collisions,
+                )
+            result = plan_row(row, snapshot, remaining)
+            if not result.ok:
+                raise G2Error(
+                    result.status,
+                    result.detail,
+                    **dict({"geometry": "candidate"}, **result.diagnostic)
+                )
+            plan = result.payload
+            if len(plan.waypoint_ticks) != 1:
+                raise G2Error(Status.BACKEND_ERROR, "one checked waypoint required")
+            log(
+                dict(
+                    kind="approved_plan",
+                    trajectory=asdict(plan),
+                    receipt=result.diagnostic,
+                    row_in_prefix=i + 1, segment_in_row=segment + 1,
+                    counts_as_policy_action=segment == 0,
+                )
             )
-        result = plan_row(row, snapshot, remaining)
-        if not result.ok:
-            raise G2Error(
-                result.status,
-                result.detail,
-                **dict({"geometry": "candidate"}, **result.diagnostic)
-            )
-        plan = result.payload
-        if len(plan.waypoint_ticks) != 1:
-            raise G2Error(Status.BACKEND_ERROR, "one checked waypoint required")
-        log(
-            dict(
-                kind="approved_plan",
-                trajectory=asdict(plan),
-                receipt=result.diagnostic,
-                row_in_prefix=i + 1,
-            )
-        )
-        done = backend.execute(plan, log, remaining, stop_on_contact=True)
-        if type(done) is not int or done != 1:
-            raise G2Error(Status.BACKEND_ERROR, "invalid direct ARX row receipt")
-        consumed()
-        reason = backend.take_replan()
-        stamp = Stamp(snapshot.stamp.episode, backend.tick, backend.tick * backend.dt)
-        if stamp.tick <= snapshot.stamp.tick:
-            raise G2Error(Status.UNSYNCED, "ARX execution did not advance")
-        if reason:
-            return Prefix(i + 1, stamp, reason["reason"])
-        if backend.success():
-            return Prefix(i + 1, stamp, "task_success")
-        contact = world.tracker.snapshot()
-        if (
-            in_contact
-            or result.diagnostic.get("contact_barrier")
-            or any(contact["contact_fingers"].values())
-        ):
-            return Prefix(i + 1, stamp, "contact_requires_observation")
+            # A query made after measured contact already observes that phase.
+            # Keep checking every row/physics step, but do not repeatedly retire
+            # its closure tail for the same contact context. Holder transitions
+            # and all actual safety checks remain active inside the backend.
+            row_limit = result.diagnostic.get('row_duration_limit_s', row_limit)
+            if row_limit is not None and hasattr(plan, 'q'):
+                duration = (len(plan.q)-1)*plan.period_s
+                if (backend.tick-row_start)*backend.dt+duration > row_limit+1e-12:
+                    raise G2Error(Status.PLAN_FAILED, 'original row motion duration exhausted', geometry='candidate')
+            done = backend.execute(plan, log, remaining, stop_on_contact=not in_contact)
+            if type(done) is not int or done != 1:
+                raise G2Error(Status.BACKEND_ERROR, "invalid direct ARX row receipt")
+            if segment == 0:
+                consumed()
+            reason = backend.take_replan()
+            stamp = Stamp(snapshot.stamp.episode, backend.tick, backend.tick * backend.dt)
+            if stamp.tick <= snapshot.stamp.tick:
+                raise G2Error(Status.UNSYNCED, "ARX execution did not advance")
+            if reason:
+                return Prefix(i + 1, stamp, reason["reason"])
+            if backend.success():
+                return Prefix(i + 1, stamp, "task_success")
+            contact = world.tracker.snapshot()
+            if (set(contact['holders']) != set(contact_at_start['holders'])
+                    or set(contact['releasing']) != set(contact_at_start['releasing'])):
+                return Prefix(i + 1, stamp, "measured_contact_transition")
+            touched_sides = {side for side, fingers in contact['contact_fingers'].items() if fingers}
+            if touched_sides - observed_sides:
+                return Prefix(i + 1, stamp, "contact_requires_observation")
+            if not result.diagnostic.get('partial_policy_row'):
+                break
+            if row_limit is None or (backend.tick-row_start)*backend.dt >= row_limit-1e-12:
+                raise G2Error(Status.PLAN_FAILED, 'original row motion duration exhausted', geometry='candidate')
+            segment += 1
     return Prefix(len(rows), stamp, "prefix_complete")
 
 

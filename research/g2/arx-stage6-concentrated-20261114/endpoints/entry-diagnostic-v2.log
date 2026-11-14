@@ -1,0 +1,15 @@
+bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
++ set -euo pipefail
+++ dirname scripts/run_robotwin_env.sh
++ cd scripts/..
++ root=/public/home/acvkpnrzir/code_cpf/pi05
++ image=/public/home/acvkpnrzir/code_cpf/pi05/research/robotwin/robotwin-cu122
++ a=/public/software/apps/apptainer/1.3.4/bin/apptainer
++ options=(--writable --cleanenv --bind /public:/public --pwd /opt/robotwin/src/RoboTwin)
++ [[ 0 == 1 ]]
++ exec /public/software/apps/apptainer/1.3.4/bin/apptainer exec --writable --cleanenv --bind /public:/public --pwd /opt/robotwin/src/RoboTwin /public/home/acvkpnrzir/code_cpf/pi05/research/robotwin/robotwin-cu122 env OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PI05_ROOT=/public/home/acvkpnrzir/code_cpf/pi05 XDG_CACHE_HOME=/opt/robotwin/cache/xdg TORCH_EXTENSIONS_DIR=/opt/robotwin/cache/torch_extensions CUDA_CACHE_PATH=/opt/robotwin/cache/cuda TMPDIR=/opt/robotwin/tmp VK_ICD_FILENAMES=/opt/robotwin/sysroot/etc/vulkan/icd.d/nvidia_icd.json PATH=/opt/robotwin/venv/bin:/opt/robotwin/sysroot/usr/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin LD_LIBRARY_PATH=/opt/robotwin/sysroot/usr/lib/x86_64-linux-gnu:/opt/robotwin/sysroot/lib/x86_64-linux-gnu:/usr/local/cuda/lib64:/.singularity.d/libs PYTHONPYCACHEPREFIX=/opt/robotwin/cache/pycache env CUDA_VISIBLE_DEVICES= PYTHONDONTWRITEBYTECODE=1 python -B -u -c 'import sys; print("CPU_PYTHON_ENTRY",sys.executable,flush=True); import numpy; print("CPU_NUMPY_OK",numpy.__version__,flush=True); import sapien; print("CPU_SAPIEN_OK",flush=True); import mplib; print("CPU_MPLIB_OK",flush=True)'
+WARNING: Skipping mount /etc/localtime [binds]: /etc/localtime doesn't exist in container
+CPU_PYTHON_ENTRY /opt/robotwin/venv/bin/python
+CPU_NUMPY_OK 1.26.4
+CPU_SAPIEN_OK
+CPU_MPLIB_OK

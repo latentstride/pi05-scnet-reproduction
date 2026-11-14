@@ -1,0 +1,9 @@
+{
+  "mode": "arx_direct_v1",
+  "archive_sha256": "9ba8bce76ca0480d18eea3c63aea49fa2c96c67872306a9946aee3ef5d060142",
+  "policy_rng_seed": 20261108,
+  "trial_config_sha256": "eba071950e85597de7b02b3383822c2098da151fdaa327b64e00775365e29d2a",
+  "parent_archive_sha256": "2bdf4029062b13f5175aefbd643f3d81171a33977e88df9e47f694f0b56c1f08",
+  "manifest_sha256": "d3fe599dfc5bf8ae9d878920dc6ceb6e63fa836c678db0d5ad1743037a253875",
+  "configuration_sha256": "d0494e5d6d96a866537dc3360fcdcaf6da472ca7b20367dc4bd49ed2a146a10a"
+}

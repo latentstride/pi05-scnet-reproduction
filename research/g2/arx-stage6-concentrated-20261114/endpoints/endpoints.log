@@ -1,0 +1,18 @@
+bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+WARNING: Skipping mount /etc/localtime [binds]: /etc/localtime doesn't exist in container
+CPU_BATCH_ENTRY
+ENDPOINT_PHASE build_scene
+ENDPOINT_PHASE endpoint_row_35
+ENDPOINT_PHASE endpoint_row_36
+ENDPOINT_PHASE endpoint_row_49
+ENDPOINT_PHASE endpoint_row_50
+ENDPOINT_COMPLETE 127999407 [35, 36, 49, 50]
+ENDPOINT_PHASE build_scene
+ENDPOINT_PHASE endpoint_row_1
+ENDPOINT_PHASE endpoint_row_7
+ENDPOINT_PHASE endpoint_row_8
+ENDPOINT_PHASE endpoint_row_21
+ENDPOINT_PHASE endpoint_row_27
+ENDPOINT_PHASE endpoint_row_32
+ENDPOINT_PHASE endpoint_row_50
+ENDPOINT_COMPLETE 127999421 [1, 7, 8, 21, 27, 32, 50]

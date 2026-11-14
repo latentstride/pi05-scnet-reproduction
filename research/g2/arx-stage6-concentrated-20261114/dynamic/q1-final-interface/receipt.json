@@ -1,0 +1,149 @@
+{
+  "job": "127999407",
+  "mode": "interface",
+  "policy_source_sha256": "eb9d0efc6a649aca72e5f6c01d3be677ca47373aa34416dd63e73aa57f8f378e",
+  "first_row": 36,
+  "start_tick": 5710,
+  "completed_rows": [],
+  "safe_segments": 0,
+  "contact_steps": [
+    1,
+    0
+  ],
+  "max_contact_fingers": [
+    1,
+    0
+  ],
+  "stable_grasp": false,
+  "min_measured_aperture": [
+    0.9954883717000486,
+    0.9980390102348545
+  ],
+  "min_drive_aperture": [
+    0.9967679748971817,
+    0.9986976697466677
+  ],
+  "rgb": "CPU fixture only; actual RGB/model inference GPU_REQUIRED",
+  "initial_request_state": [
+    -0.03657681122422218,
+    2.0957038402557373,
+    0.9775187969207764,
+    1.0746737718582153,
+    1.2855111360549927,
+    0.046550389379262924,
+    0.9954843521118164,
+    0.002255198545753956,
+    0.0029038984794169664,
+    0.0029372379649430513,
+    0.0031805885955691338,
+    0.002069290494546294,
+    -0.0006753334891982377,
+    0.9980383515357971
+  ],
+  "prefix": {
+    "completed": 1,
+    "stamp": {
+      "episode": "unified-seed1-arx-full-w4",
+      "tick": 5753,
+      "sim_s": 23.012
+    },
+    "reason": "measured_first_contact"
+  },
+  "executed_policy_actions": 1,
+  "fresh_request": {
+    "stamp": {
+      "episode": "unified-seed1-arx-full-w4",
+      "tick": 5753,
+      "sim_s": 23.012
+    },
+    "state": [
+      -0.040685705840587616,
+      2.097790241241455,
+      0.9832536578178406,
+      1.073641300201416,
+      1.2799489498138428,
+      0.045519717037677765,
+      0.9959985017776489,
+      0.001627464429475367,
+      0.003071415238082409,
+      0.003118133172392845,
+      0.003794790944084525,
+      0.0006566817755810916,
+      -0.00013497655163519084,
+      0.9980627298355103
+    ],
+    "image_shapes": {
+      "cam_high": [
+        3,
+        8,
+        8
+      ],
+      "cam_left_wrist": [
+        3,
+        8,
+        8
+      ],
+      "cam_right_wrist": [
+        3,
+        8,
+        8
+      ]
+    },
+    "objects": [
+      "block",
+      "table",
+      "target"
+    ],
+    "validated": true
+  },
+  "next_frozen_policy_inference": "GPU_REQUIRED; no old/expert/substitute action used",
+  "end_tick": 5753,
+  "physical_steps": 43,
+  "hold_no_advance": true,
+  "contact_state": {
+    "phase": "approach",
+    "holders": [],
+    "contact_fingers": {
+      "left": [
+        14
+      ],
+      "right": []
+    },
+    "stable_counts": {
+      "left": 0,
+      "right": 0
+    },
+    "saw_shared_hold": false,
+    "releasing": [],
+    "block_pose_task": [
+      [
+        0.969253323528431,
+        -0.24606502082415826,
+        1.8865241986106747e-05,
+        -0.07433779537677765
+      ],
+      [
+        0.24606502059290553,
+        0.9692533236729688,
+        1.3766490960515125e-05,
+        0.006867660209536552
+      ],
+      [
+        -2.1672650381803547e-05,
+        -8.701140959001883e-06,
+        0.9999999997272931,
+        0.8399997353553772
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "tool_block": {},
+    "tool_block_measured": {}
+  },
+  "holder_transitions": [],
+  "elapsed_s": 0.8973570070229471
+}

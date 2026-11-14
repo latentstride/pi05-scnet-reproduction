@@ -15,6 +15,23 @@ from g2_motion import Trajectory
 from robotwin_control_geometry import Status, checked_pose, finite_array, pose_from_wxyz, inverse_pose
 
 
+def physical_contact_records(scene):
+    """Raw task-object contacts, separate from the derived grasp classifier."""
+    rows=[]
+    for contact in scene.get_contacts():
+        names=[getattr(body.entity,'name',None) for body in contact.bodies]
+        if not {'box','target_box'}.intersection(names):continue
+        points=[]
+        for point in contact.points:
+            vector=lambda name: (None if getattr(point,name,None) is None else
+                                 np.asarray(getattr(point,name)).tolist())
+            points.append(dict(position_m=vector('position'),impulse_Ns=vector('impulse'),
+                separation_m=None if getattr(point,'separation',None) is None else float(point.separation)))
+        rows.append(dict(body_ids=[body.entity.per_scene_id for body in contact.bodies],
+                         body_names=names,points=points))
+    return rows
+
+
 def pose7(matrix):
     matrix = checked_pose(matrix)
     axis_angle = rotation_vector(matrix[:3, :3])
@@ -366,6 +383,8 @@ class ARXBackend:
                          actual_arm=q, target_arm=plan.q[index], actual_fingers=native,
                          target_fingers=plan.fingers[index], actual_tools_task=actual,
                          predicted_fingers=geometry,contact_state=contact_state,
+                         physical_contacts=physical_contact_records(self.env.scene) if self.contact_drive is not None else None,
+                         actual_mesh_collisions=deepcopy(getattr(getattr(self.collision,'base',None),'last_raw_collisions',None)) if self.contact_drive is not None else None,
                          finger_drive_properties=self.contact_drive,
                          applied_finger_force_n=self.applied_finger_force.copy() if self.contact_drive and self.contact_drive.get('mode')==CENTERED_FORCE else None,
                          target_tools_task=desired, position_error_m=p, orientation_error_deg=a,

@@ -6,13 +6,28 @@ import unittest
 from unittest.mock import Mock, patch
 
 from g2_adapter import G2Error, Stamp
-from g2_arx_direct import execute_prefix
+from g2_arx_direct import execute_prefix,UnexecutedContactProposal
 from robotwin_control_geometry import Status
 
 
 @dataclass
 class Plan:
     waypoint_ticks: tuple = (1,)
+
+
+class ContactProposalTest(unittest.TestCase):
+    def test_only_known_movable_finger_pair_is_deferred_in_unexecuted_geometry(self):
+        world=NS(profile_id='real',block_name='block',allowed_pairs={('arx_left','finger')},
+                 allows=lambda row:False)
+        future=UnexecutedContactProposal(world)
+        row=dict(object_name1='block',link_name1='block',object_name2='arx_left',
+                 link_name2='finger',max_penetration_m=.03)
+        self.assertTrue(future.allows(row))
+        self.assertFalse(world.allows(row))
+        self.assertFalse(future.allows(dict(row,link_name2='wrist')))
+        self.assertFalse(future.allows(dict(row,object_name1='table')))
+        self.assertFalse(future.allows(dict(row,max_penetration_m=None)))
+        self.assertNotEqual(future.profile_id,world.profile_id)
 
 
 class DirectPrefixTest(unittest.TestCase):
@@ -96,6 +111,107 @@ class DirectPrefixTest(unittest.TestCase):
         self.assertEqual(starts, list(range(6)))
         self.assertEqual(completed, list(range(1, 6)))
         self.assertEqual(error.status, Status.COLLISION)
+
+    def contact_context(self, *, blocked=None, transition=None, projected=True,
+                        other_arm=None, release=None):
+        """Exercise real prefix control with slow physical operations replaced."""
+        import json
+        from pathlib import Path
+        import numpy as np
+
+        source = Path(__file__).resolve().parents[1] / 'research/g2/arx-systematic-20261114/inputs/127999421-q2.json'
+        rows = np.asarray(json.loads(source.read_text())['chunk'])
+        backend = NS(tick=0, dt=.004, arms=(), success=lambda: False)
+        def state():
+            return dict(holders=['left'] if transition == backend.tick else [],
+                        releasing=['left'] if release == backend.tick else [],
+                        contact_fingers={'left':[11], 'right':[22] if other_arm==backend.tick else []})
+        backend.collision = NS(tracker=NS(snapshot=state),refresh=lambda:None,
+                               measured_clear=lambda *_:True)
+        backend.capture_state=lambda:NS(stamp=Stamp('test',backend.tick,backend.tick*.004))
+        backend.take_replan=lambda:None
+        executed=[]
+        def execute(plan,log,remaining,*,stop_on_contact):
+            executed.append((backend.tick,float(rows[backend.tick,6]),stop_on_contact))
+            backend.tick+=1
+            return 1
+        backend.execute=execute
+        def plan(row,snapshot,remaining):
+            if backend.tick == blocked:
+                return NS(ok=False,status=Status.COLLISION,detail='ARX finger/block',diagnostic={})
+            return NS(ok=True,payload=Plan(),diagnostic={'contact_barrier':True} if projected else {})
+        with patch('g2_arx_direct.read_snapshot',return_value=(None,None,None,None)):
+            try:
+                receipt=execute_prefix(backend,backend.capture_state(),rows[:32],plan,
+                    lambda:10.,lambda _:None,lambda:None)
+            except G2Error as error:
+                receipt=error
+        return receipt,executed
+
+    def test_observed_contact_does_not_discard_safe_original_closure_tail(self):
+        receipt,executed=self.contact_context()
+        self.assertEqual(receipt.completed,32)
+        self.assertLess(executed[-1][1],.1)
+        self.assertTrue(all(not row[2] for row in executed))
+
+    def test_contact_context_keeps_real_arx_rejection_before_closure(self):
+        error,executed=self.contact_context(blocked=7)
+        self.assertEqual(len(executed),7)
+        self.assertIsInstance(error,G2Error)
+        self.assertEqual(error.status,Status.COLLISION)
+
+    def test_confirmed_grasp_transition_still_requires_fresh_observation(self):
+        receipt,executed=self.contact_context(transition=5)
+        self.assertEqual(receipt.completed,5)
+        self.assertEqual(len(executed),5)
+
+    def test_new_receiver_contact_still_retires_tail(self):
+        receipt,executed=self.contact_context(other_arm=5)
+        self.assertEqual(receipt.completed,5)
+        self.assertEqual(receipt.reason,'contact_requires_observation')
+
+    def test_release_transition_still_retires_tail(self):
+        receipt,executed=self.contact_context(release=5)
+        self.assertEqual(receipt.completed,5)
+        self.assertEqual(receipt.reason,'measured_contact_transition')
+
+    def test_safe_subsegments_keep_original_row_and_count_it_once(self):
+        backend=NS(tick=0,dt=.004,arms=(),success=lambda:False)
+        state=dict(holders=[],releasing=[],contact_fingers={'left':[11],'right':[]})
+        backend.collision=NS(tracker=NS(snapshot=lambda:state),refresh=lambda:None,
+                             measured_clear=lambda *_:True)
+        backend.capture_state=lambda:NS(stamp=Stamp('test',backend.tick,backend.tick*.004))
+        backend.take_replan=lambda:None
+        seen=[];consumed=[]
+        def plan(row,snapshot,remaining):
+            seen.append((row,snapshot.stamp.tick))
+            return NS(ok=True,payload=Plan(),diagnostic=dict(
+                partial_policy_row=len(seen)<3,row_duration_limit_s=1.))
+        def execute(plan,log,remaining,**kwargs):backend.tick+=1;return 1
+        backend.execute=execute
+        with patch('g2_arx_direct.read_snapshot',return_value=(None,None,None,None)):
+            result=execute_prefix(backend,backend.capture_state(),[10,20],plan,
+                lambda:10.,lambda _:None,lambda:consumed.append(backend.tick))
+        self.assertEqual(seen,[(10,0),(10,1),(10,2),(20,3)])
+        self.assertEqual(consumed,[1,4])
+        self.assertEqual(result.completed,2)
+
+    def test_partial_row_cannot_reset_existing_motion_duration_limit(self):
+        backend=NS(tick=0,dt=.004,arms=(),success=lambda:False)
+        state=dict(holders=[],releasing=[],contact_fingers={'left':[11],'right':[]})
+        backend.collision=NS(tracker=NS(snapshot=lambda:state),refresh=lambda:None,
+                             measured_clear=lambda *_:True)
+        backend.capture_state=lambda:NS(stamp=Stamp('test',backend.tick,backend.tick*.004))
+        backend.take_replan=lambda:None
+        def execute(plan,log,remaining,**kwargs):backend.tick+=1;return 1
+        backend.execute=execute
+        plan=lambda *_:NS(ok=True,payload=Plan(),diagnostic=dict(
+            partial_policy_row=True,row_duration_limit_s=.008))
+        with patch('g2_arx_direct.read_snapshot',return_value=(None,None,None,None)):
+            with self.assertRaisesRegex(G2Error,'motion duration'):
+                execute_prefix(backend,backend.capture_state(),[10],plan,
+                    lambda:10.,lambda _:None,lambda:None)
+        self.assertEqual(backend.tick,2)
 
 
 class DirectExchangeTest(unittest.TestCase):

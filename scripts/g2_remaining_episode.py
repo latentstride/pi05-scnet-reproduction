@@ -155,9 +155,15 @@ def run(spec, backend, adapter, policy, output, *, direct=False):
             elif kind == "approved_plan":
                 transition("control")
                 trajectory = payload.pop("trajectory")
+                stem = f"plan-{row['queries']:05}"
+                if direct:
+                    stem += f"-{payload['row_in_prefix']:02}"
+                    segment = payload.get("segment_in_row", 1)
+                    if segment > 1:
+                        stem += f"-segment-{segment:03}"
+                payload["trajectory_file"] = f"{stem}.npz"
                 np.savez_compressed(
-                    output / (f"plan-{row['queries']:05}-{payload['row_in_prefix']:02}.npz"
-                              if direct else f"plan-{row['queries']:05}.npz"),
+                    output / payload["trajectory_file"],
                     **{k: v for k, v in trajectory.items() if v is not None},
                 )
             stream.write(

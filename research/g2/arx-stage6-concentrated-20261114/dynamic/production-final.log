@@ -1,0 +1,7 @@
+bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+WARNING: Skipping mount /etc/localtime [binds]: /etc/localtime doesn't exist in container
+PRODUCTION_BATCH_ENTRY
+PRODUCTION_CPU 127999407 interface 43 0 None
+PRODUCTION_CPU 127999421 interface 1 0 None
+PRODUCTION_CPU 127999421 archived_tail 6330 43 None
+PRODUCTION_CPU 127999421 negative 0 0 None

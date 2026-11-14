@@ -1,0 +1,88 @@
+{
+  "job": "127999421",
+  "query": 2,
+  "start_tick": 6113,
+  "source_action_sha256": "8f4598640c636a9b5062e2a66f5c55a797327646263fc4946fc820330fced277",
+  "first_row": 8,
+  "scope": "CPU original policy rows; future static prefilter counterfactual only; no inference/expert/TCP offsets",
+  "physical_guard": "original ARXBackend, original ContactWorld, original 2mm actual and per-tick candidate gates",
+  "completed_rows": [
+    8,
+    9
+  ],
+  "holders": [],
+  "max_contact_fingers": [
+    1,
+    0
+  ],
+  "contact_steps": [
+    132,
+    0
+  ],
+  "stable_grasp": false,
+  "hold_0_8s": false,
+  "error": {
+    "type": "G2Error",
+    "detail": "predicted finger start intersects task block",
+    "status": "collision",
+    "diagnostic": {
+      "geometry": "candidate",
+      "side": "left",
+      "finger": 1,
+      "depth_m": 0.0020000007934868336,
+      "allowed_penetration_m": 0.002,
+      "start_native_m": 0.043999988585710526,
+      "requested_native_m": 0.04398932970682015
+    },
+    "row": 10
+  },
+  "end_tick": 6343,
+  "physics_steps": 230,
+  "hold_no_advance": true,
+  "contact_state": {
+    "phase": "approach",
+    "holders": [],
+    "contact_fingers": {
+      "left": [
+        14
+      ],
+      "right": []
+    },
+    "stable_counts": {
+      "left": 0,
+      "right": 0
+    },
+    "saw_shared_hold": false,
+    "releasing": [],
+    "block_pose_task": [
+      [
+        0.9591400377815886,
+        -0.27818601400456094,
+        0.05160358065664628,
+        -0.06356553733348846
+      ],
+      [
+        0.277784837146634,
+        0.9605272205961023,
+        0.014934615674485173,
+        0.01074733305722475
+      ],
+      [
+        -0.05372124510611031,
+        1.0304406610473632e-05,
+        0.9985559712495181,
+        0.8414673805236816
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "tool_block": {},
+    "tool_block_measured": {}
+  },
+  "holder_transitions": [],
+  "elapsed_s": 4.810178818181157
+}

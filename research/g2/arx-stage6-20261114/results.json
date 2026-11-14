@@ -1,0 +1,2735 @@
+{
+  "trials": {
+    "G1": {
+      "job_id": "127938162",
+      "slurm": {
+        "state": "COMPLETED",
+        "exit": "0:0",
+        "start_beijing": "2026-11-14T05:59:42",
+        "end_beijing": "2026-11-14T06:16:36",
+        "elapsed": "00:16:54",
+        "node": "gnode39",
+        "alloc_tres": "billing=4,cpu=4,gres/gpu=1,mem=32G,node=1"
+      },
+      "authorization": {
+        "archive_sha256": "b1d790c0e20968141059bcb097d26b86ad12af7a03a48bd37269f4a83f9be86e",
+        "configuration_sha256": "d0494e5d6d96a866537dc3360fcdcaf6da472ca7b20367dc4bd49ed2a146a10a",
+        "commit": "3e9105a1f8bc57a2e66b2d241332db8ab7cd08b8",
+        "yuan_per_gpu_hour": "3.60",
+        "max_cost_yuan": "5.40"
+      },
+      "rng_reset": {
+        "command": "g2e_rng_ready",
+        "seed": 20261107,
+        "episode_id": "unified-seed1-arx-full-w4"
+      },
+      "startup": {
+        "category": "admitted",
+        "physical_admitted": true,
+        "fresh_reset_verified": true
+      },
+      "model_phase_seconds": {
+        "checkpoint_and_tokenizer_sha256": 0.4725092872977257,
+        "openpi_import": 173.43071688711643,
+        "jax_device": 5.7518894746899605,
+        "orbax_restore_and_policy_create": 34.87608816474676,
+        "first_jax_compile_and_inference": 71.94903688132763
+      },
+      "candidate_stop": {
+        "kind": "candidate_rejection",
+        "finger_drive_m": [
+          [
+            0.043999988585710526,
+            0.04376358166337013
+          ],
+          [
+            0.043821919709444046,
+            0.043895453214645386
+          ]
+        ],
+        "expected_hold_finger_m": [
+          [
+            0.043999988585710526,
+            0.04376358166337013
+          ],
+          [
+            0.043821919709444046,
+            0.043895453214645386
+          ]
+        ],
+        "episode": "unified-seed1-arx-full-w4",
+        "tick": 34030,
+        "state_sha256": "6f533f9707a02a6795fe31326a5155630a486793e5801a1041d58d8d96785e67",
+        "terminal_checks_passed": true,
+        "hold_verified": true,
+        "no_physics_advance": true,
+        "hold_complete": true,
+        "failure_sha256": "f31078d958dee6c6b29217959220fca344384436fd7f2bc162bacf988d381d44",
+        "close_complete": true,
+        "scene_context_closed": true
+      },
+      "formal_score_eligible": false,
+      "measured_min_tcp_to_block_center_m": [
+        0.09388902900400166,
+        0.15203629337445826
+      ],
+      "measured_min_finger_joints_m": [
+        [
+          0.042638182640075684,
+          0.04315805062651634
+        ],
+        [
+          0.0434713177382946,
+          0.04371704161167145
+        ]
+      ],
+      "counters": {
+        "policy_actions": 451,
+        "executed": 451,
+        "recovery_actions": 0,
+        "requested_prefix_rows": 456,
+        "result_queries": 114,
+        "logged_model_requests": 114,
+        "evidence": "worker receipt"
+      },
+      "termination": {
+        "finalized": true,
+        "task_success": false,
+        "outcome": "planning_failed",
+        "worker_outcome": "planning_failed",
+        "category": "controlled_candidate_stop",
+        "supervisor_status": "completed",
+        "supervisor_reason": null,
+        "failure_phase": "planning",
+        "failure_code": "plan_failed",
+        "budget_stop": null,
+        "failure_detail": "18 bounded task TCP projections exhausted",
+        "geometry": "candidate",
+        "collision_world": null,
+        "collision_world_evidence": null,
+        "terminal_link_pairs": [
+          "fr_link5 / table_6"
+        ],
+        "continuity_rejected": null,
+        "collision_candidates_rejected": null,
+        "projection_stop_reason": null,
+        "cleanup": {
+          "scene_opened": true,
+          "hold_complete": true,
+          "close_complete": true,
+          "scene_context_closed": true
+        },
+        "process_group_reaped": true
+      },
+      "event_counts": {
+        "policy_request": 114,
+        "policy_response": 114,
+        "policy_validated": 114,
+        "approved_plan": 113,
+        "executed_step": 34030,
+        "source_observability_barrier": 2,
+        "task_tcp_projection_rejected": 1
+      },
+      "physical_steps": 34030,
+      "contact_phase_ticks": {
+        "approach": 34030
+      },
+      "finger_contact_ticks": {},
+      "holder_ticks": {},
+      "stages": {},
+      "last_measured": {
+        "tick": 34030,
+        "sim_s": 136.12000646535307,
+        "query": 113,
+        "line": 34483
+      },
+      "block_task_m": {
+        "first": [
+          1,
+          [
+            -0.07437799125909805,
+            0.006845731753855944,
+            0.8400007486343384
+          ]
+        ],
+        "last": [
+          34030,
+          [
+            -0.07437735795974731,
+            0.006846629083156586,
+            0.8400000929832458
+          ]
+        ],
+        "min": [
+          -0.07437821477651596,
+          0.006845045834779739,
+          0.8400000333786011
+        ],
+        "max": [
+          -0.07437704503536224,
+          0.006848440505564213,
+          0.8400009870529175
+        ],
+        "samples_with_pose": 34030
+      },
+      "projection_plans": [],
+      "projection_fresh_requests": [],
+      "terminal_candidates": [
+        {
+          "status": "plan_failed",
+          "detail": "projected prefix remains source-blocked",
+          "accepted": false,
+          "translation": [
+            -0.004,
+            -0.0,
+            -0.0
+          ],
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ]
+        },
+        {
+          "status": "plan_failed",
+          "detail": "projected prefix remains source-blocked",
+          "accepted": false,
+          "translation": [
+            0.004,
+            0.0,
+            0.0
+          ],
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ]
+        },
+        {
+          "status": "plan_failed",
+          "detail": "projected prefix remains source-blocked",
+          "accepted": false,
+          "translation": [
+            -0.0,
+            -0.004,
+            -0.0
+          ],
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ]
+        },
+        {
+          "status": "plan_failed",
+          "detail": "projected prefix remains source-blocked",
+          "accepted": false,
+          "translation": [
+            0.0,
+            0.004,
+            0.0
+          ],
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ]
+        },
+        {
+          "status": "plan_failed",
+          "detail": "projected prefix remains source-blocked",
+          "accepted": false,
+          "translation": [
+            -0.0,
+            -0.0,
+            -0.004
+          ],
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ]
+        },
+        {
+          "status": "plan_failed",
+          "detail": "projected prefix remains source-blocked",
+          "accepted": false,
+          "translation": [
+            0.0,
+            0.0,
+            0.004
+          ],
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ]
+        },
+        {
+          "status": "plan_failed",
+          "detail": "projected prefix remains source-blocked",
+          "accepted": false,
+          "translation": [
+            -0.008,
+            -0.0,
+            -0.0
+          ],
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ]
+        },
+        {
+          "status": "plan_failed",
+          "detail": "projected prefix remains source-blocked",
+          "accepted": false,
+          "translation": [
+            0.008,
+            0.0,
+            0.0
+          ],
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ]
+        },
+        {
+          "status": "plan_failed",
+          "detail": "projected prefix remains source-blocked",
+          "accepted": false,
+          "translation": [
+            -0.0,
+            -0.008,
+            -0.0
+          ],
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ]
+        },
+        {
+          "status": "plan_failed",
+          "detail": "projected prefix remains source-blocked",
+          "accepted": false,
+          "translation": [
+            0.0,
+            0.008,
+            0.0
+          ],
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ]
+        },
+        {
+          "status": "plan_failed",
+          "detail": "projected prefix remains source-blocked",
+          "accepted": false,
+          "translation": [
+            -0.0,
+            -0.0,
+            -0.008
+          ],
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ]
+        },
+        {
+          "status": "plan_failed",
+          "detail": "projected prefix remains source-blocked",
+          "accepted": false,
+          "translation": [
+            0.0,
+            0.0,
+            0.008
+          ],
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ]
+        },
+        {
+          "status": "plan_failed",
+          "detail": "projected prefix remains source-blocked",
+          "accepted": false,
+          "translation": [
+            -0.0115,
+            -0.0,
+            -0.0
+          ],
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ]
+        },
+        {
+          "status": "plan_failed",
+          "detail": "projected prefix remains source-blocked",
+          "accepted": false,
+          "translation": [
+            0.0115,
+            0.0,
+            0.0
+          ],
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ]
+        },
+        {
+          "status": "plan_failed",
+          "detail": "projected prefix remains source-blocked",
+          "accepted": false,
+          "translation": [
+            -0.0,
+            -0.0115,
+            -0.0
+          ],
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ]
+        },
+        {
+          "status": "plan_failed",
+          "detail": "projected prefix remains source-blocked",
+          "accepted": false,
+          "translation": [
+            0.0,
+            0.0115,
+            0.0
+          ],
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ]
+        },
+        {
+          "status": "plan_failed",
+          "detail": "projected prefix remains source-blocked",
+          "accepted": false,
+          "translation": [
+            -0.0,
+            -0.0,
+            -0.0115
+          ],
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ]
+        },
+        {
+          "status": "plan_failed",
+          "detail": "projected prefix remains source-blocked",
+          "accepted": false,
+          "translation": [
+            0.0,
+            0.0,
+            0.0115
+          ],
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ]
+        }
+      ],
+      "collision_audits": {
+        "target": {
+          "checks": 49319,
+          "blocked_checks": 3,
+          "link_pairs": {
+            "link4 / table_6": 3
+          },
+          "partial_final_line": false,
+          "scope": "FCL audit calls, including planning and/or measured checks"
+        },
+        "source_proxy": {
+          "checks": 665,
+          "blocked_checks": 100,
+          "link_pairs": {
+            "fr_link5 / table_6": 100
+          },
+          "partial_final_line": false,
+          "scope": "FCL audit calls, including planning and/or measured checks"
+        }
+      },
+      "terminal_rejections": [
+        {
+          "kind": "source_observability_barrier",
+          "tick": null,
+          "sim_s": null,
+          "query": 113,
+          "line": 34347,
+          "status": "collision",
+          "geometry": "candidate",
+          "world": "source_collision",
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ],
+          "continuity_rejected": 12,
+          "collision_candidates_rejected": 4
+        },
+        {
+          "kind": "source_observability_barrier",
+          "tick": null,
+          "sim_s": null,
+          "query": 114,
+          "line": 34487,
+          "status": "collision",
+          "geometry": "candidate",
+          "world": "source_collision",
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ],
+          "continuity_rejected": 12,
+          "collision_candidates_rejected": 4
+        },
+        {
+          "kind": "task_tcp_projection_rejected",
+          "tick": null,
+          "sim_s": null,
+          "query": 114,
+          "line": 34488,
+          "status": "plan_failed",
+          "geometry": "candidate",
+          "world": null,
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ],
+          "continuity_rejected": null,
+          "collision_candidates_rejected": null
+        }
+      ],
+      "first_request_stamp": {
+        "episode": "unified-seed1-arx-full-w4",
+        "tick": 0,
+        "sim_s": 0.0
+      },
+      "first_request_state": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "gripper_prediction": {
+        "blocks_with_le_0_5_any": [
+          112,
+          1
+        ],
+        "blocks_with_le_0_5_in_w4": [
+          0,
+          0
+        ],
+        "saved_blocks": 114
+      },
+      "action_hashes": [
+        "b9d158db7cc4843baa4c7710f22e3e0474a694ebaad41539de872d07bd8f51d2",
+        "193090a0957d962e05ead4bfd38d856c3485d3bdb5312a364f59bd6a8c237e73",
+        "396cec492d37592b90f1f451c2936339995412c31652013492c7d3c4d27fc9ef",
+        "3fff10a42df893ea21453f18032b62367bdcf46941d25e97c38c659e2efaad86",
+        "331c07e427734c5eb9de35644e1f542b82b0d8002ed734b81b89cd2ef4078fa2",
+        "50c58214a2ece62c7468667ee5329827c39fd21617e339310a3aed0badafe4b9",
+        "18ebd74b361c83b171920ff241123f451b787ae83e1c3214be5c2404a56a5cb8",
+        "fd65febbf2bf6830c203846505e039a5e0543cbeb05785a47186c8c4ccdb1b77",
+        "0fcbf14d229672fd7acfddcbb9e3593e5a790dbf737b8c4a393767969134e550",
+        "66916758affd3b424a247dfc79c10f34f824e033ef73423f65119da1d3ff84ba",
+        "8162ec0f2bdb82475ca76a814193875cb4095dc64c3659f9e1b049b7d397755d",
+        "b90028efcae8cf78c9a370ae7dc011b2acec039f90ac48d73cf857062a2d68c4",
+        "7d38cec2964466e161d38249847364797e7f2f864f1b0cb77f76784473bf7966",
+        "84c0b6c82cf27596a696b7df05c3b80139d2bab1a1f62a5ef2b8f594618b3a73",
+        "5bc706efcda86e5f94d60381537b1ff7e3a45fc379c943355ed244f3ebd71e2a",
+        "ab88a5115c952362777e47026938a746c40e3dc8de4e86fdd5dc02300a646cd9",
+        "58ed345daa33f67064e23196097eedf953670f20644aa6422ab6aed5efe8a918",
+        "76e1ac500506e9824a23f1862a9f0574c1e7a7c516beda9407f8342272d4e336",
+        "da16f03637c9d994f470fa94a7cda12eb020ef1d0f7ce103c55d31486f2fec15",
+        "68e3ea42306ad99e5d7c14669441390eb61674cf6cce3ced2d4f9b5ef08b3b78",
+        "81236a19d1fc8ba04c68285a2dfdf1416927aeb71629274e506606fbeb9b2330",
+        "554cf5c8da4d70d1443f1550f220703c2044a7ba933b556ed763b184882e1c70",
+        "744d193c46492d3b9352fe3f6cd13ad4b581b6942053305b96c5caa1b8125e4a",
+        "5e17728e7e90810e62308e38da9b6e349928040f5334a0e6dc3a02ff1ac77bd3",
+        "67c0612967899e12a47ba418ffb57c505b99222064b2cf0b6ae35ccb10713bb8",
+        "1c55fa227c8fe646128601f27532e4bb72431df612c84e0bda490decf0576926",
+        "9793a6b2dd6ff9dce4165bcc57a5622d6d153cc4628c8caa0804f892b3384c52",
+        "5b2104cdb2b7d1b9013d80fccc52de79fea910c223896a9eee5c0429921a6035",
+        "da9ff28863e3019a5b7e9ee50db95a589ff8dc949d7f0bed8b418a5e3f2076a1",
+        "9a660e04062f686b20092f771d9faae6acdf7c1e41a2d76f1b847aa469040d1d",
+        "c1f136f51fb17c0e3335de96107f69ba21674c45ee0fb362e82f125872ca0da3",
+        "bfdba82f9d6a051ab825904eaf2eb22992b6d4607373eff65e852ca1117c478b",
+        "e1cf713cf59850f2d40d41a4a911e0469dbed598eacc50c0f0bdc35fc38051b3",
+        "0a59f0d542c541c4aba8e851c021a6087a813b757e19570c43d9fded712a3bba",
+        "cfc2d9a0d1468c3804c103334fa4da546cacd6cf9f61f80cd18224ccb6af802e",
+        "5b5fb64754ff64a55179caeada01856bb77b539c6c64d59ec9d2e669fdb8dde1",
+        "33c0fede9ab7e0e07f0b6ff9ee72861f8d8a29438dd6d4b1e4ac38518b79c96a",
+        "d82f28282bc9fd80f6253fde9f806e5802208166fc5ec2725de2f6a0249a1e7d",
+        "523a96732d988c714ae0722c505442a648137a2864fff2c4d7bdebd2f85698df",
+        "a80eeffad8132c9ce377a2751bfe7793590be7e834d1508d304b8f0c2c3583ea",
+        "b5e8c79b739ef91a70ede282d136f89b53e3fbdf2768ac31d093793aa3a75b04",
+        "aa3323be8418468cf2d62346c46fdd1cd2fcb84fe7f554ebe54c57d5b18deba3",
+        "ed1c80cf04932211fa621da63bcf88b3da05dada1ff2454ad03bbd7254d228e8",
+        "27059e6f38b903519aae83793a702d52058c74d9ea116996a81050c4f1371a2d",
+        "18612f82c1cd93ce2784a3ec471f8957b07ca4aabe78f23d8e560b60b6614e83",
+        "45d3649267a420dcd0145288acf4516096ac73d827a05d43fe8f520ab7f012d4",
+        "631e13953700c0f01803ab9a1862542b38bb7043e47b935b6ed4b59814a4ffd1",
+        "3a282c51cc94e30eecaee425fcb8a049b5ea7ea0203229d343915f282d20cbae",
+        "34afd2de4ad50c6f350436e1a2e3684b75361190107135ea98e2ce7ba5363f0f",
+        "1fab136d13a2ddd5ff7865302c0eec8dc2490a1dda3181d5ad8a3a8e41ab68c2",
+        "f712d1eafb0b38141105b20b4714cce2d1db4d10c29230955021cf62def2b632",
+        "71b4a99456e54f2b6594e07c42b189cda19bbd45520d7c9c607b540c9428b303",
+        "4f11faa12a88a22e07a32746affe64fbe1c99fad2b00db6148ea956b3ea4245c",
+        "c5d7df6dfbc05239533b324dc72854beb3eb063a39c5eb44ede53d464e91878b",
+        "110b7a52796414de874a33be6ba9c3c840f152a4b57f4c3874cc37a7179d75e3",
+        "b0136862993a09af85f28bcf86b4185a6e7a834daa159562a9b1f8a6260da641",
+        "0f3ad71383a4189cdf7e533c5d8db2b1c4c5eb87e1cf45f4d45b8cdc5cbfcf17",
+        "8a72c21d49d364da53b616730127e4a08b3865fde49ade3432b2785bfd1c4ae2",
+        "b5211aced5c28e10231afdd6a1174eebe048137e048bf938cfe9f0d166599013",
+        "423c68f9871b977849e5023d73f22fc48d2fb35b01964f38a1ca2753523c7123",
+        "8f601d5a69aed3778f11ed5cc4ac0e94b58209b59bc05c0e5c4cd9539073cd93",
+        "4e9d37ece4cd7828b60e8173927e57a8f2b1639ef3300fcf3dcbb5c98211aace",
+        "def76a0a1cb3da9abc5f8fda3cbbf29ad4198913e319fc2751a0275e0b2b18e6",
+        "20790193e29e45580bd5dd6703239fd86c1b3958acc9d4fd3cb303fa8002bf16",
+        "4ae0fdda4098d4e337ddfa45ff5976a44e24706b6aaf90b0d6642de7d29f7f19",
+        "11eacbeaf434b95d76572bd76d369ed0bd45f6feaebf6e8302aa1712323261c2",
+        "fdeb0e411be44edc7b12d66843d3b83557a6155c6a9a432222660bc187d57351",
+        "54a9a55283d4016631ba78829e6e6d0c7ff9b1161808dccdd4ae290f491d3b0f",
+        "48bc99e2d5e2a88d675670ab0022444eee868ace05007c2abc3f1e4ee0d22bda",
+        "8c66323a119ab62369ae2fba5ce792acb77c1f1e1b8585b7dbb76881546e7d37",
+        "9a6a112fd2203411706d0b2f803da145947556944dfcb28939c70fe41c1e0a4d",
+        "9ef404e15b304264f6c4ef31448cc95ae4ad9ce9cfd2b34fae6995727017bd59",
+        "c58fb341dae8e73019ffbe8e596c3a59a733edf1f2bd571fb12d166d581ffe1a",
+        "10eead5dc40c6010a0b69ad13b892da12270f70de1ea88cfed4af12a706ecfcf",
+        "41d326dc7e67ad7b7dbae461e05a2645340ae05979e5d200151061a01a392a48",
+        "4b1e914ea42405c7dbafbfa630e972fdc75e93ad82a46dbd6e9dc1644729e252",
+        "7394c404ea6b73464e0cedd287de8ce7ba0285b8366684388f108e694846e53d",
+        "435164d8dc87fcaf2e7dba90340102a4690cdfa8ee6148c0301e13fbf61b008d",
+        "69f5f06847f338cca6f5138c6de434bdb875a4d6baa92579a6e829058a805d40",
+        "8aac3a9a969659ab544fd19e5c9166348830868bdf8cab3b62109bfa0a5ccc83",
+        "da1b58ee41b1c96d81c7d440c39875a745c51e926e67eefd247aed36c1b6dcbd",
+        "c50dc7ee0581055a330f958713cfd54babb761d9adb41f2bc2a61de669c0d24d",
+        "b67d689536740e166c8a4d909ce9d87ccbe8726e7ca0882e5cf3faf2b5c740d5",
+        "27b0bb53bfd6bc5625eb620e8516e944c561a89b739055c349d27b8287ad4a3d",
+        "8a8a5328efcb3b42455a8fd7343f1a2b5cb3814ab292e3d6b4a9d69b36249af0",
+        "71f60d0c338f8ccaecaf514d0bd6fc556aa8de2e040c4b856c7dca984f7a9de9",
+        "97739187014824324bc4a2ddaabae2fd9a2c0adc98affc43250477fe2a82b503",
+        "bc11f9e75fcc261e6a4f87727a2d98ff229ac0b88aa5460ba097d13fc50f1a4a",
+        "96738f514a589f0d23c0ad92f760837dd16c415fdaffa5c09695f1f3c6fc8f29",
+        "4a817ac4cf5314aaa14e890c5eb860c4eadd595a73d60484568389f13fafa17c",
+        "c77a0bdd1c1bc8f2dd811c5f1d31266b1594564715f31299f080c234a7327281",
+        "4c8cff31f147241422bc65fd0072de1d6e3c4eba610fa186d24de78e735c746a",
+        "9d2a63cbad18006c8f00f521bc576f9226291072120f200d68e7de8f05dc45b8",
+        "550bb02bded08cbe89daafd3a7451939e28fd5295757dc7886c5efe31a350beb",
+        "5728797d55c04a82259efa17de96f1bf25b8bd1f4ab879ae07af3a9516aeb747",
+        "627be2b59bd75a53fef554d27ddb0e14868eba23f0924ae1723647f892e30296",
+        "6a20c4146c378b63d0da8512c0bd0e1184b176428c8e9293422cb9e7ced146cf",
+        "d4ab47e8be1675bfc6fe9e611cba9395657c517adcd207df4a7586d8802318c4",
+        "75776f583039ada02ac5605adbef9fd7193ace039dace79a510a05141e052161",
+        "8462bf203e405c4ab30619c0f8135e83423f3b071ed9bd859c55258f5e2622a9",
+        "8080a4e7b16a976f398816d1d03ad1bd7d37303f0a0af8d95694fd01a87b2dd7",
+        "47845fab156b9584176c1702d707c32257afbeaa8da0f1ddbacaf0e38b097c96",
+        "36c98b39d4d6ad062cbeb90cf5173e9a401eda2c97e604ca170db972436732ef",
+        "00c2cc9a920cede7d6fb038164e29cb969f4907e502685a6d61e1cccc0cb608d",
+        "cb23bad651a87df3e5b883a693bac8b48a3613b6bcda155a488d94e9cdcd32bf",
+        "63e5d21c9f5c3c2c6f7d9cef8ca0bd55650ec99e3d30a23a135191aca0626165",
+        "43f64ae6765ba3e651a7416dca698f8a2d6a8dd06a1719673d2db6e284e64b20",
+        "acf73f7dd0709b65406be269e89dd817e0db26c49c8ca848d0c647dbe19ce383",
+        "5e5d3a2ee4cbe1df23723888f4665ae2222010427794a35ee173eb98c0ee4a93",
+        "f7a676cfeae9598769ac6b2447c3590dd7135223944ebcf7532964bb44cf031c",
+        "368fe3dfd60c3e76efa0714a8c0cb67e2fc5bbc15e39f9aeda53dc1539d57261",
+        "5b070d4173cd2a1ed1a8d777c5e63453c7a66a4bd2d28bfc6597642cb449f179",
+        "c3f2515f247add08a944ca1130c09e2b17c705fe66ab848684ce7a580534fccf",
+        "15bb2346fab808a027d0b99848b966df54980791b33c5dff8e4da1eea026fa25"
+      ],
+      "evidence_sha256": {
+        "authorization-receipt.json": "23e24b998d4eb3be551be2f7677d6a2bd8a86ee8033819b432122e84ddbd8f3b",
+        "effective-launch.json": "9561e2da1ead76d964b1a647e2de2d71ff25c9767df4287cc770e58e7e34fe97",
+        "model/phases.jsonl": "f529d7431f431fdaf59c216ae8106fab654b49ccdd5ae1f4d3074a3136e830ac",
+        "standalone-result.json": "6ab097118a7d3d90644341679a74897f9f4493201adba0380f9bb7bd1a7fd24b",
+        "startup/unified-seed1-arx-full-w4/receipt.json": "8c0d998e5f906ab72d971fc572521b856800dc346f4e1d11ac5746b5642f0e86",
+        "supervisor/campaign.json": "731de8d5fef50679aec88870a2b6209c3b84e08605e672a37f8ca0222939ee23",
+        "trials/unified-seed1-arx-full-w4/episode/action-00001.npy": "eb9d0efc6a649aca72e5f6c01d3be677ca47373aa34416dd63e73aa57f8f378e",
+        "trials/unified-seed1-arx-full-w4/episode/action-00002.npy": "737f328798ead64cebdfb431a3649ae557b331f4d5ede10ee2ffd9717f7e37c1",
+        "trials/unified-seed1-arx-full-w4/episode/action-00003.npy": "ceeee8871cc2d081c8c108421711e67b2d0ee0a667a9f9f112a43c8efd09f497",
+        "trials/unified-seed1-arx-full-w4/episode/action-00004.npy": "1ce69a972a8579ed71e97ad50cdd811a85c1754e6ca2c0f5d4fb3161e3f6859a",
+        "trials/unified-seed1-arx-full-w4/episode/action-00005.npy": "a1a3fd2d767c4d3bda7cdf3fed4a460463c3c453a658ce19bfa2fcf3294d26a0",
+        "trials/unified-seed1-arx-full-w4/episode/action-00006.npy": "07fe5c54d40be4fbec223a5503ff56ca7b2a3b657579d36d69c549d035a5f0de",
+        "trials/unified-seed1-arx-full-w4/episode/action-00007.npy": "f1317b51619f4db925e4deb53dd309d7335c3afcafc0b2fec3afa7bae74b09e1",
+        "trials/unified-seed1-arx-full-w4/episode/action-00008.npy": "63bd3a53d742e0ce9cea65485ec4ffe04509f061c6a137abf8c6711ecc509636",
+        "trials/unified-seed1-arx-full-w4/episode/action-00009.npy": "87d3d02553a355f11628cce983c79cc6b7bd7a320017771ba100bdb8f5b712a1",
+        "trials/unified-seed1-arx-full-w4/episode/action-00010.npy": "595f930ff07ea4937fb6fc19576354e1c4eb760d62e1fd9016ce60e98d47886d",
+        "trials/unified-seed1-arx-full-w4/episode/action-00011.npy": "cbf591f9580eda06820f774dd43f90268bef9580450ebdf93d458cf65a7bdb5e",
+        "trials/unified-seed1-arx-full-w4/episode/action-00012.npy": "3d46050128dfc432e038348d0a77f41670beaf2ee7e62cf88f4d546866c322a0",
+        "trials/unified-seed1-arx-full-w4/episode/action-00013.npy": "0d036b155e2f34ac224af3aaa2bbbcec922e492f17c9dc00675e7ceed1d3c713",
+        "trials/unified-seed1-arx-full-w4/episode/action-00014.npy": "206e3238a6be49f95436d6de8da6edb973938391afeaf9e5363e09a2a51a5e5c",
+        "trials/unified-seed1-arx-full-w4/episode/action-00015.npy": "2c8e77902ed66abf808238c0b6d87b5cea02a1932b860465eb1778d7571e3130",
+        "trials/unified-seed1-arx-full-w4/episode/action-00016.npy": "8b74bac6360f29243ba1b18b7e339e867d30a690e648d30f2f8f523972c716ee",
+        "trials/unified-seed1-arx-full-w4/episode/action-00017.npy": "5b102c459959cedf82d940d9193b6dfd860f7ac70c0e533d29598eaef22196b0",
+        "trials/unified-seed1-arx-full-w4/episode/action-00018.npy": "d6ed509b0c96f149b60f3840a11f79bb73e7938b5023a0a5ace36c658985e371",
+        "trials/unified-seed1-arx-full-w4/episode/action-00019.npy": "28090eb30d9a8bb81f58cb87ce8945a51c2abb291862264bac5ae7ec80b54bad",
+        "trials/unified-seed1-arx-full-w4/episode/action-00020.npy": "568468c4f7540c1dc9245dd1ce26932739d630a26b9b4362c20b1c4a703ab98a",
+        "trials/unified-seed1-arx-full-w4/episode/action-00021.npy": "f9f1e839600e3252f93aafec6ce0d865aed268ff04ebf1248444ccd0aedb7fda",
+        "trials/unified-seed1-arx-full-w4/episode/action-00022.npy": "f11e6d50cada3627a0e3597ae75fafceac49f52f5e6b3465158b60239673c512",
+        "trials/unified-seed1-arx-full-w4/episode/action-00023.npy": "ef2c97dd1829164e61883ffe01c3452120a2d42e5668b07e9ea05f7bc4b3d383",
+        "trials/unified-seed1-arx-full-w4/episode/action-00024.npy": "d73c9cbc42b22af3c8224addc78f63fd494bb5d7da782b21d71912d18ed221b9",
+        "trials/unified-seed1-arx-full-w4/episode/action-00025.npy": "7b4316e0aa06f2f5594e56036c51f4273480a3841976797d12ce66daeacd94c1",
+        "trials/unified-seed1-arx-full-w4/episode/action-00026.npy": "93aee805fb5121b4faf00d86c29f4002aea78226847fa21e634529c85276ab19",
+        "trials/unified-seed1-arx-full-w4/episode/action-00027.npy": "5ba3bdaa3eaea1acfe167b53fd37e6aee4a7486fc6fd5282135d850a54d32928",
+        "trials/unified-seed1-arx-full-w4/episode/action-00028.npy": "08927b556729dcf08b2d64de9ecc24a115f2d957d7fe6d8a8d29f51cabc89549",
+        "trials/unified-seed1-arx-full-w4/episode/action-00029.npy": "320ecc246e09c37477024abb55b9e7a8ed65e0f802b8c8af11ac05abf9e6ed19",
+        "trials/unified-seed1-arx-full-w4/episode/action-00030.npy": "8b37a6580bb01af598c1daade065e45c5575e53283ba63c919f0ff30836a6dca",
+        "trials/unified-seed1-arx-full-w4/episode/action-00031.npy": "ad8ea53eea580f97c7de07c69e64e7747d5d5b4c3569d5f65cfdc140a3c61bed",
+        "trials/unified-seed1-arx-full-w4/episode/action-00032.npy": "c990a32decf178c511615a6a9246df75a14c6f89e587cdc0764af5bceaf1516b",
+        "trials/unified-seed1-arx-full-w4/episode/action-00033.npy": "15294a61c654fcd14c9ffb8838706d7d6df02491709e68abea592ea5a12abb92",
+        "trials/unified-seed1-arx-full-w4/episode/action-00034.npy": "e4274c1fcb6450d81abc64c4aeaec2848981ba885fb9e2e0c2bccb1671f82f2d",
+        "trials/unified-seed1-arx-full-w4/episode/action-00035.npy": "6b052cb2c8b2d324bf1c109630ec863ec17ba684d0d66f50002ddd11db66e145",
+        "trials/unified-seed1-arx-full-w4/episode/action-00036.npy": "27b528260f001cb506cf936631e348f0daeae5ba40bfa25fc4ab262d428ea538",
+        "trials/unified-seed1-arx-full-w4/episode/action-00037.npy": "2d7181b9e3781d1df3c5953142b4d8c3022f04a1d89ddaf74d4f419c7b1510f3",
+        "trials/unified-seed1-arx-full-w4/episode/action-00038.npy": "e97e593b0a6b010894f66d198ca82bc2ac22623721c89a98256edece61c4dc81",
+        "trials/unified-seed1-arx-full-w4/episode/action-00039.npy": "70a52ea4fc0160f1ea1f4ce88273ca955dc9ebe80cb71e09176a6db72c178c3e",
+        "trials/unified-seed1-arx-full-w4/episode/action-00040.npy": "0b8dbfcf139ca1640206c0d837c84473721783e6e68ee74fe216f20a1fbb288b",
+        "trials/unified-seed1-arx-full-w4/episode/action-00041.npy": "ac6edff32d8f291617a2e7c625b4f2ab80adf8aa29197838e8f22243408028d3",
+        "trials/unified-seed1-arx-full-w4/episode/action-00042.npy": "5b250093aaee4cbdb47363398cc1f3c0b93c90b7234bd9e03d79cf1043e8a11e",
+        "trials/unified-seed1-arx-full-w4/episode/action-00043.npy": "45fc81ddd4ecec2f17d7dcb39b996e4503b9106e92e1568d13697fa0fb1db356",
+        "trials/unified-seed1-arx-full-w4/episode/action-00044.npy": "8e96e9807e2d7ccadc7eae39738956a0e09e6d175d076d9004de00c3b26a7f81",
+        "trials/unified-seed1-arx-full-w4/episode/action-00045.npy": "66830e1e2edc90dbbc3d9bf34a373d393ce4e606e4c95fb0aba00f1c5be4e11e",
+        "trials/unified-seed1-arx-full-w4/episode/action-00046.npy": "a11a703e46d873cdb8dd406be4f01fc98bc03b6b45764dae264561e054b3cb78",
+        "trials/unified-seed1-arx-full-w4/episode/action-00047.npy": "bf80f3e4042f5943b8bb2dc54332fe000284f2281210bff935294f3d397e6b5c",
+        "trials/unified-seed1-arx-full-w4/episode/action-00048.npy": "23a375687874e2a930c04644c0978f5668a568c8c6fce73803509f842c0c52d2",
+        "trials/unified-seed1-arx-full-w4/episode/action-00049.npy": "942707f9060dee9cc4dab782050d2a528d5a593d877dd756f739bd2ab96cfad9",
+        "trials/unified-seed1-arx-full-w4/episode/action-00050.npy": "837b090ffafc1ca11dee37936324092404b1676486c77d85bb006ed305be8318",
+        "trials/unified-seed1-arx-full-w4/episode/action-00051.npy": "7cc7ba10bd2f089df28066ef779a66cdcec2db66982fdef3b242348fbe3273d1",
+        "trials/unified-seed1-arx-full-w4/episode/action-00052.npy": "f0bc45d533be4953e9e5c205b569810f28f02945f4b654aaaf573f80e36a53b0",
+        "trials/unified-seed1-arx-full-w4/episode/action-00053.npy": "a0df517ef1e34ffd083438d10e2a62bd80052deae1047cc3610a3603c759c890",
+        "trials/unified-seed1-arx-full-w4/episode/action-00054.npy": "480ae21866209f2e9e3ba4e95cfb244f0fecda824e26426ac5504f974bb68364",
+        "trials/unified-seed1-arx-full-w4/episode/action-00055.npy": "bbd323748149ce50e8f0e6bc84e725565d19e9617d6b638d69824c5f138e109d",
+        "trials/unified-seed1-arx-full-w4/episode/action-00056.npy": "a8d1f043c82f59270c8e3b079bcec1e40b3db5195f0d60b64000eec573ca7f65",
+        "trials/unified-seed1-arx-full-w4/episode/action-00057.npy": "5798223034e345bc78289d2d4638466585e3cbd3758afde7b13bfeef5f901614",
+        "trials/unified-seed1-arx-full-w4/episode/action-00058.npy": "fc2cbee3a992debbf50380162f408cda7705ffbe3bc600c2018fda05efa5eff8",
+        "trials/unified-seed1-arx-full-w4/episode/action-00059.npy": "930444f7e460b5d686f46cafaab3b2212c6c00dd8ab910abf133a3fa5e274306",
+        "trials/unified-seed1-arx-full-w4/episode/action-00060.npy": "bc9ce791c0bfd99557107253be39f8a7d25815c3742857f7dbac21cbb588ef54",
+        "trials/unified-seed1-arx-full-w4/episode/action-00061.npy": "bae98d90f6a7f625852d9254d6a9c4d639b9dc9e05302a89a769400ef682355e",
+        "trials/unified-seed1-arx-full-w4/episode/action-00062.npy": "a0e61d57e38ca94115a6a5eba0492ec44083b7f9f01b51fd540d39dec2e02a9d",
+        "trials/unified-seed1-arx-full-w4/episode/action-00063.npy": "a3a38e8c2f24f4e51df25da36e5e812378dda66b40ea09e9cc104a7e0eccf8fe",
+        "trials/unified-seed1-arx-full-w4/episode/action-00064.npy": "730c59c8929c91581278bb3a5ccf3690301355ac00e1ff313bab340dfc2b7cfa",
+        "trials/unified-seed1-arx-full-w4/episode/action-00065.npy": "fd249f556dc8ce7c639df7f6c148750ed98ad23c85e08b054f68a06b5731f5c0",
+        "trials/unified-seed1-arx-full-w4/episode/action-00066.npy": "83244d051de7e2c7a7a4bf77c7a18779e1dddf69fdea1410a0a0335d8a98fae2",
+        "trials/unified-seed1-arx-full-w4/episode/action-00067.npy": "5538d8818c7211627298fb31b05086214997258fc397acf990d6d78d5ce0b372",
+        "trials/unified-seed1-arx-full-w4/episode/action-00068.npy": "cdb49006fa1aaed062c7c3251c57bfdf5c6f7aaf2d6b541f90c4ad393f4ad484",
+        "trials/unified-seed1-arx-full-w4/episode/action-00069.npy": "77e1a86594709d9c0e28a2b33ae3bd0078fe5190a7703bbc2edbf1e5e9de5794",
+        "trials/unified-seed1-arx-full-w4/episode/action-00070.npy": "a291c346db600976c2722abcd9d2fa88ae2f80b2606dcf4e4fd7a075075f01a0",
+        "trials/unified-seed1-arx-full-w4/episode/action-00071.npy": "794cc92736f5f6d3f8aa595702509050b6876f47cc59a9c51b9b84b4a0abdc1c",
+        "trials/unified-seed1-arx-full-w4/episode/action-00072.npy": "5f3ab3cc07516e2bbe7d3cc5cf0590441d8244bc5674d2f93c12970083e93889",
+        "trials/unified-seed1-arx-full-w4/episode/action-00073.npy": "76dc56715196fe6b2bb89694890f16baa00506b9e7624cc7e8a5d586f3435fe3",
+        "trials/unified-seed1-arx-full-w4/episode/action-00074.npy": "e7ca36a3c4d1bb7328a1ff1f9e92eb72fee85a1a24be5dc19ce241ced252bdaf",
+        "trials/unified-seed1-arx-full-w4/episode/action-00075.npy": "9824c2ff7b01c0ef781393a00a011ec0f6106a4b98068d6ae5962e902c041784",
+        "trials/unified-seed1-arx-full-w4/episode/action-00076.npy": "34da3cd29356e6ac3f8d6fdbcdad3d9329152f58c97eb04c9903b5152a85e6c7",
+        "trials/unified-seed1-arx-full-w4/episode/action-00077.npy": "b400a8a05dc7c5d826c58c2fed1ffb8b9dc510313b1929d5a7550e1d33c41b5a",
+        "trials/unified-seed1-arx-full-w4/episode/action-00078.npy": "393521ed7fb75fabf22120e6a853efed4dfd754f250e79b321909d05c0bdc448",
+        "trials/unified-seed1-arx-full-w4/episode/action-00079.npy": "5102af0e6951835d87f05391a176e025369dbd34781a751a5f1806c814b7118f",
+        "trials/unified-seed1-arx-full-w4/episode/action-00080.npy": "934cd94d3a0ea64f3eafa4593a79af712d8e7c58092b4e52214a2b02eb374f80",
+        "trials/unified-seed1-arx-full-w4/episode/action-00081.npy": "30ca0994a2c8fc1bea4e5242d7e48cc8101b19d5f78ee05da854d545c38ae1c7",
+        "trials/unified-seed1-arx-full-w4/episode/action-00082.npy": "3cd46e4b3cab26edc5156cc6352a436a910cd30447c73f1d5926f50317197162",
+        "trials/unified-seed1-arx-full-w4/episode/action-00083.npy": "9c7336dd6f7badc10dc162add312511d09e3983147dbb88869506e5f64e3ecb6",
+        "trials/unified-seed1-arx-full-w4/episode/action-00084.npy": "fc9c216329e53a0a19f79f2ad03c4edc11be6c704934b3924367b7a10f823b2d",
+        "trials/unified-seed1-arx-full-w4/episode/action-00085.npy": "80f7c20b72a7d68fc8917c112c153562c7c6127af4d701794959943322358a02",
+        "trials/unified-seed1-arx-full-w4/episode/action-00086.npy": "f481dcdee0eed3c6e976f925fdbd0ac250d81714cd276a50d52119c3656519eb",
+        "trials/unified-seed1-arx-full-w4/episode/action-00087.npy": "b05b64f888d8e5fb4ef7e08a1fe2a4ea8fe75e33066f0ae182e722169516b063",
+        "trials/unified-seed1-arx-full-w4/episode/action-00088.npy": "99e72497b3020a1dc3eafa96693114a7b19986add4a19327e1225a55a6511c4f",
+        "trials/unified-seed1-arx-full-w4/episode/action-00089.npy": "80b6644448e3939f85c16e0b63859249ef3c99d99f6426effaff36ffb7b9bccc",
+        "trials/unified-seed1-arx-full-w4/episode/action-00090.npy": "d6ec0973e98f5cc834ad802d419a7ed757ac0329657e0153a3357055cc63577f",
+        "trials/unified-seed1-arx-full-w4/episode/action-00091.npy": "50cd510ec5c5c48d598b73f0ff0c1d61c83317ded398ef28dd64c309f85be34f",
+        "trials/unified-seed1-arx-full-w4/episode/action-00092.npy": "a2b2cc2aa9a0da50c7aa19d08a91777fff2ffbb0e2b4e74c196bcd1f6105312c",
+        "trials/unified-seed1-arx-full-w4/episode/action-00093.npy": "afcc1ff0988ab04625556c4d55b5e912087f7c2902e4419a296c267792ff0107",
+        "trials/unified-seed1-arx-full-w4/episode/action-00094.npy": "b60cc15a1a61277ab4d91b6a6a285d585cdfcca1ffbec263e290ae179b463e46",
+        "trials/unified-seed1-arx-full-w4/episode/action-00095.npy": "bd10f731a433d65c094947e1e851bcd598306907ae8d437a2d35a0cc6249f1ea",
+        "trials/unified-seed1-arx-full-w4/episode/action-00096.npy": "847a2509fa23e326d1a764e160a6fd71d1bc03beeb36bcc2805a30c63317d880",
+        "trials/unified-seed1-arx-full-w4/episode/action-00097.npy": "dca11eb75bbd274e7a703e99efd1e085fe605278e125542810121734e3aaf921",
+        "trials/unified-seed1-arx-full-w4/episode/action-00098.npy": "087b70f77f37440bf8b847b746fc596bfc5e99cb0befb5d7accbdcdd8670cf07",
+        "trials/unified-seed1-arx-full-w4/episode/action-00099.npy": "609760a0f645bc2d54d058ca8d1ca6d5d3de87ad435866f8b449ef6a00ef1079",
+        "trials/unified-seed1-arx-full-w4/episode/action-00100.npy": "fc28981a565cb3130f37ffa8e170ae87f1423e38fe690d2d82d579c267414ea3",
+        "trials/unified-seed1-arx-full-w4/episode/action-00101.npy": "9a8e073ff55a480d52ff71987eb78b4ab9d0624a6f786652fc4f9bc25a477a54",
+        "trials/unified-seed1-arx-full-w4/episode/action-00102.npy": "cb8bc826bb5d21022e20a96dd663ae9f054cb686f75b9c0e474d863ed00411fb",
+        "trials/unified-seed1-arx-full-w4/episode/action-00103.npy": "e1ec6d582b3e1e86946cb3dd5bc5532f0ae926ce2157e24b15cde8633c2aa607",
+        "trials/unified-seed1-arx-full-w4/episode/action-00104.npy": "a7718368a13b94a7adb7b291c1bbd7a1e6f58bb34945173bb54805434fad9135",
+        "trials/unified-seed1-arx-full-w4/episode/action-00105.npy": "5299aee95a1f4cb961fd754c58a0bdb7c024315cf3d0f32f40a73d16a8bb6fab",
+        "trials/unified-seed1-arx-full-w4/episode/action-00106.npy": "8373dc9693c04ef990d7c7f91127f3090b6d27a8db38cc3afaefccab5c0f1065",
+        "trials/unified-seed1-arx-full-w4/episode/action-00107.npy": "90639dbddb28336f15e317f8ca4af3293e54a69e9cf39cc3c91a64cb59467e42",
+        "trials/unified-seed1-arx-full-w4/episode/action-00108.npy": "9a3096c5b5dc7918546969373c7fd2d69de7e98b0fce9b931dce0d31273ef4a8",
+        "trials/unified-seed1-arx-full-w4/episode/action-00109.npy": "284716a4ce8b2e777224a928cc59a801c83390606c2bf52d7170537962db3afc",
+        "trials/unified-seed1-arx-full-w4/episode/action-00110.npy": "a3cbf5a8e0a262995564ec3bac8847e0771b93e58c1cfe9a520ce16bd8f56642",
+        "trials/unified-seed1-arx-full-w4/episode/action-00111.npy": "bf8c41ba1bc2cd62e2295da3bc7b8ce10fc70b540a91e0e097a03a06d1f503fb",
+        "trials/unified-seed1-arx-full-w4/episode/action-00112.npy": "3fffc9300ee062bfca6c4e671d260a2334eebe697c6f0bd58a5f69a3c82ae638",
+        "trials/unified-seed1-arx-full-w4/episode/action-00113.npy": "d8e9e038f9e5abcd2f88c64e400eb5c9457448a741c87cb3db20e70c55fd5c85",
+        "trials/unified-seed1-arx-full-w4/episode/action-00114.npy": "d0f2b548e67ac93a86a094fb601b6b3137c66da740e1f6c72af91a44df41a2d5",
+        "trials/unified-seed1-arx-full-w4/episode/collision-checks.jsonl": "2ebbe504c2217f663eb6b5e5b528b7b00a61cd351538b8b272955df63d2f9736",
+        "trials/unified-seed1-arx-full-w4/episode/events.jsonl": "22d4b8bff0bc0d0d6990fe507aae205919a0b9aa72a2ff39a78b7cebb44e00b4",
+        "trials/unified-seed1-arx-full-w4/episode/initial-readback.json": "4e02d82cfbebccb38afb7d0e426a360c083eb76a2c62e03b3fbc1ee640e5e149",
+        "trials/unified-seed1-arx-full-w4/episode/initial-verification.json": "c14d62c0634543a4b6186262f3b07b15ff30c59e8da05bf2aafc6212abe9648d",
+        "trials/unified-seed1-arx-full-w4/episode/proxy-collision-checks.jsonl": "c3a659c3ee9029b6f91405445a532932f2ce1b2c9b619040f00a7dc661490fbc",
+        "trials/unified-seed1-arx-full-w4/episode/result.json": "7d30df63ed003ea96d3fac7c91efa1a6f494d372c0d367239ebe0b7f1e3c662a",
+        "trials/unified-seed1-arx-full-w4/episode/setup.json": "4a6cea2fb85cdd4846c76ccd3512b64960bf54579859c2b58b70de2f3cff0dd2",
+        "trials/unified-seed1-arx-full-w4/receipt.json": "c068b37bd02e2278518107978ee104660da1669e514961b21c32db0a1d7744f2",
+        "trials/unified-seed1-arx-full-w4/rng-reset.json": "6a4421c20492a4ca3e112ac957e711d4bda1f13a0398bde6e85c29f888578f7a"
+      }
+    },
+    "G2": {
+      "job_id": "127931687",
+      "slurm": {
+        "state": "COMPLETED",
+        "exit": "0:0",
+        "start_beijing": "2026-11-14T05:18:39",
+        "end_beijing": "2026-11-14T05:39:06",
+        "elapsed": "00:20:27",
+        "node": "gnode39",
+        "alloc_tres": "billing=4,cpu=4,gres/gpu=1,mem=32G,node=1"
+      },
+      "authorization": {
+        "archive_sha256": "e27c1c326d10610b0b7dc46cdce97a5f1e09530dc4d89baf6f6c16edf0eace51",
+        "configuration_sha256": "d0494e5d6d96a866537dc3360fcdcaf6da472ca7b20367dc4bd49ed2a146a10a",
+        "commit": "35774d81316902ff9b9c46ac20d21f5b804de98d",
+        "yuan_per_gpu_hour": "3.60",
+        "max_cost_yuan": "5.40"
+      },
+      "rng_reset": {
+        "command": "g2e_rng_ready",
+        "seed": 20261108,
+        "episode_id": "unified-seed1-arx-full-w4"
+      },
+      "startup": {
+        "category": "admitted",
+        "physical_admitted": true,
+        "fresh_reset_verified": true
+      },
+      "model_phase_seconds": {
+        "checkpoint_and_tokenizer_sha256": 0.7917579412460327,
+        "openpi_import": 226.25355571508408,
+        "jax_device": 5.030671305954456,
+        "orbax_restore_and_policy_create": 33.08138754218817,
+        "first_jax_compile_and_inference": 69.06061536818743
+      },
+      "candidate_stop": {
+        "kind": "candidate_rejection",
+        "finger_drive_m": [
+          [
+            0.04388352110981941,
+            0.043831124901771545
+          ],
+          [
+            0.04384302347898483,
+            0.04391825571656227
+          ]
+        ],
+        "expected_hold_finger_m": [
+          [
+            0.04388352110981941,
+            0.043831124901771545
+          ],
+          [
+            0.04384302347898483,
+            0.04391825571656227
+          ]
+        ],
+        "episode": "unified-seed1-arx-full-w4",
+        "tick": 32525,
+        "state_sha256": "af419c135f58d27c972dd83e565f4c66311c2608aa9aa5bbe561cc98c368c58f",
+        "terminal_checks_passed": true,
+        "hold_verified": true,
+        "no_physics_advance": true,
+        "hold_complete": true,
+        "failure_sha256": "c2716e567e1e008bba5937a847b34a85bfed4b7763814ba4d29681b745d13c6c",
+        "close_complete": true,
+        "scene_context_closed": true
+      },
+      "formal_score_eligible": false,
+      "measured_min_tcp_to_block_center_m": [
+        0.09373487132665087,
+        0.15304383430435983
+      ],
+      "measured_min_finger_joints_m": [
+        [
+          0.04255511611700058,
+          0.04290979355573654
+        ],
+        [
+          0.043437957763671875,
+          0.04368820786476135
+        ]
+      ],
+      "counters": {
+        "policy_actions": 404,
+        "executed": 404,
+        "recovery_actions": 0,
+        "requested_prefix_rows": 408,
+        "result_queries": 102,
+        "logged_model_requests": 102,
+        "evidence": "worker receipt"
+      },
+      "termination": {
+        "finalized": true,
+        "task_success": false,
+        "outcome": "planning_failed",
+        "worker_outcome": "planning_failed",
+        "category": "controlled_candidate_stop",
+        "supervisor_status": "completed",
+        "supervisor_reason": null,
+        "failure_phase": "planning",
+        "failure_code": "plan_failed",
+        "budget_stop": null,
+        "failure_detail": "18 bounded task TCP projections exhausted",
+        "geometry": "candidate",
+        "collision_world": null,
+        "collision_world_evidence": null,
+        "terminal_link_pairs": [
+          "fr_link5 / table_6"
+        ],
+        "continuity_rejected": null,
+        "collision_candidates_rejected": null,
+        "projection_stop_reason": null,
+        "cleanup": {
+          "scene_opened": true,
+          "hold_complete": true,
+          "close_complete": true,
+          "scene_context_closed": true
+        },
+        "process_group_reaped": true
+      },
+      "event_counts": {
+        "policy_request": 102,
+        "policy_response": 102,
+        "policy_validated": 102,
+        "approved_plan": 101,
+        "executed_step": 32525,
+        "source_observability_barrier": 1,
+        "task_tcp_projection_rejected": 1
+      },
+      "physical_steps": 32525,
+      "contact_phase_ticks": {
+        "approach": 32525
+      },
+      "finger_contact_ticks": {},
+      "holder_ticks": {},
+      "stages": {},
+      "last_measured": {
+        "tick": 32525,
+        "sim_s": 130.10000617941841,
+        "query": 101,
+        "line": 32929
+      },
+      "block_task_m": {
+        "first": [
+          1,
+          [
+            -0.07437799125909805,
+            0.006845731753855944,
+            0.8400007486343384
+          ]
+        ],
+        "last": [
+          32525,
+          [
+            -0.07437734305858612,
+            0.006846598349511623,
+            0.8400000333786011
+          ]
+        ],
+        "min": [
+          -0.07437821477651596,
+          0.006845045834779739,
+          0.8400000333786011
+        ],
+        "max": [
+          -0.07437703013420105,
+          0.006848440505564213,
+          0.8400009870529175
+        ],
+        "samples_with_pose": 32525
+      },
+      "projection_plans": [],
+      "projection_fresh_requests": [],
+      "terminal_candidates": [
+        {
+          "status": "plan_failed",
+          "detail": "projected prefix remains source-blocked",
+          "accepted": false,
+          "translation": [
+            -0.004,
+            -0.0,
+            -0.0
+          ],
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ]
+        },
+        {
+          "status": "plan_failed",
+          "detail": "projected prefix remains source-blocked",
+          "accepted": false,
+          "translation": [
+            0.004,
+            0.0,
+            0.0
+          ],
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ]
+        },
+        {
+          "status": "plan_failed",
+          "detail": "projected prefix remains source-blocked",
+          "accepted": false,
+          "translation": [
+            -0.0,
+            -0.004,
+            -0.0
+          ],
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ]
+        },
+        {
+          "status": "plan_failed",
+          "detail": "projected prefix remains source-blocked",
+          "accepted": false,
+          "translation": [
+            0.0,
+            0.004,
+            0.0
+          ],
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ]
+        },
+        {
+          "status": "plan_failed",
+          "detail": "projected prefix remains source-blocked",
+          "accepted": false,
+          "translation": [
+            -0.0,
+            -0.0,
+            -0.004
+          ],
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ]
+        },
+        {
+          "status": "plan_failed",
+          "detail": "projected prefix remains source-blocked",
+          "accepted": false,
+          "translation": [
+            0.0,
+            0.0,
+            0.004
+          ],
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ]
+        },
+        {
+          "status": "plan_failed",
+          "detail": "projected prefix remains source-blocked",
+          "accepted": false,
+          "translation": [
+            -0.008,
+            -0.0,
+            -0.0
+          ],
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ]
+        },
+        {
+          "status": "plan_failed",
+          "detail": "projected prefix remains source-blocked",
+          "accepted": false,
+          "translation": [
+            0.008,
+            0.0,
+            0.0
+          ],
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ]
+        },
+        {
+          "status": "plan_failed",
+          "detail": "projected prefix remains source-blocked",
+          "accepted": false,
+          "translation": [
+            -0.0,
+            -0.008,
+            -0.0
+          ],
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ]
+        },
+        {
+          "status": "plan_failed",
+          "detail": "projected prefix remains source-blocked",
+          "accepted": false,
+          "translation": [
+            0.0,
+            0.008,
+            0.0
+          ],
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ]
+        },
+        {
+          "status": "plan_failed",
+          "detail": "projected prefix remains source-blocked",
+          "accepted": false,
+          "translation": [
+            -0.0,
+            -0.0,
+            -0.008
+          ],
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ]
+        },
+        {
+          "status": "plan_failed",
+          "detail": "projected prefix remains source-blocked",
+          "accepted": false,
+          "translation": [
+            0.0,
+            0.0,
+            0.008
+          ],
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ]
+        },
+        {
+          "status": "plan_failed",
+          "detail": "projected prefix remains source-blocked",
+          "accepted": false,
+          "translation": [
+            -0.0115,
+            -0.0,
+            -0.0
+          ],
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ]
+        },
+        {
+          "status": "plan_failed",
+          "detail": "projected prefix remains source-blocked",
+          "accepted": false,
+          "translation": [
+            0.0115,
+            0.0,
+            0.0
+          ],
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ]
+        },
+        {
+          "status": "plan_failed",
+          "detail": "projected prefix remains source-blocked",
+          "accepted": false,
+          "translation": [
+            -0.0,
+            -0.0115,
+            -0.0
+          ],
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ]
+        },
+        {
+          "status": "plan_failed",
+          "detail": "projected prefix remains source-blocked",
+          "accepted": false,
+          "translation": [
+            0.0,
+            0.0115,
+            0.0
+          ],
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ]
+        },
+        {
+          "status": "plan_failed",
+          "detail": "projected prefix remains source-blocked",
+          "accepted": false,
+          "translation": [
+            -0.0,
+            -0.0,
+            -0.0115
+          ],
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ]
+        },
+        {
+          "status": "plan_failed",
+          "detail": "projected prefix remains source-blocked",
+          "accepted": false,
+          "translation": [
+            0.0,
+            0.0,
+            0.0115
+          ],
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ]
+        }
+      ],
+      "collision_audits": {
+        "target": {
+          "checks": 47000,
+          "blocked_checks": 3,
+          "link_pairs": {
+            "link4 / table_6": 3
+          },
+          "partial_final_line": false,
+          "scope": "FCL audit calls, including planning and/or measured checks"
+        },
+        "source_proxy": {
+          "checks": 563,
+          "blocked_checks": 57,
+          "link_pairs": {
+            "fr_link5 / table_6": 57
+          },
+          "partial_final_line": false,
+          "scope": "FCL audit calls, including planning and/or measured checks"
+        }
+      },
+      "terminal_rejections": [
+        {
+          "kind": "source_observability_barrier",
+          "tick": null,
+          "sim_s": null,
+          "query": 102,
+          "line": 32933,
+          "status": "collision",
+          "geometry": "candidate",
+          "world": "source_collision",
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ],
+          "continuity_rejected": 14,
+          "collision_candidates_rejected": 2
+        },
+        {
+          "kind": "task_tcp_projection_rejected",
+          "tick": null,
+          "sim_s": null,
+          "query": 102,
+          "line": 32934,
+          "status": "plan_failed",
+          "geometry": "candidate",
+          "world": null,
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ],
+          "continuity_rejected": null,
+          "collision_candidates_rejected": null
+        }
+      ],
+      "first_request_stamp": {
+        "episode": "unified-seed1-arx-full-w4",
+        "tick": 0,
+        "sim_s": 0.0
+      },
+      "first_request_state": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "gripper_prediction": {
+        "blocks_with_le_0_5_any": [
+          100,
+          2
+        ],
+        "blocks_with_le_0_5_in_w4": [
+          0,
+          0
+        ],
+        "saved_blocks": 102
+      },
+      "action_hashes": [
+        "d7a5495dda94bb44b8db9d51e3ae4cea149c3d9b42252d8683268724a2123249",
+        "705642c2b4362da9b2b5bee9d11ff8726cdac461720a94807001fae3775ab6ff",
+        "309c1eda8f1fe42921ed8a3648f7d99b61f41113228fe528a95b45e8e5bebc37",
+        "e546ae9450ea403d0dd60a07187f0efdcaf1c8e8d08dcdcd90e0828b77057fe2",
+        "9088d6bc8604fe619d8da5bab8908ab1a00df8f4a3682d917c02937b269b269a",
+        "878def49d54e47ef052a4154edd604065ed74cfdb913bfef6dc6a97cd86f4b67",
+        "5772e488382ff5abdc825127070a3460a860dfe18d72427d65ab5f6b75137af3",
+        "8ede45b08902ef1a87484b84ae9ddfede201268b79439762fe67e922fa4518ff",
+        "30e15729eee7d62cd53462e702d51995d7537ec92591f7b07df5d3a03dc95a1d",
+        "f038b06c36b0c5747c95b3f9efde424bde778c8dd768350eb0d8aaf6b70d6ae8",
+        "2efc35f07f11154671c67a97f6b96cda9af868d05c871ed6ea7b13eff55286e6",
+        "34602ef01400e71adae574c492df5e82e595a1decdac0d325fa50aa852eeb9a3",
+        "acdf14a046b47c7a92d87fad7925c178dd190213f639495154d69a7ea66ee240",
+        "dc60a66e9a9ddb6456ccbc4574b0241e2b8c6fbc1d79eb77023c25183db989c3",
+        "fabfc4b50ebff04663505f60f7c0ea05c1d842ca9b52873767d54d7a18611360",
+        "2e6f63de204c539cf0d622f4120d7b920a82cc940d74d6827841c8d68c26351a",
+        "a58c8cebae34b19b4bfb0293a48202f4921500e1954dd7bd11604f6f7688d3e2",
+        "aef177a2dfaf371084c82e83f29da2cb5f296db77bf71917b14b1165d501c27f",
+        "674cde7830ea8f30697f65b161338e867a1e2875fc07d72116e7b8b90200ff3d",
+        "ae592fd6f7fc2c27178026b06e0fe37ed74dc50b29fa4923e5ebf7f508c8d3fa",
+        "931470434efcf176211c9e593f6c2248e6b185b93abc4c1f3545b93688aa1cc2",
+        "77792518e1adb13fec5196dce5b0825886c3d07917abc7f27db3f4ad3ad9a78a",
+        "d883c50b9032356fdd9df31671e003a8c8af0856e13548ec7e755ecec1cb392c",
+        "05e7dc140f17fc2d33f79d7bd9609c8ccf47733ee268eb696101cc2d47bcd4fb",
+        "891486e7916cc44e4a59ceaea680f161f598b0f90d64857cc1b1c89d43e3a6ef",
+        "50e93930e0c0be5f15a5d8088b5e3a067a9c2082bc6bfd4652396c945e2192c5",
+        "bb2a2b44d1eccfe56ed1ee193f9fe1c4dbd1ce1fbed4d4feb53fc85310146f30",
+        "d1904494210c1830680ccd30ae601d0f9de7520792e17510424b76047ad14072",
+        "34843cc6a94f8e14c25b3ed817833f9ab934de022c8a9dcca20c4c26e1835ebc",
+        "0d3e6e0db0f9c3b05ea58979f08c49c52029b4756df918d34d6cb72d2206c06e",
+        "db7c7b9cbab3d1226c589bd0a448906dccd0239b32ca962aa1a14ac62253c9ec",
+        "b4051a0324038a67ec55d58f3bbe650e4ae8742d21ac243c301b72249f28e6d6",
+        "47de0b2cbc40d918ae0a59e2b2b29bacb85c1b42bfecc1b5a3a83b55f663fb0b",
+        "025c749efee537d3eae3d46f100546f55ce53d6d2c11661fa4941c5ef6d6045a",
+        "8785b21c3ae15a2ead0bda73636e3dcafe3addf8cd9938f078ca39a2fec45e03",
+        "f2133e1c8c695b1d5051f7e73fec113c7ce4e9525102cbc96f60c5280b0aca16",
+        "2434698cc03b8b4f1b5fd8a40508f9eea7e109c48c0f3833035a5309f7853f3c",
+        "97a75b796b9bbf766d4e8e04162677fe08b6614dddc448aeac317b44282816a9",
+        "be06a01b46188ad6cda3f2c9173a48681af0204d60ab23b1a4abf40d9f088b7c",
+        "5e3188b7dce8958a80ed8d8efa1f86c0687840dfffafa37ce2c7bbc48fb0b4d7",
+        "7a13e8b2f94d199281f4964e1a3707ea1c6fcf450410b6e08e65ed54eca5d38b",
+        "e50baf3dad442c323441ec1fdf36eb1bdf962f83e80bc6a616e09a65ebf9e844",
+        "a5e0b37f9635e1e1e2055600afdb78d0b49fd2aa52a784345384a7125f98f605",
+        "45047907ab89c3ed2a7929d8105fa8ae8676f787a15841e94a3c8cdf2cf510fa",
+        "44e3cd7f330867480a9bc1478d492380337fe915b7c45cc97859994291e849cc",
+        "caa2c227ed80fb077cd0cf33320234130eace207dab2ca21a7467d5867d80b9f",
+        "248ead33351a613d1f6c2ff9d677eae08c080b07c32111486b3f6efb52e25ee9",
+        "3ae6f48dfd60dc133d132b643e496111dad68ad72319df6aceecfd3ff6643cb9",
+        "00130a7fb7adb194f97ab4377dd643c224b4e9540bc535b5d80c32f9b5108dfd",
+        "b934fb037529ae35d88df6e8a4d80fc45078c903fe4be243d6d4e8a5e9aeef5d",
+        "71f691734ae7425e85095e0cbb04d3a1b21b9e0e6ab0450980ffc098cf88f094",
+        "0c898a1df800065f77e0cb66992cb7a385c65acd0ab3ac49f63f2b875dd91b4b",
+        "2d1d2bde9d851cb511e9ec71ad874f13a852674a5e27dab18db1dcbbea2ef6c7",
+        "8ba5747fdaa57ae0e7b1d1fc41039631ca9192578a20e2c12e5e33577735a973",
+        "cfdcc4aafa329e471df2b370a7e1e7458ea55252d65951c72aaa84046e6bcb7c",
+        "a6920f0a982f12763b271e64115fa24751bb81a566a3c395c0e24c18f8199699",
+        "d439e77c50fd09b9b08b0fd3e434084edfbaa2397b54e187af1199e5c6add9f2",
+        "0f8df0350db59e3a2a6ea3df766d1053397b2bc29b3a1aec5e435d5ca5f14256",
+        "e1a38d3fd5e8f7e81b6f03bf03980bcc7278fb28d2621acf9f6ad4c70008e8cd",
+        "573e18dda447db0d502628882dc624768d47bee2044f36baf7e17074eac8287e",
+        "82460f639b3a32b25acbbd259b2d852036e5ba61c27a33991532435a7d213b0f",
+        "33b2e5b7258854122e18a486c53d28086eebce7454682dd3ed13e85d1107fa5f",
+        "596592e963181fda505444dfb2206106c25a2f63b0304160b4235379a9998cb3",
+        "3c40968213777b85a2634e5c11ce7af4747761d82f5c71ef4e058b150953c2a4",
+        "f27a3c7b69467f33c25298a816e0fe14052bd8ecdb0db43bff542a739e6fa7e5",
+        "cc78699d74634e0654539367549f265c0f29197cf19ed9ddea0c9e147da60038",
+        "a9a7477d91c08c467ebe3f95d063813103f712a6fec3f0ba0464a72a3e30ba09",
+        "3bda0428af20842884f0429bede30e31f25f7e9b01e6cf06290b2d2f0535dced",
+        "fafec8bf133f0206a17b38d3c96aece71067aa4e4933f6e4772e66007cfe5965",
+        "cb79802d7882ddfe38b681dd4c34fe9c55e28614d7f5a10f076c969760e36b87",
+        "ae36e933ffd7b7b714e01ab084f4d2a008f2beaff67345248c4409ca06d0d8a9",
+        "0803a2fcf2be0ad343fd8dde1bd59819be10a86b08135763668427835392468a",
+        "20526f455106ada70bec18d1eb55e3f9a5bb23513d5b15aa339b86355e90f19a",
+        "c0205ec31a0b5a72a449526d6c8d1f51dc76970889297047bb0a9e1af71fccb2",
+        "cb611fbf22e46012b3ee493b0c55bbcd1bd0e29ffe6bc00822ffbb3e880d8f03",
+        "0a39a09a80f1bc73218d6dc4f939dcc30c3075f576d1cd9d42445b904af1b5aa",
+        "17b76e3ca94725493787cb925c8edc429a8a1a023998aa2f98300ff079f652d4",
+        "aab294396ca2c6abfadb75c5a7a671eaeba66b73d5443424bfcbce5821a29825",
+        "7bb4a65f9e8d7d431dafe5cfca3c4fff969919369277c49aaa7706847f08a608",
+        "007e706bc87714ec03fea3c363b5803417383e552ddfa9e5db2f36b4b2e02a08",
+        "3b544912be38c03f5f2081d11cc8c0a9f301ee9d06d931952d550ea8096e3de2",
+        "dd3da55f46c7e6175b624c224a62aeb572e1b36c5043d800f9a4d7241c1bc6a1",
+        "150abe8fbaaa38fbc72615504feb07047a20a4fcee968cbb78f97aaf5f09cc52",
+        "22e5ea208efc69fe0bd00ead52437402bf4028ca0bd3a6a360dd9c60c40b74c9",
+        "08c66dddaaefcb842b07f7183e03439b0b21c9276bab05f91ef0a6e57bc9834d",
+        "a7254fa1e5ab702c824d7410f36c0a2570e4a9b6e915609335ad51ceaff5ffed",
+        "cef4243c708433044b64efc281aa6c7541e49c28b1285acc8393e93cc93630a3",
+        "781ce4c0165e71211b95630cde627d03bb8c0da2963cfcbac6139069191a8e4e",
+        "286f70defc6d24e8833f0e68a872db34837788d17c2346ed6eb695062075312c",
+        "5032424ff27117145701b55bc44e2c0ba4f54fde962bff0978fedfef377cc3c4",
+        "83ca1262489f924e54098e8ce5f3fcf21e685f2aedeaf14f84315c7e7754aa78",
+        "11b2ed84a3b3228ba648bc2c3d5a2cb46dd555ca75e6d7ad7a6497bbf07d5372",
+        "e18461532dac9ac3d4bb03eaa238afb271f2b67ccc3c3d1e6c1db6856328b23f",
+        "08550c31910b22ac1b936e56d50626cb89f16c67381f0a2098ba3677b04fc2da",
+        "58ccd62026cbeb0620833b4664b8bc16b69c022c727a517edfee47dacec05d6c",
+        "a3bb0e6762aabf2e8baa0b97c6f47ee366102360d10b5d3184a72f85f80e92ca",
+        "e2e7deb5f48b940e29160d0ecd79777171477ed3f67a0328a0d3d6833b3c52ef",
+        "3ef35b55d214e33a02b6ccf023ecbdfa9be830b7faa0c02540856875f66c3aba",
+        "f03424d0835eb5c225048e13a0fe2896e025f17d1065e059106b7d6ee9f279f4",
+        "17fb5e216a0e4d4cc0e7a22dee918e4b22510f8fc136f836fb46a788d50ce85a",
+        "47aac0bf0e79f7c778c3435f3cb77d2aee7338eb718eaf7d642c0cb11e63c7d0",
+        "47431a08e07db4d5a2850cbf3d456cf3c03108758537bcc8a650a406cd6cc476"
+      ],
+      "evidence_sha256": {
+        "authorization-receipt.json": "e5074326cd1acf2e87f5244173dc16963624c462cd0858bbfe12eb7f9017d6b6",
+        "effective-launch.json": "0b4f38ddfa1cb3a297885d2363392676ff0711835722e35ddb5a64793aeb0538",
+        "model/phases.jsonl": "a4678eb194909aaeac9a7ae94906681f689a1c917e67e7203b5bdf83b70069c9",
+        "standalone-result.json": "754d84e0e5c171ec8fbc823bc26ccd383b21e2cd2ccb7e51b0a2a2617690d0c2",
+        "startup/unified-seed1-arx-full-w4/receipt.json": "dbf2b887875eef0ee9337976e35844d1c5c85bcef7284193d49fc4721992c428",
+        "supervisor/campaign.json": "e213593107e6f9a771a394aa7bcb904560334b465466637a601f2d640bc76019",
+        "trials/unified-seed1-arx-full-w4/episode/action-00001.npy": "f58076b1347eae9126983501e48bdc29b8928290cdc493e005af367bd5b389df",
+        "trials/unified-seed1-arx-full-w4/episode/action-00002.npy": "9490942da2c1d3594ddf3b7c475fa933781feec462564d6a47bfb8debd5d1063",
+        "trials/unified-seed1-arx-full-w4/episode/action-00003.npy": "9a511476c032099fb25c5c6e372aae490b7755fde903e463e5038fc128846abf",
+        "trials/unified-seed1-arx-full-w4/episode/action-00004.npy": "a19e6455a12f0f0e502251bb3de9a1f596f8e1c295eb8b6794828f9c212dd10e",
+        "trials/unified-seed1-arx-full-w4/episode/action-00005.npy": "74be66238deb547de6ea73952f654048e653f5f1d950e25d4986b0d098192f77",
+        "trials/unified-seed1-arx-full-w4/episode/action-00006.npy": "ee6b0d2481ac77a097f6de9000507f412feff3e3180384f4b017cfadd9f06691",
+        "trials/unified-seed1-arx-full-w4/episode/action-00007.npy": "2e1c996fb4fd869334a6172c8ebeebed8f3a326a8cbb2467fd3ed7f17e1e22c5",
+        "trials/unified-seed1-arx-full-w4/episode/action-00008.npy": "878c0dd259ded3f06468f74b9c12b425171ad9dbe1f71c799f76897d58a5510d",
+        "trials/unified-seed1-arx-full-w4/episode/action-00009.npy": "13efcf1f1937d8125768382441f1fd0836b37101727d5186517a2f4cf1998c18",
+        "trials/unified-seed1-arx-full-w4/episode/action-00010.npy": "8fae8d1ed5de70c09296ff85bb7007e752fa6b26c7d529dea1c22f9953a1b663",
+        "trials/unified-seed1-arx-full-w4/episode/action-00011.npy": "1eda57663213fc75812384dd031ceb12e0669c90263e5f86a8a5a79e63e7071c",
+        "trials/unified-seed1-arx-full-w4/episode/action-00012.npy": "d79136f0d9e5d5a5ed203809aac6cf73ca585107c375ca533eaa4ac4f1b492a9",
+        "trials/unified-seed1-arx-full-w4/episode/action-00013.npy": "4f15b778ee73570ccc9bfd6f4bd6c05b143f1a992b954593a5452acaea34df94",
+        "trials/unified-seed1-arx-full-w4/episode/action-00014.npy": "05e70f782602421f7f5e2a3d60129cf8575de95d3fa3b36bc57220b31635a8e6",
+        "trials/unified-seed1-arx-full-w4/episode/action-00015.npy": "d341ff7e8a397d4f5ceaef0e93ec899ab5b8c35647fbc6bc2c8386e6021a435e",
+        "trials/unified-seed1-arx-full-w4/episode/action-00016.npy": "6ba5b7a5e18426681732a17661ad4ba92200ee1f78f8cd2237ad967616312f13",
+        "trials/unified-seed1-arx-full-w4/episode/action-00017.npy": "90a6e0d07df0489a4f53c5a9997501234e552b45d9c19751e6115f95dfe2e695",
+        "trials/unified-seed1-arx-full-w4/episode/action-00018.npy": "cdd66a3a34a81ae13ed073011281360016685c0d99f50a0668ace8c8da2480ff",
+        "trials/unified-seed1-arx-full-w4/episode/action-00019.npy": "7c04eaf98c40c2175459cb8f27436b6cdd1e46f49a7a2f490ae64da574ecbea2",
+        "trials/unified-seed1-arx-full-w4/episode/action-00020.npy": "355d2bb7acb6d7b0f292b5625da7670aa7c9c795008360eb23d5c88b1fcfbad2",
+        "trials/unified-seed1-arx-full-w4/episode/action-00021.npy": "3420f99dd238815d675347b74c53ace48a8e3d69a61abda53d223db3e9e659d0",
+        "trials/unified-seed1-arx-full-w4/episode/action-00022.npy": "169f9a3705600a65f750feec93c761db355d99dace58290d54e6ade9a94ab2ea",
+        "trials/unified-seed1-arx-full-w4/episode/action-00023.npy": "7f44bcfaf48f278fcb8a4ad463a25263f1a0a5e5c12d5a24cc7f46f223d59b9c",
+        "trials/unified-seed1-arx-full-w4/episode/action-00024.npy": "351ba6e127c069d515d7274f1bbb7edd4233276e41316a9c6d7f508aa964b1de",
+        "trials/unified-seed1-arx-full-w4/episode/action-00025.npy": "9553fe07841788dbfab149c8371ffbccdc739c25abea726e748dae0caa3aae39",
+        "trials/unified-seed1-arx-full-w4/episode/action-00026.npy": "0d3e93e905192d72e38c9befa3dca54dc1c98700fa1a1a0c3624bd032fc84d3c",
+        "trials/unified-seed1-arx-full-w4/episode/action-00027.npy": "16405ceb86939917cd2eff1270a2904e44c935d26ad9b477996c4609f6ef8c42",
+        "trials/unified-seed1-arx-full-w4/episode/action-00028.npy": "c2d84279f01a558bc2b4458e362c79001cc8e54acb4910b417f30981ab99ab07",
+        "trials/unified-seed1-arx-full-w4/episode/action-00029.npy": "c123bcfb8537392110bb2d68cf124adefaa2ca3eca288a897ad175b3384d318f",
+        "trials/unified-seed1-arx-full-w4/episode/action-00030.npy": "e4a9ac258ab559ab0759291ec5d904a1b9bc0f60b84b9a69f5e21ac5a4641bdf",
+        "trials/unified-seed1-arx-full-w4/episode/action-00031.npy": "0956d98815357ce3a3e1c9c4646ed9cfb42feb94364f8244f2780d933c75dd1a",
+        "trials/unified-seed1-arx-full-w4/episode/action-00032.npy": "af789cae6132a68893e9304c627042d69f4acb6ba60b4c026a55f0b65a68c873",
+        "trials/unified-seed1-arx-full-w4/episode/action-00033.npy": "dcf3a5bbd4651464acccb12c9f25debcf204221ea0d0f7d117035d6e2abaf797",
+        "trials/unified-seed1-arx-full-w4/episode/action-00034.npy": "37f7dd4f615006e0b43eb338f325d5cbbce52cea504d536191f5137416a86b6a",
+        "trials/unified-seed1-arx-full-w4/episode/action-00035.npy": "603760c06c7a5635cfa00671e2daad758acfd0e22e781071cae34dad1e3a2488",
+        "trials/unified-seed1-arx-full-w4/episode/action-00036.npy": "3e338503e21cdd5124d263f5dd257e2752f72b8f3508794b71c436c10c8240ee",
+        "trials/unified-seed1-arx-full-w4/episode/action-00037.npy": "1c98a5643b51c1d624a534d0c5033fc3e3da7efcd1a8ab79166b0f0a13fce00c",
+        "trials/unified-seed1-arx-full-w4/episode/action-00038.npy": "aecccea58b57178737cd6b7227f8d6db0cd52d8662a2932dd3b4bc0aff513a22",
+        "trials/unified-seed1-arx-full-w4/episode/action-00039.npy": "ad477688cf1ad5c736798db20151f60a184aea0c06afdc920ecdc8387f82e924",
+        "trials/unified-seed1-arx-full-w4/episode/action-00040.npy": "73716bda9d96e94ac8aed50e9387a83e275803df5ce512c0afc34ceab4388a24",
+        "trials/unified-seed1-arx-full-w4/episode/action-00041.npy": "788240e4eca5f16d6b2092d2cf4b09f761984fd5e31154988781ffc3388fb21c",
+        "trials/unified-seed1-arx-full-w4/episode/action-00042.npy": "198bf79117b47b4eabd1104980786323e9a49524aa8e55ba44758e34217ff26f",
+        "trials/unified-seed1-arx-full-w4/episode/action-00043.npy": "b4f8fb64b0c0740221ab57fbdb7eff68114c89c0926613b653c6019fd24c877e",
+        "trials/unified-seed1-arx-full-w4/episode/action-00044.npy": "edd282a6d7839dc0e1f7aadff50c782d0a63c76c7f760cc50a2253e1ae81b131",
+        "trials/unified-seed1-arx-full-w4/episode/action-00045.npy": "64f9b49625d5506d6817cf33c18134b3351f074b29a12ec9fd0c93fe13b9efb3",
+        "trials/unified-seed1-arx-full-w4/episode/action-00046.npy": "2a961e1397dc11fcfd023580043841bc5ab3b753ac4d53f3772b43f747a7680e",
+        "trials/unified-seed1-arx-full-w4/episode/action-00047.npy": "6efca7ace9cd1d5a9df413a443ea608b164b7c0fe9c26c28f40558c0d0ed7cb1",
+        "trials/unified-seed1-arx-full-w4/episode/action-00048.npy": "e1a4446a3428bd55e1fc6c4da30cd9fac4cb40a0d10628ba937064118cd58455",
+        "trials/unified-seed1-arx-full-w4/episode/action-00049.npy": "990e3b3f384d587ac93ad8d8dadd43ab4c1af51452c2a7e7500ff266280f116b",
+        "trials/unified-seed1-arx-full-w4/episode/action-00050.npy": "655ff95e548dc28c5e6b8ad46311f83f00b59a0ebb9fd4f90574f15413e57112",
+        "trials/unified-seed1-arx-full-w4/episode/action-00051.npy": "bea34b87346a03ef7c7785e5fe0b1c2012071c7816a9d8748201b34dfd7548ef",
+        "trials/unified-seed1-arx-full-w4/episode/action-00052.npy": "fc79e5a58e04b6007a7182c12e0524343dbd645318c3d0af24bc2939ca213528",
+        "trials/unified-seed1-arx-full-w4/episode/action-00053.npy": "5b688c67e59d45542748972b839b87d4eca0ac74d81e1c74134cc9e749076ce6",
+        "trials/unified-seed1-arx-full-w4/episode/action-00054.npy": "d935fb5a28b282872a2193ab79af2d5891a3809048d7c5f220674064a0544c57",
+        "trials/unified-seed1-arx-full-w4/episode/action-00055.npy": "94c97f7ce5d864a6745d295e904ef36cf0f81abd5399d5d8083f9765ea4d631a",
+        "trials/unified-seed1-arx-full-w4/episode/action-00056.npy": "80245b7a6c74ccb5e768da91468cdc059aaa1b4327ab60d6ad99a757f9dfa128",
+        "trials/unified-seed1-arx-full-w4/episode/action-00057.npy": "de92a667faac90e090cd7630872f0fbe87934fed54f859c7d126d47141f88f9e",
+        "trials/unified-seed1-arx-full-w4/episode/action-00058.npy": "e4e5e051fb1ab909f1e78b7b648a9aa1704df659709550f65fe51db208743b54",
+        "trials/unified-seed1-arx-full-w4/episode/action-00059.npy": "82d8943469d3bebed09b5caa42de68e48994cf650f0f31a6f42e4146c2e31db2",
+        "trials/unified-seed1-arx-full-w4/episode/action-00060.npy": "51ef39e83080f2b56b36e1c6aed114b46a82a5a09c9e818a66c886cb0c08a905",
+        "trials/unified-seed1-arx-full-w4/episode/action-00061.npy": "8e83115338841d9177a0f4531608e8b0f316d8a065432cb65039a79d6bd56197",
+        "trials/unified-seed1-arx-full-w4/episode/action-00062.npy": "a6e6cef487f65884309cbbb351d1c7bb09c733ed88deac6619ea67430127a0db",
+        "trials/unified-seed1-arx-full-w4/episode/action-00063.npy": "dc9821459907d57ad4a5502f7f418967c450c2f1abc0c1203a4b31cc3a7eab4a",
+        "trials/unified-seed1-arx-full-w4/episode/action-00064.npy": "f2d6f6d9ad7fb212aa49eb9ca88df12472f0a2d1a3707edd2f14520a59b0e8c2",
+        "trials/unified-seed1-arx-full-w4/episode/action-00065.npy": "df06386355c185e705e2b2fb509a965d5f40064fcad0eccc11d24ad5d53b4cad",
+        "trials/unified-seed1-arx-full-w4/episode/action-00066.npy": "3c0876deb8e6c8b22ed490c3ca35e18f03cd242312e365c9bdd2811ac7de4de8",
+        "trials/unified-seed1-arx-full-w4/episode/action-00067.npy": "e46a803463c703e496f74d1520d86bf49bef3a517c8e3f2d6c6399d69c05af64",
+        "trials/unified-seed1-arx-full-w4/episode/action-00068.npy": "7aeb413c32364a7ba451de1304efcd986f7c08d231c171e630aaf0dad77d9daa",
+        "trials/unified-seed1-arx-full-w4/episode/action-00069.npy": "0dfc82be74da149ecaa321f6c4e839f8b8fdc5a7833ed67c598f592876825d65",
+        "trials/unified-seed1-arx-full-w4/episode/action-00070.npy": "03ab3dc5dd05b6680690305d28fb88dfb911f6a29defa794376b625a7ac002c4",
+        "trials/unified-seed1-arx-full-w4/episode/action-00071.npy": "3fb0e4334d293a683738f2740bd2bed1db3a360ef4219929fbfe095ec18b3c9d",
+        "trials/unified-seed1-arx-full-w4/episode/action-00072.npy": "e4bef6e343b637afb2f329a54ae4d07ce6d189741682e7fc09fbefa19ca6457f",
+        "trials/unified-seed1-arx-full-w4/episode/action-00073.npy": "e2ec0373d37f7cbb62661f46883ff28ddc2343675cfcafdaf4baefb5401161b0",
+        "trials/unified-seed1-arx-full-w4/episode/action-00074.npy": "b4b8229eea43f981233dbe61054256973ea501c1bec6ddb59ff472051f021318",
+        "trials/unified-seed1-arx-full-w4/episode/action-00075.npy": "ebb78657d41b964b09847c9151204da6df8faa98111b361c75665088178030b7",
+        "trials/unified-seed1-arx-full-w4/episode/action-00076.npy": "20327ddef654c4a4ab16372ef4b76aed1c2d49e718f44b016733ba6c2eadec3a",
+        "trials/unified-seed1-arx-full-w4/episode/action-00077.npy": "9fd9f457eafbb65ca9317f7d88de101263c2c05c019f663fb476338d50570c85",
+        "trials/unified-seed1-arx-full-w4/episode/action-00078.npy": "ee2bc484f60507691077a1d1c9d5b6816d4ecc17918fdafbb62513ed2b15072b",
+        "trials/unified-seed1-arx-full-w4/episode/action-00079.npy": "321d9bf446c2875ff2e3af1afd1761a1b15be7b372d4ba90fdd8360a407b8454",
+        "trials/unified-seed1-arx-full-w4/episode/action-00080.npy": "3055efcbbdad129c7f8402bbd2e46a28a2541ac0c293228c417426998096870c",
+        "trials/unified-seed1-arx-full-w4/episode/action-00081.npy": "1812de985746a80b5da510a093774b9d0d12bc5d2c49059384b3517c8ea0d4c2",
+        "trials/unified-seed1-arx-full-w4/episode/action-00082.npy": "835b8463c88c5ec55ab6c12027c8c7c54793e5157d0e5e5e5a6e25a64d77b85f",
+        "trials/unified-seed1-arx-full-w4/episode/action-00083.npy": "3ea4be621ada03875a20028e13f6f277d6c4af0611d72bdadb413ea317a01075",
+        "trials/unified-seed1-arx-full-w4/episode/action-00084.npy": "b3c1415544e058166b9c43359f356002b683a7b265346432868e87ff1d0bc076",
+        "trials/unified-seed1-arx-full-w4/episode/action-00085.npy": "27df492bf5fa1d2c9b4171545ab942d4cd3442b4b2c63d03f806322d8b6e907f",
+        "trials/unified-seed1-arx-full-w4/episode/action-00086.npy": "3bffefc1756894cd40713ea1989bbbc6cd7ea8a0b2732df9c9197a69e1cc1878",
+        "trials/unified-seed1-arx-full-w4/episode/action-00087.npy": "4963d511cba8c9937e1e6c34e2aefb28364dfe50f40535280ecfeed6ba02f30d",
+        "trials/unified-seed1-arx-full-w4/episode/action-00088.npy": "4b43f82a65322fc5ae280515e6d6d8fafb18d6f621c02804146448f1abb8f779",
+        "trials/unified-seed1-arx-full-w4/episode/action-00089.npy": "4a615da721b7ddcc99b19366a0629349ce1c58af7ce46dd434e554c27745c5fa",
+        "trials/unified-seed1-arx-full-w4/episode/action-00090.npy": "4e6c6ae0a2e5965957888b58b8d1898ef3de2e7223207825109b0088a2a1a08d",
+        "trials/unified-seed1-arx-full-w4/episode/action-00091.npy": "8ee14934c3620c8f7ea99871beee4aa6559c16a3004d235561b6303a371a63c8",
+        "trials/unified-seed1-arx-full-w4/episode/action-00092.npy": "0467c9371b44665faefb743eb47724e8c4c6d573431c54ff0d3717044b8cf928",
+        "trials/unified-seed1-arx-full-w4/episode/action-00093.npy": "90a5321f88a02baad3dfd9916536063e793bf315a07b52f35a09ffc31d7979ec",
+        "trials/unified-seed1-arx-full-w4/episode/action-00094.npy": "f75e3a3d9f726496de574683531160da1b3c2937e8078aa260f2b5ff74ef0e30",
+        "trials/unified-seed1-arx-full-w4/episode/action-00095.npy": "77acd65a1e8af695df34354a1c62953781740ad1e1de21d0c001d3eb9bdab713",
+        "trials/unified-seed1-arx-full-w4/episode/action-00096.npy": "b7b7b0c9d26332ca1345be960dabc4d9bf02c59f71e5d3ef3bd343489b6edc2b",
+        "trials/unified-seed1-arx-full-w4/episode/action-00097.npy": "4b82a987f523c1e0d0b7c192113f6d704327cf531b08d13a5556d82664e2bdf4",
+        "trials/unified-seed1-arx-full-w4/episode/action-00098.npy": "704ea6a277b1ce25d77f6e99f279832525c9cf7268824144a7c0105943d4a41b",
+        "trials/unified-seed1-arx-full-w4/episode/action-00099.npy": "f2f2df1f18e423dd19de92fa708eab5cc61635c44667deabb3de623b685abd99",
+        "trials/unified-seed1-arx-full-w4/episode/action-00100.npy": "fe0ba47ba0194971889959e1fc0919f12fb1b810bc9fe6197fd215ed6a7fd956",
+        "trials/unified-seed1-arx-full-w4/episode/action-00101.npy": "33f01f961483b33c4930a6c5483ab176b6ab7bee766214bc42168da71abe9777",
+        "trials/unified-seed1-arx-full-w4/episode/action-00102.npy": "3adfcdbc4b924a30cef861ff6280d99986a3d87abe40df39885c8201c74d742a",
+        "trials/unified-seed1-arx-full-w4/episode/collision-checks.jsonl": "c3dc2a33ef8794f8cb0315901c87f208cefa8a1e4dec2381570579006fbddaef",
+        "trials/unified-seed1-arx-full-w4/episode/events.jsonl": "848fa7b73cf64ee426c66f3d71995e54727934518abc7b72a6aacaa3f151aa0d",
+        "trials/unified-seed1-arx-full-w4/episode/initial-readback.json": "4e02d82cfbebccb38afb7d0e426a360c083eb76a2c62e03b3fbc1ee640e5e149",
+        "trials/unified-seed1-arx-full-w4/episode/initial-verification.json": "c14d62c0634543a4b6186262f3b07b15ff30c59e8da05bf2aafc6212abe9648d",
+        "trials/unified-seed1-arx-full-w4/episode/proxy-collision-checks.jsonl": "09bbfc41ff026562f4820d416962871ffd76dd1d10beb08ec0aadc4e8de71194",
+        "trials/unified-seed1-arx-full-w4/episode/result.json": "d8ffe5da9e1d6375304dde73e4c815e496bd6190a4777b3786f366f0f2aa33d6",
+        "trials/unified-seed1-arx-full-w4/episode/setup.json": "1fb2760601aa909e33876313e051af0b7ca4ed86cb21131a3fb684514ea2753d",
+        "trials/unified-seed1-arx-full-w4/receipt.json": "853f30c781d6c435f4a21047d019360040e5d87201ea5b88d18a82077aff3c03",
+        "trials/unified-seed1-arx-full-w4/rng-reset.json": "54faab3e27847aba036d4f912173227552402e7c1f150b430ac74fc1a18e0e27"
+      }
+    },
+    "G3": {
+      "job_id": "127931701",
+      "slurm": {
+        "state": "COMPLETED",
+        "exit": "0:0",
+        "start_beijing": "2026-11-14T05:41:43",
+        "end_beijing": "2026-11-14T05:58:29",
+        "elapsed": "00:16:46",
+        "node": "gnode39",
+        "alloc_tres": "billing=4,cpu=4,gres/gpu=1,mem=32G,node=1"
+      },
+      "authorization": {
+        "archive_sha256": "a81dcdf6e5649725a15d448aa9ae46a2636090d490f4477d1f63ac5d4169121e",
+        "configuration_sha256": "d0494e5d6d96a866537dc3360fcdcaf6da472ca7b20367dc4bd49ed2a146a10a",
+        "commit": "35774d81316902ff9b9c46ac20d21f5b804de98d",
+        "yuan_per_gpu_hour": "3.60",
+        "max_cost_yuan": "5.40"
+      },
+      "rng_reset": {
+        "command": "g2e_rng_ready",
+        "seed": 20261109,
+        "episode_id": "unified-seed1-arx-full-w4"
+      },
+      "startup": {
+        "category": "admitted",
+        "physical_admitted": true,
+        "fresh_reset_verified": true
+      },
+      "model_phase_seconds": {
+        "checkpoint_and_tokenizer_sha256": 0.39008473604917526,
+        "openpi_import": 160.52353943884373,
+        "jax_device": 5.004145339131355,
+        "orbax_restore_and_policy_create": 30.867130666971207,
+        "first_jax_compile_and_inference": 67.08523416519165
+      },
+      "candidate_stop": {
+        "kind": "candidate_rejection",
+        "finger_drive_m": [
+          [
+            0.04399999976158142,
+            0.0436304435133934
+          ],
+          [
+            0.043867193162441254,
+            0.043922122567892075
+          ]
+        ],
+        "expected_hold_finger_m": [
+          [
+            0.04399999976158142,
+            0.0436304435133934
+          ],
+          [
+            0.043867193162441254,
+            0.043922122567892075
+          ]
+        ],
+        "episode": "unified-seed1-arx-full-w4",
+        "tick": 32650,
+        "state_sha256": "fb3e1fd49370438906ec928d609d23bcfbaf1f0333b6fefaade89f872caf05cf",
+        "terminal_checks_passed": true,
+        "hold_verified": true,
+        "no_physics_advance": true,
+        "hold_complete": true,
+        "failure_sha256": "7a4da20a4eace617ebe5196fb4816354158a8cd832b04706e287c87fad84b9c0",
+        "close_complete": true,
+        "scene_context_closed": true
+      },
+      "formal_score_eligible": false,
+      "measured_min_tcp_to_block_center_m": [
+        0.09384854313125895,
+        0.15564708575151034
+      ],
+      "measured_min_finger_joints_m": [
+        [
+          0.04252081364393234,
+          0.043184544891119
+        ],
+        [
+          0.043453969061374664,
+          0.04370430111885071
+        ]
+      ],
+      "counters": {
+        "policy_actions": 406,
+        "executed": 406,
+        "recovery_actions": 0,
+        "requested_prefix_rows": 412,
+        "result_queries": 103,
+        "logged_model_requests": 103,
+        "evidence": "worker receipt"
+      },
+      "termination": {
+        "finalized": true,
+        "task_success": false,
+        "outcome": "planning_failed",
+        "worker_outcome": "planning_failed",
+        "category": "controlled_candidate_stop",
+        "supervisor_status": "completed",
+        "supervisor_reason": null,
+        "failure_phase": "planning",
+        "failure_code": "plan_failed",
+        "budget_stop": null,
+        "failure_detail": "18 bounded task TCP projections exhausted",
+        "geometry": "candidate",
+        "collision_world": null,
+        "collision_world_evidence": null,
+        "terminal_link_pairs": [
+          "fr_link5 / table_6"
+        ],
+        "continuity_rejected": null,
+        "collision_candidates_rejected": null,
+        "projection_stop_reason": null,
+        "cleanup": {
+          "scene_opened": true,
+          "hold_complete": true,
+          "close_complete": true,
+          "scene_context_closed": true
+        },
+        "process_group_reaped": true
+      },
+      "event_counts": {
+        "policy_request": 103,
+        "policy_response": 103,
+        "policy_validated": 103,
+        "approved_plan": 102,
+        "executed_step": 32650,
+        "source_observability_barrier": 2,
+        "task_tcp_projection_rejected": 1
+      },
+      "physical_steps": 32650,
+      "contact_phase_ticks": {
+        "approach": 32650
+      },
+      "finger_contact_ticks": {},
+      "holder_ticks": {},
+      "stages": {},
+      "last_measured": {
+        "tick": 32650,
+        "sim_s": 130.60000620316714,
+        "query": 102,
+        "line": 33059
+      },
+      "block_task_m": {
+        "first": [
+          1,
+          [
+            -0.07437799125909805,
+            0.006845731753855944,
+            0.8400007486343384
+          ]
+        ],
+        "last": [
+          32650,
+          [
+            -0.07437726855278015,
+            0.006846741307526827,
+            0.8400000929832458
+          ]
+        ],
+        "min": [
+          -0.07437821477651596,
+          0.006845045834779739,
+          0.8400000333786011
+        ],
+        "max": [
+          -0.07437702268362045,
+          0.006848440505564213,
+          0.8400009870529175
+        ],
+        "samples_with_pose": 32650
+      },
+      "projection_plans": [],
+      "projection_fresh_requests": [],
+      "terminal_candidates": [
+        {
+          "status": "plan_failed",
+          "detail": "projected prefix remains source-blocked",
+          "accepted": false,
+          "translation": [
+            -0.004,
+            -0.0,
+            -0.0
+          ],
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ]
+        },
+        {
+          "status": "plan_failed",
+          "detail": "projected prefix remains source-blocked",
+          "accepted": false,
+          "translation": [
+            0.004,
+            0.0,
+            0.0
+          ],
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ]
+        },
+        {
+          "status": "plan_failed",
+          "detail": "projected prefix remains source-blocked",
+          "accepted": false,
+          "translation": [
+            -0.0,
+            -0.004,
+            -0.0
+          ],
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ]
+        },
+        {
+          "status": "plan_failed",
+          "detail": "projected prefix remains source-blocked",
+          "accepted": false,
+          "translation": [
+            0.0,
+            0.004,
+            0.0
+          ],
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ]
+        },
+        {
+          "status": "plan_failed",
+          "detail": "projected prefix remains source-blocked",
+          "accepted": false,
+          "translation": [
+            -0.0,
+            -0.0,
+            -0.004
+          ],
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ]
+        },
+        {
+          "status": "plan_failed",
+          "detail": "projected prefix remains source-blocked",
+          "accepted": false,
+          "translation": [
+            0.0,
+            0.0,
+            0.004
+          ],
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ]
+        },
+        {
+          "status": "plan_failed",
+          "detail": "projected prefix remains source-blocked",
+          "accepted": false,
+          "translation": [
+            -0.008,
+            -0.0,
+            -0.0
+          ],
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ]
+        },
+        {
+          "status": "plan_failed",
+          "detail": "projected prefix remains source-blocked",
+          "accepted": false,
+          "translation": [
+            0.008,
+            0.0,
+            0.0
+          ],
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ]
+        },
+        {
+          "status": "plan_failed",
+          "detail": "projected prefix remains source-blocked",
+          "accepted": false,
+          "translation": [
+            -0.0,
+            -0.008,
+            -0.0
+          ],
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ]
+        },
+        {
+          "status": "plan_failed",
+          "detail": "projected prefix remains source-blocked",
+          "accepted": false,
+          "translation": [
+            0.0,
+            0.008,
+            0.0
+          ],
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ]
+        },
+        {
+          "status": "plan_failed",
+          "detail": "projected prefix remains source-blocked",
+          "accepted": false,
+          "translation": [
+            -0.0,
+            -0.0,
+            -0.008
+          ],
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ]
+        },
+        {
+          "status": "plan_failed",
+          "detail": "projected prefix remains source-blocked",
+          "accepted": false,
+          "translation": [
+            0.0,
+            0.0,
+            0.008
+          ],
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ]
+        },
+        {
+          "status": "plan_failed",
+          "detail": "projected prefix remains source-blocked",
+          "accepted": false,
+          "translation": [
+            -0.0115,
+            -0.0,
+            -0.0
+          ],
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ]
+        },
+        {
+          "status": "plan_failed",
+          "detail": "projected prefix remains source-blocked",
+          "accepted": false,
+          "translation": [
+            0.0115,
+            0.0,
+            0.0
+          ],
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ]
+        },
+        {
+          "status": "plan_failed",
+          "detail": "projected prefix remains source-blocked",
+          "accepted": false,
+          "translation": [
+            -0.0,
+            -0.0115,
+            -0.0
+          ],
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ]
+        },
+        {
+          "status": "plan_failed",
+          "detail": "projected prefix remains source-blocked",
+          "accepted": false,
+          "translation": [
+            0.0,
+            0.0115,
+            0.0
+          ],
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ]
+        },
+        {
+          "status": "plan_failed",
+          "detail": "projected prefix remains source-blocked",
+          "accepted": false,
+          "translation": [
+            -0.0,
+            -0.0,
+            -0.0115
+          ],
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ]
+        },
+        {
+          "status": "plan_failed",
+          "detail": "projected prefix remains source-blocked",
+          "accepted": false,
+          "translation": [
+            0.0,
+            0.0,
+            0.0115
+          ],
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ]
+        }
+      ],
+      "collision_audits": {
+        "target": {
+          "checks": 47140,
+          "blocked_checks": 3,
+          "link_pairs": {
+            "link4 / table_6": 3
+          },
+          "partial_final_line": false,
+          "scope": "FCL audit calls, including planning and/or measured checks"
+        },
+        "source_proxy": {
+          "checks": 569,
+          "blocked_checks": 60,
+          "link_pairs": {
+            "fr_link5 / table_6": 60
+          },
+          "partial_final_line": false,
+          "scope": "FCL audit calls, including planning and/or measured checks"
+        }
+      },
+      "terminal_rejections": [
+        {
+          "kind": "source_observability_barrier",
+          "tick": null,
+          "sim_s": null,
+          "query": 102,
+          "line": 32963,
+          "status": "collision",
+          "geometry": "candidate",
+          "world": "source_collision",
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ],
+          "continuity_rejected": 14,
+          "collision_candidates_rejected": 2
+        },
+        {
+          "kind": "source_observability_barrier",
+          "tick": null,
+          "sim_s": null,
+          "query": 103,
+          "line": 33063,
+          "status": "collision",
+          "geometry": "candidate",
+          "world": "source_collision",
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ],
+          "continuity_rejected": 14,
+          "collision_candidates_rejected": 2
+        },
+        {
+          "kind": "task_tcp_projection_rejected",
+          "tick": null,
+          "sim_s": null,
+          "query": 103,
+          "line": 33064,
+          "status": "plan_failed",
+          "geometry": "candidate",
+          "world": null,
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ],
+          "continuity_rejected": null,
+          "collision_candidates_rejected": null
+        }
+      ],
+      "first_request_stamp": {
+        "episode": "unified-seed1-arx-full-w4",
+        "tick": 0,
+        "sim_s": 0.0
+      },
+      "first_request_state": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "gripper_prediction": {
+        "blocks_with_le_0_5_any": [
+          101,
+          2
+        ],
+        "blocks_with_le_0_5_in_w4": [
+          0,
+          0
+        ],
+        "saved_blocks": 103
+      },
+      "action_hashes": [
+        "4c55ad80ff6962953d3e1ec66638638ec1eb96345597ca813fa7fdec8b2d4346",
+        "45c15fb6d64488f3d5d5225f2ab951e0a05e8b5aaaf11877d32e5a1a8f41d880",
+        "f332fe9e4ad71b1e5762af18cccc83bfbe2fb7d5083a7c6b9c2ea2d639d655be",
+        "18979acb6ac073a365d805996866bf4c29241842ca64d433a2c3ac38ff312944",
+        "978748b33e5aaab2775b5835b7ccaa4025409f56c730941d53d9378ddcee7230",
+        "e866152515d9440078d59b787199eb050f1246cdff0a73d9dce2d397889561d1",
+        "295b0998088e30701751f203b179cfc6d065b9ddff6c32bd88114ae5b3c16af1",
+        "5e31fcaf4b94a4ed1f2060010688c26f1264813c34e36d1bf419ad82ae85b045",
+        "1c2833bba45b126f1a74dc62d9e268cbd7d9ec664f16342493e19406266270cc",
+        "dfde241b8d02d9f60f75c5da1141b858293e0736caf25e007dee0118146eb5c6",
+        "1830849bb053a72ce40eb4e4d262810137fcd8e617eec3898f1c6593d4711808",
+        "c00cfc9a9784a6c77333cfb61d1150baa65bce79e8a451926ffdd2804a48500a",
+        "4b040f65407071dac51471c708eed4408a884b357b117f6d0cea448a53f4d284",
+        "f93e25b2585fbc9e945d8392bae047a5ce379cee794ee8732369fd686881d99c",
+        "88079ba1101d43a59e292a3e44a199f1bf19bbbd169f7decae5410419fcaa0ec",
+        "2db9423f3bd7f41a217cd75be9553f42c876d42f7c13adeb6d171e2a253f227d",
+        "b963314612350340b9888c6aec61a0169f038bcb4022f9fc362e2bb75c16371d",
+        "60dd70990ac271ac0c08218834f8e0288362fb9fb5ef06a342edad86f760f0de",
+        "36a80ecd95808580639deb207b6b40c8e31aa33e483784ec88d0b7d02297b9d0",
+        "4a1f5893798b668c85213374a529479e204721d4d5f01e95a3a82973690b0a0c",
+        "0dd6801a8b46bc05cd8474bf6e1f6cb54adef57ca962109ac59c395af9f38468",
+        "e404bec6b2e617e44ff94ccb57be2c6e3d254732e8db49476fbc339b36801ec2",
+        "512c62e988bddc65f4df1f10a7d05d51bd3d27cfcc21ed2ff23070c355a18403",
+        "f0ae7f2626febdc802f4c694d81e999ec10f976948d0b699d663418fe982ba8f",
+        "b57864b0c048d874cb7ba27fae1f30df190a05b5016ead02a4599cb05d0458b7",
+        "509a8c6d8c7c209dd119cc87da600516037874646f4a8035301d3939d65b3349",
+        "2ee945a7d983fe5be4a6cee40a8c10728ea8a05bc24c400d117a09d4bbdd3eb5",
+        "c33a96024656a2cf02378b090825160a0c0db038bb2c2997341f2b18e1645a3a",
+        "ba984eb60e404367db4d3df08651d7f42145013322619ec51c10e28afa2f0fb8",
+        "333bf0dc9c7dd3688d1b27cadc17e5915fa7a8619afdbab3b584bd8243309714",
+        "f9912d1802aa08ed3a2c08e470b9e5d0f632fd5f732595f6bdca722db97af79d",
+        "d6d2b767f8adfb155721f5f6e000fc92a5d56c74c34bd2b36448c0e33d58b158",
+        "5566e94c83e400d2aac11a67499d3b5071fe368fc27beaed48da01a0e2f2b877",
+        "0365fdffbcef18e528f0e21e4df514e57d39371fe1b0504b09ebf3135dda8f1a",
+        "2a059ccb2eaf1412386ce634fb7332ff79899515af353c3a953d158f3ec76fa4",
+        "4b63011c5ba16d52c25c811cd9e92dc7107226a489ffc1c6b1d9eb59487f6392",
+        "4b1d9fe3fce99422f57922f848d723d2f065e4782e79110d39d0952c414d008a",
+        "22aa56a97b5b7b6a92b82300014560b3d4c3032f1024b08d28d6210b1f9b1178",
+        "c127f3695769890822a3b7d0ed255af7234a1342fa757e1a33f6c018c0b9e9d0",
+        "d8a0c622a92dfec956118475785a125370035be1fb039838b3bfe5fd7d7e3dc3",
+        "6bd4ee87214c9f40b3e5d27822b5c49e10c5abc9efa91aee05e983b4a4a013fd",
+        "0bc4aaadd86ad9719dc86fa8161813fc936d0073e12d72d3ce56a4ac7a79d3de",
+        "f1f0cf891d0ce8c2aa8de7b0edb91235a7a96ceccf36dfd68b44d6bdf6c3def7",
+        "68e3faf5ec2307966d349c9fd358332d6a59d11e1c8f1f300cb56ff0ff3c88e7",
+        "e2abbedbd54d82548df73652e2300daa7b25f436e17a6672822ba82b2f43defc",
+        "a8e284cc0448e6b383fa3f46445db8cabb64a600a2690ad1b91b34b2da27d1fe",
+        "2f3a3aac0792a7ef1ce62c271a8605631150ef5e3edfb7d20f80a5d02e7533c4",
+        "959e713784b49592303418ebdeb76a44c1430ddc25eb1f0be7acc58c522e7505",
+        "e8b665bd95d884e9e3218de21786754bedaa0db2c65b8cadda3c4c6ed33a5353",
+        "ef96d9437d9566ff6f44a83ba4aa8890a2723b8f77d8ca3af255461688cbaf1e",
+        "974346e25bcf0730161c68430e9f2278ff086a62d915ff777b2e9886bcbe8e2b",
+        "b25e26b9bd06970f8521d3a2f066e221d2d78b1c8d0c85e974f15234bcf4c3f2",
+        "c29a4d7ae6b302d4842fde29718c5beb555ca907a5df5d15632671b1318fda7e",
+        "3557aa9d2c70a19388582dbc3d45a463174af0b1ea3f953bbb520cea792a882e",
+        "ad593da5495dd7016172eb6ace7d6272d3e7b91b55bc33e1f30471f0d6280a9f",
+        "2d7c8dcd8bbfc86a94f426aadd06809dbbd3f83d552a5dac93a789295d6adbfb",
+        "a94ac34a2a9404a4c22db0e85c50afc1e3a0d8ae4421e78bfeecce641337df95",
+        "08daaf33e59ae8eed38db064ae16aebb31604781e52322cc70a72a3f40fa3c11",
+        "e2ba0fea1cdaf69dfc705d838cdde37e70ba9df563a721bea101fc4600e22c3c",
+        "8f0197e118ebaf39a97fafd4e0bc13e836edc1ae2a1eb16c657f66728b18ddc6",
+        "1b972ffd49ab86fc14422fef0ba73a524960798eb2a78f4363dbdecb5d2cf912",
+        "d28d222c437177b524a713b5bdbfeb59112aeb7ee254853becc2703fc6e99302",
+        "3ab4428d8126273d970e5f1ccd2c3829cd0c9518c41b52b7d1db0f947fea095d",
+        "d72ae440b2939ea2e982d87d4d86557608e9d4744a4513370ba46f4ecf71cbbc",
+        "eb87fd80402887f36997be85caac7a3ae0eb0e772394e4c22e2b2e210c700d8d",
+        "aef21e5721bcfc676bf78176d497642e31ecfdb8350b4501341bdfd88fe46074",
+        "b7f8a9a5333c1166ede71e58d77cf2251aca11214dbacc742812946a40f1d7f3",
+        "e0d9b3185b4488dfe71a71cc6e5fecfcd813637a8944bffb8fdb64860b3b37a6",
+        "49fd035b8ce9a6d51f3c3c419b985b6664c5730ce5026a3668e6d9a1b7c52f15",
+        "9d2504cc472e4657701c6e450f321c5a035d66f7f160f05f3ace10291fcd73fd",
+        "8eaa0f42c02bb94fce48d7d1d029c9d422a1f92ed1e39bc806bb16e335f9d5ad",
+        "be259b8cbfd15a2c5a0dc22ea6b9a6b21d52223576b63698e7c2d6569d6077bd",
+        "c582b7e775bb30c817731e7d6e098d34f7f8a4dd7018cb5fed05390dabb7a4a3",
+        "3216e0845c112b7fe60b3430b4597b795f40e4570f9c649055e8ec604ae6ed21",
+        "3f707851f0a73b8047105f5fa26a6f29d7a95c7f9be8835c04e4dd99484cf4c5",
+        "2b219f373d811932e22969d991b8e2edac663cc22c51144d00dd955ae837bac6",
+        "e0c964ca9af0dd0a1058065300365bd5e52794fffddd6fc2a085cbafc00d9ee9",
+        "229db33668f69b5343ac554b2fc8b273fee6b1da6a029360ce28f72a6719084c",
+        "95b54ee0debf55f60b67f01052a861f2ac9d42e8e3aef5433924705e13233b08",
+        "e802e27508cbd66bb559d53f2324712dafa00c90d193fdcf7dd9ef5ef17f19d3",
+        "2353f7a7f5841ba487bdb1a9c420bc113611126da7558f73dfc32abb509f7dcb",
+        "7f6860c3528746ecafd91bcc8f6030c6d9c35635b00fd83384f7958386f833e5",
+        "b2c2d9767d38c4c8d99e6fb39d4f12d154d5dd0c447baad29f0eb0edbf178b04",
+        "4547e2fad793a1c5c167a206441769611b4e3e5d39c468c867026a9465bb2f2b",
+        "40ec9a6b141c76bf4ae453afcc8e1fb9bbfaef3e7bff6156e679e08bd53411aa",
+        "28a14d364272aa4945a8a5b41d222459b6d1dd191898ebb79e3e7b87c34a087b",
+        "e65d2fde3e1f83706969954696d5991cc7f015f63221cb997ba6db5bc59fcfd3",
+        "702d6221e352adae0d9410a7cf991dc6cefed8f35dbbfa0ed0eeb8bc8b9be6d8",
+        "7eca2940bafa83053e30b76394dc220f404065b5fb9fcbcc63fef2cc7a217ca2",
+        "318f1bc239e6c047849ae7c700451ec472f64f968764623cd955a3f8c5b4db14",
+        "1aa2aa35b2a0fe3b31238aafbb0dc620bfb1e3cefb618e5f680bf8d2c64a7523",
+        "eeb5f8eadd61ef3abc67daac3aa9471fcc6e8ff1acb17a2cae2183a00d74b873",
+        "9760ea5837238854fdacb35f683f59d1832098d9e8bb98a3c110e70c3aa5c755",
+        "8bb3d43646e48985cacc40fef135d6e4f6c18d6df9bc591d23fda782b38c2d4d",
+        "9b43ba59eb2d53665e97b5a938d7a778a0dc00a2e75e0769b426754bda34f8d0",
+        "427a373f818bb045d7737dd2a4705c2237e71dd7337402f78ac5da96c3d14ada",
+        "0a66be72c9fc325fa21a104b87af1fa176d65592eb1800bfe342f6ea1806acb4",
+        "03d579a5e67eefb85bac8df6470b079a99528fedfd3a52cb076a83d8268c8a2b",
+        "d97e1eec7255028be25daba79e686fec1ce12028180100433b6aeecf6d4f3800",
+        "ab4c37612efb67643244b19ebd0f33275b4e0957f2edd1b4ed85a32f046ac416",
+        "452bddc590a5a2eaa607a4b77a47f33550b1d8611af9ad6f237819dd65b81336",
+        "9248ff55f5bd8860f49b2bf34dc658f5ca6904c4906598dad3063aff1e0117ec",
+        "58cd6908a2603293dbe5cb92f2d9840efc7add00c7f32fa9425029f79eb0d848"
+      ],
+      "evidence_sha256": {
+        "authorization-receipt.json": "2f37d5a9023486d02f4f8f6b74c1f78a92272733f5fb9295cc57a484def48438",
+        "effective-launch.json": "d50d18c5c0b9544f5085c462354d8e4e3be1081b6b7ebcb3b6e34e43945bf2d3",
+        "model/phases.jsonl": "f679a5e1ff43cdbd34924bc529ffd293de4b712f166614e777d183dfd06f1497",
+        "standalone-result.json": "110eadb6e10ad13966bccd9bc25874ef198db6aa110941b487bcd56d7707bf61",
+        "startup/unified-seed1-arx-full-w4/receipt.json": "4629e3104d78aa378200551985de237c4c1150a1e7584f081f82b83a67a101de",
+        "supervisor/campaign.json": "a30ee74e3834bf8c0647fb0c5f44d44008a35d33c2a95a5b625b52eb848c3c50",
+        "trials/unified-seed1-arx-full-w4/episode/action-00001.npy": "fa351401f6aee79e7c3cff5bce0a686f26de185102f3f86e944e12cf64c71086",
+        "trials/unified-seed1-arx-full-w4/episode/action-00002.npy": "5b071d1dcd2424770370ec427298c6649aeb57c7beb6a8f5c7baf041a3a7373c",
+        "trials/unified-seed1-arx-full-w4/episode/action-00003.npy": "e954b822ff06d90cf890236460763cb12b6d643efa5b8e8ba9b903d36191c628",
+        "trials/unified-seed1-arx-full-w4/episode/action-00004.npy": "ec03b85dd887d5e6d91cd0b564751e9802ed134b24378b0b97ea70d4c6bc7e95",
+        "trials/unified-seed1-arx-full-w4/episode/action-00005.npy": "69a944f8dc3def83985d897a9247f4fad63fda38d7dc4f5bcd978c7486769d18",
+        "trials/unified-seed1-arx-full-w4/episode/action-00006.npy": "b54ddc98ca8a2cc2f2fb310c63da3e7134fd406b71415d7871bf22ee7dc3f65c",
+        "trials/unified-seed1-arx-full-w4/episode/action-00007.npy": "36f238369ff667f349e77e2413f561a9778a663deb5061074ed14e677ad77915",
+        "trials/unified-seed1-arx-full-w4/episode/action-00008.npy": "3d6dd2c818773c514de5d4e0f090ccea380381d3c08101cba2c2cc3a17f07aa5",
+        "trials/unified-seed1-arx-full-w4/episode/action-00009.npy": "f36d5bfab9fdb39b6d79a7b03597fc9059f9deb15e371cf5b71684c79ec70636",
+        "trials/unified-seed1-arx-full-w4/episode/action-00010.npy": "ea47e604ba63c790a3df4728c910c1488845bf0a899db55b40476c6400740d27",
+        "trials/unified-seed1-arx-full-w4/episode/action-00011.npy": "515fd517355b11a0f093c5e6abef139d36e268b3f1490ddb7f01d5386565202b",
+        "trials/unified-seed1-arx-full-w4/episode/action-00012.npy": "548f0095913a018258a87ba1bc4e3586b80cc7a5a0811455ee99c5f644f377e7",
+        "trials/unified-seed1-arx-full-w4/episode/action-00013.npy": "5cb0670ae652fd157b1b3e08f19ea618853241522a3fe34774dd3d2d8950433c",
+        "trials/unified-seed1-arx-full-w4/episode/action-00014.npy": "e40568171774dcdb327a46eb39c0c03c64bcfb4be565bb8064ef52e6cb69bdfc",
+        "trials/unified-seed1-arx-full-w4/episode/action-00015.npy": "7c7990c68828ad178f95047047bf412f408f59bdc7ced89c133dbe0ec234d821",
+        "trials/unified-seed1-arx-full-w4/episode/action-00016.npy": "13db85c07623fe1833e44dec1c64bc28791d46bc2faaaa1bcb4dc06a3e4fe004",
+        "trials/unified-seed1-arx-full-w4/episode/action-00017.npy": "73f9cd9b6e5615170f1167a09708a55dc1633574afb8e1ed728eed753cfe650c",
+        "trials/unified-seed1-arx-full-w4/episode/action-00018.npy": "7a8ba2b0a0aa736a73a8a4d76ec40141bdccf5eda7bd7c1969eac364efb1bd13",
+        "trials/unified-seed1-arx-full-w4/episode/action-00019.npy": "a60501019086af12ff3863024d11cf72bc5264248da0f0d03170c3ad82b4a955",
+        "trials/unified-seed1-arx-full-w4/episode/action-00020.npy": "5fea116eae07217ddcd472bda0dd1d1416c1624a16cd742752f52adea3674d7d",
+        "trials/unified-seed1-arx-full-w4/episode/action-00021.npy": "99eab7ba6467f107f9c36baafc18d69a6e3982c2add1ceb0d98ae2f295be52e4",
+        "trials/unified-seed1-arx-full-w4/episode/action-00022.npy": "5c4818f41b8f885ee0b1071e654f371eeaadfbe541bda1d8fd53efad2d54104d",
+        "trials/unified-seed1-arx-full-w4/episode/action-00023.npy": "702948a60b9952efea9360a3796ac83675f57c89706a0edc383079f9b2eb02a3",
+        "trials/unified-seed1-arx-full-w4/episode/action-00024.npy": "7fd8ccd213900fb4c90ee87b42489bde449b45566fc8b795a7ae80e934f52093",
+        "trials/unified-seed1-arx-full-w4/episode/action-00025.npy": "95d9c38a0793f66faef957d0ec0a0b5b3728568d33dce220b14e1f8c4baf2c51",
+        "trials/unified-seed1-arx-full-w4/episode/action-00026.npy": "a1921ab02277f1171911f25336f0ce30a767c1ebb1ff557aa1de5f8418f0bdfd",
+        "trials/unified-seed1-arx-full-w4/episode/action-00027.npy": "963f157e9ab8757200c3be631054872fd7680a66c82afcdca06ca3d4d293f088",
+        "trials/unified-seed1-arx-full-w4/episode/action-00028.npy": "32e84dd45b7b9f46cafbd3cb84598adc18bf6dee39f52b37d9a1df387bf1b7e5",
+        "trials/unified-seed1-arx-full-w4/episode/action-00029.npy": "b13c230a884cb636fec709080067be571a0eefb701b3e10a1cf729c2fb33fb8a",
+        "trials/unified-seed1-arx-full-w4/episode/action-00030.npy": "d1ebdbabef4c2c83b58c6ffaea4447ff904eb3f146508ef53db098a22fb2884e",
+        "trials/unified-seed1-arx-full-w4/episode/action-00031.npy": "a6ec3cf1e80e334c0be92a7094da298cb33dd872ba875bf398f1ab5fe8715881",
+        "trials/unified-seed1-arx-full-w4/episode/action-00032.npy": "c9d0d42561d76c08d7b6f7c692dcff31dde3ef611a5e0fd5933604f85803436a",
+        "trials/unified-seed1-arx-full-w4/episode/action-00033.npy": "50f35e33344e57e72319bad715460ffbc354501f2c15218340d8587b0b81f2ed",
+        "trials/unified-seed1-arx-full-w4/episode/action-00034.npy": "fbb17da76df1747557acf3b1afed1ba3fae993cf4bf8f07f949a2d699908de6d",
+        "trials/unified-seed1-arx-full-w4/episode/action-00035.npy": "fe838326d2bd170de1f2aef8e797c6c50107e8f4b6073b198f8c6e4966bda8d1",
+        "trials/unified-seed1-arx-full-w4/episode/action-00036.npy": "d7069ba7ed3f600d8f2b071bbbccc4ac2b08a8d4122252bdf019fc3568900943",
+        "trials/unified-seed1-arx-full-w4/episode/action-00037.npy": "171b1f284eed5fe71b002f26eeda43544a0317103507da6a642669133fc97f4d",
+        "trials/unified-seed1-arx-full-w4/episode/action-00038.npy": "cfaa2f295e130f6a944b7892e95e5b293667a1aadac676868b78e518746e1203",
+        "trials/unified-seed1-arx-full-w4/episode/action-00039.npy": "bfa77702f71e2906dc887241bab8a7f891afb40993758b9fda96a77848d00543",
+        "trials/unified-seed1-arx-full-w4/episode/action-00040.npy": "c2ea29ebab53cbe6cda5c2bb584127b762bfd323d8adf695a1c9fa79b92e2c69",
+        "trials/unified-seed1-arx-full-w4/episode/action-00041.npy": "cc960ebf5652cc2baeee5b64ae7f4a81e87b9d317ecb716ee68571bb2c2ec0c4",
+        "trials/unified-seed1-arx-full-w4/episode/action-00042.npy": "5398d85345a2a306b5547db7c5f2c77570ca1bea82fa99874114384d081499bb",
+        "trials/unified-seed1-arx-full-w4/episode/action-00043.npy": "c448506f519839fc4a539c72980adbec39c6da1a633b1b3c9cb704f81a943e40",
+        "trials/unified-seed1-arx-full-w4/episode/action-00044.npy": "313eea0bd11694ca40ed7942e3ff190c1308fab7d1a49927b11150a85611107d",
+        "trials/unified-seed1-arx-full-w4/episode/action-00045.npy": "3fd9adb81b949f2b97e878c646063c190e90309d84aedc848b0e008b0df8dfaf",
+        "trials/unified-seed1-arx-full-w4/episode/action-00046.npy": "42cd85eb24a22c94dcf14c043b260efb69aef6a28ae327ae7602bce398c9c5f3",
+        "trials/unified-seed1-arx-full-w4/episode/action-00047.npy": "8e9fecb0652d4cc62455c8d11be147217ef542104209b43e5378b38287350102",
+        "trials/unified-seed1-arx-full-w4/episode/action-00048.npy": "c6b8b00fca5f4fa32da9e3515dcb92abdae636241668550e3731e849b8acb500",
+        "trials/unified-seed1-arx-full-w4/episode/action-00049.npy": "9d88f08859dde2792ec32f716fb03f31102135ab263ee1dd979db5e5619957ab",
+        "trials/unified-seed1-arx-full-w4/episode/action-00050.npy": "0dde485a5f4a9a6bc4b08b2ccbffa93d873e26cc91d6554f8a5439e4c7066ee4",
+        "trials/unified-seed1-arx-full-w4/episode/action-00051.npy": "5cc3a8b401cf1b87b72411a7cc599ffd47281d5b6809ed39d607887446abaf39",
+        "trials/unified-seed1-arx-full-w4/episode/action-00052.npy": "238f5e197c350acfe5b63232a6ab7b6beb6cb3f74e657800b8046f6df97c9fc6",
+        "trials/unified-seed1-arx-full-w4/episode/action-00053.npy": "3c582e0900604fa30c52871757534cc0cfc4d40b87d154416ef4748393c6feb0",
+        "trials/unified-seed1-arx-full-w4/episode/action-00054.npy": "a07977494498508bcf5af3825a09b4b3b5064282da3e7ffa6f5219979f549f79",
+        "trials/unified-seed1-arx-full-w4/episode/action-00055.npy": "8bfee25f7711db14f58c40a23fc95800af3aea3fc0081608069760fb9435bbda",
+        "trials/unified-seed1-arx-full-w4/episode/action-00056.npy": "7819d98f4b1aa542d113b3b5b467fffd659ba5a04108d2bd3ce76732ddd96cd2",
+        "trials/unified-seed1-arx-full-w4/episode/action-00057.npy": "5df62c32db3c9f7fe78fd1a9a19a87b9ac96bce02d130db78cabddf03fe87410",
+        "trials/unified-seed1-arx-full-w4/episode/action-00058.npy": "5ac1b3334b15c835f95566079ee29750a1952dcd7938f967e623e59477afb1e0",
+        "trials/unified-seed1-arx-full-w4/episode/action-00059.npy": "e573cbe8c7cec47158bb6451ec43fc4c08f31be214b3ff84d86fd3fe56ddd3d2",
+        "trials/unified-seed1-arx-full-w4/episode/action-00060.npy": "686a51a771ba008fd9d6d7a7610f7b094de4bf5dd016c2e7fefa43f0981f09f4",
+        "trials/unified-seed1-arx-full-w4/episode/action-00061.npy": "e60738490dceb10b9509272e72099d545d298493ed624687235c31ba60a7211f",
+        "trials/unified-seed1-arx-full-w4/episode/action-00062.npy": "820800895bafe4b805f8ae36bf09757fe395d3723031bca4f6f13f32e0c8cd01",
+        "trials/unified-seed1-arx-full-w4/episode/action-00063.npy": "7bcb13e394283fab97d470c49c3cd72d6ac0c7681bff15517aa27481c7824279",
+        "trials/unified-seed1-arx-full-w4/episode/action-00064.npy": "62381196a7ce1d3e568658b8214b01d8e3b8acf6d89a3f2e504f3a224a37ab79",
+        "trials/unified-seed1-arx-full-w4/episode/action-00065.npy": "22d6fb646307a232f7fa3d1fef5a9f5b59f93de2dcd55109944a570bba53bab1",
+        "trials/unified-seed1-arx-full-w4/episode/action-00066.npy": "6c7f37d61c7bc0a521a86186c545db0af02aab481f8ffd976f65afec4c77a314",
+        "trials/unified-seed1-arx-full-w4/episode/action-00067.npy": "35f8d9c7861b57dbeb9db0f71a9372f7dd9f3d7a43480bb2907ed103ec318d8b",
+        "trials/unified-seed1-arx-full-w4/episode/action-00068.npy": "e880f116af59116c3cb5c9b8fe20cb939e9146259f2bf6ba4c2bb5735c1b8b38",
+        "trials/unified-seed1-arx-full-w4/episode/action-00069.npy": "2b8960bf6f0249953e032dcf539d1a4e772fc4a5a85123384cbd2e383770d057",
+        "trials/unified-seed1-arx-full-w4/episode/action-00070.npy": "857680cea6d52239d3fb83891e37b77c5d01ea0ab29204fec62bcc6df1a0f829",
+        "trials/unified-seed1-arx-full-w4/episode/action-00071.npy": "7e7c475d416aa0db5656f77cc257bcd8e42341d5fdeba60a896452339b999409",
+        "trials/unified-seed1-arx-full-w4/episode/action-00072.npy": "e8e4901202177dba4dcee326e5c85a4f321d8fcba6ba348ec3e93c0477a95bf4",
+        "trials/unified-seed1-arx-full-w4/episode/action-00073.npy": "558c525624fd2b6fd36f1cd5e82e0c3b03144ed360fb68de970c43646f092cf8",
+        "trials/unified-seed1-arx-full-w4/episode/action-00074.npy": "0c3f03cdb388fb5be89e512e09f94f3d34008deae8867bab1f29d079dfa29a48",
+        "trials/unified-seed1-arx-full-w4/episode/action-00075.npy": "e2ab7427b5e0504eedcc71c0b59359ba1fa692550341d5e96868ac732d6c2665",
+        "trials/unified-seed1-arx-full-w4/episode/action-00076.npy": "d95e97cac8a4de2df950a85bb0a679e05d81b9f5664a424da83867f3fc588058",
+        "trials/unified-seed1-arx-full-w4/episode/action-00077.npy": "b9248fe83b67c76332e4b843a226df6538c691a6d211569bc4e17269bbbdc4bd",
+        "trials/unified-seed1-arx-full-w4/episode/action-00078.npy": "d1fc10807b517ea87944fa23f946d9af0944bf4793abf0fa4ddbc35c30e31335",
+        "trials/unified-seed1-arx-full-w4/episode/action-00079.npy": "afefc67f6ed3b05b10d2b20c23f2f4f609b9464696422ff836c54d4e7761b8eb",
+        "trials/unified-seed1-arx-full-w4/episode/action-00080.npy": "60776d80fa87c9aacc01b610932b10fdb09da588a0475d8c644c17777fc28ea9",
+        "trials/unified-seed1-arx-full-w4/episode/action-00081.npy": "65ecc7c624cc8a9e06492942364084aa795803d69a5287dd11ee8e26a81aeef7",
+        "trials/unified-seed1-arx-full-w4/episode/action-00082.npy": "eb52d62dcd0a4e9d0e24c26c5a932e2490e7915d24e2a983e875dd556cd79572",
+        "trials/unified-seed1-arx-full-w4/episode/action-00083.npy": "b8aa9cea71f6a706815dfe6404066cc7caafe3325199bd64f236efe2b152f887",
+        "trials/unified-seed1-arx-full-w4/episode/action-00084.npy": "15b19792ae880cc17615d38085fdac30c933518eb221f3be3b0b7c76d42008e3",
+        "trials/unified-seed1-arx-full-w4/episode/action-00085.npy": "fa3f2f7f9d97fdfce05783d95f79e9d7b4189ca4d359eba9a2efd734d9819303",
+        "trials/unified-seed1-arx-full-w4/episode/action-00086.npy": "47d580d021ae3a18b6ffb6817bb969ba057a625f68a44033bac1a46738ef5b19",
+        "trials/unified-seed1-arx-full-w4/episode/action-00087.npy": "5a7f15a3fa5ebbfd0e9af7b1493c2cfa000da2bd19c76aa8099dd60d879c0966",
+        "trials/unified-seed1-arx-full-w4/episode/action-00088.npy": "8dd66e8c782f61826c24b45acaa41bede1f787ea94b39f931958c6ae93f3c164",
+        "trials/unified-seed1-arx-full-w4/episode/action-00089.npy": "76e02106b0d395d6eeece3e0002c634e6c8c3f24bde7d9a7c064a0f7977c3e05",
+        "trials/unified-seed1-arx-full-w4/episode/action-00090.npy": "f343c21757babca4224c0f9e67c17aa2147597ac1d0e4e10ea9d77a781ff1d46",
+        "trials/unified-seed1-arx-full-w4/episode/action-00091.npy": "3f2603c366e55cc89a03b85459c60edd49ae62b9e1139ab15ef12abe0c02c479",
+        "trials/unified-seed1-arx-full-w4/episode/action-00092.npy": "b62bbf57590b577593563969aaab78d6d57c2c8ac4dfee4b6a5554d4a59b7dff",
+        "trials/unified-seed1-arx-full-w4/episode/action-00093.npy": "f5c6f6cfc26a9e3ed146ddb85012cc07022cf60ff182056ea290fe04184ee2e7",
+        "trials/unified-seed1-arx-full-w4/episode/action-00094.npy": "dcc50f2750ef74b7d4821c26e0c6daad5cb8f24a9d469b53104ba592d0ed97c4",
+        "trials/unified-seed1-arx-full-w4/episode/action-00095.npy": "326e4d66b0ebec2dfe3d6ee07407e225c4b84ebf6affd4207c5111977e538dbe",
+        "trials/unified-seed1-arx-full-w4/episode/action-00096.npy": "1ec24bff52bbbafc7ca7936e052fbf5891394cf64665a9a4c271465f2a6d2177",
+        "trials/unified-seed1-arx-full-w4/episode/action-00097.npy": "dc1edb01a2b676551a9e99a0cd6c94cd221f4758139bfee7cf68113350d2d065",
+        "trials/unified-seed1-arx-full-w4/episode/action-00098.npy": "ffb9c1651ae0a79537c8635e28dba44415bd771c452684dc3c5d0962fb826cb8",
+        "trials/unified-seed1-arx-full-w4/episode/action-00099.npy": "5a3970c7c333557ec99e7b2ced3c5af18f20133ec5d363d9d1c73e9c8eb6ae11",
+        "trials/unified-seed1-arx-full-w4/episode/action-00100.npy": "ff3ec6b7a9682a10bbd5e828cd7a0feb3820f7049d706fe861bbb502b23f33f4",
+        "trials/unified-seed1-arx-full-w4/episode/action-00101.npy": "7b1f3183155139fa21e771515d768b800939e9ff4953315e85d4e3db6ba4a9fb",
+        "trials/unified-seed1-arx-full-w4/episode/action-00102.npy": "52bd52a97f8f3af09296af87103d781550282ffec7be80857b2fa31f50546cff",
+        "trials/unified-seed1-arx-full-w4/episode/action-00103.npy": "1512d02de2051c252da12460a8fb48b6ca46717b1740df368225cc32993d1ced",
+        "trials/unified-seed1-arx-full-w4/episode/collision-checks.jsonl": "922da09b87a7a4da043f6c33441f9de09d10c4f258b28b63b13a1bc19e6a4ff4",
+        "trials/unified-seed1-arx-full-w4/episode/events.jsonl": "7c98a300ac8103c9d5aa404311fe3eb928fce7fe2cc6b423b22dbd1f52269801",
+        "trials/unified-seed1-arx-full-w4/episode/initial-readback.json": "4e02d82cfbebccb38afb7d0e426a360c083eb76a2c62e03b3fbc1ee640e5e149",
+        "trials/unified-seed1-arx-full-w4/episode/initial-verification.json": "c14d62c0634543a4b6186262f3b07b15ff30c59e8da05bf2aafc6212abe9648d",
+        "trials/unified-seed1-arx-full-w4/episode/proxy-collision-checks.jsonl": "df6e5ab0a41e1d214d08778da70858f62f4cb25c7ccda71c109ab49de350638c",
+        "trials/unified-seed1-arx-full-w4/episode/result.json": "2b71805ee1856c4aea10bfcc6b95a5a9438f04d9ae665cc94469ba0413d568fb",
+        "trials/unified-seed1-arx-full-w4/episode/setup.json": "05fe147ded2263d75a1fb3db88dc2b1a6ddac2afe5afe3df5190f0f61c8bf085",
+        "trials/unified-seed1-arx-full-w4/receipt.json": "437724b6958b9484da8d607a396685b021edf3f6d57dc76f2c5e2d8904f15685",
+        "trials/unified-seed1-arx-full-w4/rng-reset.json": "b4f463c93e4c01038f133c01ea3e6a17a52bd01c41667bdbcf1cf58f97974aae"
+      }
+    },
+    "G4": {
+      "job_id": "127938303",
+      "slurm": {
+        "state": "COMPLETED",
+        "exit": "0:0",
+        "start_beijing": "2026-11-14T06:18:05",
+        "end_beijing": "2026-11-14T06:35:22",
+        "elapsed": "00:17:17",
+        "node": "gnode39",
+        "alloc_tres": "billing=4,cpu=4,gres/gpu=1,mem=32G,node=1"
+      },
+      "authorization": {
+        "archive_sha256": "f672694dc105111fe3993c0074cbd84e25b902ed7ef7c0948eb5c60e6e2ced44",
+        "configuration_sha256": "d0494e5d6d96a866537dc3360fcdcaf6da472ca7b20367dc4bd49ed2a146a10a",
+        "commit": "f4b0bbb8b2f25b9bc7f43301ffccdedb391308ac",
+        "yuan_per_gpu_hour": "3.60",
+        "max_cost_yuan": "5.40"
+      },
+      "rng_reset": {
+        "command": "g2e_rng_ready",
+        "seed": 20261107,
+        "episode_id": "unified-seed1-arx-full-w4"
+      },
+      "startup": {
+        "category": "admitted",
+        "physical_admitted": true,
+        "fresh_reset_verified": true
+      },
+      "model_phase_seconds": {
+        "checkpoint_and_tokenizer_sha256": 0.3881651237607002,
+        "openpi_import": 166.39432659000158,
+        "jax_device": 6.068889565765858,
+        "orbax_restore_and_policy_create": 33.3217983469367,
+        "first_jax_compile_and_inference": 71.45879840105772
+      },
+      "candidate_stop": {
+        "kind": "candidate_rejection",
+        "finger_drive_m": [
+          [
+            0.04399999976158142,
+            0.043805528432130814
+          ],
+          [
+            0.04382391273975372,
+            0.04388701543211937
+          ]
+        ],
+        "expected_hold_finger_m": [
+          [
+            0.04399999976158142,
+            0.043805528432130814
+          ],
+          [
+            0.04382391273975372,
+            0.04388701543211937
+          ]
+        ],
+        "episode": "unified-seed1-arx-full-w4",
+        "tick": 34855,
+        "state_sha256": "496952388304499f56565f93d8d7bc8cebc594b5abf796a103edee92c18557b8",
+        "terminal_checks_passed": true,
+        "hold_verified": true,
+        "no_physics_advance": true,
+        "hold_complete": true,
+        "failure_sha256": "07df087057967c3f2f7708cf5bc90a3a301a60873a446f1ee0ba195f43266433",
+        "close_complete": true,
+        "scene_context_closed": true
+      },
+      "formal_score_eligible": false,
+      "measured_min_tcp_to_block_center_m": [
+        0.0935834072050149,
+        0.15374259778002536
+      ],
+      "measured_min_finger_joints_m": [
+        [
+          0.04250720888376236,
+          0.04300534352660179
+        ],
+        [
+          0.04346870630979538,
+          0.04364847019314766
+        ]
+      ],
+      "counters": {
+        "policy_actions": 470,
+        "executed": 470,
+        "recovery_actions": 0,
+        "requested_prefix_rows": 476,
+        "result_queries": 119,
+        "logged_model_requests": 119,
+        "evidence": "worker receipt"
+      },
+      "termination": {
+        "finalized": true,
+        "task_success": false,
+        "outcome": "planning_failed",
+        "worker_outcome": "planning_failed",
+        "category": "controlled_candidate_stop",
+        "supervisor_status": "completed",
+        "supervisor_reason": null,
+        "failure_phase": "planning",
+        "failure_code": "collision",
+        "budget_stop": null,
+        "failure_detail": "source proxy rejected the original action",
+        "geometry": "candidate",
+        "collision_world": null,
+        "collision_world_evidence": null,
+        "terminal_link_pairs": [
+          "fr_link5 / table_6"
+        ],
+        "continuity_rejected": null,
+        "collision_candidates_rejected": null,
+        "projection_stop_reason": null,
+        "cleanup": {
+          "scene_opened": true,
+          "hold_complete": true,
+          "close_complete": true,
+          "scene_context_closed": true
+        },
+        "process_group_reaped": true
+      },
+      "event_counts": {
+        "policy_request": 119,
+        "policy_response": 119,
+        "policy_validated": 119,
+        "approved_plan": 118,
+        "executed_step": 34855,
+        "source_observability_barrier": 2
+      },
+      "physical_steps": 34855,
+      "contact_phase_ticks": {
+        "approach": 34855
+      },
+      "finger_contact_ticks": {},
+      "holder_ticks": {},
+      "stages": {},
+      "last_measured": {
+        "tick": 34855,
+        "sim_s": 139.42000662209466,
+        "query": 118,
+        "line": 35328
+      },
+      "block_task_m": {
+        "first": [
+          1,
+          [
+            -0.07437799125909805,
+            0.006845731753855944,
+            0.8400007486343384
+          ]
+        ],
+        "last": [
+          34855,
+          [
+            -0.07437717914581299,
+            0.006847203243523836,
+            0.8400002717971802
+          ]
+        ],
+        "min": [
+          -0.07437826693058014,
+          0.00684482604265213,
+          0.8400000333786011
+        ],
+        "max": [
+          -0.07437700778245926,
+          0.006848440505564213,
+          0.8400009870529175
+        ],
+        "samples_with_pose": 34855
+      },
+      "projection_plans": [],
+      "projection_fresh_requests": [],
+      "terminal_candidates": [],
+      "collision_audits": {
+        "target": {
+          "checks": 49445,
+          "blocked_checks": 3,
+          "link_pairs": {
+            "link4 / table_6": 3
+          },
+          "partial_final_line": false,
+          "scope": "FCL audit calls, including planning and/or measured checks"
+        },
+        "source_proxy": {
+          "checks": 599,
+          "blocked_checks": 10,
+          "link_pairs": {
+            "fr_link5 / table_6": 10
+          },
+          "partial_final_line": false,
+          "scope": "FCL audit calls, including planning and/or measured checks"
+        }
+      },
+      "terminal_rejections": [
+        {
+          "kind": "source_observability_barrier",
+          "tick": null,
+          "sim_s": null,
+          "query": 118,
+          "line": 35237,
+          "status": "collision",
+          "geometry": "candidate",
+          "world": "source_collision",
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ],
+          "continuity_rejected": 12,
+          "collision_candidates_rejected": 4
+        },
+        {
+          "kind": "source_observability_barrier",
+          "tick": null,
+          "sim_s": null,
+          "query": 119,
+          "line": 35332,
+          "status": "collision",
+          "geometry": "candidate",
+          "world": "source_collision",
+          "link_pairs": [
+            "fr_link5 / table_6"
+          ],
+          "continuity_rejected": 12,
+          "collision_candidates_rejected": 4
+        }
+      ],
+      "first_request_stamp": {
+        "episode": "unified-seed1-arx-full-w4",
+        "tick": 0,
+        "sim_s": 0.0
+      },
+      "first_request_state": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "gripper_prediction": {
+        "blocks_with_le_0_5_any": [
+          117,
+          1
+        ],
+        "blocks_with_le_0_5_in_w4": [
+          0,
+          0
+        ],
+        "saved_blocks": 119
+      },
+      "action_hashes": [
+        "6c0b3a5dadaa71557e0f827bf808f2a8a044cb4c029906816d6bfedbfcc92569",
+        "0c326f52a5f679a619f74622511259c1ea2ac60dae168a8a819dc6635113f756",
+        "a80f7dd033fa072fe397aaef97961f7a1566dada97b7188fb096f6ccad8cf304",
+        "179c7b5a361dec128732a7eec4f06652c7a350ccee9ddec9ec325758e47e31b7",
+        "65ef870c9edfcf8e6cd9ceb1fef7f0479120354264da459a7395892aa4c8f57f",
+        "d9c55cee07704f7b4509223f091b08e0bcfdc17d11bbcab5ab14a9214a760296",
+        "6a2a9706d6da17d3971658a41565c3d9b7100a050794dbe836c302c7d14a9f15",
+        "786bc0520946ddd0513f3f3e0252814f2878b579c02e8d086853de4d25bb8888",
+        "614900b7a5e0101a7d818dc22578ccf97bff9003a5f140c1d5d9ed55f8e8200a",
+        "84740606fb4d185905918d610b8f58aa8768c0c6aed9c21c4ff75f1ebbb156c0",
+        "b66e8b00797edb04f35740482a252d04aa0758a33c3041666291320a13f336e3",
+        "6c43890f564087437e6ff368dd514a4a65a449241c237750613240c7905d7050",
+        "599006f65ca8a219460d09b8a150d67179162803ed5e643c020dd714f94d3036",
+        "085803d000357a33b0feee3d4a7800271bee66bd218528cdfc169ee24f8216a7",
+        "084bd0502b4952f230babc1cbc48834db1f8e0d8721002f795501b4699ba2830",
+        "1eb35c12b50c5872350bbf8aa3adcad02896057a3642720c2c475d9bbd93d21e",
+        "9adadbedae297c4909151ebaca8105d0174fc20f974a5af5034f98d3997bc7c9",
+        "da55f0bd5127e70e00088e8137cf2c88605237d818b4be42ad8c4e6d1a32bfdb",
+        "691a53a26e4bb2611f05a28a9e20c58d4fc8ab183351538187f9ca947b2cebce",
+        "f13556cb9e26b7bc98ccc7e37e9c798b315e1d679bd962c428c70af3e67ededa",
+        "091ae04bb4c3e9eb1d46f4ac61aa11bfeced637df0661f7b2a789921a00b0750",
+        "507a57507ebdbc57770965f10a46491981bbdf36f92d1a7eba98a7c7fec16073",
+        "698d09f7df3a888a62e26ffee14c4ab5debc0ccb5cda36d78227f5a9a9af1b5b",
+        "6b6ae04012a8e2875f7f3c746c95816152c0d8704bf4113d46ae47113ec3a6da",
+        "9296d8eeea5352291f75aa01d0c8b38bd58f04d33b2154058e8cf1b5a31eba5a",
+        "2138019232622ff08754ef30ad6fad6127ca836fea24966faa5ed303405a98c2",
+        "6cb4f677500e8237e15701381bac32c3703166ce8bcf0f50e2c572f43703b96e",
+        "d3a661c390106e7edab4e8831cd233b55378f18763c5cc0c448fc923eb34a523",
+        "26184ece614496b2e3459a02ec835f7e87bc258a36a83eef30b265a5e9c0b1d9",
+        "fb132912373cb0be797f08516f295fbb2898e04e3015f5966e05ad11ab0f5668",
+        "a6fcf437322115ce5fbc862becdb98f17f50e30668570cefd1fde81632901042",
+        "51da671f03479fedd515d991efce1ae41300561ce27070b8236f0fabf288e253",
+        "37047b2743a45fd65256cf368a52d64b2357e60ed86857602ff6c5aa2ea2e9f9",
+        "b4894a575d509a65f1d65c987756c9679d82f57e5dd26e76757dfcf6e70f1af5",
+        "140253c8dc95fc9b2198a128ae33e45863f2b2973a6c954d6fff358b414a72a4",
+        "3854b566d91af322cdaa1c25ca861733eecc9537c273c085bdf16690a0b13a6b",
+        "aacf756dd2703b5cba5ccba0a4be0a3fe67c211bcac3b9c0935e347a20449a3d",
+        "7a914e1b620d3753379187b512d09e5b6430d95fc2a9b3152795fb975a600c27",
+        "7716768d4b93ad848b11d73af97c2f3ac6afb7d853dd35f87d0204c0d93646ca",
+        "ffd9311ba69e76ffb18fabaa80c52ea44d236df901a76810b928f4a54f6b94bb",
+        "9f2b57ebc8965775ba65584e6ff0e6719a502622cc3a76be3089dfb2a825f99b",
+        "47e9e02d7c2b770ef6bd910e7a94474d767604640f2db7b49675e54a697a6540",
+        "aaf98d091f208f866e262ad73cd211a21dc7f572b3c517a1c0e6ec67417a31af",
+        "472c77f9a7cf0025ce08c1ad84c02707c55eb0a1d58065b372364b27cf866fa0",
+        "14458670b42a89c42bbc36f4613374c28f1cc2d053e514047e5d9e43d7ea125b",
+        "848ef2d2826c40ce7b1cf7f9c464deb62ef4461cdea54e95cc409ea4b530dc46",
+        "9aff626a79060764a5d1b7cf96fd3cf2133b47cfbccc78e1a40761039b2c8dfd",
+        "36934f57e3b9e5f7a5c220e91f809051f46ccb210afc8f7d28d8947af7059b19",
+        "9e39bde379096e056b07623fe388b0a7f8f0a81c74913c8a4e19ae99637fd90c",
+        "ca3d9463f8ec362d67e1390196e69c525b4fe4b444b4bd19c622eacc963df085",
+        "0887385028a90b21865ccb72044c31ec57b5a9eef3997d3299bb71d338de2454",
+        "cac9859c0cdb0a2ec13a0fa277ef856593ea3ee47de3d3796742ac70c2956cd4",
+        "39359c1b5d47543505b43a03e745cdd6c8e6f1f4b89dae5ead591bb3ca126b8c",
+        "0a1abe94c677d65712bdeb938dfbf5fd3f1191e0a8115a4db27eb45c82f6f328",
+        "a7c407fc0f4d803443e751effc5e0f95d827346fdcb4464e17ce2cc9d062ec26",
+        "d9564e583d9d79f170bc26e3c239edd1d2865d1249965b27800eb8ce77f0e28b",
+        "4027f1bf99ba1bc051b2015789b2f1aa16ce7061b93cc5dfde317c2c82600852",
+        "109ca2f424fcba232b76298fbcd25612cc5b56a627d1c95fe86f20df05794fc8",
+        "93632b258620d3f151e1fab854a62b4290c8613d4225ec69d2dd3215c15e0651",
+        "33a11f5138986d5b973ca3b16d8fb2874979d238844c43305bd031f05c7bbfd1",
+        "8b4f72dddddfa32006a903b3540b3fafdd7bf8126cd0bfb6e6eb0c65531185d8",
+        "31f8da29c30baa7b53d49ac9242b8112331a45e0d50e1532242e419e338d712c",
+        "5e1ebd968c060481c514cfadf9e0de3e23865ecd2fff0bc178919c8c54e8e8e4",
+        "f77b9a01a3465de228186ee74d1c77aa55537d0b1f243c750530c59d4e596f41",
+        "2adb078e84ca2d7b9ffddc7220b30d965550a54cc239992e6dff3af38b2f699f",
+        "5be8ee79c21cee305a961c2dd311033eaba5af756f2cc74d71b958d34515faa2",
+        "bab86b2120f790ccc1f1660bfaac856b3c794c0d7da994934fa5fe44d14aaab4",
+        "e1affcf73ef84887b4e8589a909876fbae08591bacec9be72fe7c72a4bcb397b",
+        "ad2f222da19b08c426a1196225192059c6230527b5132f6db54c093aa829c083",
+        "43fbcd51b17758df82835f3938c0e43f542362739bad3f6c334dd6512e97d173",
+        "974c280ddf9d16e009738f3c24f96ad16e36862f4612ccb67c19cf8d237fa08d",
+        "0774af58a8b632566c0c87f56c7b59dac258da069ef8ce1c0b9b8903f10397cb",
+        "623f0a8e99901606b6a3a0f6ebd8d8ae69deda454833df6e16422737cf60f662",
+        "7eb80d37bc65960366759130d2712bcb453731d4c7d2c6f7307b9a058ee13c28",
+        "1629f19f6c7ef67fe5498ec647bd25c789cbfd9f87f2722060145dc29c152cc8",
+        "24c70e82d3d355c4a8aa4167acadcc707c1c748ab3c5c35660f0aed1d03c2acc",
+        "a278711df2c32e52f42454d588bf17d5b002d39055820e949f41bf507b9f8d6b",
+        "2adbe3a37f080b878e3fcfeaee0ed9e69c45e7a205e2e766f7ee3979aed67e63",
+        "a4fdc9b5c71cbf4612c3937badfdcd19eef346da9c6c50f067877dea0b66e101",
+        "fb980ffe705a11e018071d403e94490750a37123862c1c334ef5291275e56ab3",
+        "b10a2a6cc3d8d1d0989d0f129883a369c9251a92fed8841971e57477c198225e",
+        "68a802273f7440d676a223fc79268540d7c879618e7acb0affa347d00ad63fdb",
+        "c520be0decbcecf1b7d3c0c771a2fea4be6ba3bd9b6b8b69e117eb177fb3edd3",
+        "3a3fad2d5d5c7fdafb4f76d0bab0fd2f9b2efc1e55e481fa19f44747447a3f03",
+        "82c1241b5a373758a4a38d5e40c0debb37d7c394966c5b6de9dabbf1c0b77b2c",
+        "a25a3593f0fcdb0f128fc34e118eb5b960cc373a21bde43a8d777ffaa055569d",
+        "54bea26a16972114adf5b39c75a234c4cb8706d08a26cd06472f85838d596125",
+        "50750c8535feafa3aec7812964e55035edfd00d5186503e2ef7fc7844dd14a48",
+        "0c4f78b850345733b8e34df49149bf6c792773bafedc6cfc6cbf74f17c6a4f78",
+        "1d16d6293c1da20c7c141fbda2cf107fc271339026d24146e562dfd151b51473",
+        "bc36e2240062bd8c20a6d381b7f8e17c06fd5630cc653cfe2202a870c9a97540",
+        "d53efc01af5813c094608442721615cb27a1e7e81cf0bfe1ffc855e2d7e0bcf3",
+        "f030bbd2116c05969e9061637945b725c62b21ccb9589a14d3df76cf8e9c26d6",
+        "2ba094696c6dc8f8f831f888af877c26c01b346264b9a59e80ebf0737f929c34",
+        "af9fa52235ad05d4cbbea3bb92a8d07c68d39f08da4784dbb442b18fe14eaa53",
+        "dd7be3f5b9fb8121eda6c7ad3f10bd6ac47fe5bf847226deba5fd8255241bc8d",
+        "b05c2beb986853348932fe9e2fdc437e67797642d650552270bb0f6dbe041601",
+        "e7586a56980c2db704700318f89176d5078806a5f038fa440fe392bb6e381f7a",
+        "e5ea0f5351170829c7cafc960bc74dacdcbdc6a10cb54fdd1ae2a0610907734a",
+        "30c5108ce807a9cf2b2ab770d211512ad061e8ba6540e78d0bf4272cf4c9c723",
+        "c432a81a56a2509851b715ccc061f0e4eee482ef069e9bb6e729fd96b3645066",
+        "83b4f27a12649c03d86ff72065a601150577350e85f8965117e7ca6cc81a2a08",
+        "754c11dd637ae4e921687836f0dc1bc717f8ce0acc4bb326553ba4dd890cf362",
+        "f3b1059d96ed3b56f45fe89c6db6a57fedebd6653dbdb23eef2b57dde1c6f350",
+        "612084cdcefae4815feede04c1e8506c79efbc66922d7d5463a0c836887ed507",
+        "c62fcfcdeb63658c9c80d7fe7bf5055e65ced4c3dc976a634ea1030057b3050c",
+        "5fba4f96901a52a71108740882f4badc9c809468e55bd4e63dc55f846def6df7",
+        "5de2b517a11d4f0b99a51d54ead326c908d76a9e7f28f3b206515f0acdaa9965",
+        "924fa858daf9f3bebaab90b55794e6bde7869c3c5941eaad58db84b2b7399dfa",
+        "cb97972bafda54870366d08e4de7775a1f3a0e86e038278448e7ce504cd1a28b",
+        "e1525f85e085350e80607d0d78207a6cfb21b935bfac752309d724c2b5ecdec2",
+        "2188b7bd94e286bc5b697779fcc957c6ee91a0b35249e2ec6d716e10726b278e",
+        "c1a4450f8c91b175cf45d59c3802329d0ef15889dab30f7d450e9478c38a1306",
+        "3ea80645bf01b507e0cf04ab16d6636596a94f41332822e5cad59ba63f2db429",
+        "a75c0e84a0b52c973df528db21ddc1ed3b54e3ccde38d9295da836c2ab70c9aa",
+        "20fa10cf084002560969da1a73d1eb8aac75abcab32a0202043ccd34a5a92298",
+        "555b6952320dc967a4f7887363267a386267794e4f29efdd4948d9fcbdc5a512",
+        "3a421acdb1148e33978eb77f44f10ef9325f2f083e2be56cba24ab197ef26517",
+        "b1b481462789585203d6567dd53866a72ac2ccc4471013317ac6b5042575d0c8"
+      ],
+      "evidence_sha256": {
+        "authorization-receipt.json": "46d18599a5f3f74e1a9198602ce66b10e7421d0038ff8438485baab03a601d8d",
+        "effective-launch.json": "cbc0cb6714d9ad314a351e64dd9ca45ffe27b5f2976a3c96f2d7fcb3171dcf16",
+        "model/phases.jsonl": "c13754200a6ebd0baba1c85594b4937a7420d2ac4cd948754dadf1fbb536bdaa",
+        "standalone-result.json": "ea7307bdf8f2c1e44e33e7e265f6045b8867ddc50116bdfd26bba44e4f5796df",
+        "startup/unified-seed1-arx-full-w4/receipt.json": "5bc3d8c64f7975fab50e28fc89194c85b06fd9cdb0ed8e0384b256f895ad2f56",
+        "supervisor/campaign.json": "ba869849c1b0a7aeba358802785c38d20df2bd5ce77b3fdba67677a7d61a5c3f",
+        "trials/unified-seed1-arx-full-w4/episode/action-00001.npy": "71b1d162627dc339331524c8e800ade031edf39cd2d530d0cbbae1611b2438c0",
+        "trials/unified-seed1-arx-full-w4/episode/action-00002.npy": "6c12f8c4ca2c891c10a8daabfc7c8ff1f58974d6cd1271bab2f300b85a58ac92",
+        "trials/unified-seed1-arx-full-w4/episode/action-00003.npy": "a4f3c60978820a2c52c013edb72f22afbd795dd05fc01a4d567a7c7561d4bd00",
+        "trials/unified-seed1-arx-full-w4/episode/action-00004.npy": "05e2684ef11a03e472b0c1b526e9d9e71a00b6665bdb96b5a92d0f5391842f96",
+        "trials/unified-seed1-arx-full-w4/episode/action-00005.npy": "644188030f829eee446b91509d014aa5ad8dd8324748e0d237bf12a77ab9b751",
+        "trials/unified-seed1-arx-full-w4/episode/action-00006.npy": "d7d6991764c1968068b372818dea882c921f069b71670a177894b17ffc2d29e6",
+        "trials/unified-seed1-arx-full-w4/episode/action-00007.npy": "3ca6bdc4f7d14a4fe02cc06f7545658febc16c0973188805539e8df61a74b25f",
+        "trials/unified-seed1-arx-full-w4/episode/action-00008.npy": "fa883dc3a52f07c51f585cb5e7ba6409178079d354a2dac77d35ca4a191adabe",
+        "trials/unified-seed1-arx-full-w4/episode/action-00009.npy": "21036cc2fe0a6588eaceb11840007b0b4c18505864fe78c61c7c32d68d1aa695",
+        "trials/unified-seed1-arx-full-w4/episode/action-00010.npy": "24db4b4d38dd41a4ba9a3635232b6914418a966111a0e472ca3f45478a4317a5",
+        "trials/unified-seed1-arx-full-w4/episode/action-00011.npy": "ddf324bf788758169702d355f102dc946ebc0038993f991d584f4ee4e89bdf91",
+        "trials/unified-seed1-arx-full-w4/episode/action-00012.npy": "e3e38fa5d3c6b895d3ceb30ad5be5ae87a4c19ea7b18ef2e5c770201af8410bb",
+        "trials/unified-seed1-arx-full-w4/episode/action-00013.npy": "67888ee5a5556b40d7c353a83804b38f0627d0fae021a497195ba00050dd20ef",
+        "trials/unified-seed1-arx-full-w4/episode/action-00014.npy": "374d87991cb6a71bfdbe1857947c49186b3c5b7b9d1461a0c87e810b9166a6ee",
+        "trials/unified-seed1-arx-full-w4/episode/action-00015.npy": "43c3f58a44d69d4fd989184bfd8babb7c051ac203b3c2ca1c1510e0c1149c726",
+        "trials/unified-seed1-arx-full-w4/episode/action-00016.npy": "7f2f9af4e05f0d99b47cd2aded1ea7b2884af04a0a6b2f487d0b6cb74f21d8c0",
+        "trials/unified-seed1-arx-full-w4/episode/action-00017.npy": "b859bb970a28b6d13e73cbe5b2933770c6048e2f74ab61f6a43ed51cb2a52f9b",
+        "trials/unified-seed1-arx-full-w4/episode/action-00018.npy": "e7ae342a344d7375f2d47f010565708461289d122f1f1b0793f7c555726e5d8c",
+        "trials/unified-seed1-arx-full-w4/episode/action-00019.npy": "44d3325584a4733ad3f3cbee5881cba82fc90e9e763e4e11c7f2828d9f93ee34",
+        "trials/unified-seed1-arx-full-w4/episode/action-00020.npy": "02d31d50a70df169d3afac954de00816149e7ac8315c51769b7226d6b3bbdb13",
+        "trials/unified-seed1-arx-full-w4/episode/action-00021.npy": "a8ca58de39b1c5246ce07aee4eb344d7fc1a93a5cf72a9e966aac0af39b8a0dc",
+        "trials/unified-seed1-arx-full-w4/episode/action-00022.npy": "befc018a8678ce3283434c3fe95a14da00f38f8a4ba005277ee38e0e2ae328c2",
+        "trials/unified-seed1-arx-full-w4/episode/action-00023.npy": "469d9c2c44587a70964b03d68b227adaef321d135a820c457fe67e3adb7e705a",
+        "trials/unified-seed1-arx-full-w4/episode/action-00024.npy": "06dbf7b1eb6b4f6a66bd642029daa8dce12a868ee50b2231cc6fa4200549344d",
+        "trials/unified-seed1-arx-full-w4/episode/action-00025.npy": "9974578f454d0bddb7e54e1cd7847d6ee3d05611bed17a7a955e526d41f19b89",
+        "trials/unified-seed1-arx-full-w4/episode/action-00026.npy": "0712d1ce54e9fa566bc2b26cd6720f3bed83b7c998f3467238f3577db5457349",
+        "trials/unified-seed1-arx-full-w4/episode/action-00027.npy": "96d66fee1c9d6dea4c917b9cfc90c77e73a20d7ffc182b9742b8c5d3dcb02e67",
+        "trials/unified-seed1-arx-full-w4/episode/action-00028.npy": "887783d4f83d68461776054748022d6e5e76b0e73469eaba3b963f86dbc6cdd6",
+        "trials/unified-seed1-arx-full-w4/episode/action-00029.npy": "2d01880f0d87985ebc0e3752fdf778f8557aab42603416e53dab0ee0e6c976f9",
+        "trials/unified-seed1-arx-full-w4/episode/action-00030.npy": "b442fa4acb866af80ad2bbe9c65562b74ce14fb7aae358944da5c4fef2e9df85",
+        "trials/unified-seed1-arx-full-w4/episode/action-00031.npy": "535d34df48f32e8fe651fadb278cf1efa0910deb2e6d102ec06f58ac7ebfb710",
+        "trials/unified-seed1-arx-full-w4/episode/action-00032.npy": "a4b1d7eb685cfaf2e86308095650dcc84517a1b2738601c298f520551028331a",
+        "trials/unified-seed1-arx-full-w4/episode/action-00033.npy": "a8567637adbde5ae980e3449a6edf8ddf4b50e50a168c9885d62c5dfce18361f",
+        "trials/unified-seed1-arx-full-w4/episode/action-00034.npy": "69d576caccf0e58a2b9312877024ee006794fbe9184ba6f2d7bec735764a2250",
+        "trials/unified-seed1-arx-full-w4/episode/action-00035.npy": "c470d4f99f3b21acbac7e0b9583606bc431f8fa52025e792b9219bbb129cdac0",
+        "trials/unified-seed1-arx-full-w4/episode/action-00036.npy": "11c910bd39d3b4336e98d8d62bd314022ef8e82bd930cc991932b3de53960f53",
+        "trials/unified-seed1-arx-full-w4/episode/action-00037.npy": "cfd22694faf91c3b0eb8fe6aeb0442da9d5cd20b107a3ef3e0bd2cb8ebbedaf2",
+        "trials/unified-seed1-arx-full-w4/episode/action-00038.npy": "20c369ba2b55da5a594f1aa895339eef9b3cec8cf032b95c9af22d14b1fc08a6",
+        "trials/unified-seed1-arx-full-w4/episode/action-00039.npy": "329c6e0212dd6389de83f26dfe315ba6c604da71b44612bc52da4d38b7d594a5",
+        "trials/unified-seed1-arx-full-w4/episode/action-00040.npy": "dae8abd9d7cc2e232ed8ff1574d2b5afa05c58f4fc27a9cfbad6b01635c0fe1f",
+        "trials/unified-seed1-arx-full-w4/episode/action-00041.npy": "ff5c5e17e49b036c8163a368e3833c49603b89cf1d93f09d582cc0885cc7ffc4",
+        "trials/unified-seed1-arx-full-w4/episode/action-00042.npy": "eade2eb825dbff30ef140a13420ed9d3bb874a0b539cf9216ad01344027f4884",
+        "trials/unified-seed1-arx-full-w4/episode/action-00043.npy": "365e71a7305634a291515d2e8583ef8299014f25187f31fbafa4b67558871dbf",
+        "trials/unified-seed1-arx-full-w4/episode/action-00044.npy": "2ed434e74715aa99b27c70bb52949f059ce8a2b9d007998a9e7557a1462763a1",
+        "trials/unified-seed1-arx-full-w4/episode/action-00045.npy": "a2abe677b002483ac1e3540c5df64940c75d63ec0ad605116a7ef6d8bd2cce33",
+        "trials/unified-seed1-arx-full-w4/episode/action-00046.npy": "033027f5845120daa8629c3bd3c04e4f31f5ee4f35a9a16eaf91434cc61de9b6",
+        "trials/unified-seed1-arx-full-w4/episode/action-00047.npy": "b8983db0cb38c0895cb982c7d7bbb96b7f50e708b3f7d7cadb4ce9ac7babc817",
+        "trials/unified-seed1-arx-full-w4/episode/action-00048.npy": "a610abd704edfd524eb63916d13c4332745f0458e6c9349e8ed6e44e5ad372c4",
+        "trials/unified-seed1-arx-full-w4/episode/action-00049.npy": "6b6efc24da3bf18bad4f804c60224087a439fd9e1ce1b05f4c14835143f59746",
+        "trials/unified-seed1-arx-full-w4/episode/action-00050.npy": "b60cbe0716da0ff2c4edd247748b872d41c39baafdabefd2529350b2062e9f2c",
+        "trials/unified-seed1-arx-full-w4/episode/action-00051.npy": "1334bb50012f40b40b3a5feaa0636f7a3b11995c1f9f235ad87281dba97b03f3",
+        "trials/unified-seed1-arx-full-w4/episode/action-00052.npy": "a711ffe26fc21d26d3c40d192877d09de894320d4bd03976671a87db440dbab2",
+        "trials/unified-seed1-arx-full-w4/episode/action-00053.npy": "8dfb746767dcaec0773ab7d336bcebee1518bc2b3f5de72a37ef2d1377da9d85",
+        "trials/unified-seed1-arx-full-w4/episode/action-00054.npy": "c2e2115e6ca93b50499c8c5ad544b152b69542d9b037f12299173bed143eadf3",
+        "trials/unified-seed1-arx-full-w4/episode/action-00055.npy": "0c1a3b967cd5fc3132d3b004943a0891461922306a8306be67d04363aee8a8e4",
+        "trials/unified-seed1-arx-full-w4/episode/action-00056.npy": "a27dd29c3fe0a3e8889b2bde5ec5562836aa7c930a478068f3732f52dead2ad7",
+        "trials/unified-seed1-arx-full-w4/episode/action-00057.npy": "ab3e3e71ca97ed7920176a9f1179dc87d1a5948423d9ba0b5bc79e26873ddcd4",
+        "trials/unified-seed1-arx-full-w4/episode/action-00058.npy": "f8de68a2a4fa33f6221daa66f43f1aafad4ce9ca470ff99167a400a682d946b4",
+        "trials/unified-seed1-arx-full-w4/episode/action-00059.npy": "7fffed412000c63da6ff41ccdb053691c9ec0dfff51e5b851364f5f86f577ce9",
+        "trials/unified-seed1-arx-full-w4/episode/action-00060.npy": "d43a66e6f4e6920efbb71380fd2c96385dc1d3d13ae80335b7e1274d29d580e4",
+        "trials/unified-seed1-arx-full-w4/episode/action-00061.npy": "ce772c3213322a305172b9c20ee3ac975196c0bc8d78429d209706905666f923",
+        "trials/unified-seed1-arx-full-w4/episode/action-00062.npy": "e34d810ed56b436487fbd214a6a909537e1bd1ce675773e0e150765070c3005f",
+        "trials/unified-seed1-arx-full-w4/episode/action-00063.npy": "eff69844c93373219e558c13786acc074c64a92b4315528494486e267afe8f3a",
+        "trials/unified-seed1-arx-full-w4/episode/action-00064.npy": "c441c92a866ba25bf9b54387e49db65fc8f9d2795ebcc1d2d5656ce5c227cb23",
+        "trials/unified-seed1-arx-full-w4/episode/action-00065.npy": "cce50581cea5f95981b3741e81f94ef24c0341ccb31a83c10a72c0141ca10981",
+        "trials/unified-seed1-arx-full-w4/episode/action-00066.npy": "3478757c38fe347b82971dabaa2e4c2a18a2af0fcc6b98214932c05c18dad8f6",
+        "trials/unified-seed1-arx-full-w4/episode/action-00067.npy": "a25b2953c7e7ba3d194260814c692f552e149ba535e8f4e2912e74eda1b2b184",
+        "trials/unified-seed1-arx-full-w4/episode/action-00068.npy": "de8340a30e45aaf27e8ef0c9193ecf529adf200d555bb20fbc650829087a22da",
+        "trials/unified-seed1-arx-full-w4/episode/action-00069.npy": "472128bb886adf718815450f02b7deb0a61337d32441c7ec0f55b08dc4e1c12c",
+        "trials/unified-seed1-arx-full-w4/episode/action-00070.npy": "1c44b2ec70112ba59e541a0b25f75215ab4fc09cd54c92a63ab65f9bb13e068f",
+        "trials/unified-seed1-arx-full-w4/episode/action-00071.npy": "f2930ed2624165cc3bc53d106557bc1f2a9fb09a52296df2ed5beb9683a7da81",
+        "trials/unified-seed1-arx-full-w4/episode/action-00072.npy": "e45be79f4ddc75de61ebf36cb631bcdbd4e266f92e8ba87f5003e09bde652a90",
+        "trials/unified-seed1-arx-full-w4/episode/action-00073.npy": "1cf000a5f3d71a740c2338c4ffad379e020322881cc4fc0675235d0fc37ce481",
+        "trials/unified-seed1-arx-full-w4/episode/action-00074.npy": "649f7828750f7c6aae3fad5aabb6b4d31a34705b9cee1737cf398dd8ed05c52b",
+        "trials/unified-seed1-arx-full-w4/episode/action-00075.npy": "ebcc27ba60120fc9e8b110a087056d05ed6f1367f9d384602107b47181626335",
+        "trials/unified-seed1-arx-full-w4/episode/action-00076.npy": "f2ec91536db4b3be1a6187ef0b8383cf08ca43a3911f18d9f74489e9b4539a1d",
+        "trials/unified-seed1-arx-full-w4/episode/action-00077.npy": "d8b536cbcf12e6c6328d85da1e0112ddbd64698a7d894a303541d475a8d8762c",
+        "trials/unified-seed1-arx-full-w4/episode/action-00078.npy": "c3101b344aeb3abc5232999b2d5fe2ab757a93969ad45829c589ea07be5bcf73",
+        "trials/unified-seed1-arx-full-w4/episode/action-00079.npy": "3b2a1b071518fd05109ed830fcd47d5c362b92eb255bda42eca250358ed9bcb8",
+        "trials/unified-seed1-arx-full-w4/episode/action-00080.npy": "f0d7bbe8497e1ae963b0fe8feb686dd8c469690ed24325706e5aa0a9d5f127f3",
+        "trials/unified-seed1-arx-full-w4/episode/action-00081.npy": "c8cfcde2d977317e5a9340201e4fd955caefeb1d4138d3c280a21d701c4259d7",
+        "trials/unified-seed1-arx-full-w4/episode/action-00082.npy": "9acf3037ecfa84d65aad6094fffc6d3be225f11311ef1561ffa09b4bebbaf1ec",
+        "trials/unified-seed1-arx-full-w4/episode/action-00083.npy": "5b61a4c5e50b9f0468c88b42129d764531aaacc6dd74233773b828e5acaddad6",
+        "trials/unified-seed1-arx-full-w4/episode/action-00084.npy": "8530061fbf552608341f3fba958020e7309e975803513978cac0ec32d1ddc66a",
+        "trials/unified-seed1-arx-full-w4/episode/action-00085.npy": "602d214d2876728770d4225f6bb038141fcc5182ccc3b5526d4c4aea45bab5ce",
+        "trials/unified-seed1-arx-full-w4/episode/action-00086.npy": "ca5841b5b6a1a179d93827fdd9acdae74b796d86d538ceb89308ea8c9ae826cf",
+        "trials/unified-seed1-arx-full-w4/episode/action-00087.npy": "ee5ed50fa1410f9fba14909763ac40a16d2c281ef0c6c697badd9b0c4f3a721e",
+        "trials/unified-seed1-arx-full-w4/episode/action-00088.npy": "40f4409695829e1087410d053b8836c4be6bbfb83fef5ba1029faa75b4b231c1",
+        "trials/unified-seed1-arx-full-w4/episode/action-00089.npy": "cb005db358c0a5d6d522b32819dd864bae3935979061069ea56bb028f55552c5",
+        "trials/unified-seed1-arx-full-w4/episode/action-00090.npy": "b0188081ec799ebc3cc8602db3e8af897323024604b931950e23af06daed5bcf",
+        "trials/unified-seed1-arx-full-w4/episode/action-00091.npy": "7f11ad3f754567f9ed0194433e8685a6896a3264923641e8fe78c054e417035c",
+        "trials/unified-seed1-arx-full-w4/episode/action-00092.npy": "1438d2f3f44b419fbe380f4779021de1850493c7e56a0e8bfd30d818d5d08df4",
+        "trials/unified-seed1-arx-full-w4/episode/action-00093.npy": "1d081f9d62fb6b60025c1ad6423616dd9b53193d03988e14b63999440b0f14c3",
+        "trials/unified-seed1-arx-full-w4/episode/action-00094.npy": "1aeeff1ec7c1e4cb8939cb1acb7973f0f049bd625526706240eb4b1250a94abe",
+        "trials/unified-seed1-arx-full-w4/episode/action-00095.npy": "f6d1c5a3892829f02e0a31a43f72a32fda353a6291841af8f58b30f4630e0e14",
+        "trials/unified-seed1-arx-full-w4/episode/action-00096.npy": "80d660c69cbf96cb1231137098a351c534b4f8302e12a9b8819adf86d57d5041",
+        "trials/unified-seed1-arx-full-w4/episode/action-00097.npy": "d7af39fb3c355ed4a85023757c17b147ceafef3229c7a4b539f6565e06c28a79",
+        "trials/unified-seed1-arx-full-w4/episode/action-00098.npy": "4cdd0e11d85f0e39d6f67e18a3f3389a607356b7068aa9369890b283644b4a8a",
+        "trials/unified-seed1-arx-full-w4/episode/action-00099.npy": "d1fe854c441daa8b639760083963ee24bad3cd522ce538202065eb711e754482",
+        "trials/unified-seed1-arx-full-w4/episode/action-00100.npy": "8c9855db51c4bf40cd2cf408f1cb0cd673c0ba05ccefd8e5847af1d2146a2cfb",
+        "trials/unified-seed1-arx-full-w4/episode/action-00101.npy": "3c550729014d1fd9195da6499c8807daa82ec4fcc0598e45596068731b36db63",
+        "trials/unified-seed1-arx-full-w4/episode/action-00102.npy": "572916abb10f30d28a1988efd02150198fa81416894e46ddb5af482315f8612c",
+        "trials/unified-seed1-arx-full-w4/episode/action-00103.npy": "89e63cc201df5a4c1c85a21a69116acd22fc91fd808407fb899de8fd335bd1cc",
+        "trials/unified-seed1-arx-full-w4/episode/action-00104.npy": "ac697312f790dd80ef95b08d853a4d2284ff069888bd87d3ae891643e1fd87c4",
+        "trials/unified-seed1-arx-full-w4/episode/action-00105.npy": "a6ff9ca56a067396b793f10ba3a16d6480e91b7c51296e7fc37a6a6fb7fbdd09",
+        "trials/unified-seed1-arx-full-w4/episode/action-00106.npy": "131cee07a2fbe410097949a76be887deca8c42433aa339feead9fd981a88e20c",
+        "trials/unified-seed1-arx-full-w4/episode/action-00107.npy": "cf290d955dc6f639c016b32346b3447f51b450a3170fac9e181dcce7e75a4a68",
+        "trials/unified-seed1-arx-full-w4/episode/action-00108.npy": "bd169ef29965c2e4ce7ceb78f0741659b03fef9e6d6d82b5cf0d5bc462ed7046",
+        "trials/unified-seed1-arx-full-w4/episode/action-00109.npy": "dae9a446f4e32ea51f56caffb76ff5bc30c43a1336bb81e88055ecf17bdb43f6",
+        "trials/unified-seed1-arx-full-w4/episode/action-00110.npy": "6570befe2ed697d3d95d2dcda2d9d2fce8ff9683416c58b6c5bfbe683bdc0057",
+        "trials/unified-seed1-arx-full-w4/episode/action-00111.npy": "8d2ce67d8de7912f5cfddc5084cacfb2854774c513b4500b3ad9c38d3e043164",
+        "trials/unified-seed1-arx-full-w4/episode/action-00112.npy": "d65df68f06a71921205a77216f72811b5ab8af4b4ac8918240130c3950a1b89a",
+        "trials/unified-seed1-arx-full-w4/episode/action-00113.npy": "1289b3ce276192712af42e9b8e085159a1041d94018658f2b21b5eb01a0b2cbe",
+        "trials/unified-seed1-arx-full-w4/episode/action-00114.npy": "345920313adc9de3c817ac69220866256312d9a6aa51110c4aedcebaf3ed2fdc",
+        "trials/unified-seed1-arx-full-w4/episode/action-00115.npy": "1ea832b7f7ab667b04dd00f69b5557ac637570c788f59b11b424a84c8927fa93",
+        "trials/unified-seed1-arx-full-w4/episode/action-00116.npy": "824163a4d9888f897b09b1c8bb631bc3da8471316045c543da49c67eb470d97c",
+        "trials/unified-seed1-arx-full-w4/episode/action-00117.npy": "a81357e3a0f90735efd0df75b74bb9e81de666d9cb28609bd4270b1a48325a41",
+        "trials/unified-seed1-arx-full-w4/episode/action-00118.npy": "a647fe9f514df8a683b833ab968869b311f3f7f484a649f0f002fe56f4ef33ff",
+        "trials/unified-seed1-arx-full-w4/episode/action-00119.npy": "d079305bb1d86b625a64b0a44409585bee777e6b7d445652a05e0417d2094f9b",
+        "trials/unified-seed1-arx-full-w4/episode/collision-checks.jsonl": "9805798dd5900e2db8cfb8b505729c93e02f11a7c11a6a2be1b5a425dd8c0d5d",
+        "trials/unified-seed1-arx-full-w4/episode/events.jsonl": "ba31933f18bc5604669e9a070336077e3f6d6fa3db0b5294064eae1dc65ed411",
+        "trials/unified-seed1-arx-full-w4/episode/initial-readback.json": "4e02d82cfbebccb38afb7d0e426a360c083eb76a2c62e03b3fbc1ee640e5e149",
+        "trials/unified-seed1-arx-full-w4/episode/initial-verification.json": "c14d62c0634543a4b6186262f3b07b15ff30c59e8da05bf2aafc6212abe9648d",
+        "trials/unified-seed1-arx-full-w4/episode/proxy-collision-checks.jsonl": "41445068d9b6a30cab7d208be18fed9a53ca1070da523061e28ba53728792435",
+        "trials/unified-seed1-arx-full-w4/episode/result.json": "98dcf958fb43b9c5b439c39586a90c4227e5dfcd70829108a2e2e16de3a1f6b2",
+        "trials/unified-seed1-arx-full-w4/episode/setup.json": "0efca128ddaf5f49a90839e451d9b7fe4c008f54b56d6e80d18083da282ef21f",
+        "trials/unified-seed1-arx-full-w4/receipt.json": "5b34383f2000a52b403f4cdfedec9c0f73e821c59c149936941923102ebc49e3",
+        "trials/unified-seed1-arx-full-w4/rng-reset.json": "6a4421c20492a4ca3e112ac957e711d4bda1f13a0398bde6e85c29f888578f7a"
+      }
+    }
+  },
+  "matched_seed_pair": {
+    "initial_readback_byte_equal": true,
+    "first_request_state_equal": true,
+    "first_different_action_chunk": 1
+  }
+}

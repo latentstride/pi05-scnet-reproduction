@@ -1,0 +1,13 @@
+{
+  "episode_id": "unified-seed1-arx-full-w4",
+  "category": "admitted",
+  "physical_admitted": true,
+  "cleanup": {
+    "scene_opened": true,
+    "hold_complete": false,
+    "close_complete": true,
+    "scene_context_closed": true
+  },
+  "fresh_reset_verified": true,
+  "elapsed_s": 277.29960960894823
+}

@@ -1,0 +1,28 @@
+{
+  "approved": true,
+  "approved_at": "2026-11-14T05:42:00.333279+00:00",
+  "commit": "b7202f8abe7c3343da11297df5ba57a2f58cf081",
+  "archive_sha256": "ff57fa397350ab9494b531b1a276b25007785ad2aaddba8bf8cdad908d4bb17d",
+  "candidate_sha256": "733d9de729efb315a0da79587d129066002409607a96dc1bfac28ae067650a20",
+  "configuration_sha256": "d0494e5d6d96a866537dc3360fcdcaf6da472ca7b20367dc4bd49ed2a146a10a",
+  "quote_source": "SCNet",
+  "quote_sha256": "8924bcb2a168ebf7b64d06bdc959386fe83851b88746cb659b75804db93c4824",
+  "quote_valid_until": "2026-11-21T05:41:34.409246+00:00",
+  "yuan_per_gpu_hour": "3.60",
+  "max_cost_yuan": "5.40",
+  "resources": {
+    "gpu_count": 1,
+    "gpu_type": "RTX4090",
+    "cpu_count": 4,
+    "memory_gib": 32,
+    "wall_s": 5400,
+    "node": "gnode39",
+    "partition": "ksagnormal01"
+  },
+  "node": "gnode39",
+  "allocations_authorized": 1,
+  "automatic_retry": false,
+  "standalone_mode": "arx",
+  "allocation_s": 5400,
+  "job_id": "127999421"
+}

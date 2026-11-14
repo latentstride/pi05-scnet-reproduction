@@ -1,0 +1,2512 @@
+{
+  "slurm": "127999407|COMPLETED|0:0|2026-11-14T15:42:40|2026-11-14T16:01:25|00:18:45|gnode39|billing=4,cpu=4,gres/gpu=1,mem=32G,node=1\n127999421|COMPLETED|0:0|2026-11-14T16:27:52|2026-11-14T16:44:53|00:17:01|gnode39|billing=4,cpu=4,gres/gpu=1,mem=32G,node=1\n",
+  "results": {
+    "127999407": {
+      "job_id": "127999407",
+      "policy_seed": 20261107,
+      "release_commit": "b7202f8abe7c3343da11297df5ba57a2f58cf081",
+      "authorization": {
+        "approved": true,
+        "approved_at": "2026-11-14T05:41:52.427233+00:00",
+        "commit": "b7202f8abe7c3343da11297df5ba57a2f58cf081",
+        "archive_sha256": "2bdf4029062b13f5175aefbd643f3d81171a33977e88df9e47f694f0b56c1f08",
+        "candidate_sha256": "76f0a32ce49c71ab675c805f1b63435f062440c6be0a14cda825158768488f5d",
+        "configuration_sha256": "d0494e5d6d96a866537dc3360fcdcaf6da472ca7b20367dc4bd49ed2a146a10a",
+        "quote_source": "SCNet",
+        "quote_sha256": "8924bcb2a168ebf7b64d06bdc959386fe83851b88746cb659b75804db93c4824",
+        "quote_valid_until": "2026-11-21T05:41:34.409246+00:00",
+        "yuan_per_gpu_hour": "3.60",
+        "max_cost_yuan": "5.40",
+        "resources": {
+          "gpu_count": 1,
+          "gpu_type": "RTX4090",
+          "cpu_count": 4,
+          "memory_gib": 32,
+          "wall_s": 5400,
+          "node": "gnode39",
+          "partition": "ksagnormal01"
+        },
+        "node": "gnode39",
+        "allocations_authorized": 1,
+        "automatic_retry": false,
+        "standalone_mode": "arx",
+        "allocation_s": 5400,
+        "job_id": "127999407"
+      },
+      "startup": {
+        "episode_id": "unified-seed1-arx-full-w4",
+        "category": "admitted",
+        "physical_admitted": true,
+        "cleanup": {
+          "scene_opened": true,
+          "hold_complete": false,
+          "close_complete": true,
+          "scene_context_closed": true
+        },
+        "fresh_reset_verified": true,
+        "elapsed_s": 334.2281783670187
+      },
+      "termination": {
+        "finalized": true,
+        "task_success": false,
+        "outcome": "planning_failed",
+        "worker_outcome": "planning_failed",
+        "category": "controlled_candidate_stop",
+        "supervisor_status": "completed",
+        "supervisor_reason": null,
+        "failure_phase": "planning",
+        "failure_code": "collision",
+        "budget_stop": null,
+        "failure_detail": "all temporally admissible IK pairs collide",
+        "geometry": "candidate",
+        "collision_world": "target_collision",
+        "collision_world_evidence": "explicit diagnostic",
+        "terminal_link_pairs": [],
+        "continuity_rejected": 0,
+        "collision_candidates_rejected": 16,
+        "projection_stop_reason": null,
+        "cleanup": {
+          "scene_opened": true,
+          "hold_complete": true,
+          "close_complete": true,
+          "scene_context_closed": true
+        },
+        "process_group_reaped": true
+      },
+      "candidate_stop": {
+        "kind": "candidate_rejection",
+        "finger_drive_m": [
+          [
+            0.04378940910100937,
+            0.04381321370601654
+          ],
+          [
+            0.04391275718808174,
+            0.043914616107940674
+          ]
+        ],
+        "expected_hold_finger_m": [
+          [
+            0.04378940910100937,
+            0.04381321370601654
+          ],
+          [
+            0.04391275718808174,
+            0.043914616107940674
+          ]
+        ],
+        "episode": "unified-seed1-arx-full-w4",
+        "tick": 5710,
+        "state_sha256": "1928ca2be095952483781f7e3eb577f59b5d0ea71f0946751c0964537388224e",
+        "terminal_checks_passed": true,
+        "hold_verified": true,
+        "no_physics_advance": true,
+        "hold_complete": true,
+        "failure_sha256": "fc6583d01b0eb4497a18224053ef34df5158830bf8f58e7ec6f77629b365eca4",
+        "close_complete": true,
+        "scene_context_closed": true
+      },
+      "counters": {
+        "policy_actions": 35,
+        "executed": 35,
+        "recovery_actions": 0,
+        "requested_prefix_rows": 50,
+        "result_queries": 1,
+        "logged_model_requests": 1,
+        "evidence": "worker receipt"
+      },
+      "queries": [
+        {
+          "query": 1,
+          "stamp": {
+            "episode": "unified-seed1-arx-full-w4",
+            "tick": 0,
+            "sim_s": 0.0
+          },
+          "first_row_le_0_5": [
+            null,
+            null
+          ],
+          "approved_rows": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35
+          ],
+          "lowest_approved_gripper_value": [
+            0.9944353253708482,
+            0.9951658733031751
+          ],
+          "fresh_real_observation": {
+            "arms": true,
+            "objects": [
+              "block",
+              "table",
+              "target"
+            ],
+            "rgb_file": "observation-00001.npz"
+          },
+          "file_sha256": "eb9d0efc6a649aca72e5f6c01d3be677ca47373aa34416dd63e73aa57f8f378e",
+          "rgb_sha256": "472f5ec508914645d8949503fc34b4ab2aca9dff7075833f613e4db55bcbc68f"
+        }
+      ],
+      "event_counts": {
+        "policy_request": 1,
+        "policy_response": 1,
+        "policy_validated": 1,
+        "direct_row_planning": 36,
+        "approved_plan": 35,
+        "executed_step": 5710
+      },
+      "prefix_boundaries": [],
+      "terminal_query": 1,
+      "first_rejected_row": 36,
+      "physical_steps": 5710,
+      "contact_phase_ticks": {
+        "approach": 5710
+      },
+      "finger_contact_ticks": {},
+      "holder_ticks": {},
+      "max_simultaneous_contact_fingers": {
+        "left": 0,
+        "right": 0
+      },
+      "measured_contact_markers": [],
+      "min_target_fingers_m": [
+        [
+          0.04375515431631732,
+          0.04375515431631732
+        ],
+        [
+          0.0437872984253397,
+          0.0437872984253397
+        ]
+      ],
+      "target_candidate_penetration_mm": [
+        2.44136992841959,
+        2.489833626896143
+      ],
+      "model_phase_s": {
+        "checkpoint_and_tokenizer_sha256": 0.6517805680632591,
+        "openpi_import": 353.4394721016288,
+        "jax_device": 5.621506787836552,
+        "orbax_restore_and_policy_create": 34.57079514116049,
+        "first_jax_compile_and_inference": 132.01930215209723
+      },
+      "peak_tracking_position_m": [
+        0.0021916035197681568,
+        0.00045495888288147446
+      ],
+      "peak_tracking_angle_deg": [
+        0.44429643155305304,
+        0.1212727120073869
+      ],
+      "min_actual_fingers_m": [
+        [
+          0.043785545974969864,
+          0.043616995215415955
+        ],
+        [
+          0.04391094669699669,
+          0.04391336813569069
+        ]
+      ],
+      "min_tcp_to_block_center_m": [
+        0.10176534384894848,
+        0.44030767193408593
+      ],
+      "block_task_extent_m": {
+        "min": [
+          -0.07437821477651596,
+          0.006845045834779739,
+          0.8400000333786011
+        ],
+        "max": [
+          -0.07437704503536224,
+          0.006848444696515799,
+          0.8400009870529175
+        ]
+      },
+      "initial_request_state": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "collision_audits": {
+        "target": {
+          "checks": 8104,
+          "blocked_checks": 0,
+          "link_pairs": {},
+          "partial_final_line": false,
+          "scope": "FCL audit calls, including planning and/or measured checks"
+        },
+        "source_proxy": null
+      },
+      "artifact_manifest": {
+        "allocation-receipt.json": {
+          "bytes": 76,
+          "sha256": "d33dc43e24afc5072f2ac848668be3f4db110eccf1642bbad2d8e7a130f97935"
+        },
+        "authorization-receipt.json": {
+          "bytes": 977,
+          "sha256": "3f095d05e46d703db8e8dfc51edfbd163278d30aa7f6f0f81c1f23b80fadde8d"
+        },
+        "effective-launch.json": {
+          "bytes": 18086,
+          "sha256": "de98d3e6247b9eb963ce16db1250474e373d174fd6e857009a8103eda50450d2"
+        },
+        "graphics/allocation.json": {
+          "bytes": 109,
+          "sha256": "5334f409d9a16b49ce260257fe6eadf93bcc5b118f3c5814c9d2e5a27a1182ff"
+        },
+        "graphics/container_nvidia_egl.json": {
+          "bytes": 114,
+          "sha256": "89247e38ce5f0b1571a10c246b7b4ad607ccefc6077931e789ab9124dd50917d"
+        },
+        "graphics/container_nvidia_icd.json": {
+          "bytes": 158,
+          "sha256": "f551695a4a273204368bfb97abf10647dbd73b41acab268bd6ba56c11dde52bc"
+        },
+        "graphics/container_vulkan.txt": {
+          "bytes": 73779,
+          "sha256": "f812b38393de5863d153dcbb3460dc689089601fadb87a67cd0a95ac3ac009dc"
+        },
+        "graphics/driver_discovery.json": {
+          "bytes": 3220,
+          "sha256": "c02c5c60a2678878cf0954ab97fd93136a685918d12abbf8e63271ea8eb0a077"
+        },
+        "graphics/driver_inside_path.txt": {
+          "bytes": 35,
+          "sha256": "c80f7ba23bdf0bdb52c4baca4bbf7be7573437919580ec8ba85cc8b4708fcaab"
+        },
+        "graphics/gpu_visibility.txt": {
+          "bytes": 147,
+          "sha256": "5128740b53fd246b5cde0dc48776ff6433f5fce741cfd339b120cfae879fc280"
+        },
+        "graphics/graphics_driver_discovery.log": {
+          "bytes": 113,
+          "sha256": "83b873c90bae67780162469bbce6b623b3ea9b23d3e1edf6f0ee2c52624599d8"
+        },
+        "graphics/host_icd_library.txt": {
+          "bytes": 26,
+          "sha256": "fa3eb8a22c7b7e24b1fe926019aade542609ef942a7d61739b1232bb150a820b"
+        },
+        "graphics/host_icd_path.txt": {
+          "bytes": 34,
+          "sha256": "21276c0303155977619d1da4ad839ea59485b67b87151cb35699953ef45b2851"
+        },
+        "graphics/host_nvidia_icd.json": {
+          "bytes": 130,
+          "sha256": "0f8672b0ad7b7d33104442e4a2039264c10f298f46d767748e1002e80076b728"
+        },
+        "graphics/host_vulkan.txt": {
+          "bytes": 73332,
+          "sha256": "9862e0adbff06272e35bbf38d84a2db080d21a5182d03906dc959690ebd0ae94"
+        },
+        "graphics/ldconfig-status.json": {
+          "bytes": 17,
+          "sha256": "e89df0eae5ec7db81135aed16463968955c578bcc4f2ec43172eff351f080c17"
+        },
+        "graphics/ldconfig-stderr.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "graphics/ldconfig.txt": {
+          "bytes": 158933,
+          "sha256": "10325f22a458f47dcbe9e7dbd818af5bed04ff6cc791235762ee71f550915b7b"
+        },
+        "graphics/node_diagnostics.json": {
+          "bytes": 1176,
+          "sha256": "2d1c385acb582591fb1bd7aa66765a5e38b374b61eda4b5210905b797319bad2"
+        },
+        "graphics/nvidia-smi-list.txt": {
+          "bytes": 80,
+          "sha256": "2a7b3978cadedfe91cad3beaf8a69f551d1ab60cabd81368ff9ab0ef261ffab8"
+        },
+        "graphics/render.json": {
+          "bytes": 349,
+          "sha256": "c92e7da013f47e5958ba4d18eadd97c4a628c6995c59623f9b2e64968097e92c"
+        },
+        "graphics/sapien.log": {
+          "bytes": 1291,
+          "sha256": "ed7faea7a1e16009448b11dd421f0575d29ca37695dc27c57736ef5fed1dc481"
+        },
+        "graphics/sim-launch.json": {
+          "bytes": 6519,
+          "sha256": "9cd17fa9e91c904b7de48e2262afefada6432f7d074edd90b327f6bd7016813f"
+        },
+        "graphics/vulkan_identity.json": {
+          "bytes": 131,
+          "sha256": "39cd2ede4106c889ed8756dea54ebcdac053b943d9a40b6e2698180b938ebd31"
+        },
+        "graphics/vulkan_identity.log": {
+          "bytes": 39,
+          "sha256": "b5b0195f701223bfad56ec6d28f284400492100ed7cf3e05c842385352f0c4a5"
+        },
+        "graphics.log": {
+          "bytes": 41,
+          "sha256": "7f13f32c5b5f1354e95e85001b73860c9be09314b6c63bf25c77fa034b34492d"
+        },
+        "model/phases.jsonl": {
+          "bytes": 1296,
+          "sha256": "50bd3aa4634a46bcb6df592ba2216c307e49d79c7b9585952aa6ee78fb5ba2c8"
+        },
+        "model/stacks.log": {
+          "bytes": 134215,
+          "sha256": "a74f1675a214abf585bdf787933bbed4715e4558724d9d55a168479a1e0a3459"
+        },
+        "model/startup.json": {
+          "bytes": 5617,
+          "sha256": "d92a0a8119285d9d6b0a02453a08f05e7eb9f3539eaf8552bcbd2c29e1ce31f0"
+        },
+        "slurm-allocation.txt": {
+          "bytes": 1552,
+          "sha256": "5ab8946e46145123e0ff12f5f1837c9c75711b03aa544d82e432f6fab634cb98"
+        },
+        "standalone-result.json": {
+          "bytes": 38935,
+          "sha256": "0c5f19413223d77b636b6d45d4cb7ac2ea4db80bc99a1f12e177e0d71d6e59a8"
+        },
+        "startup/unified-seed1-arx-full-w4/episode/collision-checks.jsonl": {
+          "bytes": 1032,
+          "sha256": "18f598bbe2f778cbdc83ac5b251dc2837308b633bbd87314750fdb5d265e49e9"
+        },
+        "startup/unified-seed1-arx-full-w4/episode/head.mp4": {
+          "bytes": 3831,
+          "sha256": "d33aee770bda46f606daa05d504aae2d600576b103239c41a0c32c3b8dcd8811"
+        },
+        "startup/unified-seed1-arx-full-w4/episode/initial-readback.json": {
+          "bytes": 1647,
+          "sha256": "4e02d82cfbebccb38afb7d0e426a360c083eb76a2c62e03b3fbc1ee640e5e149"
+        },
+        "startup/unified-seed1-arx-full-w4/episode/initial-rgb.npz": {
+          "bytes": 107219,
+          "sha256": "472f5ec508914645d8949503fc34b4ab2aca9dff7075833f613e4db55bcbc68f"
+        },
+        "startup/unified-seed1-arx-full-w4/episode/initial-verification.json": {
+          "bytes": 286,
+          "sha256": "c14d62c0634543a4b6186262f3b07b15ff30c59e8da05bf2aafc6212abe9648d"
+        },
+        "startup/unified-seed1-arx-full-w4/episode/setup.json": {
+          "bytes": 13377,
+          "sha256": "88652288f70558147dff6a5ef17842f2ecba277ddbe55cda8bdd97f432ec2c6f"
+        },
+        "startup/unified-seed1-arx-full-w4/receipt.json": {
+          "bytes": 304,
+          "sha256": "3b1d24071302575b6d5fe81288874a2eb291c10109a47ca0fff915cb2d56a072"
+        },
+        "startup/unified-seed1-arx-full-w4/rng-reset.json": {
+          "bytes": 98,
+          "sha256": "6a4421c20492a4ca3e112ac957e711d4bda1f13a0398bde6e85c29f888578f7a"
+        },
+        "supervisor/campaign.json": {
+          "bytes": 41168,
+          "sha256": "d53c253b8be8eaca8e8cbc05b5f6291cc2716851307cbdfad7765e92c7ed61d9"
+        },
+        "supervisor/model.log": {
+          "bytes": 189590,
+          "sha256": "d3182c8d01899392ce8f8497655b873fd9287d9774d42bf4f63dc18ebc33db45"
+        },
+        "supervisor/probe-unified-seed1-arx-full-w4.log": {
+          "bytes": 987,
+          "sha256": "b93733bf17e8ddba76105c523c8fd45e13b6f151953bafbf4cc8380ca34feae2"
+        },
+        "supervisor/unified-seed1-arx-full-w4.log": {
+          "bytes": 621,
+          "sha256": "15637d48fcd7d9bfa5d17c4b69f4631311c6f7076a218539763eaf085e314e2a"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/action-00001.npy": {
+          "bytes": 5728,
+          "sha256": "eb9d0efc6a649aca72e5f6c01d3be677ca47373aa34416dd63e73aa57f8f378e"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/collision-checks.jsonl": {
+          "bytes": 4159056,
+          "sha256": "ce7c675f1e170d2416ddc5594b4b94260f9edaa1b202d17e10e337a2dc1bb2db"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/events.jsonl": {
+          "bytes": 19139793,
+          "sha256": "c2f08dc91ba1b72b03f790483794315da79e74a11a938449f002f954a34fedfc"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/head.mp4": {
+          "bytes": 5348,
+          "sha256": "dddd51e48335a63d2e6d0210b2c7ce50f26c97a22c6f8b1e103222c1fdf06814"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/initial-readback.json": {
+          "bytes": 1647,
+          "sha256": "4e02d82cfbebccb38afb7d0e426a360c083eb76a2c62e03b3fbc1ee640e5e149"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/initial-rgb.npz": {
+          "bytes": 107219,
+          "sha256": "472f5ec508914645d8949503fc34b4ab2aca9dff7075833f613e4db55bcbc68f"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/initial-verification.json": {
+          "bytes": 286,
+          "sha256": "c14d62c0634543a4b6186262f3b07b15ff30c59e8da05bf2aafc6212abe9648d"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/observation-00001.npz": {
+          "bytes": 107219,
+          "sha256": "472f5ec508914645d8949503fc34b4ab2aca9dff7075833f613e4db55bcbc68f"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-01.npz": {
+          "bytes": 6112,
+          "sha256": "09c65341d519a10a56434834bce5d1b8cfd8b5573fc6deb864d882e2af8ef7f5"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-02.npz": {
+          "bytes": 6494,
+          "sha256": "304b4ad9e238cf3224ed7856d25da697bb222f0476fcb4a359c1f7848c7e3951"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-03.npz": {
+          "bytes": 5370,
+          "sha256": "1c00bd9b1e2e1a707923879d1498ca61faa8882c12edd9c8b087e3f986f1ccbc"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-04.npz": {
+          "bytes": 7927,
+          "sha256": "cc5c1921e1bfaf97d173869440e46880f91881f782f95770452f8586bea22e9e"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-05.npz": {
+          "bytes": 8178,
+          "sha256": "6589aa919b6f00e2cd88b35e49da46e3d59d8120c76c5b947ec8d5f08570a0f2"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-06.npz": {
+          "bytes": 8506,
+          "sha256": "dc7c1d0a84368c970c3663adca31e95d9664c3d22e9c03a3f03aa6ab7a63012d"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-07.npz": {
+          "bytes": 6013,
+          "sha256": "b6f77202018b09bb12c7a9fa3768c61589a2b8cb8f643ed5a27eca17d9d98c9c"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-08.npz": {
+          "bytes": 8920,
+          "sha256": "1bd9d80e5919f0e804281a89f3e8e5cba20c18feed499e538f8daf5518ea4dd1"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-09.npz": {
+          "bytes": 6181,
+          "sha256": "4cc5cb55cbd0eaf81347c097fdce4fdb87a1dc61faab48464bd1deddf8df7dc0"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-10.npz": {
+          "bytes": 9425,
+          "sha256": "df17876de4f4f42f9c06a8eefcf9e9374abcfd7c16a5eacd1683baf95a1805d6"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-11.npz": {
+          "bytes": 9483,
+          "sha256": "b4f97b850990bd1333c361ca155e37096b031b283593b17971836f0b87d953dd"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-12.npz": {
+          "bytes": 9526,
+          "sha256": "8423de695a24d4f58f919c6d00f9749c38f539ce8c5cc9568ee8e2f1a5d4f45e"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-13.npz": {
+          "bytes": 9527,
+          "sha256": "9478239045d731ab4d5ca6789a35ecbd28d91bdea3d08b6e0efa39688bfcf31e"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-14.npz": {
+          "bytes": 9484,
+          "sha256": "6a958523dccb6529b57835e6e7f8445c69f4a9e5028584c6085663e166c2cf4b"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-15.npz": {
+          "bytes": 6455,
+          "sha256": "ef93890ce4464be2ef1df6ba477d21b0918c342f05620c94a6c573ef16bc9d23"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-16.npz": {
+          "bytes": 6432,
+          "sha256": "73c7dd30e07a5c52897d3379d40af1c2e270bb851f01e002d7b9a02faa368c9a"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-17.npz": {
+          "bytes": 9404,
+          "sha256": "77e7caeecc927a7417811a61819d7b3b5e600173448273b3c68869411d556d91"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-18.npz": {
+          "bytes": 9269,
+          "sha256": "9ee8a2a1f9d2035b36ce75a5f8d5be1be2f09cf2f4d14ab61777991f6ab78ce5"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-19.npz": {
+          "bytes": 9094,
+          "sha256": "2b13fc07a5dd3123e31e760efb1272c4bf27d71dc9a92c790d821bec21ad1f67"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-20.npz": {
+          "bytes": 8930,
+          "sha256": "cde616e8efa04a476f6804faab49bbb64dbd8e7744864e3fcfab09af9549104e"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-21.npz": {
+          "bytes": 8546,
+          "sha256": "6787a3732333cf17cadbfd2d0c42c5cf07d5284e20fd5de2db733d3fc102b6f5"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-22.npz": {
+          "bytes": 7506,
+          "sha256": "b1e29f77a3280dd07dfd9f97b333295ef6bff0a82717c6f47bd9926afb1a8571"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-23.npz": {
+          "bytes": 8530,
+          "sha256": "71a72447fb0db4a1985c0e9f0d522c78a675899a2715a9d3d837b3bc5f569475"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-24.npz": {
+          "bytes": 7058,
+          "sha256": "7b37c537114dd087cb8920f233d725148e7845aafd40023fc3235a35722f85fd"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-25.npz": {
+          "bytes": 4985,
+          "sha256": "608918b87d7f2181545fe0d88792e79ed6a1cfcbac65558385fb737d14e31f57"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-26.npz": {
+          "bytes": 6724,
+          "sha256": "dfadf5bcd0f1e6e3c8ee510c376d3cd3fe21e6b3e12e75915779b3670ce1fb50"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-27.npz": {
+          "bytes": 5667,
+          "sha256": "9ee48ff1b4940d0940c73b62f6c4e7f9c636a60d42f4c5227a2cbe8fcd7efa82"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-28.npz": {
+          "bytes": 4676,
+          "sha256": "fadd28180cc825b8f2d77ebe50b99fbab03e7eb6b4d12280ca4112cf44fd9c73"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-29.npz": {
+          "bytes": 4934,
+          "sha256": "af94549a3d903d1c3d24fdf4dd88f31f48ce2c00ac1ba9b8d86484833f91ad4b"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-30.npz": {
+          "bytes": 4385,
+          "sha256": "2c5f76186a9fa46c57dde77006c704220d4cf6b88d2b7803e15636718a0e4006"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-31.npz": {
+          "bytes": 4018,
+          "sha256": "d699a8643cf53a0053893435a147eb08b790457d01835e4a4fe2b4bee391b57d"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-32.npz": {
+          "bytes": 3517,
+          "sha256": "cf01cec03f3cab9374fb897ec0983b8785363f630bcd1021638f6f8e99d896f3"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-33.npz": {
+          "bytes": 4685,
+          "sha256": "1b5d0da6222587e1a2bec067d5740cc78253b433b5f225752da886fdc9369764"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-34.npz": {
+          "bytes": 3649,
+          "sha256": "48423b5da06debe14d0cfc7168c7c08bc026b6444ab09341e3cb8dae6f1fc52b"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-35.npz": {
+          "bytes": 4317,
+          "sha256": "1b113204798a57235748a2f4e92d487016d2289c3430b8bed57e9ebbaeafe16e"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/result.json": {
+          "bytes": 30409,
+          "sha256": "90062fb92e9c0ab059d5e4feaf9d117a524a35eb81f78a2a2fd7b66e89721249"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/setup.json": {
+          "bytes": 13377,
+          "sha256": "88652288f70558147dff6a5ef17842f2ecba277ddbe55cda8bdd97f432ec2c6f"
+        },
+        "trials/unified-seed1-arx-full-w4/receipt.json": {
+          "bytes": 33701,
+          "sha256": "7b0077453c329403751c87e068deadb2578936dc52eeb600f9cd847804122a46"
+        },
+        "trials/unified-seed1-arx-full-w4/rng-reset.json": {
+          "bytes": 98,
+          "sha256": "6a4421c20492a4ca3e112ac957e711d4bda1f13a0398bde6e85c29f888578f7a"
+        }
+      }
+    },
+    "127999421": {
+      "job_id": "127999421",
+      "policy_seed": 20261108,
+      "release_commit": "b7202f8abe7c3343da11297df5ba57a2f58cf081",
+      "authorization": {
+        "approved": true,
+        "approved_at": "2026-11-14T05:42:00.333279+00:00",
+        "commit": "b7202f8abe7c3343da11297df5ba57a2f58cf081",
+        "archive_sha256": "ff57fa397350ab9494b531b1a276b25007785ad2aaddba8bf8cdad908d4bb17d",
+        "candidate_sha256": "733d9de729efb315a0da79587d129066002409607a96dc1bfac28ae067650a20",
+        "configuration_sha256": "d0494e5d6d96a866537dc3360fcdcaf6da472ca7b20367dc4bd49ed2a146a10a",
+        "quote_source": "SCNet",
+        "quote_sha256": "8924bcb2a168ebf7b64d06bdc959386fe83851b88746cb659b75804db93c4824",
+        "quote_valid_until": "2026-11-21T05:41:34.409246+00:00",
+        "yuan_per_gpu_hour": "3.60",
+        "max_cost_yuan": "5.40",
+        "resources": {
+          "gpu_count": 1,
+          "gpu_type": "RTX4090",
+          "cpu_count": 4,
+          "memory_gib": 32,
+          "wall_s": 5400,
+          "node": "gnode39",
+          "partition": "ksagnormal01"
+        },
+        "node": "gnode39",
+        "allocations_authorized": 1,
+        "automatic_retry": false,
+        "standalone_mode": "arx",
+        "allocation_s": 5400,
+        "job_id": "127999421"
+      },
+      "startup": {
+        "episode_id": "unified-seed1-arx-full-w4",
+        "category": "admitted",
+        "physical_admitted": true,
+        "cleanup": {
+          "scene_opened": true,
+          "hold_complete": false,
+          "close_complete": true,
+          "scene_context_closed": true
+        },
+        "fresh_reset_verified": true,
+        "elapsed_s": 277.29960960894823
+      },
+      "termination": {
+        "finalized": true,
+        "task_success": false,
+        "outcome": "planning_failed",
+        "worker_outcome": "planning_failed",
+        "category": "controlled_candidate_stop",
+        "supervisor_status": "completed",
+        "supervisor_reason": null,
+        "failure_phase": "planning",
+        "failure_code": "collision",
+        "budget_stop": null,
+        "failure_detail": "all temporally admissible IK pairs collide",
+        "geometry": "candidate",
+        "collision_world": "target_collision",
+        "collision_world_evidence": "explicit diagnostic",
+        "terminal_link_pairs": [],
+        "continuity_rejected": 0,
+        "collision_candidates_rejected": 16,
+        "projection_stop_reason": null,
+        "cleanup": {
+          "scene_opened": true,
+          "hold_complete": true,
+          "close_complete": true,
+          "scene_context_closed": true
+        },
+        "process_group_reaped": true
+      },
+      "candidate_stop": {
+        "kind": "candidate_rejection",
+        "finger_drive_m": [
+          [
+            0.04394952580332756,
+            0.043979089707136154
+          ],
+          [
+            0.043907515704631805,
+            0.043913424015045166
+          ]
+        ],
+        "expected_hold_finger_m": [
+          [
+            0.04394952580332756,
+            0.043979089707136154
+          ],
+          [
+            0.043907515704631805,
+            0.043913424015045166
+          ]
+        ],
+        "episode": "unified-seed1-arx-full-w4",
+        "tick": 8173,
+        "state_sha256": "7e0669ad1e18637b4a5da9a0186b782c972a5393ab13915a01567450fd3b09c6",
+        "terminal_checks_passed": true,
+        "hold_verified": true,
+        "no_physics_advance": true,
+        "hold_complete": true,
+        "failure_sha256": "3482bfed2a2216059658e89dab22e1206cb37a2fd274a857acdd548904a5e56d",
+        "close_complete": true,
+        "scene_context_closed": true
+      },
+      "counters": {
+        "policy_actions": 92,
+        "executed": 92,
+        "recovery_actions": 0,
+        "requested_prefix_rows": 800,
+        "result_queries": 16,
+        "logged_model_requests": 16,
+        "evidence": "worker receipt"
+      },
+      "queries": [
+        {
+          "query": 1,
+          "stamp": {
+            "episode": "unified-seed1-arx-full-w4",
+            "tick": 0,
+            "sim_s": 0.0
+          },
+          "first_row_le_0_5": [
+            null,
+            null
+          ],
+          "approved_rows": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36
+          ],
+          "lowest_approved_gripper_value": [
+            0.9940538123711944,
+            0.9964428870597483
+          ],
+          "fresh_real_observation": {
+            "arms": true,
+            "objects": [
+              "block",
+              "table",
+              "target"
+            ],
+            "rgb_file": "observation-00001.npz"
+          },
+          "file_sha256": "5b201b33ff9afa7c311f336b4a1a39ef582639730f5929bf803fd3de7cb4403b",
+          "rgb_sha256": "472f5ec508914645d8949503fc34b4ab2aca9dff7075833f613e4db55bcbc68f"
+        },
+        {
+          "query": 2,
+          "stamp": {
+            "episode": "unified-seed1-arx-full-w4",
+            "tick": 5783,
+            "sim_s": 23.132001098711044
+          },
+          "first_row_le_0_5": [
+            27,
+            null
+          ],
+          "approved_rows": [
+            1
+          ],
+          "lowest_approved_gripper_value": [
+            0.998042059403658,
+            0.9984980633826256
+          ],
+          "fresh_real_observation": {
+            "arms": true,
+            "objects": [
+              "block",
+              "table",
+              "target"
+            ],
+            "rgb_file": "observation-00002.npz"
+          },
+          "file_sha256": "8f4598640c636a9b5062e2a66f5c55a797327646263fc4946fc820330fced277",
+          "rgb_sha256": "efc902b635ac37e7a5c15b3b0505ff5385344612524e1a91c3a2c08f518a44dc"
+        },
+        {
+          "query": 3,
+          "stamp": {
+            "episode": "unified-seed1-arx-full-w4",
+            "tick": 5790,
+            "sim_s": 23.160001100040972
+          },
+          "first_row_le_0_5": [
+            27,
+            null
+          ],
+          "approved_rows": [
+            1
+          ],
+          "lowest_approved_gripper_value": [
+            0.9978924815171958,
+            0.9973169344146252
+          ],
+          "fresh_real_observation": {
+            "arms": true,
+            "objects": [
+              "block",
+              "table",
+              "target"
+            ],
+            "rgb_file": "observation-00003.npz"
+          },
+          "file_sha256": "8bed0979506682e848bf06cd584ff73ab5b745753d7fbaea008d3334de6d601a",
+          "rgb_sha256": "95ccfd8f42b371175e4bd2fcba3d6b0c591e91c151635dd8fc60f71f3803098e"
+        },
+        {
+          "query": 4,
+          "stamp": {
+            "episode": "unified-seed1-arx-full-w4",
+            "tick": 5845,
+            "sim_s": 23.38000111049041
+          },
+          "first_row_le_0_5": [
+            27,
+            null
+          ],
+          "approved_rows": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "lowest_approved_gripper_value": [
+            0.9995834863404036,
+            0.9969193909562231
+          ],
+          "fresh_real_observation": {
+            "arms": true,
+            "objects": [
+              "block",
+              "table",
+              "target"
+            ],
+            "rgb_file": "observation-00004.npz"
+          },
+          "file_sha256": "b14bc2ab8fb6709267f21657ad816d8938d6714a5fa52afd2907b15163d50373",
+          "rgb_sha256": "8a275cf3cb00e1b77967ea728b44d546a7fdd9143d5b8083bbf3014b87966cf6"
+        },
+        {
+          "query": 5,
+          "stamp": {
+            "episode": "unified-seed1-arx-full-w4",
+            "tick": 6181,
+            "sim_s": 24.724001174326986
+          },
+          "first_row_le_0_5": [
+            27,
+            null
+          ],
+          "approved_rows": [
+            1
+          ],
+          "lowest_approved_gripper_value": [
+            0.9988802914956808,
+            0.9957867109211683
+          ],
+          "fresh_real_observation": {
+            "arms": true,
+            "objects": [
+              "block",
+              "table",
+              "target"
+            ],
+            "rgb_file": "observation-00005.npz"
+          },
+          "file_sha256": "f556f6190e3d6d41691442da551153719fd919dc9b57caa4dba05b7f1f42a58b",
+          "rgb_sha256": "ca031c7f6c9e32c1931cda5ad21f84876a6962f2c51f468d018eb4e08a7639ec"
+        },
+        {
+          "query": 6,
+          "stamp": {
+            "episode": "unified-seed1-arx-full-w4",
+            "tick": 6231,
+            "sim_s": 24.924001183826476
+          },
+          "first_row_le_0_5": [
+            27,
+            null
+          ],
+          "approved_rows": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "lowest_approved_gripper_value": [
+            0.9980636915840507,
+            0.9966412714358569
+          ],
+          "fresh_real_observation": {
+            "arms": true,
+            "objects": [
+              "block",
+              "table",
+              "target"
+            ],
+            "rgb_file": "observation-00006.npz"
+          },
+          "file_sha256": "e4c383e34a9eecabc95383761d12f0ef27c72053f02270e1b336a2781906d9e4",
+          "rgb_sha256": "67de99e1799b3be3a1b38d719be3c7084acc3cbade6be449de1a3022c6d821a1"
+        },
+        {
+          "query": 7,
+          "stamp": {
+            "episode": "unified-seed1-arx-full-w4",
+            "tick": 6528,
+            "sim_s": 26.11200124025345
+          },
+          "first_row_le_0_5": [
+            26,
+            null
+          ],
+          "approved_rows": [
+            1
+          ],
+          "lowest_approved_gripper_value": [
+            1.0000058799895049,
+            0.9965609403637649
+          ],
+          "fresh_real_observation": {
+            "arms": true,
+            "objects": [
+              "block",
+              "table",
+              "target"
+            ],
+            "rgb_file": "observation-00007.npz"
+          },
+          "file_sha256": "d1c05ff55959de5704a8d4c795c3a64c652528aa3d240bf6f512f70ab44a6eee",
+          "rgb_sha256": "4b7d06555e782666addadf4f14a9c07813f3fa985e67c6867b94aebdbdee8a7a"
+        },
+        {
+          "query": 8,
+          "stamp": {
+            "episode": "unified-seed1-arx-full-w4",
+            "tick": 6568,
+            "sim_s": 26.27200124785304
+          },
+          "first_row_le_0_5": [
+            27,
+            null
+          ],
+          "approved_rows": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "lowest_approved_gripper_value": [
+            0.9978212085481882,
+            0.9974760471464396
+          ],
+          "fresh_real_observation": {
+            "arms": true,
+            "objects": [
+              "block",
+              "table",
+              "target"
+            ],
+            "rgb_file": "observation-00008.npz"
+          },
+          "file_sha256": "221b93fd938ca2d5b20b167ba64f353f0f7bdbfb256877bbd3be3c889043d1d3",
+          "rgb_sha256": "06237141912e2c720bc35f87f47ee8b607c00ca77b938d67033e5189b96877a4"
+        },
+        {
+          "query": 9,
+          "stamp": {
+            "episode": "unified-seed1-arx-full-w4",
+            "tick": 6795,
+            "sim_s": 27.180001290980726
+          },
+          "first_row_le_0_5": [
+            27,
+            null
+          ],
+          "approved_rows": [
+            1
+          ],
+          "lowest_approved_gripper_value": [
+            0.9996485020671487,
+            0.9972144944198729
+          ],
+          "fresh_real_observation": {
+            "arms": true,
+            "objects": [
+              "block",
+              "table",
+              "target"
+            ],
+            "rgb_file": "observation-00009.npz"
+          },
+          "file_sha256": "aa9cefab419075584788e69f5f1874897d8e9d05342f981a023af2d4f8ec1970",
+          "rgb_sha256": "d131b8637ece545ee822f477e9eb43242e322e21dd574136343bc387b9c96db3"
+        },
+        {
+          "query": 10,
+          "stamp": {
+            "episode": "unified-seed1-arx-full-w4",
+            "tick": 6803,
+            "sim_s": 27.212001292500645
+          },
+          "first_row_le_0_5": [
+            27,
+            null
+          ],
+          "approved_rows": [
+            1
+          ],
+          "lowest_approved_gripper_value": [
+            0.9988139647276998,
+            0.9969117630799413
+          ],
+          "fresh_real_observation": {
+            "arms": true,
+            "objects": [
+              "block",
+              "table",
+              "target"
+            ],
+            "rgb_file": "observation-00010.npz"
+          },
+          "file_sha256": "3cbdf33782317da250d14b4dbc7c70b4d9ac58a85953c0a9020d0496c017dac8",
+          "rgb_sha256": "029c5f59e086d538965651c7c0bf7eceb7ab2d302e168156beee189c7f05d407"
+        },
+        {
+          "query": 11,
+          "stamp": {
+            "episode": "unified-seed1-arx-full-w4",
+            "tick": 6853,
+            "sim_s": 27.412001302000135
+          },
+          "first_row_le_0_5": [
+            26,
+            null
+          ],
+          "approved_rows": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "lowest_approved_gripper_value": [
+            0.998519635970235,
+            0.998013395274818
+          ],
+          "fresh_real_observation": {
+            "arms": true,
+            "objects": [
+              "block",
+              "table",
+              "target"
+            ],
+            "rgb_file": "observation-00011.npz"
+          },
+          "file_sha256": "a486d6f6483233cc7ae62a044a7cfad8bb64450af4eac2345adbcadcc43cc06f",
+          "rgb_sha256": "99d1db073fcfd87a050e25a737214cd3c687c4158a5610f1836809c3228952a5"
+        },
+        {
+          "query": 12,
+          "stamp": {
+            "episode": "unified-seed1-arx-full-w4",
+            "tick": 7146,
+            "sim_s": 28.584001357667148
+          },
+          "first_row_le_0_5": [
+            26,
+            null
+          ],
+          "approved_rows": [
+            1
+          ],
+          "lowest_approved_gripper_value": [
+            0.9988479922070503,
+            0.9981663699499369
+          ],
+          "fresh_real_observation": {
+            "arms": true,
+            "objects": [
+              "block",
+              "table",
+              "target"
+            ],
+            "rgb_file": "observation-00012.npz"
+          },
+          "file_sha256": "df50a3d6080a763ab265d081112d9db6f9f10f7c99ea1c8bcc530446f9364f76",
+          "rgb_sha256": "d0e02e9a840b3614093f363c3a6be10a8044b202da82a13b91ec6f08127d791b"
+        },
+        {
+          "query": 13,
+          "stamp": {
+            "episode": "unified-seed1-arx-full-w4",
+            "tick": 7191,
+            "sim_s": 28.76400136621669
+          },
+          "first_row_le_0_5": [
+            27,
+            null
+          ],
+          "approved_rows": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "lowest_approved_gripper_value": [
+            0.9994783050776125,
+            0.9968448403841258
+          ],
+          "fresh_real_observation": {
+            "arms": true,
+            "objects": [
+              "block",
+              "table",
+              "target"
+            ],
+            "rgb_file": "observation-00013.npz"
+          },
+          "file_sha256": "ed0a663e5a8ed03d98d418430f7e2d3a01f8170259fae879aed06c829af538f6",
+          "rgb_sha256": "dcec366668acb8b9d9cf8430d998a7210e3d02a1de048019cac40d6a3b7b8516"
+        },
+        {
+          "query": 14,
+          "stamp": {
+            "episode": "unified-seed1-arx-full-w4",
+            "tick": 7433,
+            "sim_s": 29.732001412194222
+          },
+          "first_row_le_0_5": [
+            27,
+            null
+          ],
+          "approved_rows": [
+            1
+          ],
+          "lowest_approved_gripper_value": [
+            0.9989819567842484,
+            0.997611918692708
+          ],
+          "fresh_real_observation": {
+            "arms": true,
+            "objects": [
+              "block",
+              "table",
+              "target"
+            ],
+            "rgb_file": "observation-00014.npz"
+          },
+          "file_sha256": "a3f449c238798c40bc89fc0b8f2aefe10b38b25e81087923e7693401365e6ee8",
+          "rgb_sha256": "d65b51414cfa7b1b323e925bf987c42e13e7920998cc4965ae27e7c8c5f67a10"
+        },
+        {
+          "query": 15,
+          "stamp": {
+            "episode": "unified-seed1-arx-full-w4",
+            "tick": 7483,
+            "sim_s": 29.932001421693712
+          },
+          "first_row_le_0_5": [
+            27,
+            null
+          ],
+          "approved_rows": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "lowest_approved_gripper_value": [
+            0.9988251085782052,
+            0.9983652906610966
+          ],
+          "fresh_real_observation": {
+            "arms": true,
+            "objects": [
+              "block",
+              "table",
+              "target"
+            ],
+            "rgb_file": "observation-00015.npz"
+          },
+          "file_sha256": "a72f9c470b7b45971282beaeb7f094f72aa6637ab607eb980d5a2a9a9d1f69b0",
+          "rgb_sha256": "96195ef94639686aa7f308266ff43c3369f773fa36328925e621e2a20ceb6780"
+        },
+        {
+          "query": 16,
+          "stamp": {
+            "episode": "unified-seed1-arx-full-w4",
+            "tick": 7773,
+            "sim_s": 31.092001476790756
+          },
+          "first_row_le_0_5": [
+            27,
+            null
+          ],
+          "approved_rows": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "lowest_approved_gripper_value": [
+            0.998213805805564,
+            0.996662426873982
+          ],
+          "fresh_real_observation": {
+            "arms": true,
+            "objects": [
+              "block",
+              "table",
+              "target"
+            ],
+            "rgb_file": "observation-00016.npz"
+          },
+          "file_sha256": "95c877cb223fb2cb0a76cffa6b024e60f07727850b8670127fe1130571f7dd95",
+          "rgb_sha256": "c0ea1f038cb6ac458c847f915e9bb27d02d7515a126c8327d488ca2315e8dd0d"
+        }
+      ],
+      "event_counts": {
+        "policy_request": 16,
+        "policy_response": 16,
+        "policy_validated": 16,
+        "direct_row_planning": 93,
+        "approved_plan": 92,
+        "executed_step": 8173,
+        "direct_prefix_complete": 15
+      },
+      "prefix_boundaries": [
+        {
+          "phase": "control",
+          "elapsed_s": 219.4440598487854,
+          "kind": "direct_prefix_complete",
+          "executed_actions": 36,
+          "stamp": {
+            "episode": "unified-seed1-arx-full-w4",
+            "tick": 5783,
+            "sim_s": 23.132001098711044
+          },
+          "discarded_rows": 14,
+          "reason": "measured_first_contact"
+        },
+        {
+          "phase": "control",
+          "elapsed_s": 223.9371122866869,
+          "kind": "direct_prefix_complete",
+          "executed_actions": 1,
+          "stamp": {
+            "episode": "unified-seed1-arx-full-w4",
+            "tick": 5790,
+            "sim_s": 23.160001100040972
+          },
+          "discarded_rows": 49,
+          "reason": "measured_first_contact"
+        },
+        {
+          "phase": "control",
+          "elapsed_s": 225.6758071705699,
+          "kind": "direct_prefix_complete",
+          "executed_actions": 1,
+          "stamp": {
+            "episode": "unified-seed1-arx-full-w4",
+            "tick": 5845,
+            "sim_s": 23.38000111049041
+          },
+          "discarded_rows": 49,
+          "reason": "contact_requires_observation"
+        },
+        {
+          "phase": "control",
+          "elapsed_s": 229.12142238020897,
+          "kind": "direct_prefix_complete",
+          "executed_actions": 7,
+          "stamp": {
+            "episode": "unified-seed1-arx-full-w4",
+            "tick": 6181,
+            "sim_s": 24.724001174326986
+          },
+          "discarded_rows": 43,
+          "reason": "measured_first_contact"
+        },
+        {
+          "phase": "control",
+          "elapsed_s": 229.6694401577115,
+          "kind": "direct_prefix_complete",
+          "executed_actions": 1,
+          "stamp": {
+            "episode": "unified-seed1-arx-full-w4",
+            "tick": 6231,
+            "sim_s": 24.924001183826476
+          },
+          "discarded_rows": 49,
+          "reason": "contact_requires_observation"
+        },
+        {
+          "phase": "control",
+          "elapsed_s": 231.73863806575537,
+          "kind": "direct_prefix_complete",
+          "executed_actions": 7,
+          "stamp": {
+            "episode": "unified-seed1-arx-full-w4",
+            "tick": 6528,
+            "sim_s": 26.11200124025345
+          },
+          "discarded_rows": 43,
+          "reason": "measured_first_contact"
+        },
+        {
+          "phase": "control",
+          "elapsed_s": 232.26874292641878,
+          "kind": "direct_prefix_complete",
+          "executed_actions": 1,
+          "stamp": {
+            "episode": "unified-seed1-arx-full-w4",
+            "tick": 6568,
+            "sim_s": 26.27200124785304
+          },
+          "discarded_rows": 49,
+          "reason": "contact_requires_observation"
+        },
+        {
+          "phase": "control",
+          "elapsed_s": 234.09015555679798,
+          "kind": "direct_prefix_complete",
+          "executed_actions": 7,
+          "stamp": {
+            "episode": "unified-seed1-arx-full-w4",
+            "tick": 6795,
+            "sim_s": 27.180001290980726
+          },
+          "discarded_rows": 43,
+          "reason": "measured_first_contact"
+        },
+        {
+          "phase": "control",
+          "elapsed_s": 234.52428141981363,
+          "kind": "direct_prefix_complete",
+          "executed_actions": 1,
+          "stamp": {
+            "episode": "unified-seed1-arx-full-w4",
+            "tick": 6803,
+            "sim_s": 27.212001292500645
+          },
+          "discarded_rows": 49,
+          "reason": "measured_first_contact"
+        },
+        {
+          "phase": "control",
+          "elapsed_s": 235.2154828608036,
+          "kind": "direct_prefix_complete",
+          "executed_actions": 1,
+          "stamp": {
+            "episode": "unified-seed1-arx-full-w4",
+            "tick": 6853,
+            "sim_s": 27.412001302000135
+          },
+          "discarded_rows": 49,
+          "reason": "contact_requires_observation"
+        },
+        {
+          "phase": "control",
+          "elapsed_s": 238.40037221461535,
+          "kind": "direct_prefix_complete",
+          "executed_actions": 6,
+          "stamp": {
+            "episode": "unified-seed1-arx-full-w4",
+            "tick": 7146,
+            "sim_s": 28.584001357667148
+          },
+          "discarded_rows": 44,
+          "reason": "measured_first_contact"
+        },
+        {
+          "phase": "control",
+          "elapsed_s": 240.08871220052242,
+          "kind": "direct_prefix_complete",
+          "executed_actions": 1,
+          "stamp": {
+            "episode": "unified-seed1-arx-full-w4",
+            "tick": 7191,
+            "sim_s": 28.76400136621669
+          },
+          "discarded_rows": 49,
+          "reason": "contact_requires_observation"
+        },
+        {
+          "phase": "control",
+          "elapsed_s": 244.06627345830202,
+          "kind": "direct_prefix_complete",
+          "executed_actions": 7,
+          "stamp": {
+            "episode": "unified-seed1-arx-full-w4",
+            "tick": 7433,
+            "sim_s": 29.732001412194222
+          },
+          "discarded_rows": 43,
+          "reason": "measured_first_contact"
+        },
+        {
+          "phase": "control",
+          "elapsed_s": 246.48145450651646,
+          "kind": "direct_prefix_complete",
+          "executed_actions": 1,
+          "stamp": {
+            "episode": "unified-seed1-arx-full-w4",
+            "tick": 7483,
+            "sim_s": 29.932001421693712
+          },
+          "discarded_rows": 49,
+          "reason": "contact_requires_observation"
+        },
+        {
+          "phase": "control",
+          "elapsed_s": 250.74838738888502,
+          "kind": "direct_prefix_complete",
+          "executed_actions": 7,
+          "stamp": {
+            "episode": "unified-seed1-arx-full-w4",
+            "tick": 7773,
+            "sim_s": 31.092001476790756
+          },
+          "discarded_rows": 43,
+          "reason": "contact_requires_observation"
+        }
+      ],
+      "terminal_query": 16,
+      "first_rejected_row": 8,
+      "physical_steps": 8173,
+      "contact_phase_ticks": {
+        "approach": 8173
+      },
+      "finger_contact_ticks": {
+        "left": 25
+      },
+      "holder_ticks": {},
+      "max_simultaneous_contact_fingers": {
+        "left": 1,
+        "right": 0
+      },
+      "measured_contact_markers": [
+        {
+          "query": 1,
+          "row": 36,
+          "tick": 5783,
+          "side": "left",
+          "fingers": 1
+        },
+        {
+          "query": 2,
+          "row": 1,
+          "tick": 5790,
+          "side": "left",
+          "fingers": 1
+        },
+        {
+          "query": 3,
+          "row": 1,
+          "tick": 5791,
+          "side": "left",
+          "fingers": 1
+        },
+        {
+          "query": 3,
+          "row": 1,
+          "tick": 5792,
+          "side": "left",
+          "fingers": 1
+        },
+        {
+          "query": 3,
+          "row": 1,
+          "tick": 5793,
+          "side": "left",
+          "fingers": 1
+        },
+        {
+          "query": 3,
+          "row": 1,
+          "tick": 5794,
+          "side": "left",
+          "fingers": 1
+        },
+        {
+          "query": 3,
+          "row": 1,
+          "tick": 5795,
+          "side": "left",
+          "fingers": 1
+        },
+        {
+          "query": 3,
+          "row": 1,
+          "tick": 5796,
+          "side": "left",
+          "fingers": 1
+        },
+        {
+          "query": 3,
+          "row": 1,
+          "tick": 5797,
+          "side": "left",
+          "fingers": 1
+        },
+        {
+          "query": 3,
+          "row": 1,
+          "tick": 5798,
+          "side": "left",
+          "fingers": 1
+        },
+        {
+          "query": 4,
+          "row": 7,
+          "tick": 6181,
+          "side": "left",
+          "fingers": 1
+        },
+        {
+          "query": 5,
+          "row": 1,
+          "tick": 6184,
+          "side": "left",
+          "fingers": 1
+        },
+        {
+          "query": 6,
+          "row": 7,
+          "tick": 6528,
+          "side": "left",
+          "fingers": 1
+        },
+        {
+          "query": 7,
+          "row": 1,
+          "tick": 6529,
+          "side": "left",
+          "fingers": 1
+        },
+        {
+          "query": 7,
+          "row": 1,
+          "tick": 6530,
+          "side": "left",
+          "fingers": 1
+        },
+        {
+          "query": 7,
+          "row": 1,
+          "tick": 6531,
+          "side": "left",
+          "fingers": 1
+        },
+        {
+          "query": 8,
+          "row": 7,
+          "tick": 6795,
+          "side": "left",
+          "fingers": 1
+        },
+        {
+          "query": 9,
+          "row": 1,
+          "tick": 6803,
+          "side": "left",
+          "fingers": 1
+        },
+        {
+          "query": 11,
+          "row": 6,
+          "tick": 7146,
+          "side": "left",
+          "fingers": 1
+        },
+        {
+          "query": 13,
+          "row": 7,
+          "tick": 7433,
+          "side": "left",
+          "fingers": 1
+        },
+        {
+          "query": 14,
+          "row": 1,
+          "tick": 7436,
+          "side": "left",
+          "fingers": 1
+        },
+        {
+          "query": 14,
+          "row": 1,
+          "tick": 7437,
+          "side": "left",
+          "fingers": 1
+        },
+        {
+          "query": 14,
+          "row": 1,
+          "tick": 7438,
+          "side": "left",
+          "fingers": 1
+        },
+        {
+          "query": 14,
+          "row": 1,
+          "tick": 7439,
+          "side": "left",
+          "fingers": 1
+        },
+        {
+          "query": 14,
+          "row": 1,
+          "tick": 7440,
+          "side": "left",
+          "fingers": 1
+        }
+      ],
+      "min_target_fingers_m": [
+        [
+          0.04373836774433255,
+          0.04373836774433255
+        ],
+        [
+          0.043814615280531405,
+          0.043814615280531405
+        ]
+      ],
+      "target_candidate_penetration_mm": [
+        3.1688855960965157,
+        3.2712651882320642
+      ],
+      "model_phase_s": {
+        "checkpoint_and_tokenizer_sha256": 0.6003092303872108,
+        "openpi_import": 258.04152128100395,
+        "jax_device": 6.537326470017433,
+        "orbax_restore_and_policy_create": 37.249592296779156,
+        "first_jax_compile_and_inference": 88.68116775900126
+      },
+      "peak_tracking_position_m": [
+        0.0022231285157381297,
+        0.0005382996966800136
+      ],
+      "peak_tracking_angle_deg": [
+        0.39659840070359004,
+        0.15496197724057836
+      ],
+      "min_actual_fingers_m": [
+        [
+          0.043632954359054565,
+          0.043619584292173386
+        ],
+        [
+          0.04389872029423714,
+          0.04390157014131546
+        ]
+      ],
+      "min_tcp_to_block_center_m": [
+        0.09054692557528776,
+        0.4403349998786535
+      ],
+      "block_task_extent_m": {
+        "min": [
+          -0.07437821477651596,
+          0.006845045834779739,
+          0.8399999141693115
+        ],
+        "max": [
+          -0.07434742897748947,
+          0.0068611991591751575,
+          0.8400048613548279
+        ]
+      },
+      "initial_request_state": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "collision_audits": {
+        "target": {
+          "checks": 11774,
+          "blocked_checks": 0,
+          "link_pairs": {},
+          "partial_final_line": false,
+          "scope": "FCL audit calls, including planning and/or measured checks"
+        },
+        "source_proxy": null
+      },
+      "artifact_manifest": {
+        "allocation-receipt.json": {
+          "bytes": 76,
+          "sha256": "4ab6967a69d61f8fb8a942a055b2da8f685d9f05ec1f21700a7c384ed29691d7"
+        },
+        "authorization-receipt.json": {
+          "bytes": 977,
+          "sha256": "1c8a93e3aed93782138159c4c667b1f884c20f2e8dac3d38b174ba635ffe9fe7"
+        },
+        "effective-launch.json": {
+          "bytes": 18086,
+          "sha256": "a77ce9e3906c2da3a8ca06ba20b1b33e37c971f17e016b87d070d39708f7c7be"
+        },
+        "graphics/allocation.json": {
+          "bytes": 109,
+          "sha256": "5334f409d9a16b49ce260257fe6eadf93bcc5b118f3c5814c9d2e5a27a1182ff"
+        },
+        "graphics/container_nvidia_egl.json": {
+          "bytes": 114,
+          "sha256": "89247e38ce5f0b1571a10c246b7b4ad607ccefc6077931e789ab9124dd50917d"
+        },
+        "graphics/container_nvidia_icd.json": {
+          "bytes": 158,
+          "sha256": "f551695a4a273204368bfb97abf10647dbd73b41acab268bd6ba56c11dde52bc"
+        },
+        "graphics/container_vulkan.txt": {
+          "bytes": 73779,
+          "sha256": "52d9b0e9fe4e889336c4fdec4537606a9b2241b58c17e47a3729b135214cee98"
+        },
+        "graphics/driver_discovery.json": {
+          "bytes": 3220,
+          "sha256": "c02c5c60a2678878cf0954ab97fd93136a685918d12abbf8e63271ea8eb0a077"
+        },
+        "graphics/driver_inside_path.txt": {
+          "bytes": 35,
+          "sha256": "c80f7ba23bdf0bdb52c4baca4bbf7be7573437919580ec8ba85cc8b4708fcaab"
+        },
+        "graphics/gpu_visibility.txt": {
+          "bytes": 147,
+          "sha256": "5128740b53fd246b5cde0dc48776ff6433f5fce741cfd339b120cfae879fc280"
+        },
+        "graphics/graphics_driver_discovery.log": {
+          "bytes": 113,
+          "sha256": "b8f245c5700d9fcabfe63662697e1a0ec4456ceaabf9b332d7e9291889c0c017"
+        },
+        "graphics/host_icd_library.txt": {
+          "bytes": 26,
+          "sha256": "fa3eb8a22c7b7e24b1fe926019aade542609ef942a7d61739b1232bb150a820b"
+        },
+        "graphics/host_icd_path.txt": {
+          "bytes": 34,
+          "sha256": "21276c0303155977619d1da4ad839ea59485b67b87151cb35699953ef45b2851"
+        },
+        "graphics/host_nvidia_icd.json": {
+          "bytes": 130,
+          "sha256": "0f8672b0ad7b7d33104442e4a2039264c10f298f46d767748e1002e80076b728"
+        },
+        "graphics/host_vulkan.txt": {
+          "bytes": 73332,
+          "sha256": "5cdc6fea0fef34f7ffb3dbb9fbf8d57f466c6a635b958ee8b7c48d90d96f781b"
+        },
+        "graphics/ldconfig-status.json": {
+          "bytes": 17,
+          "sha256": "e89df0eae5ec7db81135aed16463968955c578bcc4f2ec43172eff351f080c17"
+        },
+        "graphics/ldconfig-stderr.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "graphics/ldconfig.txt": {
+          "bytes": 158933,
+          "sha256": "10325f22a458f47dcbe9e7dbd818af5bed04ff6cc791235762ee71f550915b7b"
+        },
+        "graphics/node_diagnostics.json": {
+          "bytes": 1176,
+          "sha256": "3848749d0fcbfd746ea1b3a5af6698a72e3b16b13351722ef42ba3ef2e19d88a"
+        },
+        "graphics/nvidia-smi-list.txt": {
+          "bytes": 80,
+          "sha256": "2a7b3978cadedfe91cad3beaf8a69f551d1ab60cabd81368ff9ab0ef261ffab8"
+        },
+        "graphics/render.json": {
+          "bytes": 349,
+          "sha256": "90cd105c24af2178d19b70364c3b5628eca1274c326a9ea4c91295fbc4c3051c"
+        },
+        "graphics/sapien.log": {
+          "bytes": 1291,
+          "sha256": "8f505fd789d6760487cb9e397e91ef167f9c34a81d90ced342f43fd8016534af"
+        },
+        "graphics/sim-launch.json": {
+          "bytes": 6519,
+          "sha256": "f4a4bfd2e6fbead00cdf66118279b056d70f686f7a6fbbdbf721044c3f5381d6"
+        },
+        "graphics/vulkan_identity.json": {
+          "bytes": 131,
+          "sha256": "39cd2ede4106c889ed8756dea54ebcdac053b943d9a40b6e2698180b938ebd31"
+        },
+        "graphics/vulkan_identity.log": {
+          "bytes": 39,
+          "sha256": "155e6df8ca41098f70346e2fe044bb1ae14b320a34db863277ccf5724bb5b165"
+        },
+        "graphics.log": {
+          "bytes": 41,
+          "sha256": "d296ae17b26049b714324a7e11fbbbe3fbd4fd1c0adff55429121348eb7c7c25"
+        },
+        "model/phases.jsonl": {
+          "bytes": 4191,
+          "sha256": "47946474d509c8502391af8e2bdb9f4d9d45e7f661eaa6dfbbac6c1d052013fb"
+        },
+        "model/stacks.log": {
+          "bytes": 88446,
+          "sha256": "15a62ca94f678164a2df4d288cc0734c6661ff1afe241a9df966f8fa75e50ea2"
+        },
+        "model/startup.json": {
+          "bytes": 5617,
+          "sha256": "d92a0a8119285d9d6b0a02453a08f05e7eb9f3539eaf8552bcbd2c29e1ce31f0"
+        },
+        "slurm-allocation.txt": {
+          "bytes": 1552,
+          "sha256": "2b3f6a7972c4fec7a094c7249cfcdde8d9cb9efec44fdd419922203ca8c79c5d"
+        },
+        "standalone-result.json": {
+          "bytes": 38953,
+          "sha256": "768ab3b6d88ec4e70790a59db0370055d9d793e14b456ddb7a7aae29214bb722"
+        },
+        "startup/unified-seed1-arx-full-w4/episode/collision-checks.jsonl": {
+          "bytes": 1032,
+          "sha256": "18f598bbe2f778cbdc83ac5b251dc2837308b633bbd87314750fdb5d265e49e9"
+        },
+        "startup/unified-seed1-arx-full-w4/episode/head.mp4": {
+          "bytes": 3831,
+          "sha256": "d33aee770bda46f606daa05d504aae2d600576b103239c41a0c32c3b8dcd8811"
+        },
+        "startup/unified-seed1-arx-full-w4/episode/initial-readback.json": {
+          "bytes": 1647,
+          "sha256": "4e02d82cfbebccb38afb7d0e426a360c083eb76a2c62e03b3fbc1ee640e5e149"
+        },
+        "startup/unified-seed1-arx-full-w4/episode/initial-rgb.npz": {
+          "bytes": 107219,
+          "sha256": "472f5ec508914645d8949503fc34b4ab2aca9dff7075833f613e4db55bcbc68f"
+        },
+        "startup/unified-seed1-arx-full-w4/episode/initial-verification.json": {
+          "bytes": 286,
+          "sha256": "c14d62c0634543a4b6186262f3b07b15ff30c59e8da05bf2aafc6212abe9648d"
+        },
+        "startup/unified-seed1-arx-full-w4/episode/setup.json": {
+          "bytes": 13377,
+          "sha256": "2cd7e8235408bb0e94819f6d70935de027b0deaf6b71220d83b9b1268dba5415"
+        },
+        "startup/unified-seed1-arx-full-w4/receipt.json": {
+          "bytes": 305,
+          "sha256": "67091062abf2fcd13685342a9d2dc544e628e0929b543cb81bf8b480515feba5"
+        },
+        "startup/unified-seed1-arx-full-w4/rng-reset.json": {
+          "bytes": 98,
+          "sha256": "54faab3e27847aba036d4f912173227552402e7c1f150b430ac74fc1a18e0e27"
+        },
+        "supervisor/campaign.json": {
+          "bytes": 41186,
+          "sha256": "b11bf24a99b1b8f7b170d11dcf8cccb5f46444d2dbd516b4ccd8ed4967072dbb"
+        },
+        "supervisor/model.log": {
+          "bytes": 191000,
+          "sha256": "1d10ade76bdcfd39ecf5e77b1bc88cad45d8e783f1080942fdac8c4f2c380236"
+        },
+        "supervisor/probe-unified-seed1-arx-full-w4.log": {
+          "bytes": 987,
+          "sha256": "719c52b83f692e8f2040b098e8a79c9f11f33df2310b1aa616356cbe394fdf09"
+        },
+        "supervisor/unified-seed1-arx-full-w4.log": {
+          "bytes": 621,
+          "sha256": "15637d48fcd7d9bfa5d17c4b69f4631311c6f7076a218539763eaf085e314e2a"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/action-00001.npy": {
+          "bytes": 5728,
+          "sha256": "5b201b33ff9afa7c311f336b4a1a39ef582639730f5929bf803fd3de7cb4403b"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/action-00002.npy": {
+          "bytes": 5728,
+          "sha256": "8f4598640c636a9b5062e2a66f5c55a797327646263fc4946fc820330fced277"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/action-00003.npy": {
+          "bytes": 5728,
+          "sha256": "8bed0979506682e848bf06cd584ff73ab5b745753d7fbaea008d3334de6d601a"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/action-00004.npy": {
+          "bytes": 5728,
+          "sha256": "b14bc2ab8fb6709267f21657ad816d8938d6714a5fa52afd2907b15163d50373"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/action-00005.npy": {
+          "bytes": 5728,
+          "sha256": "f556f6190e3d6d41691442da551153719fd919dc9b57caa4dba05b7f1f42a58b"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/action-00006.npy": {
+          "bytes": 5728,
+          "sha256": "e4c383e34a9eecabc95383761d12f0ef27c72053f02270e1b336a2781906d9e4"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/action-00007.npy": {
+          "bytes": 5728,
+          "sha256": "d1c05ff55959de5704a8d4c795c3a64c652528aa3d240bf6f512f70ab44a6eee"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/action-00008.npy": {
+          "bytes": 5728,
+          "sha256": "221b93fd938ca2d5b20b167ba64f353f0f7bdbfb256877bbd3be3c889043d1d3"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/action-00009.npy": {
+          "bytes": 5728,
+          "sha256": "aa9cefab419075584788e69f5f1874897d8e9d05342f981a023af2d4f8ec1970"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/action-00010.npy": {
+          "bytes": 5728,
+          "sha256": "3cbdf33782317da250d14b4dbc7c70b4d9ac58a85953c0a9020d0496c017dac8"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/action-00011.npy": {
+          "bytes": 5728,
+          "sha256": "a486d6f6483233cc7ae62a044a7cfad8bb64450af4eac2345adbcadcc43cc06f"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/action-00012.npy": {
+          "bytes": 5728,
+          "sha256": "df50a3d6080a763ab265d081112d9db6f9f10f7c99ea1c8bcc530446f9364f76"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/action-00013.npy": {
+          "bytes": 5728,
+          "sha256": "ed0a663e5a8ed03d98d418430f7e2d3a01f8170259fae879aed06c829af538f6"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/action-00014.npy": {
+          "bytes": 5728,
+          "sha256": "a3f449c238798c40bc89fc0b8f2aefe10b38b25e81087923e7693401365e6ee8"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/action-00015.npy": {
+          "bytes": 5728,
+          "sha256": "a72f9c470b7b45971282beaeb7f094f72aa6637ab607eb980d5a2a9a9d1f69b0"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/action-00016.npy": {
+          "bytes": 5728,
+          "sha256": "95c877cb223fb2cb0a76cffa6b024e60f07727850b8670127fe1130571f7dd95"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/collision-checks.jsonl": {
+          "bytes": 6126275,
+          "sha256": "4a1d091b4f073911302870e2d200b99e615339230ef94521d4f7b44ddd40733b"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/events.jsonl": {
+          "bytes": 27564423,
+          "sha256": "d9818380f3d8bc6e0f5e30b6ba9329954ff797640aaf49d377e7ca94803c329f"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/head.mp4": {
+          "bytes": 11481,
+          "sha256": "4fb0318e5ff71ca303c68b0a8c0cca401f8c24b11e2cd8440a20ad3371c747b7"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/initial-readback.json": {
+          "bytes": 1647,
+          "sha256": "4e02d82cfbebccb38afb7d0e426a360c083eb76a2c62e03b3fbc1ee640e5e149"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/initial-rgb.npz": {
+          "bytes": 107219,
+          "sha256": "472f5ec508914645d8949503fc34b4ab2aca9dff7075833f613e4db55bcbc68f"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/initial-verification.json": {
+          "bytes": 286,
+          "sha256": "c14d62c0634543a4b6186262f3b07b15ff30c59e8da05bf2aafc6212abe9648d"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/observation-00001.npz": {
+          "bytes": 107219,
+          "sha256": "472f5ec508914645d8949503fc34b4ab2aca9dff7075833f613e4db55bcbc68f"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/observation-00002.npz": {
+          "bytes": 147218,
+          "sha256": "efc902b635ac37e7a5c15b3b0505ff5385344612524e1a91c3a2c08f518a44dc"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/observation-00003.npz": {
+          "bytes": 146893,
+          "sha256": "95ccfd8f42b371175e4bd2fcba3d6b0c591e91c151635dd8fc60f71f3803098e"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/observation-00004.npz": {
+          "bytes": 146109,
+          "sha256": "8a275cf3cb00e1b77967ea728b44d546a7fdd9143d5b8083bbf3014b87966cf6"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/observation-00005.npz": {
+          "bytes": 147374,
+          "sha256": "ca031c7f6c9e32c1931cda5ad21f84876a6962f2c51f468d018eb4e08a7639ec"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/observation-00006.npz": {
+          "bytes": 147351,
+          "sha256": "67de99e1799b3be3a1b38d719be3c7084acc3cbade6be449de1a3022c6d821a1"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/observation-00007.npz": {
+          "bytes": 147035,
+          "sha256": "4b7d06555e782666addadf4f14a9c07813f3fa985e67c6867b94aebdbdee8a7a"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/observation-00008.npz": {
+          "bytes": 147249,
+          "sha256": "06237141912e2c720bc35f87f47ee8b607c00ca77b938d67033e5189b96877a4"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/observation-00009.npz": {
+          "bytes": 147868,
+          "sha256": "d131b8637ece545ee822f477e9eb43242e322e21dd574136343bc387b9c96db3"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/observation-00010.npz": {
+          "bytes": 147771,
+          "sha256": "029c5f59e086d538965651c7c0bf7eceb7ab2d302e168156beee189c7f05d407"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/observation-00011.npz": {
+          "bytes": 148021,
+          "sha256": "99d1db073fcfd87a050e25a737214cd3c687c4158a5610f1836809c3228952a5"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/observation-00012.npz": {
+          "bytes": 148329,
+          "sha256": "d0e02e9a840b3614093f363c3a6be10a8044b202da82a13b91ec6f08127d791b"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/observation-00013.npz": {
+          "bytes": 147197,
+          "sha256": "dcec366668acb8b9d9cf8430d998a7210e3d02a1de048019cac40d6a3b7b8516"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/observation-00014.npz": {
+          "bytes": 147551,
+          "sha256": "d65b51414cfa7b1b323e925bf987c42e13e7920998cc4965ae27e7c8c5f67a10"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/observation-00015.npz": {
+          "bytes": 148406,
+          "sha256": "96195ef94639686aa7f308266ff43c3369f773fa36328925e621e2a20ceb6780"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/observation-00016.npz": {
+          "bytes": 149077,
+          "sha256": "c0ea1f038cb6ac458c847f915e9bb27d02d7515a126c8327d488ca2315e8dd0d"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-01.npz": {
+          "bytes": 6056,
+          "sha256": "64f0560ce9ab4071d0480d2d33f90356de69d8a581c92a90b3ede69c125a769f"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-02.npz": {
+          "bytes": 4777,
+          "sha256": "c99f02983e4d4a9fbb7e51810b152b927a097e967f7e858981d90a09bb1a7980"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-03.npz": {
+          "bytes": 5358,
+          "sha256": "5d4931a19b408dac5b4e5a4592bb81810bc93226134c5d3e2c060a984f771a91"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-04.npz": {
+          "bytes": 5625,
+          "sha256": "98702a1e32a216c00727a75cd8bf6d1db4a6dc011e26a10a8261e05feb2475b4"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-05.npz": {
+          "bytes": 7949,
+          "sha256": "4680d47e00bd0b3b5475835b6ddf4322d7d0cd0768ae0155e5bca6e84d77a622"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-06.npz": {
+          "bytes": 8518,
+          "sha256": "92c7f5b90ffd940f9808c728b0d9722f16d18d74932dbd4a19f4f7f1242010cb"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-07.npz": {
+          "bytes": 8782,
+          "sha256": "2d14460bf129848484a719e3abea4e82f192838a9430b3e9c1cb30884ba0c29c"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-08.npz": {
+          "bytes": 6075,
+          "sha256": "569c0ae6f66ae2a2d148514bc660d598850514f4b4cbbb4c4be2923e87abd5c4"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-09.npz": {
+          "bytes": 9239,
+          "sha256": "33257c4ac054062f7bbab368535aa806849f35c44ca434c15bf8b1a51809cbe0"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-10.npz": {
+          "bytes": 6244,
+          "sha256": "e6f4969207fb2cfa6225e7d0814bdc42d2d0bff559d01519ff9258f912bf3b6c"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-11.npz": {
+          "bytes": 9416,
+          "sha256": "97222abb32359e8a59d3523aa6384a66f85fc7d22d76102c7d1e451cfd2c3169"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-12.npz": {
+          "bytes": 6447,
+          "sha256": "e92a6cc2f3f0cb14da2eaec38b19b6076abf7d43b2f0b64c1597fd32055d9652"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-13.npz": {
+          "bytes": 9769,
+          "sha256": "694daf0a4919d5a0bfc7500ef9243e62bdc77eac3021cead92eeb990f56ce07b"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-14.npz": {
+          "bytes": 6540,
+          "sha256": "23c5535e77a8355d1f35cd51f92f2b9b16f0b4aae56536a92b46d24403f99f00"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-15.npz": {
+          "bytes": 9829,
+          "sha256": "b09b018c8f3bd480375fd6e4ef6bad89d263bc1dfe92149b5746dcd1e2ae8c5d"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-16.npz": {
+          "bytes": 6443,
+          "sha256": "3a50a98344edf47dc1865a86233956955d68243b902723b03ac5380faa594508"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-17.npz": {
+          "bytes": 9368,
+          "sha256": "51a422ff1faa7baf0563a025fea45bcf752fed45c9ed1214b3209a9f59b9bb5b"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-18.npz": {
+          "bytes": 9309,
+          "sha256": "1d639c9799cd46e0e4ad38e5099875649a06c0cc7d2d4d7585e59b0af7a34713"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-19.npz": {
+          "bytes": 9122,
+          "sha256": "018d6b80490d27d0b91d8a095b808bc77202efc2075f7856e00b3506102eb30b"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-20.npz": {
+          "bytes": 6058,
+          "sha256": "88795cd5ee2235c61e780ec59e2f5b0a682b3faf5920d1551bb05eff5e1c6c7c"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-21.npz": {
+          "bytes": 8155,
+          "sha256": "8f483a720282fa8c4f184453499020e0f1c7e0fecd94e83f701cc793eb3ac4de"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-22.npz": {
+          "bytes": 8812,
+          "sha256": "2b6528726f77084583b0e7b0f92c3bd8cbbcfb967f54ac90ebc0c03ea2d0f7e0"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-23.npz": {
+          "bytes": 7719,
+          "sha256": "9779f51fd2e9dd1bd1cabfb4f1005f03574c7389c250695ab3415871357d3efc"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-24.npz": {
+          "bytes": 7084,
+          "sha256": "9de625b4da305bfe00ab69dbd628fcd2d836948d9e77dd033730dda56877e643"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-25.npz": {
+          "bytes": 7062,
+          "sha256": "761148c19d56b1ef21c0180ec8b58a6a1102d313fa4dffb21ffe9f25bae32daf"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-26.npz": {
+          "bytes": 6727,
+          "sha256": "ef3ec9336ebb3a6a93c2447127a585feb438ddfac5a05098809b993bba571713"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-27.npz": {
+          "bytes": 5989,
+          "sha256": "15f4ec35d6e977df4b5cf9935399fedda22d3f36833f0bd99ac4b0e1df64b732"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-28.npz": {
+          "bytes": 5065,
+          "sha256": "16ba3fbee95b4e6ec154852cb7e717332d54e7ecbf0bfdddc543e2a66e15f2c4"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-29.npz": {
+          "bytes": 4402,
+          "sha256": "0197754b4051fbd8a772d7bae12cb3ff7fa0461f4df9494e9a4d84769e0ce3cf"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-30.npz": {
+          "bytes": 4649,
+          "sha256": "7b78610719c8cfd12ddbb769389a837b557f8d3f9e0811a7387b4a2104aafcd5"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-31.npz": {
+          "bytes": 3650,
+          "sha256": "aef867dafccf7fff65b827347c3fc2d0cef76c27dd2b1fc5c3f0d01fbb1fbabc"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-32.npz": {
+          "bytes": 3649,
+          "sha256": "01d46e7fc89c8177c7806b2941771b84f7a4e4a9b715931429c303524c48c3ec"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-33.npz": {
+          "bytes": 4020,
+          "sha256": "dff164e3ebf97550695d823bf4ccac6ca6f7e3656ae4a8e08bf056ecefc5def1"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-34.npz": {
+          "bytes": 3867,
+          "sha256": "06b5933d903d64c8822c3f4b4a287a9c75bf7f0fc823fadd345a02ebaa10d6bb"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-35.npz": {
+          "bytes": 4684,
+          "sha256": "56034d2bd26898283f0f7497dbf8db50b7050e431477807b728d9944a89acba6"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00001-36.npz": {
+          "bytes": 4315,
+          "sha256": "4ef39ad24e4fa5f8cfcec066081b0041942ff12ef12d60b782269c3429f90909"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00002-01.npz": {
+          "bytes": 4011,
+          "sha256": "4061be2a979b56e3363e2c207d21186dee82395a55563d54f18ab19581fc3663"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00003-01.npz": {
+          "bytes": 2859,
+          "sha256": "72cda386d54027a9fc32dfd3314c30e2f319cac3fafdd8a5a2213b78a2811a74"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00004-01.npz": {
+          "bytes": 4015,
+          "sha256": "9ac9cc8feaccfc1eee12a4fe296249215ee08af33391929a1d1ba6df3eb989de"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00004-02.npz": {
+          "bytes": 3257,
+          "sha256": "6f42f8a1fa936dc5d192c1342f11943604fcbe1e7f0d069e8d1a7bb831366f3e"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00004-03.npz": {
+          "bytes": 4239,
+          "sha256": "214cc5e7a26d9b0a4b83e3c9259963eb1c85e616db4b3aaf6ef50688e6152363"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00004-04.npz": {
+          "bytes": 3630,
+          "sha256": "63c077ba41c9f24e209bf9eea65dc498e473de90a6f5a94c0365a5349284eb10"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00004-05.npz": {
+          "bytes": 2156,
+          "sha256": "d8891b8e84a4152996d125c8fcea1919203fe8daaeaa53fc4c7f30a6d5d0fb7e"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00004-06.npz": {
+          "bytes": 3062,
+          "sha256": "8805d0c2d38ecac1e97561df64fbcda849da897dd15e9c2714eb42380df98d67"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00004-07.npz": {
+          "bytes": 3626,
+          "sha256": "2621f6880034c00d715dda398a965d17c16c61fdde85171ce4a8d92c6265862b"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00005-01.npz": {
+          "bytes": 3511,
+          "sha256": "e806f470708a132df3bb2d2604d75614303e835ef722364c599871a0c50defdb"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00006-01.npz": {
+          "bytes": 4261,
+          "sha256": "a1797f093d6303935d5ef34654bf6ea35ea519b08af5fa40e5bc50ec6f202fa6"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00006-02.npz": {
+          "bytes": 3046,
+          "sha256": "a66648cf3e51a21030a229730d6c8403b96b1bf0135d99bfeed009b030cbc9f2"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00006-03.npz": {
+          "bytes": 3843,
+          "sha256": "ce848b8f8b597e7dcea298f7b75d9a0cbd294a711dd2d2848fbc888b70149379"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00006-04.npz": {
+          "bytes": 2293,
+          "sha256": "2666f26d6297264408fb34b0a64c9f22ce45acea645a7e7307192467604e623f"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00006-05.npz": {
+          "bytes": 2295,
+          "sha256": "15678b98ff6be4355beaed9818e8a6a010bfe454b2182870a4c191c53a19131c"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00006-06.npz": {
+          "bytes": 2297,
+          "sha256": "b89d0160ed9269e877f07466314edb714e52d93ff7ab97e46a3fedaa95322333"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00006-07.npz": {
+          "bytes": 3283,
+          "sha256": "3ed7077e187510466196e18afdc9ae0cded51a48f73b9c2e310b24982d75be44"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00007-01.npz": {
+          "bytes": 3063,
+          "sha256": "82b6e0618abfcbd9dbc14002c547017e7722f7e7b9850c1cb4e5b309a3f9e962"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00008-01.npz": {
+          "bytes": 3650,
+          "sha256": "fcfc963c96d4bec4de149938880248cd69dff0a25f1831b3de2511a3a6bc9e0b"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00008-02.npz": {
+          "bytes": 2747,
+          "sha256": "211a54b203b29c8219f69ad4e126790f08444ad34b00b6636ff35be375948151"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00008-03.npz": {
+          "bytes": 2742,
+          "sha256": "0e09bbd1982fa0e69c62bdb49f8e32f7cb39a1d1b4b37ee0bad69c87ed6c248a"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00008-04.npz": {
+          "bytes": 2395,
+          "sha256": "e682334ac6c9a76f302df883823ecf15dc4b0f291f00197f5e912821386ddfc8"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00008-05.npz": {
+          "bytes": 2743,
+          "sha256": "5640b18c18aeb21aea3f9fe9535cc08e8cbc654aec724a7c50322b358089ecdf"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00008-06.npz": {
+          "bytes": 2398,
+          "sha256": "b38ffc2584717ed82aed6d0018f43ba0f6c4840d7933d5d4d86885d8444c5646"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00008-07.npz": {
+          "bytes": 3248,
+          "sha256": "2213ea283f8b6b3698d4a01c27b31658f82b1b71852d6c7073f6360d385945c6"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00009-01.npz": {
+          "bytes": 3267,
+          "sha256": "c5db52487fc87fbc1c94f66312b19468fcb3ad3c72ef0913391383ec4b04c539"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00010-01.npz": {
+          "bytes": 3529,
+          "sha256": "17198666032724078d297eafb1a07f7c7e2185a5f4e800034d7b5f794f18618b"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00011-01.npz": {
+          "bytes": 3067,
+          "sha256": "a06185aa297bb14dd2f4cadffec950a84f1d1207d146cc753fcd5b425076c552"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00011-02.npz": {
+          "bytes": 2917,
+          "sha256": "eedd9b6cdf300be74ae0b9e09f7e0af19603fca6733bfec3872fd5d0d4665fd1"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00011-03.npz": {
+          "bytes": 3804,
+          "sha256": "08858933adf14b0b0095bcdc6d28831517b1467dd5f5924e957cc02afa714b50"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00011-04.npz": {
+          "bytes": 3637,
+          "sha256": "43bbb1005bece9a68e6e9b8230558c3ff4cbf4a2ac2d2f3e330a01317bb6c4c6"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00011-05.npz": {
+          "bytes": 4372,
+          "sha256": "536d794fe187ae4f6284cc3076652912998e651efbf77e25395f7eb6ee301eff"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00011-06.npz": {
+          "bytes": 3508,
+          "sha256": "10caeb9dc1044de87d92add6ffc7060eb24cde814278c02995a5255939a7fe2e"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00012-01.npz": {
+          "bytes": 3274,
+          "sha256": "35c7784c066e0decb21155251a4785d69ad868bb33c7f86763eb9dc766b8dcac"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00013-01.npz": {
+          "bytes": 3284,
+          "sha256": "6f658a142c3e22cea474ca4e677d591c2343489b2fa1be9b4a3d8e29c9bb0006"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00013-02.npz": {
+          "bytes": 2300,
+          "sha256": "9392cddebed0b76852d69a84aab369c95ee40965989a96d09ac955e2f6b02d10"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00013-03.npz": {
+          "bytes": 3060,
+          "sha256": "a8879bcb76f00fb0d2aa79beb4072c31c746eca100cf7120f091c482df6a3df7"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00013-04.npz": {
+          "bytes": 2751,
+          "sha256": "cd7609dec022b9b6bfa15b2df6328263876add3ba97c68ab26fa230b205c64c3"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00013-05.npz": {
+          "bytes": 2915,
+          "sha256": "0392a91dfc6d83ac625ae673b214c49c77540970cb91448168bc36b340ed60cf"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00013-06.npz": {
+          "bytes": 3514,
+          "sha256": "9ca11d23676627198c5722fadbe43bb1ac69693fb1c669b5e6495fb6adb7936a"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00013-07.npz": {
+          "bytes": 3065,
+          "sha256": "1f0787314d15c957982c47b5f0c56c8271f17de5f197c413110351a179fc1c87"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00014-01.npz": {
+          "bytes": 3527,
+          "sha256": "4eeabba5d51163b8f4b94937b59e4e0af051ad3171289089080233a726107f49"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00015-01.npz": {
+          "bytes": 3523,
+          "sha256": "f39b1afd8d902946b710ab946b08bbfa636a5a247d635633203de928e7b2d12e"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00015-02.npz": {
+          "bytes": 2391,
+          "sha256": "be03933d2afe5ff7d367900540efa544955d27e445b0763836c9ddbdc99460f4"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00015-03.npz": {
+          "bytes": 4298,
+          "sha256": "bdb692b59aa286cc30d0c85a221f091523120ed409a332a76e2cdaf3f9a805fb"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00015-04.npz": {
+          "bytes": 2921,
+          "sha256": "aec6e52f58c8209cf8d410081768c5b745a8af1b26dde03e15f88857c090fe54"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00015-05.npz": {
+          "bytes": 2518,
+          "sha256": "d1536222449e34220f7ca7e48f54a8913df0d2b2c9db9120aa63151ebf84a451"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00015-06.npz": {
+          "bytes": 2907,
+          "sha256": "47af7f590e04d4c81ceb8193c4e3cee3fc45186635e1bc3652405ae88e355bed"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00015-07.npz": {
+          "bytes": 2891,
+          "sha256": "ccd46cf96e6d3665544d3fe8c2c37f975a47c36e21f120dc1d8eb5b1073e830f"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00016-01.npz": {
+          "bytes": 3867,
+          "sha256": "988498fb3c168597863e75983d3c185558feb8a9c33b2309c40d92de24473443"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00016-02.npz": {
+          "bytes": 4321,
+          "sha256": "09656ebe95a16dac135156a5977e6f9106d0cbbb60a2250df280e9e483dac011"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00016-03.npz": {
+          "bytes": 4308,
+          "sha256": "4e0eb43d7c668b86b0ab04dc0f6e7ab7d0f77ddde5e43a24341573fc58d491bf"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00016-04.npz": {
+          "bytes": 4019,
+          "sha256": "ab79523926f775f36427e17672f5c6ec83e34b893c95311f4bb47150b0d19a4f"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00016-05.npz": {
+          "bytes": 3511,
+          "sha256": "3a65e6139dcb4b88e5f275d2bf8e1d8d91b47b67a2ec119642d5420e80127ad7"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00016-06.npz": {
+          "bytes": 2395,
+          "sha256": "9fefe82373618a1767ed6535da0e03bee9f44398e2058f8f75421a4f4bb1cd12"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/plan-00016-07.npz": {
+          "bytes": 3079,
+          "sha256": "8c980e2525e867f881dd68ad47ccf3af0ad1eac1ed1b76c86e2e1e4b1de6e5da"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/result.json": {
+          "bytes": 30424,
+          "sha256": "c6e1aeb3e72fce143d60489f38ff6622737bf1bdcdd87626a39704ae52b502eb"
+        },
+        "trials/unified-seed1-arx-full-w4/episode/setup.json": {
+          "bytes": 13377,
+          "sha256": "2cd7e8235408bb0e94819f6d70935de027b0deaf6b71220d83b9b1268dba5415"
+        },
+        "trials/unified-seed1-arx-full-w4/receipt.json": {
+          "bytes": 33719,
+          "sha256": "fd27d8d9cb3c8223abfd7338a1bf43aacd4c906ab85ae68a856caf752112c969"
+        },
+        "trials/unified-seed1-arx-full-w4/rng-reset.json": {
+          "bytes": 98,
+          "sha256": "54faab3e27847aba036d4f912173227552402e7c1f150b430ac74fc1a18e0e27"
+        }
+      }
+    }
+  }
+}

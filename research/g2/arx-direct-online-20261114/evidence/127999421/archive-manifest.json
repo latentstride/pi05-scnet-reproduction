@@ -1,0 +1,710 @@
+{
+  "allocation-receipt.json": {
+    "bytes": 76,
+    "sha256": "4ab6967a69d61f8fb8a942a055b2da8f685d9f05ec1f21700a7c384ed29691d7"
+  },
+  "authorization-receipt.json": {
+    "bytes": 977,
+    "sha256": "1c8a93e3aed93782138159c4c667b1f884c20f2e8dac3d38b174ba635ffe9fe7"
+  },
+  "effective-launch.json": {
+    "bytes": 18086,
+    "sha256": "a77ce9e3906c2da3a8ca06ba20b1b33e37c971f17e016b87d070d39708f7c7be"
+  },
+  "graphics/allocation.json": {
+    "bytes": 109,
+    "sha256": "5334f409d9a16b49ce260257fe6eadf93bcc5b118f3c5814c9d2e5a27a1182ff"
+  },
+  "graphics/container_nvidia_egl.json": {
+    "bytes": 114,
+    "sha256": "89247e38ce5f0b1571a10c246b7b4ad607ccefc6077931e789ab9124dd50917d"
+  },
+  "graphics/container_nvidia_icd.json": {
+    "bytes": 158,
+    "sha256": "f551695a4a273204368bfb97abf10647dbd73b41acab268bd6ba56c11dde52bc"
+  },
+  "graphics/container_vulkan.txt": {
+    "bytes": 73779,
+    "sha256": "52d9b0e9fe4e889336c4fdec4537606a9b2241b58c17e47a3729b135214cee98"
+  },
+  "graphics/driver_discovery.json": {
+    "bytes": 3220,
+    "sha256": "c02c5c60a2678878cf0954ab97fd93136a685918d12abbf8e63271ea8eb0a077"
+  },
+  "graphics/driver_inside_path.txt": {
+    "bytes": 35,
+    "sha256": "c80f7ba23bdf0bdb52c4baca4bbf7be7573437919580ec8ba85cc8b4708fcaab"
+  },
+  "graphics/gpu_visibility.txt": {
+    "bytes": 147,
+    "sha256": "5128740b53fd246b5cde0dc48776ff6433f5fce741cfd339b120cfae879fc280"
+  },
+  "graphics/graphics_driver_discovery.log": {
+    "bytes": 113,
+    "sha256": "b8f245c5700d9fcabfe63662697e1a0ec4456ceaabf9b332d7e9291889c0c017"
+  },
+  "graphics/host_icd_library.txt": {
+    "bytes": 26,
+    "sha256": "fa3eb8a22c7b7e24b1fe926019aade542609ef942a7d61739b1232bb150a820b"
+  },
+  "graphics/host_icd_path.txt": {
+    "bytes": 34,
+    "sha256": "21276c0303155977619d1da4ad839ea59485b67b87151cb35699953ef45b2851"
+  },
+  "graphics/host_nvidia_icd.json": {
+    "bytes": 130,
+    "sha256": "0f8672b0ad7b7d33104442e4a2039264c10f298f46d767748e1002e80076b728"
+  },
+  "graphics/host_vulkan.txt": {
+    "bytes": 73332,
+    "sha256": "5cdc6fea0fef34f7ffb3dbb9fbf8d57f466c6a635b958ee8b7c48d90d96f781b"
+  },
+  "graphics/ldconfig-status.json": {
+    "bytes": 17,
+    "sha256": "e89df0eae5ec7db81135aed16463968955c578bcc4f2ec43172eff351f080c17"
+  },
+  "graphics/ldconfig-stderr.txt": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "graphics/ldconfig.txt": {
+    "bytes": 158933,
+    "sha256": "10325f22a458f47dcbe9e7dbd818af5bed04ff6cc791235762ee71f550915b7b"
+  },
+  "graphics/node_diagnostics.json": {
+    "bytes": 1176,
+    "sha256": "3848749d0fcbfd746ea1b3a5af6698a72e3b16b13351722ef42ba3ef2e19d88a"
+  },
+  "graphics/nvidia-smi-list.txt": {
+    "bytes": 80,
+    "sha256": "2a7b3978cadedfe91cad3beaf8a69f551d1ab60cabd81368ff9ab0ef261ffab8"
+  },
+  "graphics/render.json": {
+    "bytes": 349,
+    "sha256": "90cd105c24af2178d19b70364c3b5628eca1274c326a9ea4c91295fbc4c3051c"
+  },
+  "graphics/sapien.log": {
+    "bytes": 1291,
+    "sha256": "8f505fd789d6760487cb9e397e91ef167f9c34a81d90ced342f43fd8016534af"
+  },
+  "graphics/sim-launch.json": {
+    "bytes": 6519,
+    "sha256": "f4a4bfd2e6fbead00cdf66118279b056d70f686f7a6fbbdbf721044c3f5381d6"
+  },
+  "graphics/vulkan_identity.json": {
+    "bytes": 131,
+    "sha256": "39cd2ede4106c889ed8756dea54ebcdac053b943d9a40b6e2698180b938ebd31"
+  },
+  "graphics/vulkan_identity.log": {
+    "bytes": 39,
+    "sha256": "155e6df8ca41098f70346e2fe044bb1ae14b320a34db863277ccf5724bb5b165"
+  },
+  "graphics.log": {
+    "bytes": 41,
+    "sha256": "d296ae17b26049b714324a7e11fbbbe3fbd4fd1c0adff55429121348eb7c7c25"
+  },
+  "model/phases.jsonl": {
+    "bytes": 4191,
+    "sha256": "47946474d509c8502391af8e2bdb9f4d9d45e7f661eaa6dfbbac6c1d052013fb"
+  },
+  "model/stacks.log": {
+    "bytes": 88446,
+    "sha256": "15a62ca94f678164a2df4d288cc0734c6661ff1afe241a9df966f8fa75e50ea2"
+  },
+  "model/startup.json": {
+    "bytes": 5617,
+    "sha256": "d92a0a8119285d9d6b0a02453a08f05e7eb9f3539eaf8552bcbd2c29e1ce31f0"
+  },
+  "slurm-allocation.txt": {
+    "bytes": 1552,
+    "sha256": "2b3f6a7972c4fec7a094c7249cfcdde8d9cb9efec44fdd419922203ca8c79c5d"
+  },
+  "standalone-result.json": {
+    "bytes": 38953,
+    "sha256": "768ab3b6d88ec4e70790a59db0370055d9d793e14b456ddb7a7aae29214bb722"
+  },
+  "startup/unified-seed1-arx-full-w4/episode/collision-checks.jsonl": {
+    "bytes": 1032,
+    "sha256": "18f598bbe2f778cbdc83ac5b251dc2837308b633bbd87314750fdb5d265e49e9"
+  },
+  "startup/unified-seed1-arx-full-w4/episode/head.mp4": {
+    "bytes": 3831,
+    "sha256": "d33aee770bda46f606daa05d504aae2d600576b103239c41a0c32c3b8dcd8811"
+  },
+  "startup/unified-seed1-arx-full-w4/episode/initial-readback.json": {
+    "bytes": 1647,
+    "sha256": "4e02d82cfbebccb38afb7d0e426a360c083eb76a2c62e03b3fbc1ee640e5e149"
+  },
+  "startup/unified-seed1-arx-full-w4/episode/initial-rgb.npz": {
+    "bytes": 107219,
+    "sha256": "472f5ec508914645d8949503fc34b4ab2aca9dff7075833f613e4db55bcbc68f"
+  },
+  "startup/unified-seed1-arx-full-w4/episode/initial-verification.json": {
+    "bytes": 286,
+    "sha256": "c14d62c0634543a4b6186262f3b07b15ff30c59e8da05bf2aafc6212abe9648d"
+  },
+  "startup/unified-seed1-arx-full-w4/episode/setup.json": {
+    "bytes": 13377,
+    "sha256": "2cd7e8235408bb0e94819f6d70935de027b0deaf6b71220d83b9b1268dba5415"
+  },
+  "startup/unified-seed1-arx-full-w4/receipt.json": {
+    "bytes": 305,
+    "sha256": "67091062abf2fcd13685342a9d2dc544e628e0929b543cb81bf8b480515feba5"
+  },
+  "startup/unified-seed1-arx-full-w4/rng-reset.json": {
+    "bytes": 98,
+    "sha256": "54faab3e27847aba036d4f912173227552402e7c1f150b430ac74fc1a18e0e27"
+  },
+  "supervisor/campaign.json": {
+    "bytes": 41186,
+    "sha256": "b11bf24a99b1b8f7b170d11dcf8cccb5f46444d2dbd516b4ccd8ed4967072dbb"
+  },
+  "supervisor/model.log": {
+    "bytes": 191000,
+    "sha256": "1d10ade76bdcfd39ecf5e77b1bc88cad45d8e783f1080942fdac8c4f2c380236"
+  },
+  "supervisor/probe-unified-seed1-arx-full-w4.log": {
+    "bytes": 987,
+    "sha256": "719c52b83f692e8f2040b098e8a79c9f11f33df2310b1aa616356cbe394fdf09"
+  },
+  "supervisor/unified-seed1-arx-full-w4.log": {
+    "bytes": 621,
+    "sha256": "15637d48fcd7d9bfa5d17c4b69f4631311c6f7076a218539763eaf085e314e2a"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/action-00001.npy": {
+    "bytes": 5728,
+    "sha256": "5b201b33ff9afa7c311f336b4a1a39ef582639730f5929bf803fd3de7cb4403b"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/action-00002.npy": {
+    "bytes": 5728,
+    "sha256": "8f4598640c636a9b5062e2a66f5c55a797327646263fc4946fc820330fced277"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/action-00003.npy": {
+    "bytes": 5728,
+    "sha256": "8bed0979506682e848bf06cd584ff73ab5b745753d7fbaea008d3334de6d601a"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/action-00004.npy": {
+    "bytes": 5728,
+    "sha256": "b14bc2ab8fb6709267f21657ad816d8938d6714a5fa52afd2907b15163d50373"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/action-00005.npy": {
+    "bytes": 5728,
+    "sha256": "f556f6190e3d6d41691442da551153719fd919dc9b57caa4dba05b7f1f42a58b"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/action-00006.npy": {
+    "bytes": 5728,
+    "sha256": "e4c383e34a9eecabc95383761d12f0ef27c72053f02270e1b336a2781906d9e4"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/action-00007.npy": {
+    "bytes": 5728,
+    "sha256": "d1c05ff55959de5704a8d4c795c3a64c652528aa3d240bf6f512f70ab44a6eee"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/action-00008.npy": {
+    "bytes": 5728,
+    "sha256": "221b93fd938ca2d5b20b167ba64f353f0f7bdbfb256877bbd3be3c889043d1d3"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/action-00009.npy": {
+    "bytes": 5728,
+    "sha256": "aa9cefab419075584788e69f5f1874897d8e9d05342f981a023af2d4f8ec1970"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/action-00010.npy": {
+    "bytes": 5728,
+    "sha256": "3cbdf33782317da250d14b4dbc7c70b4d9ac58a85953c0a9020d0496c017dac8"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/action-00011.npy": {
+    "bytes": 5728,
+    "sha256": "a486d6f6483233cc7ae62a044a7cfad8bb64450af4eac2345adbcadcc43cc06f"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/action-00012.npy": {
+    "bytes": 5728,
+    "sha256": "df50a3d6080a763ab265d081112d9db6f9f10f7c99ea1c8bcc530446f9364f76"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/action-00013.npy": {
+    "bytes": 5728,
+    "sha256": "ed0a663e5a8ed03d98d418430f7e2d3a01f8170259fae879aed06c829af538f6"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/action-00014.npy": {
+    "bytes": 5728,
+    "sha256": "a3f449c238798c40bc89fc0b8f2aefe10b38b25e81087923e7693401365e6ee8"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/action-00015.npy": {
+    "bytes": 5728,
+    "sha256": "a72f9c470b7b45971282beaeb7f094f72aa6637ab607eb980d5a2a9a9d1f69b0"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/action-00016.npy": {
+    "bytes": 5728,
+    "sha256": "95c877cb223fb2cb0a76cffa6b024e60f07727850b8670127fe1130571f7dd95"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/collision-checks.jsonl": {
+    "bytes": 6126275,
+    "sha256": "4a1d091b4f073911302870e2d200b99e615339230ef94521d4f7b44ddd40733b"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/events.jsonl": {
+    "bytes": 27564423,
+    "sha256": "d9818380f3d8bc6e0f5e30b6ba9329954ff797640aaf49d377e7ca94803c329f"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/head.mp4": {
+    "bytes": 11481,
+    "sha256": "4fb0318e5ff71ca303c68b0a8c0cca401f8c24b11e2cd8440a20ad3371c747b7"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/initial-readback.json": {
+    "bytes": 1647,
+    "sha256": "4e02d82cfbebccb38afb7d0e426a360c083eb76a2c62e03b3fbc1ee640e5e149"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/initial-rgb.npz": {
+    "bytes": 107219,
+    "sha256": "472f5ec508914645d8949503fc34b4ab2aca9dff7075833f613e4db55bcbc68f"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/initial-verification.json": {
+    "bytes": 286,
+    "sha256": "c14d62c0634543a4b6186262f3b07b15ff30c59e8da05bf2aafc6212abe9648d"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/observation-00001.npz": {
+    "bytes": 107219,
+    "sha256": "472f5ec508914645d8949503fc34b4ab2aca9dff7075833f613e4db55bcbc68f"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/observation-00002.npz": {
+    "bytes": 147218,
+    "sha256": "efc902b635ac37e7a5c15b3b0505ff5385344612524e1a91c3a2c08f518a44dc"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/observation-00003.npz": {
+    "bytes": 146893,
+    "sha256": "95ccfd8f42b371175e4bd2fcba3d6b0c591e91c151635dd8fc60f71f3803098e"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/observation-00004.npz": {
+    "bytes": 146109,
+    "sha256": "8a275cf3cb00e1b77967ea728b44d546a7fdd9143d5b8083bbf3014b87966cf6"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/observation-00005.npz": {
+    "bytes": 147374,
+    "sha256": "ca031c7f6c9e32c1931cda5ad21f84876a6962f2c51f468d018eb4e08a7639ec"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/observation-00006.npz": {
+    "bytes": 147351,
+    "sha256": "67de99e1799b3be3a1b38d719be3c7084acc3cbade6be449de1a3022c6d821a1"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/observation-00007.npz": {
+    "bytes": 147035,
+    "sha256": "4b7d06555e782666addadf4f14a9c07813f3fa985e67c6867b94aebdbdee8a7a"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/observation-00008.npz": {
+    "bytes": 147249,
+    "sha256": "06237141912e2c720bc35f87f47ee8b607c00ca77b938d67033e5189b96877a4"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/observation-00009.npz": {
+    "bytes": 147868,
+    "sha256": "d131b8637ece545ee822f477e9eb43242e322e21dd574136343bc387b9c96db3"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/observation-00010.npz": {
+    "bytes": 147771,
+    "sha256": "029c5f59e086d538965651c7c0bf7eceb7ab2d302e168156beee189c7f05d407"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/observation-00011.npz": {
+    "bytes": 148021,
+    "sha256": "99d1db073fcfd87a050e25a737214cd3c687c4158a5610f1836809c3228952a5"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/observation-00012.npz": {
+    "bytes": 148329,
+    "sha256": "d0e02e9a840b3614093f363c3a6be10a8044b202da82a13b91ec6f08127d791b"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/observation-00013.npz": {
+    "bytes": 147197,
+    "sha256": "dcec366668acb8b9d9cf8430d998a7210e3d02a1de048019cac40d6a3b7b8516"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/observation-00014.npz": {
+    "bytes": 147551,
+    "sha256": "d65b51414cfa7b1b323e925bf987c42e13e7920998cc4965ae27e7c8c5f67a10"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/observation-00015.npz": {
+    "bytes": 148406,
+    "sha256": "96195ef94639686aa7f308266ff43c3369f773fa36328925e621e2a20ceb6780"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/observation-00016.npz": {
+    "bytes": 149077,
+    "sha256": "c0ea1f038cb6ac458c847f915e9bb27d02d7515a126c8327d488ca2315e8dd0d"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-01.npz": {
+    "bytes": 6056,
+    "sha256": "64f0560ce9ab4071d0480d2d33f90356de69d8a581c92a90b3ede69c125a769f"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-02.npz": {
+    "bytes": 4777,
+    "sha256": "c99f02983e4d4a9fbb7e51810b152b927a097e967f7e858981d90a09bb1a7980"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-03.npz": {
+    "bytes": 5358,
+    "sha256": "5d4931a19b408dac5b4e5a4592bb81810bc93226134c5d3e2c060a984f771a91"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-04.npz": {
+    "bytes": 5625,
+    "sha256": "98702a1e32a216c00727a75cd8bf6d1db4a6dc011e26a10a8261e05feb2475b4"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-05.npz": {
+    "bytes": 7949,
+    "sha256": "4680d47e00bd0b3b5475835b6ddf4322d7d0cd0768ae0155e5bca6e84d77a622"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-06.npz": {
+    "bytes": 8518,
+    "sha256": "92c7f5b90ffd940f9808c728b0d9722f16d18d74932dbd4a19f4f7f1242010cb"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-07.npz": {
+    "bytes": 8782,
+    "sha256": "2d14460bf129848484a719e3abea4e82f192838a9430b3e9c1cb30884ba0c29c"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-08.npz": {
+    "bytes": 6075,
+    "sha256": "569c0ae6f66ae2a2d148514bc660d598850514f4b4cbbb4c4be2923e87abd5c4"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-09.npz": {
+    "bytes": 9239,
+    "sha256": "33257c4ac054062f7bbab368535aa806849f35c44ca434c15bf8b1a51809cbe0"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-10.npz": {
+    "bytes": 6244,
+    "sha256": "e6f4969207fb2cfa6225e7d0814bdc42d2d0bff559d01519ff9258f912bf3b6c"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-11.npz": {
+    "bytes": 9416,
+    "sha256": "97222abb32359e8a59d3523aa6384a66f85fc7d22d76102c7d1e451cfd2c3169"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-12.npz": {
+    "bytes": 6447,
+    "sha256": "e92a6cc2f3f0cb14da2eaec38b19b6076abf7d43b2f0b64c1597fd32055d9652"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-13.npz": {
+    "bytes": 9769,
+    "sha256": "694daf0a4919d5a0bfc7500ef9243e62bdc77eac3021cead92eeb990f56ce07b"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-14.npz": {
+    "bytes": 6540,
+    "sha256": "23c5535e77a8355d1f35cd51f92f2b9b16f0b4aae56536a92b46d24403f99f00"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-15.npz": {
+    "bytes": 9829,
+    "sha256": "b09b018c8f3bd480375fd6e4ef6bad89d263bc1dfe92149b5746dcd1e2ae8c5d"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-16.npz": {
+    "bytes": 6443,
+    "sha256": "3a50a98344edf47dc1865a86233956955d68243b902723b03ac5380faa594508"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-17.npz": {
+    "bytes": 9368,
+    "sha256": "51a422ff1faa7baf0563a025fea45bcf752fed45c9ed1214b3209a9f59b9bb5b"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-18.npz": {
+    "bytes": 9309,
+    "sha256": "1d639c9799cd46e0e4ad38e5099875649a06c0cc7d2d4d7585e59b0af7a34713"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-19.npz": {
+    "bytes": 9122,
+    "sha256": "018d6b80490d27d0b91d8a095b808bc77202efc2075f7856e00b3506102eb30b"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-20.npz": {
+    "bytes": 6058,
+    "sha256": "88795cd5ee2235c61e780ec59e2f5b0a682b3faf5920d1551bb05eff5e1c6c7c"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-21.npz": {
+    "bytes": 8155,
+    "sha256": "8f483a720282fa8c4f184453499020e0f1c7e0fecd94e83f701cc793eb3ac4de"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-22.npz": {
+    "bytes": 8812,
+    "sha256": "2b6528726f77084583b0e7b0f92c3bd8cbbcfb967f54ac90ebc0c03ea2d0f7e0"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-23.npz": {
+    "bytes": 7719,
+    "sha256": "9779f51fd2e9dd1bd1cabfb4f1005f03574c7389c250695ab3415871357d3efc"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-24.npz": {
+    "bytes": 7084,
+    "sha256": "9de625b4da305bfe00ab69dbd628fcd2d836948d9e77dd033730dda56877e643"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-25.npz": {
+    "bytes": 7062,
+    "sha256": "761148c19d56b1ef21c0180ec8b58a6a1102d313fa4dffb21ffe9f25bae32daf"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-26.npz": {
+    "bytes": 6727,
+    "sha256": "ef3ec9336ebb3a6a93c2447127a585feb438ddfac5a05098809b993bba571713"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-27.npz": {
+    "bytes": 5989,
+    "sha256": "15f4ec35d6e977df4b5cf9935399fedda22d3f36833f0bd99ac4b0e1df64b732"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-28.npz": {
+    "bytes": 5065,
+    "sha256": "16ba3fbee95b4e6ec154852cb7e717332d54e7ecbf0bfdddc543e2a66e15f2c4"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-29.npz": {
+    "bytes": 4402,
+    "sha256": "0197754b4051fbd8a772d7bae12cb3ff7fa0461f4df9494e9a4d84769e0ce3cf"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-30.npz": {
+    "bytes": 4649,
+    "sha256": "7b78610719c8cfd12ddbb769389a837b557f8d3f9e0811a7387b4a2104aafcd5"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-31.npz": {
+    "bytes": 3650,
+    "sha256": "aef867dafccf7fff65b827347c3fc2d0cef76c27dd2b1fc5c3f0d01fbb1fbabc"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-32.npz": {
+    "bytes": 3649,
+    "sha256": "01d46e7fc89c8177c7806b2941771b84f7a4e4a9b715931429c303524c48c3ec"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-33.npz": {
+    "bytes": 4020,
+    "sha256": "dff164e3ebf97550695d823bf4ccac6ca6f7e3656ae4a8e08bf056ecefc5def1"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-34.npz": {
+    "bytes": 3867,
+    "sha256": "06b5933d903d64c8822c3f4b4a287a9c75bf7f0fc823fadd345a02ebaa10d6bb"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-35.npz": {
+    "bytes": 4684,
+    "sha256": "56034d2bd26898283f0f7497dbf8db50b7050e431477807b728d9944a89acba6"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-36.npz": {
+    "bytes": 4315,
+    "sha256": "4ef39ad24e4fa5f8cfcec066081b0041942ff12ef12d60b782269c3429f90909"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00002-01.npz": {
+    "bytes": 4011,
+    "sha256": "4061be2a979b56e3363e2c207d21186dee82395a55563d54f18ab19581fc3663"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00003-01.npz": {
+    "bytes": 2859,
+    "sha256": "72cda386d54027a9fc32dfd3314c30e2f319cac3fafdd8a5a2213b78a2811a74"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00004-01.npz": {
+    "bytes": 4015,
+    "sha256": "9ac9cc8feaccfc1eee12a4fe296249215ee08af33391929a1d1ba6df3eb989de"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00004-02.npz": {
+    "bytes": 3257,
+    "sha256": "6f42f8a1fa936dc5d192c1342f11943604fcbe1e7f0d069e8d1a7bb831366f3e"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00004-03.npz": {
+    "bytes": 4239,
+    "sha256": "214cc5e7a26d9b0a4b83e3c9259963eb1c85e616db4b3aaf6ef50688e6152363"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00004-04.npz": {
+    "bytes": 3630,
+    "sha256": "63c077ba41c9f24e209bf9eea65dc498e473de90a6f5a94c0365a5349284eb10"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00004-05.npz": {
+    "bytes": 2156,
+    "sha256": "d8891b8e84a4152996d125c8fcea1919203fe8daaeaa53fc4c7f30a6d5d0fb7e"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00004-06.npz": {
+    "bytes": 3062,
+    "sha256": "8805d0c2d38ecac1e97561df64fbcda849da897dd15e9c2714eb42380df98d67"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00004-07.npz": {
+    "bytes": 3626,
+    "sha256": "2621f6880034c00d715dda398a965d17c16c61fdde85171ce4a8d92c6265862b"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00005-01.npz": {
+    "bytes": 3511,
+    "sha256": "e806f470708a132df3bb2d2604d75614303e835ef722364c599871a0c50defdb"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00006-01.npz": {
+    "bytes": 4261,
+    "sha256": "a1797f093d6303935d5ef34654bf6ea35ea519b08af5fa40e5bc50ec6f202fa6"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00006-02.npz": {
+    "bytes": 3046,
+    "sha256": "a66648cf3e51a21030a229730d6c8403b96b1bf0135d99bfeed009b030cbc9f2"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00006-03.npz": {
+    "bytes": 3843,
+    "sha256": "ce848b8f8b597e7dcea298f7b75d9a0cbd294a711dd2d2848fbc888b70149379"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00006-04.npz": {
+    "bytes": 2293,
+    "sha256": "2666f26d6297264408fb34b0a64c9f22ce45acea645a7e7307192467604e623f"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00006-05.npz": {
+    "bytes": 2295,
+    "sha256": "15678b98ff6be4355beaed9818e8a6a010bfe454b2182870a4c191c53a19131c"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00006-06.npz": {
+    "bytes": 2297,
+    "sha256": "b89d0160ed9269e877f07466314edb714e52d93ff7ab97e46a3fedaa95322333"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00006-07.npz": {
+    "bytes": 3283,
+    "sha256": "3ed7077e187510466196e18afdc9ae0cded51a48f73b9c2e310b24982d75be44"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00007-01.npz": {
+    "bytes": 3063,
+    "sha256": "82b6e0618abfcbd9dbc14002c547017e7722f7e7b9850c1cb4e5b309a3f9e962"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00008-01.npz": {
+    "bytes": 3650,
+    "sha256": "fcfc963c96d4bec4de149938880248cd69dff0a25f1831b3de2511a3a6bc9e0b"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00008-02.npz": {
+    "bytes": 2747,
+    "sha256": "211a54b203b29c8219f69ad4e126790f08444ad34b00b6636ff35be375948151"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00008-03.npz": {
+    "bytes": 2742,
+    "sha256": "0e09bbd1982fa0e69c62bdb49f8e32f7cb39a1d1b4b37ee0bad69c87ed6c248a"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00008-04.npz": {
+    "bytes": 2395,
+    "sha256": "e682334ac6c9a76f302df883823ecf15dc4b0f291f00197f5e912821386ddfc8"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00008-05.npz": {
+    "bytes": 2743,
+    "sha256": "5640b18c18aeb21aea3f9fe9535cc08e8cbc654aec724a7c50322b358089ecdf"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00008-06.npz": {
+    "bytes": 2398,
+    "sha256": "b38ffc2584717ed82aed6d0018f43ba0f6c4840d7933d5d4d86885d8444c5646"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00008-07.npz": {
+    "bytes": 3248,
+    "sha256": "2213ea283f8b6b3698d4a01c27b31658f82b1b71852d6c7073f6360d385945c6"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00009-01.npz": {
+    "bytes": 3267,
+    "sha256": "c5db52487fc87fbc1c94f66312b19468fcb3ad3c72ef0913391383ec4b04c539"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00010-01.npz": {
+    "bytes": 3529,
+    "sha256": "17198666032724078d297eafb1a07f7c7e2185a5f4e800034d7b5f794f18618b"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00011-01.npz": {
+    "bytes": 3067,
+    "sha256": "a06185aa297bb14dd2f4cadffec950a84f1d1207d146cc753fcd5b425076c552"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00011-02.npz": {
+    "bytes": 2917,
+    "sha256": "eedd9b6cdf300be74ae0b9e09f7e0af19603fca6733bfec3872fd5d0d4665fd1"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00011-03.npz": {
+    "bytes": 3804,
+    "sha256": "08858933adf14b0b0095bcdc6d28831517b1467dd5f5924e957cc02afa714b50"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00011-04.npz": {
+    "bytes": 3637,
+    "sha256": "43bbb1005bece9a68e6e9b8230558c3ff4cbf4a2ac2d2f3e330a01317bb6c4c6"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00011-05.npz": {
+    "bytes": 4372,
+    "sha256": "536d794fe187ae4f6284cc3076652912998e651efbf77e25395f7eb6ee301eff"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00011-06.npz": {
+    "bytes": 3508,
+    "sha256": "10caeb9dc1044de87d92add6ffc7060eb24cde814278c02995a5255939a7fe2e"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00012-01.npz": {
+    "bytes": 3274,
+    "sha256": "35c7784c066e0decb21155251a4785d69ad868bb33c7f86763eb9dc766b8dcac"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00013-01.npz": {
+    "bytes": 3284,
+    "sha256": "6f658a142c3e22cea474ca4e677d591c2343489b2fa1be9b4a3d8e29c9bb0006"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00013-02.npz": {
+    "bytes": 2300,
+    "sha256": "9392cddebed0b76852d69a84aab369c95ee40965989a96d09ac955e2f6b02d10"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00013-03.npz": {
+    "bytes": 3060,
+    "sha256": "a8879bcb76f00fb0d2aa79beb4072c31c746eca100cf7120f091c482df6a3df7"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00013-04.npz": {
+    "bytes": 2751,
+    "sha256": "cd7609dec022b9b6bfa15b2df6328263876add3ba97c68ab26fa230b205c64c3"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00013-05.npz": {
+    "bytes": 2915,
+    "sha256": "0392a91dfc6d83ac625ae673b214c49c77540970cb91448168bc36b340ed60cf"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00013-06.npz": {
+    "bytes": 3514,
+    "sha256": "9ca11d23676627198c5722fadbe43bb1ac69693fb1c669b5e6495fb6adb7936a"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00013-07.npz": {
+    "bytes": 3065,
+    "sha256": "1f0787314d15c957982c47b5f0c56c8271f17de5f197c413110351a179fc1c87"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00014-01.npz": {
+    "bytes": 3527,
+    "sha256": "4eeabba5d51163b8f4b94937b59e4e0af051ad3171289089080233a726107f49"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00015-01.npz": {
+    "bytes": 3523,
+    "sha256": "f39b1afd8d902946b710ab946b08bbfa636a5a247d635633203de928e7b2d12e"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00015-02.npz": {
+    "bytes": 2391,
+    "sha256": "be03933d2afe5ff7d367900540efa544955d27e445b0763836c9ddbdc99460f4"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00015-03.npz": {
+    "bytes": 4298,
+    "sha256": "bdb692b59aa286cc30d0c85a221f091523120ed409a332a76e2cdaf3f9a805fb"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00015-04.npz": {
+    "bytes": 2921,
+    "sha256": "aec6e52f58c8209cf8d410081768c5b745a8af1b26dde03e15f88857c090fe54"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00015-05.npz": {
+    "bytes": 2518,
+    "sha256": "d1536222449e34220f7ca7e48f54a8913df0d2b2c9db9120aa63151ebf84a451"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00015-06.npz": {
+    "bytes": 2907,
+    "sha256": "47af7f590e04d4c81ceb8193c4e3cee3fc45186635e1bc3652405ae88e355bed"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00015-07.npz": {
+    "bytes": 2891,
+    "sha256": "ccd46cf96e6d3665544d3fe8c2c37f975a47c36e21f120dc1d8eb5b1073e830f"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00016-01.npz": {
+    "bytes": 3867,
+    "sha256": "988498fb3c168597863e75983d3c185558feb8a9c33b2309c40d92de24473443"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00016-02.npz": {
+    "bytes": 4321,
+    "sha256": "09656ebe95a16dac135156a5977e6f9106d0cbbb60a2250df280e9e483dac011"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00016-03.npz": {
+    "bytes": 4308,
+    "sha256": "4e0eb43d7c668b86b0ab04dc0f6e7ab7d0f77ddde5e43a24341573fc58d491bf"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00016-04.npz": {
+    "bytes": 4019,
+    "sha256": "ab79523926f775f36427e17672f5c6ec83e34b893c95311f4bb47150b0d19a4f"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00016-05.npz": {
+    "bytes": 3511,
+    "sha256": "3a65e6139dcb4b88e5f275d2bf8e1d8d91b47b67a2ec119642d5420e80127ad7"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00016-06.npz": {
+    "bytes": 2395,
+    "sha256": "9fefe82373618a1767ed6535da0e03bee9f44398e2058f8f75421a4f4bb1cd12"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00016-07.npz": {
+    "bytes": 3079,
+    "sha256": "8c980e2525e867f881dd68ad47ccf3af0ad1eac1ed1b76c86e2e1e4b1de6e5da"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/result.json": {
+    "bytes": 30424,
+    "sha256": "c6e1aeb3e72fce143d60489f38ff6622737bf1bdcdd87626a39704ae52b502eb"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/setup.json": {
+    "bytes": 13377,
+    "sha256": "2cd7e8235408bb0e94819f6d70935de027b0deaf6b71220d83b9b1268dba5415"
+  },
+  "trials/unified-seed1-arx-full-w4/receipt.json": {
+    "bytes": 33719,
+    "sha256": "fd27d8d9cb3c8223abfd7338a1bf43aacd4c906ab85ae68a856caf752112c969"
+  },
+  "trials/unified-seed1-arx-full-w4/rng-reset.json": {
+    "bytes": 98,
+    "sha256": "54faab3e27847aba036d4f912173227552402e7c1f150b430ac74fc1a18e0e27"
+  }
+}

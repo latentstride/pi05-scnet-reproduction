@@ -1,0 +1,362 @@
+{
+  "allocation-receipt.json": {
+    "bytes": 76,
+    "sha256": "d33dc43e24afc5072f2ac848668be3f4db110eccf1642bbad2d8e7a130f97935"
+  },
+  "authorization-receipt.json": {
+    "bytes": 977,
+    "sha256": "3f095d05e46d703db8e8dfc51edfbd163278d30aa7f6f0f81c1f23b80fadde8d"
+  },
+  "effective-launch.json": {
+    "bytes": 18086,
+    "sha256": "de98d3e6247b9eb963ce16db1250474e373d174fd6e857009a8103eda50450d2"
+  },
+  "graphics/allocation.json": {
+    "bytes": 109,
+    "sha256": "5334f409d9a16b49ce260257fe6eadf93bcc5b118f3c5814c9d2e5a27a1182ff"
+  },
+  "graphics/container_nvidia_egl.json": {
+    "bytes": 114,
+    "sha256": "89247e38ce5f0b1571a10c246b7b4ad607ccefc6077931e789ab9124dd50917d"
+  },
+  "graphics/container_nvidia_icd.json": {
+    "bytes": 158,
+    "sha256": "f551695a4a273204368bfb97abf10647dbd73b41acab268bd6ba56c11dde52bc"
+  },
+  "graphics/container_vulkan.txt": {
+    "bytes": 73779,
+    "sha256": "f812b38393de5863d153dcbb3460dc689089601fadb87a67cd0a95ac3ac009dc"
+  },
+  "graphics/driver_discovery.json": {
+    "bytes": 3220,
+    "sha256": "c02c5c60a2678878cf0954ab97fd93136a685918d12abbf8e63271ea8eb0a077"
+  },
+  "graphics/driver_inside_path.txt": {
+    "bytes": 35,
+    "sha256": "c80f7ba23bdf0bdb52c4baca4bbf7be7573437919580ec8ba85cc8b4708fcaab"
+  },
+  "graphics/gpu_visibility.txt": {
+    "bytes": 147,
+    "sha256": "5128740b53fd246b5cde0dc48776ff6433f5fce741cfd339b120cfae879fc280"
+  },
+  "graphics/graphics_driver_discovery.log": {
+    "bytes": 113,
+    "sha256": "83b873c90bae67780162469bbce6b623b3ea9b23d3e1edf6f0ee2c52624599d8"
+  },
+  "graphics/host_icd_library.txt": {
+    "bytes": 26,
+    "sha256": "fa3eb8a22c7b7e24b1fe926019aade542609ef942a7d61739b1232bb150a820b"
+  },
+  "graphics/host_icd_path.txt": {
+    "bytes": 34,
+    "sha256": "21276c0303155977619d1da4ad839ea59485b67b87151cb35699953ef45b2851"
+  },
+  "graphics/host_nvidia_icd.json": {
+    "bytes": 130,
+    "sha256": "0f8672b0ad7b7d33104442e4a2039264c10f298f46d767748e1002e80076b728"
+  },
+  "graphics/host_vulkan.txt": {
+    "bytes": 73332,
+    "sha256": "9862e0adbff06272e35bbf38d84a2db080d21a5182d03906dc959690ebd0ae94"
+  },
+  "graphics/ldconfig-status.json": {
+    "bytes": 17,
+    "sha256": "e89df0eae5ec7db81135aed16463968955c578bcc4f2ec43172eff351f080c17"
+  },
+  "graphics/ldconfig-stderr.txt": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "graphics/ldconfig.txt": {
+    "bytes": 158933,
+    "sha256": "10325f22a458f47dcbe9e7dbd818af5bed04ff6cc791235762ee71f550915b7b"
+  },
+  "graphics/node_diagnostics.json": {
+    "bytes": 1176,
+    "sha256": "2d1c385acb582591fb1bd7aa66765a5e38b374b61eda4b5210905b797319bad2"
+  },
+  "graphics/nvidia-smi-list.txt": {
+    "bytes": 80,
+    "sha256": "2a7b3978cadedfe91cad3beaf8a69f551d1ab60cabd81368ff9ab0ef261ffab8"
+  },
+  "graphics/render.json": {
+    "bytes": 349,
+    "sha256": "c92e7da013f47e5958ba4d18eadd97c4a628c6995c59623f9b2e64968097e92c"
+  },
+  "graphics/sapien.log": {
+    "bytes": 1291,
+    "sha256": "ed7faea7a1e16009448b11dd421f0575d29ca37695dc27c57736ef5fed1dc481"
+  },
+  "graphics/sim-launch.json": {
+    "bytes": 6519,
+    "sha256": "9cd17fa9e91c904b7de48e2262afefada6432f7d074edd90b327f6bd7016813f"
+  },
+  "graphics/vulkan_identity.json": {
+    "bytes": 131,
+    "sha256": "39cd2ede4106c889ed8756dea54ebcdac053b943d9a40b6e2698180b938ebd31"
+  },
+  "graphics/vulkan_identity.log": {
+    "bytes": 39,
+    "sha256": "b5b0195f701223bfad56ec6d28f284400492100ed7cf3e05c842385352f0c4a5"
+  },
+  "graphics.log": {
+    "bytes": 41,
+    "sha256": "7f13f32c5b5f1354e95e85001b73860c9be09314b6c63bf25c77fa034b34492d"
+  },
+  "model/phases.jsonl": {
+    "bytes": 1296,
+    "sha256": "50bd3aa4634a46bcb6df592ba2216c307e49d79c7b9585952aa6ee78fb5ba2c8"
+  },
+  "model/stacks.log": {
+    "bytes": 134215,
+    "sha256": "a74f1675a214abf585bdf787933bbed4715e4558724d9d55a168479a1e0a3459"
+  },
+  "model/startup.json": {
+    "bytes": 5617,
+    "sha256": "d92a0a8119285d9d6b0a02453a08f05e7eb9f3539eaf8552bcbd2c29e1ce31f0"
+  },
+  "slurm-allocation.txt": {
+    "bytes": 1552,
+    "sha256": "5ab8946e46145123e0ff12f5f1837c9c75711b03aa544d82e432f6fab634cb98"
+  },
+  "standalone-result.json": {
+    "bytes": 38935,
+    "sha256": "0c5f19413223d77b636b6d45d4cb7ac2ea4db80bc99a1f12e177e0d71d6e59a8"
+  },
+  "startup/unified-seed1-arx-full-w4/episode/collision-checks.jsonl": {
+    "bytes": 1032,
+    "sha256": "18f598bbe2f778cbdc83ac5b251dc2837308b633bbd87314750fdb5d265e49e9"
+  },
+  "startup/unified-seed1-arx-full-w4/episode/head.mp4": {
+    "bytes": 3831,
+    "sha256": "d33aee770bda46f606daa05d504aae2d600576b103239c41a0c32c3b8dcd8811"
+  },
+  "startup/unified-seed1-arx-full-w4/episode/initial-readback.json": {
+    "bytes": 1647,
+    "sha256": "4e02d82cfbebccb38afb7d0e426a360c083eb76a2c62e03b3fbc1ee640e5e149"
+  },
+  "startup/unified-seed1-arx-full-w4/episode/initial-rgb.npz": {
+    "bytes": 107219,
+    "sha256": "472f5ec508914645d8949503fc34b4ab2aca9dff7075833f613e4db55bcbc68f"
+  },
+  "startup/unified-seed1-arx-full-w4/episode/initial-verification.json": {
+    "bytes": 286,
+    "sha256": "c14d62c0634543a4b6186262f3b07b15ff30c59e8da05bf2aafc6212abe9648d"
+  },
+  "startup/unified-seed1-arx-full-w4/episode/setup.json": {
+    "bytes": 13377,
+    "sha256": "88652288f70558147dff6a5ef17842f2ecba277ddbe55cda8bdd97f432ec2c6f"
+  },
+  "startup/unified-seed1-arx-full-w4/receipt.json": {
+    "bytes": 304,
+    "sha256": "3b1d24071302575b6d5fe81288874a2eb291c10109a47ca0fff915cb2d56a072"
+  },
+  "startup/unified-seed1-arx-full-w4/rng-reset.json": {
+    "bytes": 98,
+    "sha256": "6a4421c20492a4ca3e112ac957e711d4bda1f13a0398bde6e85c29f888578f7a"
+  },
+  "supervisor/campaign.json": {
+    "bytes": 41168,
+    "sha256": "d53c253b8be8eaca8e8cbc05b5f6291cc2716851307cbdfad7765e92c7ed61d9"
+  },
+  "supervisor/model.log": {
+    "bytes": 189590,
+    "sha256": "d3182c8d01899392ce8f8497655b873fd9287d9774d42bf4f63dc18ebc33db45"
+  },
+  "supervisor/probe-unified-seed1-arx-full-w4.log": {
+    "bytes": 987,
+    "sha256": "b93733bf17e8ddba76105c523c8fd45e13b6f151953bafbf4cc8380ca34feae2"
+  },
+  "supervisor/unified-seed1-arx-full-w4.log": {
+    "bytes": 621,
+    "sha256": "15637d48fcd7d9bfa5d17c4b69f4631311c6f7076a218539763eaf085e314e2a"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/action-00001.npy": {
+    "bytes": 5728,
+    "sha256": "eb9d0efc6a649aca72e5f6c01d3be677ca47373aa34416dd63e73aa57f8f378e"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/collision-checks.jsonl": {
+    "bytes": 4159056,
+    "sha256": "ce7c675f1e170d2416ddc5594b4b94260f9edaa1b202d17e10e337a2dc1bb2db"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/events.jsonl": {
+    "bytes": 19139793,
+    "sha256": "c2f08dc91ba1b72b03f790483794315da79e74a11a938449f002f954a34fedfc"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/head.mp4": {
+    "bytes": 5348,
+    "sha256": "dddd51e48335a63d2e6d0210b2c7ce50f26c97a22c6f8b1e103222c1fdf06814"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/initial-readback.json": {
+    "bytes": 1647,
+    "sha256": "4e02d82cfbebccb38afb7d0e426a360c083eb76a2c62e03b3fbc1ee640e5e149"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/initial-rgb.npz": {
+    "bytes": 107219,
+    "sha256": "472f5ec508914645d8949503fc34b4ab2aca9dff7075833f613e4db55bcbc68f"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/initial-verification.json": {
+    "bytes": 286,
+    "sha256": "c14d62c0634543a4b6186262f3b07b15ff30c59e8da05bf2aafc6212abe9648d"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/observation-00001.npz": {
+    "bytes": 107219,
+    "sha256": "472f5ec508914645d8949503fc34b4ab2aca9dff7075833f613e4db55bcbc68f"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-01.npz": {
+    "bytes": 6112,
+    "sha256": "09c65341d519a10a56434834bce5d1b8cfd8b5573fc6deb864d882e2af8ef7f5"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-02.npz": {
+    "bytes": 6494,
+    "sha256": "304b4ad9e238cf3224ed7856d25da697bb222f0476fcb4a359c1f7848c7e3951"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-03.npz": {
+    "bytes": 5370,
+    "sha256": "1c00bd9b1e2e1a707923879d1498ca61faa8882c12edd9c8b087e3f986f1ccbc"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-04.npz": {
+    "bytes": 7927,
+    "sha256": "cc5c1921e1bfaf97d173869440e46880f91881f782f95770452f8586bea22e9e"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-05.npz": {
+    "bytes": 8178,
+    "sha256": "6589aa919b6f00e2cd88b35e49da46e3d59d8120c76c5b947ec8d5f08570a0f2"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-06.npz": {
+    "bytes": 8506,
+    "sha256": "dc7c1d0a84368c970c3663adca31e95d9664c3d22e9c03a3f03aa6ab7a63012d"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-07.npz": {
+    "bytes": 6013,
+    "sha256": "b6f77202018b09bb12c7a9fa3768c61589a2b8cb8f643ed5a27eca17d9d98c9c"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-08.npz": {
+    "bytes": 8920,
+    "sha256": "1bd9d80e5919f0e804281a89f3e8e5cba20c18feed499e538f8daf5518ea4dd1"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-09.npz": {
+    "bytes": 6181,
+    "sha256": "4cc5cb55cbd0eaf81347c097fdce4fdb87a1dc61faab48464bd1deddf8df7dc0"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-10.npz": {
+    "bytes": 9425,
+    "sha256": "df17876de4f4f42f9c06a8eefcf9e9374abcfd7c16a5eacd1683baf95a1805d6"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-11.npz": {
+    "bytes": 9483,
+    "sha256": "b4f97b850990bd1333c361ca155e37096b031b283593b17971836f0b87d953dd"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-12.npz": {
+    "bytes": 9526,
+    "sha256": "8423de695a24d4f58f919c6d00f9749c38f539ce8c5cc9568ee8e2f1a5d4f45e"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-13.npz": {
+    "bytes": 9527,
+    "sha256": "9478239045d731ab4d5ca6789a35ecbd28d91bdea3d08b6e0efa39688bfcf31e"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-14.npz": {
+    "bytes": 9484,
+    "sha256": "6a958523dccb6529b57835e6e7f8445c69f4a9e5028584c6085663e166c2cf4b"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-15.npz": {
+    "bytes": 6455,
+    "sha256": "ef93890ce4464be2ef1df6ba477d21b0918c342f05620c94a6c573ef16bc9d23"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-16.npz": {
+    "bytes": 6432,
+    "sha256": "73c7dd30e07a5c52897d3379d40af1c2e270bb851f01e002d7b9a02faa368c9a"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-17.npz": {
+    "bytes": 9404,
+    "sha256": "77e7caeecc927a7417811a61819d7b3b5e600173448273b3c68869411d556d91"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-18.npz": {
+    "bytes": 9269,
+    "sha256": "9ee8a2a1f9d2035b36ce75a5f8d5be1be2f09cf2f4d14ab61777991f6ab78ce5"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-19.npz": {
+    "bytes": 9094,
+    "sha256": "2b13fc07a5dd3123e31e760efb1272c4bf27d71dc9a92c790d821bec21ad1f67"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-20.npz": {
+    "bytes": 8930,
+    "sha256": "cde616e8efa04a476f6804faab49bbb64dbd8e7744864e3fcfab09af9549104e"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-21.npz": {
+    "bytes": 8546,
+    "sha256": "6787a3732333cf17cadbfd2d0c42c5cf07d5284e20fd5de2db733d3fc102b6f5"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-22.npz": {
+    "bytes": 7506,
+    "sha256": "b1e29f77a3280dd07dfd9f97b333295ef6bff0a82717c6f47bd9926afb1a8571"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-23.npz": {
+    "bytes": 8530,
+    "sha256": "71a72447fb0db4a1985c0e9f0d522c78a675899a2715a9d3d837b3bc5f569475"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-24.npz": {
+    "bytes": 7058,
+    "sha256": "7b37c537114dd087cb8920f233d725148e7845aafd40023fc3235a35722f85fd"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-25.npz": {
+    "bytes": 4985,
+    "sha256": "608918b87d7f2181545fe0d88792e79ed6a1cfcbac65558385fb737d14e31f57"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-26.npz": {
+    "bytes": 6724,
+    "sha256": "dfadf5bcd0f1e6e3c8ee510c376d3cd3fe21e6b3e12e75915779b3670ce1fb50"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-27.npz": {
+    "bytes": 5667,
+    "sha256": "9ee48ff1b4940d0940c73b62f6c4e7f9c636a60d42f4c5227a2cbe8fcd7efa82"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-28.npz": {
+    "bytes": 4676,
+    "sha256": "fadd28180cc825b8f2d77ebe50b99fbab03e7eb6b4d12280ca4112cf44fd9c73"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-29.npz": {
+    "bytes": 4934,
+    "sha256": "af94549a3d903d1c3d24fdf4dd88f31f48ce2c00ac1ba9b8d86484833f91ad4b"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-30.npz": {
+    "bytes": 4385,
+    "sha256": "2c5f76186a9fa46c57dde77006c704220d4cf6b88d2b7803e15636718a0e4006"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-31.npz": {
+    "bytes": 4018,
+    "sha256": "d699a8643cf53a0053893435a147eb08b790457d01835e4a4fe2b4bee391b57d"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-32.npz": {
+    "bytes": 3517,
+    "sha256": "cf01cec03f3cab9374fb897ec0983b8785363f630bcd1021638f6f8e99d896f3"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-33.npz": {
+    "bytes": 4685,
+    "sha256": "1b5d0da6222587e1a2bec067d5740cc78253b433b5f225752da886fdc9369764"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-34.npz": {
+    "bytes": 3649,
+    "sha256": "48423b5da06debe14d0cfc7168c7c08bc026b6444ab09341e3cb8dae6f1fc52b"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/plan-00001-35.npz": {
+    "bytes": 4317,
+    "sha256": "1b113204798a57235748a2f4e92d487016d2289c3430b8bed57e9ebbaeafe16e"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/result.json": {
+    "bytes": 30409,
+    "sha256": "90062fb92e9c0ab059d5e4feaf9d117a524a35eb81f78a2a2fd7b66e89721249"
+  },
+  "trials/unified-seed1-arx-full-w4/episode/setup.json": {
+    "bytes": 13377,
+    "sha256": "88652288f70558147dff6a5ef17842f2ecba277ddbe55cda8bdd97f432ec2c6f"
+  },
+  "trials/unified-seed1-arx-full-w4/receipt.json": {
+    "bytes": 33701,
+    "sha256": "7b0077453c329403751c87e068deadb2578936dc52eeb600f9cd847804122a46"
+  },
+  "trials/unified-seed1-arx-full-w4/rng-reset.json": {
+    "bytes": 98,
+    "sha256": "6a4421c20492a4ca3e112ac957e711d4bda1f13a0398bde6e85c29f888578f7a"
+  }
+}

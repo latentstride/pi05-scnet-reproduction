@@ -1,0 +1,42 @@
+{"stage": "checkpoint_and_tokenizer_sha256", "event": "start", "utc": "2026-11-14T08:28:49.271+00:00"}
+{"stage": "checkpoint_and_tokenizer_sha256", "event": "end", "utc": "2026-11-14T08:28:49.871+00:00", "elapsed_s": 0.6003092303872108}
+{"stage": "openpi_import", "event": "start", "utc": "2026-11-14T08:28:49.872+00:00"}
+{"stage": "openpi_import", "event": "end", "utc": "2026-11-14T08:33:07.913+00:00", "elapsed_s": 258.04152128100395}
+{"stage": "jax_device", "event": "start", "utc": "2026-11-14T08:33:07.914+00:00"}
+{"stage": "jax_device", "event": "end", "utc": "2026-11-14T08:33:14.451+00:00", "elapsed_s": 6.537326470017433}
+{"stage": "orbax_restore_and_policy_create", "event": "start", "utc": "2026-11-14T08:33:14.482+00:00"}
+{"stage": "orbax_restore_and_policy_create", "event": "end", "utc": "2026-11-14T08:33:51.732+00:00", "elapsed_s": 37.249592296779156}
+{"stage": "first_jax_compile_and_inference", "event": "start", "utc": "2026-11-14T08:37:10.673+00:00"}
+{"stage": "first_jax_compile_and_inference", "event": "end", "utc": "2026-11-14T08:38:39.355+00:00", "elapsed_s": 88.68116775900126}
+{"stage": "inference", "event": "start", "utc": "2026-11-14T08:42:25.013+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-14T08:42:28.115+00:00", "elapsed_s": 3.1018803268671036}
+{"stage": "inference", "event": "start", "utc": "2026-11-14T08:43:09.844+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-14T08:43:12.395+00:00", "elapsed_s": 2.551246888935566}
+{"stage": "inference", "event": "start", "utc": "2026-11-14T08:43:13.622+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-14T08:43:14.281+00:00", "elapsed_s": 0.6594257801771164}
+{"stage": "inference", "event": "start", "utc": "2026-11-14T08:43:15.523+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-14T08:43:16.133+00:00", "elapsed_s": 0.6101486384868622}
+{"stage": "inference", "event": "start", "utc": "2026-11-14T08:43:18.555+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-14T08:43:18.667+00:00", "elapsed_s": 0.1114916279911995}
+{"stage": "inference", "event": "start", "utc": "2026-11-14T08:43:19.078+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-14T08:43:19.181+00:00", "elapsed_s": 0.1032380759716034}
+{"stage": "inference", "event": "start", "utc": "2026-11-14T08:43:21.127+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-14T08:43:21.328+00:00", "elapsed_s": 0.20093172788619995}
+{"stage": "inference", "event": "start", "utc": "2026-11-14T08:43:21.654+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-14T08:43:21.846+00:00", "elapsed_s": 0.1924823299050331}
+{"stage": "inference", "event": "start", "utc": "2026-11-14T08:43:23.501+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-14T08:43:23.749+00:00", "elapsed_s": 0.24853263795375824}
+{"stage": "inference", "event": "start", "utc": "2026-11-14T08:43:24.000+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-14T08:43:24.120+00:00", "elapsed_s": 0.11976764351129532}
+{"stage": "inference", "event": "start", "utc": "2026-11-14T08:43:24.626+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-14T08:43:25.215+00:00", "elapsed_s": 0.5891689285635948}
+{"stage": "inference", "event": "start", "utc": "2026-11-14T08:43:27.820+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-14T08:43:28.507+00:00", "elapsed_s": 0.686775416135788}
+{"stage": "inference", "event": "start", "utc": "2026-11-14T08:43:29.781+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-14T08:43:31.302+00:00", "elapsed_s": 1.52103990316391}
+{"stage": "inference", "event": "start", "utc": "2026-11-14T08:43:33.606+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-14T08:43:34.914+00:00", "elapsed_s": 1.307994119822979}
+{"stage": "inference", "event": "start", "utc": "2026-11-14T08:43:36.328+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-14T08:43:37.459+00:00", "elapsed_s": 1.1310539245605469}
+{"stage": "inference", "event": "start", "utc": "2026-11-14T08:43:40.551+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-14T08:43:41.927+00:00", "elapsed_s": 1.3762731850147247}

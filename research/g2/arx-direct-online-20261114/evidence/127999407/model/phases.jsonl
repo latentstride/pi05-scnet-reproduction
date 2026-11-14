@@ -1,0 +1,12 @@
+{"stage": "checkpoint_and_tokenizer_sha256", "event": "start", "utc": "2026-11-14T07:43:54.463+00:00"}
+{"stage": "checkpoint_and_tokenizer_sha256", "event": "end", "utc": "2026-11-14T07:43:55.114+00:00", "elapsed_s": 0.6517805680632591}
+{"stage": "openpi_import", "event": "start", "utc": "2026-11-14T07:43:55.115+00:00"}
+{"stage": "openpi_import", "event": "end", "utc": "2026-11-14T07:49:48.554+00:00", "elapsed_s": 353.4394721016288}
+{"stage": "jax_device", "event": "start", "utc": "2026-11-14T07:49:48.561+00:00"}
+{"stage": "jax_device", "event": "end", "utc": "2026-11-14T07:49:54.193+00:00", "elapsed_s": 5.621506787836552}
+{"stage": "orbax_restore_and_policy_create", "event": "start", "utc": "2026-11-14T07:49:54.194+00:00"}
+{"stage": "orbax_restore_and_policy_create", "event": "end", "utc": "2026-11-14T07:50:28.765+00:00", "elapsed_s": 34.57079514116049}
+{"stage": "first_jax_compile_and_inference", "event": "start", "utc": "2026-11-14T07:54:01.261+00:00"}
+{"stage": "first_jax_compile_and_inference", "event": "end", "utc": "2026-11-14T07:56:13.281+00:00", "elapsed_s": 132.01930215209723}
+{"stage": "inference", "event": "start", "utc": "2026-11-14T08:00:01.897+00:00"}
+{"stage": "inference", "event": "end", "utc": "2026-11-14T08:00:07.170+00:00", "elapsed_s": 5.273089274764061}

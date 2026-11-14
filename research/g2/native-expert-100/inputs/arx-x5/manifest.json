@@ -1,0 +1,315 @@
+{
+  "robot": "arx-x5",
+  "revision": "3dc3b798668feb99ac61cc9086d84cbcc3d79186",
+  "archive_url": "https://huggingface.co/datasets/TianxingChen/RoboTwin2.0/resolve/3dc3b798668feb99ac61cc9086d84cbcc3d79186/dataset/handover_block/arx-x5_clean_50.zip",
+  "archive_lfs_sha256_metadata": "29958cc1583aa16bdf29ff7fb3a5b0e3f1bea9df6d412783f9be2dc71f49d559",
+  "range_bytes": 3228307,
+  "members": {
+    "seed.txt": {
+      "member": "arx-x5_clean_50/seed.txt",
+      "bytes": 141,
+      "sha256": "df07ba86f6a0adf64e96e480d03d157afb0efaea7d43cd4e33ec18ed2bec814f",
+      "zip_crc32": "8db1f833"
+    },
+    "episode0.pkl": {
+      "member": "arx-x5_clean_50/_traj_data/episode0.pkl",
+      "bytes": 66045,
+      "sha256": "718fcfd4b3b70e5f27f98b0c9cd60c680d3ac27868469a3fe93ebb541fda04c7",
+      "zip_crc32": "fa63937d"
+    },
+    "episode1.pkl": {
+      "member": "arx-x5_clean_50/_traj_data/episode1.pkl",
+      "bytes": 64029,
+      "sha256": "1ef49d96c8287c01c13028c812370fc6b5ac3958831a78c7132fa9fac4e9b9e6",
+      "zip_crc32": "f469f053"
+    },
+    "episode2.pkl": {
+      "member": "arx-x5_clean_50/_traj_data/episode2.pkl",
+      "bytes": 65373,
+      "sha256": "d8959d10dee5a539bc9b82324c41c49424dfd1f7a9d7052165ad850c15945943",
+      "zip_crc32": "60d7f881"
+    },
+    "episode3.pkl": {
+      "member": "arx-x5_clean_50/_traj_data/episode3.pkl",
+      "bytes": 64845,
+      "sha256": "86ee3bcb6b05f7a8b428973133d221b4e22ac1e1a72cfc186c6282c20d1b6c62",
+      "zip_crc32": "40508583"
+    },
+    "episode4.pkl": {
+      "member": "arx-x5_clean_50/_traj_data/episode4.pkl",
+      "bytes": 63933,
+      "sha256": "ee8acb1fb11a49cf50d78bd2e817a72a47064b079fe5c32ad073aaeeefb85e05",
+      "zip_crc32": "a5580acb"
+    },
+    "episode5.pkl": {
+      "member": "arx-x5_clean_50/_traj_data/episode5.pkl",
+      "bytes": 64221,
+      "sha256": "cd00c5c1e463fc4d209125ef438b845bbb59f8de8383916cbae23213b085f4ac",
+      "zip_crc32": "2dfff712"
+    },
+    "episode6.pkl": {
+      "member": "arx-x5_clean_50/_traj_data/episode6.pkl",
+      "bytes": 64173,
+      "sha256": "5e59ba68cb9d617d3a15511070acf0d8635dd91d8ac9becb57f6e5419d79f90a",
+      "zip_crc32": "97689607"
+    },
+    "episode7.pkl": {
+      "member": "arx-x5_clean_50/_traj_data/episode7.pkl",
+      "bytes": 66237,
+      "sha256": "c8756b5a3ad97deacbd7e2a1f4c337db6f1be5071e452034bbc410681c6d970c",
+      "zip_crc32": "174ce1ba"
+    },
+    "episode8.pkl": {
+      "member": "arx-x5_clean_50/_traj_data/episode8.pkl",
+      "bytes": 63837,
+      "sha256": "a8828938f087cb8106e8ffe2b09bc751ed26d48e188c651db48120bbb8a28054",
+      "zip_crc32": "f0f9bc00"
+    },
+    "episode9.pkl": {
+      "member": "arx-x5_clean_50/_traj_data/episode9.pkl",
+      "bytes": 66093,
+      "sha256": "1718f4efe5b82bcd6f2d942cc6e805c4e6549092b03819ff190e6b50a386d8fe",
+      "zip_crc32": "c877a491"
+    },
+    "episode10.pkl": {
+      "member": "arx-x5_clean_50/_traj_data/episode10.pkl",
+      "bytes": 62541,
+      "sha256": "33d8023a14474fe55b64d385a9a828f08f02fd3c96598c26c4824519a173fd28",
+      "zip_crc32": "6cdf4b5f"
+    },
+    "episode11.pkl": {
+      "member": "arx-x5_clean_50/_traj_data/episode11.pkl",
+      "bytes": 64989,
+      "sha256": "7cef7988c1f352ea817011b334ab110456347e6aa40f2ee517120fa97cebf684",
+      "zip_crc32": "cac9a066"
+    },
+    "episode12.pkl": {
+      "member": "arx-x5_clean_50/_traj_data/episode12.pkl",
+      "bytes": 64317,
+      "sha256": "7ef38bcdaff3af1974054c657274d71efd507a54772c62967a6d89a8ebeff9df",
+      "zip_crc32": "e44193b2"
+    },
+    "episode13.pkl": {
+      "member": "arx-x5_clean_50/_traj_data/episode13.pkl",
+      "bytes": 64317,
+      "sha256": "89824691581308909bcfa27f08b02971571ac7f62ee5ccfa96b7131f4733dfba",
+      "zip_crc32": "94c0ac66"
+    },
+    "episode14.pkl": {
+      "member": "arx-x5_clean_50/_traj_data/episode14.pkl",
+      "bytes": 64989,
+      "sha256": "46484553a0616a2ac858a1b694b46db819ed6b21636396d520663ffc16b7a76e",
+      "zip_crc32": "dd1e1a52"
+    },
+    "episode15.pkl": {
+      "member": "arx-x5_clean_50/_traj_data/episode15.pkl",
+      "bytes": 64557,
+      "sha256": "0a3301cef36ca3d820acfd4539157200cfa5b0e436abd3d45fcce7ce251a6948",
+      "zip_crc32": "9f8caf7d"
+    },
+    "episode16.pkl": {
+      "member": "arx-x5_clean_50/_traj_data/episode16.pkl",
+      "bytes": 67245,
+      "sha256": "6f1cb491fffc70928a48d1214f7233251e536d8bcc1dea753a5320cb63b0f650",
+      "zip_crc32": "64d192d5"
+    },
+    "episode17.pkl": {
+      "member": "arx-x5_clean_50/_traj_data/episode17.pkl",
+      "bytes": 65133,
+      "sha256": "2b4bd3a3c5c7d6e6880f8757e39e444a504a97981971cd9aa5aada56f1731514",
+      "zip_crc32": "e282ac78"
+    },
+    "episode18.pkl": {
+      "member": "arx-x5_clean_50/_traj_data/episode18.pkl",
+      "bytes": 65037,
+      "sha256": "2a64abb259f672d2e9ab0dc03738cb9d7de48adb9c5b340c05b13f399c49aec0",
+      "zip_crc32": "ee4ff7f0"
+    },
+    "episode19.pkl": {
+      "member": "arx-x5_clean_50/_traj_data/episode19.pkl",
+      "bytes": 63693,
+      "sha256": "93ccaa974480a0b927c3f6a9dfd7c3a45e1e3ab8bcbe298038dfbdc067eed642",
+      "zip_crc32": "602129c8"
+    },
+    "episode20.pkl": {
+      "member": "arx-x5_clean_50/_traj_data/episode20.pkl",
+      "bytes": 65805,
+      "sha256": "45e4d02a868853f329b83ec3830ffceb30d18dd6ec4ea3f5702c1e42d786f04d",
+      "zip_crc32": "a8593f8f"
+    },
+    "episode21.pkl": {
+      "member": "arx-x5_clean_50/_traj_data/episode21.pkl",
+      "bytes": 62925,
+      "sha256": "85fd28637f1197d80af9d1c7a598a12d110b2c187cb9e58fc4567909f5f2caeb",
+      "zip_crc32": "bb0a3f67"
+    },
+    "episode22.pkl": {
+      "member": "arx-x5_clean_50/_traj_data/episode22.pkl",
+      "bytes": 64605,
+      "sha256": "7d3b1b35a0558a1c8fae38716032a4b103e42851acaa8ec3a9fb62f7ecb6a444",
+      "zip_crc32": "f2fc2cb8"
+    },
+    "episode23.pkl": {
+      "member": "arx-x5_clean_50/_traj_data/episode23.pkl",
+      "bytes": 63645,
+      "sha256": "4d346ef1a36090cc36836165a4fa9d8be6e63dac7b0fa3e7c8b5a60c2f9461a7",
+      "zip_crc32": "8064e43c"
+    },
+    "episode24.pkl": {
+      "member": "arx-x5_clean_50/_traj_data/episode24.pkl",
+      "bytes": 64941,
+      "sha256": "5398850512d66ed11d944749181265009bbf4539bd121d9cad95732ec20f166c",
+      "zip_crc32": "8127bb74"
+    },
+    "episode25.pkl": {
+      "member": "arx-x5_clean_50/_traj_data/episode25.pkl",
+      "bytes": 61869,
+      "sha256": "848e863eca6f4977cac1122d0c8ee6a68b793384e114db7efe37a492eeea14e7",
+      "zip_crc32": "c2591eca"
+    },
+    "episode26.pkl": {
+      "member": "arx-x5_clean_50/_traj_data/episode26.pkl",
+      "bytes": 65661,
+      "sha256": "2d57b47e105567188062c7a885a4285ac2ba4ff8126c9b7c0e1e8a834ee31628",
+      "zip_crc32": "9436761c"
+    },
+    "episode27.pkl": {
+      "member": "arx-x5_clean_50/_traj_data/episode27.pkl",
+      "bytes": 65997,
+      "sha256": "352aab07bde5467fd3b401cd577562e6ef5ff2fa8887fd9be78ba83d8d0197ac",
+      "zip_crc32": "80ee237a"
+    },
+    "episode28.pkl": {
+      "member": "arx-x5_clean_50/_traj_data/episode28.pkl",
+      "bytes": 69846,
+      "sha256": "3037a5076472210661433f7e5808e60520dca94171d11e24cb413eedd0984436",
+      "zip_crc32": "e45f83d0"
+    },
+    "episode29.pkl": {
+      "member": "arx-x5_clean_50/_traj_data/episode29.pkl",
+      "bytes": 64413,
+      "sha256": "9040165a8efa0d3fb925f27a3d6381ac7610d20045eef52285cde966f61057a3",
+      "zip_crc32": "d551b61d"
+    },
+    "episode30.pkl": {
+      "member": "arx-x5_clean_50/_traj_data/episode30.pkl",
+      "bytes": 65229,
+      "sha256": "15a87ae07b3dcbde807bf04d243905ba175dc332c7541aacff652978790bc7cf",
+      "zip_crc32": "06d5ef5e"
+    },
+    "episode31.pkl": {
+      "member": "arx-x5_clean_50/_traj_data/episode31.pkl",
+      "bytes": 68120,
+      "sha256": "1c0ed3af239373127c902653c5f1dabaa0860d6558b155b03043b61213c7c8fa",
+      "zip_crc32": "faa0c93a"
+    },
+    "episode32.pkl": {
+      "member": "arx-x5_clean_50/_traj_data/episode32.pkl",
+      "bytes": 64365,
+      "sha256": "22da02de617bfc12fa524176b3ac3653f88fe2bffda8e524e8d733d077aaeee6",
+      "zip_crc32": "ac511f67"
+    },
+    "episode33.pkl": {
+      "member": "arx-x5_clean_50/_traj_data/episode33.pkl",
+      "bytes": 64941,
+      "sha256": "1e0640c7109d4198c020dd2360942561098ed371c69b89d4512b11c86c76f27e",
+      "zip_crc32": "18280958"
+    },
+    "episode34.pkl": {
+      "member": "arx-x5_clean_50/_traj_data/episode34.pkl",
+      "bytes": 63597,
+      "sha256": "9959590985d2fd77516a3d0c9c5ffff12a7d1eae3bb41a705303600c318568c3",
+      "zip_crc32": "f1e575f8"
+    },
+    "episode35.pkl": {
+      "member": "arx-x5_clean_50/_traj_data/episode35.pkl",
+      "bytes": 66333,
+      "sha256": "600473f8a04f58fe0770b3e79aedfd30a47a94d81655ea60603e6f9856c1b4a5",
+      "zip_crc32": "2632c6f6"
+    },
+    "episode36.pkl": {
+      "member": "arx-x5_clean_50/_traj_data/episode36.pkl",
+      "bytes": 62925,
+      "sha256": "b7c7f37520f9e65989d82ec4a157af8a9f44b155c35644e9bf296dca23912463",
+      "zip_crc32": "7b494f8a"
+    },
+    "episode37.pkl": {
+      "member": "arx-x5_clean_50/_traj_data/episode37.pkl",
+      "bytes": 64029,
+      "sha256": "68a5169d0c7e9eeab06286ca08181918379776160aa55fc145ddb011ea8f26ac",
+      "zip_crc32": "4d218f8c"
+    },
+    "episode38.pkl": {
+      "member": "arx-x5_clean_50/_traj_data/episode38.pkl",
+      "bytes": 65565,
+      "sha256": "63bd8f6a25af13c50dee0fbf5f25e044859d370b0e856d2ef91abc5d24ba9991",
+      "zip_crc32": "79071693"
+    },
+    "episode39.pkl": {
+      "member": "arx-x5_clean_50/_traj_data/episode39.pkl",
+      "bytes": 63309,
+      "sha256": "a02439d167dc0e0fc6f653fd832c2f019d7dba1f5d728ec21c2030ca46af417f",
+      "zip_crc32": "cdfa8694"
+    },
+    "episode40.pkl": {
+      "member": "arx-x5_clean_50/_traj_data/episode40.pkl",
+      "bytes": 66429,
+      "sha256": "e34e969dda6ff647fb72c9ccc6584364fe83cb651e0817b8823c4454f7c2305c",
+      "zip_crc32": "8abbb4e2"
+    },
+    "episode41.pkl": {
+      "member": "arx-x5_clean_50/_traj_data/episode41.pkl",
+      "bytes": 63693,
+      "sha256": "e053a66edd787cbf0afa0d96c08666b32cdf402e72e39a337c109ce17647cca5",
+      "zip_crc32": "b8f853f9"
+    },
+    "episode42.pkl": {
+      "member": "arx-x5_clean_50/_traj_data/episode42.pkl",
+      "bytes": 63261,
+      "sha256": "9b1b61309d9fd3c01a496e102da4237addd156af05c1eb2274bf119caa8a625b",
+      "zip_crc32": "bc94f11c"
+    },
+    "episode43.pkl": {
+      "member": "arx-x5_clean_50/_traj_data/episode43.pkl",
+      "bytes": 69462,
+      "sha256": "2510a4a8f4bf197c0343b8a3e481e6cfa0ea6e4679256693941cc9784c012f7f",
+      "zip_crc32": "c69e62a7"
+    },
+    "episode44.pkl": {
+      "member": "arx-x5_clean_50/_traj_data/episode44.pkl",
+      "bytes": 63933,
+      "sha256": "8d10f930c53e19d83c34d5d1458c4b3222970b3fb1712f7dac52b4d385eeabff",
+      "zip_crc32": "ae17daf3"
+    },
+    "episode45.pkl": {
+      "member": "arx-x5_clean_50/_traj_data/episode45.pkl",
+      "bytes": 64125,
+      "sha256": "77ebb22ae84dff3eef4dd2eb2e07b2420387afbe441642643cba31c33389fa4e",
+      "zip_crc32": "68c5d643"
+    },
+    "episode46.pkl": {
+      "member": "arx-x5_clean_50/_traj_data/episode46.pkl",
+      "bytes": 62637,
+      "sha256": "99c8d77e6b2cdc92c623d55265a5f5803794d2eba59ed0dfa9b82b42d494e753",
+      "zip_crc32": "915d3b5b"
+    },
+    "episode47.pkl": {
+      "member": "arx-x5_clean_50/_traj_data/episode47.pkl",
+      "bytes": 66333,
+      "sha256": "4930b01f009af4492b10d4b16e28a6a19afd6c4a3f0fa4d66a30e7591d84986c",
+      "zip_crc32": "1f7bf786"
+    },
+    "episode48.pkl": {
+      "member": "arx-x5_clean_50/_traj_data/episode48.pkl",
+      "bytes": 66285,
+      "sha256": "e55179a4abd79c0e8e70a452ebf294480faa8cadfeb4c38fd8ba2ee4cf408c9b",
+      "zip_crc32": "5e611f88"
+    },
+    "episode49.pkl": {
+      "member": "arx-x5_clean_50/_traj_data/episode49.pkl",
+      "bytes": 62829,
+      "sha256": "345bfcc01e31bc5fa53b6b642316a012c2a64cd967666feb9ba32d8d27f3b6ac",
+      "zip_crc32": "fb25e6b5"
+    }
+  }
+}

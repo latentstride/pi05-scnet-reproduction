@@ -1,0 +1,2 @@
+# Keep the official seed members byte-exact, including their trailing space.
+inputs/*/seed.txt -text whitespace=-blank-at-eol

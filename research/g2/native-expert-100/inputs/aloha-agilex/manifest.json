@@ -1,0 +1,315 @@
+{
+  "robot": "aloha-agilex",
+  "revision": "3dc3b798668feb99ac61cc9086d84cbcc3d79186",
+  "archive_url": "https://huggingface.co/datasets/TianxingChen/RoboTwin2.0/resolve/3dc3b798668feb99ac61cc9086d84cbcc3d79186/dataset/handover_block/aloha-agilex_clean_50.zip",
+  "archive_lfs_sha256_metadata": "7e9e7145c3f1a4093d7a24a44dc5c0b1af2ccc551c3bc8e50d7bdde824da4947",
+  "range_bytes": 8748989,
+  "members": {
+    "seed.txt": {
+      "member": "aloha-agilex_clean_50/seed.txt",
+      "bytes": 141,
+      "sha256": "b989f0d6533be35fc0193843cb22acd04213ee4b2865641d75c9afc0b5a66ec5",
+      "zip_crc32": "26be7d4a"
+    },
+    "episode0.pkl": {
+      "member": "aloha-agilex_clean_50/_traj_data/episode0.pkl",
+      "bytes": 143255,
+      "sha256": "881363a1b7e7ca53105e05c6ab8a48c9cd6f87c4a6b227f28e6dfc05fb44a48b",
+      "zip_crc32": "500c5375"
+    },
+    "episode1.pkl": {
+      "member": "aloha-agilex_clean_50/_traj_data/episode1.pkl",
+      "bytes": 131294,
+      "sha256": "99bef7f009146c280ba81bfc4577fb5b77d3f47c270b7852172f3be7134393b8",
+      "zip_crc32": "38d8ee1f"
+    },
+    "episode2.pkl": {
+      "member": "aloha-agilex_clean_50/_traj_data/episode2.pkl",
+      "bytes": 136151,
+      "sha256": "f5bb8887fb9a2b0bd0d73b5a3743ac0e2c929ff084c9e3cc60c946f2ee811104",
+      "zip_crc32": "2d9ef149"
+    },
+    "episode3.pkl": {
+      "member": "aloha-agilex_clean_50/_traj_data/episode3.pkl",
+      "bytes": 130044,
+      "sha256": "0c65c16b358aeffe770b8d88ede2cd3856651f6076e1a9b535f171ac9c401958",
+      "zip_crc32": "97376f6a"
+    },
+    "episode4.pkl": {
+      "member": "aloha-agilex_clean_50/_traj_data/episode4.pkl",
+      "bytes": 136871,
+      "sha256": "01a0cef71fd7a879f0914ad7057118a8e7b1cce4de4259d59f2a87b4215e91e5",
+      "zip_crc32": "70abc29e"
+    },
+    "episode5.pkl": {
+      "member": "aloha-agilex_clean_50/_traj_data/episode5.pkl",
+      "bytes": 131870,
+      "sha256": "e1a20746473572a26a07c82bf32a165bef69c9ccd5b0b18c3e174151d4453d57",
+      "zip_crc32": "e670bf78"
+    },
+    "episode6.pkl": {
+      "member": "aloha-agilex_clean_50/_traj_data/episode6.pkl",
+      "bytes": 133212,
+      "sha256": "e36ccffe471e31b651a1a7e83fe2550d3e5da26832a6d5e8cd9a01b0182211c6",
+      "zip_crc32": "eddef2a1"
+    },
+    "episode7.pkl": {
+      "member": "aloha-agilex_clean_50/_traj_data/episode7.pkl",
+      "bytes": 130668,
+      "sha256": "b0a5a2cec4a1249b8826856fb714ce8261b0e10a8e4a327b75d3eb438c982f7d",
+      "zip_crc32": "e6b9483a"
+    },
+    "episode8.pkl": {
+      "member": "aloha-agilex_clean_50/_traj_data/episode8.pkl",
+      "bytes": 138695,
+      "sha256": "80b7cccd433cda8c7f4ad0f20a7c5acb511d36c14de7487546b1c4287ec5653e",
+      "zip_crc32": "09f765b4"
+    },
+    "episode9.pkl": {
+      "member": "aloha-agilex_clean_50/_traj_data/episode9.pkl",
+      "bytes": 132734,
+      "sha256": "df3b3d72ac03f496304404b5e006975d95ff23c89e04ca53680a1a86ca52ad89",
+      "zip_crc32": "558a6551"
+    },
+    "episode10.pkl": {
+      "member": "aloha-agilex_clean_50/_traj_data/episode10.pkl",
+      "bytes": 140567,
+      "sha256": "11c0e1f56fa0cfbd2fce7c4c5656db8ad683c6f3022600340adc9f22bdfdf697",
+      "zip_crc32": "b826a1cd"
+    },
+    "episode11.pkl": {
+      "member": "aloha-agilex_clean_50/_traj_data/episode11.pkl",
+      "bytes": 130190,
+      "sha256": "5649619baf1ab746d99b79b853bf7e0d8813c5d8db359a0165e979910060a90b",
+      "zip_crc32": "6a752dc3"
+    },
+    "episode12.pkl": {
+      "member": "aloha-agilex_clean_50/_traj_data/episode12.pkl",
+      "bytes": 142009,
+      "sha256": "0936ab62e8838a009cdb61724a3de4b7db462ee7f922a6aa3136174e149c0b5b",
+      "zip_crc32": "23015fb0"
+    },
+    "episode13.pkl": {
+      "member": "aloha-agilex_clean_50/_traj_data/episode13.pkl",
+      "bytes": 131820,
+      "sha256": "2da3a9aa851b717d27c49c7925f0ea325dcffcc3497b56082e5c73ffb920b2d1",
+      "zip_crc32": "56da7e0d"
+    },
+    "episode14.pkl": {
+      "member": "aloha-agilex_clean_50/_traj_data/episode14.pkl",
+      "bytes": 137975,
+      "sha256": "0f8ce73febd4ba13e0d781f85768e4cf27ff7fc57862b9c72b068efedf3f1a27",
+      "zip_crc32": "f51c0620"
+    },
+    "episode15.pkl": {
+      "member": "aloha-agilex_clean_50/_traj_data/episode15.pkl",
+      "bytes": 134757,
+      "sha256": "7d0dde40c9d158e898ecdfcb2c3d468f6c011baf38d76a6647d913424418aae4",
+      "zip_crc32": "687e438f"
+    },
+    "episode16.pkl": {
+      "member": "aloha-agilex_clean_50/_traj_data/episode16.pkl",
+      "bytes": 140039,
+      "sha256": "24e4163b0f31b0f82081f09adb6b33297369e91ae5de60106d2170cb8171b66c",
+      "zip_crc32": "3200b38c"
+    },
+    "episode17.pkl": {
+      "member": "aloha-agilex_clean_50/_traj_data/episode17.pkl",
+      "bytes": 130092,
+      "sha256": "41c0079fe0afb5621cbac310c018c7db0b18a8e3fd1f21421c2104728299b947",
+      "zip_crc32": "43acad08"
+    },
+    "episode18.pkl": {
+      "member": "aloha-agilex_clean_50/_traj_data/episode18.pkl",
+      "bytes": 140615,
+      "sha256": "ec629028b00e46b8927b7ed5f1832ad8766d28bf5113abea23d7e143b511fe9f",
+      "zip_crc32": "e68d853a"
+    },
+    "episode19.pkl": {
+      "member": "aloha-agilex_clean_50/_traj_data/episode19.pkl",
+      "bytes": 130188,
+      "sha256": "1d588c6c923e52100f7c1fb43c8913aca1712ffb64b5a94238a4a7239b4431b1",
+      "zip_crc32": "12649359"
+    },
+    "episode20.pkl": {
+      "member": "aloha-agilex_clean_50/_traj_data/episode20.pkl",
+      "bytes": 129612,
+      "sha256": "fe2a8e9b79a34873cb74d40a94ddad01c77f5af5302243d4d845a9897b19de28",
+      "zip_crc32": "bc2cdd68"
+    },
+    "episode21.pkl": {
+      "member": "aloha-agilex_clean_50/_traj_data/episode21.pkl",
+      "bytes": 141911,
+      "sha256": "f898f9f8e3aecefd87d84e55694255a005e535ca69f4e0c0e3c274dd8a315f74",
+      "zip_crc32": "4af1521d"
+    },
+    "episode22.pkl": {
+      "member": "aloha-agilex_clean_50/_traj_data/episode22.pkl",
+      "bytes": 134757,
+      "sha256": "35572292cfeeb17824fae596dd0d4cf59a62fc6424be2bb613079dcb89813cf8",
+      "zip_crc32": "2400eb00"
+    },
+    "episode23.pkl": {
+      "member": "aloha-agilex_clean_50/_traj_data/episode23.pkl",
+      "bytes": 133548,
+      "sha256": "d6c32a2133caa16bff8ba649aeb9d77b41d3d0479ac6d3c61add95b70c63ed1b",
+      "zip_crc32": "2e8cdaac"
+    },
+    "episode24.pkl": {
+      "member": "aloha-agilex_clean_50/_traj_data/episode24.pkl",
+      "bytes": 128844,
+      "sha256": "11ed25abd922e093fd7d59f7d0abeb314534797571bfde5652f630f2a8e67768",
+      "zip_crc32": "24fb7d00"
+    },
+    "episode25.pkl": {
+      "member": "aloha-agilex_clean_50/_traj_data/episode25.pkl",
+      "bytes": 129228,
+      "sha256": "a696f443f19ec0006c90579b1c4449ad4f93802031b3a643d8c1dad6422e5aa5",
+      "zip_crc32": "d14005bb"
+    },
+    "episode26.pkl": {
+      "member": "aloha-agilex_clean_50/_traj_data/episode26.pkl",
+      "bytes": 130476,
+      "sha256": "e07edaac01eb68dc0f7399bb7c1aa5ca415962c15dcdda536521bf25ec3254ab",
+      "zip_crc32": "c6178c8f"
+    },
+    "episode27.pkl": {
+      "member": "aloha-agilex_clean_50/_traj_data/episode27.pkl",
+      "bytes": 132012,
+      "sha256": "e6247475f81107419010103de9e74a3e98eea509596aef2a7ca153b342ac695d",
+      "zip_crc32": "3b869192"
+    },
+    "episode28.pkl": {
+      "member": "aloha-agilex_clean_50/_traj_data/episode28.pkl",
+      "bytes": 131628,
+      "sha256": "d2187be7456938d82641a3b9b1aee72a353a8d0bc47adfeeea62d30791610002",
+      "zip_crc32": "aaf6a6b4"
+    },
+    "episode29.pkl": {
+      "member": "aloha-agilex_clean_50/_traj_data/episode29.pkl",
+      "bytes": 158135,
+      "sha256": "86cda303fb19465fa81d7cbbd1a9b9b3b6aba571027287c27bdf215e148b8718",
+      "zip_crc32": "687be492"
+    },
+    "episode30.pkl": {
+      "member": "aloha-agilex_clean_50/_traj_data/episode30.pkl",
+      "bytes": 141143,
+      "sha256": "63a39117d684696f8b1efcc00824c032f0bf5e0e45910eebc16d53bbf6a8e394",
+      "zip_crc32": "f43ced42"
+    },
+    "episode31.pkl": {
+      "member": "aloha-agilex_clean_50/_traj_data/episode31.pkl",
+      "bytes": 140663,
+      "sha256": "ae42c26aa600e88e6681a154a70908e3cba439d973d6369836f6e03f967e0533",
+      "zip_crc32": "6758b201"
+    },
+    "episode32.pkl": {
+      "member": "aloha-agilex_clean_50/_traj_data/episode32.pkl",
+      "bytes": 137198,
+      "sha256": "d401918df4c1e462b1c838082117c6eea3a0867e5d03c1a07309e16d17b6ad6b",
+      "zip_crc32": "6bc9053c"
+    },
+    "episode33.pkl": {
+      "member": "aloha-agilex_clean_50/_traj_data/episode33.pkl",
+      "bytes": 131244,
+      "sha256": "58ee89f67190113458a179c3e948e85e7310a3b6018f8d4dd8a0aa106bb5b567",
+      "zip_crc32": "15964eed"
+    },
+    "episode34.pkl": {
+      "member": "aloha-agilex_clean_50/_traj_data/episode34.pkl",
+      "bytes": 139079,
+      "sha256": "cd377938cbd52c0068b5d8f8745990b742f4eed76f90f9b5568fcc36fb8c4d65",
+      "zip_crc32": "6ddac077"
+    },
+    "episode35.pkl": {
+      "member": "aloha-agilex_clean_50/_traj_data/episode35.pkl",
+      "bytes": 139655,
+      "sha256": "b066f147a85a7ce421c4b4a24ca91fa7a5e9a9d6bf1c87a2c4da999636733602",
+      "zip_crc32": "3d577f83"
+    },
+    "episode36.pkl": {
+      "member": "aloha-agilex_clean_50/_traj_data/episode36.pkl",
+      "bytes": 131052,
+      "sha256": "cb4d19ebd09d4af76683f15e22d55f3adc083769fb1a7257c50c9acc90111c4c",
+      "zip_crc32": "69f5a1e4"
+    },
+    "episode37.pkl": {
+      "member": "aloha-agilex_clean_50/_traj_data/episode37.pkl",
+      "bytes": 131340,
+      "sha256": "3550c34d87d2589153e94a083eadfe508ec74840f3464e3db1f0e2762087b521",
+      "zip_crc32": "0c904803"
+    },
+    "episode38.pkl": {
+      "member": "aloha-agilex_clean_50/_traj_data/episode38.pkl",
+      "bytes": 131292,
+      "sha256": "1618189595bc00cd4e9e2eaa118f3317b39aa8ff4fa1a17b910e21d4e2656681",
+      "zip_crc32": "22ebd20e"
+    },
+    "episode39.pkl": {
+      "member": "aloha-agilex_clean_50/_traj_data/episode39.pkl",
+      "bytes": 147911,
+      "sha256": "614abf5015a473ff6baa8703d974bff0aa6030ae15e6b6b19747b25d91948913",
+      "zip_crc32": "1ddb4f62"
+    },
+    "episode40.pkl": {
+      "member": "aloha-agilex_clean_50/_traj_data/episode40.pkl",
+      "bytes": 131532,
+      "sha256": "512481edd347ebc6e84edface607bd097c48c4f4163ca3e0abd1cec0cc9679de",
+      "zip_crc32": "485d9af0"
+    },
+    "episode41.pkl": {
+      "member": "aloha-agilex_clean_50/_traj_data/episode41.pkl",
+      "bytes": 130620,
+      "sha256": "28519ba63ce723eb5a4ccfa813a03fde979158e9bcc18a3eda2cd06a5f921477",
+      "zip_crc32": "36f7b89f"
+    },
+    "episode42.pkl": {
+      "member": "aloha-agilex_clean_50/_traj_data/episode42.pkl",
+      "bytes": 136816,
+      "sha256": "829bc5dfdb7fd933261c0ecab290884c3d65d8ab91fac83a3df02af004975d85",
+      "zip_crc32": "3c093dff"
+    },
+    "episode43.pkl": {
+      "member": "aloha-agilex_clean_50/_traj_data/episode43.pkl",
+      "bytes": 131532,
+      "sha256": "d6ee732e24611be998f194a732908fe4c34055f52baa32298bbce412aa7c27ea",
+      "zip_crc32": "af5db577"
+    },
+    "episode44.pkl": {
+      "member": "aloha-agilex_clean_50/_traj_data/episode44.pkl",
+      "bytes": 130332,
+      "sha256": "fac3f8ebe5771f05d2e64e521d1d29a704299fe9708bd594968b773350c00b4f",
+      "zip_crc32": "3b5db9c4"
+    },
+    "episode45.pkl": {
+      "member": "aloha-agilex_clean_50/_traj_data/episode45.pkl",
+      "bytes": 135326,
+      "sha256": "cae3b578c4efd8374ab1269587e28529673ef2b721fb44213f411770fdcdecb2",
+      "zip_crc32": "fbfa388a"
+    },
+    "episode46.pkl": {
+      "member": "aloha-agilex_clean_50/_traj_data/episode46.pkl",
+      "bytes": 131532,
+      "sha256": "462d32ee7290156f27e607ec203ab171a238ef0022b47f69cdb4e0d6bee556d3",
+      "zip_crc32": "949806a5"
+    },
+    "episode47.pkl": {
+      "member": "aloha-agilex_clean_50/_traj_data/episode47.pkl",
+      "bytes": 133790,
+      "sha256": "1025523bbe30162a3f40a358a00a2970c72e3349f69337d55d9c2b44e0bd2f31",
+      "zip_crc32": "f5e6668c"
+    },
+    "episode48.pkl": {
+      "member": "aloha-agilex_clean_50/_traj_data/episode48.pkl",
+      "bytes": 129084,
+      "sha256": "f88da12d300dac3772a9de39b85986c9df759acf9cb6b790b22eadbf4d9f5762",
+      "zip_crc32": "8a919ad9"
+    },
+    "episode49.pkl": {
+      "member": "aloha-agilex_clean_50/_traj_data/episode49.pkl",
+      "bytes": 130716,
+      "sha256": "47746807f5f68bbfe8abc2ce022701e5c44a7f851c843af9387cc1c22347a88c",
+      "zip_crc32": "ccbb3bed"
+    }
+  }
+}

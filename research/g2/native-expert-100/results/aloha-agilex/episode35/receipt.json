@@ -1,0 +1,405 @@
+{
+  "input": {
+    "robot": "aloha-agilex",
+    "episode": 35,
+    "dataset_revision": "3dc3b798668feb99ac61cc9086d84cbcc3d79186",
+    "hdf5_sha256": "782786a92bd5868e24cdcb977947044de1d4b37165f79d0260ffc45dda10721f",
+    "hdf5_member": "aloha-agilex_clean_50/data/episode35.hdf5",
+    "pkl_sha256": "b066f147a85a7ce421c4b4a24ca91fa7a5e9a9d6bf1c87a2c4da999636733602",
+    "pkl_member": "aloha-agilex_clean_50/_traj_data/episode35.pkl",
+    "seed_file_sha256": "b989f0d6533be35fc0193843cb22acd04213ee4b2865641d75c9afc0b5a66ec5",
+    "seed": 40,
+    "prepared": true,
+    "frames": 288,
+    "steps": 3838,
+    "segments": [
+      {
+        "kind": "L",
+        "path_index": 0,
+        "first_frame": 0,
+        "frame_count": 38,
+        "first_tick": 0,
+        "last_tick": 539
+      },
+      {
+        "kind": "L",
+        "path_index": 1,
+        "first_frame": 38,
+        "frame_count": 15,
+        "first_tick": 539,
+        "last_tick": 720
+      },
+      {
+        "kind": "LG",
+        "path_index": 0,
+        "first_frame": 53,
+        "frame_count": 22,
+        "first_tick": 720,
+        "last_tick": 1020
+      },
+      {
+        "kind": "L",
+        "path_index": 2,
+        "first_frame": 75,
+        "frame_count": 14,
+        "first_tick": 1020,
+        "last_tick": 1194
+      },
+      {
+        "kind": "L",
+        "path_index": 3,
+        "first_frame": 89,
+        "frame_count": 24,
+        "first_tick": 1194,
+        "last_tick": 1521
+      },
+      {
+        "kind": "L",
+        "path_index": 4,
+        "first_frame": 113,
+        "frame_count": 5,
+        "first_tick": 1521,
+        "last_tick": 1566
+      },
+      {
+        "kind": "R",
+        "path_index": 0,
+        "first_frame": 118,
+        "frame_count": 33,
+        "first_tick": 1566,
+        "last_tick": 2020
+      },
+      {
+        "kind": "R",
+        "path_index": 1,
+        "first_frame": 151,
+        "frame_count": 15,
+        "first_tick": 2020,
+        "last_tick": 2211
+      },
+      {
+        "kind": "RG",
+        "path_index": 0,
+        "first_frame": 166,
+        "frame_count": 22,
+        "first_tick": 2211,
+        "last_tick": 2511
+      },
+      {
+        "kind": "LG",
+        "path_index": 1,
+        "first_frame": 188,
+        "frame_count": 22,
+        "first_tick": 2511,
+        "last_tick": 2811
+      },
+      {
+        "kind": "L",
+        "path_index": 5,
+        "first_frame": 210,
+        "frame_count": 15,
+        "first_tick": 2811,
+        "last_tick": 3002
+      },
+      {
+        "kind": "B",
+        "path_index": [
+          6,
+          2
+        ],
+        "first_frame": 225,
+        "frame_count": 30,
+        "first_tick": 3002,
+        "last_tick": 3409
+      },
+      {
+        "kind": "R",
+        "path_index": 3,
+        "first_frame": 255,
+        "frame_count": 11,
+        "first_tick": 3409,
+        "last_tick": 3538
+      },
+      {
+        "kind": "RG",
+        "path_index": 1,
+        "first_frame": 266,
+        "frame_count": 22,
+        "first_tick": 3538,
+        "last_tick": 3838
+      }
+    ],
+    "physics_dt_s": 0.004,
+    "time_semantics": "derived from cached control schedule",
+    "source_revision": "ea8b21121ebb3cd201ff5b3fe361944ac94eda3f",
+    "exact_recorded_targets": true,
+    "controls_sha256": "e8ab8c0cb59662308fdb139735cac5c7dcda37d594ae8f2395f16bdab646c4f6",
+    "spawn_pose": {
+      "box": {
+        "position_m": [
+          -0.12983678155681735,
+          0.2034921299857489,
+          0.842
+        ],
+        "quaternion_wxyz": [
+          0.9827147960111923,
+          0.0,
+          0.0,
+          0.18512598332130703
+        ]
+      },
+      "target_box": {
+        "position_m": [
+          0.11783869810037571,
+          0.19176500879735733,
+          0.741
+        ],
+        "quaternion_wxyz": [
+          1,
+          0,
+          0,
+          0
+        ]
+      }
+    }
+  },
+  "physical_steps": 3838,
+  "native_success": true,
+  "expected_steps": 3838,
+  "source_hashes": {
+    "envs/handover_block.py": "5439712296d7e143d41f8e78b4ab86cd4fad7fb98f40f5f5abb067a462d17650",
+    "envs/robot/robot.py": "3dcd80acc8cab489a4c5edb507cc460dab1724be0226b8d5c4c1b218dee605cb",
+    "envs/_base_task.py": "76a12a3ce2254c019e5c291e29c99b421dabbb0c6e0b9ec24db9155b2dcf81f5",
+    "envs/utils/create_actor.py": "6bababee8e70da2460b2bbf47d3b5fbb20ccf73368782a7be596a63c962dce6d",
+    "envs/utils/actor_utils.py": "252d43c526b23adcf4ba549fec64a49f037fc4a24e9edd1998e5f60d3e13d5d9",
+    "envs/utils/rand_create_actor.py": "6c409ff1d97528b9dc654d39cc34683f51af6e797c1c5d92c076c29c09f9bedb",
+    "envs/camera/camera.py": "e4d17e99c8a68f44a12bef248a2164f52206efeaf24168172b778cc1e32832dd",
+    "envs/robot/planner.py": "f1012345542483f4cfbac64880a266b7ee0d4a64362d5ec6fd6985ed9c34b564"
+  },
+  "simulator": "3.0.0b1",
+  "numpy": "1.26.4",
+  "control": "original native cached drives",
+  "physics_system": "PhysxCpuSystem",
+  "flags": {
+    "renderer": false,
+    "gpu": false,
+    "policy": false,
+    "cross_embodiment": false
+  },
+  "physics_config": {
+    "dt_s": 0.004,
+    "material": [
+      0.5,
+      0.5,
+      0.0
+    ],
+    "mass_kg": 0.009999999776482582,
+    "link_mass_kg": 1.0,
+    "robot_config_sha256": "a4f043d2d4b44cca5ec47fb498a3194da3f87ff9530dcbfdcee1539a44423d57",
+    "urdf_sha256": "097c59fb19a7b482249c6097df8319586ea7cfd268c015516f103b289a7e761a",
+    "native_gripper_scale": [
+      -0.01,
+      0.045
+    ],
+    "initial_seed": 40,
+    "camera_rng_draws": 2,
+    "initialization_steps": 2801,
+    "arx_base_separation_m": null,
+    "collision": "native URDF defaults and task geometry"
+  },
+  "initialization": {
+    "roots": [
+      [
+        0,
+        -0.65,
+        0.0,
+        0.707,
+        0,
+        0,
+        0.707
+      ]
+    ],
+    "block_pose": [
+      -0.1298375129699707,
+      0.2034909725189209,
+      0.8400005102157593,
+      0.982714831829071,
+      4.963337687513558e-06,
+      -4.6540258153981995e-06,
+      0.1851261556148529
+    ],
+    "target_pose": [
+      0.11783869564533234,
+      0.19176501035690308,
+      0.7409999966621399,
+      1.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "actual_qpos": [
+      [
+        0.0,
+        0.0,
+        -9.633261372242325e-17,
+        -9.633261372242325e-17,
+        1.0562962993437147e-13,
+        1.0562962993437147e-13,
+        -3.016615224282759e-08,
+        -3.258066882949606e-08,
+        -3.2333404842432856e-09,
+        -3.23495652487793e-09,
+        5.267530808490758e-18,
+        5.267530808490758e-18,
+        1.3821598255984342e-17,
+        1.3821598255984342e-17,
+        -5.666987590302597e-07,
+        -5.65274206110189e-07,
+        -4.906024386741592e-08,
+        -4.9084423636713836e-08,
+        -4.835828804061748e-06,
+        -4.838918357563671e-06,
+        -8.459834134555422e-06,
+        -8.459778655378614e-06,
+        7.701128623693876e-08,
+        7.693390813301448e-08,
+        -1.6475175002028664e-08,
+        -1.6467639696315928e-08,
+        4.63164752773082e-07,
+        4.6469963876916154e-07,
+        3.108373114457663e-09,
+        3.108284518660298e-09,
+        -8.158995683515968e-07,
+        -8.163781899384048e-07,
+        1.5176220002910412e-10,
+        1.5164668132339187e-10,
+        0.044236842542886734,
+        0.044238295406103134,
+        0.04423683509230614,
+        0.044238295406103134
+      ],
+      [
+        0.0,
+        0.0,
+        -9.633261372242325e-17,
+        -9.633261372242325e-17,
+        1.0562962993437147e-13,
+        1.0562962993437147e-13,
+        -3.016615224282759e-08,
+        -3.258066882949606e-08,
+        -3.2333404842432856e-09,
+        -3.23495652487793e-09,
+        5.267530808490758e-18,
+        5.267530808490758e-18,
+        1.3821598255984342e-17,
+        1.3821598255984342e-17,
+        -5.666987590302597e-07,
+        -5.65274206110189e-07,
+        -4.906024386741592e-08,
+        -4.9084423636713836e-08,
+        -4.835828804061748e-06,
+        -4.838918357563671e-06,
+        -8.459834134555422e-06,
+        -8.459778655378614e-06,
+        7.701128623693876e-08,
+        7.693390813301448e-08,
+        -1.6475175002028664e-08,
+        -1.6467639696315928e-08,
+        4.63164752773082e-07,
+        4.6469963876916154e-07,
+        3.108373114457663e-09,
+        3.108284518660298e-09,
+        -8.158995683515968e-07,
+        -8.163781899384048e-07,
+        1.5176220002910412e-10,
+        1.5164668132339187e-10,
+        0.044236842542886734,
+        0.044238295406103134,
+        0.04423683509230614,
+        0.044238295406103134
+      ]
+    ],
+    "initial_ee_error_m": [
+      0.0,
+      0.0
+    ]
+  },
+  "final": {
+    "block_pose": [
+      0.11595670133829117,
+      0.19108420610427856,
+      0.8461275696754456,
+      0.9999805092811584,
+      0.0018676274921745062,
+      -0.00025938492035493255,
+      0.0059642493724823
+    ],
+    "target_pose": [
+      0.11783869564533234,
+      0.19176501035690308,
+      0.7409999966621399,
+      1.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "qpos": [
+      0.019945358857512474,
+      0.00020638694695662707,
+      0.00016873485583346337,
+      1.9488594261929393e-05,
+      0.00010636718798195943,
+      -3.524174462654628e-05,
+      0.04505900293588638,
+      0.04495256021618843,
+      0.36958667635917664,
+      2.765547275543213,
+      1.618227481842041,
+      1.1391608715057373,
+      0.39309486746788025,
+      -0.01373271644115448,
+      0.04230532422661781,
+      0.043276816606521606
+    ],
+    "block_velocity": [
+      -0.019023722037672997,
+      0.007998380810022354,
+      0.0032414020970463753,
+      -0.07990194857120514,
+      -0.18992474675178528,
+      -0.0005924440920352936
+    ],
+    "functional_delta_m": [
+      -0.0018323436379432678,
+      -0.00030697882175445557,
+      0.00012826919555664062
+    ],
+    "right_gripper_request": 1.0
+  },
+  "contacts": {
+    "left_bilateral_lift": 1075,
+    "both_bilateral": 2311,
+    "right_bilateral_after_shared": 2679,
+    "target_contact": 3692
+  },
+  "contact_trace_columns": [
+    "finger_and_tray_mask",
+    "block_max_depth_m",
+    "left_0_Ns",
+    "left_1_Ns",
+    "right_0_Ns",
+    "right_1_Ns"
+  ],
+  "ee_error": {
+    "max_m": 0.0001160101501184083,
+    "max_deg": 0.04705904230922765,
+    "first_frame_m": [
+      0.0,
+      0.0
+    ],
+    "within_prior_tolerance": true
+  },
+  "physics_trace_sha256": "3470c7d6a2028bfd589cc0eecf304cfb335ba76212af85d9b54dfdf73f7902ff",
+  "status": "SUCCESS",
+  "category": null
+}

@@ -23,6 +23,12 @@ def first_tick(condition):
     return int(hits[0]) if len(hits) else None
 
 
+def physical_steps(receipt):
+    if receipt.get("reused") and "physical_steps" not in receipt:
+        return receipt["physics_steps"]
+    return receipt["physical_steps"]
+
+
 def dense_contacts(trace):
     mask = trace["contacts"][:, 0].astype(int)
     height = trace["block_pose"][:, 2]
@@ -44,7 +50,7 @@ def verify_episode(item, robot, episode, prepared=None, source_manifest=None):
     meta = receipt["input"]
     require((meta["robot"], meta["episode"], meta["dataset_revision"]) == (robot, episode, REVISION)
             and type(meta["episode"]) is int, "receipt identity")
-    steps, status = receipt["physical_steps"], receipt["status"]
+    steps, status = physical_steps(receipt), receipt["status"]
     if status == "NOT_REPRODUCIBLE":
         require(receipt["native_success"] is None and receipt.get("category") in (
             "RAW_DATA_MISSING_OR_CORRUPT", "CONTROL_CACHE_OR_TIMING",
@@ -117,10 +123,13 @@ def verify_episode(item, robot, episode, prepared=None, source_manifest=None):
             left = np.any(physical_contact[:, 2:4] > 0, axis=1)
             right = np.any(physical_contact[:, 4:6] > 0, axis=1)
         shared = left & right
+        exclusive_right = np.logical_or.accumulate(shared) & right & ~left
         phase = dict(contacts,
             left_contact_and_lift_tick=first_tick(left & (blocks[:steps + 1, 2] - blocks[0, 2] >= .02)),
             simultaneous_hand_contact_tick=first_tick(shared),
-            right_only_after_shared_contact_tick=first_tick(np.logical_or.accumulate(shared) & right & ~left),
+            right_only_after_shared_contact_tick=first_tick(exclusive_right),
+            right_release_after_handover_tick=first_tick(
+                np.logical_or.accumulate(exclusive_right) & ~right & (grip[:steps + 1, 1] > .8)),
             left_contact_steps=int(left.sum()), right_contact_steps=int(right.sum()),
             both_hands_contact_steps=int(shared.sum()))
 
@@ -276,8 +285,10 @@ def results(directory, prepared=None, manifests=None, source_manifest=None, hdf5
             if sha(manifest / "seed.txt") != meta["seed_file_sha256"]:
                 raise ValueError(f"wrong seed list at {item}")
         error = receipt.get("ee_error", {})
+        final = receipt.get("final", {})
+        dx, dy, dz = final.get("functional_delta_m", (None, None, None))
         rows.append(dict(robot=robot, episode=episode, seed=meta.get("seed"), status=receipt["status"],
-            native_check_success=receipt["native_success"], physical_steps=receipt["physical_steps"],
+            native_check_success=receipt["native_success"], physical_steps=physical_steps(receipt),
             frames=meta.get("frames"),
             left_bilateral_lift_tick=contacts.get("left_bilateral_lift"),
             both_bilateral_tick=contacts.get("both_bilateral"),
@@ -286,8 +297,11 @@ def results(directory, prepared=None, manifests=None, source_manifest=None, hdf5
             left_contact_and_lift_tick=contacts.get("left_contact_and_lift_tick"),
             simultaneous_hand_contact_tick=contacts.get("simultaneous_hand_contact_tick"),
             right_only_after_shared_contact_tick=contacts.get("right_only_after_shared_contact_tick"),
+            right_release_after_handover_tick=contacts.get("right_release_after_handover_tick"),
             left_contact_steps=contacts.get("left_contact_steps"), right_contact_steps=contacts.get("right_contact_steps"),
             both_hands_contact_steps=contacts.get("both_hands_contact_steps"),
+            final_functional_dx_m=dx, final_functional_dy_m=dy, final_functional_dz_m=dz,
+            right_gripper_final_request=final.get("right_gripper_request"),
             max_recorded_ee_error_m=error.get("max_m"), max_recorded_ee_error_deg=error.get("max_deg"),
             within_prior_trace_tolerance=error.get("within_prior_tolerance"),
             category=receipt.get("category"), detail=receipt.get("detail"), reused=bool(receipt.get("reused")),

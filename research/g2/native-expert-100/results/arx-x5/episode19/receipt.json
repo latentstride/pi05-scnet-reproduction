@@ -1,0 +1,354 @@
+{
+  "input": {
+    "robot": "arx-x5",
+    "episode": 19,
+    "dataset_revision": "3dc3b798668feb99ac61cc9086d84cbcc3d79186",
+    "hdf5_sha256": "abeae26ea441329bb35ed2b0bbbf24a4be15d4a34e87fb40662c984b053f2228",
+    "hdf5_member": "arx-x5_clean_50/data/episode19.hdf5",
+    "pkl_sha256": "93ccaa974480a0b927c3f6a9dfd7c3a45e1e3ab8bcbe298038dfbdc067eed642",
+    "pkl_member": "arx-x5_clean_50/_traj_data/episode19.pkl",
+    "seed_file_sha256": "df07ba86f6a0adf64e96e480d03d157afb0efaea7d43cd4e33ec18ed2bec814f",
+    "seed": 21,
+    "prepared": true,
+    "frames": 194,
+    "steps": 2390,
+    "segments": [
+      {
+        "kind": "L",
+        "path_index": 0,
+        "first_frame": 0,
+        "frame_count": 18,
+        "first_tick": 0,
+        "last_tick": 227
+      },
+      {
+        "kind": "L",
+        "path_index": 1,
+        "first_frame": 18,
+        "frame_count": 8,
+        "first_tick": 227,
+        "last_tick": 304
+      },
+      {
+        "kind": "LG",
+        "path_index": 0,
+        "first_frame": 26,
+        "frame_count": 22,
+        "first_tick": 304,
+        "last_tick": 604
+      },
+      {
+        "kind": "L",
+        "path_index": 2,
+        "first_frame": 48,
+        "frame_count": 9,
+        "first_tick": 604,
+        "last_tick": 704
+      },
+      {
+        "kind": "L",
+        "path_index": 3,
+        "first_frame": 57,
+        "frame_count": 10,
+        "first_tick": 704,
+        "last_tick": 824
+      },
+      {
+        "kind": "L",
+        "path_index": 4,
+        "first_frame": 67,
+        "frame_count": 5,
+        "first_tick": 824,
+        "last_tick": 855
+      },
+      {
+        "kind": "R",
+        "path_index": 0,
+        "first_frame": 72,
+        "frame_count": 16,
+        "first_tick": 855,
+        "last_tick": 1055
+      },
+      {
+        "kind": "R",
+        "path_index": 1,
+        "first_frame": 88,
+        "frame_count": 9,
+        "first_tick": 1055,
+        "last_tick": 1146
+      },
+      {
+        "kind": "RG",
+        "path_index": 0,
+        "first_frame": 97,
+        "frame_count": 22,
+        "first_tick": 1146,
+        "last_tick": 1446
+      },
+      {
+        "kind": "LG",
+        "path_index": 1,
+        "first_frame": 119,
+        "frame_count": 22,
+        "first_tick": 1446,
+        "last_tick": 1746
+      },
+      {
+        "kind": "L",
+        "path_index": 5,
+        "first_frame": 141,
+        "frame_count": 9,
+        "first_tick": 1746,
+        "last_tick": 1839
+      },
+      {
+        "kind": "B",
+        "path_index": [
+          6,
+          2
+        ],
+        "first_frame": 150,
+        "frame_count": 15,
+        "first_tick": 1839,
+        "last_tick": 2023
+      },
+      {
+        "kind": "R",
+        "path_index": 3,
+        "first_frame": 165,
+        "frame_count": 7,
+        "first_tick": 2023,
+        "last_tick": 2090
+      },
+      {
+        "kind": "RG",
+        "path_index": 1,
+        "first_frame": 172,
+        "frame_count": 22,
+        "first_tick": 2090,
+        "last_tick": 2390
+      }
+    ],
+    "physics_dt_s": 0.004,
+    "time_semantics": "derived from cached control schedule",
+    "source_revision": "ea8b21121ebb3cd201ff5b3fe361944ac94eda3f",
+    "exact_recorded_targets": true,
+    "controls_sha256": "a4b9a75956f3a0951753d363b9e22b234b89707817b7b3ffb7c793a5caa9ba48",
+    "spawn_pose": {
+      "box": {
+        "position_m": [
+          -0.18837712135262422,
+          0.14589781905464969,
+          0.842
+        ],
+        "quaternion_wxyz": [
+          0.9913211597624815,
+          0.0,
+          0.0,
+          0.13146238324010645
+        ]
+      },
+      "target_box": {
+        "position_m": [
+          0.17438943247392338,
+          0.1931849822279112,
+          0.741
+        ],
+        "quaternion_wxyz": [
+          1,
+          0,
+          0,
+          0
+        ]
+      }
+    }
+  },
+  "physical_steps": 2390,
+  "native_success": true,
+  "expected_steps": 2390,
+  "source_hashes": {
+    "envs/handover_block.py": "5439712296d7e143d41f8e78b4ab86cd4fad7fb98f40f5f5abb067a462d17650",
+    "envs/robot/robot.py": "3dcd80acc8cab489a4c5edb507cc460dab1724be0226b8d5c4c1b218dee605cb",
+    "envs/_base_task.py": "76a12a3ce2254c019e5c291e29c99b421dabbb0c6e0b9ec24db9155b2dcf81f5",
+    "envs/utils/create_actor.py": "6bababee8e70da2460b2bbf47d3b5fbb20ccf73368782a7be596a63c962dce6d",
+    "envs/utils/actor_utils.py": "252d43c526b23adcf4ba549fec64a49f037fc4a24e9edd1998e5f60d3e13d5d9",
+    "envs/utils/rand_create_actor.py": "6c409ff1d97528b9dc654d39cc34683f51af6e797c1c5d92c076c29c09f9bedb",
+    "envs/camera/camera.py": "e4d17e99c8a68f44a12bef248a2164f52206efeaf24168172b778cc1e32832dd",
+    "envs/robot/planner.py": "f1012345542483f4cfbac64880a266b7ee0d4a64362d5ec6fd6985ed9c34b564"
+  },
+  "simulator": "3.0.0b1",
+  "numpy": "1.26.4",
+  "control": "original native cached drives",
+  "physics_system": "PhysxCpuSystem",
+  "flags": {
+    "renderer": false,
+    "gpu": false,
+    "policy": false,
+    "cross_embodiment": false
+  },
+  "physics_config": {
+    "dt_s": 0.004,
+    "material": [
+      0.5,
+      0.5,
+      0.0
+    ],
+    "mass_kg": 0.009999999776482582,
+    "link_mass_kg": 1.0,
+    "robot_config_sha256": "0687270bb70652fb80072acbded5f134da4e930463024c856dd4f45aa5f35d03",
+    "urdf_sha256": "7aaa308a1a5b6a213d914db86ba09ddd6252f25cb498ac9a148bfa6c7166a423",
+    "native_gripper_scale": [
+      -0.01,
+      0.045
+    ],
+    "initial_seed": 21,
+    "camera_rng_draws": 1,
+    "initialization_steps": 2801,
+    "arx_base_separation_m": 0.6,
+    "collision": "native URDF defaults and task geometry"
+  },
+  "initialization": {
+    "roots": [
+      [
+        -0.3,
+        -0.35,
+        0.784,
+        0.707,
+        0,
+        0,
+        0.707
+      ],
+      [
+        0.3,
+        -0.35,
+        0.784,
+        0.707,
+        0,
+        0,
+        0.707
+      ]
+    ],
+    "block_pose": [
+      -0.1883779615163803,
+      0.14589661359786987,
+      0.8400005102157593,
+      0.9913212060928345,
+      5.389825219026534e-06,
+      -4.830973921343684e-06,
+      0.13146238029003143
+    ],
+    "target_pose": [
+      0.17438943684101105,
+      0.1931849867105484,
+      0.7409999966621399,
+      1.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "actual_qpos": [
+      [
+        2.22281286710313e-08,
+        1.0146767408514279e-06,
+        -1.9664770661620423e-05,
+        -5.3922342146961455e-08,
+        -5.780049150416744e-08,
+        -1.6874463426574948e-07,
+        0.04399999976158142,
+        0.04399999976158142
+      ],
+      [
+        -2.9340622376139436e-08,
+        1.01484579317912e-06,
+        -1.9665458239614964e-05,
+        -5.082872789330395e-08,
+        -1.7853437839221442e-07,
+        -7.974126248200264e-08,
+        0.04399999976158142,
+        0.04399999976158142
+      ]
+    ],
+    "initial_ee_error_m": [
+      0.0,
+      0.0
+    ]
+  },
+  "final": {
+    "block_pose": [
+      0.17562784254550934,
+      0.19369207322597504,
+      0.8460759520530701,
+      0.9999991059303284,
+      -0.0011546192690730095,
+      0.00011882367834914476,
+      -0.0006769630126655102
+    ],
+    "target_pose": [
+      0.17438943684101105,
+      0.1931849867105484,
+      0.7409999966621399,
+      1.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "qpos": [
+      -0.00022528711997438222,
+      0.0010594244813546538,
+      0.0004500334616750479,
+      0.00012664140376728028,
+      0.0006462725577875972,
+      -0.00028404456679709256,
+      0.04399999976158142,
+      0.04399999976158142,
+      0.30597805976867676,
+      2.6535239219665527,
+      1.2324011325836182,
+      1.4352290630340576,
+      0.3033754825592041,
+      -0.007892242632806301,
+      0.0428166538476944,
+      0.04324920102953911
+    ],
+    "block_velocity": [
+      0.0013361078454181552,
+      -0.004135827533900738,
+      -0.0008272103732451797,
+      0.04133403301239014,
+      0.013353396207094193,
+      8.591596269980073e-07
+    ],
+    "functional_delta_m": [
+      0.0012144893407821655,
+      0.00027617812156677246,
+      7.623434066772461e-05
+    ],
+    "right_gripper_request": 1.0
+  },
+  "contacts": {
+    "left_bilateral_lift": 636,
+    "both_bilateral": 1248,
+    "right_bilateral_after_shared": 1619,
+    "target_contact": 2237
+  },
+  "contact_trace_columns": [
+    "finger_and_tray_mask",
+    "block_max_depth_m",
+    "left_0_Ns",
+    "left_1_Ns",
+    "right_0_Ns",
+    "right_1_Ns"
+  ],
+  "ee_error": {
+    "max_m": 0.0,
+    "max_deg": 0.050250567675496786,
+    "first_frame_m": [
+      0.0,
+      0.0
+    ],
+    "within_prior_tolerance": true
+  },
+  "physics_trace_sha256": "fa94da2d805832ce2421820cea156e89271401ba43c93782345c53dfa389d0fd",
+  "status": "SUCCESS",
+  "category": null
+}

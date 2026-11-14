@@ -1,0 +1,280 @@
+bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+WARNING: Skipping mount /etc/localtime [binds]: /etc/localtime doesn't exist in container
+NATIVE_FIRST_LINE 157
+NATIVE_FIRST_LINE 158
+NATIVE_FIRST_LINE 159
+NATIVE_FIRST_LINE 160
+NATIVE_FIRST_LINE 162
+NATIVE_FIRST_LINE 163
+NATIVE_FIRST_LINE 164
+NATIVE_FIRST_LINE 166
+NATIVE_FIRST_LINE 167
+NATIVE_FIRST_LINE 168
+NATIVE_FIRST_LINE 169
+NATIVE_FIRST_LINE 172
+NATIVE_FIRST_LINE 173
+NATIVE_FIRST_LINE 175
+NATIVE_FIRST_LINE 176
+NATIVE_FIRST_LINE 178
+NATIVE_FIRST_LINE 179
+NATIVE_FIRST_LINE 180
+NATIVE_FIRST_LINE 182
+NATIVE_FIRST_LINE 183
+NATIVE_FIRST_LINE 184
+NATIVE_FIRST_LINE 185
+NATIVE_FIRST_LINE 186
+NATIVE_FIRST_LINE 188
+NATIVE_FIRST_LINE 189
+NATIVE_FIRST_LINE 190
+NATIVE_FIRST_LINE 191
+NATIVE_FIRST_LINE 192
+NATIVE_FIRST_LINE 193
+NATIVE_FIRST_LINE 194
+NATIVE_FIRST_LINE 195
+NATIVE_FIRST_LINE 196
+NATIVE_FIRST_LINE 197
+NATIVE_FIRST_LINE 198
+NATIVE_FIRST_LINE 199
+NATIVE_FIRST_LINE 200
+NATIVE_FIRST_LINE 201
+NATIVE_FIRST_LINE 202
+NATIVE_FIRST_LINE 204
+NATIVE_FIRST_LINE 205
+NATIVE_FIRST_LINE 206
+NATIVE_FIRST_LINE 207
+NATIVE_FIRST_LINE 208
+NATIVE_FIRST_LINE 209
+NATIVE_FIRST_LINE 210
+Timeout (0:00:18)!
+Thread 0x00002b7e3b5a3740 (most recent call first):
+  File "<frozen importlib._bootstrap_external>", line 147 in _path_stat
+  File "<frozen importlib._bootstrap_external>", line 153 in _path_is_mode_type
+  File "<frozen importlib._bootstrap_external>", line 161 in _path_isfile
+  File "<frozen importlib._bootstrap_external>", line 1563 in find_spec
+  File "<frozen importlib._bootstrap_external>", line 1411 in _get_spec
+  File "<frozen importlib._bootstrap_external>", line 1439 in find_spec
+  File "<frozen importlib._bootstrap>", line 945 in _find_spec
+  File "<frozen importlib._bootstrap>", line 1002 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1027 in _find_and_load
+  File "/opt/robotwin/venv/lib/python3.10/site-packages/trimesh/typed.py", line 18 in <module>
+  File "<frozen importlib._bootstrap>", line 241 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 883 in exec_module
+  File "<frozen importlib._bootstrap>", line 688 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1006 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1027 in _find_and_load
+  File "/opt/robotwin/venv/lib/python3.10/site-packages/trimesh/resources/__init__.py", line 5 in <module>
+  File "<frozen importlib._bootstrap>", line 241 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 883 in exec_module
+  File "<frozen importlib._bootstrap>", line 688 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1006 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1027 in _find_and_load
+  File "<frozen importlib._bootstrap>", line 241 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1078 in _handle_fromlist
+  File "/opt/robotwin/venv/lib/python3.10/site-packages/trimesh/interfaces/blender.py", line 4 in <module>
+  File "<frozen importlib._bootstrap>", line 241 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 883 in exec_module
+  File "<frozen importlib._bootstrap>", line 688 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1006 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1027 in _find_and_load
+  File "<frozen importlib._bootstrap>", line 241 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1078 in _handle_fromlist
+  File "/opt/robotwin/venv/lib/python3.10/site-packages/trimesh/interfaces/__init__.py", line 1 in <module>
+  File "<frozen importlib._bootstrap>", line 241 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 883 in exec_module
+  File "<frozen importlib._bootstrap>", line 688 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1006 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1027 in _find_and_load
+  File "<frozen importlib._bootstrap>", line 241 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1078 in _handle_fromlist
+  File "/opt/robotwin/venv/lib/python3.10/site-packages/trimesh/boolean.py", line 10 in <module>
+  File "<frozen importlib._bootstrap>", line 241 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 883 in exec_module
+  File "<frozen importlib._bootstrap>", line 688 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1006 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1027 in _find_and_load
+  File "<frozen importlib._bootstrap>", line 241 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1078 in _handle_fromlist
+  File "/opt/robotwin/venv/lib/python3.10/site-packages/trimesh/__init__.py", line 12 in <module>
+  File "<frozen importlib._bootstrap>", line 241 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 883 in exec_module
+  File "<frozen importlib._bootstrap>", line 688 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1006 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1027 in _find_and_load
+  File "/opt/robotwin/venv/lib/python3.10/site-packages/sapien/wrapper/urchin/urdf.py", line 12 in <module>
+  File "<frozen importlib._bootstrap>", line 241 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 883 in exec_module
+  File "<frozen importlib._bootstrap>", line 688 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1006 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1027 in _find_and_load
+  File "/opt/robotwin/venv/lib/python3.10/site-packages/sapien/wrapper/urchin/__init__.py", line 1 in <module>
+  File "<frozen importlib._bootstrap>", line 241 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 883 in exec_module
+  File "<frozen importlib._bootstrap>", line 688 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1006 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1027 in _find_and_load
+  File "/opt/robotwin/venv/lib/python3.10/site-packages/sapien/wrapper/urdf_loader.py", line 13 in <module>
+  File "<frozen importlib._bootstrap>", line 241 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 883 in exec_module
+  File "<frozen importlib._bootstrap>", line 688 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1006 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1027 in _find_and_load
+  File "/opt/robotwin/venv/lib/python3.10/site-packages/sapien/wrapper/scene.py", line 55 in create_urdf_loader
+  File "/public/home/acvkpnrzir/code_cpf/pi05/tools/native-expert-100-20261114/scripts/g2_native_expert_batch.py", line 210 in physics
+  File "/public/home/acvkpnrzir/code_cpf/pi05/tools/native-expert-100-20261114/scripts/g2_native_expert_batch.py", line 383 in worker
+  File "/public/home/acvkpnrzir/code_cpf/pi05/tools/native-expert-100-20261114/scripts/g2_native_expert_batch.py", line 442 in main
+  File "/public/home/acvkpnrzir/code_cpf/pi05/tools/native-expert-100-20261114/scripts/g2_native_expert_batch.py", line 446 in <module>
+  File "/opt/robotwin/python/cpython-3.10-linux-x86_64-gnu/lib/python3.10/runpy.py", line 86 in _run_code
+  File "/opt/robotwin/python/cpython-3.10-linux-x86_64-gnu/lib/python3.10/runpy.py", line 96 in _run_module_code
+  File "/opt/robotwin/python/cpython-3.10-linux-x86_64-gnu/lib/python3.10/runpy.py", line 289 in run_path
+  File "/public/home/acvkpnrzir/code_cpf/pi05/tools/native-expert-100-20261114/diag-native-launch.py", line 16 in <module>
+NATIVE_FIRST_LINE 211
+NATIVE_FIRST_LINE 212
+NATIVE_FIRST_LINE 213
+NATIVE_FIRST_LINE 214
+NATIVE_FIRST_LINE 215
+NATIVE_FIRST_LINE 216
+NATIVE_FIRST_LINE 217
+NATIVE_FIRST_LINE 218
+NATIVE_FIRST_LINE 219
+NATIVE_FIRST_LINE 220
+NATIVE_FIRST_LINE 221
+NATIVE_FIRST_LINE 222
+NATIVE_FIRST_LINE 223
+NATIVE_FIRST_LINE 224
+NATIVE_FIRST_LINE 225
+NATIVE_FIRST_LINE 227
+NATIVE_FIRST_LINE 228
+NATIVE_FIRST_LINE 229
+NATIVE_FIRST_LINE 230
+NATIVE_FIRST_LINE 231
+NATIVE_FIRST_LINE 232
+NATIVE_FIRST_LINE 233
+NATIVE_FIRST_LINE 234
+NATIVE_FIRST_LINE 235
+NATIVE_FIRST_LINE 236
+NATIVE_FIRST_LINE 237
+NATIVE_FIRST_LINE 238
+NATIVE_FIRST_LINE 239
+NATIVE_FIRST_LINE 240
+NATIVE_FIRST_LINE 241
+NATIVE_FIRST_LINE 242
+NATIVE_FIRST_LINE 243
+NATIVE_FIRST_LINE 244
+NATIVE_FIRST_LINE 245
+NATIVE_FIRST_LINE 246
+NATIVE_FIRST_LINE 247
+NATIVE_FIRST_LINE 248
+NATIVE_FIRST_LINE 249
+NATIVE_FIRST_LINE 250
+NATIVE_FIRST_LINE 251
+NATIVE_FIRST_LINE 252
+NATIVE_FIRST_LINE 253
+NATIVE_FIRST_LINE 254
+NATIVE_FIRST_LINE 255
+NATIVE_FIRST_LINE 256
+NATIVE_FIRST_LINE 257
+NATIVE_FIRST_LINE 259
+NATIVE_FIRST_LINE 260
+NATIVE_FIRST_LINE 261
+NATIVE_FIRST_LINE 262
+NATIVE_FIRST_LINE 263
+NATIVE_FIRST_LINE 264
+NATIVE_FIRST_LINE 265
+NATIVE_FIRST_LINE 266
+NATIVE_FIRST_LINE 267
+NATIVE_FIRST_LINE 268
+NATIVE_FIRST_LINE 269
+NATIVE_FIRST_LINE 270
+NATIVE_FIRST_LINE 271
+NATIVE_FIRST_LINE 272
+NATIVE_FIRST_LINE 273
+NATIVE_FIRST_LINE 274
+NATIVE_FIRST_LINE 276
+NATIVE_FIRST_LINE 284
+NATIVE_FIRST_LINE 285
+NATIVE_FIRST_LINE 286
+NATIVE_FIRST_LINE 287
+NATIVE_FIRST_LINE 288
+NATIVE_FIRST_LINE 289
+NATIVE_FIRST_LINE 291
+NATIVE_FIRST_LINE 292
+NATIVE_FIRST_LINE 293
+NATIVE_FIRST_LINE 294
+NATIVE_FIRST_LINE 295
+NATIVE_FIRST_LINE 296
+NATIVE_FIRST_LINE 297
+NATIVE_FIRST_LINE 298
+NATIVE_FIRST_LINE 299
+NATIVE_FIRST_LINE 300
+NATIVE_FIRST_LINE 308
+NATIVE_FIRST_LINE 309
+NATIVE_FIRST_LINE 310
+NATIVE_FIRST_LINE 311
+NATIVE_FIRST_LINE 312
+NATIVE_FIRST_LINE 313
+NATIVE_FIRST_LINE 314
+NATIVE_FIRST_LINE 315
+NATIVE_FIRST_LINE 316
+NATIVE_FIRST_LINE 317
+NATIVE_FIRST_LINE 318
+NATIVE_FIRST_LINE 319
+NATIVE_FIRST_LINE 320
+NATIVE_FIRST_LINE 321
+NATIVE_FIRST_LINE 322
+NATIVE_FIRST_LINE 323
+NATIVE_FIRST_LINE 324
+NATIVE_FIRST_LINE 326
+NATIVE_FIRST_LINE 330
+NATIVE_FIRST_LINE 331
+NATIVE_FIRST_LINE 333
+NATIVE_FIRST_LINE 337
+NATIVE_FIRST_LINE 339
+NATIVE_FIRST_LINE 301
+NATIVE_FIRST_LINE 302
+NATIVE_FIRST_LINE 303
+NATIVE_FIRST_LINE 304
+NATIVE_FIRST_LINE 305
+NATIVE_FIRST_LINE 307
+NATIVE_FIRST_LINE 306
+NATIVE_FIRST_LINE 327
+NATIVE_FIRST_LINE 328
+NATIVE_FIRST_LINE 329
+NATIVE_FIRST_LINE 332
+NATIVE_FIRST_LINE 334
+NATIVE_FIRST_LINE 335
+NATIVE_FIRST_LINE 336
+NATIVE_FIRST_LINE 338
+NATIVE_FIRST_LINE 325
+NATIVE_FIRST_LINE 340
+NATIVE_FIRST_LINE 341
+NATIVE_FIRST_LINE 342
+NATIVE_FIRST_LINE 343
+NATIVE_FIRST_LINE 344
+NATIVE_FIRST_LINE 345
+NATIVE_FIRST_LINE 346
+NATIVE_FIRST_LINE 348
+NATIVE_FIRST_LINE 349
+NATIVE_FIRST_LINE 350
+NATIVE_FIRST_LINE 351
+NATIVE_FIRST_LINE 352
+NATIVE_FIRST_LINE 353
+NATIVE_FIRST_LINE 354
+NATIVE_FIRST_LINE 355
+NATIVE_FIRST_LINE 356
+NATIVE_FIRST_LINE 357
+NATIVE_FIRST_LINE 358
+NATIVE_FIRST_LINE 359
+NATIVE_FIRST_LINE 360
+NATIVE_FIRST_LINE 361
+NATIVE_FIRST_LINE 362
+NATIVE_FIRST_LINE 363
+NATIVE_FIRST_LINE 364
+NATIVE_FIRST_LINE 365
+NATIVE_FIRST_LINE 366
+NATIVE_FIRST_LINE 367
+NATIVE_FIRST_LINE 368
+NATIVE_FIRST_LINE 369
+NATIVE_FIRST_LINE 371
+NATIVE_FIRST_LINE 372
+NATIVE_FIRST_LINE 373
+arx-x5 1 SUCCESS 2401

@@ -1,0 +1,9 @@
+{
+  "results/arx-x5/episode01/attempt/initial.json": "6d436743b4e911e06a61f1c43e6228713e720fd0977efdf46c3dc788c2863f1e",
+  "results/arx-x5/episode01/attempt/physics-trace.npz": "74e014aa90765cb4febb52f75a1f04c7952cc0e9908b5b4f1fb89afc218f0e53",
+  "results/arx-x5/episode01/receipt.json": "8138097b681ea2477044d96fd862665da7eb691f08f168e791c86dc5594c3615",
+  "results/arx-x5/episode01/attempt/worker.log": "62e010be1a85063466c2ced3477f8e16bc983ee54c2e5c0fb5bcf9800f506269",
+  "diagnostics/arx-episode01-trace-launch.py": "2f10a9e551dc33fd520771de4a7eca249849eb49801b49f24690830e1a4fc0b8",
+  "prior-attempts/arx-x5/episode01-retry-timeout/receipt.json": "e22b64278f8454af51f69b53b32640d64074c26c8fac9da3ceeb4749fd657f60",
+  "prior-attempts/arx-x5/episode01-retry-timeout/attempt/worker.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

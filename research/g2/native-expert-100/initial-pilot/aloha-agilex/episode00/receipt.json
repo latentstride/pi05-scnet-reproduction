@@ -1,0 +1,17 @@
+{
+  "input": {
+    "robot": "aloha-agilex",
+    "episode": 0,
+    "dataset_revision": "3dc3b798668feb99ac61cc9086d84cbcc3d79186",
+    "hdf5_sha256": "419abe95f2ad2910b19aef1de61c2374e76cbfe5e7a9eb5c26f137ee4f144ee2",
+    "hdf5_member": "aloha-agilex_clean_50/data/episode0.hdf5",
+    "prepared": false,
+    "category": "CONTROL_CACHE_OR_TIMING",
+    "detail": "missing fixed planner and seed manifest"
+  },
+  "physical_steps": 0,
+  "native_success": null,
+  "status": "NOT_REPRODUCIBLE",
+  "category": "CONTROL_CACHE_OR_TIMING",
+  "detail": "missing fixed planner and seed manifest"
+}

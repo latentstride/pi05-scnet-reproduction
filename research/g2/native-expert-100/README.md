@@ -82,3 +82,10 @@ PYTHONPATH=scripts python scripts/g2_verify_native_expert_100.py \
   --hdf5-manifests research/robotwin100_course/data/download_manifest.json \
                    research/robotwin100_course/data/download_manifest-arx.json
 ```
+
+## 本次运行证据
+
+- [汇总报告](expert_replay_100_summary.md)及[逐 episode CSV](expert_replay_100_results.csv)；CSV 的 `receipt_path` 相对于 [results/](results/)。
+- 每条结果下的 `receipt.json` 提供任务阶段、输入与物理参数、先验末端对照和终态。普通运行的 `attempt/` 提供逐步 `physics-trace.npz`、`initial.json` 和 `worker.log`，复用原件使用其历史字段及日志格式。
+- [实际执行脚本](executed-batch.py)保留 CPU 批次使用的版本。当前入口补充了批次中断保存、参数验证和进度日志。物理配置、控制步和判据相同。ARX episode 1 成功尝试的 [诊断启动器](diagnostics/arx-episode01-trace-launch.py)仅用于记录卡点。
+- [发布清单](evidence-hashes.json)记录公开证据 SHA-256。[传输清单](primary-transport-hashes.json)保留首次批次打包哈希，[追加证据](arx01-diagnostic-digests.json)记录 episode 1 完整尝试。[脱敏清单](public-redactions.json)保存两份超时回执原始和公开 SHA-256；只替换了个人集群路径。

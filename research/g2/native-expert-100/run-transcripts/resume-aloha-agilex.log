@@ -1,0 +1,30 @@
+bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+WARNING: Skipping mount /etc/localtime [binds]: /etc/localtime doesn't exist in container
+aloha-agilex 22 SUCCESS
+aloha-agilex 23 SUCCESS
+aloha-agilex 24 SUCCESS
+aloha-agilex 25 SUCCESS
+aloha-agilex 26 SUCCESS
+aloha-agilex 27 SUCCESS
+aloha-agilex 28 SUCCESS
+aloha-agilex 29 SUCCESS
+aloha-agilex 30 SUCCESS
+aloha-agilex 31 SUCCESS
+aloha-agilex 32 SUCCESS
+aloha-agilex 33 SUCCESS
+aloha-agilex 34 SUCCESS
+aloha-agilex 35 SUCCESS
+aloha-agilex 36 SUCCESS
+aloha-agilex 37 SUCCESS
+aloha-agilex 38 SUCCESS
+aloha-agilex 39 SUCCESS
+aloha-agilex 40 SUCCESS
+aloha-agilex 41 SUCCESS
+aloha-agilex 42 SUCCESS
+aloha-agilex 43 SUCCESS
+aloha-agilex 44 SUCCESS
+aloha-agilex 45 SUCCESS
+aloha-agilex 46 SUCCESS
+aloha-agilex 47 SUCCESS
+aloha-agilex 48 SUCCESS
+aloha-agilex 49 SUCCESS

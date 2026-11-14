@@ -1,0 +1,12 @@
+{
+  "prior-attempts/arx-x5/episode01-retry-timeout/receipt.json": {
+    "original_sha256": "e22b64278f8454af51f69b53b32640d64074c26c8fac9da3ceeb4749fd657f60",
+    "published_sha256": "509a701eb3b7096c81e966931bfd8f98e615b166fa1efda787e5b36fcae0edb1",
+    "redaction": "cluster absolute personal project root replaced with $PI05_ROOT"
+  },
+  "prior-attempts/arx-x5/episode01-timeout/receipt.json": {
+    "original_sha256": "70c7af6d984ead73cd33c6581a0047c9942d4de0a2455b8ddf63a80d40f63fe3",
+    "published_sha256": "e4be05c8154e30630177e074e2a6f804d404ba7cc6d29e5a0cdeba0239d8fa59",
+    "redaction": "cluster absolute personal project root replaced with $PI05_ROOT"
+  }
+}

@@ -5,7 +5,7 @@ from hashlib import sha256
 import json
 from pathlib import Path
 
-TERMINAL_RESOURCE = {"TIMEOUT", "OUT_OF_MEMORY", "NODE_FAIL", "PREEMPTED", "BOOT_FAIL"}
+TERMINAL_RESOURCE = {"TIMEOUT", "OUT_OF_MEMORY", "NODE_FAIL", "PREEMPTED", "BOOT_FAIL", "DEADLINE"}
 
 
 def read(path):

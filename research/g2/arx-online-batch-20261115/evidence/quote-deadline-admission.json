@@ -1,0 +1,21 @@
+{
+  "inspected_at": "2026-11-15T00:30:27+0800",
+  "fresh_test_only_output": "sbatch: Job 128047398 to start at 2026-12-10T17:29:14 using 4 processors on nodes gnode39 in partition ksagnormal01",
+  "deadline_test_only": [
+    "TEST_DEADLINE=2026-11-22T00:28:27",
+    "sbatch: Job 128047552 to start at 2026-12-10T17:29:14 using 4 processors on nodes gnode39 in partition ksagnormal01"
+  ],
+  "prior_test_only_forecast": "2026-12-10T03:08:14+08:00",
+  "historical_start_records": [
+    "127999407|COMPLETED|2026-11-14T13:41:52|2026-11-14T13:41:54|2026-11-14T15:42:40|2026-11-14T16:01:25|00:18:45",
+    "127999421|COMPLETED|2026-11-14T13:42:01|2026-11-14T13:42:03|2026-11-14T16:27:52|2026-11-14T16:44:53|00:17:01"
+  ],
+  "reservations": "No reservations in the system",
+  "live_part": "ksagnormal01",
+  "node": "gnode39",
+  "occupied_gpu_slots": 8,
+  "total_gpu_slots": 8,
+  "forecast_interpretation": "advisory and historically inaccurate on the same node; cannot prove a hard-coded sentinel",
+  "deadline_policy": "Slurm can admit only if the full 90-minute allocation still fits before the real quote expires.",
+  "package_changed": false
+}

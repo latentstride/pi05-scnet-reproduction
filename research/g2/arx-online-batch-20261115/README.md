@@ -4,12 +4,12 @@
 
 | 候选 | 场景 / 策略 RNG | 包与单作业入口 | CPU 初态证据 | 调度器 | 实际提交 |
 | --- | --- | --- | --- | --- | --- |
-| G1 | 1 / 20261107 | 原发布包，91 项通过 | 既有同场景锁定初态 | test-only 通过 | 0 |
-| G2 | 1 / 20261108 | 原发布包，91 项通过 | 既有同场景锁定初态 | test-only 通过 | 0 |
-| G3 | 0 / 20261107 | 独立新包，91 项通过 | [CPU 重建、FCL、初态读回](evidence/reset-G3.json) | test-only 通过 | 0 |
-| G4 | 2 / 20261107 | 独立新包，91 项通过 | [CPU 重建、FCL、初态读回](evidence/reset-G4.json) | test-only 通过 | 0 |
+| G1 | 1 / 20261107 | 原发布包，91 项通过 | 既有同场景锁定初态 | test-only 通过 | `128047752` |
+| G2 | 1 / 20261108 | 原发布包，91 项通过 | 既有同场景锁定初态 | test-only 通过 | `128047778` |
+| G3 | 0 / 20261107 | 独立新包，91 项通过 | [CPU 重建、FCL、初态读回](evidence/reset-G3.json) | test-only 通过 | `128047805` |
+| G4 | 2 / 20261107 | 独立新包，91 项通过 | [CPU 重建、FCL、初态读回](evidence/reset-G4.json) | test-only 通过 | `128047813` |
 
-`NOT_AUTHORIZED`。2026-11-15 的 SCNet 商品报价为 ¥3.60/卡时，余额覆盖单项 ¥5.40、四项 ¥21.60。现有提交入口要求提交时报价观察小于 30 分钟，作业启动时绑定报价仍在七天有效期内。四次正式包的 `sbatch --test-only` 均返回 0，并给出 2026-12-10 17:29:14（集群 UTC+08:00）的调度估计。按当前估计，启动时授权验证会在加载模型前拒绝。预估可能随队列改变。原门禁和节点约束保留。最终检查的 `squeue` 无同批活跃作业。现场没有真实 `sbatch`、held job、释放、计费或正式 Job ID。参见 [test-only 原始回显](evidence/slurm-test-only.log)、[提交回执](submission_receipts.json) 和 [SCNet 昆山 RTX 4090 商品](https://www.scnet.cn/ui/mall/detail/goods?type=base&goodsId=821418588551249920)。
+**四项已独立入队。** SCNet 复核单价为 ¥3.60/卡时，单项上限 ¥5.40，整批上限 ¥21.60。发布包、CPU 验收与七天报价有效期均沿用原流程。Slurm 原生 `--deadline` 为 2026-11-22 00:35:09（北京时间）。保留 90 分钟原作业时限，窗口内排不到完整分配时由 Slurm 标记 `DEADLINE`，启动时仍核验批准回执。当前 `test-only` 回显 12 月 10 日。同节点同资源历史对照曾得到同日估计，正式作业分别在提交约 2 小时和 2 小时 46 分后启动。参见 [实测调度与有效期证据](evidence/quote-deadline-admission.json)、[提交回执](submission_receipts.json) 与 [调度器原始模拟回显](evidence/slurm-test-only.log)。
 
 ## 发布与 CPU 验收
 
@@ -45,7 +45,7 @@ python contact_exchange.py /path/to/q2.json /path/to/asset-audit.json \
   /path/to/PACE/assets /path/to/new-cpu-output --first-row 1
 ```
 
-`evidence/slurm-test-only.log` 中的临时标识仅用于调度器模拟。正式提交应继续通过单作业入口 `scripts/g2_standalone_submit.py arx`，G3/G4 显式传 `--scene-seed 0` 或 `--scene-seed 2`。以绑定包、清单及配置的实际 SHA 为参数，从真实项目根发出。各调用独立，没有依赖或自动重试。真实作业提交仍需在有效报价和可启动的调度条件下进行。
+`evidence/slurm-test-only.log` 中的临时标识仅用于调度器模拟。正式提交应继续通过单作业入口 `scripts/g2_standalone_submit.py arx`，G3/G4 显式传 `--scene-seed 0` 或 `--scene-seed 2`。以绑定包、清单及配置的实际 SHA 为参数，从真实项目根发出。各调用独立，没有依赖或自动重试。本批在有效报价范围内启用 `--bound-quote-deadline` 提交。
 
 ## 结果与排障
 

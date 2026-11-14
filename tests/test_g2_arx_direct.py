@@ -16,7 +16,7 @@ class Plan:
 
 
 class DirectPrefixTest(unittest.TestCase):
-    def run_prefix(self, *, contact_row=None, blocked_row=None):
+    def run_prefix(self, *, contact_row=None, blocked_row=None, rows=8):
         backend = NS(tick=0, dt=0.004, arms=(), success=lambda: False)
         tracker = NS(
             snapshot=lambda: dict(
@@ -62,7 +62,7 @@ class DirectPrefixTest(unittest.TestCase):
                 receipt = execute_prefix(
                     backend,
                     backend.capture_state(),
-                    range(8),
+                    range(rows),
                     plan_row,
                     lambda: 1.0,
                     lambda _: None,
@@ -77,6 +77,12 @@ class DirectPrefixTest(unittest.TestCase):
         self.assertEqual(starts, list(range(8)))
         self.assertEqual(completed, list(range(1, 9)))
         self.assertEqual(receipt.completed, 8)
+
+    def test_full_prediction_is_checked_row_by_row_until_contact(self):
+        receipt, starts, completed = self.run_prefix(contact_row=47, rows=50)
+        self.assertEqual(starts, list(range(47)))
+        self.assertEqual(completed, list(range(1, 48)))
+        self.assertEqual(receipt.reason, "contact_requires_observation")
 
     def test_first_measured_contact_retires_tail(self):
         receipt, starts, completed = self.run_prefix(contact_row=5)

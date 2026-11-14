@@ -147,12 +147,14 @@ def package_projection(project, parent, output):
         )
 
 
-def package_direct(project, parent, output, parent_sha256):
+def package_direct(project, parent, output, parent_sha256, policy_seed=None):
     """Derive a separate diagnostic archive from an exact standalone ARX parent."""
     from g2_arx_direct_profile import MODE, PREFIX_CAP
 
     if digest(parent) != parent_sha256:
         raise ValueError("direct ARX parent digest differs")
+    if policy_seed is not None and (type(policy_seed) is not int or not 0 <= policy_seed < 2**32):
+        raise ValueError("invalid ARX policy RNG seed")
     changed = (
         "scripts/g2_adapter.py",
         "scripts/g2_arx_direct.py",
@@ -178,11 +180,14 @@ def package_direct(project, parent, output, parent_sha256):
         config.pop("task_tcp_projection", None)
         config.pop("free_space_approach_repair", None)
         config.update(arx_direct=MODE, window=PREFIX_CAP, max_actions=800)
+        if policy_seed is not None:
+            config["policy_rng_seed"] = policy_seed
         config_file.write_text(json.dumps(config, indent=2) + "\n")
         (trial,) = [row for row in plan["trials"] if row["episode_id"] == episode]
         trial.pop("task_tcp_projection", None)
         trial.update(arx_direct=MODE, method=MODE, window=PREFIX_CAP,
-                     max_policy_actions=800, recovery_cap=0)
+                     max_policy_actions=800, recovery_cap=0,
+                     policy_rng_seed=config["policy_rng_seed"])
         plan["trial_bindings"][episode]["config_sha256"] = digest(config_file)
         (release / "unified-plan.json").write_text(json.dumps(plan, indent=2) + "\n")
         base_path = release / "standalone-base-members.json"
@@ -195,6 +200,8 @@ def package_direct(project, parent, output, parent_sha256):
             (release / name).write_bytes((project / name).read_bytes())
         write_archive(release, output, "arx")
         return dict(mode=MODE, archive_sha256=digest(output),
+                    policy_rng_seed=config["policy_rng_seed"],
+                    trial_config_sha256=digest(config_file),
                     parent_archive_sha256=parent_sha256,
                     manifest_sha256=digest(release / "SHA256SUMS"),
                     configuration_sha256=digest(release / SPEC_FILE))
@@ -259,11 +266,14 @@ if __name__ == "__main__":
     profiles = p.add_mutually_exclusive_group()
     profiles.add_argument("--arx-projection", action="store_true")
     profiles.add_argument("--arx-direct-parent-sha256")
+    p.add_argument("--policy-seed", type=int)
     a = p.parse_args()
+    if a.policy_seed is not None and not a.arx_direct_parent_sha256:
+        p.error("--policy-seed requires the direct ARX profile")
     if (a.arx_projection or a.arx_direct_parent_sha256) and a.mode != "arx":
         p.error("ARX profiles require arx mode")
     if a.arx_direct_parent_sha256:
-        print(json.dumps(package_direct(a.project, a.parent, a.output, a.arx_direct_parent_sha256), indent=2))
+        print(json.dumps(package_direct(a.project, a.parent, a.output, a.arx_direct_parent_sha256, a.policy_seed), indent=2))
         p.exit()
     receipt = (package_projection(a.project, a.parent, a.output) if a.arx_projection
                else package(a.project, a.parent, a.output, a.mode))

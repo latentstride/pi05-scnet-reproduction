@@ -1,0 +1,216 @@
+{
+  "job": "127999421",
+  "query": 2,
+  "source_action_sha256": "8f4598640c636a9b5062e2a66f5c55a797327646263fc4946fc820330fced277",
+  "source_events_sha256": "28ecb34c161a5d6bb6c33a4783d109302f7ac7649dede840a9b94f73aeb2b29e",
+  "first_crossing_mm": {
+    "1": {
+      "row": 8,
+      "tick": 6225,
+      "block_planar_displacement_mm": 1.0102848876243293,
+      "raw_left_grip": 1.0002064692986012,
+      "drive_left_fingers_mm": [
+        43.99626663337286,
+        43.99626663337286
+      ],
+      "observed_left_fingers_mm": [
+        43.80834847688675,
+        43.999988585710526
+      ],
+      "observed_left_grip": 0.9978220120749691,
+      "left_contacts": 1,
+      "holds": []
+    },
+    "5": {
+      "row": 9,
+      "tick": 6638,
+      "block_planar_displacement_mm": 5.012979689741819,
+      "raw_left_grip": 1.0002767887830735,
+      "drive_left_fingers_mm": [
+        43.99999982316958,
+        43.99999982316958
+      ],
+      "observed_left_fingers_mm": [
+        43.8523143529892,
+        43.99998113512993
+      ],
+      "observed_left_grip": 0.9983215396377174,
+      "left_contacts": 1,
+      "holds": []
+    },
+    "10": {
+      "row": 10,
+      "tick": 7173,
+      "block_planar_displacement_mm": 10.014171851972149,
+      "raw_left_grip": 0.999710240190804,
+      "drive_left_fingers_mm": [
+        43.98816631158012,
+        43.98816631158012
+      ],
+      "observed_left_fingers_mm": [
+        43.87833923101425,
+        43.99998113512993
+      ],
+      "observed_left_grip": 0.9986172768880021,
+      "left_contacts": 1,
+      "holds": []
+    }
+  },
+  "rows": {
+    "8": {
+      "first": {
+        "row": 8,
+        "tick": 6114,
+        "block_planar_displacement_mm": 0.0011002173036781045,
+        "raw_left_grip": 1.0002064692986012,
+        "drive_left_fingers_mm": [
+          43.98526939780699,
+          43.98526939780699
+        ],
+        "observed_left_fingers_mm": [
+          43.79216581583023,
+          43.99997368454933
+        ],
+        "observed_left_grip": 0.9976379488679497,
+        "left_contacts": 1,
+        "holds": []
+      },
+      "last": {
+        "row": 8,
+        "tick": 6343,
+        "block_planar_displacement_mm": 2.202303772597288,
+        "raw_left_grip": 1.0002064692986012,
+        "drive_left_fingers_mm": [
+          44.0,
+          44.0
+        ],
+        "observed_left_fingers_mm": [
+          43.83009299635887,
+          43.99997740983963
+        ],
+        "observed_left_grip": 0.9980689818886194,
+        "left_contacts": 0,
+        "holds": []
+      }
+    },
+    "21": {
+      "first": {
+        "row": 21,
+        "tick": 9629,
+        "block_planar_displacement_mm": 117.40460261408344,
+        "raw_left_grip": 0.9102406743493081,
+        "drive_left_fingers_mm": [
+          43.680548228943465,
+          43.680548228943465
+        ],
+        "observed_left_fingers_mm": [
+          43.713655322790146,
+          43.93812641501427
+        ],
+        "observed_left_grip": 0.9960429742932321,
+        "left_contacts": 0,
+        "holds": []
+      },
+      "last": {
+        "row": 21,
+        "tick": 9743,
+        "block_planar_displacement_mm": 157.47284856539306,
+        "raw_left_grip": 0.9102406743493081,
+        "drive_left_fingers_mm": [
+          40.05058967136956,
+          40.05058967136956
+        ],
+        "observed_left_fingers_mm": [
+          41.5896400809288,
+          41.48479923605919
+        ],
+        "observed_left_grip": 0.9440277195112272,
+        "left_contacts": 0,
+        "holds": []
+      }
+    },
+    "27": {
+      "first": {
+        "row": 27,
+        "tick": 10304,
+        "block_planar_displacement_mm": 112.53437280028436,
+        "raw_left_grip": 0.4554372515970469,
+        "drive_left_fingers_mm": [
+          23.362017123265705,
+          23.362017123265705
+        ],
+        "observed_left_fingers_mm": [
+          24.86233040690422,
+          25.00358782708645
+        ],
+        "observed_left_grip": 0.566658161749894,
+        "left_contacts": 0,
+        "holds": []
+      },
+      "last": {
+        "row": 27,
+        "tick": 10413,
+        "block_planar_displacement_mm": 139.35786832056306,
+        "raw_left_grip": 0.4554372515970469,
+        "drive_left_fingers_mm": [
+          20.03923907027006,
+          20.03923907027006
+        ],
+        "observed_left_fingers_mm": [
+          21.698469296097755,
+          21.573461592197418
+        ],
+        "observed_left_grip": 0.49172648736699065,
+        "left_contacts": 0,
+        "holds": []
+      }
+    },
+    "50": {
+      "first": {
+        "row": 50,
+        "tick": 12304,
+        "block_planar_displacement_mm": 136.01331183207614,
+        "raw_left_grip": 0.0020761529826521874,
+        "drive_left_fingers_mm": [
+          0.12490676582675801,
+          0.12490676582675801
+        ],
+        "observed_left_fingers_mm": [
+          0.3962013579439372,
+          0.002497673676771228
+        ],
+        "observed_left_grip": 0.004530670813871687,
+        "left_contacts": 0,
+        "holds": []
+      },
+      "last": {
+        "row": 50,
+        "tick": 12443,
+        "block_planar_displacement_mm": 136.01063147971678,
+        "raw_left_grip": 0.0020761529826521874,
+        "drive_left_fingers_mm": [
+          0.09135073123669625,
+          0.09135073123669625
+        ],
+        "observed_left_fingers_mm": [
+          0.37921511102467775,
+          0.0010186320196226006
+        ],
+        "observed_left_grip": 0.004320837989139777,
+        "left_contacts": 0,
+        "holds": []
+      }
+    }
+  },
+  "contact_steps": [
+    1099,
+    0
+  ],
+  "max_contact_fingers": [
+    1,
+    0
+  ],
+  "stable_grasp": false,
+  "no_new_model_queries": true,
+  "counterfactual": "Starts at reconstructed query 2 row 7; archived tail execution is offline only."
+}

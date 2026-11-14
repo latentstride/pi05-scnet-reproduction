@@ -1,0 +1,76 @@
+[
+  {
+    "native_episode": 1,
+    "input_waypoints": 29,
+    "roundtrip_max_mm": [
+      0.38211838347747035,
+      0.003365340201200696
+    ],
+    "roundtrip_max_deg": [
+      0.0019871856680833966,
+      0.0005294563769461399
+    ],
+    "first_finger_tick": 407,
+    "first_bilateral_tick": 409,
+    "first_finger_native_drive_request": 0.5025125628140703,
+    "first_contact_block_in_true_tcp_mm": [
+      0.9835575926664948,
+      0.4236017888133624,
+      71.05925817032715
+    ]
+  },
+  {
+    "native_episode": 7,
+    "input_waypoints": 30,
+    "roundtrip_max_mm": [
+      0.06044206746536354,
+      0.0035074418343327583
+    ],
+    "roundtrip_max_deg": [
+      0.003383482975154791,
+      0.0005482929878034265
+    ],
+    "first_finger_tick": 419,
+    "first_bilateral_tick": 424,
+    "first_finger_native_drive_request": 0.5175879396984925,
+    "first_contact_block_in_true_tcp_mm": [
+      1.2357806879756033,
+      0.9900496865763238,
+      69.41036415393607
+    ]
+  },
+  {
+    "job": "127999421",
+    "query": 1,
+    "row": 36,
+    "tick": 5783,
+    "event_line": 5858,
+    "action_sha256": "5b201b33ff9afa7c311f336b4a1a39ef582639730f5929bf803fd3de7cb4403b",
+    "events_sha256": "d9818380f3d8bc6e0f5e30b6ba9329954ff797640aaf49d377e7ca94803c329f",
+    "raw_grip": 0.9965720246214868,
+    "first_half_closed_row": null,
+    "source_target_block_in_tcp_mm": [
+      66.63827396508978,
+      24.158597011357177,
+      71.57627506450086
+    ],
+    "actual_block_in_tcp_mm": [
+      68.75998379541439,
+      23.97358309712446,
+      70.36220509097029
+    ],
+    "block_displacement_mm": [
+      0.013619661331176758,
+      0.004313420504331589,
+      -0.0004172325134277344
+    ],
+    "ik_residual_mm": 0.0909788826109544,
+    "interpolated_target_to_actual_mm": 1.6637630518929105,
+    "row_endpoint_to_actual_mm": 2.4170108503953776,
+    "row_endpoint_to_actual_deg": 0.2647527898803888,
+    "actual_fingers_mm": [
+      43.632954359054565,
+      43.99999603629112
+    ]
+  }
+]

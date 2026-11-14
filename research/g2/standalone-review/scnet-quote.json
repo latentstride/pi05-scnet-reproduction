@@ -1,0 +1,16 @@
+{
+  "source": "SCNet",
+  "observed_at": "2026-11-10T04:50:00+00:00",
+  "url": "https://www.scnet.cn/ui/mall/detail/goods?type=base&goodsId=821418588551249920&goodsName=NVIDIA+4090+%E6%98%BE%E5%AD%9824GB+PCIE&purchasingOption=FORMAL&goodsType=SHARE&goodsResourceType=GPU&resourceType=SPECIAL&goodsResourceId=AMD+7543-64C-1T-8*4090-1&shopId=10001&common1=RESOURCE&id=AMD+7543-64C-1T-8*4090-1_FORMAL_SHARE&resource=RESOURCE&deliveryType=CLUSTER_QUEUE",
+  "goods_id": "821418588551249920",
+  "region": "华东一区【昆山】",
+  "resource": "NVIDIA 4090 显存24GB PCIE 共享资源",
+  "specification": "8*4090 24GB 2*AMD 7543 32C",
+  "displayed_yuan_per_gpu_hour": "3.60",
+  "crossed_out_yuan_per_gpu_hour": "7.00",
+  "visible_price_line": "¥ 3.6 / 卡*时 ¥ 7 /卡*时",
+  "verification": "Refreshed signed-in official SCNet Kunshan shared RTX 4090 product and checked available compute funds in the SCNet billing console.",
+  "validity": "Displayed catalog observation only; no guaranteed future price expiration published.",
+  "account_funds_cover_all_three": true,
+  "observed_time_precision": "minute"
+}

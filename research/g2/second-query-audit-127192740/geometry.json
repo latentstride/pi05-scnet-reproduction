@@ -1,0 +1,169 @@
+{
+  "job": "127192740",
+  "tick": 3575,
+  "gpu_used": false,
+  "model_used": false,
+  "physics_steps": 0,
+  "renderer_created": false,
+  "scope": "same captured object/robot state; endpoints only, not trajectories or dynamics",
+  "restored_snapshot_tick": 3575,
+  "measured_clear": true,
+  "actual_collisions": [],
+  "checks": [
+    {
+      "label": "model_query2_row0",
+      "clear": false,
+      "collisions": [
+        {
+          "reason": "predicted finger start intersects task block",
+          "geometry": "candidate",
+          "side": "left",
+          "finger": 1,
+          "depth_m": 0.01564144715666771,
+          "allowed_penetration_m": 0.002,
+          "start_native_m": 0.04490552097558975,
+          "requested_native_m": 0.044959648345078235
+        }
+      ],
+      "actual_aperture_left_finger_depth_m": [
+        0.0,
+        0.01564144715666771
+      ],
+      "requested_gripper": [
+        0.999266333546877,
+        0.9998067209072113
+      ],
+      "goal_q": [
+        [
+          -0.2809425598794709,
+          2.1553232518280865,
+          1.2552970704410797,
+          0.8734450107086791,
+          -0.44238623541291267,
+          0.01459111598233466
+        ],
+        [
+          0.001290804045865174,
+          0.0018246353383928706,
+          0.0006325079959185794,
+          -0.0007389313587360145,
+          0.0003928854706782328,
+          3.8052347958643026e-05
+        ]
+      ]
+    },
+    {
+      "label": "logged_plus_z_refinement",
+      "clear": false,
+      "collisions": [
+        {
+          "reason": "predicted finger start intersects task block",
+          "geometry": "candidate",
+          "side": "left",
+          "finger": 1,
+          "depth_m": 0.004735735245049,
+          "allowed_penetration_m": 0.002,
+          "start_native_m": 0.04490552097558975,
+          "requested_native_m": 0.044959648345078235
+        }
+      ],
+      "actual_aperture_left_finger_depth_m": [
+        0.0,
+        0.004735735245049
+      ],
+      "requested_gripper": [
+        0.999266333546877,
+        0.9998067209072113
+      ],
+      "goal_q": [
+        [
+          -0.28099913475226646,
+          2.129194854704465,
+          1.2674357918232548,
+          0.8352886025792012,
+          -0.44279844666507445,
+          0.014830604951835424
+        ],
+        [
+          0.0012875966797293477,
+          0.0018405608395968918,
+          0.0006314276830329975,
+          -0.0007219648684885639,
+          0.00038932666059827287,
+          3.893493665235659e-05
+        ]
+      ]
+    },
+    {
+      "label": "expert_approach_endpoint_576",
+      "clear": true,
+      "collisions": [],
+      "actual_aperture_left_finger_depth_m": [
+        0.0,
+        0.0
+      ],
+      "requested_gripper": [
+        1.0,
+        1.0
+      ],
+      "goal_q": [
+        [
+          0.14656586945056915,
+          2.7233591079711914,
+          2.196070671081543,
+          0.41979074478149414,
+          1.5266478061676025,
+          0.10774252563714981
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "label": "expert_pregrasp_endpoint_709",
+      "clear": true,
+      "collisions": [],
+      "actual_aperture_left_finger_depth_m": [
+        0.0,
+        0.0
+      ],
+      "requested_gripper": [
+        1.0,
+        1.0
+      ],
+      "goal_q": [
+        [
+          0.026506520807743073,
+          2.7799904346466064,
+          2.288175106048584,
+          0.460851788520813,
+          1.4071835279464722,
+          0.031520672142505646
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ]
+    }
+  ],
+  "historical_refinement_depth_m": 0.004735735245049,
+  "collision_reproduced_within_1um": true,
+  "config_sha256": "04f2e041cedb07a2eae69425175c60d235ed086095cce10600dfb9e492a8bae6",
+  "expert_trace_sha256": "749c82d3d4ccca01a8eba522848b04856ed98ca504e97f1f6f1c55f12b3ebcd7",
+  "script_sha256": "c44319bdac2e0fd39ed2cd24da9361eeda5b65a44ce090f97e33fa33a4c3bb4e",
+  "contact_source_sha256": "8369b9b25e760fb272fbf945220864432ec4f537e03c564d79605e7262ff3ffa",
+  "sapien_version": "3.0.0b1",
+  "mplib_version": "0.2.1",
+  "caveat": "Reused CPU scene builder has conservative table legs; the reported finger/block tests use actual audited meshes and captured block pose. No expert continuation from the policy state has been executed."
+}

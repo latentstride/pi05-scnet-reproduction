@@ -1,0 +1,64 @@
+{
+  "batch_sha256": "9ae1fb32d441b23d80311c71c9594ec946829f1a8d8ab8dca9adb193999fcc7d",
+  "mode": "sbatch --test-only",
+  "observed_date_local": "2026-11-10",
+  "scheduler_exit": 0,
+  "dry_run": [
+    {
+      "experiment": "G1",
+      "cpu_ok": true,
+      "result": "sbatch: simulated scheduler record to start at 2026-11-12T00:42:14 using 4 processors on nodes gnode39 in partition ksagnormal01"
+    },
+    {
+      "experiment": "G2",
+      "cpu_ok": true,
+      "result": "sbatch: simulated scheduler record to start at 2026-11-12T00:42:14 using 4 processors on nodes gnode39 in partition ksagnormal01"
+    },
+    {
+      "experiment": "G3",
+      "cpu_ok": true,
+      "result": "sbatch: simulated scheduler record to start at 2026-11-12T00:42:14 using 4 processors on nodes gnode39 in partition ksagnormal01"
+    },
+    {
+      "experiment": "G4",
+      "cpu_ok": true,
+      "result": "sbatch: simulated scheduler record to start at 2026-11-12T00:42:14 using 4 processors on nodes gnode39 in partition ksagnormal01"
+    },
+    {
+      "experiment": "G5",
+      "cpu_ok": true,
+      "result": "sbatch: simulated scheduler record to start at 2026-11-12T00:42:14 using 4 processors on nodes gnode39 in partition ksagnormal01"
+    },
+    {
+      "experiment": "G6",
+      "cpu_ok": true,
+      "result": "sbatch: simulated scheduler record to start at 2026-11-12T00:42:14 using 4 processors on nodes gnode39 in partition ksagnormal01"
+    },
+    {
+      "experiment": "G7",
+      "cpu_ok": true,
+      "result": "sbatch: simulated scheduler record to start at 2026-11-12T00:42:14 using 4 processors on nodes gnode39 in partition ksagnormal01"
+    }
+  ],
+  "allocates_gpu": false,
+  "actual_job_ids": [],
+  "platform": {
+    "active": 0,
+    "max_submitted": 20,
+    "max_running": 12,
+    "available_bytes": 64645660672,
+    "node_state": "MIXED",
+    "gres": "gpu:RTX4090-PCIE-24GB-LS:8(S:0-7)"
+  },
+  "node_gpu_allocated_at_initial_query": 8,
+  "deployed_source": {
+    "host_git_version": "1.8.3.1",
+    "pace_revision": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+    "openpi_pace_revision": "f4e52e6de4cc487a11585a3a7414d610b2883dae",
+    "tracked_diff_empty": true,
+    "model_cpu_receipt_sha256": "3d719b524ec6848897b17e71b16411e2fa2c221143c342dd127e24cf73c14e1a",
+    "norm_stats_sha256": "8a1f114a8873dfa0788c7f512851ee3063224ef2b8af270421076a2e4e544960",
+    "checkpoint_snapshot_files_matching_cpu_receipt": 28,
+    "norm_stats_and_tokenizer_hashes_verified": true
+  }
+}

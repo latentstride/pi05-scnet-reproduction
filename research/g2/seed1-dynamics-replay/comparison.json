@@ -1,0 +1,218 @@
+{
+  "cpu_only": true,
+  "model_used": false,
+  "renderer_created": false,
+  "windows": [
+    {
+      "window": 50,
+      "baseline_accepted": true,
+      "baseline_checks": {
+        "reconstructed_arm": true,
+        "reconstructed_fingers": true,
+        "acquisition": true,
+        "stop": true,
+        "arm_trajectory": true,
+        "finger_trajectory": true,
+        "block_trajectory": true
+      },
+      "prefix_identical": true,
+      "first_holder_tick": 5088,
+      "original_result": {
+        "cpu_only": true,
+        "renderer_created": false,
+        "model_used": false,
+        "window": 50,
+        "mode": "original",
+        "first_holder_tick": 5088,
+        "historical_holder_tick": 5088,
+        "historical_stop_tick": 5139,
+        "failure": {
+          "tick": 5139,
+          "code": "backend_error",
+          "detail": "object slipped relative to confirmed holder"
+        },
+        "steps": 5139,
+        "max_joint_difference_rad": 1.5497207641601562e-06,
+        "max_finger_difference_m": 4.353001713752747e-06,
+        "max_block_difference_m": 2.2674239620329106e-05,
+        "elapsed_s": 119.44751893728971,
+        "block_mass_kg": 0.009999999776482582,
+        "control_reconstruction": {
+          "arm_max_rad": 0.0,
+          "finger_max_m": 0.0
+        },
+        "freeze_semantics": "left six arm position drive targets at historical first-holder tick, zero arm velocity drive, unchanged gripper and right arm schedule",
+        "source_hashes": {
+          "envs/_base_task.py": "448f7152b65cb9102217cf5463aa821d72810ca56f63d5a797ec7bd43e23e101",
+          "envs/robot/robot.py": "3dcd80acc8cab489a4c5edb507cc460dab1724be0226b8d5c4c1b218dee605cb"
+        }
+      },
+      "fixed_result": {
+        "cpu_only": true,
+        "renderer_created": false,
+        "model_used": false,
+        "window": 50,
+        "mode": "fixed-wrist",
+        "first_holder_tick": 5088,
+        "historical_holder_tick": 5088,
+        "historical_stop_tick": 5139,
+        "failure": {
+          "tick": 5132,
+          "code": "backend_error",
+          "detail": "object slipped relative to confirmed holder"
+        },
+        "steps": 5132,
+        "max_joint_difference_rad": 0.002827763557434082,
+        "max_finger_difference_m": 0.000224357470870018,
+        "max_block_difference_m": 0.0016590953719243335,
+        "elapsed_s": 113.5646603628993,
+        "block_mass_kg": 0.009999999776482582,
+        "control_reconstruction": {
+          "arm_max_rad": 0.0,
+          "finger_max_m": 0.0
+        },
+        "freeze_semantics": "left six arm position drive targets at historical first-holder tick, zero arm velocity drive, unchanged gripper and right arm schedule",
+        "source_hashes": {
+          "envs/_base_task.py": "448f7152b65cb9102217cf5463aa821d72810ca56f63d5a797ec7bd43e23e101",
+          "envs/robot/robot.py": "3dcd80acc8cab489a4c5edb507cc460dab1724be0226b8d5c4c1b218dee605cb"
+        }
+      },
+      "original": {
+        "last_tick": 5139,
+        "last_slip_mm": 5.0205722219583295,
+        "last_slip_deg": 4.385975120701266,
+        "peak_slip_mm": 5.0205722219583295,
+        "peak_tool_displacement_mm": 0.5429320849160069,
+        "peak_block_displacement_mm": 4.364973101713305,
+        "final_fingers_m": [
+          0.030094726011157036,
+          0.029647760093212128
+        ],
+        "final_drive_m": [
+          0.013313636183738708,
+          0.013313636183738708
+        ],
+        "final_contact_impulse_over_dt_n": {
+          "fl_link6|box": 0.0,
+          "fl_link7|box": 17.349778437580103,
+          "fl_link8|box": 17.391862889684443,
+          "box|table": 0.0
+        }
+      },
+      "fixed_wrist": {
+        "last_tick": 5132,
+        "last_slip_mm": 5.005204011173162,
+        "last_slip_deg": 4.3074412332929555,
+        "peak_slip_mm": 5.005204011173162,
+        "peak_tool_displacement_mm": 0.1838112426919205,
+        "peak_block_displacement_mm": 4.788731367474122,
+        "final_fingers_m": [
+          0.030127165839076042,
+          0.029648253694176674
+        ],
+        "final_drive_m": [
+          0.01458427682518959,
+          0.01458427682518959
+        ],
+        "final_contact_impulse_over_dt_n": {
+          "fl_link6|box": 0.0,
+          "fl_link7|box": 15.645644755166,
+          "fl_link8|box": 15.66801723294816,
+          "box|table": 0.0
+        }
+      },
+      "common_tick_comparison": {
+        "tick": 5132,
+        "original": {
+          "last_tick": 5132,
+          "last_slip_mm": 4.1528638270152785,
+          "last_slip_deg": 3.65303929415711,
+          "peak_slip_mm": 4.1528638270152785,
+          "peak_tool_displacement_mm": 0.5429320849160069,
+          "peak_block_displacement_mm": 3.5591365978070773,
+          "final_fingers_m": [
+            0.03015049546957016,
+            0.029784368351101875
+          ],
+          "final_drive_m": [
+            0.01458427682518959,
+            0.01458427682518959
+          ],
+          "final_contact_impulse_over_dt_n": {
+            "fl_link6|box": 0.0,
+            "fl_link7|box": 14.331101537868411,
+            "fl_link8|box": 14.251025542226897,
+            "box|table": 0.0
+          }
+        },
+        "fixed-wrist": {
+          "last_tick": 5132,
+          "last_slip_mm": 5.005204011173162,
+          "last_slip_deg": 4.3074412332929555,
+          "peak_slip_mm": 5.005204011173162,
+          "peak_tool_displacement_mm": 0.1838112426919205,
+          "peak_block_displacement_mm": 4.788731367474122,
+          "final_fingers_m": [
+            0.030127165839076042,
+            0.029648253694176674
+          ],
+          "final_drive_m": [
+            0.01458427682518959,
+            0.01458427682518959
+          ],
+          "final_contact_impulse_over_dt_n": {
+            "fl_link6|box": 0.0,
+            "fl_link7|box": 15.645644755166,
+            "fl_link8|box": 15.66801723294816,
+            "box|table": 0.0
+          }
+        }
+      }
+    },
+    {
+      "window": 31,
+      "baseline_checks": {
+        "reconstructed_arm": true,
+        "reconstructed_fingers": true,
+        "acquisition": true,
+        "stop": false,
+        "arm_trajectory": true,
+        "finger_trajectory": true,
+        "block_trajectory": false
+      },
+      "baseline_accepted": false,
+      "original_result": {
+        "cpu_only": true,
+        "renderer_created": false,
+        "model_used": false,
+        "window": 31,
+        "mode": "original",
+        "first_holder_tick": 4568,
+        "historical_holder_tick": 4568,
+        "historical_stop_tick": 4777,
+        "failure": null,
+        "steps": 4777,
+        "max_joint_difference_rad": 0.00011670589447021484,
+        "max_finger_difference_m": 3.53250652551651e-05,
+        "max_block_difference_m": 0.001861107320552059,
+        "elapsed_s": 112.65581598505378,
+        "block_mass_kg": 0.009999999776482582,
+        "control_reconstruction": {
+          "arm_max_rad": 0.0,
+          "finger_max_m": 0.0
+        },
+        "freeze_semantics": "left six arm position drive targets at historical first-holder tick, zero arm velocity drive, unchanged gripper and right arm schedule",
+        "source_hashes": {
+          "envs/_base_task.py": "448f7152b65cb9102217cf5463aa821d72810ca56f63d5a797ec7bd43e23e101",
+          "envs/robot/robot.py": "3dcd80acc8cab489a4c5edb507cc460dab1724be0226b8d5c4c1b218dee605cb"
+        }
+      },
+      "counterfactual_run": false,
+      "reason": "historical baseline not reproduced within preregistered limits"
+    }
+  ],
+  "scope": "fixed original left-arm drive targets and zero arm velocity feedforward, not a physical wrist weld; common historical-stop horizon",
+  "physical_success_evaluated": false,
+  "all_baselines_accepted": false,
+  "all_compared_prefixes_identical": true
+}

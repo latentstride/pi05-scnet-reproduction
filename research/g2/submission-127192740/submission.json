@@ -1,0 +1,31 @@
+{
+  "job_id": "127192740",
+  "job_state": "PENDING",
+  "reason": "None",
+  "resources": {
+    "gpu_count": 1,
+    "gpu_type": "RTX4090",
+    "cpu_count": 4,
+    "memory_gib": 32,
+    "wall_s": 25200,
+    "node": "gnode39",
+    "partition": "ksagnormal01"
+  },
+  "price_yuan_per_gpu_hour": "3.60",
+  "max_cost_yuan": "25.20",
+  "archive_sha256": "24e337e1f820d38d028e625c0eda7b9cf6b9f942763226d912efa20951422b8d",
+  "manifest_sha256": "40d5ca77dd7d3d202aa9528e0dcfb9158e6740b5518cef7eb63c281c37b64a67",
+  "commit": "9eb42a97c29ce93e8c123f49540340e45c41875c",
+  "trials": 10,
+  "allocations": 1,
+  "model_services": 1,
+  "submissions": 1,
+  "authorization_bound_before_release": true,
+  "requeue": "0",
+  "attempted_at": "2026-11-07T17:32:12.170172+00:00",
+  "recorded_at": "2026-11-07T17:36:32.062736+00:00",
+  "state_scope": "Snapshot immediately after releasing the already-bound held job, not a live state claim",
+  "user_authorization": "User explicitly requested one new GPU job after the final CPU review",
+  "frozen_cpu_validation": "research/g2/final-concentrated-cpu/validation.json",
+  "pre_release_note": "Pending NumNodes 1-1 is exactly one node; same held Job ID bound and released after representation validation, no second submission"
+}

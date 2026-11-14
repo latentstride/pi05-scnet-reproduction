@@ -1,0 +1,2854 @@
+{
+  "scope": "real CPU physics; synthetic model response, image pixels and injected failures",
+  "cases": {
+    "mid": {
+      "receipt": {
+        "mode": "author_native_h50",
+        "episode_id": "cpu-mid",
+        "cleanup": {
+          "scene_opened": true,
+          "hold_complete": true,
+          "close_complete": true,
+          "scene_context_closed": true
+        },
+        "cleanup_failures": [],
+        "fresh_reset_verified": true,
+        "success": false,
+        "category": "controlled_candidate_stop",
+        "policy_kind": "cpu_substitute",
+        "prompt": "Grab the red block using the left arm.",
+        "initial_measurement": {
+          "source": "sapien.Scene.get_contacts after last real setup_demo physics step",
+          "status": "measured",
+          "stamp": {
+            "episode": "cpu-mid",
+            "tick": 0,
+            "sim_s": 0.0
+          },
+          "author_stability_physics_steps": 2500,
+          "state_sha256": "d2bd3bf5b3d693ad347c9fbc176d935cf5e92127d1e9ef23354a64b600106224",
+          "contact_sha256": "d45ed7e75d8bebe534319ba79cf1c722c2cbd80417ba5718764fae754db8f881",
+          "manifold_count": 33
+        },
+        "result": {
+          "failure": {
+            "code": "collision",
+            "detail": "CPU injected candidate rejection",
+            "diagnostic": {
+              "geometry": "candidate"
+            }
+          }
+        },
+        "outcome": "SAFETY_STOP",
+        "completed_actions": 51,
+        "native_action_count": 52,
+        "physics_steps": 1147,
+        "query_action_counts": [
+          0,
+          50
+        ],
+        "candidate_stop": {
+          "kind": "candidate_rejection",
+          "finger_drive_m": [
+            [
+              0.04444114863872528,
+              0.04447346180677414
+            ],
+            [
+              0.04445267468690872,
+              0.044439684599637985
+            ]
+          ],
+          "expected_hold_finger_m": [
+            [
+              0.04444114863872528,
+              0.04447346180677414
+            ],
+            [
+              0.04445267468690872,
+              0.044439684599637985
+            ]
+          ],
+          "episode": "cpu-mid",
+          "tick": 1147,
+          "state_sha256": "db649ce8f0bd182b5a279965c7ca85c44c096615edfa3b8372b1323f0d0a53fe",
+          "terminal_checks_passed": true,
+          "hold_verified": true,
+          "no_physics_advance": true,
+          "contact_sha256": "a783e42d2b393f9c4f040be9a785209e9454eaa37b2ded69c7a1091694aa5225",
+          "contact_manifold_count": 33,
+          "contact_source": "sapien.Scene.get_contacts",
+          "contact_sample_measured": true,
+          "hold_complete": true,
+          "failure_sha256": "4de19de4ba6d582dce88ea8b1c56d2528a5074015e5855a93da00876f4e8d14c",
+          "close_complete": true,
+          "scene_context_closed": true
+        },
+        "elapsed_s": 286.8250053720549
+      },
+      "process": {
+        "exit_code": 0,
+        "process_group_gone": true,
+        "elapsed_s": 325.25234584510326,
+        "gpu_used": false
+      },
+      "raw_events_sha256": "a864f5aa0e791dcca253b34c0d1c857b120c7439f69717756d57ffbfa0a489d3",
+      "event_counts": {
+        "author_action": 52,
+        "author_action_complete": 51,
+        "author_chunk": 2,
+        "author_query": 2,
+        "author_reset_admitted": 1,
+        "author_terminal": 1,
+        "cpu_topp": 104,
+        "initial_physical_measurement": 1,
+        "native_contact_sample": 1147,
+        "native_guard_state": 1147,
+        "step": 1147
+      },
+      "reset": {
+        "kind": "author_reset_admitted",
+        "scene_seed": 100000,
+        "cache_sha256": "12ac49e3913308901113cc8ddd9f71f0987ce8c9ebd83f03c308c759bdbeb939",
+        "initial": {
+          "robot_base_world": {
+            "left": [
+              0.0,
+              -0.6499999761581421,
+              0.0,
+              0.7071067811865476,
+              0.0,
+              0.0,
+              0.7071067811865475
+            ],
+            "right": [
+              0.0,
+              -0.6499999761581421,
+              0.0,
+              0.7071067811865476,
+              0.0,
+              0.0,
+              0.7071067811865475
+            ]
+          },
+          "task_frame_world": [
+            0.0,
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "actual_arm_qpos_rad": {
+            "left": [
+              -3.016615224282759e-08,
+              -5.666987590302597e-07,
+              -4.835828804061748e-06,
+              7.701128623693876e-08,
+              4.63164752773082e-07,
+              -8.158995683515968e-07
+            ],
+            "right": [
+              -3.258066882949606e-08,
+              -5.65274206110189e-07,
+              -4.838918357563671e-06,
+              7.693390813301448e-08,
+              4.6469963876916154e-07,
+              -8.163781899384048e-07
+            ]
+          },
+          "actual_gripper": {
+            "left": 0.9830570883221097,
+            "right": 0.9830570055378809
+          },
+          "objects_task": {
+            "block": [
+              -0.1521603763103485,
+              0.2279314547777176,
+              0.8400001525878906,
+              0.9719521289925551,
+              2.162576439342082e-07,
+              -3.4353901864368678e-06,
+              0.2351787807923811
+            ],
+            "target": [
+              0.16532817482948303,
+              0.16106395423412323,
+              0.7409999966621399,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "table": [
+              0.0,
+              0.0,
+              0.7400000095367432,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "reset_fixture_sha256": "213ac7121101c08b5932ffa4ce5dc3bec6b14a046df3ee8f1eb65edd6e184401",
+          "workspace_check_id": "author-native-h50-reset",
+          "common_workspace_pass": false
+        },
+        "block_mass_kg": 0.009999999776482582,
+        "prompt": "Grab the red block using the left arm."
+      },
+      "queries": [
+        {
+          "kind": "author_query",
+          "query": 0,
+          "index": 0,
+          "tick": 0
+        },
+        {
+          "kind": "author_query",
+          "query": 1,
+          "index": 50,
+          "tick": 1123
+        }
+      ],
+      "chunks": [
+        {
+          "kind": "author_chunk",
+          "query": 0,
+          "sha256": "a8f6ac47e45f1f90e63087ca777dedfec274acee52b0ee43c10e019a97436aad",
+          "rng": null
+        },
+        {
+          "kind": "author_chunk",
+          "query": 1,
+          "sha256": "1341c7d35489d33ffad2aa8dde2d27408336d2469365b6646919e4721fa2f565",
+          "rng": null
+        }
+      ],
+      "author_actions": [
+        {
+          "kind": "author_action",
+          "index": 0,
+          "tick": 0,
+          "row": [
+            0.002980039961925918,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.001,
+            0.0019907535923209805,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.99
+          ],
+          "row_sha256": "29852903d20f01ec4728db0d4e06a9a1d02b20c3b3bcb902eb87c805d5e6a589"
+        },
+        {
+          "kind": "author_action",
+          "index": 1,
+          "tick": 27,
+          "row": [
+            0.005841275134629758,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.98,
+            0.003926336361553827,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.99
+          ],
+          "row_sha256": "31c1259f2f3b395bce7d37bef100db40cc1a5849102203f0a38696ff804b7827"
+        },
+        {
+          "kind": "author_action",
+          "index": 2,
+          "tick": 53,
+          "row": [
+            0.00846963710092553,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.001,
+            0.005753106463250436,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.99
+          ],
+          "row_sha256": "39147eafcffd7b076220f577b40ad89cfcf3055007a4639b2e941ad9c5e57882"
+        },
+        {
+          "kind": "author_action",
+          "index": 3,
+          "tick": 78,
+          "row": [
+            0.010760341363492841,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.98,
+            0.007420437636836844,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.99
+          ],
+          "row_sha256": "3bf9af554732ebb5622e1d92e8a3386a2d448598df8bef933b246b783545b439"
+        },
+        {
+          "kind": "author_action",
+          "index": 4,
+          "tick": 101,
+          "row": [
+            0.012622064772118448,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.001,
+            0.008882122238352445,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.99
+          ],
+          "row_sha256": "f961f3d8b2b7db4f04fd034178569eba5e42af32c23dcb8325de5830d7d326f1"
+        },
+        {
+          "kind": "author_action",
+          "index": 5,
+          "tick": 122,
+          "row": [
+            0.013980586289508394,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.98,
+            0.010097651817694758,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.99
+          ],
+          "row_sha256": "ade1766e03376d782b1bcfaae25c733a6f46d9d821c21153c098713000ef1a44"
+        },
+        {
+          "kind": "author_action",
+          "index": 6,
+          "tick": 140,
+          "row": [
+            0.014781745949826902,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.001,
+            0.01103333975104506,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.99
+          ],
+          "row_sha256": "5ff43b35b4cd790c5adcee84dc17075293a3fca29563abd43f7958d5d2cf0046"
+        },
+        {
+          "kind": "author_action",
+          "index": 7,
+          "tick": 155,
+          "row": [
+            0.014993604045622576,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.98,
+            0.011663254816359752,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.99
+          ],
+          "row_sha256": "92539ba34144f73222683e0a49f0b7cdfb430b4cda9e10c58b938cc6e92607dd"
+        },
+        {
+          "kind": "author_action",
+          "index": 8,
+          "tick": 167,
+          "row": [
+            0.014607714463172926,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.001,
+            0.011969939839248654,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.99
+          ],
+          "row_sha256": "7d70bdfb8ba8b83cef6e0ba277de3b1d112b2cb4b7ac1ce108d48a55568ab380"
+        },
+        {
+          "kind": "author_action",
+          "index": 9,
+          "tick": 176,
+          "row": [
+            0.013639461402385224,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.98,
+            0.01194489549302118,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.99
+          ],
+          "row_sha256": "8360521b5115f7727e09930a101b543b7fd52461e5e3404cdc8ca1fa52ba7c1c"
+        },
+        {
+          "kind": "author_action",
+          "index": 10,
+          "tick": 191,
+          "row": [
+            0.01212744605729385,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.001,
+            0.011588815845089997,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.99
+          ],
+          "row_sha256": "3a2934330ab16622ee26cb44d6266d1be86e65e3fb9cb28c5a8ad098a4132d47"
+        },
+        {
+          "kind": "author_action",
+          "index": 11,
+          "tick": 210,
+          "row": [
+            0.010131947708267265,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.98,
+            0.010911569121908181,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.99
+          ],
+          "row_sha256": "92ece0a14c3f44d9b2af2cb34397c26f696957b46b52e18f2b0c8a2e78655efc"
+        },
+        {
+          "kind": "author_action",
+          "index": 12,
+          "tick": 232,
+          "row": [
+            0.0077325205773219625,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.001,
+            0.009931924225511528,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.99
+          ],
+          "row_sha256": "89b83506d987b5725df2a04560157434ea0d0a349eaeec4b15f6e8e47b105859"
+        },
+        {
+          "kind": "author_action",
+          "index": 13,
+          "tick": 256,
+          "row": [
+            0.005024822252338576,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.98,
+            0.008677030580859895,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.99
+          ],
+          "row_sha256": "f398c1808f49e3f186d257f3900c77a9ca87f37da643f44f7cd9025f7cc4b068"
+        },
+        {
+          "kind": "author_action",
+          "index": 14,
+          "tick": 282,
+          "row": [
+            0.002116800120898008,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.001,
+            0.007181665729247479,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.99
+          ],
+          "row_sha256": "be31ac332a75af9b1fe3be95ebdd0c002c544839e6631301e8104a21092e708d"
+        },
+        {
+          "kind": "author_action",
+          "index": 15,
+          "tick": 308,
+          "row": [
+            -0.0008756121514137012,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.98,
+            0.005487271519629744,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.99
+          ],
+          "row_sha256": "7f03fc90614463b27231bbaeaf4796dd5a6cc9fabfb82add145a170b2e356006"
+        },
+        {
+          "kind": "author_action",
+          "index": 16,
+          "tick": 335,
+          "row": [
+            -0.003833116530402468,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.001,
+            0.003640805608414273,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.99
+          ],
+          "row_sha256": "bc45fbdbfd7e789d8e415f5fc2b3442f9a5ae999441469082fc61a459a395cfc"
+        },
+        {
+          "kind": "author_action",
+          "index": 17,
+          "tick": 362,
+          "row": [
+            -0.006637806649422787,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.98,
+            0.0016934400967184066,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.99
+          ],
+          "row_sha256": "a79abec996715abee233bc43034d4883a47a75d1c06b6f93067a12687707eb29"
+        },
+        {
+          "kind": "author_action",
+          "index": 18,
+          "tick": 388,
+          "row": [
+            -0.009177868364140784,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.001,
+            -0.0003008566295420291,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.99
+          ],
+          "row_sha256": "78ffb3c00d8ce01df55d6f8969280ac94495885be5ae1d8ba8932ffe5c746ab5"
+        },
+        {
+          "kind": "author_action",
+          "index": 19,
+          "tick": 413,
+          "row": [
+            -0.011352037429618923,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.98,
+            -0.0022868155545058247,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.99
+          ],
+          "row_sha256": "d8af4d8cb1eeae567c8f3e866ca4fc3e9e6aeef8293992cf59dcee2b44cb2677"
+        },
+        {
+          "kind": "author_action",
+          "index": 20,
+          "tick": 436,
+          "row": [
+            -0.013073636586203823,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.001,
+            -0.004209398732275438,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.99
+          ],
+          "row_sha256": "d675e110c864147b7a12cc5e9f39756dfb4e40f53e5f3a50a1bcdd15fb54da67"
+        },
+        {
+          "kind": "author_action",
+          "index": 21,
+          "tick": 457,
+          "row": [
+            -0.014274031108342739,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.98,
+            -0.006015324583060137,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.99
+          ],
+          "row_sha256": "700192437190d39ac2a18b771b73a0d8ef518ce178cfd2f50df493167897dea7"
+        },
+        {
+          "kind": "author_action",
+          "index": 22,
+          "tick": 478,
+          "row": [
+            -0.014905365054501966,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.001,
+            -0.007654544514202223,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.99
+          ],
+          "row_sha256": "f5d8bdea4e49524631dc6ff86724d3203b9c8b4cf44a42268525ca8aee4ecdc3"
+        },
+        {
+          "kind": "author_action",
+          "index": 23,
+          "tick": 498,
+          "row": [
+            -0.01494246913253761,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.98,
+            -0.009081629943695138,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.99
+          ],
+          "row_sha256": "cb634f8ae93f14e9b9b91cc48a6910202b860295455a3f019bf771ed1483464a"
+        },
+        {
+          "kind": "author_action",
+          "index": 24,
+          "tick": 516,
+          "row": [
+            -0.014383864119947076,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.001,
+            -0.01025703128686608,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.99
+          ],
+          "row_sha256": "0490b2b406595454ec0cea946ececbb64c92021289234b04bbd703774c50a63f"
+        },
+        {
+          "kind": "author_action",
+          "index": 25,
+          "tick": 533,
+          "row": [
+            -0.013251819835802297,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.98,
+            -0.011148174015249143,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.99
+          ],
+          "row_sha256": "a89c6fe5cf900746d172ba386271dbb91d5a184946de7b850e3b1245a4620b4c"
+        },
+        {
+          "kind": "author_action",
+          "index": 26,
+          "tick": 549,
+          "row": [
+            -0.011591467313339807,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.001,
+            -0.011730361411981164,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.99
+          ],
+          "row_sha256": "b645f31a5cf79d9ac71dad878d537f184bfdcd3b7ef85b27d98145c9d1e2839b"
+        },
+        {
+          "kind": "author_action",
+          "index": 27,
+          "tick": 569,
+          "row": [
+            -0.009468999568084824,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.98,
+            -0.011987459005175139,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.99
+          ],
+          "row_sha256": "db22c3c611cb330cea9dcf65d59f7a35f81138534915684aab2f420d6b6dceed"
+        },
+        {
+          "kind": "author_action",
+          "index": 28,
+          "tick": 592,
+          "row": [
+            -0.00696903269120636,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.001,
+            -0.011912341711201833,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.99
+          ],
+          "row_sha256": "f98982f8911cba263711d644f951efc82b4e8609a94aad2344743a682cc6bd2f"
+        },
+        {
+          "kind": "author_action",
+          "index": 29,
+          "tick": 616,
+          "row": [
+            -0.004191232472983888,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.98,
+            -0.011507091295957662,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.99
+          ],
+          "row_sha256": "d3380ce3d79c4efc7eb0ae0047db068cfc70d1f19cf4e525f8134d154f36ec45"
+        },
+        {
+          "kind": "author_action",
+          "index": 30,
+          "tick": 642,
+          "row": [
+            -0.001246341042262446,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.001,
+            -0.010782938681768757,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.99
+          ],
+          "row_sha256": "94c52b7e5f80fb330697e604801238a8bca76049911732c0ab4327b3992ad0a3"
+        },
+        {
+          "kind": "author_action",
+          "index": 31,
+          "tick": 669,
+          "row": [
+            0.0017482380727574045,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.98,
+            -0.00975995269881096,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.99
+          ],
+          "row_sha256": "02bd79216c502d03195b28c2f48a5bd4defa1c5dc9c5bd16dfc5f706c9c186b3"
+        },
+        {
+          "kind": "author_action",
+          "index": 32,
+          "tick": 696,
+          "row": [
+            0.004673120452700668,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.001,
+            -0.008466483906844704,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.99
+          ],
+          "row_sha256": "a3083df85f9b8535c74f6aa97d62a846fb600e5301e2d62db0a9e77bb27496ad"
+        },
+        {
+          "kind": "author_action",
+          "index": 33,
+          "tick": 723,
+          "row": [
+            0.007411700267079122,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.98,
+            -0.006938378900931707,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.99
+          ],
+          "row_sha256": "6e5f8d1dafa7a065e8b06e5943622ad283f9270e3350fa12511ca0f3e8418f95"
+        },
+        {
+          "kind": "author_action",
+          "index": 34,
+          "tick": 749,
+          "row": [
+            0.009854798980781836,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.001,
+            -0.005217986875500926,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.99
+          ],
+          "row_sha256": "516fc732e638acc21fc25d79e724ace2ed741f110764e713a9c357f984a4cab2"
+        },
+        {
+          "kind": "author_action",
+          "index": 35,
+          "tick": 773,
+          "row": [
+            0.011905017957737296,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.98,
+            -0.00335298597838711,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.99
+          ],
+          "row_sha256": "6e2ad6ea85ce3afa18d16042e2c547e8d89d4def7d726c99602c01bacf10821a"
+        },
+        {
+          "kind": "author_action",
+          "index": 36,
+          "tick": 795,
+          "row": [
+            0.013480621437174403,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.001,
+            -0.001395061980722756,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.99
+          ],
+          "row_sha256": "2e57f5168db35156b881db601900f7c6d54f209eeb43ee150d38ee7e23ad3fa0"
+        },
+        {
+          "kind": "author_action",
+          "index": 37,
+          "tick": 817,
+          "row": [
+            0.014518795080472295,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.98,
+            0.0006015241185860727,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.99
+          ],
+          "row_sha256": "2aee1ca835bcc5fbf93373837e47b236e262f62b3e834905c17f0c790429acdb"
+        },
+        {
+          "kind": "author_action",
+          "index": 38,
+          "tick": 839,
+          "row": [
+            0.014978150180619074,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.001,
+            0.002581439857053786,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.99
+          ],
+          "row_sha256": "16412275a8a190946a77d7c1a0927096c8af20d4973703ef897305d3c30880e6"
+        },
+        {
+          "kind": "author_action",
+          "index": 39,
+          "tick": 861,
+          "row": [
+            0.014840373699350727,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.98,
+            0.00448981476685464,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.99
+          ],
+          "row_sha256": "67c72b1587977d395edce8515d053f5eb7da413268c0b6eab91723b32bd89485"
+        },
+        {
+          "kind": "author_action",
+          "index": 40,
+          "tick": 882,
+          "row": [
+            0.014110958350196596,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.001,
+            0.006273761029556154,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.99
+          ],
+          "row_sha256": "14d11c7687f0e4e7a3d40b89d5157fbf90779edbb90ae22fd1e7c1111106a1f7"
+        },
+        {
+          "kind": "author_action",
+          "index": 41,
+          "tick": 903,
+          "row": [
+            0.012818983621324206,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.98,
+            0.00788383918462547,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.99
+          ],
+          "row_sha256": "92bcc62768130bb5236ccb760af4b09f7572875db9609cdd40f3a0e65a05e4b0"
+        },
+        {
+          "kind": "author_action",
+          "index": 42,
+          "tick": 923,
+          "row": [
+            0.011015956468111699,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.001,
+            0.009275428271741798,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.99
+          ],
+          "row_sha256": "8e3ae3b263822fa3c6cc001ef4954dad482293fd34b55576dd3b27198185a28f"
+        },
+        {
+          "kind": "author_action",
+          "index": 43,
+          "tick": 944,
+          "row": [
+            0.008773757893376425,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.98,
+            0.010409962435425671,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.99
+          ],
+          "row_sha256": "1fead2583be05d34a1ec22a06bbe6da545a0d23a597eb9f97ac659aeba789f92"
+        },
+        {
+          "kind": "author_action",
+          "index": 44,
+          "tick": 967,
+          "row": [
+            0.006181777278626349,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.001,
+            0.011255999721296867,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.99
+          ],
+          "row_sha256": "8c9b852de547f1f93e729b2f7058476fef364690f4781e4fd490912a54afaeb1"
+        },
+        {
+          "kind": "author_action",
+          "index": 45,
+          "tick": 992,
+          "row": [
+            0.0033433487115037143,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.98,
+            0.01179009344383648,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.99
+          ],
+          "row_sha256": "588a1538b560d481be9bf7c32aed1f4dd2b4bc10cea9e426bd5aaa3446851fe7"
+        },
+        {
+          "kind": "author_action",
+          "index": 46,
+          "tick": 1018,
+          "row": [
+            0.0003716313818003665,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.001,
+            0.011997441976970655,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.99
+          ],
+          "row_sha256": "767aa8d59a53c18705c32f4ef085c004123e0bf6ed7a7cf9d26fa44528b27b8d"
+        },
+        {
+          "kind": "author_action",
+          "index": 47,
+          "tick": 1045,
+          "row": [
+            -0.0026149017183446947,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.98,
+            0.011872298959480582,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.99
+          ],
+          "row_sha256": "740eaa2f88fec66fb96b97c257a4a253a9164b6004a50243aaa460c6a9a7caa7"
+        },
+        {
+          "kind": "author_action",
+          "index": 48,
+          "tick": 1072,
+          "row": [
+            -0.0054971869387789255,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.001,
+            0.011418132546996014,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.99
+          ],
+          "row_sha256": "610d86fa08dcd440a6ec2dc86b9fa99108c0e45483035823ffaf85290c260e48"
+        },
+        {
+          "kind": "author_action",
+          "index": 49,
+          "tick": 1098,
+          "row": [
+            -0.008160316663340546,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.98,
+            0.010647529297136334,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.99
+          ],
+          "row_sha256": "9a703509857f3ffee3821684af9f6a65f05f7735cddd56865ac495a26a3d1392"
+        },
+        {
+          "kind": "author_action",
+          "index": 50,
+          "tick": 1123,
+          "row": [
+            -0.010498120313903134,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.001,
+            0.009581845351481884,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.99
+          ],
+          "row_sha256": "7997e2fbba56f1d41f4b5bcf95fef71dc994093a728f6da340a23a88dbcedcb6"
+        },
+        {
+          "kind": "author_action",
+          "index": 51,
+          "tick": 1147,
+          "row": [
+            -0.012417397036284805,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.98,
+            0.00825061458135674,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.99
+          ],
+          "row_sha256": "fd55226ef8018c76e3a564486a5ebdbfab7cb073bc7f0ad8491784f398aa0919"
+        }
+      ],
+      "completed_physics_steps": [
+        27,
+        26,
+        25,
+        23,
+        21,
+        18,
+        15,
+        12,
+        9,
+        15,
+        19,
+        22,
+        24,
+        26,
+        26,
+        27,
+        27,
+        26,
+        25,
+        23,
+        21,
+        21,
+        20,
+        18,
+        17,
+        16,
+        20,
+        23,
+        24,
+        26,
+        27,
+        27,
+        27,
+        26,
+        24,
+        22,
+        22,
+        22,
+        22,
+        21,
+        21,
+        20,
+        21,
+        23,
+        25,
+        26,
+        27,
+        27,
+        26,
+        25,
+        24
+      ],
+      "topp_by_arm": [
+        {
+          "kind": "cpu_topp",
+          "side": "left",
+          "index": 0,
+          "status": "trajectory",
+          "steps": 27
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "right",
+          "index": 0,
+          "status": "trajectory",
+          "steps": 22
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "left",
+          "index": 1,
+          "status": "trajectory",
+          "steps": 26
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "right",
+          "index": 1,
+          "status": "trajectory",
+          "steps": 21
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "left",
+          "index": 2,
+          "status": "trajectory",
+          "steps": 25
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "right",
+          "index": 2,
+          "status": "trajectory",
+          "steps": 21
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "left",
+          "index": 3,
+          "status": "trajectory",
+          "steps": 23
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "right",
+          "index": 3,
+          "status": "trajectory",
+          "steps": 20
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "left",
+          "index": 4,
+          "status": "trajectory",
+          "steps": 21
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "right",
+          "index": 4,
+          "status": "trajectory",
+          "steps": 19
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "left",
+          "index": 5,
+          "status": "trajectory",
+          "steps": 18
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "right",
+          "index": 5,
+          "status": "trajectory",
+          "steps": 17
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "left",
+          "index": 6,
+          "status": "trajectory",
+          "steps": 14
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "right",
+          "index": 6,
+          "status": "trajectory",
+          "steps": 15
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "left",
+          "index": 7,
+          "status": "trajectory",
+          "steps": 7
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "right",
+          "index": 7,
+          "status": "trajectory",
+          "steps": 12
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "left",
+          "index": 8,
+          "status": "trajectory",
+          "steps": 9
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "right",
+          "index": 8,
+          "status": "trajectory",
+          "steps": 8
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "left",
+          "index": 9,
+          "status": "trajectory",
+          "steps": 15
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "right",
+          "index": 9,
+          "status": "trajectory",
+          "steps": 2
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "left",
+          "index": 10,
+          "status": "trajectory",
+          "steps": 19
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "right",
+          "index": 10,
+          "status": "trajectory",
+          "steps": 9
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "left",
+          "index": 11,
+          "status": "trajectory",
+          "steps": 22
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "right",
+          "index": 11,
+          "status": "trajectory",
+          "steps": 13
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "left",
+          "index": 12,
+          "status": "trajectory",
+          "steps": 24
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "right",
+          "index": 12,
+          "status": "trajectory",
+          "steps": 15
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "left",
+          "index": 13,
+          "status": "trajectory",
+          "steps": 26
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "right",
+          "index": 13,
+          "status": "trajectory",
+          "steps": 17
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "left",
+          "index": 14,
+          "status": "trajectory",
+          "steps": 26
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "right",
+          "index": 14,
+          "status": "trajectory",
+          "steps": 19
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "left",
+          "index": 15,
+          "status": "trajectory",
+          "steps": 27
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "right",
+          "index": 15,
+          "status": "trajectory",
+          "steps": 20
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "left",
+          "index": 16,
+          "status": "trajectory",
+          "steps": 27
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "right",
+          "index": 16,
+          "status": "trajectory",
+          "steps": 21
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "left",
+          "index": 17,
+          "status": "trajectory",
+          "steps": 26
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "right",
+          "index": 17,
+          "status": "trajectory",
+          "steps": 22
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "left",
+          "index": 18,
+          "status": "trajectory",
+          "steps": 25
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "right",
+          "index": 18,
+          "status": "trajectory",
+          "steps": 22
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "left",
+          "index": 19,
+          "status": "trajectory",
+          "steps": 23
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "right",
+          "index": 19,
+          "status": "trajectory",
+          "steps": 22
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "left",
+          "index": 20,
+          "status": "trajectory",
+          "steps": 20
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "right",
+          "index": 20,
+          "status": "trajectory",
+          "steps": 21
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "left",
+          "index": 21,
+          "status": "trajectory",
+          "steps": 17
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "right",
+          "index": 21,
+          "status": "trajectory",
+          "steps": 21
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "left",
+          "index": 22,
+          "status": "trajectory",
+          "steps": 12
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "right",
+          "index": 22,
+          "status": "trajectory",
+          "steps": 20
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "left",
+          "index": 23,
+          "status": "trajectory",
+          "steps": 3
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "right",
+          "index": 23,
+          "status": "trajectory",
+          "steps": 18
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "left",
+          "index": 24,
+          "status": "trajectory",
+          "steps": 11
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "right",
+          "index": 24,
+          "status": "trajectory",
+          "steps": 17
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "left",
+          "index": 25,
+          "status": "trajectory",
+          "steps": 16
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "right",
+          "index": 25,
+          "status": "trajectory",
+          "steps": 14
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "left",
+          "index": 26,
+          "status": "trajectory",
+          "steps": 20
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "right",
+          "index": 26,
+          "status": "trajectory",
+          "steps": 12
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "left",
+          "index": 27,
+          "status": "trajectory",
+          "steps": 23
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "right",
+          "index": 27,
+          "status": "trajectory",
+          "steps": 8
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "left",
+          "index": 28,
+          "status": "trajectory",
+          "steps": 24
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "right",
+          "index": 28,
+          "status": "trajectory",
+          "steps": 4
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "left",
+          "index": 29,
+          "status": "trajectory",
+          "steps": 26
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "right",
+          "index": 29,
+          "status": "trajectory",
+          "steps": 10
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "left",
+          "index": 30,
+          "status": "trajectory",
+          "steps": 27
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "right",
+          "index": 30,
+          "status": "trajectory",
+          "steps": 13
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "left",
+          "index": 31,
+          "status": "trajectory",
+          "steps": 27
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "right",
+          "index": 31,
+          "status": "trajectory",
+          "steps": 15
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "left",
+          "index": 32,
+          "status": "trajectory",
+          "steps": 27
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "right",
+          "index": 32,
+          "status": "trajectory",
+          "steps": 17
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "left",
+          "index": 33,
+          "status": "trajectory",
+          "steps": 26
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "right",
+          "index": 33,
+          "status": "trajectory",
+          "steps": 19
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "left",
+          "index": 34,
+          "status": "trajectory",
+          "steps": 24
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "right",
+          "index": 34,
+          "status": "trajectory",
+          "steps": 20
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "left",
+          "index": 35,
+          "status": "trajectory",
+          "steps": 22
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "right",
+          "index": 35,
+          "status": "trajectory",
+          "steps": 21
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "left",
+          "index": 36,
+          "status": "trajectory",
+          "steps": 19
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "right",
+          "index": 36,
+          "status": "trajectory",
+          "steps": 22
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "left",
+          "index": 37,
+          "status": "trajectory",
+          "steps": 16
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "right",
+          "index": 37,
+          "status": "trajectory",
+          "steps": 22
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "left",
+          "index": 38,
+          "status": "trajectory",
+          "steps": 10
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "right",
+          "index": 38,
+          "status": "trajectory",
+          "steps": 22
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "left",
+          "index": 39,
+          "status": "trajectory",
+          "steps": 5
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "right",
+          "index": 39,
+          "status": "trajectory",
+          "steps": 21
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "left",
+          "index": 40,
+          "status": "trajectory",
+          "steps": 13
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "right",
+          "index": 40,
+          "status": "trajectory",
+          "steps": 21
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "left",
+          "index": 41,
+          "status": "trajectory",
+          "steps": 17
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "right",
+          "index": 41,
+          "status": "trajectory",
+          "steps": 20
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "left",
+          "index": 42,
+          "status": "trajectory",
+          "steps": 21
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "right",
+          "index": 42,
+          "status": "trajectory",
+          "steps": 18
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "left",
+          "index": 43,
+          "status": "trajectory",
+          "steps": 23
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "right",
+          "index": 43,
+          "status": "trajectory",
+          "steps": 16
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "left",
+          "index": 44,
+          "status": "trajectory",
+          "steps": 25
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "right",
+          "index": 44,
+          "status": "trajectory",
+          "steps": 14
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "left",
+          "index": 45,
+          "status": "trajectory",
+          "steps": 26
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "right",
+          "index": 45,
+          "status": "trajectory",
+          "steps": 11
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "left",
+          "index": 46,
+          "status": "trajectory",
+          "steps": 27
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "right",
+          "index": 46,
+          "status": "trajectory",
+          "steps": 7
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "left",
+          "index": 47,
+          "status": "trajectory",
+          "steps": 27
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "right",
+          "index": 47,
+          "status": "trajectory",
+          "steps": 5
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "left",
+          "index": 48,
+          "status": "trajectory",
+          "steps": 26
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "right",
+          "index": 48,
+          "status": "trajectory",
+          "steps": 10
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "left",
+          "index": 49,
+          "status": "trajectory",
+          "steps": 25
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "right",
+          "index": 49,
+          "status": "trajectory",
+          "steps": 13
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "left",
+          "index": 50,
+          "status": "trajectory",
+          "steps": 24
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "right",
+          "index": 50,
+          "status": "trajectory",
+          "steps": 16
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "left",
+          "index": 51,
+          "status": "trajectory",
+          "steps": 21
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "right",
+          "index": 51,
+          "status": "trajectory",
+          "steps": 18
+        }
+      ],
+      "grip_drive_range_m": [
+        0.04390000179409981,
+        0.04500000178813934
+      ],
+      "continuation_gate_with_service_alive_stub": true
+    },
+    "tick-zero": {
+      "receipt": {
+        "mode": "author_native_h50",
+        "episode_id": "cpu-tick-zero",
+        "cleanup": {
+          "scene_opened": true,
+          "hold_complete": true,
+          "close_complete": true,
+          "scene_context_closed": true
+        },
+        "cleanup_failures": [],
+        "fresh_reset_verified": true,
+        "success": false,
+        "category": "controlled_candidate_stop",
+        "policy_kind": "cpu_substitute",
+        "prompt": "Grab the red block using the left arm.",
+        "initial_measurement": {
+          "source": "sapien.Scene.get_contacts after last real setup_demo physics step",
+          "status": "measured",
+          "stamp": {
+            "episode": "cpu-tick-zero",
+            "tick": 0,
+            "sim_s": 0.0
+          },
+          "author_stability_physics_steps": 2500,
+          "state_sha256": "c981dd4e056633fb98a87693173b0e545acf9bb8f1ccd413c0860a2cf8ceac6b",
+          "contact_sha256": "d45ed7e75d8bebe534319ba79cf1c722c2cbd80417ba5718764fae754db8f881",
+          "manifold_count": 33
+        },
+        "result": {
+          "failure": {
+            "code": "collision",
+            "detail": "CPU injected candidate rejection",
+            "diagnostic": {
+              "geometry": "candidate"
+            }
+          }
+        },
+        "outcome": "SAFETY_STOP",
+        "completed_actions": 0,
+        "native_action_count": 1,
+        "physics_steps": 0,
+        "query_action_counts": [
+          0
+        ],
+        "candidate_stop": {
+          "kind": "candidate_rejection",
+          "finger_drive_m": [
+            [
+              0.044236842542886734,
+              0.044238295406103134
+            ],
+            [
+              0.04423683509230614,
+              0.044238295406103134
+            ]
+          ],
+          "expected_hold_finger_m": [
+            [
+              0.044236842542886734,
+              0.044238295406103134
+            ],
+            [
+              0.04423683509230614,
+              0.044238295406103134
+            ]
+          ],
+          "episode": "cpu-tick-zero",
+          "tick": 0,
+          "state_sha256": "c981dd4e056633fb98a87693173b0e545acf9bb8f1ccd413c0860a2cf8ceac6b",
+          "terminal_checks_passed": true,
+          "hold_verified": true,
+          "no_physics_advance": true,
+          "contact_sha256": "d45ed7e75d8bebe534319ba79cf1c722c2cbd80417ba5718764fae754db8f881",
+          "contact_manifold_count": 33,
+          "contact_source": "sapien.Scene.get_contacts",
+          "contact_sample_measured": true,
+          "hold_complete": true,
+          "failure_sha256": "4de19de4ba6d582dce88ea8b1c56d2528a5074015e5855a93da00876f4e8d14c",
+          "close_complete": true,
+          "scene_context_closed": true
+        },
+        "elapsed_s": 201.08805241808295
+      },
+      "process": {
+        "exit_code": 0,
+        "process_group_gone": true,
+        "elapsed_s": 236.19688195362687,
+        "gpu_used": false
+      },
+      "raw_events_sha256": "5a19811ca527f6421c954621003444493cdb41bc50781dcc16b84b70c5a50ce1",
+      "event_counts": {
+        "author_action": 1,
+        "author_chunk": 1,
+        "author_query": 1,
+        "author_reset_admitted": 1,
+        "author_terminal": 1,
+        "cpu_topp": 2,
+        "initial_physical_measurement": 1
+      },
+      "reset": {
+        "kind": "author_reset_admitted",
+        "scene_seed": 100000,
+        "cache_sha256": "12ac49e3913308901113cc8ddd9f71f0987ce8c9ebd83f03c308c759bdbeb939",
+        "initial": {
+          "robot_base_world": {
+            "left": [
+              0.0,
+              -0.6499999761581421,
+              0.0,
+              0.7071067811865476,
+              0.0,
+              0.0,
+              0.7071067811865475
+            ],
+            "right": [
+              0.0,
+              -0.6499999761581421,
+              0.0,
+              0.7071067811865476,
+              0.0,
+              0.0,
+              0.7071067811865475
+            ]
+          },
+          "task_frame_world": [
+            0.0,
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "actual_arm_qpos_rad": {
+            "left": [
+              -3.016615224282759e-08,
+              -5.666987590302597e-07,
+              -4.835828804061748e-06,
+              7.701128623693876e-08,
+              4.63164752773082e-07,
+              -8.158995683515968e-07
+            ],
+            "right": [
+              -3.258066882949606e-08,
+              -5.65274206110189e-07,
+              -4.838918357563671e-06,
+              7.693390813301448e-08,
+              4.6469963876916154e-07,
+              -8.163781899384048e-07
+            ]
+          },
+          "actual_gripper": {
+            "left": 0.9830570883221097,
+            "right": 0.9830570055378809
+          },
+          "objects_task": {
+            "block": [
+              -0.1521603763103485,
+              0.2279314547777176,
+              0.8400001525878906,
+              0.9719521289925551,
+              2.162576439342082e-07,
+              -3.4353901864368678e-06,
+              0.2351787807923811
+            ],
+            "target": [
+              0.16532817482948303,
+              0.16106395423412323,
+              0.7409999966621399,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "table": [
+              0.0,
+              0.0,
+              0.7400000095367432,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "reset_fixture_sha256": "213ac7121101c08b5932ffa4ce5dc3bec6b14a046df3ee8f1eb65edd6e184401",
+          "workspace_check_id": "author-native-h50-reset",
+          "common_workspace_pass": false
+        },
+        "block_mass_kg": 0.009999999776482582,
+        "prompt": "Grab the red block using the left arm."
+      },
+      "queries": [
+        {
+          "kind": "author_query",
+          "query": 0,
+          "index": 0,
+          "tick": 0
+        }
+      ],
+      "chunks": [
+        {
+          "kind": "author_chunk",
+          "query": 0,
+          "sha256": "a8f6ac47e45f1f90e63087ca777dedfec274acee52b0ee43c10e019a97436aad",
+          "rng": null
+        }
+      ],
+      "author_actions": [
+        {
+          "kind": "author_action",
+          "index": 0,
+          "tick": 0,
+          "row": [
+            0.002980039961925918,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.001,
+            0.0019907535923209805,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.99
+          ],
+          "row_sha256": "29852903d20f01ec4728db0d4e06a9a1d02b20c3b3bcb902eb87c805d5e6a589"
+        }
+      ],
+      "completed_physics_steps": [],
+      "topp_by_arm": [
+        {
+          "kind": "cpu_topp",
+          "side": "left",
+          "index": 0,
+          "status": "trajectory",
+          "steps": 27
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "right",
+          "index": 0,
+          "status": "trajectory",
+          "steps": 22
+        }
+      ],
+      "grip_drive_range_m": null,
+      "continuation_gate_with_service_alive_stub": true
+    },
+    "missing": {
+      "receipt": {
+        "mode": "author_native_h50",
+        "episode_id": "cpu-missing",
+        "cleanup": {
+          "scene_opened": true,
+          "hold_complete": true,
+          "close_complete": true,
+          "scene_context_closed": true
+        },
+        "cleanup_failures": [
+          "terminal sample: candidate stop lacks current physical contact sample"
+        ],
+        "fresh_reset_verified": true,
+        "success": false,
+        "category": "infrastructure_failure",
+        "policy_kind": "cpu_substitute",
+        "prompt": "Grab the red block using the left arm.",
+        "initial_measurement": {
+          "source": "sapien.Scene.get_contacts after last real setup_demo physics step",
+          "status": "measured",
+          "stamp": {
+            "episode": "cpu-missing",
+            "tick": 0,
+            "sim_s": 0.0
+          },
+          "author_stability_physics_steps": 2500,
+          "state_sha256": "16995e5c800e6f8d126fe9aa5d74ad259f3b9c14f1cfed2564a83a09b54f1811",
+          "contact_sha256": "d45ed7e75d8bebe534319ba79cf1c722c2cbd80417ba5718764fae754db8f881",
+          "manifold_count": 33
+        },
+        "result": {
+          "failure": {
+            "code": "collision",
+            "detail": "CPU injected candidate rejection",
+            "diagnostic": {
+              "geometry": "candidate"
+            }
+          }
+        },
+        "outcome": "SAFETY_STOP",
+        "completed_actions": 0,
+        "native_action_count": 1,
+        "physics_steps": 0,
+        "query_action_counts": [
+          0
+        ],
+        "elapsed_s": 212.83474865090102
+      },
+      "process": {
+        "exit_code": 0,
+        "process_group_gone": true,
+        "elapsed_s": 261.5437115756795,
+        "gpu_used": false
+      },
+      "raw_events_sha256": "1df4672414b8758a0ddaace24b55330bb6d5c0ce933cf05e2f49e1c3adbdf412",
+      "event_counts": {
+        "author_action": 1,
+        "author_chunk": 1,
+        "author_query": 1,
+        "author_reset_admitted": 1,
+        "author_terminal": 1,
+        "cpu_topp": 2,
+        "initial_physical_measurement": 1
+      },
+      "reset": {
+        "kind": "author_reset_admitted",
+        "scene_seed": 100000,
+        "cache_sha256": "12ac49e3913308901113cc8ddd9f71f0987ce8c9ebd83f03c308c759bdbeb939",
+        "initial": {
+          "robot_base_world": {
+            "left": [
+              0.0,
+              -0.6499999761581421,
+              0.0,
+              0.7071067811865476,
+              0.0,
+              0.0,
+              0.7071067811865475
+            ],
+            "right": [
+              0.0,
+              -0.6499999761581421,
+              0.0,
+              0.7071067811865476,
+              0.0,
+              0.0,
+              0.7071067811865475
+            ]
+          },
+          "task_frame_world": [
+            0.0,
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "actual_arm_qpos_rad": {
+            "left": [
+              -3.016615224282759e-08,
+              -5.666987590302597e-07,
+              -4.835828804061748e-06,
+              7.701128623693876e-08,
+              4.63164752773082e-07,
+              -8.158995683515968e-07
+            ],
+            "right": [
+              -3.258066882949606e-08,
+              -5.65274206110189e-07,
+              -4.838918357563671e-06,
+              7.693390813301448e-08,
+              4.6469963876916154e-07,
+              -8.163781899384048e-07
+            ]
+          },
+          "actual_gripper": {
+            "left": 0.9830570883221097,
+            "right": 0.9830570055378809
+          },
+          "objects_task": {
+            "block": [
+              -0.1521603763103485,
+              0.2279314547777176,
+              0.8400001525878906,
+              0.9719521289925551,
+              2.162576439342082e-07,
+              -3.4353901864368678e-06,
+              0.2351787807923811
+            ],
+            "target": [
+              0.16532817482948303,
+              0.16106395423412323,
+              0.7409999966621399,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "table": [
+              0.0,
+              0.0,
+              0.7400000095367432,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "reset_fixture_sha256": "213ac7121101c08b5932ffa4ce5dc3bec6b14a046df3ee8f1eb65edd6e184401",
+          "workspace_check_id": "author-native-h50-reset",
+          "common_workspace_pass": false
+        },
+        "block_mass_kg": 0.009999999776482582,
+        "prompt": "Grab the red block using the left arm."
+      },
+      "queries": [
+        {
+          "kind": "author_query",
+          "query": 0,
+          "index": 0,
+          "tick": 0
+        }
+      ],
+      "chunks": [
+        {
+          "kind": "author_chunk",
+          "query": 0,
+          "sha256": "a8f6ac47e45f1f90e63087ca777dedfec274acee52b0ee43c10e019a97436aad",
+          "rng": null
+        }
+      ],
+      "author_actions": [
+        {
+          "kind": "author_action",
+          "index": 0,
+          "tick": 0,
+          "row": [
+            0.002980039961925918,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.001,
+            0.0019907535923209805,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.99
+          ],
+          "row_sha256": "29852903d20f01ec4728db0d4e06a9a1d02b20c3b3bcb902eb87c805d5e6a589"
+        }
+      ],
+      "completed_physics_steps": [],
+      "topp_by_arm": [
+        {
+          "kind": "cpu_topp",
+          "side": "left",
+          "index": 0,
+          "status": "trajectory",
+          "steps": 27
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "right",
+          "index": 0,
+          "status": "trajectory",
+          "steps": 22
+        }
+      ],
+      "grip_drive_range_m": null,
+      "continuation_gate_with_service_alive_stub": false
+    },
+    "actual": {
+      "receipt": {
+        "mode": "author_native_h50",
+        "episode_id": "cpu-actual",
+        "cleanup": {
+          "scene_opened": true,
+          "hold_complete": true,
+          "close_complete": true,
+          "scene_context_closed": true
+        },
+        "cleanup_failures": [],
+        "fresh_reset_verified": true,
+        "success": false,
+        "category": "actual_safety_stop",
+        "policy_kind": "cpu_substitute",
+        "prompt": "Grab the red block using the left arm.",
+        "initial_measurement": {
+          "source": "sapien.Scene.get_contacts after last real setup_demo physics step",
+          "status": "measured",
+          "stamp": {
+            "episode": "cpu-actual",
+            "tick": 0,
+            "sim_s": 0.0
+          },
+          "author_stability_physics_steps": 2500,
+          "state_sha256": "ca10cf5e1d068424619a100e309fea2b3020952613f460f3d53b8a91b0796061",
+          "contact_sha256": "d45ed7e75d8bebe534319ba79cf1c722c2cbd80417ba5718764fae754db8f881",
+          "manifold_count": 33
+        },
+        "result": {
+          "failure": {
+            "code": "collision",
+            "detail": "CPU injected real-danger classification",
+            "diagnostic": {
+              "geometry": "actual"
+            }
+          }
+        },
+        "outcome": "SAFETY_STOP",
+        "completed_actions": 0,
+        "native_action_count": 1,
+        "physics_steps": 1,
+        "query_action_counts": [
+          0
+        ],
+        "elapsed_s": 231.21836835611612
+      },
+      "process": {
+        "exit_code": 0,
+        "process_group_gone": true,
+        "elapsed_s": 283.99315630085766,
+        "gpu_used": false
+      },
+      "raw_events_sha256": "3a5cfa42d05f2c84990c153dec5a3c9fff0d2345688107d3f01ab21a8e6582c7",
+      "event_counts": {
+        "author_action": 1,
+        "author_chunk": 1,
+        "author_query": 1,
+        "author_reset_admitted": 1,
+        "author_terminal": 1,
+        "cpu_topp": 2,
+        "initial_physical_measurement": 1,
+        "native_contact_sample": 1,
+        "step": 1
+      },
+      "reset": {
+        "kind": "author_reset_admitted",
+        "scene_seed": 100000,
+        "cache_sha256": "12ac49e3913308901113cc8ddd9f71f0987ce8c9ebd83f03c308c759bdbeb939",
+        "initial": {
+          "robot_base_world": {
+            "left": [
+              0.0,
+              -0.6499999761581421,
+              0.0,
+              0.7071067811865476,
+              0.0,
+              0.0,
+              0.7071067811865475
+            ],
+            "right": [
+              0.0,
+              -0.6499999761581421,
+              0.0,
+              0.7071067811865476,
+              0.0,
+              0.0,
+              0.7071067811865475
+            ]
+          },
+          "task_frame_world": [
+            0.0,
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "actual_arm_qpos_rad": {
+            "left": [
+              -3.016615224282759e-08,
+              -5.666987590302597e-07,
+              -4.835828804061748e-06,
+              7.701128623693876e-08,
+              4.63164752773082e-07,
+              -8.158995683515968e-07
+            ],
+            "right": [
+              -3.258066882949606e-08,
+              -5.65274206110189e-07,
+              -4.838918357563671e-06,
+              7.693390813301448e-08,
+              4.6469963876916154e-07,
+              -8.163781899384048e-07
+            ]
+          },
+          "actual_gripper": {
+            "left": 0.9830570883221097,
+            "right": 0.9830570055378809
+          },
+          "objects_task": {
+            "block": [
+              -0.1521603763103485,
+              0.2279314547777176,
+              0.8400001525878906,
+              0.9719521289925551,
+              2.162576439342082e-07,
+              -3.4353901864368678e-06,
+              0.2351787807923811
+            ],
+            "target": [
+              0.16532817482948303,
+              0.16106395423412323,
+              0.7409999966621399,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "table": [
+              0.0,
+              0.0,
+              0.7400000095367432,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "reset_fixture_sha256": "213ac7121101c08b5932ffa4ce5dc3bec6b14a046df3ee8f1eb65edd6e184401",
+          "workspace_check_id": "author-native-h50-reset",
+          "common_workspace_pass": false
+        },
+        "block_mass_kg": 0.009999999776482582,
+        "prompt": "Grab the red block using the left arm."
+      },
+      "queries": [
+        {
+          "kind": "author_query",
+          "query": 0,
+          "index": 0,
+          "tick": 0
+        }
+      ],
+      "chunks": [
+        {
+          "kind": "author_chunk",
+          "query": 0,
+          "sha256": "a8f6ac47e45f1f90e63087ca777dedfec274acee52b0ee43c10e019a97436aad",
+          "rng": null
+        }
+      ],
+      "author_actions": [
+        {
+          "kind": "author_action",
+          "index": 0,
+          "tick": 0,
+          "row": [
+            0.002980039961925918,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.001,
+            0.0019907535923209805,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.99
+          ],
+          "row_sha256": "29852903d20f01ec4728db0d4e06a9a1d02b20c3b3bcb902eb87c805d5e6a589"
+        }
+      ],
+      "completed_physics_steps": [],
+      "topp_by_arm": [
+        {
+          "kind": "cpu_topp",
+          "side": "left",
+          "index": 0,
+          "status": "trajectory",
+          "steps": 27
+        },
+        {
+          "kind": "cpu_topp",
+          "side": "right",
+          "index": 0,
+          "status": "trajectory",
+          "steps": 22
+        }
+      ],
+      "grip_drive_range_m": [
+        0.04500000178813934,
+        0.04500000178813934
+      ],
+      "continuation_gate_with_service_alive_stub": false
+    }
+  }
+}

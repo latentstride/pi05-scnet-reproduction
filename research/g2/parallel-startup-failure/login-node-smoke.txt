@@ -1,0 +1,9 @@
+HOST login04
+Python 3.10.14
+SHELL_NO_ALLOCATION
+bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+G2_STARTUP stage=slurm_shell job=unknown host=login04
+Missing required environment variable SLURM_JOB_ID
+G2_STARTUP stage=slurm_shell outcome=INFRASTRUCTURE_FAILURE exit=1 job=unknown
+EXIT 1
+END

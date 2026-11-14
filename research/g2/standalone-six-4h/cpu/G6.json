@@ -1,0 +1,25 @@
+{
+  "id": "G6",
+  "admission": "PASS",
+  "config_sha256": "0862664302b812c4a4c04e82bd9447eb5d3bae6eb1e2b6167793f33fc5ea0578",
+  "evidence_scope": "prior CPU scene and policy substitute; fresh resource ledger check",
+  "source_batch_sha256": "616fc754e36acc5b2c89b6fb302eb254b340b751e4834fe84368d1ad74fb87e3",
+  "source_config_sha256": "f1e35ddd7caed498ab136f2071859c2968214ef6ac564afc62da8447de4a77cc",
+  "source_cpu_sha256": "7df0c550671bb4424f473d789e93fb893f796ee08cd183654a736651c70ff73e",
+  "resource_acceptance": {
+    "overhead": {
+      "graphics_s": 300,
+      "statistics_s": 120,
+      "cleanup_s": 360,
+      "shared_model_and_dynamic_entry_s": 900
+    },
+    "host_reserve_s": 360,
+    "slurm_signal_s": 120,
+    "minimum_s": 14040,
+    "unassigned_s": 360,
+    "soft_s": 11400,
+    "hard_s": 12000,
+    "request_s": 390,
+    "physics_steps": 130000
+  }
+}

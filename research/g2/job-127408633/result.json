@@ -1,0 +1,416 @@
+{
+  "job_id": "127408633",
+  "slurm": {
+    "state": "FAILED",
+    "start": "2026-11-10T16:53:14+08:00",
+    "end": "2026-11-10T18:08:59+08:00",
+    "elapsed_s": 4545,
+    "exit_code": "1:0",
+    "derived_exit_code": "0:0"
+  },
+  "archive_sha256": "c8eeff121eefb1bff98e8103cc3314ef6d95669e362889f3d68ac35507389e99",
+  "manifest_sha256": "9270db1e97eafedfb6f94711c8b8c9f33efd76d04ab800af99bf11a42556f19a",
+  "commit": "93b6c0691e236d0b871745852f358a4cea85416b",
+  "model_server_starts": 1,
+  "formal_score_eligible": false,
+  "transfer_claim_eligible": false,
+  "observed_gpu_peak_mib": 14380,
+  "stop_reason": "actual_safety_stop",
+  "graphics_checks": [
+    [
+      "graphics_driver_discovery",
+      "0"
+    ],
+    [
+      "host_vulkan",
+      "0"
+    ],
+    [
+      "container_vulkan",
+      "0"
+    ],
+    [
+      "vulkan_identity",
+      "0"
+    ],
+    [
+      "sapien_render",
+      "0"
+    ]
+  ],
+  "startup": [
+    {
+      "episode_id": "unified-seed0-native-w50",
+      "status": "admitted",
+      "wall_s": 502.6590447053313
+    },
+    {
+      "episode_id": "unified-seed0-native-w31",
+      "status": "admitted",
+      "wall_s": 353.39826314151287
+    },
+    {
+      "episode_id": "unified-seed1-native-w31",
+      "status": "admitted",
+      "wall_s": 334.20483523607254
+    },
+    {
+      "episode_id": "unified-seed1-native-w50",
+      "status": "admitted",
+      "wall_s": 321.7839616984129
+    },
+    {
+      "episode_id": "unified-seed0-arx-full-w4",
+      "status": "admitted",
+      "wall_s": 169.77830899506807
+    },
+    {
+      "episode_id": "unified-seed1-arx-full-w4",
+      "status": "admitted",
+      "wall_s": 165.38643230497837
+    }
+  ],
+  "trials": [
+    {
+      "episode_id": "unified-seed0-native-w50",
+      "status": "completed",
+      "process_group_reaped": true,
+      "category": "controlled_candidate_stop",
+      "success": false,
+      "fresh_reset_verified": true,
+      "cleanup": {
+        "scene_opened": true,
+        "hold_complete": true,
+        "close_complete": true,
+        "scene_context_closed": true
+      },
+      "outcome": "control_error",
+      "executed": 27,
+      "queries": 2,
+      "elapsed_s": 267.74059583991766,
+      "failure": {
+        "phase": "control",
+        "code": "collision",
+        "detail": "bounded exact-pose refinements exhausted",
+        "diagnostic": {
+          "geometry": "candidate",
+          "reason": "exact_pose_refinements_exhausted",
+          "completed_actions": 0
+        }
+      },
+      "candidate_stop": {
+        "kind": "candidate_rejection",
+        "tick": 3568,
+        "state_sha256": "4643d74c4c2fc7f603e8645407151eb7df2db4e40629628548ef937884477317",
+        "failure_sha256": "0bb16106b1fda3fc73a149713f7dbf641b9d893100022816c8ddbaa056d542cd",
+        "terminal_checks_passed": true,
+        "hold_verified": true,
+        "no_physics_advance": true,
+        "hold_complete": true,
+        "close_complete": true,
+        "scene_context_closed": true
+      }
+    },
+    {
+      "episode_id": "unified-seed0-native-w31",
+      "status": "completed",
+      "process_group_reaped": true,
+      "category": "controlled_candidate_stop",
+      "success": false,
+      "fresh_reset_verified": true,
+      "cleanup": {
+        "scene_opened": true,
+        "hold_complete": true,
+        "close_complete": true,
+        "scene_context_closed": true
+      },
+      "outcome": "control_error",
+      "executed": 27,
+      "queries": 2,
+      "elapsed_s": 283.2524197921157,
+      "failure": {
+        "phase": "control",
+        "code": "collision",
+        "detail": "bounded exact-pose refinements exhausted",
+        "diagnostic": {
+          "geometry": "candidate",
+          "reason": "exact_pose_refinements_exhausted",
+          "completed_actions": 0
+        }
+      },
+      "candidate_stop": {
+        "kind": "candidate_rejection",
+        "tick": 3568,
+        "state_sha256": "4f6bb769c6ef80f98b68c4088725b0b45f3ac9cef6e3adabff8f0c6067646542",
+        "failure_sha256": "0bb16106b1fda3fc73a149713f7dbf641b9d893100022816c8ddbaa056d542cd",
+        "terminal_checks_passed": true,
+        "hold_verified": true,
+        "no_physics_advance": true,
+        "hold_complete": true,
+        "close_complete": true,
+        "scene_context_closed": true
+      }
+    },
+    {
+      "episode_id": "unified-seed1-native-w31",
+      "status": "completed",
+      "process_group_reaped": true,
+      "category": "controlled_contact_stop",
+      "success": false,
+      "fresh_reset_verified": true,
+      "cleanup": {
+        "scene_opened": true,
+        "hold_complete": true,
+        "close_complete": true,
+        "scene_context_closed": true
+      },
+      "outcome": "control_error",
+      "executed": 144,
+      "queries": 5,
+      "elapsed_s": 451.6362125352025,
+      "failure": {
+        "phase": "control",
+        "code": "backend_error",
+        "detail": "object slipped relative to confirmed holder",
+        "diagnostic": {
+          "side": "left",
+          "completed_actions": 20,
+          "contact_tick": 10988
+        },
+        "contact_state": {
+          "phase": "left_holding",
+          "holders": [
+            "left"
+          ],
+          "contact_fingers": {
+            "left": [
+              33,
+              34
+            ],
+            "right": [
+              43
+            ]
+          },
+          "stable_counts": {
+            "left": 3,
+            "right": 0
+          },
+          "saw_shared_hold": false,
+          "releasing": []
+        }
+      },
+      "contact_stop": {
+        "kind": "slip",
+        "tick": 10988,
+        "terminal_checks_passed": true,
+        "hold_complete": true,
+        "close_complete": true,
+        "scene_context_closed": true
+      }
+    },
+    {
+      "episode_id": "unified-seed1-native-w50",
+      "status": "completed",
+      "process_group_reaped": true,
+      "category": "controlled_candidate_stop",
+      "success": false,
+      "fresh_reset_verified": true,
+      "cleanup": {
+        "scene_opened": true,
+        "hold_complete": true,
+        "close_complete": true,
+        "scene_context_closed": true
+      },
+      "outcome": "control_error",
+      "executed": 177,
+      "queries": 4,
+      "elapsed_s": 527.7337013781071,
+      "failure": {
+        "phase": "control",
+        "code": "collision",
+        "detail": "predicted finger start intersects task block",
+        "diagnostic": {
+          "geometry": "candidate",
+          "side": "right",
+          "finger": 0,
+          "depth_m": 0.0020423028618097305,
+          "allowed_penetration_m": 0.002,
+          "completed_actions": 27
+        }
+      },
+      "candidate_stop": {
+        "kind": "candidate_rejection",
+        "tick": 12422,
+        "state_sha256": "d3ffc82ab5c115338e22f4264fa3aa500053673df0efe5978f6f764682f960f8",
+        "failure_sha256": "ac18ce4d37c3e5c7317e71809dc95d79ad73487bdf48c6e221651536eab55f4d",
+        "terminal_checks_passed": true,
+        "hold_verified": true,
+        "no_physics_advance": true,
+        "hold_complete": true,
+        "close_complete": true,
+        "scene_context_closed": true
+      }
+    },
+    {
+      "episode_id": "unified-seed0-native-w4",
+      "status": "completed",
+      "process_group_reaped": true,
+      "category": "controlled_candidate_stop",
+      "success": false,
+      "fresh_reset_verified": true,
+      "cleanup": {
+        "scene_opened": true,
+        "hold_complete": true,
+        "close_complete": true,
+        "scene_context_closed": true
+      },
+      "outcome": "control_error",
+      "executed": 26,
+      "queries": 7,
+      "elapsed_s": 270.0688202008605,
+      "failure": {
+        "phase": "control",
+        "code": "collision",
+        "detail": "predicted finger start intersects task block",
+        "diagnostic": {
+          "geometry": "candidate",
+          "side": "left",
+          "finger": 1,
+          "depth_m": 0.0021450016647577286,
+          "allowed_penetration_m": 0.002,
+          "completed_actions": 2
+        }
+      },
+      "candidate_stop": {
+        "kind": "candidate_rejection",
+        "tick": 3542,
+        "state_sha256": "45092ed38e5f2dd276290dfd3ab847cce6acc2491f381989a8bf5a9e02490fb4",
+        "failure_sha256": "7dda9de24ddd5688f1f6b9b07e80f0ad23bdc2c6cce6f1981ee215d6abf0a555",
+        "terminal_checks_passed": true,
+        "hold_verified": true,
+        "no_physics_advance": true,
+        "hold_complete": true,
+        "close_complete": true,
+        "scene_context_closed": true
+      }
+    },
+    {
+      "episode_id": "unified-seed0-arx-full-w4",
+      "status": "actual_safety_stop",
+      "reason": "actual_safety_stop",
+      "process_group_reaped": true,
+      "category": "actual_safety_stop",
+      "success": false,
+      "fresh_reset_verified": true,
+      "cleanup": {
+        "scene_opened": true,
+        "hold_complete": true,
+        "close_complete": true,
+        "scene_context_closed": true
+      },
+      "outcome": "planning_failed",
+      "executed": 26,
+      "queries": 9,
+      "policy_actions": 26,
+      "recovery_actions": 0,
+      "elapsed_s": 162.9501852467656,
+      "failure": {
+        "phase": "planning",
+        "code": "collision",
+        "detail": "generic recovery forbidden during holding/release",
+        "diagnostic": {
+          "reason": "recovery_unsafe_contact"
+        }
+      }
+    },
+    {
+      "episode_id": "unified-seed1-arx-full-w4",
+      "status": "not_run",
+      "reason": "actual_safety_stop"
+    },
+    {
+      "episode_id": "unified-seed1-native-w4",
+      "status": "not_run",
+      "reason": "actual_safety_stop"
+    },
+    {
+      "episode_id": "unified-seed1-arx-expert-repaired",
+      "status": "not_run",
+      "reason": "actual_safety_stop"
+    },
+    {
+      "episode_id": "unified-seed0-arx-expert-repaired",
+      "status": "not_run",
+      "reason": "actual_safety_stop"
+    },
+    {
+      "episode_id": "author-native-h50-seed100000",
+      "status": "not_run",
+      "reason": "actual_safety_stop"
+    }
+  ],
+  "counts": {
+    "planned": 11,
+    "executed": 6,
+    "successes": 0,
+    "not_run": 5
+  },
+  "terminal_trial_evidence": {
+    "episode_id": "unified-seed0-arx-full-w4",
+    "last_planning_rejection": {
+      "kind": "original_action_rejection",
+      "status": "collision",
+      "collision_world": "target_collision",
+      "stamp": {
+        "episode": "unified-seed0-arx-full-w4",
+        "tick": 4965,
+        "sim_s": 19.860000943299383
+      }
+    },
+    "last_executed_step": {
+      "tick": 4965,
+      "sim_s": 19.860000943299383,
+      "physics_step_count": 1
+    },
+    "last_recorded_collision_check": {
+      "call": 6990,
+      "raw": [
+        {
+          "collision_type": "self_sceneobject",
+          "object_name1": "_7",
+          "link_name1": "link8",
+          "object_name2": "box_35",
+          "link_name2": "box_35",
+          "max_penetration_m": 8.58431012602523e-05
+        }
+      ],
+      "blocked": [],
+      "ignored": [
+        {
+          "collision_type": "self_sceneobject",
+          "object_name1": "_7",
+          "link_name1": "link8",
+          "object_name2": "box_35",
+          "link_name2": "box_35",
+          "max_penetration_m": 8.58431012602523e-05,
+          "rule": "bounded_task_contact",
+          "profile": "g2_contact_v1:bfc086ce3f2621e6914b226e791e6e8895de1a9560d6ef696c5055525f8ae8ef"
+        }
+      ]
+    }
+  },
+  "source_sha256": {
+    "supervisor/campaign.json": "9c1b6d3e8e1a984963a783b39627498d0048a2eb9dff984ee895ec724bdd22d6",
+    "diagnostic-statistics.json": "2baf2baa2c13ae9ed3c6ab1a0d4550de12b89f5f0399ea3d6f9b298ca88a13ca",
+    "model/phases.jsonl": "ec02937752090d9d1c6229bd135030f55207a32171c0773f7719228479163138",
+    "graphics/check_status.tsv": "8b031fcad234181f24e5b92e3df0c707d87911f477cefcbc6fcf49c310281a65",
+    "trials/unified-seed0-native-w50/receipt.json": "ef9a55af13ed5d9f82bf184ba475a3ed629b8f57186a5d0bfd3c924a1203d4d2",
+    "trials/unified-seed0-native-w31/receipt.json": "164abfd1ddfee1447f38b66593e2a5fc4c5a538a308f7b7cc93edad09c59b0bf",
+    "trials/unified-seed1-native-w31/receipt.json": "51e4e4c156201445c2fdd228cc1121ea7fa7085fbe5727b1a39c6cc182c1f12c",
+    "trials/unified-seed1-native-w50/receipt.json": "dd6d121cd750335d2a3143ad34db309bf242be49f1d8cf5e0e97d73a4da99657",
+    "trials/unified-seed0-native-w4/receipt.json": "c57a557c3567a86e4c004d83a2410fd69d70be2bceadf2301d5ceb7cbc90a85b",
+    "trials/unified-seed0-arx-full-w4/receipt.json": "a35561f2ba62222f663d011ed565485b615349e01ad0ce85475ab75e74d4d9b6",
+    "trials/unified-seed0-arx-full-w4/episode/events.jsonl": "ba106255d2cc061784ca15d082d6c1f92cf8151b671f7a283f0407d0f7760f3d",
+    "trials/unified-seed0-arx-full-w4/episode/collision-checks.jsonl": "dbe81ac3b57d6de21a678f07fde83adca70349220f1df9cdc318603a46370ff6"
+  }
+}

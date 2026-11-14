@@ -1,0 +1,80 @@
+{
+  "handover_window": {
+    "G3": {
+      "source_path": "results/pace-g2-parallel/g3-author_native-fixed_h50-300000/127589590/trials/g3-author_native-fixed_h50-300000/physics.jsonl",
+      "source_sha256": "235edf6c742bc9cfe17449372230f1cbdf275553572095823b20e2aa8b06de34",
+      "samples": 3749,
+      "original_samples": 18700,
+      "anchor_tick": 11566,
+      "transition_tick": 14304,
+      "step_period_s": 0.004000000189989805
+    },
+    "G6": {
+      "source_path": "results/pace-g2-parallel/g6-author_native-pace-300000/127589596/trials/g6-author_native-pace-300000/physics.jsonl",
+      "source_sha256": "f6304ef72ebc0ff203f9b69059ad30b705e71dafba0b769c3cb46d84433629b1",
+      "samples": 3749,
+      "original_samples": 42341,
+      "anchor_tick": 11847,
+      "transition_tick": 12648,
+      "step_period_s": 0.004000000189989805
+    }
+  },
+  "expert": {
+    "aloha-agilex": {
+      "episodes": 50,
+      "frames": 14134,
+      "frames_min_median_max": [
+        273,
+        280.0,
+        315
+      ],
+      "images": 56536,
+      "duplicate_states": 2705,
+      "all_ik_targets": 28268,
+      "solved": 28268,
+      "unsolved": 0,
+      "solve_rate_pct": 100.0,
+      "position_mm_p50_p95_max": [
+        0.02185144026740344,
+        0.17958303169983036,
+        0.3085199325382872
+      ],
+      "angle_deg_p50_p95_max": [
+        0.00048113367106777244,
+        0.004792545377658402,
+        0.04957825177096919
+      ]
+    },
+    "arx-x5": {
+      "episodes": 50,
+      "frames": 9680,
+      "frames_min_median_max": [
+        188,
+        193.0,
+        201
+      ],
+      "images": 38720,
+      "duplicate_states": 2297,
+      "all_ik_targets": 19360,
+      "solved": 19273,
+      "unsolved": 87,
+      "solve_rate_pct": 99.55061983471074,
+      "position_mm_p50_p95_max": [
+        0.022023047426090354,
+        0.1414999885261415,
+        0.32693449565808497
+      ],
+      "angle_deg_p50_p95_max": [
+        0.00023692717903601773,
+        0.010246809632361421,
+        0.04996722511989683
+      ]
+    }
+  },
+  "input_sha256": {
+    "g3-g6-window.csv.gz": "758f427ecb640edf35cdb4646786ce9f096a59a2c738728fcb2b41d5f4e4beb7",
+    "aloha-summary.json": "ed81c7182b07a32efb3a294f95f35fa4a9fb6f77eaec9519e49650a4cee95d7e",
+    "trajectory_quality.csv": "6e430a0698ec0a80e62b321042e547e35b7d49d4596123cddd6f7b057ccc4d30",
+    "ik_results_full.csv": "888358382bcd2ba272479853942de01a98f28baa429975b2e915185d35bc44db"
+  }
+}

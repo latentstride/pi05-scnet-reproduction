@@ -1,0 +1,102 @@
+{
+  "scope": "real CPU PhysX/FCL/native TOPP, fixed response and one-step test budget; real GPU service not started",
+  "receipt": {
+    "mode": "author_native_h50",
+    "trial_clock": {
+      "started": 3827704.939120621,
+      "soft": 3830104.939120621,
+      "hard": 3830404.939120621,
+      "reap_at": 3830394.939120621,
+      "budget": {
+        "physics_steps": 1,
+        "soft_s": 2400,
+        "hard_s": 2700,
+        "reap_s": 10,
+        "request_s": 390
+      }
+    },
+    "episode_id": "cpu-physics-cutoff",
+    "cleanup": {
+      "scene_opened": true,
+      "hold_complete": true,
+      "close_complete": true,
+      "scene_context_closed": true
+    },
+    "cleanup_failures": [],
+    "fresh_reset_verified": true,
+    "success": false,
+    "category": "resource_censored",
+    "policy_kind": "cpu_substitute",
+    "prompt": "Grab the red block using the left arm.",
+    "initial_measurement": {
+      "source": "sapien.Scene.get_contacts after last real setup_demo physics step",
+      "status": "measured",
+      "stamp": {
+        "episode": "cpu-physics-cutoff",
+        "tick": 0,
+        "sim_s": 0.0
+      },
+      "author_stability_physics_steps": 2500,
+      "state_sha256": "cd1b9caefe2deb8283c06f808ebd982951268cab4dcc45aa53b68144f21dbcaf",
+      "contact_sha256": "d45ed7e75d8bebe534319ba79cf1c722c2cbd80417ba5718764fae754db8f881",
+      "manifold_count": 33
+    },
+    "outcome": "RESOURCE_CENSORED",
+    "resource_reason": "physics_steps",
+    "request_in_flight": false,
+    "completed_actions": 0,
+    "native_action_count": 1,
+    "physics_steps": 1,
+    "query_action_counts": [
+      0
+    ],
+    "resource_stop": {
+      "kind": "resource_stop",
+      "finger_drive_m": [
+        [
+          0.04424133151769638,
+          0.04424281045794487
+        ],
+        [
+          0.04424116760492325,
+          0.04424263536930084
+        ]
+      ],
+      "expected_hold_finger_m": [
+        [
+          0.04424133151769638,
+          0.04424281045794487
+        ],
+        [
+          0.04424116760492325,
+          0.04424263536930084
+        ]
+      ],
+      "episode": "cpu-physics-cutoff",
+      "tick": 1,
+      "state_sha256": "4bcf008b946334533ecf270497661374db54f00e4412e9ebac3783b6ad65577b",
+      "terminal_checks_passed": true,
+      "hold_verified": true,
+      "no_physics_advance": true,
+      "contact_sha256": "07b13b8bbaf20db0a93f59e1044900ad005405c7f11f2203ea8460eca0775301",
+      "contact_manifold_count": 33,
+      "contact_source": "sapien.Scene.get_contacts",
+      "contact_sample_measured": true,
+      "hold_complete": true,
+      "resource_reason": "physics_steps",
+      "trial_clock_sha256": "89cd290de5242ac582a48820b1a192741b409616ddeea452028631452f6d6b40",
+      "close_complete": true,
+      "scene_context_closed": true
+    },
+    "finished_at": 3827964.121915074,
+    "elapsed_s": 259.15656821615994
+  },
+  "process": {
+    "exit_code": 0,
+    "process_group_gone": true,
+    "elapsed_s": 295.33505201525986,
+    "gpu_used": false
+  },
+  "raw_events_sha256": "1f91bfd0b70cb4035b2d1f4dea1d81562696f448428fb3692578ffdbe9912c4d",
+  "verified_by_current_continuation_gate_with_service_alive_stub": true
+}

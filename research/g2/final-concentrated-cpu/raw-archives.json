@@ -1,0 +1,21 @@
+{
+  "cpu_only": true,
+  "archives": [
+    {
+      "name": "final-concentrated-complete-r2.tar.gz",
+      "sha256": "d40beefeb9fcbee82acc07580bddd56fcb6f5426819a0f274f3ebe2fbb99cf83",
+      "size_bytes": 54049392
+    },
+    {
+      "name": "final-concentrated-arx-production-r3.tar.gz",
+      "sha256": "558ae1aaad4a2f5a405ecd3136406e53a0f5834b16f9b16255386549c996d6ca",
+      "size_bytes": 666493
+    },
+    {
+      "name": "final-concentrated-native-barrier-r4.tar.gz",
+      "sha256": "82f05cedd71913798732082dc6c2746d40e76e8dcf5d304d7a7795c493c8e42c",
+      "size_bytes": 15750553
+    }
+  ],
+  "location": "private local evidence and original cluster CPU outputs; not committed"
+}

@@ -1,0 +1,63 @@
+{
+  "expected": 100,
+  "processed": 100,
+  "read_ok": 100,
+  "total_frames": 23814,
+  "unprocessed": [],
+  "robots": [
+    {
+      "robot": "aloha-agilex",
+      "expected": 50,
+      "read_ok": 50,
+      "read_failed": 0,
+      "not_processed": 0,
+      "frames": 14134,
+      "min_frames": 273,
+      "max_frames": 315,
+      "median_frames": 280.0,
+      "images": 56536,
+      "image_decode_errors": 0,
+      "numeric_nonfinite": 0,
+      "gripper_out_of_range": 0,
+      "quaternion_bad": 0,
+      "state_duplicate_rows": 2705,
+      "consecutive_state_repeats": 2668,
+      "full_frame_duplicates": 679,
+      "consecutive_full_frame_repeats": 679,
+      "rows_removed": 0
+    },
+    {
+      "robot": "arx-x5",
+      "expected": 50,
+      "read_ok": 50,
+      "read_failed": 0,
+      "not_processed": 0,
+      "frames": 9680,
+      "min_frames": 188,
+      "max_frames": 201,
+      "median_frames": 193.0,
+      "images": 38720,
+      "image_decode_errors": 0,
+      "numeric_nonfinite": 0,
+      "gripper_out_of_range": 0,
+      "quaternion_bad": 0,
+      "state_duplicate_rows": 2297,
+      "consecutive_state_repeats": 2297,
+      "full_frame_duplicates": 705,
+      "consecutive_full_frame_repeats": 705,
+      "rows_removed": 0
+    }
+  ],
+  "anomaly_events": 0,
+  "source_revision": "3dc3b798668feb99ac61cc9086d84cbcc3d79186",
+  "quality_parameters": {
+    "quaternion_norm_tolerance": 1e-06,
+    "gripper_interval": [
+      0,
+      1
+    ],
+    "drop_policy": "retain_all",
+    "timing": "frame_index_not_physical_time",
+    "duplicate_definition": "exact state14 equality within episode; full frame uses all stored datasets"
+  }
+}

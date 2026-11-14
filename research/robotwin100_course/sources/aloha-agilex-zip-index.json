@@ -1,0 +1,302 @@
+[
+  {
+    "member": "aloha-agilex_clean_50/data/episode0.hdf5",
+    "bytes": 16777930,
+    "compressed": 10971448,
+    "crc32": "2942ac01"
+  },
+  {
+    "member": "aloha-agilex_clean_50/data/episode1.hdf5",
+    "bytes": 16286564,
+    "compressed": 10844623,
+    "crc32": "0d65fcc2"
+  },
+  {
+    "member": "aloha-agilex_clean_50/data/episode2.hdf5",
+    "bytes": 15946288,
+    "compressed": 10453827,
+    "crc32": "235f61f1"
+  },
+  {
+    "member": "aloha-agilex_clean_50/data/episode3.hdf5",
+    "bytes": 15974444,
+    "compressed": 10555421,
+    "crc32": "ee3316f3"
+  },
+  {
+    "member": "aloha-agilex_clean_50/data/episode4.hdf5",
+    "bytes": 15691731,
+    "compressed": 10663369,
+    "crc32": "ae367a66"
+  },
+  {
+    "member": "aloha-agilex_clean_50/data/episode5.hdf5",
+    "bytes": 16290560,
+    "compressed": 10510074,
+    "crc32": "807e33c3"
+  },
+  {
+    "member": "aloha-agilex_clean_50/data/episode6.hdf5",
+    "bytes": 16349640,
+    "compressed": 10657333,
+    "crc32": "82e445a7"
+  },
+  {
+    "member": "aloha-agilex_clean_50/data/episode7.hdf5",
+    "bytes": 16076598,
+    "compressed": 10635748,
+    "crc32": "58218454"
+  },
+  {
+    "member": "aloha-agilex_clean_50/data/episode8.hdf5",
+    "bytes": 16209118,
+    "compressed": 10497837,
+    "crc32": "ba8f0bf2"
+  },
+  {
+    "member": "aloha-agilex_clean_50/data/episode9.hdf5",
+    "bytes": 16171840,
+    "compressed": 10257485,
+    "crc32": "028292af"
+  },
+  {
+    "member": "aloha-agilex_clean_50/data/episode10.hdf5",
+    "bytes": 16474141,
+    "compressed": 10992894,
+    "crc32": "8fc23cd8"
+  },
+  {
+    "member": "aloha-agilex_clean_50/data/episode11.hdf5",
+    "bytes": 16235650,
+    "compressed": 10788099,
+    "crc32": "04c5cfc0"
+  },
+  {
+    "member": "aloha-agilex_clean_50/data/episode12.hdf5",
+    "bytes": 16489738,
+    "compressed": 11101770,
+    "crc32": "9b28ec42"
+  },
+  {
+    "member": "aloha-agilex_clean_50/data/episode13.hdf5",
+    "bytes": 16299704,
+    "compressed": 10414203,
+    "crc32": "fe6b3421"
+  },
+  {
+    "member": "aloha-agilex_clean_50/data/episode14.hdf5",
+    "bytes": 16050194,
+    "compressed": 10732050,
+    "crc32": "a0f55192"
+  },
+  {
+    "member": "aloha-agilex_clean_50/data/episode15.hdf5",
+    "bytes": 16324792,
+    "compressed": 10779195,
+    "crc32": "5603c185"
+  },
+  {
+    "member": "aloha-agilex_clean_50/data/episode16.hdf5",
+    "bytes": 16673448,
+    "compressed": 10526457,
+    "crc32": "15a6505c"
+  },
+  {
+    "member": "aloha-agilex_clean_50/data/episode17.hdf5",
+    "bytes": 15827104,
+    "compressed": 10556518,
+    "crc32": "4a7c101c"
+  },
+  {
+    "member": "aloha-agilex_clean_50/data/episode18.hdf5",
+    "bytes": 16841068,
+    "compressed": 10989153,
+    "crc32": "96c689c1"
+  },
+  {
+    "member": "aloha-agilex_clean_50/data/episode19.hdf5",
+    "bytes": 15761275,
+    "compressed": 10502425,
+    "crc32": "d4f1716c"
+  },
+  {
+    "member": "aloha-agilex_clean_50/data/episode20.hdf5",
+    "bytes": 16025428,
+    "compressed": 10704185,
+    "crc32": "816dbf36"
+  },
+  {
+    "member": "aloha-agilex_clean_50/data/episode21.hdf5",
+    "bytes": 17214556,
+    "compressed": 11122370,
+    "crc32": "65bfd0a1"
+  },
+  {
+    "member": "aloha-agilex_clean_50/data/episode22.hdf5",
+    "bytes": 16161736,
+    "compressed": 10693321,
+    "crc32": "5d89c998"
+  },
+  {
+    "member": "aloha-agilex_clean_50/data/episode23.hdf5",
+    "bytes": 15887874,
+    "compressed": 10603188,
+    "crc32": "421a601b"
+  },
+  {
+    "member": "aloha-agilex_clean_50/data/episode24.hdf5",
+    "bytes": 15666214,
+    "compressed": 10452273,
+    "crc32": "bdde23fe"
+  },
+  {
+    "member": "aloha-agilex_clean_50/data/episode25.hdf5",
+    "bytes": 16133075,
+    "compressed": 10694035,
+    "crc32": "a95529f8"
+  },
+  {
+    "member": "aloha-agilex_clean_50/data/episode26.hdf5",
+    "bytes": 16366921,
+    "compressed": 10875128,
+    "crc32": "d3e22beb"
+  },
+  {
+    "member": "aloha-agilex_clean_50/data/episode27.hdf5",
+    "bytes": 15905740,
+    "compressed": 10363933,
+    "crc32": "09c4bf3c"
+  },
+  {
+    "member": "aloha-agilex_clean_50/data/episode28.hdf5",
+    "bytes": 16034353,
+    "compressed": 10519394,
+    "crc32": "0ab960c2"
+  },
+  {
+    "member": "aloha-agilex_clean_50/data/episode29.hdf5",
+    "bytes": 18340090,
+    "compressed": 11548751,
+    "crc32": "be09ccd3"
+  },
+  {
+    "member": "aloha-agilex_clean_50/data/episode30.hdf5",
+    "bytes": 16498500,
+    "compressed": 10651455,
+    "crc32": "29562242"
+  },
+  {
+    "member": "aloha-agilex_clean_50/data/episode31.hdf5",
+    "bytes": 16034500,
+    "compressed": 10749444,
+    "crc32": "627fbac7"
+  },
+  {
+    "member": "aloha-agilex_clean_50/data/episode32.hdf5",
+    "bytes": 16842894,
+    "compressed": 10876353,
+    "crc32": "ec44838f"
+  },
+  {
+    "member": "aloha-agilex_clean_50/data/episode33.hdf5",
+    "bytes": 15831552,
+    "compressed": 10407339,
+    "crc32": "7f5e2778"
+  },
+  {
+    "member": "aloha-agilex_clean_50/data/episode34.hdf5",
+    "bytes": 16486792,
+    "compressed": 10599369,
+    "crc32": "35619035"
+  },
+  {
+    "member": "aloha-agilex_clean_50/data/episode35.hdf5",
+    "bytes": 17119528,
+    "compressed": 10864860,
+    "crc32": "bda84bb5"
+  },
+  {
+    "member": "aloha-agilex_clean_50/data/episode36.hdf5",
+    "bytes": 16408680,
+    "compressed": 10502326,
+    "crc32": "92cbac4a"
+  },
+  {
+    "member": "aloha-agilex_clean_50/data/episode37.hdf5",
+    "bytes": 16377266,
+    "compressed": 10489840,
+    "crc32": "74bf8d99"
+  },
+  {
+    "member": "aloha-agilex_clean_50/data/episode38.hdf5",
+    "bytes": 16097096,
+    "compressed": 10713980,
+    "crc32": "6ab1eb67"
+  },
+  {
+    "member": "aloha-agilex_clean_50/data/episode39.hdf5",
+    "bytes": 17337942,
+    "compressed": 11109277,
+    "crc32": "a0e8c8ea"
+  },
+  {
+    "member": "aloha-agilex_clean_50/data/episode40.hdf5",
+    "bytes": 16038538,
+    "compressed": 10547700,
+    "crc32": "babc8aeb"
+  },
+  {
+    "member": "aloha-agilex_clean_50/data/episode41.hdf5",
+    "bytes": 16078972,
+    "compressed": 10435354,
+    "crc32": "78148f4f"
+  },
+  {
+    "member": "aloha-agilex_clean_50/data/episode42.hdf5",
+    "bytes": 16860420,
+    "compressed": 10854588,
+    "crc32": "d3f7586e"
+  },
+  {
+    "member": "aloha-agilex_clean_50/data/episode43.hdf5",
+    "bytes": 16071181,
+    "compressed": 10460402,
+    "crc32": "8de1d6e8"
+  },
+  {
+    "member": "aloha-agilex_clean_50/data/episode44.hdf5",
+    "bytes": 16402540,
+    "compressed": 10655588,
+    "crc32": "bc891e25"
+  },
+  {
+    "member": "aloha-agilex_clean_50/data/episode45.hdf5",
+    "bytes": 16375090,
+    "compressed": 10686418,
+    "crc32": "e914ab54"
+  },
+  {
+    "member": "aloha-agilex_clean_50/data/episode46.hdf5",
+    "bytes": 16176872,
+    "compressed": 10496171,
+    "crc32": "fbd072b4"
+  },
+  {
+    "member": "aloha-agilex_clean_50/data/episode47.hdf5",
+    "bytes": 16042668,
+    "compressed": 10221687,
+    "crc32": "de6ea21e"
+  },
+  {
+    "member": "aloha-agilex_clean_50/data/episode48.hdf5",
+    "bytes": 16107622,
+    "compressed": 10568665,
+    "crc32": "fd39cc1b"
+  },
+  {
+    "member": "aloha-agilex_clean_50/data/episode49.hdf5",
+    "bytes": 16376596,
+    "compressed": 10512830,
+    "crc32": "425caa71"
+  }
+]

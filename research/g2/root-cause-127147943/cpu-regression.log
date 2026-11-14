@@ -1,0 +1,110 @@
+.......................................................................................................probe example +0.0s verify_runtime_and_model
+probe example +0.0s inspect_assets
+probe example +0.0s construct_scene
+probe example +0.0s verify_fresh_reset_and_geometry
+probe example +0.0s close_scene
+probe example +0.0s verify_runtime_and_model
+probe example +0.0s inspect_assets
+probe example +0.0s construct_scene
+probe example +0.0s verify_fresh_reset_and_geometry
+probe example +0.0s close_scene
+probe example +0.0s verify_runtime_and_model
+probe example +0.0s inspect_assets
+probe example +0.0s construct_scene
+probe example +0.0s verify_fresh_reset_and_geometry
+probe example +0.0s close_scene
+.....................................................................................................** Resuming transfer from byte position 4
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    11  100    11    0     0   4491      0 --:--:-- --:--:-- --:--:--  5500
+...[2026-11-07T09:30:02.165+00:00] start websocket_connect
+[2026-11-07T09:30:02.166+00:00] end websocket_connect
+[2026-11-07T09:30:02.167+00:00] start get_obs_000
+[2026-11-07T09:30:02.167+00:00] end get_obs_000
+[2026-11-07T09:30:02.169+00:00] start video_frame_000
+[2026-11-07T09:30:02.173+00:00] end video_frame_000
+[2026-11-07T09:30:02.175+00:00] start policy_query_001
+[2026-11-07T09:30:02.179+00:00] end policy_query_001
+[2026-11-07T09:30:02.180+00:00] start take_action_001
+[2026-11-07T09:30:02.180+00:00] end take_action_001
+[2026-11-07T09:30:02.180+00:00] start get_obs_001
+[2026-11-07T09:30:02.180+00:00] end get_obs_001
+[2026-11-07T09:30:02.181+00:00] start video_frame_001
+[2026-11-07T09:30:02.181+00:00] end video_frame_001
+[2026-11-07T09:30:02.181+00:00] start take_action_002
+[2026-11-07T09:30:02.181+00:00] end take_action_002
+[2026-11-07T09:30:02.181+00:00] start get_obs_002
+[2026-11-07T09:30:02.181+00:00] end get_obs_002
+[2026-11-07T09:30:02.181+00:00] start video_frame_002
+[2026-11-07T09:30:02.181+00:00] end video_frame_002
+[2026-11-07T09:30:02.181+00:00] start take_action_003
+[2026-11-07T09:30:02.182+00:00] end take_action_003
+[2026-11-07T09:30:02.182+00:00] start get_obs_003
+[2026-11-07T09:30:02.182+00:00] end get_obs_003
+[2026-11-07T09:30:02.182+00:00] start video_frame_003
+[2026-11-07T09:30:02.182+00:00] end video_frame_003
+[2026-11-07T09:30:02.183+00:00] start policy_query_002
+[2026-11-07T09:30:02.183+00:00] end policy_query_002
+[2026-11-07T09:30:02.184+00:00] start take_action_004
+[2026-11-07T09:30:02.184+00:00] end take_action_004
+[2026-11-07T09:30:02.184+00:00] start get_obs_004
+[2026-11-07T09:30:02.184+00:00] end get_obs_004
+[2026-11-07T09:30:02.184+00:00] start video_frame_004
+[2026-11-07T09:30:02.184+00:00] end video_frame_004
+[2026-11-07T09:30:02.184+00:00] start take_action_005
+[2026-11-07T09:30:02.184+00:00] end take_action_005
+[2026-11-07T09:30:02.184+00:00] start get_obs_005
+[2026-11-07T09:30:02.184+00:00] end get_obs_005
+[2026-11-07T09:30:02.185+00:00] start video_frame_005
+[2026-11-07T09:30:02.185+00:00] end video_frame_005
+[2026-11-07T09:30:02.185+00:00] start close_video
+[2026-11-07T09:30:02.312+00:00] end close_video
+[2026-11-07T09:30:02.352+00:00] start websocket_connect
+[2026-11-07T09:30:02.356+00:00] end websocket_connect
+[2026-11-07T09:30:02.356+00:00] start get_obs_000
+[2026-11-07T09:30:02.356+00:00] end get_obs_000
+[2026-11-07T09:30:02.357+00:00] start video_frame_000
+[2026-11-07T09:30:02.362+00:00] end video_frame_000
+[2026-11-07T09:30:02.364+00:00] start policy_query_001
+[2026-11-07T09:30:02.366+00:00] end policy_query_001
+[2026-11-07T09:30:02.367+00:00] start take_action_001
+[2026-11-07T09:30:02.367+00:00] end take_action_001
+[2026-11-07T09:30:02.367+00:00] start get_obs_001
+[2026-11-07T09:30:02.367+00:00] end get_obs_001
+[2026-11-07T09:30:02.368+00:00] start video_frame_001
+[2026-11-07T09:30:02.368+00:00] end video_frame_001
+[2026-11-07T09:30:02.368+00:00] start take_action_002
+[2026-11-07T09:30:02.368+00:00] end take_action_002
+[2026-11-07T09:30:02.368+00:00] start get_obs_002
+[2026-11-07T09:30:02.369+00:00] end get_obs_002
+[2026-11-07T09:30:02.369+00:00] start video_frame_002
+[2026-11-07T09:30:02.369+00:00] end video_frame_002
+[2026-11-07T09:30:02.369+00:00] start take_action_003
+[2026-11-07T09:30:02.369+00:00] end take_action_003
+[2026-11-07T09:30:02.369+00:00] start get_obs_003
+[2026-11-07T09:30:02.370+00:00] end get_obs_003
+[2026-11-07T09:30:02.370+00:00] start video_frame_003
+[2026-11-07T09:30:02.370+00:00] end video_frame_003
+[2026-11-07T09:30:02.370+00:00] start close_video
+[2026-11-07T09:30:02.382+00:00] end close_video
+[2026-11-07T09:30:02.384+00:00] start websocket_connect
+[2026-11-07T09:30:02.385+00:00] end websocket_connect
+[2026-11-07T09:30:02.385+00:00] start get_obs_000
+[2026-11-07T09:30:02.385+00:00] end get_obs_000
+[2026-11-07T09:30:02.386+00:00] start video_frame_000
+[2026-11-07T09:30:02.392+00:00] end video_frame_000
+[2026-11-07T09:30:02.393+00:00] start policy_query_001
+[2026-11-07T09:30:02.396+00:00] error policy_query_001
+[2026-11-07T09:30:02.396+00:00] start close_video
+[2026-11-07T09:30:02.409+00:00] end close_video
+RuntimeError: policy service error: RuntimeError: injected
+.....[2026-11-07T09:30:03.205+00:00] start load_environment
+[2026-11-07T09:30:03.328+00:00] end load_environment
+............NVIDIA graphics libraries: 2; selection=resolved_installed_icd
+...NVIDIA graphics libraries: 1; selection=original_icd_library_unresolved_using_installed_nvidia_egl
+..NVIDIA graphics libraries: 2; selection=resolved_installed_icd
+.........
+----------------------------------------------------------------------
+Ran 238 tests in 29.701s
+
+OK

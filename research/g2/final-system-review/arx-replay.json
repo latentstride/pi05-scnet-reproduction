@@ -1,0 +1,505 @@
+{
+  "physics_steps": 0,
+  "model_inference": false,
+  "urdf_sha256": "097c59fb19a7b482249c6097df8319586ea7cfd268c015516f103b289a7e761a",
+  "config_sha256": "7aff8c46bd8ad0472da14b11baf036398f79b750077ffc7b30538031c54857d1",
+  "links": {
+    "fl_link4": {
+      "parent": "fl_link3",
+      "joint": "fl_joint4",
+      "origin": {
+        "xyz": "0 0 0",
+        "rpy": "0 0 0"
+      },
+      "mesh": "link4.STL",
+      "mesh_sha256": "d234f4b96822ecf8a2f62219031053f7950d685faa15b4d23f8115c1b434cbbd"
+    },
+    "fl_link6": {
+      "parent": "fl_link5",
+      "joint": "fl_joint6",
+      "origin": {
+        "xyz": "0 0 0",
+        "rpy": "0 0 0"
+      },
+      "mesh": "link6.STL",
+      "mesh_sha256": "ffb2de0357066957db00fd7599dd4a7fbc147c8ef5916a492aa9070fdbdf5740"
+    }
+  },
+  "reports": [
+    {
+      "query": 35,
+      "tick": 15855,
+      "original_source_q": [
+        [
+          0.0519215427339077,
+          2.2872681617736816,
+          0.9825071692466736,
+          1.2198734283447266,
+          1.6243447065353394,
+          0.0792451947927475
+        ],
+        [
+          0.47811359167099,
+          1.4638113975524902,
+          0.4548458755016327,
+          0.957409143447876,
+          0.39113324880599976,
+          0.010679964907467365
+        ]
+      ],
+      "production_w4": {
+        "approved": 2,
+        "recovery_budget_used": 1,
+        "reason": "source_observability_barrier"
+      },
+      "bounded_extra_seed_search": [
+        {
+          "requested_tools": [
+            [
+              [
+                0.9993389788965855,
+                0.03204561680588417,
+                0.017166353761346457,
+                -0.18203018195099452
+              ],
+              [
+                0.03209524334548402,
+                -0.9994813726221693,
+                -0.0026231919294183344,
+                -0.02570952916305442
+              ],
+              [
+                0.017073389016929872,
+                0.003172416245519754,
+                -0.9998492062119377,
+                0.8529748685665183
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            [
+              [
+                -0.11741364413299016,
+                0.9926033698682263,
+                0.030863996786742197,
+                0.15797933254972168
+              ],
+              [
+                0.9919695059142081,
+                0.11869672414174705,
+                -0.043675931751245574,
+                -0.0430922964591066
+              ],
+              [
+                -0.04701633235092874,
+                0.025487993335264848,
+                -0.9985688893050937,
+                0.9458263863333547
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          ],
+          "max_delta_rad": [
+            [
+              1.6600000000000001,
+              1.6600000000000001,
+              1.6600000000000001,
+              1.6600000000000001,
+              1.6600000000000001,
+              1.6600000000000001
+            ],
+            [
+              1.6600000000000001,
+              1.6600000000000001,
+              1.6600000000000001,
+              1.6600000000000001,
+              1.6600000000000001,
+              1.6600000000000001
+            ]
+          ],
+          "result": {
+            "found": false,
+            "counts": [
+              12,
+              3
+            ],
+            "checked_pairs": 36,
+            "scope": "bounded extra-seed search; no global infeasibility proof"
+          }
+        }
+      ],
+      "recorded_pair_geometry": {
+        "counts": {
+          "collision_then_static_collision": 4,
+          "continuity_limit_then_static_collision": 12
+        },
+        "rechecked_collisions": [
+          {
+            "collision_type": "self",
+            "object_name1": "g2_aloha_proxy_1",
+            "link_name1": "fl_link4",
+            "object_name2": "g2_aloha_proxy_1",
+            "link_name2": "fl_link6",
+            "max_penetration_m": 8.803902892395854e-05
+          },
+          {
+            "collision_type": "self",
+            "object_name1": "g2_aloha_proxy_1",
+            "link_name1": "fl_link4",
+            "object_name2": "g2_aloha_proxy_1",
+            "link_name2": "fl_link6",
+            "max_penetration_m": 8.803902892395854e-05
+          },
+          {
+            "collision_type": "self",
+            "object_name1": "g2_aloha_proxy_1",
+            "link_name1": "fl_link4",
+            "object_name2": "g2_aloha_proxy_1",
+            "link_name2": "fl_link6",
+            "max_penetration_m": 9.05637425603345e-05
+          },
+          {
+            "collision_type": "self",
+            "object_name1": "g2_aloha_proxy_1",
+            "link_name1": "fl_link4",
+            "object_name2": "g2_aloha_proxy_1",
+            "link_name2": "fl_link6",
+            "max_penetration_m": 9.05637425603345e-05
+          }
+        ]
+      },
+      "offline_window": {
+        "4": {
+          "raw_rows": 4,
+          "first_gripper_at_or_below_0_5_one_based": [
+            null,
+            null
+          ],
+          "same_prefix_barrier_before_longer_rows": true,
+          "actual_adapter_window_valid": true
+        },
+        "26": {
+          "raw_rows": 26,
+          "first_gripper_at_or_below_0_5_one_based": [
+            null,
+            null
+          ],
+          "same_prefix_barrier_before_longer_rows": true,
+          "actual_adapter_window_valid": false
+        },
+        "31": {
+          "raw_rows": 31,
+          "first_gripper_at_or_below_0_5_one_based": [
+            27,
+            null
+          ],
+          "same_prefix_barrier_before_longer_rows": true,
+          "actual_adapter_window_valid": false
+        },
+        "50": {
+          "raw_rows": 50,
+          "first_gripper_at_or_below_0_5_one_based": [
+            27,
+            null
+          ],
+          "same_prefix_barrier_before_longer_rows": true,
+          "actual_adapter_window_valid": false
+        }
+      }
+    },
+    {
+      "query": 36,
+      "tick": 16160,
+      "original_source_q": [
+        [
+          0.054405342787504196,
+          2.3089590072631836,
+          0.9884490966796875,
+          1.2251056432724,
+          1.644521951675415,
+          0.08081237226724625
+        ],
+        [
+          0.49849915504455566,
+          1.5390212535858154,
+          0.4760229289531708,
+          1.0036033391952515,
+          0.4103511869907379,
+          0.011216511018574238
+        ]
+      ],
+      "production_w4": {
+        "approved": 0,
+        "status": "collision",
+        "detail": "all temporally admissible IK pairs collide",
+        "reason": null,
+        "geometry": null,
+        "collision_world": null,
+        "rejected_pairs": 4,
+        "continuity_rejected": 12,
+        "requested_rows": 0,
+        "pair_depths_m": [
+          0.00039005992584861815,
+          0.00039005992584861815,
+          0.00037045381031930447,
+          0.00037045381031930447
+        ]
+      },
+      "bounded_extra_seed_search": [
+        {
+          "requested_tools": [
+            [
+              [
+                0.9996921345732709,
+                0.016566774890208007,
+                0.018471005442966537,
+                -0.17975500778801823
+              ],
+              [
+                0.016836110255242676,
+                -0.999752788728731,
+                -0.014522631324871112,
+                -0.02855439724960939
+              ],
+              [
+                0.018225846038256752,
+                0.014829140192943943,
+                -0.9997239194584311,
+                0.8467937840321688
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            [
+              [
+                -0.11464008051212034,
+                0.992844938747618,
+                0.033415259140290095,
+                0.15730553465354427
+              ],
+              [
+                0.9920895716928736,
+                0.11615507406663293,
+                -0.04760546719469365,
+                -0.041706448471439034
+              ],
+              [
+                -0.05114619906136348,
+                0.027693435536479998,
+                -0.9983071370824522,
+                0.942140032314881
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          ],
+          "max_delta_rad": [
+            [
+              0.6,
+              0.6,
+              0.6,
+              0.6,
+              0.6,
+              0.6
+            ],
+            [
+              0.6,
+              0.6,
+              0.6,
+              0.6,
+              0.6,
+              0.6
+            ]
+          ],
+          "result": {
+            "found": false,
+            "counts": [
+              10,
+              4
+            ],
+            "checked_pairs": 40,
+            "scope": "bounded extra-seed search; no global infeasibility proof"
+          }
+        },
+        {
+          "requested_tools": [
+            [
+              [
+                0.999693144170503,
+                0.01655611622233433,
+                0.01842586535623898,
+                -0.17974213416683044
+              ],
+              [
+                0.016824805350487016,
+                -0.9997529598732713,
+                -0.014523950893289858,
+                -0.028717579776281334
+              ],
+              [
+                0.01818085320912952,
+                0.014829505732323979,
+                -0.9997247332822785,
+                0.8583007797800307
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            [
+              [
+                -0.11464008051212034,
+                0.992844938747618,
+                0.033415259140290095,
+                0.15730553465354427
+              ],
+              [
+                0.9920895716928736,
+                0.11615507406663293,
+                -0.04760546719469365,
+                -0.041706448471439034
+              ],
+              [
+                -0.05114619906136348,
+                0.027693435536479998,
+                -0.9983071370824522,
+                0.942140032314881
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          ],
+          "max_delta_rad": [
+            [
+              0.6,
+              0.6,
+              0.6,
+              0.6,
+              0.6,
+              0.6
+            ],
+            [
+              0.6,
+              0.6,
+              0.6,
+              0.6,
+              0.6,
+              0.6
+            ]
+          ],
+          "result": {
+            "found": false,
+            "counts": [
+              11,
+              4
+            ],
+            "checked_pairs": 44,
+            "scope": "bounded extra-seed search; no global infeasibility proof"
+          }
+        }
+      ],
+      "recorded_pair_geometry": {
+        "counts": {
+          "collision_then_static_collision": 4,
+          "continuity_limit_then_static_collision": 12
+        },
+        "rechecked_collisions": [
+          {
+            "collision_type": "self",
+            "object_name1": "g2_aloha_proxy_1",
+            "link_name1": "fl_link4",
+            "object_name2": "g2_aloha_proxy_1",
+            "link_name2": "fl_link6",
+            "max_penetration_m": 0.0003900595474988222
+          },
+          {
+            "collision_type": "self",
+            "object_name1": "g2_aloha_proxy_1",
+            "link_name1": "fl_link4",
+            "object_name2": "g2_aloha_proxy_1",
+            "link_name2": "fl_link6",
+            "max_penetration_m": 0.0003900595474988222
+          },
+          {
+            "collision_type": "self",
+            "object_name1": "g2_aloha_proxy_1",
+            "link_name1": "fl_link4",
+            "object_name2": "g2_aloha_proxy_1",
+            "link_name2": "fl_link6",
+            "max_penetration_m": 0.00037045381031930447
+          },
+          {
+            "collision_type": "self",
+            "object_name1": "g2_aloha_proxy_1",
+            "link_name1": "fl_link4",
+            "object_name2": "g2_aloha_proxy_1",
+            "link_name2": "fl_link6",
+            "max_penetration_m": 0.00037045381031930447
+          }
+        ]
+      },
+      "offline_window": {
+        "4": {
+          "raw_rows": 4,
+          "first_gripper_at_or_below_0_5_one_based": [
+            null,
+            null
+          ],
+          "same_prefix_barrier_before_longer_rows": true,
+          "actual_adapter_window_valid": true
+        },
+        "26": {
+          "raw_rows": 26,
+          "first_gripper_at_or_below_0_5_one_based": [
+            null,
+            null
+          ],
+          "same_prefix_barrier_before_longer_rows": true,
+          "actual_adapter_window_valid": false
+        },
+        "31": {
+          "raw_rows": 31,
+          "first_gripper_at_or_below_0_5_one_based": [
+            28,
+            null
+          ],
+          "same_prefix_barrier_before_longer_rows": true,
+          "actual_adapter_window_valid": false
+        },
+        "50": {
+          "raw_rows": 50,
+          "first_gripper_at_or_below_0_5_one_based": [
+            28,
+            48
+          ],
+          "same_prefix_barrier_before_longer_rows": true,
+          "actual_adapter_window_valid": false
+        }
+      }
+    }
+  ]
+}

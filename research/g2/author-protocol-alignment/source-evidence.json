@@ -1,0 +1,662 @@
+{
+  "revisions": {
+    "pace": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+    "train": "ba9876639cb7a4bf0c7db00ec39eeb9c8efd8b12",
+    "runtime": "f4e52e6de4cc487a11585a3a7414d610b2883dae",
+    "checkpoint": "17ef545270cf26ed81169893b60f845f80ce6557",
+    "official_dataset": "3dc3b798668feb99ac61cc9086d84cbcc3d79186",
+    "robotwin_stable_base": "13c3c47ff4312dd62484bcd51be034af55c062d1",
+    "robotwin_probe_decoder": "ea8b21121ebb3cd201ff5b3fe361944ac94eda3f"
+  },
+  "job_runtime_commit": "9eb42a97c29ce93e8c123f49540340e45c41875c",
+  "sources": {
+    "runtime/pace/src/openpi_pace/configs.py:70-76": {
+      "repo": "niejunnan25/Openpi-PACE",
+      "commit": "f4e52e6de4cc487a11585a3a7414d610b2883dae",
+      "path": "pace/src/openpi_pace/configs.py",
+      "start_line": 70,
+      "end_line": 76,
+      "sha256": "4f4678269417c7a9760ed7b2f37f77498af7d4e7791db29fb23e7d69f70257d1",
+      "url": "https://github.com/niejunnan25/Openpi-PACE/blob/f4e52e6de4cc487a11585a3a7414d610b2883dae/pace/src/openpi_pace/configs.py#L70-L76"
+    },
+    "runtime/src/openpi/policies/policy_config.py:49-64": {
+      "repo": "niejunnan25/Openpi-PACE",
+      "commit": "f4e52e6de4cc487a11585a3a7414d610b2883dae",
+      "path": "src/openpi/policies/policy_config.py",
+      "start_line": 49,
+      "end_line": 64,
+      "sha256": "aaf42ab04a33b6c91d2447926211646c33ebd8ebfa427f026d7b6c4f7c45ec52",
+      "url": "https://github.com/niejunnan25/Openpi-PACE/blob/f4e52e6de4cc487a11585a3a7414d610b2883dae/src/openpi/policies/policy_config.py#L49-L64"
+    },
+    "job/scripts/pace_model_smoke.py:71-136": {
+      "repo": "latentstride/pi05-scnet-reproduction",
+      "commit": "9eb42a97c29ce93e8c123f49540340e45c41875c",
+      "path": "scripts/pace_model_smoke.py",
+      "start_line": 71,
+      "end_line": 136,
+      "sha256": "4432f6783f21021fc155608bf5ff328bf35facd9822a360740757ba2b1817b37",
+      "url": "https://github.com/latentstride/pi05-scnet-reproduction/blob/9eb42a97c29ce93e8c123f49540340e45c41875c/scripts/pace_model_smoke.py#L71-L136"
+    },
+    "runtime/scripts/serve_policy.py:88-117": {
+      "repo": "niejunnan25/Openpi-PACE",
+      "commit": "f4e52e6de4cc487a11585a3a7414d610b2883dae",
+      "path": "scripts/serve_policy.py",
+      "start_line": 88,
+      "end_line": 117,
+      "sha256": "eccc0448b4873fd30a1fff3355c5de7a7c227138e6db04b7dcaa5bb38a6a5809",
+      "url": "https://github.com/niejunnan25/Openpi-PACE/blob/f4e52e6de4cc487a11585a3a7414d610b2883dae/scripts/serve_policy.py#L88-L117"
+    },
+    "runtime/src/openpi/models/pi0_config.py:20-39": {
+      "repo": "niejunnan25/Openpi-PACE",
+      "commit": "f4e52e6de4cc487a11585a3a7414d610b2883dae",
+      "path": "src/openpi/models/pi0_config.py",
+      "start_line": 20,
+      "end_line": 39,
+      "sha256": "e15d71586f1a561b35c5651227607613fb16d2df411f3708b1c9d36b02544285",
+      "url": "https://github.com/niejunnan25/Openpi-PACE/blob/f4e52e6de4cc487a11585a3a7414d610b2883dae/src/openpi/models/pi0_config.py#L20-L39"
+    },
+    "runtime/src/openpi/models/pi0.py:217-231": {
+      "repo": "niejunnan25/Openpi-PACE",
+      "commit": "f4e52e6de4cc487a11585a3a7414d610b2883dae",
+      "path": "src/openpi/models/pi0.py",
+      "start_line": 217,
+      "end_line": 231,
+      "sha256": "24b32d7c6ed5e409459afa8ca5af96a4dae09c2dcdf48e828907e411f4f12342",
+      "url": "https://github.com/niejunnan25/Openpi-PACE/blob/f4e52e6de4cc487a11585a3a7414d610b2883dae/src/openpi/models/pi0.py#L217-L231"
+    },
+    "job/scripts/g2e_model_entry.py:73-77": {
+      "repo": "latentstride/pi05-scnet-reproduction",
+      "commit": "9eb42a97c29ce93e8c123f49540340e45c41875c",
+      "path": "scripts/g2e_model_entry.py",
+      "start_line": 73,
+      "end_line": 77,
+      "sha256": "ba2eaef1e5eb9c597d928d067ed4d380608f560dcbb58d27ed96ac06401eca47",
+      "url": "https://github.com/latentstride/pi05-scnet-reproduction/blob/9eb42a97c29ce93e8c123f49540340e45c41875c/scripts/g2e_model_entry.py#L73-L77"
+    },
+    "runtime/src/openpi/policies/policy.py:65-75": {
+      "repo": "niejunnan25/Openpi-PACE",
+      "commit": "f4e52e6de4cc487a11585a3a7414d610b2883dae",
+      "path": "src/openpi/policies/policy.py",
+      "start_line": 65,
+      "end_line": 75,
+      "sha256": "a2ac5236e23b11d0f5a840d4a8fef148d89dba921d5452ec5dfcd5a6ffa46f20",
+      "url": "https://github.com/niejunnan25/Openpi-PACE/blob/f4e52e6de4cc487a11585a3a7414d610b2883dae/src/openpi/policies/policy.py#L65-L75"
+    },
+    "pace/pace/scripts/evaluate.py:127-140": {
+      "repo": "niejunnan25/PACE",
+      "commit": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+      "path": "pace/scripts/evaluate.py",
+      "start_line": 127,
+      "end_line": 140,
+      "sha256": "94a3f5ab01beacba042c4625c545a689b52bd8b1ed536a35752b309a138c6bf4",
+      "url": "https://github.com/niejunnan25/PACE/blob/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/pace/scripts/evaluate.py#L127-L140"
+    },
+    "job/scripts/g2e_model_entry.py:20-29": {
+      "repo": "latentstride/pi05-scnet-reproduction",
+      "commit": "9eb42a97c29ce93e8c123f49540340e45c41875c",
+      "path": "scripts/g2e_model_entry.py",
+      "start_line": 20,
+      "end_line": 29,
+      "sha256": "ba2eaef1e5eb9c597d928d067ed4d380608f560dcbb58d27ed96ac06401eca47",
+      "url": "https://github.com/latentstride/pi05-scnet-reproduction/blob/9eb42a97c29ce93e8c123f49540340e45c41875c/scripts/g2e_model_entry.py#L20-L29"
+    },
+    "job/scripts/g2_final_trial.py:355-410": {
+      "repo": "latentstride/pi05-scnet-reproduction",
+      "commit": "9eb42a97c29ce93e8c123f49540340e45c41875c",
+      "path": "scripts/g2_final_trial.py",
+      "start_line": 355,
+      "end_line": 410,
+      "sha256": "ff7c2d410ac0ddf7f093ee7f989b00e4b57830fae0f937e70b7840bbfeff6879",
+      "url": "https://github.com/latentstride/pi05-scnet-reproduction/blob/9eb42a97c29ce93e8c123f49540340e45c41875c/scripts/g2_final_trial.py#L355-L410"
+    },
+    "pace/task_config/demo_clean.yml:18-21": {
+      "repo": "niejunnan25/PACE",
+      "commit": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+      "path": "task_config/demo_clean.yml",
+      "start_line": 18,
+      "end_line": 21,
+      "sha256": "8ee5d0d07daecf7599b8d89b44776b700c7c60da24cd6317e176e6798d8cb11e",
+      "url": "https://github.com/niejunnan25/PACE/blob/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/task_config/demo_clean.yml#L18-L21"
+    },
+    "pace/task_config/_camera_config.yml:11-14": {
+      "repo": "niejunnan25/PACE",
+      "commit": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+      "path": "task_config/_camera_config.yml",
+      "start_line": 11,
+      "end_line": 14,
+      "sha256": "dc80a40552e0fad25d58cf0141302ceba66d22409b5091bed235ad2f10cbce7f",
+      "url": "https://github.com/niejunnan25/PACE/blob/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/task_config/_camera_config.yml#L11-L14"
+    },
+    "pace/pace/src/pace/rollout.py:8-21": {
+      "repo": "niejunnan25/PACE",
+      "commit": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+      "path": "pace/src/pace/rollout.py",
+      "start_line": 8,
+      "end_line": 21,
+      "sha256": "6ea198bcf47d6b6e62bd9206b6c5694466ca6346b30ad9c20885e4009af91325",
+      "url": "https://github.com/niejunnan25/PACE/blob/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/pace/src/pace/rollout.py#L8-L21"
+    },
+    "pace/envs/camera/camera.py:323-332": {
+      "repo": "niejunnan25/PACE",
+      "commit": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+      "path": "envs/camera/camera.py",
+      "start_line": 323,
+      "end_line": 332,
+      "sha256": "e4d17e99c8a68f44a12bef248a2164f52206efeaf24168172b778cc1e32832dd",
+      "url": "https://github.com/niejunnan25/PACE/blob/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/envs/camera/camera.py#L323-L332"
+    },
+    "runtime/packages/openpi-client/src/openpi_client/image_tools.py:15-38": {
+      "repo": "niejunnan25/Openpi-PACE",
+      "commit": "f4e52e6de4cc487a11585a3a7414d610b2883dae",
+      "path": "packages/openpi-client/src/openpi_client/image_tools.py",
+      "start_line": 15,
+      "end_line": 38,
+      "sha256": "d48b4bd7f44e79fe6db8a8e07c9161144fa250be686e1245014a8b47e6171977",
+      "url": "https://github.com/niejunnan25/Openpi-PACE/blob/f4e52e6de4cc487a11585a3a7414d610b2883dae/packages/openpi-client/src/openpi_client/image_tools.py#L15-L38"
+    },
+    "runtime/src/openpi/models/model.py:115-120": {
+      "repo": "niejunnan25/Openpi-PACE",
+      "commit": "f4e52e6de4cc487a11585a3a7414d610b2883dae",
+      "path": "src/openpi/models/model.py",
+      "start_line": 115,
+      "end_line": 120,
+      "sha256": "0d74bc1d8f4623ac3d8e543710b8bf75f9b95e588a3ebf6127c659e001385cff",
+      "url": "https://github.com/niejunnan25/Openpi-PACE/blob/f4e52e6de4cc487a11585a3a7414d610b2883dae/src/openpi/models/model.py#L115-L120"
+    },
+    "runtime/src/openpi/policies/aloha_policy.py:165-176": {
+      "repo": "niejunnan25/Openpi-PACE",
+      "commit": "f4e52e6de4cc487a11585a3a7414d610b2883dae",
+      "path": "src/openpi/policies/aloha_policy.py",
+      "start_line": 165,
+      "end_line": 176,
+      "sha256": "50d7ad972d80142ecb0f03b0780dacfd3af212946f4c9aac31a204b02db4543d",
+      "url": "https://github.com/niejunnan25/Openpi-PACE/blob/f4e52e6de4cc487a11585a3a7414d610b2883dae/src/openpi/policies/aloha_policy.py#L165-L176"
+    },
+    "runtime/src/openpi/training/config.py:125-135": {
+      "repo": "niejunnan25/Openpi-PACE",
+      "commit": "f4e52e6de4cc487a11585a3a7414d610b2883dae",
+      "path": "src/openpi/training/config.py",
+      "start_line": 125,
+      "end_line": 135,
+      "sha256": "408150f2618ad53925f40b166ff89dcf9215c3f328024a6acac5f1cd6cc29505",
+      "url": "https://github.com/niejunnan25/Openpi-PACE/blob/f4e52e6de4cc487a11585a3a7414d610b2883dae/src/openpi/training/config.py#L125-L135"
+    },
+    "job/scripts/g2_capture.py:39-39": {
+      "repo": "latentstride/pi05-scnet-reproduction",
+      "commit": "9eb42a97c29ce93e8c123f49540340e45c41875c",
+      "path": "scripts/g2_capture.py",
+      "start_line": 39,
+      "end_line": 39,
+      "sha256": "de893903d659c3dd729dcfeafd6bcb8c25e32e7ea458dda29bd04f71ac4d413f",
+      "url": "https://github.com/latentstride/pi05-scnet-reproduction/blob/9eb42a97c29ce93e8c123f49540340e45c41875c/scripts/g2_capture.py#L39-L39"
+    },
+    "pace/envs/_base_task.py:487-494": {
+      "repo": "niejunnan25/PACE",
+      "commit": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+      "path": "envs/_base_task.py",
+      "start_line": 487,
+      "end_line": 494,
+      "sha256": "448f7152b65cb9102217cf5463aa821d72810ca56f63d5a797ec7bd43e23e101",
+      "url": "https://github.com/niejunnan25/PACE/blob/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/envs/_base_task.py#L487-L494"
+    },
+    "pace/envs/robot/robot.py:494-508": {
+      "repo": "niejunnan25/PACE",
+      "commit": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+      "path": "envs/robot/robot.py",
+      "start_line": 494,
+      "end_line": 508,
+      "sha256": "3dcd80acc8cab489a4c5edb507cc460dab1724be0226b8d5c4c1b218dee605cb",
+      "url": "https://github.com/niejunnan25/PACE/blob/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/envs/robot/robot.py#L494-L508"
+    },
+    "job/scripts/pace_client_smoke.py:241-256": {
+      "repo": "latentstride/pi05-scnet-reproduction",
+      "commit": "9eb42a97c29ce93e8c123f49540340e45c41875c",
+      "path": "scripts/pace_client_smoke.py",
+      "start_line": 241,
+      "end_line": 256,
+      "sha256": "d99d53e80fa84e477c51d86955ee288db2d1fb891d9f1273298c2840e91f8363",
+      "url": "https://github.com/latentstride/pi05-scnet-reproduction/blob/9eb42a97c29ce93e8c123f49540340e45c41875c/scripts/pace_client_smoke.py#L241-L256"
+    },
+    "runtime/src/openpi/policies/policy_config.py:64-86": {
+      "repo": "niejunnan25/Openpi-PACE",
+      "commit": "f4e52e6de4cc487a11585a3a7414d610b2883dae",
+      "path": "src/openpi/policies/policy_config.py",
+      "start_line": 64,
+      "end_line": 86,
+      "sha256": "aaf42ab04a33b6c91d2447926211646c33ebd8ebfa427f026d7b6c4f7c45ec52",
+      "url": "https://github.com/niejunnan25/Openpi-PACE/blob/f4e52e6de4cc487a11585a3a7414d610b2883dae/src/openpi/policies/policy_config.py#L64-L86"
+    },
+    "runtime/src/openpi/training/config.py:186-186": {
+      "repo": "niejunnan25/Openpi-PACE",
+      "commit": "f4e52e6de4cc487a11585a3a7414d610b2883dae",
+      "path": "src/openpi/training/config.py",
+      "start_line": 186,
+      "end_line": 186,
+      "sha256": "408150f2618ad53925f40b166ff89dcf9215c3f328024a6acac5f1cd6cc29505",
+      "url": "https://github.com/niejunnan25/Openpi-PACE/blob/f4e52e6de4cc487a11585a3a7414d610b2883dae/src/openpi/training/config.py#L186-L186"
+    },
+    "runtime/src/openpi/models/tokenizer.py:22-29": {
+      "repo": "niejunnan25/Openpi-PACE",
+      "commit": "f4e52e6de4cc487a11585a3a7414d610b2883dae",
+      "path": "src/openpi/models/tokenizer.py",
+      "start_line": 22,
+      "end_line": 29,
+      "sha256": "965be8b3c393a6811875bbc32da9e01a5d01cc2f87802de801cf7293e049748c",
+      "url": "https://github.com/niejunnan25/Openpi-PACE/blob/f4e52e6de4cc487a11585a3a7414d610b2883dae/src/openpi/models/tokenizer.py#L22-L29"
+    },
+    "job/scripts/pace_model_smoke.py:112-136": {
+      "repo": "latentstride/pi05-scnet-reproduction",
+      "commit": "9eb42a97c29ce93e8c123f49540340e45c41875c",
+      "path": "scripts/pace_model_smoke.py",
+      "start_line": 112,
+      "end_line": 136,
+      "sha256": "4432f6783f21021fc155608bf5ff328bf35facd9822a360740757ba2b1817b37",
+      "url": "https://github.com/latentstride/pi05-scnet-reproduction/blob/9eb42a97c29ce93e8c123f49540340e45c41875c/scripts/pace_model_smoke.py#L112-L136"
+    },
+    "pace/pace/scripts/evaluate.py:31-31": {
+      "repo": "niejunnan25/PACE",
+      "commit": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+      "path": "pace/scripts/evaluate.py",
+      "start_line": 31,
+      "end_line": 31,
+      "sha256": "94a3f5ab01beacba042c4625c545a689b52bd8b1ed536a35752b309a138c6bf4",
+      "url": "https://github.com/niejunnan25/PACE/blob/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/pace/scripts/evaluate.py#L31-L31"
+    },
+    "pace/pace/scripts/evaluate.py:221-227": {
+      "repo": "niejunnan25/PACE",
+      "commit": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+      "path": "pace/scripts/evaluate.py",
+      "start_line": 221,
+      "end_line": 227,
+      "sha256": "94a3f5ab01beacba042c4625c545a689b52bd8b1ed536a35752b309a138c6bf4",
+      "url": "https://github.com/niejunnan25/PACE/blob/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/pace/scripts/evaluate.py#L221-L227"
+    },
+    "pace/pace/src/pace/robotwin.py:51-55": {
+      "repo": "niejunnan25/PACE",
+      "commit": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+      "path": "pace/src/pace/robotwin.py",
+      "start_line": 51,
+      "end_line": 55,
+      "sha256": "3d2bc995065da352c8292a3109841f30dff79fb39e810844bbd14ecef85ef2eb",
+      "url": "https://github.com/niejunnan25/PACE/blob/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/pace/src/pace/robotwin.py#L51-L55"
+    },
+    "pace/description/utils/generate_episode_instructions.py:184-235": {
+      "repo": "niejunnan25/PACE",
+      "commit": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+      "path": "description/utils/generate_episode_instructions.py",
+      "start_line": 184,
+      "end_line": 235,
+      "sha256": "ef428fa9066c3025d41e2fabcbf894d1d4313bd12bee0a300d19d3d7d1158f24",
+      "url": "https://github.com/niejunnan25/PACE/blob/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/description/utils/generate_episode_instructions.py#L184-L235"
+    },
+    "job/scripts/g2_task_runtime.py:214-214": {
+      "repo": "latentstride/pi05-scnet-reproduction",
+      "commit": "9eb42a97c29ce93e8c123f49540340e45c41875c",
+      "path": "scripts/g2_task_runtime.py",
+      "start_line": 214,
+      "end_line": 214,
+      "sha256": "604c046e466dc7dcd9c43b44b06a1725a01b6241b07f91edc087f6ce932b90b4",
+      "url": "https://github.com/latentstride/pi05-scnet-reproduction/blob/9eb42a97c29ce93e8c123f49540340e45c41875c/scripts/g2_task_runtime.py#L214-L214"
+    },
+    "pace/pace/src/pace/robotwin.py:23-48": {
+      "repo": "niejunnan25/PACE",
+      "commit": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+      "path": "pace/src/pace/robotwin.py",
+      "start_line": 23,
+      "end_line": 48,
+      "sha256": "3d2bc995065da352c8292a3109841f30dff79fb39e810844bbd14ecef85ef2eb",
+      "url": "https://github.com/niejunnan25/PACE/blob/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/pace/src/pace/robotwin.py#L23-L48"
+    },
+    "pace/pace/src/pace/robotwin.py:58-80": {
+      "repo": "niejunnan25/PACE",
+      "commit": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+      "path": "pace/src/pace/robotwin.py",
+      "start_line": 58,
+      "end_line": 80,
+      "sha256": "3d2bc995065da352c8292a3109841f30dff79fb39e810844bbd14ecef85ef2eb",
+      "url": "https://github.com/niejunnan25/PACE/blob/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/pace/src/pace/robotwin.py#L58-L80"
+    },
+    "pace/pace/scripts/evaluate.py:161-221": {
+      "repo": "niejunnan25/PACE",
+      "commit": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+      "path": "pace/scripts/evaluate.py",
+      "start_line": 161,
+      "end_line": 221,
+      "sha256": "94a3f5ab01beacba042c4625c545a689b52bd8b1ed536a35752b309a138c6bf4",
+      "url": "https://github.com/niejunnan25/PACE/blob/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/pace/scripts/evaluate.py#L161-L221"
+    },
+    "job/scripts/g2_task_runtime.py:210-219": {
+      "repo": "latentstride/pi05-scnet-reproduction",
+      "commit": "9eb42a97c29ce93e8c123f49540340e45c41875c",
+      "path": "scripts/g2_task_runtime.py",
+      "start_line": 210,
+      "end_line": 219,
+      "sha256": "604c046e466dc7dcd9c43b44b06a1725a01b6241b07f91edc087f6ce932b90b4",
+      "url": "https://github.com/latentstride/pi05-scnet-reproduction/blob/9eb42a97c29ce93e8c123f49540340e45c41875c/scripts/g2_task_runtime.py#L210-L219"
+    },
+    "pace/envs/_base_task.py:58-58": {
+      "repo": "niejunnan25/PACE",
+      "commit": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+      "path": "envs/_base_task.py",
+      "start_line": 58,
+      "end_line": 58,
+      "sha256": "448f7152b65cb9102217cf5463aa821d72810ca56f63d5a797ec7bd43e23e101",
+      "url": "https://github.com/niejunnan25/PACE/blob/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/envs/_base_task.py#L58-L58"
+    },
+    "pace/envs/handover_block.py:13-49": {
+      "repo": "niejunnan25/PACE",
+      "commit": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+      "path": "envs/handover_block.py",
+      "start_line": 13,
+      "end_line": 49,
+      "sha256": "5439712296d7e143d41f8e78b4ab86cd4fad7fb98f40f5f5abb067a462d17650",
+      "url": "https://github.com/niejunnan25/PACE/blob/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/envs/handover_block.py#L13-L49"
+    },
+    "job/scripts/g2_initial.py:84-139": {
+      "repo": "latentstride/pi05-scnet-reproduction",
+      "commit": "9eb42a97c29ce93e8c123f49540340e45c41875c",
+      "path": "scripts/g2_initial.py",
+      "start_line": 84,
+      "end_line": 139,
+      "sha256": "3ba24573566334ad66b030ca939ac1d8f69a47a84e9a5ed1837df2cbf5e2b980",
+      "url": "https://github.com/latentstride/pi05-scnet-reproduction/blob/9eb42a97c29ce93e8c123f49540340e45c41875c/scripts/g2_initial.py#L84-L139"
+    },
+    "runtime/src/openpi/training/config.py:263-266": {
+      "repo": "niejunnan25/Openpi-PACE",
+      "commit": "f4e52e6de4cc487a11585a3a7414d610b2883dae",
+      "path": "src/openpi/training/config.py",
+      "start_line": 263,
+      "end_line": 266,
+      "sha256": "408150f2618ad53925f40b166ff89dcf9215c3f328024a6acac5f1cd6cc29505",
+      "url": "https://github.com/niejunnan25/Openpi-PACE/blob/f4e52e6de4cc487a11585a3a7414d610b2883dae/src/openpi/training/config.py#L263-L266"
+    },
+    "runtime/src/openpi/policies/policy_config.py:84-87": {
+      "repo": "niejunnan25/Openpi-PACE",
+      "commit": "f4e52e6de4cc487a11585a3a7414d610b2883dae",
+      "path": "src/openpi/policies/policy_config.py",
+      "start_line": 84,
+      "end_line": 87,
+      "sha256": "aaf42ab04a33b6c91d2447926211646c33ebd8ebfa427f026d7b6c4f7c45ec52",
+      "url": "https://github.com/niejunnan25/Openpi-PACE/blob/f4e52e6de4cc487a11585a3a7414d610b2883dae/src/openpi/policies/policy_config.py#L84-L87"
+    },
+    "runtime/src/openpi/policies/aloha_policy.py:91-101": {
+      "repo": "niejunnan25/Openpi-PACE",
+      "commit": "f4e52e6de4cc487a11585a3a7414d610b2883dae",
+      "path": "src/openpi/policies/aloha_policy.py",
+      "start_line": 91,
+      "end_line": 101,
+      "sha256": "50d7ad972d80142ecb0f03b0780dacfd3af212946f4c9aac31a204b02db4543d",
+      "url": "https://github.com/niejunnan25/Openpi-PACE/blob/f4e52e6de4cc487a11585a3a7414d610b2883dae/src/openpi/policies/aloha_policy.py#L91-L101"
+    },
+    "pace/envs/_base_task.py:1479-1487": {
+      "repo": "niejunnan25/PACE",
+      "commit": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+      "path": "envs/_base_task.py",
+      "start_line": 1479,
+      "end_line": 1487,
+      "sha256": "448f7152b65cb9102217cf5463aa821d72810ca56f63d5a797ec7bd43e23e101",
+      "url": "https://github.com/niejunnan25/PACE/blob/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/envs/_base_task.py#L1479-L1487"
+    },
+    "job/scripts/g2_episode.py:66-79": {
+      "repo": "latentstride/pi05-scnet-reproduction",
+      "commit": "9eb42a97c29ce93e8c123f49540340e45c41875c",
+      "path": "scripts/g2_episode.py",
+      "start_line": 66,
+      "end_line": 79,
+      "sha256": "550e85791732dd0fc5ed1113371b4351d65622c7c2b3519a9af9688cfac69fad",
+      "url": "https://github.com/latentstride/pi05-scnet-reproduction/blob/9eb42a97c29ce93e8c123f49540340e45c41875c/scripts/g2_episode.py#L66-L79"
+    },
+    "pace/pace/scripts/evaluate.py:78-86": {
+      "repo": "niejunnan25/PACE",
+      "commit": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+      "path": "pace/scripts/evaluate.py",
+      "start_line": 78,
+      "end_line": 86,
+      "sha256": "94a3f5ab01beacba042c4625c545a689b52bd8b1ed536a35752b309a138c6bf4",
+      "url": "https://github.com/niejunnan25/PACE/blob/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/pace/scripts/evaluate.py#L78-L86"
+    },
+    "pace/pace/src/pace/rollout.py:29-47": {
+      "repo": "niejunnan25/PACE",
+      "commit": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+      "path": "pace/src/pace/rollout.py",
+      "start_line": 29,
+      "end_line": 47,
+      "sha256": "6ea198bcf47d6b6e62bd9206b6c5694466ca6346b30ad9c20885e4009af91325",
+      "url": "https://github.com/niejunnan25/PACE/blob/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/pace/src/pace/rollout.py#L29-L47"
+    },
+    "job/scripts/g2_native_backend.py:230-235": {
+      "repo": "latentstride/pi05-scnet-reproduction",
+      "commit": "9eb42a97c29ce93e8c123f49540340e45c41875c",
+      "path": "scripts/g2_native_backend.py",
+      "start_line": 230,
+      "end_line": 235,
+      "sha256": "baa797e1098f86cae12f7073886cd1e50fcb3a5cd010a9a3f765c50d0aab08f6",
+      "url": "https://github.com/latentstride/pi05-scnet-reproduction/blob/9eb42a97c29ce93e8c123f49540340e45c41875c/scripts/g2_native_backend.py#L230-L235"
+    },
+    "job/scripts/g2_episode.py:174-179": {
+      "repo": "latentstride/pi05-scnet-reproduction",
+      "commit": "9eb42a97c29ce93e8c123f49540340e45c41875c",
+      "path": "scripts/g2_episode.py",
+      "start_line": 174,
+      "end_line": 179,
+      "sha256": "550e85791732dd0fc5ed1113371b4351d65622c7c2b3519a9af9688cfac69fad",
+      "url": "https://github.com/latentstride/pi05-scnet-reproduction/blob/9eb42a97c29ce93e8c123f49540340e45c41875c/scripts/g2_episode.py#L174-L179"
+    },
+    "pace/pace/src/pace/rollout.py:45-48": {
+      "repo": "niejunnan25/PACE",
+      "commit": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+      "path": "pace/src/pace/rollout.py",
+      "start_line": 45,
+      "end_line": 48,
+      "sha256": "6ea198bcf47d6b6e62bd9206b6c5694466ca6346b30ad9c20885e4009af91325",
+      "url": "https://github.com/niejunnan25/PACE/blob/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/pace/src/pace/rollout.py#L45-L48"
+    },
+    "pace/envs/_base_task.py:1538-1566": {
+      "repo": "niejunnan25/PACE",
+      "commit": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+      "path": "envs/_base_task.py",
+      "start_line": 1538,
+      "end_line": 1566,
+      "sha256": "448f7152b65cb9102217cf5463aa821d72810ca56f63d5a797ec7bd43e23e101",
+      "url": "https://github.com/niejunnan25/PACE/blob/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/envs/_base_task.py#L1538-L1566"
+    },
+    "job/scripts/g2_native_backend.py:107-134": {
+      "repo": "latentstride/pi05-scnet-reproduction",
+      "commit": "9eb42a97c29ce93e8c123f49540340e45c41875c",
+      "path": "scripts/g2_native_backend.py",
+      "start_line": 107,
+      "end_line": 134,
+      "sha256": "baa797e1098f86cae12f7073886cd1e50fcb3a5cd010a9a3f765c50d0aab08f6",
+      "url": "https://github.com/latentstride/pi05-scnet-reproduction/blob/9eb42a97c29ce93e8c123f49540340e45c41875c/scripts/g2_native_backend.py#L107-L134"
+    },
+    "job/scripts/g2_native_backend.py:223-224": {
+      "repo": "latentstride/pi05-scnet-reproduction",
+      "commit": "9eb42a97c29ce93e8c123f49540340e45c41875c",
+      "path": "scripts/g2_native_backend.py",
+      "start_line": 223,
+      "end_line": 224,
+      "sha256": "baa797e1098f86cae12f7073886cd1e50fcb3a5cd010a9a3f765c50d0aab08f6",
+      "url": "https://github.com/latentstride/pi05-scnet-reproduction/blob/9eb42a97c29ce93e8c123f49540340e45c41875c/scripts/g2_native_backend.py#L223-L224"
+    },
+    "pace/envs/handover_block.py:111-116": {
+      "repo": "niejunnan25/PACE",
+      "commit": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+      "path": "envs/handover_block.py",
+      "start_line": 111,
+      "end_line": 116,
+      "sha256": "5439712296d7e143d41f8e78b4ab86cd4fad7fb98f40f5f5abb067a462d17650",
+      "url": "https://github.com/niejunnan25/PACE/blob/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/envs/handover_block.py#L111-L116"
+    },
+    "pace/envs/robot/robot.py:541-542": {
+      "repo": "niejunnan25/PACE",
+      "commit": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+      "path": "envs/robot/robot.py",
+      "start_line": 541,
+      "end_line": 542,
+      "sha256": "3dcd80acc8cab489a4c5edb507cc460dab1724be0226b8d5c4c1b218dee605cb",
+      "url": "https://github.com/niejunnan25/PACE/blob/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/envs/robot/robot.py#L541-L542"
+    },
+    "pace/envs/_base_task.py:1657-1658": {
+      "repo": "niejunnan25/PACE",
+      "commit": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+      "path": "envs/_base_task.py",
+      "start_line": 1657,
+      "end_line": 1658,
+      "sha256": "448f7152b65cb9102217cf5463aa821d72810ca56f63d5a797ec7bd43e23e101",
+      "url": "https://github.com/niejunnan25/PACE/blob/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/envs/_base_task.py#L1657-L1658"
+    },
+    "job/scripts/g2_native_backend.py:95-96": {
+      "repo": "latentstride/pi05-scnet-reproduction",
+      "commit": "9eb42a97c29ce93e8c123f49540340e45c41875c",
+      "path": "scripts/g2_native_backend.py",
+      "start_line": 95,
+      "end_line": 96,
+      "sha256": "baa797e1098f86cae12f7073886cd1e50fcb3a5cd010a9a3f765c50d0aab08f6",
+      "url": "https://github.com/latentstride/pi05-scnet-reproduction/blob/9eb42a97c29ce93e8c123f49540340e45c41875c/scripts/g2_native_backend.py#L95-L96"
+    },
+    "pace/task_config/_eval_step_limit.yml:9-9": {
+      "repo": "niejunnan25/PACE",
+      "commit": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+      "path": "task_config/_eval_step_limit.yml",
+      "start_line": 9,
+      "end_line": 9,
+      "sha256": "41c62bd26184977bae45aee555edd0cc21de5cddf560c2595921fc23a1e3b551",
+      "url": "https://github.com/niejunnan25/PACE/blob/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/task_config/_eval_step_limit.yml#L9-L9"
+    },
+    "pace/pace/scripts/_eval_worker.py:259-259": {
+      "repo": "niejunnan25/PACE",
+      "commit": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+      "path": "pace/scripts/_eval_worker.py",
+      "start_line": 259,
+      "end_line": 259,
+      "sha256": "c5d75694db7e37542153dab7df880df3cd4ce6c8e13255d20460db921ef3b8c4",
+      "url": "https://github.com/niejunnan25/PACE/blob/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/pace/scripts/_eval_worker.py#L259-L259"
+    },
+    "job/scripts/g2_native_backend.py:110-110": {
+      "repo": "latentstride/pi05-scnet-reproduction",
+      "commit": "9eb42a97c29ce93e8c123f49540340e45c41875c",
+      "path": "scripts/g2_native_backend.py",
+      "start_line": 110,
+      "end_line": 110,
+      "sha256": "baa797e1098f86cae12f7073886cd1e50fcb3a5cd010a9a3f765c50d0aab08f6",
+      "url": "https://github.com/latentstride/pi05-scnet-reproduction/blob/9eb42a97c29ce93e8c123f49540340e45c41875c/scripts/g2_native_backend.py#L110-L110"
+    },
+    "job/scripts/g2_episode.py:119-119": {
+      "repo": "latentstride/pi05-scnet-reproduction",
+      "commit": "9eb42a97c29ce93e8c123f49540340e45c41875c",
+      "path": "scripts/g2_episode.py",
+      "start_line": 119,
+      "end_line": 119,
+      "sha256": "550e85791732dd0fc5ed1113371b4351d65622c7c2b3519a9af9688cfac69fad",
+      "url": "https://github.com/latentstride/pi05-scnet-reproduction/blob/9eb42a97c29ce93e8c123f49540340e45c41875c/scripts/g2_episode.py#L119-L119"
+    },
+    "job/scripts/g2_final_campaign.py:176-182": {
+      "repo": "latentstride/pi05-scnet-reproduction",
+      "commit": "9eb42a97c29ce93e8c123f49540340e45c41875c",
+      "path": "scripts/g2_final_campaign.py",
+      "start_line": 176,
+      "end_line": 182,
+      "sha256": "e157f7348e72dc977ffa37558aeea1bfadb8331611400513ac52e1c3039a85bb",
+      "url": "https://github.com/latentstride/pi05-scnet-reproduction/blob/9eb42a97c29ce93e8c123f49540340e45c41875c/scripts/g2_final_campaign.py#L176-L182"
+    },
+    "pace/pace/scripts/evaluate.py:62-62": {
+      "repo": "niejunnan25/PACE",
+      "commit": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+      "path": "pace/scripts/evaluate.py",
+      "start_line": 62,
+      "end_line": 62,
+      "sha256": "94a3f5ab01beacba042c4625c545a689b52bd8b1ed536a35752b309a138c6bf4",
+      "url": "https://github.com/niejunnan25/PACE/blob/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/pace/scripts/evaluate.py#L62-L62"
+    },
+    "pace/pace/scripts/evaluate.py:255-269": {
+      "repo": "niejunnan25/PACE",
+      "commit": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+      "path": "pace/scripts/evaluate.py",
+      "start_line": 255,
+      "end_line": 269,
+      "sha256": "94a3f5ab01beacba042c4625c545a689b52bd8b1ed536a35752b309a138c6bf4",
+      "url": "https://github.com/niejunnan25/PACE/blob/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/pace/scripts/evaluate.py#L255-L269"
+    },
+    "runtime/scripts/serve_policy.py:104-105": {
+      "repo": "niejunnan25/Openpi-PACE",
+      "commit": "f4e52e6de4cc487a11585a3a7414d610b2883dae",
+      "path": "scripts/serve_policy.py",
+      "start_line": 104,
+      "end_line": 105,
+      "sha256": "eccc0448b4873fd30a1fff3355c5de7a7c227138e6db04b7dcaa5bb38a6a5809",
+      "url": "https://github.com/niejunnan25/Openpi-PACE/blob/f4e52e6de4cc487a11585a3a7414d610b2883dae/scripts/serve_policy.py#L104-L105"
+    },
+    "runtime/src/openpi/policies/policy.py:113-126": {
+      "repo": "niejunnan25/Openpi-PACE",
+      "commit": "f4e52e6de4cc487a11585a3a7414d610b2883dae",
+      "path": "src/openpi/policies/policy.py",
+      "start_line": 113,
+      "end_line": 126,
+      "sha256": "a2ac5236e23b11d0f5a840d4a8fef148d89dba921d5452ec5dfcd5a6ffa46f20",
+      "url": "https://github.com/niejunnan25/Openpi-PACE/blob/f4e52e6de4cc487a11585a3a7414d610b2883dae/src/openpi/policies/policy.py#L113-L126"
+    },
+    "job/scripts/g2_unified_exchange.py:35-61": {
+      "repo": "latentstride/pi05-scnet-reproduction",
+      "commit": "9eb42a97c29ce93e8c123f49540340e45c41875c",
+      "path": "scripts/g2_unified_exchange.py",
+      "start_line": 35,
+      "end_line": 61,
+      "sha256": "899222b85a62c06ccfe284a1597ff2e1f562a6090175e891d0f165ac3fa8031b",
+      "url": "https://github.com/latentstride/pi05-scnet-reproduction/blob/9eb42a97c29ce93e8c123f49540340e45c41875c/scripts/g2_unified_exchange.py#L35-L61"
+    },
+    "job/scripts/g2e_model_entry.py:46-81": {
+      "repo": "latentstride/pi05-scnet-reproduction",
+      "commit": "9eb42a97c29ce93e8c123f49540340e45c41875c",
+      "path": "scripts/g2e_model_entry.py",
+      "start_line": 46,
+      "end_line": 81,
+      "sha256": "ba2eaef1e5eb9c597d928d067ed4d380608f560dcbb58d27ed96ac06401eca47",
+      "url": "https://github.com/latentstride/pi05-scnet-reproduction/blob/9eb42a97c29ce93e8c123f49540340e45c41875c/scripts/g2e_model_entry.py#L46-L81"
+    },
+    "job/scripts/pace_client_smoke.py:33-43": {
+      "repo": "latentstride/pi05-scnet-reproduction",
+      "commit": "9eb42a97c29ce93e8c123f49540340e45c41875c",
+      "path": "scripts/pace_client_smoke.py",
+      "start_line": 33,
+      "end_line": 43,
+      "sha256": "d99d53e80fa84e477c51d86955ee288db2d1fb891d9f1273298c2840e91f8363",
+      "url": "https://github.com/latentstride/pi05-scnet-reproduction/blob/9eb42a97c29ce93e8c123f49540340e45c41875c/scripts/pace_client_smoke.py#L33-L43"
+    },
+    "pace/task_config/demo_clean.yml:9-21": {
+      "repo": "niejunnan25/PACE",
+      "commit": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+      "path": "task_config/demo_clean.yml",
+      "start_line": 9,
+      "end_line": 21,
+      "sha256": "8ee5d0d07daecf7599b8d89b44776b700c7c60da24cd6317e176e6798d8cb11e",
+      "url": "https://github.com/niejunnan25/PACE/blob/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/task_config/demo_clean.yml#L9-L21"
+    },
+    "pace/envs/_base_task.py:437-450": {
+      "repo": "niejunnan25/PACE",
+      "commit": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+      "path": "envs/_base_task.py",
+      "start_line": 437,
+      "end_line": 450,
+      "sha256": "448f7152b65cb9102217cf5463aa821d72810ca56f63d5a797ec7bd43e23e101",
+      "url": "https://github.com/niejunnan25/PACE/blob/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/envs/_base_task.py#L437-L450"
+    },
+    "pace/envs/camera/camera.py:286-293": {
+      "repo": "niejunnan25/PACE",
+      "commit": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+      "path": "envs/camera/camera.py",
+      "start_line": 286,
+      "end_line": 293,
+      "sha256": "e4d17e99c8a68f44a12bef248a2164f52206efeaf24168172b778cc1e32832dd",
+      "url": "https://github.com/niejunnan25/PACE/blob/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/envs/camera/camera.py#L286-L293"
+    },
+    "job/scripts/g2_task_runtime.py:201-221": {
+      "repo": "latentstride/pi05-scnet-reproduction",
+      "commit": "9eb42a97c29ce93e8c123f49540340e45c41875c",
+      "path": "scripts/g2_task_runtime.py",
+      "start_line": 201,
+      "end_line": 221,
+      "sha256": "604c046e466dc7dcd9c43b44b06a1725a01b6241b07f91edc087f6ce932b90b4",
+      "url": "https://github.com/latentstride/pi05-scnet-reproduction/blob/9eb42a97c29ce93e8c123f49540340e45c41875c/scripts/g2_task_runtime.py#L201-L221"
+    }
+  }
+}

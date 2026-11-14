@@ -1,0 +1,340 @@
+{
+  "job_id": "127510335",
+  "runtime_binding": {
+    "archive_sha256": "1d60de6eeaffacab0962119186d8bc7aac4755537cfba1aa900c325664585a6e",
+    "configuration_sha256": "5767eb0ab6e90929a8e7476d080f4366d0907f279e8403145bc00d776ac67d2c",
+    "commit": "fae63f80ec65ce6121f486f0eac57ea4bdb16724",
+    "candidate_sha256": "2451670b0410b7411de06527518f6282835b9b006d995b7488d13b5914a9c1a6"
+  },
+  "model": {
+    "checkpoint_revision": "17ef545270cf26ed81169893b60f845f80ce6557",
+    "status": "ready",
+    "devices": [
+      "cuda:0"
+    ]
+  },
+  "graphics": {
+    "graphics_driver_discovery": "0",
+    "host_vulkan": "0",
+    "container_vulkan": "0",
+    "vulkan_identity": "0",
+    "sapien_render": "0"
+  },
+  "model_server_starts": 1,
+  "peak_gpu_mib": 14378,
+  "campaign_stop_reason": null,
+  "trial_status": "completed",
+  "process_group_reaped": true,
+  "scene": {
+    "kind": "author_reset_admitted",
+    "scene_seed": 100000,
+    "cache_sha256": "12ac49e3913308901113cc8ddd9f71f0987ce8c9ebd83f03c308c759bdbeb939",
+    "initial": {
+      "robot_base_world": {
+        "left": [
+          0.0,
+          -0.6499999761581421,
+          0.0,
+          0.7071067811865476,
+          0.0,
+          0.0,
+          0.7071067811865475
+        ],
+        "right": [
+          0.0,
+          -0.6499999761581421,
+          0.0,
+          0.7071067811865476,
+          0.0,
+          0.0,
+          0.7071067811865475
+        ]
+      },
+      "task_frame_world": [
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "actual_arm_qpos_rad": {
+        "left": [
+          -3.016615224282759e-08,
+          -5.666987590302597e-07,
+          -4.835828804061748e-06,
+          7.701128623693876e-08,
+          4.63164752773082e-07,
+          -8.158995683515968e-07
+        ],
+        "right": [
+          -3.258066882949606e-08,
+          -5.65274206110189e-07,
+          -4.838918357563671e-06,
+          7.693390813301448e-08,
+          4.6469963876916154e-07,
+          -8.163781899384048e-07
+        ]
+      },
+      "actual_gripper": {
+        "left": 0.9830570883221097,
+        "right": 0.9830570055378809
+      },
+      "objects_task": {
+        "block": [
+          -0.1521603763103485,
+          0.2279314547777176,
+          0.8400001525878906,
+          0.9719521289925551,
+          2.162576439342082e-07,
+          -3.4353901864368678e-06,
+          0.2351787807923811
+        ],
+        "target": [
+          0.16532817482948303,
+          0.16106395423412323,
+          0.7409999966621399,
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "table": [
+          0.0,
+          0.0,
+          0.7400000095367432,
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "reset_fixture_sha256": "213ac7121101c08b5932ffa4ce5dc3bec6b14a046df3ee8f1eb65edd6e184401",
+      "workspace_check_id": "author-native-h50-reset",
+      "common_workspace_pass": false
+    },
+    "block_mass_kg": 0.009999999776482582,
+    "prompt": "Grab the red block using the left arm."
+  },
+  "first_observation": {
+    "state": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "prompt": "Grab the red block using the left arm.",
+    "cameras": {
+      "cam_high": {
+        "shape": [
+          3,
+          240,
+          320
+        ],
+        "dtype": "uint8",
+        "sha256": "de935661b8934f9f97cd707308f29954402b06e34d205d15beb5ed99e9391bf4"
+      },
+      "cam_left_wrist": {
+        "shape": [
+          3,
+          240,
+          320
+        ],
+        "dtype": "uint8",
+        "sha256": "df595d1b6e1e2dd4101d6c679efdee36d86a3b4704bf8015486470943fc9e837"
+      },
+      "cam_right_wrist": {
+        "shape": [
+          3,
+          240,
+          320
+        ],
+        "dtype": "uint8",
+        "sha256": "3a8d6a923598c7a45e4347759fa8425b469417f9b54c5e055cd2066d03fe0a85"
+      }
+    }
+  },
+  "first_query": {
+    "kind": "author_query",
+    "query": 0,
+    "index": 0,
+    "tick": 0
+  },
+  "first_chunk": {
+    "kind": "author_chunk",
+    "query": 0,
+    "sha256": "857acc507aa9de5b9c332739258eaba179186acbad94e052dfb8076415010c45",
+    "rng": {
+      "episode_id": "author-native-h50-seed100000",
+      "query": 0,
+      "request_sha256": "42e7e27787fdc63c542deba2ebc23f1dfc1c046291db29243612ca6979879111",
+      "before": {
+        "impl": "threefry2x32",
+        "words": [
+          0,
+          0
+        ]
+      },
+      "sample": {
+        "impl": "threefry2x32",
+        "words": [
+          928981903,
+          3453687069
+        ]
+      },
+      "after": {
+        "impl": "threefry2x32",
+        "words": [
+          1797259609,
+          2579123966
+        ]
+      }
+    }
+  },
+  "model_rng_reset": {
+    "kind": "author_model_rng_reset",
+    "receipt": {
+      "command": "author_h50_reset",
+      "episode_id": "author-native-h50-seed100000",
+      "seed": 0,
+      "key": {
+        "impl": "threefry2x32",
+        "words": [
+          0,
+          0
+        ]
+      }
+    }
+  },
+  "event_counts": {
+    "initial_physical_measurement": 1,
+    "author_reset_admitted": 1,
+    "author_model_rng_reset": 1,
+    "author_query": 1,
+    "author_chunk": 1,
+    "author_action": 43,
+    "physics_step": 4746,
+    "native_contact_sample": 4746,
+    "native_guard_state": 4746,
+    "author_action_complete": 42,
+    "author_terminal": 1
+  },
+  "contact_phases_by_tick": {
+    "approach": 4746
+  },
+  "holder_ticks": {},
+  "tracked_finger_contact_ticks": {
+    "left": 0,
+    "right": 0
+  },
+  "first_chunk_gripper_ranges": {
+    "left": [
+      0.9967704685903788,
+      1.0011246749060154
+    ],
+    "right": [
+      0.9982836485477686,
+      1.001372580885172
+    ]
+  },
+  "last_attempted_row": {
+    "kind": "author_action",
+    "index": 42,
+    "tick": 4699,
+    "row": [
+      0.023388774783437594,
+      2.5286243382005824,
+      1.7736805787314986,
+      0.7471729640184936,
+      1.12569017503786,
+      0.022848080454135306,
+      0.9992298031706215,
+      -0.0028908670251651114,
+      -0.0037222584441158097,
+      -0.0014336202233663498,
+      -0.0013940175234155305,
+      -0.00015324363125154838,
+      -8.182634903623406e-06,
+      1.000271306246996
+    ],
+    "row_sha256": "e5a02d3151e303e9f8672b70edc2703d37cd5ee664467eec4ca21677d8d80813"
+  },
+  "per_completed_action_physics_steps": [
+    46,
+    47,
+    55,
+    65,
+    86,
+    102,
+    118,
+    134,
+    140,
+    138,
+    156,
+    161,
+    163,
+    167,
+    174,
+    175,
+    177,
+    172,
+    175,
+    173,
+    165,
+    163,
+    165,
+    158,
+    157,
+    142,
+    147,
+    130,
+    128,
+    109,
+    99,
+    70,
+    74,
+    42,
+    30,
+    29,
+    45,
+    22,
+    41,
+    37,
+    57,
+    65
+  ],
+  "last_attempted_action_partial_physics_steps": 47,
+  "unattempted_one_based_actions_in_first_chunk": [
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50
+  ],
+  "receipt_sha256": "801115687dbd6596ab0d09f7d4f85fe52b5024e49ac4ab3a579087ae774f0b79",
+  "source_sha256": {
+    "authorization-receipt.json": "3694bc5d5bfcad42830816443dee2a3c76e5be4d049233d9956c23de4cfe39f9",
+    "supervisor/campaign.json": "2aea14ca0fbd2ddc4b941ef0ea9a327423c1dd2bb879eab447207c0963bffb4f",
+    "standalone-result.json": "d412fc2389397aa09087f32e4485ae722ce7337599ea8c6d81c0601967edfeed",
+    "trials/author-native-h50-seed100000/receipt.json": "801115687dbd6596ab0d09f7d4f85fe52b5024e49ac4ab3a579087ae774f0b79",
+    "model/startup.json": "d92a0a8119285d9d6b0a02453a08f05e7eb9f3539eaf8552bcbd2c29e1ce31f0",
+    "model/phases.jsonl": "37be6c499f29a82b50a1570ff916ce35797fd3359e8ae99e1375e661971196bd",
+    "graphics/check_status.tsv": "8b031fcad234181f24e5b92e3df0c707d87911f477cefcbc6fcf49c310281a65",
+    "trials/author-native-h50-seed100000/request-00.npz": "442f7d47cde94712201239dca6d5ff25aa7a161222f69ccba1bb382d8d445269",
+    "trials/author-native-h50-seed100000/chunk-00.npy": "e1ac8bd5119a1cb24e9761d301aa971ec6e11706eae715be468c5cc4babe14e8",
+    "trials/author-native-h50-seed100000/events.jsonl": "57c85f137765343759730dda1c875b48e6e0a840a3ee1916295926e14ae8bf8a"
+  }
+}

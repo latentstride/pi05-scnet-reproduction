@@ -1,0 +1,40 @@
+{
+  "mode": "author_native",
+  "method": "pace",
+  "scene_seed": 200000,
+  "episode_id": "g5-author_native-pace-200000",
+  "success": true,
+  "scene_closed": true,
+  "outcome": "SUCCESS",
+  "trial_clock": {
+    "started": 65641988.81426647,
+    "soft": 65653388.81426647,
+    "hard": 65653988.81426647,
+    "reap_at": 65653978.81426647,
+    "budget": {
+      "physics_steps": 130000,
+      "soft_s": 11400,
+      "hard_s": 12000,
+      "reap_s": 10,
+      "request_s": 390
+    }
+  },
+  "prompt": "Grab the red block with the left arm, switch to the right, and place it on the blue pad.",
+  "selector": {
+    "selector": "pace",
+    "threshold": 0.008204944897443056,
+    "config": {
+      "fps": 50.0,
+      "min_distance": 10,
+      "smoothing_window": 11,
+      "polynomial_order": 3
+    },
+    "calibration_sha256": "d66b55926fb3afc655199986710f84d8bc519e4443c11ceb51725814da98204f"
+  },
+  "steps": 258,
+  "queries": 13,
+  "completed_actions": 258,
+  "native_action_count": 258,
+  "physics_steps": 18078,
+  "elapsed_s": 350.3530213832855
+}

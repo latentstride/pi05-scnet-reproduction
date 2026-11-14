@@ -1,0 +1,27 @@
+[mid] CPU PhysX, FCL and original TOPP with an injected outcome
+  initial tick=0 manifolds=33 stable_steps=2500
+  result=controlled_candidate_stop actions=51 ticks=1147 query_indices=[0, 50]
+  TOPP recorded branches={'trajectory': 104} hold=True close=True
+  candidate_proof=True process_group_gone=True exit=0
+  raw_events_sha256=a864f5aa0e791dcca253b34c0d1c857b120c7439f69717756d57ffbfa0a489d3
+[tick-zero] CPU PhysX, FCL and original TOPP with an injected outcome
+  initial tick=0 manifolds=33 stable_steps=2500
+  result=controlled_candidate_stop actions=0 ticks=0 query_indices=[0]
+  TOPP recorded branches={'trajectory': 2} hold=True close=True
+  candidate_proof=True process_group_gone=True exit=0
+  raw_events_sha256=5a19811ca527f6421c954621003444493cdb41bc50781dcc16b84b70c5a50ce1
+[missing] CPU PhysX, FCL and original TOPP with an injected outcome
+  initial tick=0 manifolds=33 stable_steps=2500
+  result=infrastructure_failure actions=0 ticks=0 query_indices=[0]
+  TOPP recorded branches={'trajectory': 2} hold=True close=True
+  candidate_proof=False process_group_gone=True exit=0
+  raw_events_sha256=1df4672414b8758a0ddaace24b55330bb6d5c0ce933cf05e2f49e1c3adbdf412
+  terminal sample: candidate stop lacks current physical contact sample
+[actual] CPU PhysX, FCL and original TOPP with an injected outcome
+  initial tick=0 manifolds=33 stable_steps=2500
+  result=actual_safety_stop actions=0 ticks=1 query_indices=[0]
+  TOPP recorded branches={'trajectory': 2} hold=True close=True
+  candidate_proof=False process_group_gone=True exit=0
+  raw_events_sha256=3a5cfa42d05f2c84990c153dec5a3c9fff0d2345688107d3f01ab21a8e6582c7
+Continuation gate with live-service stub: mid=yes tick-zero=yes missing=no actual=no
+Each CPU case was started as an independent test process, even after a negative continuation result.

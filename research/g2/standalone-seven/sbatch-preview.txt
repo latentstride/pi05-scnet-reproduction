@@ -1,0 +1,15 @@
+# Preview only. The submit helper binds authorizations and releases; do not run these independently.
+# G1
+sbatch --hold --parsable --comment=cpf-g2-s7-616fc754e36acc5b2c89-G1 "--account=${ACCOUNT}" "--qos=${QOS}" "--chdir=${ROOT}" "--export=ALL,G2_PROJECT_ROOT=${ROOT},G2_FINAL_RELEASE=${STAGE}/g2-parallel-G1,G2_FINAL_APPROVAL=${STAGE}/authorizations/G1/approval.json" "--output=${STAGE}/authorizations/G1/slurm-%j.out" "${STAGE}/g2-parallel-G1/scripts/pace_g2_parallel.slurm"
+# G2
+sbatch --hold --parsable --comment=cpf-g2-s7-616fc754e36acc5b2c89-G2 "--account=${ACCOUNT}" "--qos=${QOS}" "--chdir=${ROOT}" "--export=ALL,G2_PROJECT_ROOT=${ROOT},G2_FINAL_RELEASE=${STAGE}/g2-parallel-G2,G2_FINAL_APPROVAL=${STAGE}/authorizations/G2/approval.json" "--output=${STAGE}/authorizations/G2/slurm-%j.out" "${STAGE}/g2-parallel-G2/scripts/pace_g2_parallel.slurm"
+# G3
+sbatch --hold --parsable --comment=cpf-g2-s7-616fc754e36acc5b2c89-G3 "--account=${ACCOUNT}" "--qos=${QOS}" "--chdir=${ROOT}" "--export=ALL,G2_PROJECT_ROOT=${ROOT},G2_FINAL_RELEASE=${STAGE}/g2-parallel-G3,G2_FINAL_APPROVAL=${STAGE}/authorizations/G3/approval.json" "--output=${STAGE}/authorizations/G3/slurm-%j.out" "${STAGE}/g2-parallel-G3/scripts/pace_g2_parallel.slurm"
+# G4
+sbatch --hold --parsable --comment=cpf-g2-s7-616fc754e36acc5b2c89-G4 "--account=${ACCOUNT}" "--qos=${QOS}" "--chdir=${ROOT}" "--export=ALL,G2_PROJECT_ROOT=${ROOT},G2_FINAL_RELEASE=${STAGE}/g2-parallel-G4,G2_FINAL_APPROVAL=${STAGE}/authorizations/G4/approval.json" "--output=${STAGE}/authorizations/G4/slurm-%j.out" "${STAGE}/g2-parallel-G4/scripts/pace_g2_parallel.slurm"
+# G5
+sbatch --hold --parsable --comment=cpf-g2-s7-616fc754e36acc5b2c89-G5 "--account=${ACCOUNT}" "--qos=${QOS}" "--chdir=${ROOT}" "--export=ALL,G2_PROJECT_ROOT=${ROOT},G2_FINAL_RELEASE=${STAGE}/g2-parallel-G5,G2_FINAL_APPROVAL=${STAGE}/authorizations/G5/approval.json" "--output=${STAGE}/authorizations/G5/slurm-%j.out" "${STAGE}/g2-parallel-G5/scripts/pace_g2_parallel.slurm"
+# G6
+sbatch --hold --parsable --comment=cpf-g2-s7-616fc754e36acc5b2c89-G6 "--account=${ACCOUNT}" "--qos=${QOS}" "--chdir=${ROOT}" "--export=ALL,G2_PROJECT_ROOT=${ROOT},G2_FINAL_RELEASE=${STAGE}/g2-parallel-G6,G2_FINAL_APPROVAL=${STAGE}/authorizations/G6/approval.json" "--output=${STAGE}/authorizations/G6/slurm-%j.out" "${STAGE}/g2-parallel-G6/scripts/pace_g2_parallel.slurm"
+# G7
+sbatch --hold --parsable --comment=cpf-g2-s7-616fc754e36acc5b2c89-G7 "--account=${ACCOUNT}" "--qos=${QOS}" "--chdir=${ROOT}" "--export=ALL,G2_PROJECT_ROOT=${ROOT},G2_FINAL_RELEASE=${STAGE}/g2-parallel-G7,G2_FINAL_APPROVAL=${STAGE}/authorizations/G7/approval.json" "--output=${STAGE}/authorizations/G7/slurm-%j.out" "${STAGE}/g2-parallel-G7/scripts/pace_g2_parallel.slurm"

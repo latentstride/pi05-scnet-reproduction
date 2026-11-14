@@ -1,0 +1,14 @@
+{
+  "base_commit": "abcebf17a9856fefdc82ca171d8f54c3f6cbfa5b",
+  "candidate_config_only_added_key": "native_preload_control",
+  "historical_config_sha256": "6976aa2b9f118180ad11148c0f5511e535620e80011203d94519a85e9d7d8f73",
+  "unchanged_sources": {
+    "scripts/g2_contact.py": "8369b9b25e760fb272fbf945220864432ec4f537e03c564d79605e7262ff3ffa",
+    "scripts/g2e_native_guard.py": "4fe52f3f5be77feb2d3beda67fa6edc5692d15d03208e4a29f16b0403d8a9f37",
+    "scripts/g2_robotwin_backend.py": "31e541ad7a4559d82cde01eb1090a458ea864a993e6abc3634c55588ea17983e",
+    "scripts/g2_adapter.py": "de4c36da33fa64279378502f77af13085096bd82992fd1e7aa669a6d61e4326a",
+    "scripts/g2_final_expert.py": "eb4cd82dd38a6755502660e1e799f08d670177ab37a8d8008b68f7648080595c",
+    "scripts/g2_final_campaign.py": "e157f7348e72dc977ffa37558aeea1bfadb8331611400513ac52e1c3039a85bb",
+    "scripts/g2_final_trial.py": "ff7c2d410ac0ddf7f093ee7f989b00e4b57830fae0f937e70b7840bbfeff6879"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "cpu_only": true,
+  "gpu_operations": 0,
+  "archive_sha256": "24e337e1f820d38d028e625c0eda7b9cf6b9f942763226d912efa20951422b8d",
+  "manifest_sha256": "40d5ca77dd7d3d202aa9528e0dcfb9158e6740b5518cef7eb63c281c37b64a67",
+  "verified_files": 75,
+  "trials": 10,
+  "model_cpu_receipt_hash_verified": true,
+  "stdlib_verify": {
+    "trials": 10,
+    "checksums": "verified",
+    "submission_allowed": false,
+    "manifest_sha256": "40d5ca77dd7d3d202aa9528e0dcfb9158e6740b5518cef7eb63c281c37b64a67"
+  },
+  "source_ast_and_shell_syntax": true,
+  "submission_authorized": false
+}

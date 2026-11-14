@@ -36,6 +36,38 @@ def verify_runtime(pace_root, audit):
 
 
 def validate_config(config, *, allow_native_h50=False):
+    from g2e_protocol import APPROACH_REPAIR
+    repair = config.get("free_space_approach_repair")
+    projection = config.get("task_tcp_projection")
+    if projection is not None:
+        from g2_task_tcp_projection import METHOD
+        from g2_unified_plan import ARX_PROJECTION_ACTION_CAP
+
+        if (projection != METHOD or config.get("embodiment") != "ARX-X5"
+                or config.get("contact_mode") != CONTACT_MODE
+                or repair != APPROACH_REPAIR):
+            raise ValueError("TCP projection requires guarded ARX approach recovery")
+        if type(config["max_actions"]) is not int or not 0 < config["max_actions"] <= ARX_PROJECTION_ACTION_CAP:
+            raise ValueError("invalid TCP projection policy action cap")
+    if repair is not None and (repair != APPROACH_REPAIR
+            or config.get("embodiment") not in ("aloha-agilex", "ARX-X5")):
+        raise ValueError("unknown bounded approach profile")
+    if repair is not None and ((config["embodiment"] == "aloha-agilex" and
+            (config.get("execution_protocol") != PROTOCOL or config.get("contact_mode") != CONTACT_MODE_NATIVE))
+            or (config["embodiment"] == "ARX-X5" and config.get("contact_mode") != CONTACT_MODE)):
+        raise ValueError("bounded approach requires its existing measured-contact guard")
+    from g2e_protocol import PRELOAD_ESTABLISHMENT, PRELOAD_PROTOCOL
+    establishment = config.get("native_preload_establishment")
+    if establishment is not None and (establishment != PRELOAD_ESTABLISHMENT
+            or config.get("native_preload_control") != PRELOAD_PROTOCOL):
+        raise ValueError("contact preload establishment requires the reviewed native hold profile")
+    preload = config.get("native_preload_control")
+    if preload is not None:
+        from g2_native_preload import PRELOAD_PROTOCOL
+        if (preload != PRELOAD_PROTOCOL or config.get("native_release_semantics") != "physical_aperture_v1"
+                or config.get("contact_mode") != CONTACT_MODE_NATIVE
+                or config.get("embodiment") != "aloha-agilex"):
+            raise ValueError("native preload candidate requires guarded Aloha physical-aperture semantics")
     semantics = config.get("native_release_semantics")
     if semantics is not None and (semantics != "physical_aperture_v1"
             or config["contact_mode"] != CONTACT_MODE_NATIVE):
@@ -126,6 +158,11 @@ class RuntimeSession:
     def success(self):
         return self.backend.success() if self.backend is not None else False
 
+    def note_failure(self, result):
+        note = getattr(self.backend, "note_failure", None)
+        if callable(note):
+            note(result)
+
     def hold(self):
         if self.backend is not None:
             self.backend.hold()
@@ -201,6 +238,7 @@ def real_scene(config, spec, pace_root, assets_root, asset_audit, source_audit, 
                                       digest_json(fixture if fixture is not None else {"seed": config["scene_seed"]}),
                                       "diagnostic-unverified-workspace", workspace_pass=False)
             setup = dict(embodiment=embodiment, scene_seed=config["scene_seed"],
+                         free_space_approach_repair=config.get("free_space_approach_repair", "disabled"),
                          config_sha256=digest_json(config), actual_initial=initial,
                          contact_mode=config["contact_mode"], formal_score_eligible=False,
                          calibration_ids=[arm.calibration_id for arm in arms])
@@ -232,7 +270,14 @@ def real_scene(config, spec, pace_root, assets_root, asset_audit, source_audit, 
                                  native_release_semantics=config.get("native_release_semantics", "legacy_drive_delta"),
                                  native_gripper_scale_m={side:getattr(env.robot,side+"_gripper_scale") for side in SIDES})
                     save_json(output/"setup.json",setup)
-                backend = NativeBackend(env, arms, world_task, initial, video,guard=guard)
+                setup["native_preload_control"] = config.get("native_preload_control", "disabled")
+                save_json(output/"setup.json", setup)
+                setup["native_preload_establishment"] = config.get("native_preload_establishment", "disabled")
+                save_json(output/"setup.json", setup)
+                backend = NativeBackend(env, arms, world_task, initial, video,guard=guard,
+                                        preload_hold=config.get("native_preload_control") is not None,
+                                        contact_preload=config.get("native_preload_establishment") is not None,
+                                        approach_repair=config.get("free_space_approach_repair") is not None)
                 if guard is not None: backend.collision=guard.collision
                 adapter = None
             else:

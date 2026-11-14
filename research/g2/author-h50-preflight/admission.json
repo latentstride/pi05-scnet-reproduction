@@ -1,0 +1,49 @@
+{
+  "status": "NOT_READY",
+  "scope": "CPU admission review, not an execution manifest",
+  "baseline": "fa649eef190a22174b5c80432eff852b37f744d7",
+  "scene_seed": 100000,
+  "cpu_passed": [
+    "cache and asset identity",
+    "archive first-frame readback",
+    "spawn RNG draw reconstruction",
+    "22 existing stop and isolation tests",
+    "first candidate stop fail-closed injection",
+    "real headless CPU PhysX reset on the author scene",
+    "settled CPU state matches archived base, objects and 14 drive channels",
+    "measured and stopped geometry clear at reset, including the unheld block",
+    "author scene close and CPU probe process-group exit"
+  ],
+  "cpu_blockers": [
+    "Frozen release has project scene/fixture, 300 action limit, preload, and endpoint rewrite/requery. No reviewed author-semantics entrypoint.",
+    "Pre-physics rejection at tick zero lacks the measured contact sample required by the existing safety stop receipt.",
+    "The existing 25,000 physical-step ceiling allows at most 31.25 steps per command on average over an 800-command non-success run; native TOPP uses variable counts and can fall back to 50 per arm. No reviewed feasible budget preserving the current ceilings."
+  ],
+  "gpu_startup_checks_deferred": [
+    "Vulkan/EGL",
+    "fresh three-camera RGB and full physical readback at seed 100000",
+    "frozen checkpoint startup and first-exchange trace",
+    "live trial and shared-service exit ordering"
+  ],
+  "gpu_deferred_checks_are_not_cpu_gates": true,
+  "frozen_roster_unchanged": true,
+  "gpu_operations": 0,
+  "gpu_inferences": 0,
+  "permission_to_execute": false,
+  "sole_future_replacement_suggestion": {
+    "replace": "unified-seed0-native-w50",
+    "with_condition": "guarded native Fixed H50 seed 100000 only after admission review",
+    "tradeoff": "Original same-fixture seed0 H50/K31 pairing would be lost."
+  },
+  "result_interpretation": {
+    "success": "native predicate under faithful guarded H50 for this instance",
+    "task_incomplete": "800 commands exhausted in a protocol-faithful rollout, predicate false",
+    "safety_stop": "censored native outcome, continuation only with verified stop and clean reset isolation",
+    "actual_unsafe_or_incomplete_cleanup": "stop entire campaign"
+  },
+  "unknowns": [
+    "the paper evaluation prompt and exact RNG state for this cached scene",
+    "the full GPU renderer output and actual service input for a new native run",
+    "measured safety or physical budget behavior after applying model commands"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "status": "INTERFACE_INTEGRATION_REVIEWED_PHYSICAL_HANDOVER_UNVERIFIED",
+  "cpu_tests": 246,
+  "synthetic_episodes": 13,
+  "pinned_controller_probes": 6,
+  "legacy_failure_reproductions": 2,
+  "functional_recorded_drive_replay_steps": 6138,
+  "physical_rerun": false,
+  "real_physical_release_validated": false,
+  "model_inference": false,
+  "gpu_operations": 0,
+  "new_frozen_package": false,
+  "new_gpu_authorization": false,
+  "protected_sources_unchanged": {
+    "scripts/g2e_native_guard.py": "4fe52f3f5be77feb2d3beda67fa6edc5692d15d03208e4a29f16b0403d8a9f37",
+    "scripts/g2_contact.py": "8369b9b25e760fb272fbf945220864432ec4f537e03c564d79605e7262ff3ffa",
+    "scripts/g2_native_backend.py": "d8b33789739e42451964dd4001e554f67d7b8962d238c06888cbec2c5f376039",
+    "scripts/g2_task_runtime.py": "e6e5405f47e66f871daef0863fd21105b1c623266415c9fae023da75476a7361",
+    "scripts/g2_robotwin_backend.py": "31e541ad7a4559d82cde01eb1090a458ea864a993e6abc3634c55588ea17983e",
+    "scripts/g2_final_trial.py": "ff7c2d410ac0ddf7f093ee7f989b00e4b57830fae0f937e70b7840bbfeff6879",
+    "scripts/g2_final_campaign.py": "e157f7348e72dc977ffa37558aeea1bfadb8331611400513ac52e1c3039a85bb",
+    "scripts/g2_episode.py": "a85a7d421b9d0bfb494d600215b5a8a9e3dd78e080d3fd3d764a7193feee3c57"
+  },
+  "limitations": [
+    "mock TOPP and contact probes do not validate physical handover",
+    "observed 6138-step physics belongs to old candidate; new selector produces identical drives on those measurements",
+    "new candidate release/summary hashes require freeze before GPU review",
+    "negative-preload physical relaxation and full model continuation remain unverified"
+  ]
+}

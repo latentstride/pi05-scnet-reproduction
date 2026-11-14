@@ -1,0 +1,54 @@
+{
+  "observed_date_local": "2026-11-11",
+  "test_only": true,
+  "allocation_created": false,
+  "simulated_ids_absent_from_queue_and_accounting": true,
+  "stage": "tools/g2-standalone-six-4h-20261111/stage",
+  "batch_sha256": "8af2ba1cf5c07234c9189982ba3527c6c8d69aa4fb59ef09aa2578f75427f831",
+  "tested_wall_s": 14400,
+  "partition": "ksagnormal01",
+  "node": "gnode39",
+  "partition_max_time": "333-08:00:00",
+  "account_association_max_wall": null,
+  "user_qos_max_wall": null,
+  "partition_qos_max_wall": null,
+  "submitted_limit": 20,
+  "running_limit": 12,
+  "active_jobs": 0,
+  "free_bytes": 79361515520,
+  "minimum_gib": 60,
+  "disk_quota_gate": "PASS",
+  "runtime_identity": "PASS",
+  "experiments": [
+    {
+      "experiment": "G1",
+      "cpu_ok": true,
+      "result": "sbatch: simulated record to start at 2026-11-11T05:06:47 using 4 processors on nodes gnode39 in partition ksagnormal01"
+    },
+    {
+      "experiment": "G2",
+      "cpu_ok": true,
+      "result": "sbatch: simulated record to start at 2026-11-11T05:06:49 using 4 processors on nodes gnode39 in partition ksagnormal01"
+    },
+    {
+      "experiment": "G3",
+      "cpu_ok": true,
+      "result": "sbatch: simulated record to start at 2026-11-11T05:06:50 using 4 processors on nodes gnode39 in partition ksagnormal01"
+    },
+    {
+      "experiment": "G4",
+      "cpu_ok": true,
+      "result": "sbatch: simulated record to start at 2026-11-11T05:06:50 using 4 processors on nodes gnode39 in partition ksagnormal01"
+    },
+    {
+      "experiment": "G5",
+      "cpu_ok": true,
+      "result": "sbatch: simulated record to start at 2026-11-11T05:06:52 using 4 processors on nodes gnode39 in partition ksagnormal01"
+    },
+    {
+      "experiment": "G6",
+      "cpu_ok": true,
+      "result": "sbatch: simulated record to start at 2026-11-11T05:06:53 using 4 processors on nodes gnode39 in partition ksagnormal01"
+    }
+  ]
+}

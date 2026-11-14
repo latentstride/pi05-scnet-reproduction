@@ -1,0 +1,598 @@
+{
+  "extracted_at": "2026-11-12T03:19:31.588529+00:00",
+  "extractor_sha256": "22cc38f001c7fdf2a0765fec6a77822573a267548ca2b7f26456e233d2f40885",
+  "jobs": {
+    "127620967": {
+      "job_id": "127620967",
+      "source_directory": "results/pace-g2-standalone-arx-127620967",
+      "slurm": {
+        "job_id": "127620967",
+        "state": "COMPLETED",
+        "exit_code": "0:0",
+        "submit": "2026-11-11T12:36:04",
+        "start": "2026-11-12T09:09:38",
+        "end": "2026-11-12T09:31:44",
+        "elapsed": "00:22:06",
+        "node": "gnode39"
+      },
+      "release": {
+        "archive_sha256": "9f827fa8f74c13469cc8b7e7ddb89f2e5de3176405971d86030f9e1abb57c6c3",
+        "manifest_sha256": "7b472e3e4e750311b7148ef814ccb2c26dbc8ed7705173fc6fa3f307a9a10bf6",
+        "standalone_configuration_sha256": "d0494e5d6d96a866537dc3360fcdcaf6da472ca7b20367dc4bd49ed2a146a10a",
+        "trial_configuration_sha256": "0e823f5cdd6596e7c498670d3eee2b633972798ece60d16d0db8064e44311586",
+        "checkpoint_revision": "17ef545270cf26ed81169893b60f845f80ce6557",
+        "norm_stats_sha256": "8a1f114a8873dfa0788c7f512851ee3063224ef2b8af270421076a2e4e544960",
+        "scene_seed": 1,
+        "policy_rng_seed": 20261107,
+        "window": 4,
+        "task_tcp_projection": "bounded_task_tcp_projection_v1",
+        "max_policy_actions": 800,
+        "query_cap": 300,
+        "recovery_cap": 4,
+        "trial_hard_s": 2600,
+        "slurm_wall_s": 5400,
+        "reset_fixture_sha256": "89ef6e94fcd26f9c2b121dbe85ce75f495efe0003ae95b4abfabd8a123be9aaf",
+        "runtime_config_digest": "22ea4851bed14db86db5d17882bde8c9ec556f2a4622c786fb784c361fb5e1b8",
+        "checkpoint_manifest_sha256": "835d60676236e69276032f7bc1ea4837eb6fcda6d4f3dbab2043965063a3d97b"
+      },
+      "startup": {
+        "category": "admitted",
+        "physical_admitted": true,
+        "fresh_reset_verified": true
+      },
+      "rng_reset": {
+        "command": "g2e_rng_ready",
+        "seed": 20261107,
+        "episode_id": "unified-seed1-arx-full-w4"
+      },
+      "counters": {
+        "policy_actions": 140,
+        "executed": 140,
+        "recovery_actions": 0,
+        "requested_prefix_rows": 144,
+        "result_queries": 36,
+        "logged_model_requests": 36,
+        "evidence": "worker receipt"
+      },
+      "measured": {
+        "physical_steps": 15880,
+        "phase_ticks": {
+          "approach": 15880
+        },
+        "finger_contact_ticks": {}
+      },
+      "projection": {
+        "query": 35,
+        "stamp": {
+          "episode": "unified-seed1-arx-full-w4",
+          "tick": 15350,
+          "sim_s": 61.40000291634351
+        },
+        "method": "bounded_task_tcp_projection_v1",
+        "translation_m": [
+          0.004,
+          0.0,
+          0.0
+        ],
+        "candidates": 2,
+        "executed_actions": 4,
+        "discarded_rows": 46,
+        "fresh_request": 36
+      },
+      "final_queries": [
+        {
+          "query": 35,
+          "stamp": {
+            "episode": "unified-seed1-arx-full-w4",
+            "tick": 15350,
+            "sim_s": 61.40000291634351
+          },
+          "response_logged": true,
+          "response_validated": true,
+          "approved_plan": true,
+          "physical_steps": 530,
+          "completed_actions_logged": 4,
+          "after_projection_from": null,
+          "action_file": "action-00035.npy",
+          "saved_action_valid": true,
+          "first_gripper_row_at_or_below_0_5": [
+            27,
+            null
+          ],
+          "observation_file": "observation-00035.npz"
+        },
+        {
+          "query": 36,
+          "stamp": {
+            "episode": "unified-seed1-arx-full-w4",
+            "tick": 15880,
+            "sim_s": 63.52000301703811
+          },
+          "response_logged": true,
+          "response_validated": true,
+          "approved_plan": false,
+          "physical_steps": 0,
+          "completed_actions_logged": null,
+          "after_projection_from": {
+            "episode": "unified-seed1-arx-full-w4",
+            "tick": 15350,
+            "sim_s": 61.40000291634351
+          },
+          "projection_reobservation": {
+            "linked": true,
+            "clock_advanced": true,
+            "arms_logged": true,
+            "objects_logged": [
+              "block",
+              "table",
+              "target"
+            ],
+            "rgb_cameras": [
+              "cam_high",
+              "cam_left_wrist",
+              "cam_right_wrist"
+            ],
+            "saved_rgb_valid": true
+          },
+          "action_file": "action-00036.npy",
+          "saved_action_valid": true,
+          "first_gripper_row_at_or_below_0_5": [
+            28,
+            49
+          ],
+          "observation_file": "observation-00036.npz"
+        }
+      ],
+      "rejection": {
+        "row_index_zero_based": 0,
+        "kind": "source_observability_barrier",
+        "world": "virtual_Aloha_source_proxy",
+        "pair": [
+          "fl_link4",
+          "fl_link6"
+        ],
+        "collision_rejected_candidates": 4,
+        "continuity_rejected_candidates": 12,
+        "penetration_m_min": 0.0002181409508921206,
+        "penetration_m_max": 0.00021861230197828263
+      },
+      "termination": {
+        "finalized": true,
+        "task_success": false,
+        "outcome": "planning_failed",
+        "worker_outcome": "planning_failed",
+        "category": "controlled_candidate_stop",
+        "supervisor_status": "completed",
+        "supervisor_reason": null,
+        "failure_phase": "planning",
+        "failure_code": "collision",
+        "budget_stop": null,
+        "failure_detail": "fresh policy action failed its original planning gate",
+        "geometry": "candidate",
+        "collision_world": null,
+        "collision_world_evidence": null,
+        "terminal_link_pairs": [
+          "fl_link4 / fl_link6"
+        ],
+        "continuity_rejected": null,
+        "collision_candidates_rejected": null,
+        "projection_stop_reason": "fresh_action_rejected",
+        "cleanup": {
+          "scene_opened": true,
+          "hold_complete": true,
+          "close_complete": true,
+          "scene_context_closed": true
+        },
+        "process_group_reaped": true
+      },
+      "candidate_stop": {
+        "tick": 15880,
+        "state_sha256": "5fc70c62620256b87860bc95450f25bef443f0e8037dbb247ad5e35ddc16111f",
+        "no_physics_advance": true,
+        "terminal_checks_passed": true,
+        "hold_verified": true,
+        "hold_complete": true,
+        "close_complete": true,
+        "scene_context_closed": true
+      },
+      "collision_audits": {
+        "target": {
+          "checks": 22763,
+          "blocked_checks": 0,
+          "link_pairs": {},
+          "partial_final_line": false,
+          "scope": "FCL audit calls, including planning and/or measured checks"
+        },
+        "source_proxy": {
+          "checks": 193,
+          "blocked_checks": 15,
+          "link_pairs": {
+            "fl_link4 / fl_link6": 15
+          },
+          "partial_final_line": false,
+          "scope": "FCL audit calls, including planning and/or measured checks"
+        }
+      },
+      "source_sha256": {
+        "standalone-result.json": "59d722fb3a7599f7daa33feb91976197ccd930312ff6144508710f5ca9cb5292",
+        "authorization-receipt.json": "97d499f8c8fe16ae556c5068679868fe2760a183fa69d579ebb4719e1695dfc9",
+        "supervisor/campaign.json": "fc5b8ea86a6ca86a67ab47363710e8aee4781143a0331986995dfc7097ee65f3",
+        "startup/unified-seed1-arx-full-w4/receipt.json": "36112ff59cb9e5794157a3769c2b924b3454b95625fe439007f911be2fdcf6a2",
+        "trials/unified-seed1-arx-full-w4/receipt.json": "e961c257a9bdafa5272d6cf00859ecdcc35f1332adf20ff829233caeadef60ea",
+        "trials/unified-seed1-arx-full-w4/episode/result.json": "ffd1afa361ddc5301a54d6f2a3beba59a1197f535625fc843fbb4ed3083c3e92",
+        "trials/unified-seed1-arx-full-w4/episode/events.jsonl": "a98587eef0c4305ec61756b05a63bfe0e93ec7c2f349ad62189d0487321271a2",
+        "trials/unified-seed1-arx-full-w4/episode/action-00001.npy": "dbcd758081952cbf87b02aa18e62efb407b55aae22e1924ef791d6188822f884",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00001.npz": "472f5ec508914645d8949503fc34b4ab2aca9dff7075833f613e4db55bcbc68f",
+        "trials/unified-seed1-arx-full-w4/episode/action-00002.npy": "aed7eab8ffddc10a6b9a4433c5df0c5f4b0ebd64c1a698f8d88cf27b33c39f3d",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00002.npz": "e71df2163405b6041b3c29012f5049392037d1f6e4613356738ddb31710eb13e",
+        "trials/unified-seed1-arx-full-w4/episode/action-00003.npy": "00da47ef392bdc0ace4755074c8d16f16499dcee96114228cfd6346a1ca3a99f",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00003.npz": "95855e8ad8d4821be33ba40b1833ebd80ec341e5f7da1ec10a8e206b6bd9a101",
+        "trials/unified-seed1-arx-full-w4/episode/action-00004.npy": "e8f76d9ffdd71f668f812d24b7138b6b18a2a67be15240f08b9f5381e7f07a69",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00004.npz": "a065888d880b453bb88e633f3d0d09b3dcbf5f314ea1c31ced0148ee021b71cf",
+        "trials/unified-seed1-arx-full-w4/episode/action-00005.npy": "9d6e0944d2ce1376df5ef43fa14c4de1d64618f2be2ba59123f5b196d4e25e0c",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00005.npz": "6429af232bd1e8b90875bcd4d02d25f059af312256a0aed70d837af270582094",
+        "trials/unified-seed1-arx-full-w4/episode/action-00006.npy": "b90352bb91ed9814f9643902cca1da026a476f03a4d8937ea181391228501a69",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00006.npz": "031d03c866e572211bf7d568130fbecc00501327241c9cac61e71bee4ec4eb71",
+        "trials/unified-seed1-arx-full-w4/episode/action-00007.npy": "483372fa44f3de90ac30a0fc34145a68d8f56c95826890a741f50404d1a57ce0",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00007.npz": "6d0b1ee8f403d1aab863b2876f6dbe8e3de6a05bdf05aa81ce078794c2c7db39",
+        "trials/unified-seed1-arx-full-w4/episode/action-00008.npy": "b1647b27aa7621ddcd2cb13d4bc408154146f9689c42dfb329d0a486790a30f5",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00008.npz": "bcf72f6b273ad27e22c5226537969386085501f214158a7512e6d7d08b0f94d9",
+        "trials/unified-seed1-arx-full-w4/episode/action-00009.npy": "45eaa09a471b3166dcd56748d5b2b902af4f2cd38900ac7088ba9f75fcda0919",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00009.npz": "5f8ee10ac1f42aa4d703b1bbbd793f47d8709e7ee6497825315cad2c6dab62a7",
+        "trials/unified-seed1-arx-full-w4/episode/action-00010.npy": "61ba04da6d142bffed356568f5f646d027eca8570dae91d6dd749ca9d080455f",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00010.npz": "16e41f07683e2aeb2e784a274fbe0a85f9fba06f4c9e598ed12a707558dbcae1",
+        "trials/unified-seed1-arx-full-w4/episode/action-00011.npy": "1e28622eafb4493f30c10549d575f6a8557728b90b8b968f4f94dbd2a3bf1e62",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00011.npz": "93ed1e12605389f1980ba5b9078a9f2e7ea9d327db357004967d9b951e1017f9",
+        "trials/unified-seed1-arx-full-w4/episode/action-00012.npy": "77080bc92bc9d5d3c9f98c5f5392e7b734288b4508d3fcfa2eb79a7d633053b7",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00012.npz": "87736b216edfd9b5118acdc8bcbbe33af10eb6e032a740bebb27437b7bc89997",
+        "trials/unified-seed1-arx-full-w4/episode/action-00013.npy": "0855ffe983c7b4ac6ecc86d26bdfb88d470136dd4018d696b2bbe70cd8316dca",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00013.npz": "d9026d2c7ce560ed0d31793a07fc86c9f32a6d482471152335cea99d5a319fa6",
+        "trials/unified-seed1-arx-full-w4/episode/action-00014.npy": "d59d9db52a36befea7ed4a89f6b9b2e3e24f8726cf17eaf99f9e9d4c7a99e819",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00014.npz": "577b582491fbb1bee29a1132e68ee87e45618130dab315c7c281e423244ab098",
+        "trials/unified-seed1-arx-full-w4/episode/action-00015.npy": "cf6fdc3816dc06efb155f50db5eb1f856037a5fa7e104a7fea8f00509f64a9d3",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00015.npz": "28949e705f8c4b0a654ec3639dc791e61a3798abe78da881450f0e636bfe2a73",
+        "trials/unified-seed1-arx-full-w4/episode/action-00016.npy": "8247c2b377253368d5e2a29643bf4947e5ffde472ce9a7cbaffbd2f3cc55458d",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00016.npz": "c21914445e4b0e73536c6dc6613adcfea4030c91a4e70452b7deac4ed8b15276",
+        "trials/unified-seed1-arx-full-w4/episode/action-00017.npy": "6144ad9494f22bb2b88a72fbbfd49a1bb11b5356833724a60a9aa294816bc8bc",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00017.npz": "9de787badb2f363cc66646c2ee13b0f02ad0a4fc140b970ecc41cd95476bfbd4",
+        "trials/unified-seed1-arx-full-w4/episode/action-00018.npy": "747fa9f0eb367f295420f5f67030b4ca5e33f4b370b41ddce0b97395f9265f90",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00018.npz": "72ac3c045744872137fc880c633000cd0d17513673b91fe824c9eb774f6b8f3a",
+        "trials/unified-seed1-arx-full-w4/episode/action-00019.npy": "c5c3bbcd43c8204b2a5d662990204a11a44357a970905cfdbd497375ae8ef769",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00019.npz": "e061047afd52001f70f1e0f79ca3d0fd2165b1f05fb05e13e00d4090f4d1fd02",
+        "trials/unified-seed1-arx-full-w4/episode/action-00020.npy": "bb16dc4ce2f32c140648ebb26d7b48f38ec3f3070e9c846a744f2d332caae939",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00020.npz": "b6e69c805b55267c9489ad9a9df893678e869bf9afa98bd6f10e49b48c57f27b",
+        "trials/unified-seed1-arx-full-w4/episode/action-00021.npy": "dd4c938458a113bce0669259594a95eba1af5633510a4cb56ac04966780414e9",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00021.npz": "46ccbb29083f72510851dc564344bb4d2c0c7b4f044be0a519ec439098b859a2",
+        "trials/unified-seed1-arx-full-w4/episode/action-00022.npy": "72d5975dae1420cf870385662af32b620d2dc3612dd2079717455a252f43b771",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00022.npz": "2f61f7b57e9648fb71a6a8baeec8f3f33edfe63d8b9f2635df6a5d137c34461b",
+        "trials/unified-seed1-arx-full-w4/episode/action-00023.npy": "4cd56d707cd45ff5df991173709a03c027f2a0a857401c5557fc7904dab2c4bd",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00023.npz": "bd3067d9e8b2e8a13a2a933656c464ff1850fc909d8d7591aafa1ee8bf28e869",
+        "trials/unified-seed1-arx-full-w4/episode/action-00024.npy": "224bd5b87d0758621c041e758cec7cc346483f3080adcf0ce40e0da574c5fe82",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00024.npz": "6f1cf07a3fe61c1b3a471eab45c1e3771ade0266119a43dbce947af3f9d02b21",
+        "trials/unified-seed1-arx-full-w4/episode/action-00025.npy": "0b9233e34a976749d2f8abe9628b85566f8df700812afa38c724f4af29d8a7a5",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00025.npz": "fe6a2968b6111a852e247d485973d7ad31de5b2788a82145e7314c200884c776",
+        "trials/unified-seed1-arx-full-w4/episode/action-00026.npy": "1c6e1b71ff96f2b2c58cff0216dbcd7220639eaf13f92ffd87f14a85d2e81398",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00026.npz": "d62db9bcf87817c5a14e17e0b1be3ece2e09671e3276d5ba80166a1bd0d99847",
+        "trials/unified-seed1-arx-full-w4/episode/action-00027.npy": "183b99a782bd5bb075f6323f840fbca660764c17109e5c6b4b2cf611df247683",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00027.npz": "13f3fca6ad464d01b671dab2ddfcd1070e18a446c81665977d30004d5e9fea1e",
+        "trials/unified-seed1-arx-full-w4/episode/action-00028.npy": "0f907997a7d5c2b68c52ae182efe3ae3b9312970478306bfcfa20e5330b7449b",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00028.npz": "5eed9cd30c82912c44334172eade2f2ddbc90d2504549b5c01ef852389b99afd",
+        "trials/unified-seed1-arx-full-w4/episode/action-00029.npy": "947adba90636e82320b889e31f36235d4b9e322b850c1f2992d7472e283a3e92",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00029.npz": "19b22d80b2a3ed9abf35da01ce4d521aab5667e43b3fe8308d7b35b79365af37",
+        "trials/unified-seed1-arx-full-w4/episode/action-00030.npy": "3a658149ce51b886007a55f780232c40462aedc0af59f452bd796b65ad7857b1",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00030.npz": "25296057c435b407a6bf150c55e3339c67bce7d4f88d2b3e83716d7763ad941a",
+        "trials/unified-seed1-arx-full-w4/episode/action-00031.npy": "5d53f17ec3a0f53e1889893e0b814175d65ee35c11e5b84a951748b6ea2c7c43",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00031.npz": "d1c635bafac1f86cf68a044baef4fd9a10cee6d0bb4b3eb17c09ddc6066cada3",
+        "trials/unified-seed1-arx-full-w4/episode/action-00032.npy": "c5a08e601c44386db0bf153f9fc1164128ba8349fd623074e87177c3869b7776",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00032.npz": "393a345160281a7ba5a1cc1c51fbc16331ddb5eeeec8bd8891854520b560eab9",
+        "trials/unified-seed1-arx-full-w4/episode/action-00033.npy": "db850403b3ab6ac76484708b91fefd596bdcb7739db4580e9083a47b7c7cd469",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00033.npz": "5bff2ef472b7cc3c5e3ca5133adf8e0d9e3189fd951b8a1b6ca3626025c133bd",
+        "trials/unified-seed1-arx-full-w4/episode/action-00034.npy": "871cd062c8fa72d5f0cd2de662946e2981ebdfa2ca2a0a80d1ff0812f8b73590",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00034.npz": "57aa905969e450c7b33244b2cd66907c0ebf7f1890333d4c78f5f5f22055beb8",
+        "trials/unified-seed1-arx-full-w4/episode/action-00035.npy": "ac1cfb634b6f3aa03b7906b36a423ed64ebc4486cde1ba2eebef08705e462ee9",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00035.npz": "a08db14488a38f6d7fd36138ef05eaf559aa6bc80a9c3efa54fba38cfc93f436",
+        "trials/unified-seed1-arx-full-w4/episode/action-00036.npy": "84afddb1e0682a1be5f8ab1ada51d6602c0a0e1d40a3c4e72d6bfd4fabdff6ae",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00036.npz": "5afd054b8f8da91e39badafeb584f45d53e677cbf42da6519c3be8a28a0da5e8",
+        "trials/unified-seed1-arx-full-w4/episode/collision-checks.jsonl": "c5c4348568646a2c98fb08b6f6e01d52a60d99212af66db0d98373d3ca120a9d",
+        "trials/unified-seed1-arx-full-w4/episode/proxy-collision-checks.jsonl": "288da7ac35daceca21b8a792ea49e41d8a889b5bf64511e9689d5fe535e06c97",
+        "trials/unified-seed1-arx-full-w4/rng-reset.json": "6a4421c20492a4ca3e112ac957e711d4bda1f13a0398bde6e85c29f888578f7a",
+        "trials/unified-seed1-arx-full-w4/episode/setup.json": "31763630d097a54c4385aa94236904c80a3c93918e275e7305ec01f285e55961",
+        "trials/unified-seed1-arx-full-w4/episode/initial-readback.json": "4e02d82cfbebccb38afb7d0e426a360c083eb76a2c62e03b3fbc1ee640e5e149",
+        "model/startup.json": "d92a0a8119285d9d6b0a02453a08f05e7eb9f3539eaf8552bcbd2c29e1ce31f0"
+      }
+    },
+    "127634718": {
+      "job_id": "127634718",
+      "source_directory": "results/pace-g2-standalone-arx-127634718",
+      "slurm": {
+        "job_id": "127634718",
+        "state": "COMPLETED",
+        "exit_code": "0:0",
+        "submit": "2026-11-11T15:16:09",
+        "start": "2026-11-12T09:32:48",
+        "end": "2026-11-12T09:47:38",
+        "elapsed": "00:14:50",
+        "node": "gnode39"
+      },
+      "release": {
+        "archive_sha256": "f5cb615bda10dff57af15eba704a96af40c553fb4bff6552dadb0932f42f3104",
+        "manifest_sha256": "384aee22dce15c06cf4bcc3ab95f2edfd0c0b0bdad21c8004ec61e9f52d47b1c",
+        "standalone_configuration_sha256": "d0494e5d6d96a866537dc3360fcdcaf6da472ca7b20367dc4bd49ed2a146a10a",
+        "trial_configuration_sha256": "785d590176c4b4dc9d16bca31578e24d27d331b787ecffdf1ca4c51ae0acaa25",
+        "checkpoint_revision": "17ef545270cf26ed81169893b60f845f80ce6557",
+        "norm_stats_sha256": "8a1f114a8873dfa0788c7f512851ee3063224ef2b8af270421076a2e4e544960",
+        "scene_seed": 1,
+        "policy_rng_seed": 20261108,
+        "window": 4,
+        "task_tcp_projection": "bounded_task_tcp_projection_v1",
+        "max_policy_actions": 800,
+        "query_cap": 300,
+        "recovery_cap": 4,
+        "trial_hard_s": 2600,
+        "slurm_wall_s": 5400,
+        "reset_fixture_sha256": "89ef6e94fcd26f9c2b121dbe85ce75f495efe0003ae95b4abfabd8a123be9aaf",
+        "runtime_config_digest": "34160c267796138b40e8d9023a744013b36a2019103f071be900f20b79210e43",
+        "checkpoint_manifest_sha256": "835d60676236e69276032f7bc1ea4837eb6fcda6d4f3dbab2043965063a3d97b"
+      },
+      "startup": {
+        "category": "admitted",
+        "physical_admitted": true,
+        "fresh_reset_verified": true
+      },
+      "rng_reset": {
+        "command": "g2e_rng_ready",
+        "seed": 20261108,
+        "episode_id": "unified-seed1-arx-full-w4"
+      },
+      "counters": {
+        "policy_actions": 128,
+        "executed": 128,
+        "recovery_actions": 0,
+        "requested_prefix_rows": 132,
+        "result_queries": 33,
+        "logged_model_requests": 33,
+        "evidence": "worker receipt"
+      },
+      "measured": {
+        "physical_steps": 16000,
+        "phase_ticks": {
+          "approach": 16000
+        },
+        "finger_contact_ticks": {}
+      },
+      "projection": {
+        "query": 32,
+        "stamp": {
+          "episode": "unified-seed1-arx-full-w4",
+          "tick": 15470,
+          "sim_s": 61.88000293914229
+        },
+        "method": "bounded_task_tcp_projection_v1",
+        "translation_m": [
+          0.004,
+          0.0,
+          0.0
+        ],
+        "candidates": 2,
+        "executed_actions": 4,
+        "discarded_rows": 46,
+        "fresh_request": 33
+      },
+      "final_queries": [
+        {
+          "query": 32,
+          "stamp": {
+            "episode": "unified-seed1-arx-full-w4",
+            "tick": 15470,
+            "sim_s": 61.88000293914229
+          },
+          "response_logged": true,
+          "response_validated": true,
+          "approved_plan": true,
+          "physical_steps": 530,
+          "completed_actions_logged": 4,
+          "after_projection_from": null,
+          "action_file": "action-00032.npy",
+          "saved_action_valid": true,
+          "first_gripper_row_at_or_below_0_5": [
+            28,
+            null
+          ],
+          "observation_file": "observation-00032.npz"
+        },
+        {
+          "query": 33,
+          "stamp": {
+            "episode": "unified-seed1-arx-full-w4",
+            "tick": 16000,
+            "sim_s": 64.00000303983688
+          },
+          "response_logged": true,
+          "response_validated": true,
+          "approved_plan": false,
+          "physical_steps": 0,
+          "completed_actions_logged": null,
+          "after_projection_from": {
+            "episode": "unified-seed1-arx-full-w4",
+            "tick": 15470,
+            "sim_s": 61.88000293914229
+          },
+          "projection_reobservation": {
+            "linked": true,
+            "clock_advanced": true,
+            "arms_logged": true,
+            "objects_logged": [
+              "block",
+              "table",
+              "target"
+            ],
+            "rgb_cameras": [
+              "cam_high",
+              "cam_left_wrist",
+              "cam_right_wrist"
+            ],
+            "saved_rgb_valid": true
+          },
+          "action_file": "action-00033.npy",
+          "saved_action_valid": true,
+          "first_gripper_row_at_or_below_0_5": [
+            26,
+            null
+          ],
+          "observation_file": "observation-00033.npz"
+        }
+      ],
+      "rejection": {
+        "row_index_zero_based": 0,
+        "kind": "source_observability_barrier",
+        "world": "virtual_Aloha_source_proxy",
+        "pair": [
+          "fl_link4",
+          "fl_link6"
+        ],
+        "collision_rejected_candidates": 4,
+        "continuity_rejected_candidates": 12,
+        "penetration_m_min": 0.0001585325808264315,
+        "penetration_m_max": 0.0001593714114278555
+      },
+      "termination": {
+        "finalized": true,
+        "task_success": false,
+        "outcome": "planning_failed",
+        "worker_outcome": "planning_failed",
+        "category": "controlled_candidate_stop",
+        "supervisor_status": "completed",
+        "supervisor_reason": null,
+        "failure_phase": "planning",
+        "failure_code": "collision",
+        "budget_stop": null,
+        "failure_detail": "fresh policy action failed its original planning gate",
+        "geometry": "candidate",
+        "collision_world": null,
+        "collision_world_evidence": null,
+        "terminal_link_pairs": [
+          "fl_link4 / fl_link6"
+        ],
+        "continuity_rejected": null,
+        "collision_candidates_rejected": null,
+        "projection_stop_reason": "fresh_action_rejected",
+        "cleanup": {
+          "scene_opened": true,
+          "hold_complete": true,
+          "close_complete": true,
+          "scene_context_closed": true
+        },
+        "process_group_reaped": true
+      },
+      "candidate_stop": {
+        "tick": 16000,
+        "state_sha256": "8071448705f3bd5670c3126c0c4bfb146a3d8804aacedbf3beecfd61c8f4cf30",
+        "no_physics_advance": true,
+        "terminal_checks_passed": true,
+        "hold_verified": true,
+        "hold_complete": true,
+        "close_complete": true,
+        "scene_context_closed": true
+      },
+      "collision_audits": {
+        "target": {
+          "checks": 22893,
+          "blocked_checks": 0,
+          "link_pairs": {},
+          "partial_final_line": false,
+          "scope": "FCL audit calls, including planning and/or measured checks"
+        },
+        "source_proxy": {
+          "checks": 180,
+          "blocked_checks": 15,
+          "link_pairs": {
+            "fl_link4 / fl_link6": 15
+          },
+          "partial_final_line": false,
+          "scope": "FCL audit calls, including planning and/or measured checks"
+        }
+      },
+      "source_sha256": {
+        "standalone-result.json": "39280538484d2d3a8c5f0174c817ad4cb9ce455b40d00f7abedf8c21d37efcff",
+        "authorization-receipt.json": "becb9ca39e60d186a3e9188d96c88f0f826198c35e57f52c50813d1e26a6e190",
+        "supervisor/campaign.json": "9227e632a55d2910b49dd1125f50c908d23e8ecced57a5c92ee5d951c695365b",
+        "startup/unified-seed1-arx-full-w4/receipt.json": "e3492c0b4e1b8009ec14e576522e21ab568f827c40384dcd01c9c1dcecade5f1",
+        "trials/unified-seed1-arx-full-w4/receipt.json": "7fac97ffef0cae703af7beee84a1911d027364b04e2824e9a78b7fe3e3bf8544",
+        "trials/unified-seed1-arx-full-w4/episode/result.json": "0be1c515fc1d3376d6cb011ceddefc8e3cb2d10ece604badd55f0c0299cefabe",
+        "trials/unified-seed1-arx-full-w4/episode/events.jsonl": "b84c4179a855f145a1535f5dfedac99c235c7e84b485530164f8bd13dab961ce",
+        "trials/unified-seed1-arx-full-w4/episode/action-00001.npy": "c18d70d55395a9b49756d6d6eda8050f9222e7d56aaae93d6463c1d4b80b5543",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00001.npz": "472f5ec508914645d8949503fc34b4ab2aca9dff7075833f613e4db55bcbc68f",
+        "trials/unified-seed1-arx-full-w4/episode/action-00002.npy": "f58e9cbdaea651085eb822f6dcbc8e5c20d7b6f8e2dd7433249f4a320ee51546",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00002.npz": "177dcfc2b57fa432769648c28c0a916e6059117099d59f24efb18825e4dd477a",
+        "trials/unified-seed1-arx-full-w4/episode/action-00003.npy": "be3bc06695b86d66c1ab7b483fe5a945232f7deda4d0cfd1c18f51539657a5e5",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00003.npz": "503d25a28af50bb8439bce904b876548b90fc19335429593492d0a74b5e478e6",
+        "trials/unified-seed1-arx-full-w4/episode/action-00004.npy": "c19b694c78cbd6376091ebe4716832e02610ec5a0941e6a2022782596bb631ed",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00004.npz": "b33b53c9193475c77c93f27c6d18212cdbaed8f7cfc1d7930684d16a64946ae7",
+        "trials/unified-seed1-arx-full-w4/episode/action-00005.npy": "bcb4e1c85cb2173925b2a4972122325cc9b396c21d651a01da0e06de038a7b42",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00005.npz": "38cc7c934acc7530103a5f7614e4766046f1a7809a1765986032a0478cd8d62c",
+        "trials/unified-seed1-arx-full-w4/episode/action-00006.npy": "32fd1868c7e5180d2ef0fdcdc94ae0b80d90408611e1116b7513cbb755ed654e",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00006.npz": "eea8b7a51dbc0fbc3d6015d37ba86854771fd8b903b98090818231c22877f5a0",
+        "trials/unified-seed1-arx-full-w4/episode/action-00007.npy": "afbd2cc7ef3a21ed50d4f99e610cc6b8383cfa25350ef9001345dd243862a7ba",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00007.npz": "653ac4489ac967750897c9896622d11676e9d159c947f12ad5a77b004d3301e8",
+        "trials/unified-seed1-arx-full-w4/episode/action-00008.npy": "55f2785a32a518d606c25ee4dbf0bbb7b968a80bd653861bf655f66b5af527da",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00008.npz": "b73e5087047f8d3142128fedf067e5a44c1c8f0db4590ab29af0b821fb272e74",
+        "trials/unified-seed1-arx-full-w4/episode/action-00009.npy": "c3bd6f002ae384eb0e882dcdfd1e5e7a0b28cc3cd8a8814f38240c536d1cdc85",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00009.npz": "0c99d549aff6eb8286ebbc0f3fc6b8a2822eecabcab259562af9b8a0b22a9450",
+        "trials/unified-seed1-arx-full-w4/episode/action-00010.npy": "056d53deb56821d0de74ff9f6b40cc0368c7647aaf77c411ab00c4f9ea151714",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00010.npz": "61388d31042c67df0e4a5445b2cc68afeebe388f7b670b822ada0e503e47728c",
+        "trials/unified-seed1-arx-full-w4/episode/action-00011.npy": "2dac5c4fe0ea213d6e096fce82881c5d4a5f2a081c6712aa09c24b63eabded07",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00011.npz": "4e65bd8a3daec7d5affcc20441071e4b8c99cc82bd7c44d9ac3a24326a05f2bc",
+        "trials/unified-seed1-arx-full-w4/episode/action-00012.npy": "1cfd5a09229a6f6ca3d049c7faa72f7c762293c0168cfc138060edc84ca722c5",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00012.npz": "df76a0f35069f15d2ef3a8431f9c11b3d84d2320e5cc3939790d7a87290ad74c",
+        "trials/unified-seed1-arx-full-w4/episode/action-00013.npy": "8cb260e11277234f5758f584c6b3c1e8dcb56843f7bc797296a0ca55fb9f673c",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00013.npz": "102c51e6086b0318e70c14fc4870fff0fe03733511bb50f8d0314d5ac5da1b1e",
+        "trials/unified-seed1-arx-full-w4/episode/action-00014.npy": "e2866592a60588b541bcb375fdf3ffeb2ce1d485d7b49485d5ea6ffcaed801df",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00014.npz": "093dea21ed6b0cef127e7e8caea53f6994422df87311d0949f5e62facab9c308",
+        "trials/unified-seed1-arx-full-w4/episode/action-00015.npy": "b0c6ff23749cb683055409c1e1fda382a06d326af6665c97940d204ae0cb4b2e",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00015.npz": "1028e85c2979d48985329503b026a014e035d4a856f2dab3dc35fb017f9ce39e",
+        "trials/unified-seed1-arx-full-w4/episode/action-00016.npy": "123ce8e5f0e1a24bf4643f01f048fef9663625f7f7a444b42912cfd4474430ad",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00016.npz": "acb17fdfb77ad92a022b266a98de49ef7603e7855af4cce0019202080b859ed2",
+        "trials/unified-seed1-arx-full-w4/episode/action-00017.npy": "25f5f0997d949e318d3e43a450ab03edb49c2b5e10d651df89147ce097da5a8c",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00017.npz": "2c9bdf1a51a351fd3800edcd32fd640a7f94c3f745aaa3af92674bc8fc468764",
+        "trials/unified-seed1-arx-full-w4/episode/action-00018.npy": "399edb120ba1b7142f6ac26949d8702382ef81db65521c80bd96220937ebdb9f",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00018.npz": "a12ef87b41c644d0d7411662cdb3d30c28269ed9ef9f33a59ecbb353fc83c9da",
+        "trials/unified-seed1-arx-full-w4/episode/action-00019.npy": "1a292179d6310e5b91766a16d8d152380f79830b8174cea762cb29c02e14cd21",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00019.npz": "3264647807633b28e25bbebc40cc007190d2376acb014de50fee22ca3f043d21",
+        "trials/unified-seed1-arx-full-w4/episode/action-00020.npy": "b3093d58afce9f80d1cc4c00e36185fc3ed492b803f513ff905b78340341b520",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00020.npz": "e7f50f20835ed5d5046379552608edaadafb107d1e5c383af443c9b255077f96",
+        "trials/unified-seed1-arx-full-w4/episode/action-00021.npy": "1f760708517025ca8b849af368119bffc6776ba554fd701f7e0ac4abfb2a3c5d",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00021.npz": "1015ed0bec20abdfd2211d9399625a2dbdb17d238efee725d56a4779a0cccccd",
+        "trials/unified-seed1-arx-full-w4/episode/action-00022.npy": "14350490c7e4dc4899c9224405fe47be903d351127dfc975b53ce1d5f2f55f38",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00022.npz": "37b3fcb12b6a756038360116aa05d4c4432279a6e8360a2892d1bcf614cb4dbc",
+        "trials/unified-seed1-arx-full-w4/episode/action-00023.npy": "1de8f2d4d33de133c3d41ea9ed8e0085eb35cf75ecc13102b1d496708761145d",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00023.npz": "85b414bf8683491565c1c6d5a056be89dcf2d718f4bb5b18767504072eb8124d",
+        "trials/unified-seed1-arx-full-w4/episode/action-00024.npy": "4c0eab660910a6e1b91da67d8d5a5fec904a56d3cb39f6f12b9235730e107450",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00024.npz": "2002433075861d14573b59bbb08446569d9d4f1a3d88e12abe9bbe786a8a9e02",
+        "trials/unified-seed1-arx-full-w4/episode/action-00025.npy": "e2a3a5c72fa8b0880af3ebe4f6a42b922b33e861c87ea4dba5a7f657ae87a543",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00025.npz": "fd774646d9817cc834e739f02f784045689185a1187938dcad87a76941496e18",
+        "trials/unified-seed1-arx-full-w4/episode/action-00026.npy": "5b65241b0629f903db5307de9a93920aec48ad2c9125a1ce3d722e2043074ee5",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00026.npz": "1e612704068ed137819c72a18b1e44b00b734667036577ef507d0e8cbeb3e1d5",
+        "trials/unified-seed1-arx-full-w4/episode/action-00027.npy": "9948f9dcdf37ca216d3dcdd3877b3cabd0d56ec7f7f77a21bde0bd6f28630acf",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00027.npz": "fe46b22bdf9ba84f8b2aaf0a89ff2a262aa1a24c0b107569aa5eab0a95ae40df",
+        "trials/unified-seed1-arx-full-w4/episode/action-00028.npy": "4ebaefa1ab2d1529a6f4547df1ca498297916ac4daa4136e3495ed895c2648af",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00028.npz": "33af39d2c8adc5ae035eccd889339cb454189d3aabbf02199b8e958f8ac72057",
+        "trials/unified-seed1-arx-full-w4/episode/action-00029.npy": "45b452d82620be63310349d5059650710ba5ebab8a5e6c4f2eeb40786043bff0",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00029.npz": "126f588b4c2b3487dee00e4e59caa7cab65556a14d6bacfd635744b0e7b4aeb1",
+        "trials/unified-seed1-arx-full-w4/episode/action-00030.npy": "ad5da8ca083cd54df2b67e1d38c06a7269ec1c3889ca3ad1baa246cce6ac7275",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00030.npz": "91e8c909b13e85120759b0f7d7397aa912a83ca4c74dc2648d4bd96380399561",
+        "trials/unified-seed1-arx-full-w4/episode/action-00031.npy": "61889a3af9927020ae9dbd473720455f266a0477f24bdf342cd5cce6b2111153",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00031.npz": "eb34086f593e9f48ffe4fe8e590b180b53cbb5b3b98e3103f50341814f9d1ed9",
+        "trials/unified-seed1-arx-full-w4/episode/action-00032.npy": "5ee065f00ca40b1d0960025bc6f9a0a6c7ead05d8846ee1469ef3147f9c4f29a",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00032.npz": "d073eeaf57633b1781dc8fa39bf9dc775523a2e36e28e499122c58e88c100766",
+        "trials/unified-seed1-arx-full-w4/episode/action-00033.npy": "2279e924abc2da861d53676e40bfac9ca373e58e1357213a5e82e821bbcc2393",
+        "trials/unified-seed1-arx-full-w4/episode/observation-00033.npz": "bd35a0397bbd8009b0ae7e4f7a7b63046607f25b373c1431f2eec72e0a9aea3a",
+        "trials/unified-seed1-arx-full-w4/episode/collision-checks.jsonl": "41210a1e8301b19a7cc145936fb7ba59b26e99e374bb6c5977c9536a726e1335",
+        "trials/unified-seed1-arx-full-w4/episode/proxy-collision-checks.jsonl": "52e9a3e0297a0431b06da6f0f565a5a412441cf734df83f10c31a21cc3476dd6",
+        "trials/unified-seed1-arx-full-w4/rng-reset.json": "54faab3e27847aba036d4f912173227552402e7c1f150b430ac74fc1a18e0e27",
+        "trials/unified-seed1-arx-full-w4/episode/setup.json": "470a0138dec795c7c3a7bc1e2b40554fcf3076518ce7effa9f2e3f8f5557a3af",
+        "trials/unified-seed1-arx-full-w4/episode/initial-readback.json": "4e02d82cfbebccb38afb7d0e426a360c083eb76a2c62e03b3fbc1ee640e5e149",
+        "model/startup.json": "d92a0a8119285d9d6b0a02453a08f05e7eb9f3539eaf8552bcbd2c29e1ce31f0"
+      }
+    }
+  }
+}

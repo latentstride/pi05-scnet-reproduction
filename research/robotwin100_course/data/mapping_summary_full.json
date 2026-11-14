@@ -1,0 +1,49 @@
+{
+  "trajectories": 100,
+  "all_fk_arm_targets": 47628,
+  "fk_status_counts": {
+    "command_target_fk": 47628
+  },
+  "ik_arm_targets": 47628,
+  "ik_frame_selection": "all original record indices; no outcome-based filtering",
+  "groups": [
+    {
+      "source_robot": "aloha-agilex",
+      "target_robot": "ARX-X5",
+      "attempted_arm_targets": 28268,
+      "solutions": 28268,
+      "solution_rate": 1.0,
+      "status_counts": {
+        "kinematic_solution": 28268
+      },
+      "position_mm_max": 0.3085199325382872,
+      "position_mm_p95": 0.17958303169983036,
+      "angle_deg_max": 0.04957825177096919
+    },
+    {
+      "source_robot": "ARX-X5",
+      "target_robot": "aloha-agilex",
+      "attempted_arm_targets": 19360,
+      "solutions": 19273,
+      "solution_rate": 0.9955061983471074,
+      "status_counts": {
+        "ik_failed": 87,
+        "kinematic_solution": 19273
+      },
+      "position_mm_max": 0.32693449565808497,
+      "position_mm_p95": 0.1414999885261415,
+      "angle_deg_max": 0.04996722511989683
+    }
+  ],
+  "backend": "g2_urdf_damped_jacobian_v1",
+  "position_tolerance_mm": 0.5,
+  "angle_tolerance_deg": 0.05,
+  "full_execution_mapping_validated": false,
+  "unmet_conditions": [
+    "historical actual qpos not recorded",
+    "historical per-episode base poses not independently verified",
+    "full collision world and task contacts unavailable in raw HDF5",
+    "unknown original timestamps prevent velocity/acceleration checks"
+  ],
+  "historical_safety_gates_changed": false
+}

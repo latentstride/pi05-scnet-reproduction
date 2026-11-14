@@ -1,0 +1,58 @@
+[
+  {
+    "experiment": "G1",
+    "cpu_ok": true,
+    "flags": [
+      "--test-only",
+      "--comment=cpf-g2-p7-9ae1fb32d441b23d8031-G1"
+    ]
+  },
+  {
+    "experiment": "G2",
+    "cpu_ok": true,
+    "flags": [
+      "--test-only",
+      "--comment=cpf-g2-p7-9ae1fb32d441b23d8031-G2"
+    ]
+  },
+  {
+    "experiment": "G3",
+    "cpu_ok": true,
+    "flags": [
+      "--test-only",
+      "--comment=cpf-g2-p7-9ae1fb32d441b23d8031-G3"
+    ]
+  },
+  {
+    "experiment": "G4",
+    "cpu_ok": true,
+    "flags": [
+      "--test-only",
+      "--comment=cpf-g2-p7-9ae1fb32d441b23d8031-G4"
+    ]
+  },
+  {
+    "experiment": "G5",
+    "cpu_ok": true,
+    "flags": [
+      "--test-only",
+      "--comment=cpf-g2-p7-9ae1fb32d441b23d8031-G5"
+    ]
+  },
+  {
+    "experiment": "G6",
+    "cpu_ok": true,
+    "flags": [
+      "--test-only",
+      "--comment=cpf-g2-p7-9ae1fb32d441b23d8031-G6"
+    ]
+  },
+  {
+    "experiment": "G7",
+    "cpu_ok": true,
+    "flags": [
+      "--test-only",
+      "--comment=cpf-g2-p7-9ae1fb32d441b23d8031-G7"
+    ]
+  }
+]

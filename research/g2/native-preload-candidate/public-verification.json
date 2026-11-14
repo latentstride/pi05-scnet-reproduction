@@ -1,0 +1,9 @@
+{
+  "verified": true,
+  "records": 1056,
+  "controls": 1056,
+  "physical_lift_completed": true,
+  "physical_release_validated": false,
+  "policy_task_success_validated": false,
+  "scope": "published measured relative drift and applied drives; full prefix requires private raw archive"
+}

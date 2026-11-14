@@ -1,0 +1,3 @@
+robot,expected,read_ok,read_failed,not_processed,frames,min_frames,max_frames,median_frames,images,image_decode_errors,numeric_nonfinite,gripper_out_of_range,quaternion_bad,state_duplicate_rows,consecutive_state_repeats,full_frame_duplicates,consecutive_full_frame_repeats,rows_removed
+aloha-agilex,50,50,0,0,14134,273,315,280.0,56536,0,0,0,0,2705,2668,679,679,0
+arx-x5,50,50,0,0,9680,188,201,193.0,38720,0,0,0,0,2297,2297,705,705,0

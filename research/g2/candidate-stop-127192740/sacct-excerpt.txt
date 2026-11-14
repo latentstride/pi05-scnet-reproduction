@@ -1,0 +1,4 @@
+JobID|State|ExitCode|Elapsed|Start|End|AllocTRES
+127192740|FAILED|1:0|00:36:55|2026-11-09T06:49:32|2026-11-09T07:26:27|billing=4,cpu=4,gres/gpu=1,mem=32G,node=1
+127192740.batch|FAILED|1:0|00:36:55|2026-11-09T06:49:32|2026-11-09T07:26:27|cpu=4,gres/gpu=1,mem=32G,node=1
+127192740.extern|COMPLETED|0:0|00:36:56|2026-11-09T06:49:32|2026-11-09T07:26:28|billing=4,cpu=4,gres/gpu=1,mem=32G,node=1

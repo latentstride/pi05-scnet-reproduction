@@ -1,0 +1,40 @@
+{
+  "mode": "author_native",
+  "method": "pace",
+  "scene_seed": 100000,
+  "episode_id": "g4-author_native-pace-100000",
+  "success": true,
+  "scene_closed": true,
+  "outcome": "SUCCESS",
+  "trial_clock": {
+    "started": 65641204.585774235,
+    "soft": 65652604.585774235,
+    "hard": 65653204.585774235,
+    "reap_at": 65653194.585774235,
+    "budget": {
+      "physics_steps": 130000,
+      "soft_s": 11400,
+      "hard_s": 12000,
+      "reap_s": 10,
+      "request_s": 390
+    }
+  },
+  "prompt": "Grab the red block using the left arm.",
+  "selector": {
+    "selector": "pace",
+    "threshold": 0.008204944897443056,
+    "config": {
+      "fps": 50.0,
+      "min_distance": 10,
+      "smoothing_window": 11,
+      "polynomial_order": 3
+    },
+    "calibration_sha256": "d66b55926fb3afc655199986710f84d8bc519e4443c11ceb51725814da98204f"
+  },
+  "steps": 295,
+  "queries": 15,
+  "completed_actions": 295,
+  "native_action_count": 295,
+  "physics_steps": 20517,
+  "elapsed_s": 369.6719608530402
+}

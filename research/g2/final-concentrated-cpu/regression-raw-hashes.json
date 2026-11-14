@@ -1,0 +1,9 @@
+{
+  "files": {
+    "tests.log": "74a4f1383bc6de22e4913026d2e541f7dff76f34f857043e9e4f65d5ba62217b",
+    "episodes/mock-acceptance.json": "f04db2b77a7f3c0d92d6962f44d13420596a8504eba2d939b31c77fb21b865ba",
+    "workspace-probe.json": "bbaaf7038bde7e21154d49d10f801af721419f037fd3106d3bffefa165f80e50",
+    "cpu-status.json": "d5c063c229a3334cdef414df0a5abef886ece1df3346d48f8623b7d1d6a616ff"
+  },
+  "sanitization": "Only CPU temporary output root in published video paths is replaced with <CPU_OUTPUT>; original receipts remain private"
+}

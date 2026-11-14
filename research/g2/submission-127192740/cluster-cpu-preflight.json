@@ -1,0 +1,23 @@
+{
+  "passed": true,
+  "checked_at": "2026-11-07T17:31:23.993673+00:00",
+  "archive_sha256": "24e337e1f820d38d028e625c0eda7b9cf6b9f942763226d912efa20951422b8d",
+  "manifest_sha256": "40d5ca77dd7d3d202aa9528e0dcfb9158e6740b5518cef7eb63c281c37b64a67",
+  "candidate_files": 75,
+  "trials": 10,
+  "resources": {
+    "gpu_count": 1,
+    "gpu_type": "RTX4090",
+    "cpu_count": 4,
+    "memory_gib": 32,
+    "wall_s": 25200,
+    "node": "gnode39",
+    "partition": "ksagnormal01"
+  },
+  "price_yuan_per_gpu_hour": "3.60",
+  "max_cost_yuan": "25.20",
+  "current_g2_jobs": 0,
+  "model_file_sizes_and_norm_stats_verified": true,
+  "all_configs_and_assets_validated": true,
+  "gpu_used": false
+}

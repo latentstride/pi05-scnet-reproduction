@@ -1,0 +1,61 @@
+{
+  "project_baseline": "a5a67cfb27a787da5562f82e03c3e8d67c257ec3",
+  "pace_revision": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+  "openpi_pace_revision": "f4e52e6de4cc487a11585a3a7414d610b2883dae",
+  "checkpoint_revision": "17ef545270cf26ed81169893b60f845f80ce6557",
+  "norm_stats_sha256": "8a1f114a8873dfa0788c7f512851ee3063224ef2b8af270421076a2e4e544960",
+  "source_member_sha256": {
+    "pace/src/pace/rollout.py": "6ea198bcf47d6b6e62bd9206b6c5694466ca6346b30ad9c20885e4009af91325",
+    "pace/src/pace/core.py": "2681dc9221ae41852cbfb1bde20bea869e111e32d72e2bab3996777593b0e56e",
+    "pace/src/pace/robotwin.py": "3d2bc995065da352c8292a3109841f30dff79fb39e810844bbd14ecef85ef2eb",
+    "pace/configs/calibration/handover_block.json": "d66b55926fb3afc655199986710f84d8bc519e4443c11ceb51725814da98204f",
+    "pace/configs/expert_scenes.json": "12ac49e3913308901113cc8ddd9f71f0987ce8c9ebd83f03c308c759bdbeb939",
+    "pace/scripts/evaluate.py": "94a3f5ab01beacba042c4625c545a689b52bd8b1ed536a35752b309a138c6bf4",
+    "envs/handover_block.py": "5439712296d7e143d41f8e78b4ab86cd4fad7fb98f40f5f5abb067a462d17650"
+  },
+  "previous_evidence_sha256": {
+    "research/g2/final-system-review/source-lock.json": "ad422a27514cb99073dea3a25ea8d3523040eea9579e433dace664667f287cea",
+    "research/g2/final-system-review/cpu-counterfactual.json": "a588fadd771e547e20703544b3d6a63fde2ec9bb476921dab0e9f3b11afd31a7",
+    "research/g2/final-system-review/arx-replay.json": "3c9f03f8b225775587af688064dba2b4cc02adedb3e5e959d28a6768cf3f02f1",
+    "research/g2/job-127510335/result.json": "eb84dfd4bb916edc39bf3a5452a350b397cbae5eb6502c24df78e81341c8d44d",
+    "research/g2/job-127510363/result.json": "91afcdfe410eb471a11df00e2282f03cc100d8d37f35a70745c727f75ed532fb"
+  },
+  "cpu_pairs": [
+    {
+      "pair": [
+        "G1",
+        "G4"
+      ],
+      "matching_cpu_first_request_fields": true,
+      "matching_native_measured_fields": true,
+      "live_exchange": "GPU_DEFERRED"
+    },
+    {
+      "pair": [
+        "G2",
+        "G5"
+      ],
+      "matching_cpu_first_request_fields": true,
+      "matching_native_measured_fields": true,
+      "live_exchange": "GPU_DEFERRED"
+    },
+    {
+      "pair": [
+        "G3",
+        "G6"
+      ],
+      "matching_cpu_first_request_fields": true,
+      "matching_native_measured_fields": true,
+      "live_exchange": "GPU_DEFERRED"
+    },
+    {
+      "pair": [
+        "G2",
+        "G7"
+      ],
+      "matching_cpu_first_request_fields": true,
+      "matching_native_measured_fields": null,
+      "live_exchange": "GPU_DEFERRED"
+    }
+  ]
+}

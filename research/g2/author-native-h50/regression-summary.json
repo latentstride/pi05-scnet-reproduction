@@ -1,0 +1,24 @@
+{
+  "legacy_and_author_unittest_count": 281,
+  "legacy_and_author_unittest_passed": true,
+  "synthetic_episodes": 13,
+  "synthetic_passed": true,
+  "synthetic_outcomes": {
+    "Aloha-window1": "success",
+    "Aloha-window4": "success",
+    "ARX-window1": "success",
+    "ARX-window4": "success",
+    "failure-model": "policy_failed",
+    "failure-shape": "policy_failed",
+    "failure-task": "task_unsuccessful",
+    "failure-reset": "environment_error",
+    "failure-control": "control_error",
+    "failure-interrupt": "interrupted",
+    "failure-timeout": "timeout",
+    "failure-planning": "planning_failed",
+    "expert-arx": "success"
+  },
+  "synthetic_receipt_sha256": "373904a4c5c897f29c63fd4ce9e26687f0e47b2cd69f8bbf600404c282de6d5e",
+  "gpu_used": false,
+  "model_inferences": 0
+}

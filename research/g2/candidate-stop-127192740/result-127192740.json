@@ -1,0 +1,47 @@
+{
+  "job_id": "127192740",
+  "job_state": "FAILED",
+  "exit_code": "1:0",
+  "elapsed_s": 2215,
+  "start": "2026-11-09T06:49:32+08:00",
+  "end": "2026-11-09T07:26:27+08:00",
+  "allocations": 1,
+  "model_services": 1,
+  "dynamic_admissions_passed": 6,
+  "actual_trials_run": 1,
+  "complete_task_successes": 0,
+  "trials_not_run": 9,
+  "historical_stop_reason": "actual_safety_stop",
+  "historical_rows": {
+    "unified-seed0-native-w50": "actual_safety_stop",
+    "unified-seed0-native-w31": "not_run",
+    "unified-seed1-native-w31": "not_run",
+    "unified-seed1-native-w50": "not_run",
+    "unified-seed0-native-w4": "not_run",
+    "unified-seed0-arx-full-w4": "not_run",
+    "unified-seed1-arx-full-w4": "not_run",
+    "unified-seed1-native-w4": "not_run",
+    "unified-seed1-arx-expert-repaired": "not_run",
+    "unified-seed0-arx-expert-repaired": "not_run"
+  },
+  "first_trial": {
+    "episode_id": "unified-seed0-native-w50",
+    "queries": 2,
+    "executed": 27,
+    "last_physical_tick": 3575,
+    "last_sim_s": 14.300000679213554,
+    "cleanup": {
+      "scene_opened": true,
+      "hold_complete": true,
+      "close_complete": true,
+      "scene_context_closed": true
+    },
+    "terminal_candidate_stop_proof_present": false
+  },
+  "source_receipt_sha256": "3c92400ebe610eab5677bdb4f0290086e03776d5c18d93490a463c79c6d34be3",
+  "source_read_log_sha256": "4898bc9d47f4a6f839ccdc6980c1da011cc4bddbdc5a530f02abe01d4351d59c",
+  "evidence": "historical-fixture.json; sacct-excerpt.txt",
+  "original_submission_snapshot": "research/g2/submission-127192740/submission.json",
+  "old_archive_sha256": "24e337e1f820d38d028e625c0eda7b9cf6b9f942763226d912efa20951422b8d",
+  "scope": "Historical failed job; no score or outcome rewritten"
+}

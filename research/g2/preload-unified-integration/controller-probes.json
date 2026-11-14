@@ -1,0 +1,458 @@
+{
+  "passed": true,
+  "source_hashes": {
+    "envs/_base_task.py": "448f7152b65cb9102217cf5463aa821d72810ca56f63d5a797ec7bd43e23e101",
+    "envs/robot/robot.py": "3dcd80acc8cab489a4c5edb507cc460dab1724be0226b8d5c4c1b218dee605cb"
+  },
+  "probes": [
+    {
+      "window": 31,
+      "preload": false,
+      "premature": false,
+      "raw_requests_sha256": "c5e82871dee31bb663eed669dc46aab573c6b825f74b90101f08481b2dea819b",
+      "arm_drive_sha256": "10725083054795a423587fe351eb743774814ff203443419092f6cc4fe8c1d9a",
+      "fully_consumed_actions": 63,
+      "controller_action_counter": 63,
+      "physics_stub_steps": 252,
+      "model_state_after_close": [
+        0.0003000000142492354,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -0.0003000000142492354,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "applied_drive_after_close_m": [
+        [
+          -0.01,
+          -0.01
+        ],
+        [
+          -0.01,
+          -0.01
+        ]
+      ],
+      "measured_stub_fingers_after_close_m": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "right_close_reached_controller": true,
+      "clean_release": true,
+      "stop": null,
+      "synthetic_planner_and_contacts": true,
+      "real_physics": false,
+      "rendering": false,
+      "model_inference": false
+    },
+    {
+      "window": 31,
+      "preload": true,
+      "premature": false,
+      "raw_requests_sha256": "c5e82871dee31bb663eed669dc46aab573c6b825f74b90101f08481b2dea819b",
+      "arm_drive_sha256": "10725083054795a423587fe351eb743774814ff203443419092f6cc4fe8c1d9a",
+      "fully_consumed_actions": 63,
+      "controller_action_counter": 63,
+      "physics_stub_steps": 252,
+      "model_state_after_close": [
+        0.0003000000142492354,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -0.0003000000142492354,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "applied_drive_after_close_m": [
+        [
+          0.023,
+          0.023
+        ],
+        [
+          -0.01,
+          -0.01
+        ]
+      ],
+      "measured_stub_fingers_after_close_m": [
+        0.023,
+        0.023,
+        0.0,
+        0.0
+      ],
+      "right_close_reached_controller": true,
+      "clean_release": true,
+      "stop": null,
+      "synthetic_planner_and_contacts": true,
+      "real_physics": false,
+      "rendering": false,
+      "model_inference": false
+    },
+    {
+      "window": 31,
+      "preload": true,
+      "premature": true,
+      "raw_requests_sha256": "3045db6dbe382035e6c71c3bb0da3353cc127398bdb0d80096959b1af2571314",
+      "arm_drive_sha256": "a24ef7c4debdc8abface44441ca9187a61ba5349492790411f210bb5d2c4f4fe",
+      "fully_consumed_actions": 31,
+      "controller_action_counter": 32,
+      "physics_stub_steps": 126,
+      "model_state_after_close": [
+        0.0003000000142492354,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -0.0003000000142492354,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "applied_drive_after_close_m": [
+        [
+          0.023,
+          0.023
+        ],
+        [
+          -0.01,
+          -0.01
+        ]
+      ],
+      "measured_stub_fingers_after_close_m": [
+        0.023,
+        0.023,
+        0.0,
+        0.0
+      ],
+      "right_close_reached_controller": true,
+      "clean_release": false,
+      "stop": {
+        "reason": "premature donor release rejected",
+        "advanced_ticks": 2,
+        "completed_actions": 0
+      },
+      "synthetic_planner_and_contacts": true,
+      "real_physics": false,
+      "rendering": false,
+      "model_inference": false
+    },
+    {
+      "window": 50,
+      "preload": false,
+      "premature": false,
+      "raw_requests_sha256": "541720ac9a607ca9d7182caed1698c1481984b2156434bbceaf1e63c628d122c",
+      "arm_drive_sha256": "2cf8f5379459dc0d1dd4dd18cbfc80e338454dd0ed0b7dd3df7684f6ec1cdfc8",
+      "fully_consumed_actions": 101,
+      "controller_action_counter": 101,
+      "physics_stub_steps": 404,
+      "model_state_after_close": [
+        0.0004900000058114529,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -0.0004900000058114529,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "applied_drive_after_close_m": [
+        [
+          -0.01,
+          -0.01
+        ],
+        [
+          -0.01,
+          -0.01
+        ]
+      ],
+      "measured_stub_fingers_after_close_m": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "right_close_reached_controller": true,
+      "clean_release": true,
+      "stop": null,
+      "synthetic_planner_and_contacts": true,
+      "real_physics": false,
+      "rendering": false,
+      "model_inference": false
+    },
+    {
+      "window": 50,
+      "preload": true,
+      "premature": false,
+      "raw_requests_sha256": "541720ac9a607ca9d7182caed1698c1481984b2156434bbceaf1e63c628d122c",
+      "arm_drive_sha256": "2cf8f5379459dc0d1dd4dd18cbfc80e338454dd0ed0b7dd3df7684f6ec1cdfc8",
+      "fully_consumed_actions": 101,
+      "controller_action_counter": 101,
+      "physics_stub_steps": 404,
+      "model_state_after_close": [
+        0.0004900000058114529,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -0.0004900000058114529,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "applied_drive_after_close_m": [
+        [
+          0.023,
+          0.023
+        ],
+        [
+          -0.01,
+          -0.01
+        ]
+      ],
+      "measured_stub_fingers_after_close_m": [
+        0.023,
+        0.023,
+        0.0,
+        0.0
+      ],
+      "right_close_reached_controller": true,
+      "clean_release": true,
+      "stop": null,
+      "synthetic_planner_and_contacts": true,
+      "real_physics": false,
+      "rendering": false,
+      "model_inference": false
+    },
+    {
+      "window": 50,
+      "preload": true,
+      "premature": true,
+      "raw_requests_sha256": "bc9a6350895aeee94c27b7335d6c74ac7da214b4a63049f249287769544512d2",
+      "arm_drive_sha256": "c548e76ac511ad737f5ecf198f3a714a3a578600b0c4f084592b04e9e57be49e",
+      "fully_consumed_actions": 50,
+      "controller_action_counter": 51,
+      "physics_stub_steps": 202,
+      "model_state_after_close": [
+        0.0004900000058114529,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -0.0004900000058114529,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "applied_drive_after_close_m": [
+        [
+          0.023,
+          0.023
+        ],
+        [
+          -0.01,
+          -0.01
+        ]
+      ],
+      "measured_stub_fingers_after_close_m": [
+        0.023,
+        0.023,
+        0.0,
+        0.0
+      ],
+      "right_close_reached_controller": true,
+      "clean_release": false,
+      "stop": {
+        "reason": "premature donor release rejected",
+        "advanced_ticks": 2,
+        "completed_actions": 0
+      },
+      "synthetic_planner_and_contacts": true,
+      "real_physics": false,
+      "rendering": false,
+      "model_inference": false
+    }
+  ],
+  "legacy_commit": "f95b8bb98764d27cf8563cd65c0fedccb3a9279b",
+  "legacy_failures": [
+    {
+      "reason": "right release blocked despite consumed opening action",
+      "window": 31,
+      "holders": [
+        "right"
+      ],
+      "logical_right_goal": 1.0,
+      "applied_right_drive_m": [
+        -0.01,
+        -0.01
+      ],
+      "last_control": {
+        "kind": "native_preload_control",
+        "tick": 251,
+        "action_index": 0,
+        "control_call_count": 0,
+        "physics_step_count": 0,
+        "protocol": "measured_contact_preload_hold_v1",
+        "modes": {
+          "left": "inactive",
+          "right": "holding_preload"
+        },
+        "requested_finger_drive_m": [
+          [
+            0.045,
+            0.045
+          ],
+          [
+            -0.0045,
+            -0.0045
+          ]
+        ],
+        "applied_finger_drive_m": [
+          [
+            0.045,
+            0.045
+          ],
+          [
+            -0.01,
+            -0.01
+          ]
+        ],
+        "requested_finger_velocity_m_s": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.000275,
+            0.000275
+          ]
+        ],
+        "applied_finger_velocity_m_s": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        "acquisition_ticks": {
+          "right": 127
+        }
+      },
+      "source_sha256": "df5c5c53fbe8bb66c8295011e0c0aa60293070fc449b349236fd0a16cd72a347"
+    },
+    {
+      "reason": "right release blocked despite consumed opening action",
+      "window": 50,
+      "holders": [
+        "right"
+      ],
+      "logical_right_goal": 1.0,
+      "applied_right_drive_m": [
+        -0.01,
+        -0.01
+      ],
+      "last_control": {
+        "kind": "native_preload_control",
+        "tick": 403,
+        "action_index": 0,
+        "control_call_count": 0,
+        "physics_step_count": 0,
+        "protocol": "measured_contact_preload_hold_v1",
+        "modes": {
+          "left": "inactive",
+          "right": "holding_preload"
+        },
+        "requested_finger_drive_m": [
+          [
+            0.045,
+            0.045
+          ],
+          [
+            -0.0045,
+            -0.0045
+          ]
+        ],
+        "applied_finger_drive_m": [
+          [
+            0.045,
+            0.045
+          ],
+          [
+            -0.01,
+            -0.01
+          ]
+        ],
+        "requested_finger_velocity_m_s": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.000275,
+            0.000275
+          ]
+        ],
+        "applied_finger_velocity_m_s": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        "acquisition_ticks": {
+          "right": 203
+        }
+      },
+      "source_sha256": "df5c5c53fbe8bb66c8295011e0c0aa60293070fc449b349236fd0a16cd72a347"
+    }
+  ],
+  "recorded_selection_replay": {
+    "passed": true,
+    "physical_rerun": false,
+    "recorded_steps": 6138,
+    "applied_position_and_velocity_identical": true,
+    "scope": "functional controller replay on recorded measurements, not new physical handover"
+  },
+  "scope": "pinned controller with mock TOPP and contacts; not dynamic handover or model success"
+}

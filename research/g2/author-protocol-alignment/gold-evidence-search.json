@@ -1,0 +1,103 @@
+{
+  "status": "UNAVAILABLE",
+  "scope": "Bounded search of fixed public repositories and enumerated public artifacts. No complete author successful policy sample located.",
+  "searched": [
+    {
+      "location": "fixed PACE and Openpi-PACE complete Git trees",
+      "results": [
+        {
+          "label": "pace",
+          "commit": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+          "sha256": "640a29028c86e9cd25c6862b8a756fa90f9ae65c66c6f89c15f0bef76114ca96",
+          "entries": 1979,
+          "truncated": false,
+          "tracked_run_records": [],
+          "tracked_media": [
+            "pace/media/overview.pdf",
+            "pace/media/overview.png"
+          ]
+        },
+        {
+          "label": "train",
+          "commit": "ba9876639cb7a4bf0c7db00ec39eeb9c8efd8b12",
+          "sha256": "730cf62340c30a195ee99d25fbb9c506c2fe191ed7f2b9c04bc1905ed8461108",
+          "entries": 190,
+          "truncated": false,
+          "tracked_run_records": [],
+          "tracked_media": []
+        },
+        {
+          "label": "runtime",
+          "commit": "f4e52e6de4cc487a11585a3a7414d610b2883dae",
+          "sha256": "3de464188517b77c5ae2db0f46c4d50a94c2a6ed3763901455daaf1d7ffe20c7",
+          "entries": 194,
+          "truncated": false,
+          "tracked_run_records": [],
+          "tracked_media": [
+            "pace/media/overview.pdf",
+            "pace/media/overview.png"
+          ]
+        }
+      ]
+    },
+    {
+      "location": "GitHub Releases",
+      "urls": [
+        "https://github.com/niejunnan25/PACE/releases",
+        "https://github.com/niejunnan25/Openpi-PACE/releases"
+      ],
+      "provider": "GitHub list_releases",
+      "results": [
+        [],
+        []
+      ]
+    },
+    {
+      "location": "frozen HF task directory and model manifest",
+      "url": "https://huggingface.co/niejunnan25/pi05-robotwin/tree/17ef545270cf26ed81169893b60f845f80ce6557/handover_block",
+      "results": [
+        "assets",
+        "params"
+      ],
+      "files_in_task_manifest": 27,
+      "manifest_sha256": "2337bd9e7244fc3f6d51b0b830a9cdfc8d6e683decf2c398a431bc5800696c41"
+    },
+    {
+      "location": "fixed public RoboTwin2.0 task archive listing and previously checked ZIP directories",
+      "url": "https://huggingface.co/api/datasets/TianxingChen/RoboTwin2.0/tree/3dc3b798668feb99ac61cc9086d84cbcc3d79186/dataset/handover_block",
+      "results": [
+        "dataset/handover_block/aloha-agilex_clean_50.zip",
+        "dataset/handover_block/aloha-agilex_randomized_500.zip",
+        "dataset/handover_block/arx-x5_clean_50.zip",
+        "dataset/handover_block/arx-x5_randomized_500.zip",
+        "dataset/handover_block/demo_clean.zip",
+        "dataset/handover_block/piper_clean_50.zip",
+        "dataset/handover_block/piper_randomized_500.zip"
+      ],
+      "metadata_sha256": "e7915aeeaacfe0a946a2573059ed69290d09c8f97e83d52a71fafb671eaa49c3",
+      "note": "Expert/training demonstrations do not contain proven predictions of this policy in a successful evaluation episode. Reused pinned listing because live fetch failed."
+    },
+    {
+      "location": "PACE paper v1 B.2/B.3 and Appendix F",
+      "url": "https://arxiv.org/html/2606.00537v1",
+      "results": "aggregate handover_block rates; appendix simulation examples are place_can_basket, hanging_mug, scan_object"
+    },
+    {
+      "location": "fixed README results section and evaluate.py writer",
+      "results": "Per-episode outcome/scene seed/instruction and optional action arrays are runtime outputs. Normal writer does not save raw RGB/state or model RNG. Separate optional PolicyRecorder exists but no published synchronized record was found."
+    },
+    {
+      "location": "expert_scenes.json and handover_block calibration",
+      "results": "Scene seeds and empty episode_info for 300 handover scenes, screening provenance, and selector calibration. Expert acceptance does not identify a policy success."
+    }
+  ],
+  "missing_as_joint_record": [
+    "three raw RGB arrays",
+    "14-value state",
+    "actual selected prompt",
+    "scene seed plus model RNG/noise at the query",
+    "post-transform 50x14 policy response",
+    "success record bound to same run and revision"
+  ],
+  "stop_rule": "Stop after fixed trees, Releases, model and dataset listings, documented outputs, and paper appendix. No large weights or data downloads."
+}

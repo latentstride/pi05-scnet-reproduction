@@ -1,0 +1,79 @@
+{
+  "trials": 10,
+  "checksums": "verified",
+  "submission_allowed": false,
+  "manifest_sha256": "9270db1e97eafedfb6f94711c8b8c9f33efd76d04ab800af99bf11a42556f19a",
+  "author_h50": {
+    "version": 1,
+    "mode": "author_native_h50",
+    "episode_id": "author-native-h50-seed100000",
+    "placement": "append_after_locked_ten",
+    "submission_allowed": false,
+    "budget": {
+      "physics_steps": 130000,
+      "soft_s": 2400,
+      "hard_s": 2700,
+      "reap_s": 10,
+      "request_s": 390
+    },
+    "reference_sha256": "b1ab4f6201174a872d00468489968313bb445f24be7ab8c9b7ebfe73849a3787",
+    "min_free_bytes": 12884901888,
+    "trial_min_free_bytes": 8589934592,
+    "base_manifest_sha256": "96834d54c8293a3c4ac6f2b5467660eecfd5adfc287ceb442aafbc047c05007e",
+    "ledgers": {
+      "original": {
+        "trial_count": 10,
+        "trials_s": 16800,
+        "overhead": {
+          "graphics_s": 300,
+          "shared_model_and_dynamic_entry_s": 3600,
+          "statistics_s": 180,
+          "cleanup_s": 120
+        },
+        "total_s": 21000,
+        "allocation_s": 25200,
+        "slurm_signal_reserve_s": 180,
+        "host_transition_reserve_s": 180,
+        "remainder_before_term_s": 3840,
+        "native_seed_pairs_retained": 2
+      },
+      "append": {
+        "trial_count": 11,
+        "trials_s": 19500,
+        "overhead": {
+          "graphics_s": 300,
+          "shared_model_and_dynamic_entry_s": 3600,
+          "statistics_s": 180,
+          "cleanup_s": 120
+        },
+        "total_s": 23700,
+        "allocation_s": 25200,
+        "slurm_signal_reserve_s": 180,
+        "host_transition_reserve_s": 180,
+        "remainder_before_term_s": 1140,
+        "native_seed_pairs_retained": 2
+      },
+      "replace_seed0_h50": {
+        "trial_count": 10,
+        "trials_s": 18300,
+        "overhead": {
+          "graphics_s": 300,
+          "shared_model_and_dynamic_entry_s": 3600,
+          "statistics_s": 180,
+          "cleanup_s": 120
+        },
+        "total_s": 22500,
+        "allocation_s": 25200,
+        "slurm_signal_reserve_s": 180,
+        "host_transition_reserve_s": 180,
+        "remainder_before_term_s": 2340,
+        "native_seed_pairs_retained": 1
+      }
+    }
+  },
+  "archive_sha256": "c8eeff121eefb1bff98e8103cc3314ef6d95669e362889f3d68ac35507389e99",
+  "original_trials_unchanged": 10,
+  "author_trials_in_optional_overlay": 1,
+  "clean_builds_byte_identical": true,
+  "stdlib_packaged_resource_receipt_verified": true
+}

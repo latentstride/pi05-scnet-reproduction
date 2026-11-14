@@ -1,0 +1,100 @@
+{
+  "job_id": "127589595",
+  "selected": {
+    "mode": "matrix",
+    "episode": "g5-author_native-pace-200000",
+    "config": {
+      "id": "G5",
+      "episode_id": "g5-author_native-pace-200000",
+      "output_dir": "results/pace-g2-parallel/g5-author_native-pace-200000",
+      "mode": "author_native",
+      "method": "pace",
+      "scene_cache_shard": 1,
+      "scene_cache_index": 0,
+      "scene_seed": 200000,
+      "scene_cache_sha256": "12ac49e3913308901113cc8ddd9f71f0987ce8c9ebd83f03c308c759bdbeb939",
+      "calibration_sha256": "d66b55926fb3afc655199986710f84d8bc519e4443c11ceb51725814da98204f",
+      "model_rng_seed": 0,
+      "task": "handover_block",
+      "checkpoint_revision": "17ef545270cf26ed81169893b60f845f80ce6557",
+      "norm_stats_sha256": "8a1f114a8873dfa0788c7f512851ee3063224ef2b8af270421076a2e4e544960",
+      "pace_revision": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+      "openpi_pace_revision": "f4e52e6de4cc487a11585a3a7414d610b2883dae",
+      "action_cap": 800,
+      "window_cap": 50,
+      "resources": {
+        "partition": "ksagnormal01",
+        "node": "gnode39",
+        "gpu": "RTX4090-PCIE-24GB-LS",
+        "cpus": 4,
+        "memory_mib": 32768,
+        "gpus": 1,
+        "wall_s": 14400,
+        "graphics_s": 300,
+        "model_start_s": 900,
+        "trial_soft_s": 11400,
+        "trial_hard_s": 12000,
+        "cleanup_s": 480,
+        "request_s": 390
+      },
+      "port_base": 28000
+    },
+    "wall_s": 14400,
+    "startup_s": 900,
+    "hard_s": 12000,
+    "port_base": 28000,
+    "min_disk_gib": 8,
+    "fee_cap": "14.40",
+    "overhead": {
+      "graphics_s": 300,
+      "statistics_s": 120,
+      "cleanup_s": 360
+    }
+  },
+  "outcome": "SUCCESS",
+  "row": {
+    "status": "completed",
+    "process_group_reaped": true,
+    "result": {
+      "mode": "author_native",
+      "method": "pace",
+      "scene_seed": 200000,
+      "episode_id": "g5-author_native-pace-200000",
+      "success": true,
+      "scene_closed": true,
+      "outcome": "SUCCESS",
+      "trial_clock": {
+        "started": 65641988.81426647,
+        "soft": 65653388.81426647,
+        "hard": 65653988.81426647,
+        "reap_at": 65653978.81426647,
+        "budget": {
+          "physics_steps": 130000,
+          "soft_s": 11400,
+          "hard_s": 12000,
+          "reap_s": 10,
+          "request_s": 390
+        }
+      },
+      "prompt": "Grab the red block with the left arm, switch to the right, and place it on the blue pad.",
+      "selector": {
+        "selector": "pace",
+        "threshold": 0.008204944897443056,
+        "config": {
+          "fps": 50.0,
+          "min_distance": 10,
+          "smoothing_window": 11,
+          "polynomial_order": 3
+        },
+        "calibration_sha256": "d66b55926fb3afc655199986710f84d8bc519e4443c11ceb51725814da98204f"
+      },
+      "steps": 258,
+      "queries": 13,
+      "completed_actions": 258,
+      "native_action_count": 258,
+      "physics_steps": 18078,
+      "elapsed_s": 350.3530213832855
+    }
+  },
+  "stop_reason": null
+}

@@ -1,0 +1,157 @@
+{
+  "scope": "actual CPU PhysX joints, fingers, block and target; fixture RGB; loopback WebSocket policy substitute",
+  "frozen_model_calls": 0,
+  "gpu_jobs_submitted": 0,
+  "snapshot_evidence_sha256": "c43e7fa5e3f873400e4e909afebb4b05ccc6bc3cd04b8cb18ef5aa702c8d41c3",
+  "reports": [
+    {
+      "query": 35,
+      "old_approved": 2,
+      "projected_executed": 4,
+      "projection_m": [
+        0.004,
+        0.0,
+        0.0
+      ],
+      "projection_attempts": 2,
+      "second_request_tick": 16350,
+      "first_request_tick": 15855,
+      "total_physics_steps": 530,
+      "queries": 2,
+      "fresh_state_changed": true,
+      "discarded_rows": 46,
+      "second_response_approved": true,
+      "total_executed": 8,
+      "classification": "diagnostic_complete",
+      "failure": {
+        "phase": "termination",
+        "code": "action_budget_exhausted",
+        "detail": "policy action or query budget ended before success"
+      },
+      "cleanup": {
+        "scene_opened": true,
+        "hold_complete": true,
+        "close_complete": true,
+        "scene_context_closed": true
+      },
+      "candidate_stop": {}
+    },
+    {
+      "query": 36,
+      "old_approved": 0,
+      "projected_executed": 4,
+      "projection_m": [
+        0.0115,
+        0.0,
+        0.0
+      ],
+      "projection_attempts": 14,
+      "second_request_tick": 16770,
+      "first_request_tick": 16160,
+      "total_physics_steps": 610,
+      "queries": 2,
+      "fresh_state_changed": true,
+      "discarded_rows": 46,
+      "second_response_approved": false,
+      "total_executed": 4,
+      "classification": "controlled_candidate_stop",
+      "failure": {
+        "phase": "planning",
+        "code": "position_limit",
+        "detail": "normalized grip outside allowed envelope",
+        "diagnostic": {
+          "phase": "action",
+          "stamp": {
+            "episode": "unified-seed1-arx-full-w4",
+            "tick": 16770,
+            "sim_s": 67.08
+          },
+          "ik_backend": "g2_urdf_damped_jacobian_v1",
+          "collision_world": "target_collision",
+          "measured_start_q": [
+            [
+              0.06312292069196701,
+              2.5741755962371826,
+              1.375017523765564,
+              3.98415470123291,
+              1.512709617614746,
+              -2.8027827739715576
+            ],
+            [
+              0.6864819526672363,
+              1.4837467670440674,
+              0.3238659203052521,
+              1.0958195924758911,
+              0.56871497631073,
+              0.005169179756194353
+            ]
+          ],
+          "measured_start_fingers": [
+            [
+              0.04388512298464775,
+              0.04365496337413788
+            ],
+            [
+              0.043604087084531784,
+              0.04399938881397247
+            ]
+          ],
+          "grippers": [
+            {
+              "row": 0,
+              "side": "left",
+              "raw": 2.0,
+              "rule": "clip",
+              "normalized": null,
+              "native": null
+            }
+          ],
+          "requests": [],
+          "side": "left",
+          "row": 0,
+          "geometry": "candidate",
+          "wall_s": 0.0037873531691730022
+        }
+      },
+      "cleanup": {
+        "scene_opened": true,
+        "hold_complete": true,
+        "close_complete": true,
+        "scene_context_closed": true
+      },
+      "candidate_stop": {
+        "kind": "candidate_rejection",
+        "finger_drive_m": [
+          [
+            0.04388512298464775,
+            0.04365496337413788
+          ],
+          [
+            0.043604087084531784,
+            0.04399938881397247
+          ]
+        ],
+        "expected_hold_finger_m": [
+          [
+            0.04388512298464775,
+            0.04365496337413788
+          ],
+          [
+            0.043604087084531784,
+            0.04399938881397247
+          ]
+        ],
+        "episode": "unified-seed1-arx-full-w4",
+        "tick": 16770,
+        "state_sha256": "bbe12482da01982a4423450c38f48e50dae291951de8b21e56bdfb1e07f23d98",
+        "terminal_checks_passed": true,
+        "hold_verified": true,
+        "no_physics_advance": true,
+        "hold_complete": true,
+        "failure_sha256": "aceabc67ab01e76d794253dc880451b6fe27d91df0b807da099b7491d20afc5b",
+        "close_complete": true,
+        "scene_context_closed": true
+      }
+    }
+  ]
+}

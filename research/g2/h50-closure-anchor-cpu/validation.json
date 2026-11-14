@@ -1,0 +1,47 @@
+{
+  "cpu_only": true,
+  "gpu_operations": 0,
+  "physical_conditions": 2,
+  "physical_control_intervention": "left closure drive hold after acquisition",
+  "baseline_accepted": true,
+  "prefix_identical_samples": 5088,
+  "original_live_anchor_unchanged": true,
+  "original_safety_threshold_changes": 0,
+  "original_stop_tick": 5139,
+  "hold_end_tick": 5388,
+  "hold_observation_s": 1.2,
+  "full_task_success_evaluated": false,
+  "offline_anchor_observers": 8,
+  "existing_cpu_tests_passed": 238,
+  "public_verification": {
+    "passed": true,
+    "scope": "published original-threshold contact observers, relative motion, velocities and contact force decomposition",
+    "conditions": {
+      "original": {
+        "samples": 57,
+        "observers": 4,
+        "final_tick": 5139
+      },
+      "hold-gripper": {
+        "samples": 306,
+        "observers": 4,
+        "final_tick": 5388
+      }
+    },
+    "full_prefix_verification_requires_raw_cpu_archive": true,
+    "gpu_used": false,
+    "simulation_run": false
+  },
+  "raw_archive_sha256": "e812820b866d46b43cc930c29445520b14aeb7ab91398b90950c77b0f432c41f",
+  "raw_archive_bytes": 7177508,
+  "executed_script_sha256": "4b710266d9b2dee3ac3c55bb23e419c632b49e08e3e3e28bd8b30ce14dd4bc2b",
+  "published_script_sha256": "5391d922e5ba3781bec9b415171a44f19c936ca9795002437fd9d697a429d094",
+  "published_vs_executed_ast_equal_except_docstring_and_freeze_semantics_metadata": true,
+  "metadata_correction": "raw legacy freeze_semantics was a wrist-description constant; physical mode verified from drive data, source code and plan; raw data preserved",
+  "limitations": [
+    "only one H50 seed1 prefix",
+    "1.2s finite hold, 0.18mm remaining margin",
+    "original post-stop settling unobserved",
+    "no lift/transfer or further model queries"
+  ]
+}

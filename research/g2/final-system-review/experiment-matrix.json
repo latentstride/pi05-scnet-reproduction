@@ -1,0 +1,25 @@
+{
+  "status": "CPU_REVIEW_ONLY",
+  "submission_allowed": false,
+  "checkpoint_revision": "17ef545270cf26ed81169893b60f845f80ce6557",
+  "norm_stats_sha256": "8a1f114a8873dfa0788c7f512851ee3063224ef2b8af270421076a2e4e544960",
+  "pace_revision": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+  "openpi_pace_revision": "f4e52e6de4cc487a11585a3a7414d610b2883dae",
+  "resources_per_candidate": {"gpu": "RTX4090 24 GiB", "gpu_count": 1, "cpu_count": 4, "host_memory_gib": 32},
+  "cost_estimate_yuan_per_gpu_hour": 3.60,
+  "price_source": "../standalone-review/scnet-quote.json",
+  "experiments": [
+    {"priority": "P0", "mode": "author_native", "scene_seed": 100000, "model_seed": 0,
+     "cache_shard": 0, "window": 50, "native_action_cap": 800, "proposed_trial_soft_s": 4200, "proposed_trial_hard_s": 4500, "proposed_hard_wall_s": 7200,
+     "estimated_cost_cap_yuan": 7.20, "trials": 1, "dependency": null,
+     "gate": "Dedicated package authorization, tested resource/cleanup, exact archived first exchange or report mismatch and isolate"},
+    {"priority": "P1", "mode": "protected", "scene_seed": 100000, "model_seed": 0,
+     "cache_shard": 0, "window": 50, "native_action_cap": 800, "proposed_hard_wall_s": 4800,
+     "estimated_cost_cap_yuan": 4.80, "new_trials_if_prior_evidence_matches": 0, "dependency": null,
+     "gate": "Reuse 127510335 when input and first chunk are bound to P0. New protected allocation only for a documented unmatched comparison"},
+    {"priority": "P2", "mode": "protected_arx", "scene_seed": 1, "window": 4,
+     "proposed_hard_wall_s": 5400, "estimated_cost_cap_yuan": 5.40,
+     "new_trials_currently_justified": 0, "dependency": null,
+     "gate": "Verified native source behavior and a new CPU-feasible, state-matched path through the ARX proxy boundary"}
+  ]
+}

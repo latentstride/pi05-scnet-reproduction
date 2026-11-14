@@ -1,0 +1,32 @@
+{
+  "mode": "arx",
+  "projection": "bounded_task_tcp_projection_v1",
+  "max_policy_actions": 800,
+  "archive_sha256": "9f827fa8f74c13469cc8b7e7ddb89f2e5de3176405971d86030f9e1abb57c6c3",
+  "manifest_sha256": "7b472e3e4e750311b7148ef814ccb2c26dbc8ed7705173fc6fa3f307a9a10bf6",
+  "configuration_sha256": "d0494e5d6d96a866537dc3360fcdcaf6da472ca7b20367dc4bd49ed2a146a10a",
+  "trial_config_sha256": "0e823f5cdd6596e7c498670d3eee2b633972798ece60d16d0db8064e44311586",
+  "parent_archive_sha256": "608982ae51ac552e93eb72635a96b53fa685a4f574af11b656b3e3b7b7d89043",
+  "spec": {
+    "mode": "arx",
+    "episode": "unified-seed1-arx-full-w4",
+    "wall_s": 5400,
+    "startup_s": 1680,
+    "hard_s": 2600,
+    "port_base": 39000,
+    "min_disk_gib": 8,
+    "fee_cap": "5.40",
+    "submission_allowed": false,
+    "base_manifest_sha256": "9270db1e97eafedfb6f94711c8b8c9f33efd76d04ab800af99bf11a42556f19a",
+    "base_archive_sha256": "c8eeff121eefb1bff98e8103cc3314ef6d95669e362889f3d68ac35507389e99",
+    "overhead": {
+      "graphics_s": 300,
+      "statistics_s": 120,
+      "cleanup_s": 120
+    },
+    "host_reserve_s": 360,
+    "allocations": 1,
+    "model_services": 1,
+    "automatic_retry": false
+  }
+}

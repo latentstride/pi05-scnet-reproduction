@@ -1,0 +1,108 @@
+{
+  "archive": {
+    "bytes": 10410248,
+    "sha256": "af16302a540a726ee3ca3df35c6aae84678219269ff8c0c290769f9a401d378b"
+  },
+  "files": {
+    "g2-native-preload-20261107/candidate-lift/control-reconstruction.json": {
+      "bytes": 90,
+      "sha256": "1ec720994a7748188c0d88a922b337920f12ebfc52e4e772ff69edc9e4fc6e49"
+    },
+    "g2-native-preload-20261107/candidate-lift/robot.urdf": {
+      "bytes": 45600,
+      "sha256": "933b788a0b649f96e29d2bdb72c669ff82611e4ae1ea10bf059ea347458a936f"
+    },
+    "g2-native-preload-20261107/candidate-lift/topp.log": {
+      "bytes": 1629,
+      "sha256": "bacadc68dffb904dec3c4cfaaea3be18970dc68994d748e0a2d2c051900b877b"
+    },
+    "g2-native-preload-20261107/candidate-lift/trace.json": {
+      "bytes": 40173784,
+      "sha256": "d7ccdc85d0252b9ad550b212a0535e89709be54c12fe3ebdb20fb02cf3122867"
+    },
+    "g2-native-preload-20261107/candidate-lift.log": {
+      "bytes": 2032,
+      "sha256": "2a9b6419dcf3d09ab14a54db6bee3e77a66507d94cc3d546bceaba289d6c6c0d"
+    },
+    "g2-native-preload-20261107/command.txt": {
+      "bytes": 1136,
+      "sha256": "2010df5e58f0a3cff888553fe1a3934484c2224b2d15dc3de0c90448419cdc96"
+    },
+    "g2-native-preload-20261107/scripts/g2_native_backend.py": {
+      "bytes": 13275,
+      "sha256": "d8b33789739e42451964dd4001e554f67d7b8962d238c06888cbec2c5f376039"
+    },
+    "g2-native-preload-20261107/scripts/g2_native_preload.py": {
+      "bytes": 3732,
+      "sha256": "df5c5c53fbe8bb66c8295011e0c0aa60293070fc449b349236fd0a16cd72a347"
+    },
+    "g2-native-preload-20261107/scripts/g2_seed1_dynamics_replay_cpu.py": {
+      "bytes": 22705,
+      "sha256": "08901be273cdbf9e6936dd6c83e0572c521f5dfd0256ef0023c550854ef6c89e"
+    },
+    "g2-native-preload-20261107/scripts/g2_task_runtime.py": {
+      "bytes": 18832,
+      "sha256": "e6e5405f47e66f871daef0863fd21105b1c623266415c9fae023da75476a7361"
+    },
+    "g2-native-preload-20261107/setup-import-error.log": {
+      "bytes": 960,
+      "sha256": "a76b2dad729cf4545542d849d0d1ea305bd4ed763479db7cd61e84aff1ab0187"
+    },
+    "g2-native-preload-20261107/source.tar.gz": {
+      "bytes": 15093,
+      "sha256": "59afba9799098ca144889982f594f799ff09c40853e4ab849e4153708f3a700d"
+    },
+    "g2-native-preload-20261107-r2/candidate-lift/control-reconstruction.json": {
+      "bytes": 90,
+      "sha256": "1ec720994a7748188c0d88a922b337920f12ebfc52e4e772ff69edc9e4fc6e49"
+    },
+    "g2-native-preload-20261107-r2/candidate-lift/preload-controls.json": {
+      "bytes": 6547823,
+      "sha256": "5ab8306735c3b64efc5b9accfb7b8be35fbec131c71c2f0dbd2b1c491147d11b"
+    },
+    "g2-native-preload-20261107-r2/candidate-lift/result.json": {
+      "bytes": 1807,
+      "sha256": "94c4d0ba0724ec392398931ca46beadbaa7235c145318b1a437cd76de14e7de0"
+    },
+    "g2-native-preload-20261107-r2/candidate-lift/robot.urdf": {
+      "bytes": 45600,
+      "sha256": "933b788a0b649f96e29d2bdb72c669ff82611e4ae1ea10bf059ea347458a936f"
+    },
+    "g2-native-preload-20261107-r2/candidate-lift/topp.log": {
+      "bytes": 1629,
+      "sha256": "bacadc68dffb904dec3c4cfaaea3be18970dc68994d748e0a2d2c051900b877b"
+    },
+    "g2-native-preload-20261107-r2/candidate-lift/trace.json": {
+      "bytes": 40173784,
+      "sha256": "f9e96ea65a57699e22a97d2c89d1cfbc2cdfda3e66bdb9d0ef59817c572eee82"
+    },
+    "g2-native-preload-20261107-r2/candidate-lift.log": {
+      "bytes": 2131,
+      "sha256": "1369dd419fbec6595a81dbed00ca7319ea3d2e91d8e2204715a11601cf20f4f8"
+    },
+    "g2-native-preload-20261107-r2/command.txt": {
+      "bytes": 1145,
+      "sha256": "0df80ec756b1bb745b54cf081421e2a64589900e801c1d78db529e5c966b25f6"
+    },
+    "g2-native-preload-20261107-r2/scripts/g2_native_backend.py": {
+      "bytes": 13275,
+      "sha256": "d8b33789739e42451964dd4001e554f67d7b8962d238c06888cbec2c5f376039"
+    },
+    "g2-native-preload-20261107-r2/scripts/g2_native_preload.py": {
+      "bytes": 3732,
+      "sha256": "df5c5c53fbe8bb66c8295011e0c0aa60293070fc449b349236fd0a16cd72a347"
+    },
+    "g2-native-preload-20261107-r2/scripts/g2_seed1_dynamics_replay_cpu.py": {
+      "bytes": 22757,
+      "sha256": "a03f018118ea670d20ee5af4bd447bfff3670300ce5b030225f01eeaa6a5c57f"
+    },
+    "g2-native-preload-20261107-r2/scripts/g2_task_runtime.py": {
+      "bytes": 18832,
+      "sha256": "e6e5405f47e66f871daef0863fd21105b1c623266415c9fae023da75476a7361"
+    },
+    "g2-native-preload-20261107-r2/source.tar.gz": {
+      "bytes": 15108,
+      "sha256": "bab654fd5e25660afaff3fd3a2e3346ac2b1a2f6911dfb5cbf8673a59e73a312"
+    }
+  }
+}

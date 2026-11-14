@@ -1,0 +1,86 @@
+[
+  {
+    "type": "file",
+    "oid": "a0242d6e9f80c21aa4644c81a55b8f7492dfd952",
+    "size": 546033461,
+    "lfs": {
+      "oid": "7e9e7145c3f1a4093d7a24a44dc5c0b1af2ccc551c3bc8e50d7bdde824da4947",
+      "size": 546033461,
+      "pointerSize": 134
+    },
+    "xetHash": "ccab98d21033a78cec58a3a5c1659ac6c525b07c067e6e58f62da4920485d989",
+    "path": "dataset/handover_block/aloha-agilex_clean_50.zip"
+  },
+  {
+    "type": "file",
+    "oid": "9e3b8e96aff26b0261b25d1842dc9ec9998d4c90",
+    "size": 9232583817,
+    "lfs": {
+      "oid": "56b8f858d60372516327fb3e67fd34e10e12cefdd1e9e7530757cfa96456f025",
+      "size": 9232583817,
+      "pointerSize": 135
+    },
+    "xetHash": "0ed8b9705cedd8c23ebcdb4b942b19323e644b80b5dae4ca74c0bdd818cef87b",
+    "path": "dataset/handover_block/aloha-agilex_randomized_500.zip"
+  },
+  {
+    "type": "file",
+    "oid": "1fb09fb0b183d1dadf3c3774cdae888fec93b295",
+    "size": 332395804,
+    "lfs": {
+      "oid": "29958cc1583aa16bdf29ff7fb3a5b0e3f1bea9df6d412783f9be2dc71f49d559",
+      "size": 332395804,
+      "pointerSize": 134
+    },
+    "xetHash": "1cd0acb477f31cc411df624baaa77c96f7cedcfd5a26f44156e94f5f7981bcb8",
+    "path": "dataset/handover_block/arx-x5_clean_50.zip"
+  },
+  {
+    "type": "file",
+    "oid": "4923f76f2879d644b13e9dc4642dc65d39479d9d",
+    "size": 5700768173,
+    "lfs": {
+      "oid": "00895c02b25a9c7968887ad1d6899042e8ab8e017b997b282b6644131bb44b81",
+      "size": 5700768173,
+      "pointerSize": 135
+    },
+    "xetHash": "48e8e14de9c32256348885a9e6777e5f8efcf096794c76da5dc577ea7e0e8319",
+    "path": "dataset/handover_block/arx-x5_randomized_500.zip"
+  },
+  {
+    "type": "file",
+    "oid": "8eafa9d6847ac072097662c0f8cc82ef73c42be9",
+    "size": 543129194,
+    "lfs": {
+      "oid": "9959f4daab727215a06bad6b44821bfdd38b9c3ba9d6a4eca074fe58f4d920e3",
+      "size": 543129194,
+      "pointerSize": 134
+    },
+    "xetHash": "f160081dfc1a214ec9574d1555992fd2b4d77e4a6180e7c6599bac974e220dc1",
+    "path": "dataset/handover_block/demo_clean.zip"
+  },
+  {
+    "type": "file",
+    "oid": "d8408121e59a3241e40634f4720060e6dc1d1f82",
+    "size": 397803609,
+    "lfs": {
+      "oid": "249280c620bde8c4eaee8dd8a55f6a7224bb07a240cd658f3f4ffc77c108c5a7",
+      "size": 397803609,
+      "pointerSize": 134
+    },
+    "xetHash": "4f6140a7a56c3be90a1217aa7fb0f70bead7a8ac133b8560e5fc658ad391c2ff",
+    "path": "dataset/handover_block/piper_clean_50.zip"
+  },
+  {
+    "type": "file",
+    "oid": "672702f52ce07bd5c48b764258a4e51a3f241189",
+    "size": 7037245365,
+    "lfs": {
+      "oid": "4c09a7c1a3695a186fbdebcb7786eae832b681301179241f9e5063b0b73d0f42",
+      "size": 7037245365,
+      "pointerSize": 135
+    },
+    "xetHash": "57c4f2049aa5dd6f96facaa27df2fbfbd187359ea0a8579f7d346ecdc0d38dc3",
+    "path": "dataset/handover_block/piper_randomized_500.zip"
+  }
+]

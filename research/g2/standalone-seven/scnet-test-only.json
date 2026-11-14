@@ -1,0 +1,44 @@
+{
+  "test_only": true,
+  "allocation_created": false,
+  "free_bytes": 79361515520,
+  "minimum_gib": 60,
+  "stage": "tools/g2-standalone-seven-20261111/stage",
+  "experiments": [
+    {
+      "experiment": "G1",
+      "cpu_ok": true,
+      "result": "sbatch: simulated record to start at 2026-11-11T04:52:19 using 4 processors on nodes gnode39 in partition ksagnormal01"
+    },
+    {
+      "experiment": "G2",
+      "cpu_ok": true,
+      "result": "sbatch: simulated record to start at 2026-11-11T04:52:20 using 4 processors on nodes gnode39 in partition ksagnormal01"
+    },
+    {
+      "experiment": "G3",
+      "cpu_ok": true,
+      "result": "sbatch: simulated record to start at 2026-11-11T04:52:24 using 4 processors on nodes gnode39 in partition ksagnormal01"
+    },
+    {
+      "experiment": "G4",
+      "cpu_ok": true,
+      "result": "sbatch: simulated record to start at 2026-11-11T04:52:25 using 4 processors on nodes gnode39 in partition ksagnormal01"
+    },
+    {
+      "experiment": "G5",
+      "cpu_ok": true,
+      "result": "sbatch: simulated record to start at 2026-11-11T04:52:27 using 4 processors on nodes gnode39 in partition ksagnormal01"
+    },
+    {
+      "experiment": "G6",
+      "cpu_ok": true,
+      "result": "sbatch: simulated record to start at 2026-11-11T04:52:27 using 4 processors on nodes gnode39 in partition ksagnormal01"
+    },
+    {
+      "experiment": "G7",
+      "cpu_ok": true,
+      "result": "sbatch: simulated record to start at 2026-11-11T04:52:28 using 4 processors on nodes gnode39 in partition ksagnormal01"
+    }
+  ]
+}

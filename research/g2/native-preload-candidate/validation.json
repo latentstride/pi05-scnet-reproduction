@@ -1,0 +1,22 @@
+{
+  "status": "CPU_CANDIDATE_VERIFIED_WITH_LIMITS",
+  "tests_passed": 244,
+  "synthetic_episodes_passed": 13,
+  "physical_steps": 6138,
+  "physical_grasp_and_lift": true,
+  "physical_release": false,
+  "model_closed_loop_success": false,
+  "gpu_release_ready": false,
+  "automatic_stage_transition": false,
+  "original_safety_bounds_unchanged": true,
+  "protected_integrity": "protected-integrity.json",
+  "full_evidence_archive_sha256": "af16302a540a726ee3ca3df35c6aae84678219269ff8c0c290769f9a401d378b",
+  "limits": [
+    "one reproduced H50 seed1 initial state",
+    "4.2 seconds from confirmed holder, 30 mm diagnostic target lift",
+    "minimum translation slip margin 0.141793 mm",
+    "release interfaces tested with synthetic contact receipts, not full physical transfer",
+    "further model observations/actions and ARX policy performance unverified"
+  ],
+  "gpu_operations": 0
+}

@@ -1,0 +1,517 @@
+{
+  "first_contact": {
+    "left": {
+      "tick": 4142,
+      "action": 39,
+      "block_xyz": [
+        -0.06126115098595619,
+        0.07485812902450562,
+        0.8400006294250488
+      ],
+      "dz_m": 5.364418029785156e-07,
+      "block_linear_velocity": [
+        -2.5227194782928564e-05,
+        0.0002782039809972048,
+        -0.00010468531399965286
+      ],
+      "contact_flags": {
+        "left": true,
+        "right": false,
+        "left_two": false,
+        "right_two": false,
+        "target": false,
+        "both_two": false
+      },
+      "normalized_gripper_command": [
+        1.0,
+        0.9993101541069747
+      ],
+      "aperture_m": [
+        0.13893793523311615,
+        0.13895156979560852
+      ],
+      "raw_line_number": 4143,
+      "raw_line_sha256": "2413c09345b94e27aa7e521e96ad0e4e4e233322befece3dd5f0c102a99d6cc6"
+    },
+    "left_two": {
+      "tick": 5017,
+      "action": 55,
+      "block_xyz": [
+        -0.061261098831892014,
+        0.07486025243997574,
+        0.8400006294250488
+      ],
+      "dz_m": 5.364418029785156e-07,
+      "block_linear_velocity": [
+        0.00020511273760348558,
+        0.00031038574525155127,
+        -2.718064934015274e-05
+      ],
+      "contact_flags": {
+        "left": true,
+        "right": false,
+        "left_two": true,
+        "right_two": false,
+        "target": false,
+        "both_two": false
+      },
+      "normalized_gripper_command": [
+        0.8966306937640521,
+        0.9994102054243237
+      ],
+      "aperture_m": [
+        0.13591843843460083,
+        0.13893048465251923
+      ],
+      "raw_line_number": 5018,
+      "raw_line_sha256": "958c3bc6c2112775a745774510e9adfb8cbddd67fdfc23da30baad66ddee2aab"
+    },
+    "right": {
+      "tick": 9946,
+      "action": 116,
+      "block_xyz": [
+        -0.0018084394978359342,
+        -0.013704379089176655,
+        1.0079810619354248
+      ],
+      "dz_m": 0.16798096895217896,
+      "block_linear_velocity": [
+        -0.008350158110260963,
+        0.004572300240397453,
+        0.002232540398836136
+      ],
+      "contact_flags": {
+        "left": true,
+        "right": true,
+        "left_two": true,
+        "right_two": false,
+        "target": false,
+        "both_two": false
+      },
+      "normalized_gripper_command": [
+        0.0,
+        0.9993621860746948
+      ],
+      "aperture_m": [
+        0.10746920853853226,
+        0.13899314403533936
+      ],
+      "raw_line_number": 9947,
+      "raw_line_sha256": "9e406456b44c8cdf24c468be9b7985c91b8ac019e9a8d3bbdfee816f4d881c88"
+    },
+    "right_two": {
+      "tick": 11847,
+      "action": 148,
+      "block_xyz": [
+        -0.027473336085677147,
+        0.022477062419056892,
+        1.0086238384246826
+      ],
+      "dz_m": 0.16862374544143677,
+      "block_linear_velocity": [
+        -0.05473081395030022,
+        -0.029609311372041702,
+        0.04262017086148262
+      ],
+      "contact_flags": {
+        "left": true,
+        "right": true,
+        "left_two": true,
+        "right_two": true,
+        "target": false,
+        "both_two": true
+      },
+      "normalized_gripper_command": [
+        0.0004808450015462362,
+        0.5993601881406784
+      ],
+      "aperture_m": [
+        0.11977151781320572,
+        0.11697325110435486
+      ],
+      "raw_line_number": 11848,
+      "raw_line_sha256": "faf793aeebe52bb4caa6b2e762ce9c1476a08396ada3028cca72f1df47ea625b"
+    },
+    "both_two": {
+      "tick": 11847,
+      "action": 148,
+      "block_xyz": [
+        -0.027473336085677147,
+        0.022477062419056892,
+        1.0086238384246826
+      ],
+      "dz_m": 0.16862374544143677,
+      "block_linear_velocity": [
+        -0.05473081395030022,
+        -0.029609311372041702,
+        0.04262017086148262
+      ],
+      "contact_flags": {
+        "left": true,
+        "right": true,
+        "left_two": true,
+        "right_two": true,
+        "target": false,
+        "both_two": true
+      },
+      "normalized_gripper_command": [
+        0.0004808450015462362,
+        0.5993601881406784
+      ],
+      "aperture_m": [
+        0.11977151781320572,
+        0.11697325110435486
+      ],
+      "raw_line_number": 11848,
+      "raw_line_sha256": "faf793aeebe52bb4caa6b2e762ce9c1476a08396ada3028cca72f1df47ea625b"
+    }
+  },
+  "first_impulse_above_1e_8": {
+    "left": {
+      "tick": 5083,
+      "action": 58,
+      "block_xyz": [
+        -0.06129533052444458,
+        0.07494984567165375,
+        0.8400026559829712
+      ],
+      "dz_m": 2.562999725341797e-06,
+      "block_linear_velocity": [
+        -0.01139586791396141,
+        0.0289168618619442,
+        0.000621239363681525
+      ],
+      "contact_flags": {
+        "left": true,
+        "right": false,
+        "left_two": true,
+        "right_two": false,
+        "target": false,
+        "both_two": false
+      },
+      "normalized_gripper_command": [
+        0.7057101905601562,
+        0.9991967658482882
+      ],
+      "aperture_m": [
+        0.12120891362428665,
+        0.13893339037895203
+      ],
+      "raw_line_number": 5084,
+      "raw_line_sha256": "8fd2ed7ae31dd8a009dd1d191cd5b4d0070bfda35e07652e1f4be945bc45435e"
+    },
+    "right": {
+      "tick": 10347,
+      "action": 119,
+      "block_xyz": [
+        -0.0027601346373558044,
+        -0.0136096877977252,
+        1.0098726749420166
+      ],
+      "dz_m": 0.16987258195877075,
+      "block_linear_velocity": [
+        0.0025914637371897697,
+        0.008255922235548496,
+        -0.004007422365248203
+      ],
+      "contact_flags": {
+        "left": true,
+        "right": true,
+        "left_two": true,
+        "right_two": false,
+        "target": false,
+        "both_two": false
+      },
+      "normalized_gripper_command": [
+        0.0,
+        1.0
+      ],
+      "aperture_m": [
+        0.1074676513671875,
+        0.1390015333890915
+      ],
+      "raw_line_number": 10348,
+      "raw_line_sha256": "bfbc5e58bac88a9451ce995ed534b78d4bad4e98f21045d9ab7f3cd449474ae7"
+    }
+  },
+  "first_right_two_without_left_two_after_both": {
+    "tick": 12648,
+    "action": 178,
+    "block_xyz": [
+      -0.03975360840559006,
+      0.04042409732937813,
+      0.965001106262207
+    ],
+    "dz_m": 0.12500101327896118,
+    "block_linear_velocity": [
+      -0.1500069499015808,
+      0.33275991678237915,
+      -0.6259494423866272
+    ],
+    "contact_flags": {
+      "left": true,
+      "right": true,
+      "left_two": false,
+      "right_two": true,
+      "target": false,
+      "both_two": false
+    },
+    "normalized_gripper_command": [
+      0.9232801653369606,
+      0.0019447346425652504
+    ],
+    "aperture_m": [
+      0.12328464537858963,
+      0.04898900166153908
+    ],
+    "raw_line_number": 12649,
+    "raw_line_sha256": "74ebb890aaa58ff32a38da4cb956bd3887406b741d4946d37d43a69a04334592"
+  },
+  "contact_tick_counts": {
+    "left": 8517,
+    "left_two": 7630,
+    "right": 3109,
+    "right_two": 1181,
+    "both_two": 800
+  },
+  "longest_contact_run_ticks": {
+    "left": 8340,
+    "left_two": 7545,
+    "right": 2990,
+    "right_two": 948,
+    "both_two": 666
+  },
+  "last_contact": {
+    "left": {
+      "tick": 12663,
+      "action": 178,
+      "block_xyz": [
+        -0.05178282782435417,
+        0.06650794297456741,
+        0.917724072933197
+      ],
+      "dz_m": 0.07772397994995117,
+      "block_linear_velocity": [
+        -0.2441217452287674,
+        0.5206784605979919,
+        -0.9332890510559082
+      ],
+      "contact_flags": {
+        "left": true,
+        "right": true,
+        "left_two": false,
+        "right_two": true,
+        "target": false,
+        "both_two": false
+      },
+      "normalized_gripper_command": [
+        0.9524421680455506,
+        0.0020469633538126946
+      ],
+      "aperture_m": [
+        0.1253378540277481,
+        0.04898901283740997
+      ],
+      "raw_line_number": 12664,
+      "raw_line_sha256": "61f50e90afb19485f13ce0207ee0d112dd897bf94f1482873d95900c535ab083"
+    },
+    "left_two": {
+      "tick": 12647,
+      "action": 178,
+      "block_xyz": [
+        -0.03915344178676605,
+        0.039092767983675,
+        0.9675045013427734
+      ],
+      "dz_m": 0.1275044083595276,
+      "block_linear_velocity": [
+        -0.14382292330265045,
+        0.3199445903301239,
+        -0.6055880188941956
+      ],
+      "contact_flags": {
+        "left": true,
+        "right": true,
+        "left_two": true,
+        "right_two": true,
+        "target": false,
+        "both_two": true
+      },
+      "normalized_gripper_command": [
+        0.9232801653369606,
+        0.0019379193951487542
+      ],
+      "aperture_m": [
+        0.1231592670083046,
+        0.04898900166153908
+      ],
+      "raw_line_number": 12648,
+      "raw_line_sha256": "7269b038af7959c5866620c5b65858510ee626f5a08792a24eb4f0eea0276685"
+    },
+    "right": {
+      "tick": 13594,
+      "action": 194,
+      "block_xyz": [
+        -0.04544571787118912,
+        0.06289033591747284,
+        0.8065068125724792
+      ],
+      "dz_m": -0.0334932804107666,
+      "block_linear_velocity": [
+        0.032438017427921295,
+        -0.03993062302470207,
+        -0.062082137912511826
+      ],
+      "contact_flags": {
+        "left": false,
+        "right": true,
+        "left_two": false,
+        "right_two": false,
+        "target": false,
+        "both_two": false
+      },
+      "normalized_gripper_command": [
+        0.9976890338094173,
+        0.0
+      ],
+      "aperture_m": [
+        0.13875581324100494,
+        0.048989009112119675
+      ],
+      "raw_line_number": 13595,
+      "raw_line_sha256": "db5fdbce564f00003259686298f8045d38f77a62df50947e04bc0615dfed56c8"
+    },
+    "right_two": {
+      "tick": 13584,
+      "action": 194,
+      "block_xyz": [
+        -0.046662747859954834,
+        0.0644090473651886,
+        0.8087934255599976
+      ],
+      "dz_m": -0.03120666742324829,
+      "block_linear_velocity": [
+        0.02866550162434578,
+        -0.03517865762114525,
+        -0.05174865946173668
+      ],
+      "contact_flags": {
+        "left": false,
+        "right": true,
+        "left_two": false,
+        "right_two": true,
+        "target": false,
+        "both_two": false
+      },
+      "normalized_gripper_command": [
+        0.9976595867546982,
+        0.0
+      ],
+      "aperture_m": [
+        0.13875694572925568,
+        0.048989005386829376
+      ],
+      "raw_line_number": 13585,
+      "raw_line_sha256": "2cf57fe60138cc3ff6b33d489b9148685a4af138059666f02d57ede6bd189b0f"
+    },
+    "both_two": {
+      "tick": 12647,
+      "action": 178,
+      "block_xyz": [
+        -0.03915344178676605,
+        0.039092767983675,
+        0.9675045013427734
+      ],
+      "dz_m": 0.1275044083595276,
+      "block_linear_velocity": [
+        -0.14382292330265045,
+        0.3199445903301239,
+        -0.6055880188941956
+      ],
+      "contact_flags": {
+        "left": true,
+        "right": true,
+        "left_two": true,
+        "right_two": true,
+        "target": false,
+        "both_two": true
+      },
+      "normalized_gripper_command": [
+        0.9232801653369606,
+        0.0019379193951487542
+      ],
+      "aperture_m": [
+        0.1231592670083046,
+        0.04898900166153908
+      ],
+      "raw_line_number": 12648,
+      "raw_line_sha256": "7269b038af7959c5866620c5b65858510ee626f5a08792a24eb4f0eea0276685"
+    }
+  },
+  "max_lift_m": 0.1700560450553894,
+  "first_40mm_below_start_after_handover": {
+    "tick": 12961,
+    "action": 186,
+    "block_xyz": [
+      -0.042753901332616806,
+      0.058353397995233536,
+      0.7997757792472839
+    ],
+    "dz_m": -0.040224313735961914,
+    "block_linear_velocity": [
+      0.05723347142338753,
+      -0.08362381905317307,
+      -0.13964354991912842
+    ],
+    "contact_flags": {
+      "left": false,
+      "right": false,
+      "left_two": false,
+      "right_two": false,
+      "target": false,
+      "both_two": false
+    },
+    "normalized_gripper_command": [
+      0.9998230962109406,
+      7.29018384218216e-05
+    ],
+    "aperture_m": [
+      0.13811205327510834,
+      0.04898900166153908
+    ],
+    "raw_line_number": 12962,
+    "raw_line_sha256": "25a83e0b35acd653ecd4e567c8c57629347321c91514198dd81d25896249c9fe"
+  },
+  "post_drop_max_height_relative_to_start_m": -0.014297187328338623,
+  "final_block_pose": [
+    [
+      0.7805777788162231,
+      -3.844499588012695e-06,
+      0.6250585913658142,
+      -0.033362988382577896
+    ],
+    [
+      0.625058650970459,
+      -6.794929504394531e-06,
+      -0.7805778384208679,
+      0.04760201647877693
+    ],
+    [
+      7.271766662597656e-06,
+      1.0,
+      -2.86102294921875e-06,
+      0.770000696182251
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "final_gripper_command": [
+    0.9978393247543574,
+    0.0043386228027641775
+  ],
+  "stable_hold_tracker": "not recorded in author_native passive observer; two-finger contact is not a load-bearing hold verdict"
+}

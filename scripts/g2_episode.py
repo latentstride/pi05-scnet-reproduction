@@ -6,7 +6,7 @@ from time import monotonic
 
 import numpy as np
 
-from g2e_protocol import PROTOCOL, validate_window
+from g2e_protocol import PROTOCOL, APPROACH_REPAIR, NativeApproachBarrier, validate_window
 from g2_adapter import G2Error, SIDES, images_of, positive
 from pace_runtime import validate_request, validate_response
 from robotwin_control_geometry import Status, finite_array
@@ -43,6 +43,12 @@ def accepted(result, event):
 def finish_episode(backend, output, record, event):
     """Attempt all cleanup before emitting evidence, including on failed hold."""
     failures = []
+    note_failure = getattr(backend, "note_failure", None)
+    try:
+        if callable(note_failure) and record.get("failure"):
+            note_failure(record)
+    except (Exception, KeyboardInterrupt, SystemExit) as error:
+        failures.append(dict(kind="stop_receipt_failed", detail=repr(error)))
     try:
         if not record["success"]:
             try:
@@ -154,6 +160,7 @@ def run_episode(spec, backend, policy, output, *, adapter=None, expert=None, all
             remaining()
 
         prev = None
+        pending_native_barrier = None
         try:
             record["initial"] = backend.reset(spec)
             save_json(output / "initial.json", record["initial"])
@@ -170,6 +177,12 @@ def run_episode(spec, backend, policy, output, *, adapter=None, expert=None, all
                 phase = "observation"
                 remaining()
                 snapshot, native = observe()
+                if pending_native_barrier is not None:
+                    if (snapshot.stamp.episode != pending_native_barrier.episode
+                            or snapshot.stamp.tick != pending_native_barrier.tick
+                            or snapshot.stamp.sim_s != pending_native_barrier.sim_s):
+                        raise G2Error(Status.UNSYNCED, "bounded approach observation does not match completed physical prefix")
+                    pending_native_barrier = None
                 if prev is not None and (snapshot.stamp.tick <= prev.tick or snapshot.stamp.sim_s <= prev.sim_s):
                     raise G2Error(Status.UNSYNCED, "policy observation did not advance")
                 prev = snapshot.stamp
@@ -254,10 +267,25 @@ def run_episode(spec, backend, policy, output, *, adapter=None, expert=None, all
                         reason=backend.take_replan()
                     bounded_replan=(0<done<=approved<=count and
                                     (done==approved or reason is not None)) if type(done) is int else False
+                    native_replan = isinstance(reason, NativeApproachBarrier)
+                    if native_replan:
+                        if not (adapter is None and expert is None
+                                and spec.get("execution_protocol") == PROTOCOL
+                                and spec.get("free_space_approach_repair") == APPROACH_REPAIR
+                                and reason.protocol == APPROACH_REPAIR
+                                and type(done) is int and 0 < done <= count
+                                and type(reason.consumed_actions) is int and reason.consumed_actions == done
+                                and reason.episode == snapshot.stamp.episode
+                                and type(reason.tick) is int and reason.tick > snapshot.stamp.tick
+                                and np.isfinite(reason.sim_s) and reason.sim_s > snapshot.stamp.sim_s):
+                            raise G2Error(Status.UNSYNCED, "invalid native bounded-approach receipt")
+                        pending_native_barrier = reason
                     if (type(done) is not int or not 0 <= done <= count
                             or (done<count and not backend.success() and
-                                not (adapter and getattr(plan,"contact_profile_id","") and bounded_replan))):
+                                not (native_replan or (adapter and getattr(plan,"contact_profile_id","") and bounded_replan)))):
                         raise G2Error(Status.BACKEND_ERROR, "backend did not complete the approved prefix")
+                    if native_replan:
+                        reason = dict(reason="bounded_approach_requires_new_observation", **asdict(reason))
                     if reason is not None or approved<count:
                         event(dict(kind="contact_replan",requested_actions=count,approved_actions=approved,
                                    consumed_actions=done,reason=reason or {"reason":"planned_contact_barrier"}))

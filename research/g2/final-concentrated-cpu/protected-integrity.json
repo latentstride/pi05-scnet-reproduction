@@ -1,0 +1,19 @@
+{
+  "unchanged_modules": [
+    "g2_adapter",
+    "g2e_native_guard",
+    "g2_contact",
+    "g2_robotwin_backend",
+    "g2_final_campaign",
+    "g2_final_trial",
+    "g2_remaining_router"
+  ],
+  "intentionally_changed_modules": [
+    "g2_remaining_coordinator",
+    "g2_remaining_geometry"
+  ],
+  "thresholds_modified": false,
+  "checkpoint_modified": false,
+  "history_modified": false,
+  "supervisor_and_exit_classifier_unchanged": true
+}

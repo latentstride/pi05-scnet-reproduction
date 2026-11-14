@@ -1,0 +1,309 @@
+{
+  "verified_source_files": [
+    "pace/README.md",
+    "pace/description/task_instruction/handover_block.json",
+    "pace/description/utils/generate_episode_instructions.py",
+    "pace/envs/_GLOBAL_CONFIGS.py",
+    "pace/envs/_base_task.py",
+    "pace/envs/handover_block.py",
+    "pace/envs/robot/planner.py",
+    "pace/envs/robot/robot.py",
+    "pace/envs/utils/actor_utils.py",
+    "pace/envs/utils/parse_hdf5.py",
+    "pace/envs/utils/pkl2hdf5.py",
+    "pace/pace/configs/calibration/handover_block.json",
+    "pace/pace/configs/expert_scenes.json",
+    "pace/pace/pyproject.toml",
+    "pace/pace/scripts/_eval_worker.py",
+    "pace/pace/scripts/calibrate.py",
+    "pace/pace/scripts/eval.yaml",
+    "pace/pace/scripts/evaluate.py",
+    "pace/pace/src/pace/core.py",
+    "pace/pace/src/pace/datasets.py",
+    "pace/pace/src/pace/robotwin.py",
+    "pace/pace/src/pace/rollout.py",
+    "pace/policy/pi05/examples/aloha_real/convert_aloha_data_to_lerobot_robotwin.py",
+    "pace/policy/pi05/process_data_pi05.sh",
+    "pace/policy/pi05/scripts/process_data.py",
+    "pace/script/_install.sh",
+    "pace/script/collect_data.py",
+    "pace/task_config/_camera_config.yml",
+    "pace/task_config/_embodiment_config.yml",
+    "pace/task_config/_eval_step_limit.yml",
+    "pace/task_config/demo_clean.yml",
+    "train/README.md",
+    "train/pace/README.md",
+    "train/pace/src/openpi_pace/configs.py",
+    "train/scripts/compute_norm_stats.py",
+    "train/scripts/serve_policy.py",
+    "train/src/openpi/models/pi0_config.py",
+    "train/src/openpi/policies/aloha_policy.py",
+    "train/src/openpi/policies/policy.py",
+    "train/src/openpi/policies/policy_config.py",
+    "train/src/openpi/training/config.py",
+    "train/src/openpi/training/data_loader.py",
+    "train/src/openpi/transforms.py",
+    "runtime/README.md",
+    "runtime/pace/src/openpi_pace/configs.py",
+    "runtime/scripts/compute_norm_stats.py",
+    "runtime/scripts/serve_policy.py",
+    "runtime/src/openpi/models/pi0_config.py",
+    "runtime/src/openpi/policies/aloha_policy.py",
+    "runtime/src/openpi/policies/policy.py",
+    "runtime/src/openpi/policies/policy_config.py",
+    "runtime/src/openpi/training/config.py",
+    "runtime/src/openpi/training/data_loader.py",
+    "runtime/src/openpi/transforms.py",
+    "hf-README.md",
+    "hf-manifest.json",
+    "hf-norm_stats.json",
+    "hf-data-handover_block.json",
+    "hf-data-adjust_bottle.json",
+    "hf-model-adjust_bottle.json"
+  ],
+  "job_id": "127192740",
+  "job_runtime_commit": "9eb42a97c29ce93e8c123f49540340e45c41875c",
+  "job_archive_sha256": "24e337e1f820d38d028e625c0eda7b9cf6b9f942763226d912efa20951422b8d",
+  "job_config_sha256": "04f2e041cedb07a2eae69425175c60d235ed086095cce10600dfb9e492a8bae6",
+  "revisions": {
+    "pace": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+    "train": "ba9876639cb7a4bf0c7db00ec39eeb9c8efd8b12",
+    "runtime": "f4e52e6de4cc487a11585a3a7414d610b2883dae",
+    "checkpoint": "17ef545270cf26ed81169893b60f845f80ce6557",
+    "official_dataset": "3dc3b798668feb99ac61cc9086d84cbcc3d79186",
+    "robotwin_stable_base": "13c3c47ff4312dd62484bcd51be034af55c062d1",
+    "robotwin_probe_decoder": "ea8b21121ebb3cd201ff5b3fe361944ac94eda3f"
+  },
+  "job_setup": {
+    "scene_seed": 0,
+    "policy_rng_seed": 20261106,
+    "window": 50,
+    "max_actions": 300,
+    "timeout_s": 1150,
+    "prompt": "Pick up the red block with the left arm, hand it to the right arm, and place it on the target."
+  },
+  "job_fixture": {
+    "task": "handover_block",
+    "candidate_id": "expert-reset-0",
+    "formal_pair_id": "paired-10g-00",
+    "source_reference_sha256": "e6dc3223014daa86e2c2178967338b4fd0c43d442eef14b1dcd5753da4fa5980",
+    "block_mass_kg": 0.009999999776482582,
+    "objects_world": {
+      "block": [
+        -0.17331258952617645,
+        0.19793014228343964,
+        0.840000569820404,
+        0.9939092397689819,
+        5.21393940289272e-06,
+        -5.030996362620499e-06,
+        0.11020209640264511
+      ],
+      "target": [
+        0.11306939274072647,
+        0.1510109156370163,
+        0.7409999966621399,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "table": [
+        0,
+        0,
+        0.74,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    "robots": {
+      "aloha-agilex": {
+        "left": {
+          "base_world": [
+            0.0,
+            -0.6499999761581421,
+            0.0,
+            0.7071068286895752,
+            0.0,
+            0.0,
+            0.7071068286895752
+          ],
+          "q_rad": [
+            -3.016260308186247e-08,
+            -5.668539984071685e-07,
+            -4.835977051698137e-06,
+            7.702591631186806e-08,
+            4.6315946633512795e-07,
+            -8.158984883266385e-07
+          ],
+          "fingers_m": [
+            0.044236842542886734,
+            0.044238295406103134
+          ]
+        },
+        "right": {
+          "base_world": [
+            0.0,
+            -0.6499999761581421,
+            0.0,
+            0.7071068286895752,
+            0.0,
+            0.0,
+            0.7071068286895752
+          ],
+          "q_rad": [
+            -3.258066882949606e-08,
+            -5.65274206110189e-07,
+            -4.838918357563671e-06,
+            7.693390813301448e-08,
+            4.6469963876916154e-07,
+            -8.163781899384048e-07
+          ],
+          "fingers_m": [
+            0.04423683509230614,
+            0.044238295406103134
+          ]
+        }
+      },
+      "ARX-X5": {
+        "left": {
+          "base_world": [
+            -0.30000001192092896,
+            -0.3499999940395355,
+            0.7839999794960022,
+            0.7071068286895752,
+            0.0,
+            0.0,
+            0.7071068286895752
+          ],
+          "q_rad": [
+            -0.26346591114997864,
+            -0.6305378675460815,
+            0.1571831852197647,
+            -0.7877228260040283,
+            -0.28336942195892334,
+            -1.3242606655694544e-05
+          ],
+          "fingers_m": [
+            0.04399999976158142,
+            0.04399999976158142
+          ]
+        },
+        "right": {
+          "base_world": [
+            0.30000001192092896,
+            -0.3499999940395355,
+            0.7839999794960022,
+            0.7071068286895752,
+            0.0,
+            0.0,
+            0.7071068286895752
+          ],
+          "q_rad": [
+            -0.6324052214622498,
+            -0.6228002905845642,
+            0.1452883630990982,
+            -0.7680932283401489,
+            -0.6423773765563965,
+            -1.4833736713626422e-05
+          ],
+          "fingers_m": [
+            0.04399999976158142,
+            0.04399999976158142
+          ]
+        }
+      }
+    }
+  },
+  "job_observation_ticks": [
+    0,
+    3575
+  ],
+  "released_scene_shards": {
+    "0": {
+      "count": 100,
+      "first": {
+        "scene_seed": 100000,
+        "episode_info": {}
+      },
+      "last": {
+        "scene_seed": 100111,
+        "episode_info": {}
+      }
+    },
+    "1": {
+      "count": 100,
+      "first": {
+        "scene_seed": 200000,
+        "episode_info": {}
+      },
+      "last": {
+        "scene_seed": 200110,
+        "episode_info": {}
+      }
+    },
+    "2": {
+      "count": 100,
+      "first": {
+        "scene_seed": 300000,
+        "episode_info": {}
+      },
+      "last": {
+        "scene_seed": 300108,
+        "episode_info": {}
+      }
+    }
+  },
+  "project_scene_seed_present_in_cache": false,
+  "cache_source_file_matches_job_lock": {
+    "envs/handover_block.py": true,
+    "envs/_base_task.py": true,
+    "task_config/demo_clean.yml": true,
+    "task_config/_camera_config.yml": null
+  },
+  "prompt_generation_checks": [
+    {
+      "scene_seed": 100000,
+      "seen_count": 50,
+      "unseen_count": 9,
+      "example_unseen": "Grab the red block with the left arm, switch to the right arm, and set it on the blue pad.",
+      "project_prompt_generated": false
+    },
+    {
+      "scene_seed": 200000,
+      "seen_count": 50,
+      "unseen_count": 9,
+      "example_unseen": "Use the left arm to grab the red block, transfer it to the right hand, and set it onto the blue pad.",
+      "project_prompt_generated": false
+    },
+    {
+      "scene_seed": 300000,
+      "seen_count": 50,
+      "unseen_count": 9,
+      "example_unseen": "Grab the red block with the left arm, switch to the right, and place it on the blue pad.",
+      "project_prompt_generated": false
+    }
+  ],
+  "saved_exchange_checks": [
+    {
+      "query": 1,
+      "request_sha256": "d95cf892329727cab67694e7180e7a27432e1bc03a88f658ae22e1ffea5e5fdc",
+      "chunk_sha256": "cc7de23c051e93aa47177831149eaf88eb7723ebd6e22669d74b551404894dcf"
+    },
+    {
+      "query": 2,
+      "request_sha256": "c8724197696950309582484a27ff816408c92f71d4dc6bb83e1b90b79e72a39e",
+      "chunk_sha256": "08c933f4d31fda970aa3a933046a7f81cf44b05b361482972c5b868fbc575e9d"
+    }
+  ],
+  "second_request_server_echo": false,
+  "author_fixed50_control_flow_stub_query_after_actions": [
+    0,
+    50
+  ],
+  "policy_inference_count": 0,
+  "physics_steps": 0,
+  "gpu_used": false,
+  "scope": "Saved camera encoder parity and source control-flow check. Stub results are not a model rollout."
+}

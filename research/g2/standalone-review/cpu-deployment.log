@@ -1,0 +1,8 @@
+test_archives_are_frozen_and_standalone_verification_needs_no_site_packages (test_g2_standalone_deploy.StandaloneDeployTests.test_archives_are_frozen_and_standalone_verification_needs_no_site_packages) ... ok
+test_one_trial_per_job_and_disjoint_service_ports_and_paths (test_g2_standalone_deploy.StandaloneDeployTests.test_one_trial_per_job_and_disjoint_service_ports_and_paths) ... ok
+test_real_supervisor_uses_one_service_and_fails_closed (test_g2_standalone_deploy.StandaloneDeployTests.test_real_supervisor_uses_one_service_and_fails_closed) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 1.339s
+
+OK

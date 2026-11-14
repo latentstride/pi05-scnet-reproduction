@@ -1,0 +1,49 @@
+{
+  "baseline": "b3ac1ea47eba1a77096c31ae80382d32a4a072ea",
+  "mode": "author_native_h50",
+  "status": "NOT_READY",
+  "authority_to_execute": false,
+  "source_scene": 100000,
+  "blockers": [
+    "No validated 800-command bound within the unchanged 25000-physics-step and 1150-second soft ceilings.",
+    "The independent diagnostic is not a member of the frozen ten-trial roster. A future one-allocation host binding needs review."
+  ],
+  "gpu_deferred": [
+    "Vulkan/EGL and real camera frames",
+    "actual checkpoint startup and first raw response with live JAX RNG receipt",
+    "GPU scene and shared-service process exit"
+  ],
+  "caps_unchanged": {
+    "native_action_limit": 800,
+    "physics_step_limit": 25000,
+    "trial_soft_s": 1150,
+    "original_aloha_hard_s": 1200,
+    "original_allocation_s": 25200
+  },
+  "original_campaign_untouched": true,
+  "submission_operations": 0,
+  "gpu_inferences": 0,
+  "resource_cutoff_outcome": "RESOURCE_CENSORED",
+  "cpu_cases": {
+    "mid": {
+      "category": "controlled_candidate_stop",
+      "process_group_reaped": true,
+      "can_continue_with_live_service": true
+    },
+    "tick-zero": {
+      "category": "controlled_candidate_stop",
+      "process_group_reaped": true,
+      "can_continue_with_live_service": true
+    },
+    "missing": {
+      "category": "infrastructure_failure",
+      "process_group_reaped": true,
+      "can_continue_with_live_service": false
+    },
+    "actual": {
+      "category": "actual_safety_stop",
+      "process_group_reaped": true,
+      "can_continue_with_live_service": false
+    }
+  }
+}

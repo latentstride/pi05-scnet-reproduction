@@ -62,6 +62,22 @@ def verify(release):
         from g2_unified_plan import validate
 
         validate(plan)
+    preload = plan.get("native_preload_control")
+    establishment = plan.get("native_preload_establishment")
+    approach_repair = plan.get("free_space_approach_repair")
+    if approach_repair is not None and (
+        not unified or "scripts/g2_bounded_approach.py" not in declared
+    ):
+        raise ValueError("bounded approach runtime is absent or not unified")
+    if preload is not None and (
+        not unified or "scripts/g2_native_preload.py" not in declared
+    ):
+        raise ValueError("native preload runtime is absent or not unified")
+    if (
+        establishment is not None
+        and "scripts/g2_native_contact_preload.py" not in declared
+    ):
+        raise ValueError("contact preload establishment runtime is absent")
     ids = {row["episode_id"] for row in plan["trials"]}
     counts = Counter(
         (r["seed"], r["embodiment"], "expert" in r["method"]) for r in plan["trials"]
@@ -120,6 +136,40 @@ def verify(release):
         binding = plan["trial_bindings"][episode]
         name = f"configs/{episode}.json"
         cfg = read(release / name)
+        if unified and (
+            row.get("task_tcp_projection") is not None or cfg.get("task_tcp_projection") is not None
+        ):
+            # Old projection packages used the configuration flag alone with
+            # the default 300-action roster. Bind the new 800-action profile
+            # explicitly and only inside its selected standalone allocation.
+            from g2_unified_plan import ARX_PROJECTION_ACTION_CAP, ARX_PROJECTION_METHOD
+
+            standalone = read(release / "standalone-review.json")
+            projection = row.get("task_tcp_projection")
+            expected_actions = 300 if projection is None else ARX_PROJECTION_ACTION_CAP
+            if (
+                (standalone.get("mode"), standalone.get("episode")) != ("arx", episode)
+                or cfg.get("task_tcp_projection") != ARX_PROJECTION_METHOD
+                or type(cfg["max_actions"]) is not int
+                or cfg["max_actions"] != expected_actions
+                or row["max_policy_actions"] != expected_actions
+            ):
+                raise ValueError(f"TCP projection configuration differs from standalone roster: {episode}")
+        if cfg.get("free_space_approach_repair") != (
+            approach_repair if "expert" not in row["method"] else None
+        ):
+            raise ValueError(
+                "trial bounded approach profile differs from unified release contract"
+            )
+        expected_preload = preload if row["embodiment"] == "aloha-agilex" else None
+        if cfg.get("native_preload_control") != expected_preload:
+            raise ValueError("trial preload mode differs from unified release contract")
+        if cfg.get("native_preload_establishment") != (
+            establishment if row["embodiment"] == "aloha-agilex" else None
+        ):
+            raise ValueError(
+                "trial contact preload differs from unified release contract"
+            )
         fixture = sha256(
             json.dumps(
                 cfg["reset_fixture"], sort_keys=True, separators=(",", ":")
@@ -182,6 +232,10 @@ def verify(release):
                 raise ValueError("expert evidence is unbound")
             if read(release / binding["source"])["seed"] != row["seed"]:
                 raise ValueError("expert evidence belongs to a different seed")
+    if "author-h50-review.json" in declared:
+        from g2_author_h50_campaign import verify_overlay
+
+        verify_overlay(release, plan, declared)
     return plan
 
 
@@ -393,12 +447,23 @@ def run(root, release, output, auth_path, plan):
     fields, start, end = read_allocation(job, output)
     allocation_s = plan["budget"]["proposed_allocation_s"]
     bound_s = plan["budget"]["bounded_execution_s"]
+    author_review = release / "author-h50-review.json"
+    campaign_reserve = 0
+    if author_review.is_file():
+        from shutil import disk_usage
+        from g2_author_h50_campaign import CAMPAIGN_RESERVE_S, bind_runtime
+
+        review = read(author_review)
+        bound_s = review["ledgers"]["append"]["total_s"]
+        campaign_reserve = CAMPAIGN_RESERVE_S
+        if disk_usage(output).free < review["min_free_bytes"]:
+            raise OSError("insufficient evidence disk headroom for author H50 overlay")
     min_duration = allocation_s if unified else bound_s
     if (
         not allocation_matches(fields)
         or not start <= time.time() < end
         or not min_duration <= end - start <= allocation_s
-        or end - time.time() < bound_s
+        or end - time.time() < bound_s + campaign_reserve
     ):
         raise PermissionError("running allocation differs from the approved envelope")
     persist(output / "allocation-receipt.json", dict(job_id=job, start=start, end=end))
@@ -419,19 +484,33 @@ def run(root, release, output, auth_path, plan):
         run_deployment_stage(graphics_command, output / "graphics.log", 295, cwd=root)
         graphics = read(output / "graphics/sim-launch.json")
         budget = plan["budget"]["overhead"]
-        timeout = end - time.time() - budget["cleanup_s"] - budget["statistics_s"]
+        timeout = (
+            end
+            - time.time()
+            - budget["cleanup_s"]
+            - budget["statistics_s"]
+            - campaign_reserve
+        )
         runtime = commands(
             root, release, output, job, plan, graphics, timeout, auth_path
         )
+        execution_plan = plan
+        if campaign_reserve:
+            execution_plan, runtime = bind_runtime(
+                plan, runtime, release, output, review=review
+            )
         persist(
             output / "effective-launch.json",
             dict(
                 model=runtime["model"],
                 probes=list(runtime["probes"].values()),
                 trials=runtime["commands"],
+                **({"author_h50": review} if campaign_reserve else {}),
             ),
         )
-        summary = supervise(plan, runtime, output / "supervisor", allocated=True)
+        summary = supervise(
+            execution_plan, runtime, output / "supervisor", allocated=True
+        )
         run_deployment_stage(
             [
                 "python3",
@@ -468,6 +547,11 @@ def main():
                     checksums="verified",
                     submission_allowed=False,
                     manifest_sha256=digest(release / "SHA256SUMS"),
+                    **(
+                        {"author_h50": read(release / "author-h50-review.json")}
+                        if (release / "author-h50-review.json").is_file()
+                        else {}
+                    ),
                 )
             )
         )

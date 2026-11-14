@@ -1,0 +1,374 @@
+{
+  "task": "handover_block",
+  "checkpoint_revision": "17ef545270cf26ed81169893b60f845f80ce6557",
+  "norm_stats_sha256": "8a1f114a8873dfa0788c7f512851ee3063224ef2b8af270421076a2e4e544960",
+  "pace_revision": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+  "openpi_pace_revision": "f4e52e6de4cc487a11585a3a7414d610b2883dae",
+  "jobs": {
+    "127408633": {
+      "slurm": {
+        "state": "FAILED",
+        "start_shanghai": "2026-11-10T16:53:14",
+        "end_shanghai": "2026-11-10T18:08:59",
+        "elapsed": "01:15:45",
+        "exit_code": "1:0"
+      },
+      "public_result_sha256": "c87f05f82c6eccb7f2a7c06f84eaee69274e15cd8b101311a77b3dfe12720c16",
+      "complete_author_evaluation": false,
+      "deployment_commit": "93b6c0691e236d0b871745852f358a4cea85416b",
+      "archive_sha256": "c8eeff121eefb1bff98e8103cc3314ef6d95669e362889f3d68ac35507389e99",
+      "trials": [
+        {
+          "episode_id": "unified-seed0-native-w50",
+          "status": "completed",
+          "process_group_reaped": true,
+          "category": "controlled_candidate_stop",
+          "success": false,
+          "fresh_reset_verified": true,
+          "cleanup": {
+            "scene_opened": true,
+            "hold_complete": true,
+            "close_complete": true,
+            "scene_context_closed": true
+          },
+          "outcome": "control_error",
+          "executed": 27,
+          "queries": 2,
+          "elapsed_s": 267.74059583991766,
+          "failure": {
+            "phase": "control",
+            "code": "collision",
+            "detail": "bounded exact-pose refinements exhausted",
+            "diagnostic": {
+              "geometry": "candidate",
+              "reason": "exact_pose_refinements_exhausted",
+              "completed_actions": 0
+            }
+          },
+          "candidate_stop": {
+            "kind": "candidate_rejection",
+            "tick": 3568,
+            "state_sha256": "4643d74c4c2fc7f603e8645407151eb7df2db4e40629628548ef937884477317",
+            "failure_sha256": "0bb16106b1fda3fc73a149713f7dbf641b9d893100022816c8ddbaa056d542cd",
+            "terminal_checks_passed": true,
+            "hold_verified": true,
+            "no_physics_advance": true,
+            "hold_complete": true,
+            "close_complete": true,
+            "scene_context_closed": true
+          },
+          "event_physics_steps": 3568,
+          "last_physics_tick": 3568,
+          "events_sha256": "e51cf43315693475f45ee05ae9dd30628ffadc03b00a52957eb5d9dacc0a6303"
+        },
+        {
+          "episode_id": "unified-seed0-native-w31",
+          "status": "completed",
+          "process_group_reaped": true,
+          "category": "controlled_candidate_stop",
+          "success": false,
+          "fresh_reset_verified": true,
+          "cleanup": {
+            "scene_opened": true,
+            "hold_complete": true,
+            "close_complete": true,
+            "scene_context_closed": true
+          },
+          "outcome": "control_error",
+          "executed": 27,
+          "queries": 2,
+          "elapsed_s": 283.2524197921157,
+          "failure": {
+            "phase": "control",
+            "code": "collision",
+            "detail": "bounded exact-pose refinements exhausted",
+            "diagnostic": {
+              "geometry": "candidate",
+              "reason": "exact_pose_refinements_exhausted",
+              "completed_actions": 0
+            }
+          },
+          "candidate_stop": {
+            "kind": "candidate_rejection",
+            "tick": 3568,
+            "state_sha256": "4f6bb769c6ef80f98b68c4088725b0b45f3ac9cef6e3adabff8f0c6067646542",
+            "failure_sha256": "0bb16106b1fda3fc73a149713f7dbf641b9d893100022816c8ddbaa056d542cd",
+            "terminal_checks_passed": true,
+            "hold_verified": true,
+            "no_physics_advance": true,
+            "hold_complete": true,
+            "close_complete": true,
+            "scene_context_closed": true
+          },
+          "event_physics_steps": 3568,
+          "last_physics_tick": 3568,
+          "events_sha256": "4d4ecfd974173e918657324643de073a880b51491396568bc8627fe44c93f198"
+        },
+        {
+          "episode_id": "unified-seed1-native-w31",
+          "status": "completed",
+          "process_group_reaped": true,
+          "category": "controlled_contact_stop",
+          "success": false,
+          "fresh_reset_verified": true,
+          "cleanup": {
+            "scene_opened": true,
+            "hold_complete": true,
+            "close_complete": true,
+            "scene_context_closed": true
+          },
+          "outcome": "control_error",
+          "executed": 144,
+          "queries": 5,
+          "elapsed_s": 451.6362125352025,
+          "failure": {
+            "phase": "control",
+            "code": "backend_error",
+            "detail": "object slipped relative to confirmed holder",
+            "diagnostic": {
+              "side": "left",
+              "completed_actions": 20,
+              "contact_tick": 10988
+            },
+            "contact_state": {
+              "phase": "left_holding",
+              "holders": [
+                "left"
+              ],
+              "contact_fingers": {
+                "left": [
+                  33,
+                  34
+                ],
+                "right": [
+                  43
+                ]
+              },
+              "stable_counts": {
+                "left": 3,
+                "right": 0
+              },
+              "saw_shared_hold": false,
+              "releasing": []
+            }
+          },
+          "contact_stop": {
+            "kind": "slip",
+            "tick": 10988,
+            "terminal_checks_passed": true,
+            "hold_complete": true,
+            "close_complete": true,
+            "scene_context_closed": true
+          },
+          "event_physics_steps": 10988,
+          "last_physics_tick": 10988,
+          "events_sha256": "d4d024a81fb00c888a64d1322b2f112de617b1da936296077bc41879e3ee844f"
+        },
+        {
+          "episode_id": "unified-seed1-native-w50",
+          "status": "completed",
+          "process_group_reaped": true,
+          "category": "controlled_candidate_stop",
+          "success": false,
+          "fresh_reset_verified": true,
+          "cleanup": {
+            "scene_opened": true,
+            "hold_complete": true,
+            "close_complete": true,
+            "scene_context_closed": true
+          },
+          "outcome": "control_error",
+          "executed": 177,
+          "queries": 4,
+          "elapsed_s": 527.7337013781071,
+          "failure": {
+            "phase": "control",
+            "code": "collision",
+            "detail": "predicted finger start intersects task block",
+            "diagnostic": {
+              "geometry": "candidate",
+              "side": "right",
+              "finger": 0,
+              "depth_m": 0.0020423028618097305,
+              "allowed_penetration_m": 0.002,
+              "completed_actions": 27
+            }
+          },
+          "candidate_stop": {
+            "kind": "candidate_rejection",
+            "tick": 12422,
+            "state_sha256": "d3ffc82ab5c115338e22f4264fa3aa500053673df0efe5978f6f764682f960f8",
+            "failure_sha256": "ac18ce4d37c3e5c7317e71809dc95d79ad73487bdf48c6e221651536eab55f4d",
+            "terminal_checks_passed": true,
+            "hold_verified": true,
+            "no_physics_advance": true,
+            "hold_complete": true,
+            "close_complete": true,
+            "scene_context_closed": true
+          },
+          "event_physics_steps": 12422,
+          "last_physics_tick": 12422,
+          "events_sha256": "a78357e92bb0312a1ca6cc24323f2555e834605fb390e2653d7690302d414040"
+        },
+        {
+          "episode_id": "unified-seed0-native-w4",
+          "status": "completed",
+          "process_group_reaped": true,
+          "category": "controlled_candidate_stop",
+          "success": false,
+          "fresh_reset_verified": true,
+          "cleanup": {
+            "scene_opened": true,
+            "hold_complete": true,
+            "close_complete": true,
+            "scene_context_closed": true
+          },
+          "outcome": "control_error",
+          "executed": 26,
+          "queries": 7,
+          "elapsed_s": 270.0688202008605,
+          "failure": {
+            "phase": "control",
+            "code": "collision",
+            "detail": "predicted finger start intersects task block",
+            "diagnostic": {
+              "geometry": "candidate",
+              "side": "left",
+              "finger": 1,
+              "depth_m": 0.0021450016647577286,
+              "allowed_penetration_m": 0.002,
+              "completed_actions": 2
+            }
+          },
+          "candidate_stop": {
+            "kind": "candidate_rejection",
+            "tick": 3542,
+            "state_sha256": "45092ed38e5f2dd276290dfd3ab847cce6acc2491f381989a8bf5a9e02490fb4",
+            "failure_sha256": "7dda9de24ddd5688f1f6b9b07e80f0ad23bdc2c6cce6f1981ee215d6abf0a555",
+            "terminal_checks_passed": true,
+            "hold_verified": true,
+            "no_physics_advance": true,
+            "hold_complete": true,
+            "close_complete": true,
+            "scene_context_closed": true
+          },
+          "event_physics_steps": 3542,
+          "last_physics_tick": 3542,
+          "events_sha256": "ff7f4fcf60c4ca519e38a03420a60c7121263a8b18391d0c7f4d2a8c78b27092"
+        },
+        {
+          "episode_id": "unified-seed0-arx-full-w4",
+          "status": "actual_safety_stop",
+          "reason": "actual_safety_stop",
+          "process_group_reaped": true,
+          "category": "actual_safety_stop",
+          "success": false,
+          "fresh_reset_verified": true,
+          "cleanup": {
+            "scene_opened": true,
+            "hold_complete": true,
+            "close_complete": true,
+            "scene_context_closed": true
+          },
+          "outcome": "planning_failed",
+          "executed": 26,
+          "queries": 9,
+          "policy_actions": 26,
+          "recovery_actions": 0,
+          "elapsed_s": 162.9501852467656,
+          "failure": {
+            "phase": "planning",
+            "code": "collision",
+            "detail": "generic recovery forbidden during holding/release",
+            "diagnostic": {
+              "reason": "recovery_unsafe_contact"
+            }
+          },
+          "event_physics_steps": 4965,
+          "last_physics_tick": 4965,
+          "events_sha256": "ba106255d2cc061784ca15d082d6c1f92cf8151b671f7a283f0407d0f7760f3d"
+        },
+        {
+          "episode_id": "unified-seed1-arx-full-w4",
+          "status": "not_run",
+          "reason": "actual_safety_stop"
+        },
+        {
+          "episode_id": "unified-seed1-native-w4",
+          "status": "not_run",
+          "reason": "actual_safety_stop"
+        },
+        {
+          "episode_id": "unified-seed1-arx-expert-repaired",
+          "status": "not_run",
+          "reason": "actual_safety_stop"
+        },
+        {
+          "episode_id": "unified-seed0-arx-expert-repaired",
+          "status": "not_run",
+          "reason": "actual_safety_stop"
+        },
+        {
+          "episode_id": "author-native-h50-seed100000",
+          "status": "not_run",
+          "reason": "actual_safety_stop"
+        }
+      ],
+      "counts": {
+        "planned": 11,
+        "executed": 6,
+        "successes": 0,
+        "not_run": 5
+      },
+      "campaign_stop": "actual_safety_stop"
+    },
+    "127510335": {
+      "slurm": {
+        "state": "COMPLETED",
+        "start_shanghai": "2026-11-10T19:59:42",
+        "end_shanghai": "2026-11-10T20:14:24",
+        "elapsed": "00:14:42",
+        "exit_code": "0:0"
+      },
+      "public_result_sha256": "eb84dfd4bb916edc39bf3a5452a350b397cbae5eb6502c24df78e81341c8d44d",
+      "complete_author_evaluation": false,
+      "deployment_commit": "fae63f80ec65ce6121f486f0eac57ea4bdb16724",
+      "archive_sha256": "1d60de6eeaffacab0962119186d8bc7aac4755537cfba1aa900c325664585a6e",
+      "trials": [
+        {
+          "episode_id": "author-native-h50-seed100000",
+          "category": "controlled_candidate_stop",
+          "outcome": "SAFETY_STOP",
+          "success": false,
+          "queries": 1,
+          "completed_actions": 42,
+          "physics_steps": 4746
+        }
+      ]
+    },
+    "127510363": {
+      "slurm": {
+        "state": "COMPLETED",
+        "start_shanghai": "2026-11-10T20:27:36",
+        "end_shanghai": "2026-11-10T20:40:57",
+        "elapsed": "00:13:21",
+        "exit_code": "0:0"
+      },
+      "public_result_sha256": "91afcdfe410eb471a11df00e2282f03cc100d8d37f35a70745c727f75ed532fb",
+      "complete_author_evaluation": false,
+      "deployment_commit": "fae63f80ec65ce6121f486f0eac57ea4bdb16724",
+      "archive_sha256": "608982ae51ac552e93eb72635a96b53fa685a4f574af11b656b3e3b7b7d89043",
+      "trials": [
+        {
+          "episode_id": "unified-seed1-arx-full-w4",
+          "category": "diagnostic_complete",
+          "outcome": "planning_failed",
+          "success": false,
+          "queries": 36,
+          "completed_actions": 138,
+          "physics_steps": 16160
+        }
+      ]
+    }
+  }
+}

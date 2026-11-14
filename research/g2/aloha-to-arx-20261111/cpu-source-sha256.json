@@ -1,0 +1,13 @@
+{
+  "results/g2/arx-transfer-cpu-20261111-r2/comparison.json": "da685dcf26f212482b439f014b2f0b1cae247fd0aa7e8ef466c1f6080979359a",
+  "tools/g2-arx-transfer-cpu-20261111-r2/cpu.log": "608adbbd196d523ea8a26fb2e2a10af80bb4ac22a3af4f6bb981d7545d0b4143",
+  "results/g2/arx-transfer-cpu-20261111-r2/36/new/dynamic-events.jsonl": "8fdfb18292db8c9c07cf1a436866a737b4371e90cb9666687cd68adb39169ec6",
+  "results/g2/arx-transfer-cpu-20261111-r2/36/new/plan.npz": "fe2a1bb2bf85e07699c167c9b767d92ecf636d5afafb5dc45e80b6ba84a53135",
+  "results/g2/arx-transfer-cpu-20261111-r2/35/new/plan.npz": "cb3d4ea859304070486a8f589db055adae33cccc6a8cb4c8266a0b308be4a6f6",
+  "results/g2/arx-transfer-cpu-20261111-r2/35/new/dynamic-events.jsonl": "bcfa46d793f3cd8f72cd4b3fa62243fe9da1733afe7f2c8f374f7475b78e58ef",
+  "tools/g2-arx-transfer-cpu-20261111-r2/g2_arx_transfer_probe_cpu.py": "0ac4c8295cbb9772e57738942b8952f4a3956f79320c8ca24439b28c68926e07",
+  "tools/g2-arx-transfer-cpu-20261111-r2/g2_task_tcp_projection.py": "76c4cded64a80d898a520453c161014a32a4a158b5d12046a262503271783ec3",
+  "tools/g2-arx-transfer-cpu-20261111-r2/g2_static_failure_replay.py": "7cad4c6209ed4c9c4f8625bd6939d83f5493b14cb25609063a72ce720970e4c8",
+  "tools/g2-arx-transfer-cpu-20261111-r2/g2_final_geometry_sweep_cpu.py": "9ad5466ec005df74a58d1c523ff3a91358597f5a6be8b7958cf638c8045aa719",
+  "tools/g2-arx-transfer-cpu-20261111-r2/arx_replay.py": "79b9cfa367ed31331d8c549c61a8f50f6153c2d687d74a25c0c9f6be1b06d24b"
+}

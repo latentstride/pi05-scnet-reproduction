@@ -1,0 +1,26 @@
+{
+  "draft_pr_base": "73e39e6dc385097044459957dd8df68d735a9103",
+  "fixed_unified_trial_config_sha256": {
+    "unified-seed0-native-w50": "04f2e041cedb07a2eae69425175c60d235ed086095cce10600dfb9e492a8bae6",
+    "unified-seed0-native-w31": "2fec598cfa2e655e1b697155c6029f14a16a977b79a410e50dc8eca44d4b50bb",
+    "unified-seed1-native-w31": "917f63fb746df9166e738051199b5f15a60fc161bb14ac21b2b6a1dd402595fa",
+    "unified-seed1-native-w50": "468f1c8b27814e443fa8df4bc61a340d8cf5e58ac95b76ee0a5f44bf54f71c2a",
+    "unified-seed0-native-w4": "484ff9bee77afbad136f97d3ef720db2214c052f72f69bf241e023a6966ca334",
+    "unified-seed0-arx-full-w4": "186c32dc2ee9ea1efa5405b881a724211320eb25d5ccaa2dec23c2fc9d4941f5",
+    "unified-seed1-arx-full-w4": "7aff8c46bd8ad0472da14b11baf036398f79b750077ffc7b30538031c54857d1",
+    "unified-seed1-native-w4": "db397e1a41245106f62c9a17bdf05a12fb4b9bc0d259f921667939a5fac76c2e",
+    "unified-seed1-arx-expert-repaired": "0e3d83311359f5d2f7c95477322688d985242053ff7da639e60fcdbf7ed7908f",
+    "unified-seed0-arx-expert-repaired": "78197e82e81c2fb538c951bbc591ce92506237b25b4069026f8ab96ddb0a9242"
+  },
+  "author_budget_config_sha256": "24576e462a71d06b6f1b4ba2b3aea1a95e9a54744659f80b10190fc81284da13",
+  "source_urdf_sha256": "097c59fb19a7b482249c6097df8319586ea7cfd268c015516f103b289a7e761a",
+  "upstream_rollout_sha256": "6ea198bcf47d6b6e62bd9206b6c5694466ca6346b30ad9c20885e4009af91325",
+  "cpu_physics_exits": {
+    "author_native": 0,
+    "protected": 0
+  },
+  "cpu_physics_stream_sha256": {
+    "author_native": "030ecfb8728d9777fef5d4474f04d36a7ebca149af2e433791f3be55b8f86b59",
+    "protected": "cd234600a6d0c6689364ebb04dc22482365fab15a7dc07a5e4c59a96cf384b24"
+  }
+}

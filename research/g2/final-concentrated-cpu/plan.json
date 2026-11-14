@@ -1,0 +1,36 @@
+{
+  "base_commit": "db1ceb95ea652fc8459a274f7ae2b956da38dd8b",
+  "scope": "one concentrated CPU repair and original 10-trial release acceptance",
+  "gpu_operations": 0,
+  "model_inference": false,
+  "seed1": {
+    "physics": "same frozen H50 seed1 prefix and original live guards",
+    "grid_gap_m": [
+      0.001,
+      0.002,
+      0.004
+    ],
+    "trigger": "first measured bilateral impulse before unchanged three-step holder confirmation",
+    "drive": "equal native finger targets min(actual fingers)-gap, at least previous drive; retain position preload; zero velocity feedforward",
+    "anchor": "unchanged acquisition rule and no resetting",
+    "horizon": "1.2s initial maintain, 30mm/2s bounded lift, 1s hold; stop on first unchanged guard",
+    "selection": "largest minimum original slip margin among dynamically accepted branches, then release compatibility and reproducibility; finite grid no global optimum claim",
+    "baseline": "accepted first-holder drive hold, margin 0.141793mm"
+  },
+  "geometry": {
+    "seed0_native": "recheck actual/interpolated/full policy endpoint separately; exact original 2mm boundary",
+    "arx": "each real original rejection at its actual state; exact-pose refined IK and bounded additional seeds under unchanged continuity bounds",
+    "reuse": "existing expert feasible paths remain references, not substituted model commands"
+  },
+  "preserve": {
+    "trials": 10,
+    "allocations": 1,
+    "model_service": 1,
+    "trial_order": true,
+    "checkpoint": true,
+    "norm_stats": true,
+    "safety_thresholds": true,
+    "history": true
+  },
+  "submission_allowed": false
+}

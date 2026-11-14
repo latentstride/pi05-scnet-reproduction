@@ -1,0 +1,29 @@
+{
+  "mode": "arx",
+  "archive_sha256": "608982ae51ac552e93eb72635a96b53fa685a4f574af11b656b3e3b7b7d89043",
+  "manifest_sha256": "783d6fc117a3acc565ac73aed4d8878fb7b774bd9ee40db8bd3a8a1bf1a7ff9d",
+  "configuration_sha256": "d0494e5d6d96a866537dc3360fcdcaf6da472ca7b20367dc4bd49ed2a146a10a",
+  "frozen_arx_config_sha256": "7aff8c46bd8ad0472da14b11baf036398f79b750077ffc7b30538031c54857d1",
+  "spec": {
+    "mode": "arx",
+    "episode": "unified-seed1-arx-full-w4",
+    "wall_s": 5400,
+    "startup_s": 1680,
+    "hard_s": 2600,
+    "port_base": 39000,
+    "min_disk_gib": 8,
+    "fee_cap": "5.40",
+    "submission_allowed": false,
+    "base_manifest_sha256": "9270db1e97eafedfb6f94711c8b8c9f33efd76d04ab800af99bf11a42556f19a",
+    "base_archive_sha256": "c8eeff121eefb1bff98e8103cc3314ef6d95669e362889f3d68ac35507389e99",
+    "overhead": {
+      "graphics_s": 300,
+      "statistics_s": 120,
+      "cleanup_s": 120
+    },
+    "host_reserve_s": 360,
+    "allocations": 1,
+    "model_services": 1,
+    "automatic_retry": false
+  }
+}

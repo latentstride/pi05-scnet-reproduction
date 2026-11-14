@@ -1,0 +1,17 @@
+{
+  "allocation_job_created": false,
+  "package_members": 89,
+  "platform": {
+    "available_result_bytes": 78322917376,
+    "disk_reserve_gib": 32,
+    "max_active_submissions_per_user": 20,
+    "max_running_per_user": 12,
+    "node_configured_gpus": "gpu:RTX4090-PCIE-24GB-LS:8(S:0-7)",
+    "node_state": "MIXED",
+    "original_job": "127510363",
+    "original_state": "COMPLETED",
+    "original_submit": "2026-11-10T13:01:06",
+    "partition_max_time": "333-08:00:00",
+    "prior_active_jobs": 0
+  }
+}

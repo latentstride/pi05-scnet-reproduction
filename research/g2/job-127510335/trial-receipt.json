@@ -1,0 +1,170 @@
+{
+  "mode": "author_native_h50",
+  "trial_clock": {
+    "started": 65609252.889994256,
+    "soft": 65611652.889994256,
+    "hard": 65611952.889994256,
+    "reap_at": 65611942.889994256,
+    "budget": {
+      "physics_steps": 130000,
+      "soft_s": 2400,
+      "hard_s": 2700,
+      "reap_s": 10,
+      "request_s": 390
+    }
+  },
+  "episode_id": "author-native-h50-seed100000",
+  "cleanup": {
+    "scene_opened": true,
+    "hold_complete": true,
+    "close_complete": true,
+    "scene_context_closed": true
+  },
+  "cleanup_failures": [],
+  "fresh_reset_verified": true,
+  "success": false,
+  "category": "controlled_candidate_stop",
+  "policy_kind": "checkpoint",
+  "prompt": "Grab the red block using the left arm.",
+  "initial_measurement": {
+    "source": "sapien.Scene.get_contacts after last real setup_demo physics step",
+    "status": "measured",
+    "stamp": {
+      "episode": "author-native-h50-seed100000",
+      "tick": 0,
+      "sim_s": 0.0
+    },
+    "author_stability_physics_steps": 2500,
+    "state_sha256": "d1a21fd7829b3908474edda48007405e40f86fb427e45bf247b6d577f5af7025",
+    "contact_sha256": "b767e8040a736419ab127f693a18f31cce127af43d64871b55fee50689b92d4e",
+    "manifold_count": 33
+  },
+  "result": {
+    "failure": {
+      "code": "collision",
+      "detail": "predicted finger start intersects task block",
+      "diagnostic": {
+        "geometry": "candidate",
+        "side": "left",
+        "finger": 0,
+        "depth_m": 0.002051545772701502,
+        "allowed_penetration_m": 0.002,
+        "start_native_m": 0.045010555535554886,
+        "requested_native_m": 0.044932764023542404,
+        "actual_arm": [
+          [
+            0.03484413027763367,
+            2.517157793045044,
+            1.7568399906158447,
+            0.7538204789161682,
+            1.1316850185394287,
+            0.023331932723522186
+          ],
+          [
+            -0.0031001463066786528,
+            -0.004161534830927849,
+            -0.0016547242412343621,
+            -0.001160944695584476,
+            0.0007394697749987245,
+            3.360534174134955e-05
+          ]
+        ],
+        "actual_fingers": [
+          [
+            0.045010555535554886,
+            0.04491690918803215
+          ],
+          [
+            0.04495052248239517,
+            0.044954340904951096
+          ]
+        ],
+        "drive_arm": [
+          [
+            0.028128143399953842,
+            2.5227105617523193,
+            1.7618337869644165,
+            0.7521458864212036,
+            1.1299138069152832,
+            0.02327408641576767
+          ],
+          [
+            -0.0025925268419086933,
+            -0.0034305760636925697,
+            -0.0009775322396308184,
+            -0.0016752261435613036,
+            -0.0005081624840386212,
+            -1.5132679436646868e-05
+          ]
+        ],
+        "drive_fingers": [
+          [
+            0.044932764023542404,
+            0.044932764023542404
+          ],
+          [
+            0.04498815909028053,
+            0.04498815909028053
+          ]
+        ],
+        "previous_drive": [
+          [
+            0.044932108372449875,
+            0.044932108372449875
+          ],
+          [
+            0.04498815909028053,
+            0.04498815909028053
+          ]
+        ],
+        "candidate_segment_fraction": 1.0
+      }
+    }
+  },
+  "outcome": "SAFETY_STOP",
+  "completed_actions": 42,
+  "native_action_count": 43,
+  "physics_steps": 4746,
+  "query_action_counts": [
+    0
+  ],
+  "candidate_stop": {
+    "kind": "candidate_rejection",
+    "finger_drive_m": [
+      [
+        0.045010555535554886,
+        0.04491690918803215
+      ],
+      [
+        0.04495052248239517,
+        0.044954340904951096
+      ]
+    ],
+    "expected_hold_finger_m": [
+      [
+        0.045010555535554886,
+        0.04491690918803215
+      ],
+      [
+        0.04495052248239517,
+        0.044954340904951096
+      ]
+    ],
+    "episode": "author-native-h50-seed100000",
+    "tick": 4746,
+    "state_sha256": "8db24816dd71c8afb723c92bcd46eab80fb7d212eacb17b71bfb34c6171f758d",
+    "terminal_checks_passed": true,
+    "hold_verified": true,
+    "no_physics_advance": true,
+    "contact_sha256": "14807175cc9b0c59229a45c277b8767e53b7a9748e275864e10618a2199c842f",
+    "contact_manifold_count": 27,
+    "contact_source": "sapien.Scene.get_contacts",
+    "contact_sample_measured": true,
+    "hold_complete": true,
+    "failure_sha256": "29f432a1ccf612d6490ccb7048c64da36e43f2720c62d3f067d6cc06e110fc06",
+    "close_complete": true,
+    "scene_context_closed": true
+  },
+  "finished_at": 65609730.2420515,
+  "elapsed_s": 462.9202146679163
+}

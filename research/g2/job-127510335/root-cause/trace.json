@@ -1,0 +1,166 @@
+{
+  "actual_contact_phases_by_tick": {
+    "approach": 4746
+  },
+  "frozen_contact_normal_projected_gaps_mm": {
+    "next_drive": [
+      -1.8543689346250938,
+      -1.8931409337937208,
+      -1.8283969591750033,
+      -1.7896173079934274
+    ],
+    "raw_action_endpoint": [
+      -4.807012543993686,
+      -4.848718992795098,
+      -4.784651648819271,
+      -4.742937550896959
+    ]
+  },
+  "raw_physx_finger_block_contacts": {
+    "tick_samples_with_finger_block_manifold": 827,
+    "tick_samples_with_nonpositive_finger_block_separation": 0,
+    "tick_samples_with_finger_block_impulse_ge_1e-8": 0
+  },
+  "final_tick_finger_block_physx_points": [
+    {
+      "pair": [
+        "fl_link7",
+        "box"
+      ],
+      "position": [
+        -0.19318844377994537,
+        0.2378351092338562,
+        0.9164261817932129
+      ],
+      "separation": 0.0019605422858148813,
+      "normal": [
+        -0.8894216418266296,
+        -0.4570877254009247,
+        -9.984291682485491e-05
+      ],
+      "impulse": [
+        -0.0,
+        -0.0,
+        -0.0
+      ]
+    },
+    {
+      "pair": [
+        "fl_link7",
+        "box"
+      ],
+      "position": [
+        -0.19320762157440186,
+        0.23797746002674103,
+        0.9064272046089172
+      ],
+      "separation": 0.0019126536790281534,
+      "normal": [
+        -0.8894216418266296,
+        -0.4570877254009247,
+        -9.984291682485491e-05
+      ],
+      "impulse": [
+        -0.0,
+        -0.0,
+        -0.0
+      ]
+    },
+    {
+      "pair": [
+        "fl_link7",
+        "box"
+      ],
+      "position": [
+        -0.1939566731452942,
+        0.23927688598632812,
+        0.9064471125602722
+      ],
+      "separation": 0.0019847785588353872,
+      "normal": [
+        -0.8894216418266296,
+        -0.4570877254009247,
+        -9.984291682485491e-05
+      ],
+      "impulse": [
+        -0.0,
+        -0.0,
+        -0.0
+      ]
+    },
+    {
+      "pair": [
+        "fl_link7",
+        "box"
+      ],
+      "position": [
+        -0.1939374804496765,
+        0.2391345500946045,
+        0.9164460897445679
+      ],
+      "separation": 0.0020326748490333557,
+      "normal": [
+        -0.8894216418266296,
+        -0.4570877254009247,
+        -9.984291682485491e-05
+      ],
+      "impulse": [
+        -0.0,
+        -0.0,
+        -0.0
+      ]
+    }
+  ],
+  "maximum_tracking_position_error_mm": [
+    4.064759636374004,
+    1.4894041765904666
+  ],
+  "maximum_tracking_angle_error_deg": [
+    0.35570491209393273,
+    0.32940184364082314
+  ],
+  "closest_measured_tcp_to_block_center_mm": [
+    97.96347769535139,
+    628.7709074181274
+  ],
+  "production_candidate_penetration_mm": 2.051545772701502,
+  "frozen_penetration_limit_mm": 2.0,
+  "single_predicate_offline_only": [
+    {
+      "counterfactual_limit_mm": 1.9,
+      "rejected": true
+    },
+    {
+      "counterfactual_limit_mm": 2.0,
+      "rejected": true
+    },
+    {
+      "counterfactual_limit_mm": 2.025,
+      "rejected": true
+    },
+    {
+      "counterfactual_limit_mm": 2.05,
+      "rejected": true
+    },
+    {
+      "counterfactual_limit_mm": 2.051,
+      "rejected": true
+    },
+    {
+      "counterfactual_limit_mm": 2.052,
+      "rejected": false
+    },
+    {
+      "counterfactual_limit_mm": 2.075,
+      "rejected": false
+    },
+    {
+      "counterfactual_limit_mm": 2.1,
+      "rejected": false
+    },
+    {
+      "counterfactual_limit_mm": 2.2,
+      "rejected": false
+    }
+  ]
+}

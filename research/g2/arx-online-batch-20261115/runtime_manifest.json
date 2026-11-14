@@ -1,0 +1,109 @@
+{
+  "source_git": "08d04d4356377ce7e7efd7594438e38db3428a10",
+  "controller_git": "d8bfbc6215f7154c7ba1d8a7838a4ecfb6789244",
+  "project_root_alias": "<PROJECT_ROOT>",
+  "real_workdir_verified": true,
+  "standalone_entry": "scripts/pace_g2_standalone.slurm",
+  "deployed_controller": "scripts/g2_arx_direct.py",
+  "results_path": "results/pace-g2-standalone-arx-<JOB_ID>",
+  "cache_path": "results/pace-g2-standalone-arx-<JOB_ID>/cache",
+  "loopback_port": "39000 + JOB_ID % 4000 (availability checked at launch)",
+  "identical_frozen_runtime_members": {
+    "g2_arx_direct.py": "705be6bbf3978bc7c19533da7c92a06681bca0a0448e066a4e7231f8055011d2",
+    "g2_adapter.py": "4197ad48de53552a425582d9dd8e527a62912d357ca0eced015ee2497b975d82",
+    "g2_task_runtime.py": "3ba3b9b2a3ba99fa2290fcc342c97912e6eb1551d760c4d55b531ae20893b271",
+    "g2_robotwin_backend.py": "424b0c77df39363e60b5eda6a2d9a7d242739135bb33e6fba86f422bcc69a57e",
+    "g2_kinematics.py": "bb21f17ffacd0ee603f79ab36f393ee4b8fda2efe44fdb2786a430233365a546",
+    "g2_remaining_episode.py": "cd71f93df2f6e8066c937ff5946c36c6095eb07ec5915bec385ba58c06359453",
+    "g2e_model_entry.py": "ba2eaef1e5eb9c597d928d067ed4d380608f560dcbb58d27ed96ac06401eca47",
+    "g2_final_trial.py": "3e13e09763f7f2b3b6ca5d71f2fd0c2d2d3c6f570c8d84ca7d86db54aac38603",
+    "g2_graphics.sh": "f4a95770d936bbab816fe8cce0ce0a26743f909272d5e96e8d022907efdcc721",
+    "pace_g1_model_env.sh": "af72a64956d20a8b44bdd168f735923175b483b739aef0f1be19c222ea589db8",
+    "pace_g2_standalone.slurm": "2e92b3ca9f152067605baa24e26bf4f40e3014132ad643b4178f748fff36b474"
+  },
+  "resource": {
+    "gpu_count": 1,
+    "gpu_type": "RTX4090",
+    "cpu": 4,
+    "memory_gib": 32,
+    "time_s": 5400,
+    "trial_hard_s": 2600,
+    "max_actions": 800,
+    "max_queries": 300,
+    "max_recoveries": 0,
+    "model_and_dynamic_startup_s": 1680,
+    "openpi_import_s": 1200,
+    "model_ready_cap_s": 1500,
+    "no_requeue": true
+  },
+  "model": {
+    "revision": "17ef545270cf26ed81169893b60f845f80ce6557",
+    "model_config": "pi05_robotwin_handover_block",
+    "paths": {
+      "checkpoint": "cache/pace-handover/handover_block",
+      "norm_stats": "cache/pace-handover/handover_block/assets/robotwin/norm_stats.json",
+      "tokenizer": "cache/openpi-pace/big_vision/paligemma_tokenizer.model",
+      "model_container": "containers/openpi-ubuntu",
+      "robotwin_container": "research/robotwin/robotwin-cu122",
+      "assets": "source/PACE-fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/assets"
+    },
+    "norm_stats_sha256": "8a1f114a8873dfa0788c7f512851ee3063224ef2b8af270421076a2e4e544960",
+    "tokenizer_sha256": "8986bb4f423f07f8c7f70d0dbe3526fb2316056c17bae71b1ea975e77a168fc6",
+    "pace_commit": "fd2e624cc19325cc9b20a620c82d51c0d8e25cc1",
+    "openpi_commit": "f4e52e6de4cc487a11585a3a7414d610b2883dae"
+  },
+  "candidates": {
+    "G1": {
+      "mode": "arx_direct_v1",
+      "archive_sha256": "6da081c1987c71f5539e542262095ac7fe17be40efd0bca3742687f069260bd7",
+      "policy_rng_seed": 20261107,
+      "trial_config_sha256": "1d75b919776c821283fe86a5c8a63b6a295cba6f2e4d922a6c9e97f28c57a140",
+      "parent_archive_sha256": "2bdf4029062b13f5175aefbd643f3d81171a33977e88df9e47f694f0b56c1f08",
+      "manifest_sha256": "714d65693ff65e274d5abc83772bbfce9ed61430226f33300156fe7b1c2cbad4",
+      "configuration_sha256": "d0494e5d6d96a866537dc3360fcdcaf6da472ca7b20367dc4bd49ed2a146a10a",
+      "episode": "unified-seed1-arx-full-w4",
+      "scene_seed": 1,
+      "release_path": "<PROJECT_ROOT>/tools/arx-online-batch-20261115.5yTDsQqw/G1/g2-standalone-arx"
+    },
+    "G2": {
+      "mode": "arx_direct_v1",
+      "archive_sha256": "9ba8bce76ca0480d18eea3c63aea49fa2c96c67872306a9946aee3ef5d060142",
+      "policy_rng_seed": 20261108,
+      "trial_config_sha256": "eba071950e85597de7b02b3383822c2098da151fdaa327b64e00775365e29d2a",
+      "parent_archive_sha256": "2bdf4029062b13f5175aefbd643f3d81171a33977e88df9e47f694f0b56c1f08",
+      "manifest_sha256": "d3fe599dfc5bf8ae9d878920dc6ceb6e63fa836c678db0d5ad1743037a253875",
+      "configuration_sha256": "d0494e5d6d96a866537dc3360fcdcaf6da472ca7b20367dc4bd49ed2a146a10a",
+      "episode": "unified-seed1-arx-full-w4",
+      "scene_seed": 1,
+      "release_path": "<PROJECT_ROOT>/tools/arx-online-batch-20261115.5yTDsQqw/G2/g2-standalone-arx"
+    },
+    "G3": {
+      "mode": "arx_direct_v1",
+      "scene_seed": 0,
+      "policy_rng_seed": 20261107,
+      "checkpoint_revision": "17ef545270cf26ed81169893b60f845f80ce6557",
+      "archive_sha256": "83b198c72d05a8ba2af3959a0aa7b699b987438dbef1b8334d029b2985687f97",
+      "manifest_sha256": "29c66ecd67d549e3010c7dd6dee3b2f85cba270e9786ff402b35cbd5fe5747cd",
+      "configuration_sha256": "c953ac62d2d073bc0a87edc30258c3683b757bf6c80981ee8edd6649145ed0a1",
+      "trial_config_sha256": "c604e00a4b015cea0f2ee7817ebe85bc6fc30726b7a33d867572c4ac6e2c766f",
+      "parent_archive_sha256": "6da081c1987c71f5539e542262095ac7fe17be40efd0bca3742687f069260bd7",
+      "reset_fixture_sha256": "77629daa82a44c540ab08e35e25ec7f124167a909ff5c9251280c2bbabae2a43",
+      "episode": "unified-seed0-arx-full-w4",
+      "release_path": "<PROJECT_ROOT>/tools/arx-online-batch-20261115.mT0LHw2B/G3/g2-standalone-arx"
+    },
+    "G4": {
+      "mode": "arx_direct_v1",
+      "scene_seed": 2,
+      "policy_rng_seed": 20261107,
+      "checkpoint_revision": "17ef545270cf26ed81169893b60f845f80ce6557",
+      "archive_sha256": "f8fb507c49f714984578447790a4473d8ccbaf1a3897fd0e53b6d503cc579627",
+      "manifest_sha256": "29903abaf9da7f1f05adf83d47131d792a7803fb2b4eaa45cdd00d7657697999",
+      "configuration_sha256": "36cebaa4356222d49810696b787282b06995d4f5d5074517f350169980d96436",
+      "trial_config_sha256": "88fe7219a0733212bf95baaac86cac4728f49b299241d742fe2321bf29d3bf4a",
+      "parent_archive_sha256": "6da081c1987c71f5539e542262095ac7fe17be40efd0bca3742687f069260bd7",
+      "reset_fixture_sha256": "f09b6334b50f7875b15bb815615f045374ce8d829a7891edd78d2d8d790c116a",
+      "episode": "unified-seed2-arx-full-w4",
+      "release_path": "<PROJECT_ROOT>/tools/arx-online-batch-20261115.mT0LHw2B/G4/g2-standalone-arx"
+    }
+  }
+}

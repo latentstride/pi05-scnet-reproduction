@@ -1,0 +1,169 @@
+{
+  "status": "SLURM_TEST_ONLY_PASS_FINANCIAL_ADMISSION_BLOCKED",
+  "executed_gpu_allocations": 0,
+  "quote": {
+    "catalog_observed": "2026-11-15 Asia/Shanghai",
+    "displayed_yuan_per_gpu_hour": "3.60",
+    "displayed_balance_covers_batch": true,
+    "budget_per_job_cny": "5.40",
+    "budget_batch_cny": "21.60",
+    "product": "SCNet 821418588551249920 华东一区【昆山】",
+    "quote_observation_reference": "2026-11-15T00:12:24+08:00",
+    "existing_runtime_quote_lifetime_days": 7,
+    "illustrative_expires_at": "2026-11-22T00:12:24+08:00",
+    "usable_at_forecast_start": false
+  },
+  "gpu_required": [
+    "allocated GPU identity and CUDA",
+    "provider Vulkan/EGL rendering and real RGB",
+    "full GPU model initialization and new frozen policy responses",
+    "online bilateral grasp, 50 mm lift, handover, placement and original success"
+  ],
+  "regression_summary": "77 passed in 8.35s",
+  "contact_exchange": {
+    "status": "PASS",
+    "evidence": "evidence/contact-receipt.json"
+  },
+  "candidates": {
+    "G1": {
+      "package_and_dispatch": "PASS",
+      "valid_manifest_members": 91,
+      "cpu_reset_readback": "REUSED_LOCKED_SEED_1",
+      "contact_cpu_exchange": "PASS",
+      "platform": {
+        "original_job": "127510363",
+        "original_state": "COMPLETED",
+        "original_submit": "2026-11-10T13:01:06",
+        "prior_active_jobs": 0,
+        "max_active_submissions_per_user": 20,
+        "max_running_per_user": 12,
+        "available_result_bytes": 72678952960,
+        "disk_reserve_gib": 32,
+        "partition_max_time": "333-08:00:00",
+        "node_state": "MIXED",
+        "node_configured_gpus": "gpu:RTX4090-PCIE-24GB-LS:8(S:0-7)"
+      },
+      "result_parent_writable": true,
+      "slurm_test_only": {
+        "argv": [
+          "sbatch",
+          "--test-only",
+          "--comment=cpf-g2-standalone-arx-6da081c1987c-single",
+          "--account=<SCNET_ACCOUNT>",
+          "--chdir=<PROJECT_ROOT>",
+          "--export=ALL,G2_FINAL_RELEASE=<PROJECT_ROOT>/tools/arx-online-batch-20261115.5yTDsQqw/G1/g2-standalone-arx,G2_FINAL_APPROVAL=<PROJECT_ROOT>/tools/arx-online-batch-20261115.5yTDsQqw/G1/approval.json",
+          "--output=<PROJECT_ROOT>/tools/arx-online-batch-20261115.5yTDsQqw/G1/slurm-%j.out",
+          "<PROJECT_ROOT>/tools/arx-online-batch-20261115.5yTDsQqw/G1/g2-standalone-arx/scripts/pace_g2_standalone.slurm"
+        ],
+        "returncode": 0,
+        "output": "sbatch: Job 128046003 to start at 2026-12-10T17:29:14 using 4 processors on nodes gnode39 in partition ksagnormal01",
+        "forecast_is_estimate": true
+      }
+    },
+    "G2": {
+      "package_and_dispatch": "PASS",
+      "valid_manifest_members": 91,
+      "cpu_reset_readback": "REUSED_LOCKED_SEED_1",
+      "contact_cpu_exchange": "PASS",
+      "platform": {
+        "original_job": "127510363",
+        "original_state": "COMPLETED",
+        "original_submit": "2026-11-10T13:01:06",
+        "prior_active_jobs": 0,
+        "max_active_submissions_per_user": 20,
+        "max_running_per_user": 12,
+        "available_result_bytes": 72677920768,
+        "disk_reserve_gib": 32,
+        "partition_max_time": "333-08:00:00",
+        "node_state": "MIXED",
+        "node_configured_gpus": "gpu:RTX4090-PCIE-24GB-LS:8(S:0-7)"
+      },
+      "result_parent_writable": true,
+      "slurm_test_only": {
+        "argv": [
+          "sbatch",
+          "--test-only",
+          "--comment=cpf-g2-standalone-arx-9ba8bce76ca0-single",
+          "--account=<SCNET_ACCOUNT>",
+          "--chdir=<PROJECT_ROOT>",
+          "--export=ALL,G2_FINAL_RELEASE=<PROJECT_ROOT>/tools/arx-online-batch-20261115.5yTDsQqw/G2/g2-standalone-arx,G2_FINAL_APPROVAL=<PROJECT_ROOT>/tools/arx-online-batch-20261115.5yTDsQqw/G2/approval.json",
+          "--output=<PROJECT_ROOT>/tools/arx-online-batch-20261115.5yTDsQqw/G2/slurm-%j.out",
+          "<PROJECT_ROOT>/tools/arx-online-batch-20261115.5yTDsQqw/G2/g2-standalone-arx/scripts/pace_g2_standalone.slurm"
+        ],
+        "returncode": 0,
+        "output": "sbatch: Job 128046015 to start at 2026-12-10T17:29:14 using 4 processors on nodes gnode39 in partition ksagnormal01",
+        "forecast_is_estimate": true
+      }
+    },
+    "G3": {
+      "package_and_dispatch": "PASS",
+      "valid_manifest_members": 91,
+      "cpu_reset_readback": "PASS",
+      "contact_cpu_exchange": "PASS",
+      "platform": {
+        "original_job": "127510363",
+        "original_state": "COMPLETED",
+        "original_submit": "2026-11-10T13:01:06",
+        "prior_active_jobs": 0,
+        "max_active_submissions_per_user": 20,
+        "max_running_per_user": 12,
+        "available_result_bytes": 72674476032,
+        "disk_reserve_gib": 32,
+        "partition_max_time": "333-08:00:00",
+        "node_state": "MIXED",
+        "node_configured_gpus": "gpu:RTX4090-PCIE-24GB-LS:8(S:0-7)"
+      },
+      "result_parent_writable": true,
+      "slurm_test_only": {
+        "argv": [
+          "sbatch",
+          "--test-only",
+          "--comment=cpf-g2-standalone-arx-83b198c72d05-single",
+          "--account=<SCNET_ACCOUNT>",
+          "--chdir=<PROJECT_ROOT>",
+          "--export=ALL,G2_FINAL_RELEASE=<PROJECT_ROOT>/tools/arx-online-batch-20261115.mT0LHw2B/G3/g2-standalone-arx,G2_FINAL_APPROVAL=<PROJECT_ROOT>/tools/arx-online-batch-20261115.mT0LHw2B/G3/approval.json",
+          "--output=<PROJECT_ROOT>/tools/arx-online-batch-20261115.mT0LHw2B/G3/slurm-%j.out",
+          "<PROJECT_ROOT>/tools/arx-online-batch-20261115.mT0LHw2B/G3/g2-standalone-arx/scripts/pace_g2_standalone.slurm"
+        ],
+        "returncode": 0,
+        "output": "sbatch: Job 128046576 to start at 2026-12-10T17:29:14 using 4 processors on nodes gnode39 in partition ksagnormal01",
+        "forecast_is_estimate": true
+      }
+    },
+    "G4": {
+      "package_and_dispatch": "PASS",
+      "valid_manifest_members": 91,
+      "cpu_reset_readback": "PASS",
+      "contact_cpu_exchange": "PASS",
+      "platform": {
+        "original_job": "127510363",
+        "original_state": "COMPLETED",
+        "original_submit": "2026-11-10T13:01:06",
+        "prior_active_jobs": 0,
+        "max_active_submissions_per_user": 20,
+        "max_running_per_user": 12,
+        "available_result_bytes": 72673435648,
+        "disk_reserve_gib": 32,
+        "partition_max_time": "333-08:00:00",
+        "node_state": "MIXED",
+        "node_configured_gpus": "gpu:RTX4090-PCIE-24GB-LS:8(S:0-7)"
+      },
+      "result_parent_writable": true,
+      "slurm_test_only": {
+        "argv": [
+          "sbatch",
+          "--test-only",
+          "--comment=cpf-g2-standalone-arx-f8fb507c49f7-single",
+          "--account=<SCNET_ACCOUNT>",
+          "--chdir=<PROJECT_ROOT>",
+          "--export=ALL,G2_FINAL_RELEASE=<PROJECT_ROOT>/tools/arx-online-batch-20261115.mT0LHw2B/G4/g2-standalone-arx,G2_FINAL_APPROVAL=<PROJECT_ROOT>/tools/arx-online-batch-20261115.mT0LHw2B/G4/approval.json",
+          "--output=<PROJECT_ROOT>/tools/arx-online-batch-20261115.mT0LHw2B/G4/slurm-%j.out",
+          "<PROJECT_ROOT>/tools/arx-online-batch-20261115.mT0LHw2B/G4/g2-standalone-arx/scripts/pace_g2_standalone.slurm"
+        ],
+        "returncode": 0,
+        "output": "sbatch: Job 128046596 to start at 2026-12-10T17:29:14 using 4 processors on nodes gnode39 in partition ksagnormal01",
+        "forecast_is_estimate": true
+      }
+    }
+  }
+}

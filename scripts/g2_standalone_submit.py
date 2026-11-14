@@ -172,7 +172,7 @@ def platform(root, duration, comment, mode, *, projection=False):
     )
 
 
-def verify_package(root, stage, mode, archive_sha, manifest_sha, config_sha):
+def verify_package(root, stage, mode, archive_sha, manifest_sha, config_sha, *, scene_seed=1):
     archive = stage / f"g2-standalone-{mode}.tar.gz"
     release = stage / f"g2-standalone-{mode}"
     require(digest(archive) == archive_sha, "uploaded archive digest differs")
@@ -181,12 +181,13 @@ def verify_package(root, stage, mode, archive_sha, manifest_sha, config_sha):
     require(digest(release / "SHA256SUMS") == manifest_sha and
             digest(release / "standalone-review.json") == config_sha, "manifest or standalone configuration digest differs")
     sys.path.insert(0, str(release / "scripts"))
-    from g2_standalone_deploy import bind, verify_standalone
+    from g2_standalone_deploy import bind, spec, verify_standalone
     from g2_final_deploy import commands
     from g2_single_launch import OPENPI, PACE
 
     plan, selected = verify_standalone(release)
-    require(selected["mode"] == mode and selected["episode"] == MODES[mode][0]
+    expected = spec(mode) if scene_seed == 1 else spec(mode, scene_seed)
+    require(selected["mode"] == mode and selected["episode"] == expected["episode"]
             and selected["wall_s"] == MODES[mode][1] and selected["fee_cap"] == MODES[mode][2],
             "standalone job parameters differ")
     for repo, commit in (("PACE", PACE), ("Openpi-PACE", OPENPI)):
@@ -226,15 +227,16 @@ def verify_package(root, stage, mode, archive_sha, manifest_sha, config_sha):
     return release, selected, len((release / "SHA256SUMS").read_text().splitlines())
 
 
-def submit(root, stage, mode, archive_sha, manifest_sha, config_sha, commit):
+def submit(root, stage, mode, archive_sha, manifest_sha, config_sha, commit, *, scene_seed=1):
     require(re.fullmatch(r"[a-f0-9]{40}", commit), "missing verified release commit")
     intent = stage / "submission-intent.json"
     approval = stage / "approval.json"
     require(not intent.exists() and not approval.exists(), "a submission was already attempted or prepared")
-    release, selected, member_count = verify_package(root, stage, mode, archive_sha, manifest_sha, config_sha)
+    release, selected, member_count = verify_package(
+        root, stage, mode, archive_sha, manifest_sha, config_sha, scene_seed=scene_seed)
     from g2_final_deploy import authorization
 
-    episode, duration, cap = MODES[mode]
+    episode, duration, cap = selected["episode"], selected["wall_s"], selected["fee_cap"]
     comment = f"cpf-g2-standalone-{mode}-{archive_sha[:12]}-single"
     config = read(release / "configs" / f"{episode}.json") if mode == "arx" else {}
     parent, live = platform(root, duration, comment, mode,
@@ -293,7 +295,8 @@ def submit(root, stage, mode, archive_sha, manifest_sha, config_sha, commit):
     expected = dict(JobId=job, JobName="cpf-pace-g2", JobState="PENDING", Reason="JobHeldUser",
                     Partition=PARTITION, ReqNodeList=NODE, NumCPUs="4", NumTasks="1",
                     Account=parent["Account"], QOS=parent["QOS"], Requeue="0",
-                    Dependency="(null)", Comment=comment)
+                    Dependency="(null)", Comment=comment, WorkDir=str(root),
+                    Command=str(release / "scripts/pace_g2_standalone.slurm"))
     require(all(f.get(k) == v for k, v in expected.items())
             and seconds(f["TimeLimit"]) == seconds(f["TimeMin"]) == duration
             and f["NumNodes"] in ("1", "1-1") and f["MinMemoryNode"] in ("32G", "32768M")
@@ -322,6 +325,7 @@ if __name__ == "__main__":
     parser.add_argument("manifest_sha")
     parser.add_argument("config_sha")
     parser.add_argument("commit")
+    parser.add_argument("--scene-seed", type=int, choices=(0, 1, 2), default=1)
     args = parser.parse_args()
     submit(args.root.resolve(), args.stage.resolve(), args.mode,
-           args.archive_sha, args.manifest_sha, args.config_sha, args.commit)
+           args.archive_sha, args.manifest_sha, args.config_sha, args.commit, scene_seed=args.scene_seed)

@@ -51,10 +51,17 @@ MODES = {
 }
 
 
-def spec(mode):
+def spec(mode, scene_seed=1):
+    parameters = dict(MODES[mode])
+    if scene_seed != 1:
+        from g2_unified_plan import direct_episode
+
+        if mode != "arx":
+            raise ValueError("alternate scene seed requires standalone ARX")
+        parameters["episode"] = direct_episode(scene_seed)
     return dict(
         mode=mode,
-        **MODES[mode],
+        **parameters,
         submission_allowed=False,
         base_manifest_sha256=BASE_MANIFEST,
         base_archive_sha256=BASE_ARCHIVE,
@@ -69,7 +76,16 @@ def spec(mode):
 def verify_standalone(release):
     plan = verify(release)
     selected = read(release / SPEC_FILE)
-    if selected != spec(selected["mode"]):
+    if selected["mode"] == "arx":
+        matches = [row for row in plan["trials"] if row["episode_id"] == selected["episode"]]
+        if len(matches) != 1:
+            raise ValueError("standalone episode is absent or ambiguous")
+        scene_seed = matches[0]["seed"]
+        if scene_seed != 1 and matches[0].get("arx_direct") != "arx_direct_v1":
+            raise ValueError("alternate scene requires the direct ARX controller")
+    else:
+        scene_seed = 1
+    if selected != spec(selected["mode"], scene_seed):
         raise ValueError("standalone review spec differs")
     archive_manifest = read(release / "standalone-base-members.json")
     if archive_manifest["manifest_sha256"] != BASE_MANIFEST:
@@ -114,6 +130,10 @@ def bind(plan, runtime, release, output, selected, job):
         }
         if len(runtime["probes"]) != 1:
             raise ValueError("ARX startup admission not bound")
+        runtime["model_timeout_s"] = selected["startup_s"] - 180
+        runtime["model_phase_timeouts"] = dict(
+            runtime["model_phase_timeouts"], openpi_import=1200
+        )
     (row,) = [r for r in plan["trials"] if r["episode_id"] == episode]
     if row["hard_timeout_s"] != selected["hard_s"]:
         raise ValueError("standalone trial deadline differs")

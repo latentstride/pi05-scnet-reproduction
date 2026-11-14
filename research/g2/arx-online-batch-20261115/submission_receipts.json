@@ -1,0 +1,73 @@
+{
+  "actual_new_jobs": 0,
+  "actual_new_gpu_charge_cny": "0.00",
+  "actual_sbatch_attempts": 0,
+  "scontrol_releases": 0,
+  "quote": {
+    "catalog_observed": "2026-11-15 Asia/Shanghai",
+    "displayed_yuan_per_gpu_hour": "3.60",
+    "displayed_balance_covers_batch": true,
+    "budget_per_job_cny": "5.40",
+    "budget_batch_cny": "21.60",
+    "product": "SCNet 821418588551249920 华东一区【昆山】",
+    "quote_observation_reference": "2026-11-15T00:12:24+08:00",
+    "existing_runtime_quote_lifetime_days": 7,
+    "illustrative_expires_at": "2026-11-22T00:12:24+08:00",
+    "usable_at_forecast_start": false
+  },
+  "historical_sacct": {
+    "127999407": "COMPLETED",
+    "127999421": "COMPLETED"
+  },
+  "test_only_outputs_are_not_job_ids": true,
+  "candidates": {
+    "G1": {
+      "status": "NOT_AUTHORIZED",
+      "reason": "SCHEDULE_FORECAST_AFTER_EXISTING_QUOTE_EXPIRY",
+      "job_id": null,
+      "slurm_state": null,
+      "dependency": null,
+      "submission_attempts": 0,
+      "episode": "unified-seed1-arx-full-w4",
+      "result_directory": null,
+      "archive_sha256": "6da081c1987c71f5539e542262095ac7fe17be40efd0bca3742687f069260bd7",
+      "manifest_sha256": "714d65693ff65e274d5abc83772bbfce9ed61430226f33300156fe7b1c2cbad4"
+    },
+    "G2": {
+      "status": "NOT_AUTHORIZED",
+      "reason": "SCHEDULE_FORECAST_AFTER_EXISTING_QUOTE_EXPIRY",
+      "job_id": null,
+      "slurm_state": null,
+      "dependency": null,
+      "submission_attempts": 0,
+      "episode": "unified-seed1-arx-full-w4",
+      "result_directory": null,
+      "archive_sha256": "9ba8bce76ca0480d18eea3c63aea49fa2c96c67872306a9946aee3ef5d060142",
+      "manifest_sha256": "d3fe599dfc5bf8ae9d878920dc6ceb6e63fa836c678db0d5ad1743037a253875"
+    },
+    "G3": {
+      "status": "NOT_AUTHORIZED",
+      "reason": "SCHEDULE_FORECAST_AFTER_EXISTING_QUOTE_EXPIRY",
+      "job_id": null,
+      "slurm_state": null,
+      "dependency": null,
+      "submission_attempts": 0,
+      "episode": "unified-seed0-arx-full-w4",
+      "result_directory": null,
+      "archive_sha256": "83b198c72d05a8ba2af3959a0aa7b699b987438dbef1b8334d029b2985687f97",
+      "manifest_sha256": "29c66ecd67d549e3010c7dd6dee3b2f85cba270e9786ff402b35cbd5fe5747cd"
+    },
+    "G4": {
+      "status": "NOT_AUTHORIZED",
+      "reason": "SCHEDULE_FORECAST_AFTER_EXISTING_QUOTE_EXPIRY",
+      "job_id": null,
+      "slurm_state": null,
+      "dependency": null,
+      "submission_attempts": 0,
+      "episode": "unified-seed2-arx-full-w4",
+      "result_directory": null,
+      "archive_sha256": "f8fb507c49f714984578447790a4473d8ccbaf1a3897fd0e53b6d503cc579627",
+      "manifest_sha256": "29903abaf9da7f1f05adf83d47131d792a7803fb2b4eaa45cdd00d7657697999"
+    }
+  }
+}

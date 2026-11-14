@@ -29,6 +29,8 @@ TRIALS_S = sum(CONDITIONS[label][-1] for _, label in ORDER)
 BOUND_S = TRIALS_S + sum(OVERHEAD.values())
 ALLOCATION_S = 25200
 FEE = 25.20
+DIRECT_SCENE_SEEDS = (0, 1, 2)
+DIRECT_CONDITION = "arx-full-w4"
 ARX_PROJECTION_EPISODE = "unified-seed1-arx-full-w4"
 ARX_PROJECTION_METHOD = "bounded_task_tcp_projection_v1"
 ARX_PROJECTION_ACTION_CAP = 800
@@ -38,6 +40,12 @@ COMPARISONS = [
     ["native-w4", "arx-full-w4"],
     ["arx-full-w4", "arx-expert-repaired"],
 ]
+
+
+def direct_episode(seed):
+    if type(seed) is not int or seed not in DIRECT_SCENE_SEEDS:
+        raise ValueError("unreviewed direct ARX scene seed")
+    return f"unified-seed{seed}-{DIRECT_CONDITION}"
 
 
 def build(project):
@@ -101,6 +109,13 @@ def validate(plan):
     ):
         raise ValueError("unknown contact preload establishment in unified release")
     budget = plan["budget"]
+    direct_rows = [row for row in plan["trials"] if row.get("arx_direct") is not None]
+    if len(direct_rows) > 1:
+        raise ValueError("a standalone release may bind only one direct ARX trial")
+    order = ORDER
+    if direct_rows and direct_rows[0]["seed"] == 2:
+        # The additional scene has no native/expert campaign counterpart.
+        order = (*ORDER[:6], (2, DIRECT_CONDITION), *ORDER[7:])
     if (
         plan.get("schema_version") != 3
         or plan["submission_allowed"] is not False
@@ -121,7 +136,7 @@ def validate(plan):
         or budget["proposed_fee_cap_yuan"] != FEE
         or budget["submission_authorized"] is not False
         or plan["comparisons"] != COMPARISONS
-        or tuple((r["seed"], r["condition"]) for r in plan["trials"]) != ORDER
+        or tuple((r["seed"], r["condition"]) for r in plan["trials"]) != order
     ):
         raise ValueError("unified review roster or resource envelope differs")
     for row in plan["trials"]:
@@ -132,9 +147,9 @@ def validate(plan):
         projection = row.get("task_tcp_projection")
         if direct is not None and (
             direct != MODE or projection is not None
-            or (seed, label, row["episode_id"]) != (1, "arx-full-w4", ARX_PROJECTION_EPISODE)
+            or (label, row["episode_id"]) != (DIRECT_CONDITION, direct_episode(seed))
         ):
-            raise ValueError("direct ARX is restricted to the standalone seed 1 trial")
+            raise ValueError("direct ARX is restricted to a reviewed standalone scene")
         if projection is not None and (
             projection != ARX_PROJECTION_METHOD
             or (seed, label, row["episode_id"]) != (1, "arx-full-w4", ARX_PROJECTION_EPISODE)

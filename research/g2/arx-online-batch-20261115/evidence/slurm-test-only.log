@@ -1,0 +1,8 @@
+G1
+sbatch: Job 128046003 to start at 2026-12-10T17:29:14 using 4 processors on nodes gnode39 in partition ksagnormal01
+G2
+sbatch: Job 128046015 to start at 2026-12-10T17:29:14 using 4 processors on nodes gnode39 in partition ksagnormal01
+G3
+sbatch: Job 128046576 to start at 2026-12-10T17:29:14 using 4 processors on nodes gnode39 in partition ksagnormal01
+G4
+sbatch: Job 128046596 to start at 2026-12-10T17:29:14 using 4 processors on nodes gnode39 in partition ksagnormal01

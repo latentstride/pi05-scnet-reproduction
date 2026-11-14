@@ -1,0 +1,20 @@
+Python 3.10.14
+exists containers/openpi-ubuntu
+exists research/robotwin/robotwin-cu122/opt/robotwin/sysroot/etc/vulkan/icd.d/nvidia_icd.json
+exists /public/software/apps/apptainer/1.3.4/bin/apptainer
+
+vulkaninfo - Summarize Vulkan information in relation to the current environment.
+
+USAGE: <PROJECT_ROOT>/research/robotwin/robotwin-cu122/opt/robotwin/sysroot/usr/bin/vulkaninfo [options]
+
+OPTIONS:
+-h, --help          Print this help.
+--summary           Show a summary of the instance and GPU's on a system.
+--text              Produce a text version of vulkaninfo output to stdout. This is
+127999407|COMPLETED||00:18:45
+127999407.batch|COMPLETED|11729252K|00:18:45
+127999407.extern|COMPLETED|4332K|00:18:45
+127999421|COMPLETED||00:17:01
+127999421.batch|COMPLETED|17570556K|00:17:01
+127999421.extern|COMPLETED|4084K|00:17:01
+MATCHING ACTIVE JOBS

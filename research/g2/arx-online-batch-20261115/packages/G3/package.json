@@ -1,0 +1,12 @@
+{
+  "mode": "arx_direct_v1",
+  "scene_seed": 0,
+  "policy_rng_seed": 20261107,
+  "checkpoint_revision": "17ef545270cf26ed81169893b60f845f80ce6557",
+  "archive_sha256": "83b198c72d05a8ba2af3959a0aa7b699b987438dbef1b8334d029b2985687f97",
+  "manifest_sha256": "29c66ecd67d549e3010c7dd6dee3b2f85cba270e9786ff402b35cbd5fe5747cd",
+  "configuration_sha256": "c953ac62d2d073bc0a87edc30258c3683b757bf6c80981ee8edd6649145ed0a1",
+  "trial_config_sha256": "c604e00a4b015cea0f2ee7817ebe85bc6fc30726b7a33d867572c4ac6e2c766f",
+  "parent_archive_sha256": "6da081c1987c71f5539e542262095ac7fe17be40efd0bca3742687f069260bd7",
+  "reset_fixture_sha256": "77629daa82a44c540ab08e35e25ec7f124167a909ff5c9251280c2bbabae2a43"
+}

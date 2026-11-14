@@ -1,0 +1,417 @@
+{
+  "data_kind": "diagnostic",
+  "gpu_used": false,
+  "renderer_created": false,
+  "physics_stepped": false,
+  "scope": "two real-mesh CPU robot fixtures plus simple task primitives; not full PACE task setup",
+  "fixture_sha256": "f09b6334b50f7875b15bb815615f045374ce8d829a7891edd78d2d8d790c116a",
+  "robots": {
+    "aloha-agilex": {
+      "initial": {
+        "robot_base_world": {
+          "left": [
+            0.0,
+            -0.6499999761581421,
+            0.0,
+            0.7071067811865476,
+            0.0,
+            0.0,
+            0.7071067811865475
+          ],
+          "right": [
+            0.0,
+            -0.6499999761581421,
+            0.0,
+            0.7071067811865476,
+            0.0,
+            0.0,
+            0.7071067811865475
+          ]
+        },
+        "task_frame_world": [
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "actual_arm_qpos_rad": {
+          "left": [
+            -3.016260308186247e-08,
+            -5.668539984071685e-07,
+            -4.835977051698137e-06,
+            7.702591631186806e-08,
+            4.6315946633512795e-07,
+            -8.158984883266385e-07
+          ],
+          "right": [
+            -3.258066882949606e-08,
+            -5.65274206110189e-07,
+            -4.838918357563671e-06,
+            7.693390813301448e-08,
+            4.6469963876916154e-07,
+            -8.163781899384048e-07
+          ]
+        },
+        "actual_gripper": {
+          "left": 0.9830570883221097,
+          "right": 0.9830570055378809
+        },
+        "objects_task": {
+          "block": [
+            -0.1966353952884674,
+            0.15528222918510437,
+            0.8400005102157593,
+            0.9911543161687639,
+            5.235673159310296e-06,
+            -4.911417378742061e-06,
+            0.13271443587076592
+          ],
+          "target": [
+            0.21780027449131012,
+            0.19269876182079315,
+            0.7409999966621399,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "table": [
+            0.0,
+            0.0,
+            0.7400000095367432,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "reset_fixture_sha256": "f09b6334b50f7875b15bb815615f045374ce8d829a7891edd78d2d8d790c116a",
+        "workspace_check_id": "CPU_reset_geometry_not_formal_workspace",
+        "common_workspace_pass": false
+      },
+      "initial_collision_free": true,
+      "collisions": []
+    },
+    "ARX-X5": {
+      "initial": {
+        "robot_base_world": {
+          "left": [
+            -0.30000001192092896,
+            -0.3499999940395355,
+            0.7839999794960022,
+            0.7071067811865476,
+            0.0,
+            0.0,
+            0.7071067811865475
+          ],
+          "right": [
+            0.30000001192092896,
+            -0.3499999940395355,
+            0.7839999794960022,
+            0.7071067811865476,
+            0.0,
+            0.0,
+            0.7071067811865475
+          ]
+        },
+        "task_frame_world": [
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "actual_arm_qpos_rad": {
+          "left": [
+            -0.26346591114997864,
+            -0.6305378675460815,
+            0.1571831852197647,
+            -0.7877228260040283,
+            -0.28336942195892334,
+            -1.3242606655694544e-05
+          ],
+          "right": [
+            -0.6324052214622498,
+            -0.6228002905845642,
+            0.1452883630990982,
+            -0.7680932283401489,
+            -0.6423773765563965,
+            -1.4833736713626422e-05
+          ]
+        },
+        "actual_gripper": {
+          "left": 0.999999994581396,
+          "right": 0.999999994581396
+        },
+        "objects_task": {
+          "block": [
+            -0.1966353952884674,
+            0.15528222918510437,
+            0.8400005102157593,
+            0.9911543161687639,
+            5.235673159310296e-06,
+            -4.911417378742061e-06,
+            0.13271443587076592
+          ],
+          "target": [
+            0.21780027449131012,
+            0.19269876182079315,
+            0.7409999966621399,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "table": [
+            0.0,
+            0.0,
+            0.7400000095367432,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "reset_fixture_sha256": "f09b6334b50f7875b15bb815615f045374ce8d829a7891edd78d2d8d790c116a",
+        "workspace_check_id": "CPU_reset_geometry_not_formal_workspace",
+        "common_workspace_pass": false
+      },
+      "initial_collision_free": true,
+      "collisions": []
+    }
+  },
+  "object_mismatches": [],
+  "transfers": {
+    "aloha-agilex->ARX-X5": {
+      "status": "ok",
+      "q": [
+        [
+          -0.26346591114997864,
+          -0.6305378675460815,
+          0.1571831852197647,
+          -0.7877228260040283,
+          -0.28336942195892334,
+          -1.3242606655694544e-05
+        ],
+        [
+          -0.6324052214622498,
+          -0.6228002905845642,
+          0.1452883630990982,
+          -0.7680932283401489,
+          -0.6423773765563965,
+          -1.4833736713626422e-05
+        ]
+      ],
+      "residual": [
+        {
+          "seed": 0,
+          "position_m": 0.00016355365250099677,
+          "angle_deg": 0.005258008212542664,
+          "sigma_min": 0.005375551879088844,
+          "terminal_link_residual": {
+            "seed": 0,
+            "position_m": 0.00017447303364199953,
+            "angle_deg": 0.0052580082125427184,
+            "sigma_min": 0.005375551879088844
+          }
+        },
+        {
+          "seed": 0,
+          "position_m": 4.216469144819392e-05,
+          "angle_deg": 0.0013440927411786825,
+          "sigma_min": 0.007463602205681166,
+          "terminal_link_residual": {
+            "seed": 0,
+            "position_m": 4.4530343596267665e-05,
+            "angle_deg": 0.0013440927411787096,
+            "sigma_min": 0.007463602205681166
+          }
+        }
+      ],
+      "connection_plan": {
+        "status": "ok",
+        "ticks": 11,
+        "collision_calls": 12
+      }
+    },
+    "ARX-X5->aloha-agilex": {
+      "status": "ok",
+      "q": [
+        [
+          -3.016260308186247e-08,
+          -5.668539984071685e-07,
+          -4.835977051698137e-06,
+          7.702591631186806e-08,
+          4.6315946633512795e-07,
+          -8.158984883266385e-07
+        ],
+        [
+          -3.258066882949606e-08,
+          -5.65274206110189e-07,
+          -4.838918357563671e-06,
+          7.693390813301448e-08,
+          4.6469963876916154e-07,
+          -8.163781899384048e-07
+        ]
+      ],
+      "residual": [
+        {
+          "seed": 0,
+          "position_m": 0.00016355365250099677,
+          "angle_deg": 0.005258008212542664,
+          "sigma_min": 0.0434158177723048,
+          "terminal_link_residual": {
+            "seed": 0,
+            "position_m": 0.00017447303364190555,
+            "angle_deg": 0.005258008212542509,
+            "sigma_min": 0.0434158177723048
+          }
+        },
+        {
+          "seed": 0,
+          "position_m": 4.216469144819392e-05,
+          "angle_deg": 0.0013440927411786825,
+          "sigma_min": 0.04341581725162241,
+          "terminal_link_residual": {
+            "seed": 0,
+            "position_m": 4.45303435962963e-05,
+            "angle_deg": 0.0013440927411785574,
+            "sigma_min": 0.04341581725162241
+          }
+        }
+      ],
+      "connection_plan": {
+        "status": "ok",
+        "ticks": 11,
+        "collision_calls": 12
+      }
+    }
+  },
+  "formal_pair_id": null,
+  "formal_workspace_certified": false,
+  "arx_self_collision_profile": {
+    "source": "/public/home/acvkpnrzir/code_cpf/pi05/source/PACE-fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/assets/embodiments/ARX-X5/curobo_tmp.yml",
+    "sha256": "07c7faf92f6c9c7e3b7c370cb4487494d236935910cf6d89333f89f0b56c0ddb",
+    "scope": "same_articulation_only",
+    "pairs": [
+      [
+        "base_link",
+        "link1"
+      ],
+      [
+        "base_link",
+        "link2"
+      ],
+      [
+        "base_link",
+        "link3"
+      ],
+      [
+        "link1",
+        "link2"
+      ],
+      [
+        "link1",
+        "link3"
+      ],
+      [
+        "link2",
+        "link3"
+      ],
+      [
+        "link2",
+        "link4"
+      ],
+      [
+        "link3",
+        "link4"
+      ],
+      [
+        "link3",
+        "link5"
+      ],
+      [
+        "link3",
+        "link6"
+      ],
+      [
+        "link4",
+        "link5"
+      ],
+      [
+        "link4",
+        "link6"
+      ],
+      [
+        "link5",
+        "link6"
+      ]
+    ]
+  },
+  "scoped_profile_interarm_collision_detected": true,
+  "scoped_profile_environment_collision_detected": true,
+  "scoped_profile_interarm_collision_examples": [
+    {
+      "collision_type": "self_self",
+      "object_name1": "ARX-X50_3",
+      "link_name1": "base_link",
+      "object_name2": "ARX-X51_14",
+      "link_name2": "base_link"
+    },
+    {
+      "collision_type": "self_self",
+      "object_name1": "ARX-X50_3",
+      "link_name1": "base_link",
+      "object_name2": "ARX-X51_14",
+      "link_name2": "link1"
+    },
+    {
+      "collision_type": "self_self",
+      "object_name1": "ARX-X50_3",
+      "link_name1": "base_link",
+      "object_name2": "ARX-X51_14",
+      "link_name2": "link2"
+    },
+    {
+      "collision_type": "self_self",
+      "object_name1": "ARX-X50_3",
+      "link_name1": "link1",
+      "object_name2": "ARX-X51_14",
+      "link_name2": "base_link"
+    },
+    {
+      "collision_type": "self_self",
+      "object_name1": "ARX-X50_3",
+      "link_name1": "link1",
+      "object_name2": "ARX-X51_14",
+      "link_name2": "link1"
+    },
+    {
+      "collision_type": "self_self",
+      "object_name1": "ARX-X50_3",
+      "link_name1": "link1",
+      "object_name2": "ARX-X51_14",
+      "link_name2": "link2"
+    },
+    {
+      "collision_type": "self_self",
+      "object_name1": "ARX-X50_3",
+      "link_name1": "link2",
+      "object_name2": "ARX-X51_14",
+      "link_name2": "base_link"
+    },
+    {
+      "collision_type": "self_self",
+      "object_name1": "ARX-X50_3",
+      "link_name1": "link2",
+      "object_name2": "ARX-X51_14",
+      "link_name2": "link1"
+    }
+  ],
+  "passed": true
+}

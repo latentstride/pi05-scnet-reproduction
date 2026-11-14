@@ -12,6 +12,7 @@ from shutil import disk_usage
 import subprocess
 import sys
 import time
+from zoneinfo import ZoneInfo
 
 A = "127408633"
 ARX_REFERENCE = "127510363"
@@ -227,7 +228,8 @@ def verify_package(root, stage, mode, archive_sha, manifest_sha, config_sha, *, 
     return release, selected, len((release / "SHA256SUMS").read_text().splitlines())
 
 
-def submit(root, stage, mode, archive_sha, manifest_sha, config_sha, commit, *, scene_seed=1):
+def submit(root, stage, mode, archive_sha, manifest_sha, config_sha, commit, *,
+           scene_seed=1, bound_quote_deadline=False):
     require(re.fullmatch(r"[a-f0-9]{40}", commit), "missing verified release commit")
     intent = stage / "submission-intent.json"
     approval = stage / "approval.json"
@@ -253,12 +255,18 @@ def submit(root, stage, mode, archive_sha, manifest_sha, config_sha, commit, *, 
             and timedelta(0) <= now - observed <= timedelta(minutes=30)
             and Decimal(0) < price <= Decimal("3.60") and price * duration <= Decimal(cap) * 3600,
             "fresh official quote, account funds or cost cap verification failed")
+    expires = observed + timedelta(days=7)
+    # Slurm's native Deadline removes an allocation that cannot fit its full
+    # time-min before expiry. Keep the frozen worker's authorization check.
+    deadline = None
+    if bound_quote_deadline:
+        deadline = expires.astimezone(ZoneInfo("Asia/Shanghai")).replace(microsecond=0).isoformat()[:19]
     resources = dict(gpu_count=1, gpu_type="RTX4090", cpu_count=4, memory_gib=32, wall_s=duration,
                      node=NODE, partition=PARTITION)
     auth = dict(approved=True, pending_job_binding=True, approved_at=now.isoformat(),
                 commit=commit, archive_sha256=archive_sha, candidate_sha256=manifest_sha,
                 configuration_sha256=config_sha, quote_source="SCNet", quote_sha256=digest(quote_path),
-                quote_valid_until=(observed + timedelta(days=7)).isoformat(),
+                quote_valid_until=expires.isoformat(),
                 yuan_per_gpu_hour=str(price), max_cost_yuan=str(cost), resources=resources,
                 node=NODE, allocations_authorized=1, automatic_retry=False,
                 standalone_mode=mode, allocation_s=duration)
@@ -270,12 +278,16 @@ def submit(root, stage, mode, archive_sha, manifest_sha, config_sha, commit, *, 
                   price_yuan_per_gpu_hour=str(price), max_cost_yuan=str(cost),
                   quote_observed_at=q["observed_at"], quote_valid_until=auth["quote_valid_until"],
                   candidate_members=member_count, submission_attempts=0, job_id=None, dependency=None)
+    if deadline is not None:
+        public["slurm_deadline"] = deadline
     save(result_path, public)
     command = [
         "sbatch", "--parsable", "--hold", "--comment=" + comment, "--account=" + parent["Account"],
         "--chdir=" + str(root), f"--export=ALL,G2_FINAL_RELEASE={release},G2_FINAL_APPROVAL={approval}",
         "--output=" + str(stage / "slurm-%j.out"), str(release / "scripts/pace_g2_standalone.slurm"),
     ]
+    if deadline is not None:
+        command.insert(3, f"--deadline={deadline}")
     save(intent, dict(argv=command, attempt_at=now.isoformat(), no_retry=True), exclusive=True)
     public["submission_attempts"] = 1
     save(result_path, public)
@@ -297,6 +309,8 @@ def submit(root, stage, mode, archive_sha, manifest_sha, config_sha, commit, *, 
                     Account=parent["Account"], QOS=parent["QOS"], Requeue="0",
                     Dependency="(null)", Comment=comment, WorkDir=str(root),
                     Command=str(release / "scripts/pace_g2_standalone.slurm"))
+    if deadline is not None:
+        expected["Deadline"] = deadline
     require(all(f.get(k) == v for k, v in expected.items())
             and seconds(f["TimeLimit"]) == seconds(f["TimeMin"]) == duration
             and f["NumNodes"] in ("1", "1-1") and f["MinMemoryNode"] in ("32G", "32768M")
@@ -326,6 +340,8 @@ if __name__ == "__main__":
     parser.add_argument("config_sha")
     parser.add_argument("commit")
     parser.add_argument("--scene-seed", type=int, choices=(0, 1, 2), default=1)
+    parser.add_argument("--bound-quote-deadline", action="store_true")
     args = parser.parse_args()
     submit(args.root.resolve(), args.stage.resolve(), args.mode,
-           args.archive_sha, args.manifest_sha, args.config_sha, args.commit, scene_seed=args.scene_seed)
+           args.archive_sha, args.manifest_sha, args.config_sha, args.commit,
+           scene_seed=args.scene_seed, bound_quote_deadline=args.bound_quote_deadline)

@@ -1,4 +1,5 @@
 """Exact Orbax restore, native JAX LoRA partition and policy sampling."""
+import ctypes
 import dataclasses
 import hashlib
 import json
@@ -6,6 +7,7 @@ import math
 import os
 from pathlib import Path
 import subprocess
+import uuid
 
 import flax.nnx as nnx
 from flax.traverse_util import flatten_dict, unflatten_dict
@@ -27,6 +29,51 @@ LORA_MODULES = ("q_einsum", "kv_einsum", "attn_vec_einsum", "mlp", "q_einsum_1",
                 "kv_einsum_1", "attn_vec_einsum_1", "mlp_1")
 ATTN_LEAVES = ("lora_a", "lora_b")
 MLP_LEAVES = ("gating_einsum_lora_a", "gating_einsum_lora_b", "linear_lora_a", "linear_lora_b")
+
+
+def cuda_identity():
+    """Check the Slurm-constrained CUDA device before allocating model buffers."""
+    driver = ctypes.CDLL("libcuda.so.1")
+
+    def check(operation, *args):
+        result = getattr(driver, operation)(*args)
+        if result:
+            raise RuntimeError(f"{operation} failed with CUDA status {result}")
+
+    check("cuInit", 0)
+    count = ctypes.c_int()
+    check("cuDeviceGetCount", ctypes.byref(count))
+    if count.value != 1:
+        raise RuntimeError(f"Expected one allocated CUDA device, found {count.value}")
+    device = ctypes.c_int()
+    check("cuDeviceGet", ctypes.byref(device), 0)
+    identifier = (ctypes.c_ubyte * 16)()
+    pci = ctypes.create_string_buffer(32)
+    name = ctypes.create_string_buffer(128)
+    memory = ctypes.c_size_t()
+    check("cuDeviceGetUuid", ctypes.byref(identifier), device)
+    check("cuDeviceGetPCIBusId", pci, ctypes.sizeof(pci), device)
+    check("cuDeviceGetName", name, ctypes.sizeof(name), device)
+    check("cuDeviceTotalMem_v2", ctypes.byref(memory), device)
+    actual_uuid = f"GPU-{uuid.UUID(bytes=bytes(identifier))}"
+    assigned = os.environ.get("STEP5_SLURM_GPU", "")
+    visible = os.environ.get("CUDA_VISIBLE_DEVICES", "")
+    for expected in (assigned, visible):
+        if expected.startswith("GPU-") and expected.lower() != actual_uuid.lower():
+            raise RuntimeError("CUDA device UUID differs from Slurm visibility")
+    return dict(uuid=actual_uuid, pci=pci.value.decode(), name=name.value.decode(),
+                total_bytes=memory.value, slurm_allocation=assigned, visible=visible)
+
+
+def checkpoint_snapshot(root):
+    manifest = json.loads(MANIFEST.read_text())
+    paths = [root / "cache/pace-handover" / r["path"] for r in manifest["files"]]
+    paths.append(root / "cache/openpi-pace/big_vision/paligemma_tokenizer.model")
+    snapshot = {}
+    for path in paths:
+        stat = path.stat()
+        snapshot[str(path.relative_to(root))] = [stat.st_size, stat.st_mtime_ns]
+    return snapshot
 
 
 def model_configs():

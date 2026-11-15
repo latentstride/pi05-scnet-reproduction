@@ -16,10 +16,21 @@ python="$root/tools/pace-model-venv/bin/python"
 cd "$root"
 args=(--writable --cleanenv --bind /public:/public --pwd "$root")
 case "$mode" in
-    cpu) platform=cpu; visible= ;;
+    cpu) platform=cpu; device_env=(CUDA_VISIBLE_DEVICES=) ;;
     gpu)
-        [[ -n "${SLURM_JOB_ID:-}" && "${CUDA_VISIBLE_DEVICES:-}" =~ ^([0-9]+|GPU-[0-9A-Fa-f-]+)$ ]]
-        platform=cuda; visible=$CUDA_VISIBLE_DEVICES; args+=(--nv)
+        [[ -n "${SLURM_JOB_ID:-}" ]]
+        visible=${CUDA_VISIBLE_DEVICES:-}
+        assigned=${SLURM_STEP_GPUS:-${SLURM_JOB_GPUS:-}}
+        if [[ -n "$visible" && ! "$visible" =~ ^([0-9]+|GPU-[0-9A-Fa-f-]{36})$ ]]; then
+            printf 'Expected a single Slurm CUDA binding; received %s\n' "$visible" >&2
+            exit 2
+        fi
+        platform=cuda; args+=(--nv)
+        # Numeric visibility is relative to the job cgroup. Preserve CUDA ordering and
+        # let the driver check the visible count if Slurm leaves the mask unset.
+        device_env=("STEP5_SLURM_GPU=$assigned")
+        if [[ -n "$visible" ]]; then device_env+=("CUDA_VISIBLE_DEVICES=$visible"); fi
+        if [[ -n "${CUDA_DEVICE_ORDER:-}" ]]; then device_env+=("CUDA_DEVICE_ORDER=$CUDA_DEVICE_ORDER"); fi
         ;;
     *) exit 2 ;;
 esac
@@ -32,5 +43,5 @@ exec "$a" exec "${args[@]}" "$image" env \
     "JAX_COMPILATION_CACHE_DIR=$root/cache/step5-arx/jax" \
     HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 WANDB_MODE=disabled \
     OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 PYTHONUNBUFFERED=1 PYTHONFAULTHANDLER=1 \
-    PYTHONDONTWRITEBYTECODE=1 XLA_PYTHON_CLIENT_PREALLOCATE=false XLA_PYTHON_CLIENT_MEM_FRACTION=0.95 CUDA_DEVICE_ORDER=PCI_BUS_ID \
-    "JAX_PLATFORMS=$platform" "CUDA_VISIBLE_DEVICES=$visible" "$python" "$@"
+    PYTHONDONTWRITEBYTECODE=1 XLA_PYTHON_CLIENT_PREALLOCATE=false XLA_PYTHON_CLIENT_MEM_FRACTION=0.95 \
+    "JAX_PLATFORMS=$platform" "${device_env[@]}" "$python" "$@"

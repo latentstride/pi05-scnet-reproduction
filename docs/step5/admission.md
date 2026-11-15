@@ -20,7 +20,7 @@
 
 11 月 15 日的收据与已验收发布保存在项目根下的 `results/step5-cpu-admission.rJvqzB/`，其中 `cpu-receipt.json` 是训练准入输入，`cpu.log` 保存该次 CPU 过程。收据 SHA-256 为 `8cca28981e2db38f6f43ca6b31531fe3f7ed0b7f9899f73432ae0cfc62e623cb`，对应 PR 的 `a24c5c1`。实测的冻结 Orbax 元数据含 51 个 FP32 张量，训练以 BF16 恢复底座。CPU 批次形状为 `[1,50,32]`，提示及状态合计 72 个有效 token，AdamW 有 41 个状态数组（40 个矩张量与 1 个计数器）。收据仅代表 CPU 通过；CPU 抽象追踪未执行全量模型计算核。
 
-移除固定显存下限后的发布 `2242539` 已重新通过同一 SCNet CPU 验收。最新收据位于项目根下 `results/step5-cpu-4090.b5uXJy/cpu-receipt.json`，SHA-256 为 `81fada3cdbb2a1505a82aa6812810a5b4a70b31e288b923b10700e0d7b9418e6`。代码指纹与新发布一致。模拟 RTX 4090 准入检查通过，CPU 设备和过期收据仍被拒绝。实际显存峰值待 GPU 门禁。
+移除固定显存下限后的发布 `2242539` 已重新通过同一 SCNet CPU 验收。最新收据位于项目根下 `results/step5-cpu-4090.b5uXJy/cpu-receipt.json`，SHA-256 为 `81fada3cdbb2a1505a82aa6812810a5b4a70b31e288b923b10700e0d7b9418e6`。代码指纹与新发布一致。模拟 RTX 4090 准入检查通过，CPU 设备和过期收据仍被拒绝。该收据保留作 `2242539` 的历史记录。后续启动和恢复修订使用各自发布目录内的新 CPU 收据。实际显存峰值待 GPU 门禁。
 
 ## GPU 串行门禁
 

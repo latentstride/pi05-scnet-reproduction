@@ -26,7 +26,8 @@ done
 [[ -r "$code/scripts/step5_arx/env.sh" && -r "$dataset" && -r "$audit" && -r "$receipt" ]]
 [[ -d "$(dirname "$run")" ]]
 cd "$root"
-printf 'job=%s cwd=%s release=%s device=%s\n' "$SLURM_JOB_ID" "$PWD" "$code" "${CUDA_VISIBLE_DEVICES:?}"
+printf 'job=%s cwd=%s release=%s visible=%s allocated=%s\n' \
+    "$SLURM_JOB_ID" "$PWD" "$code" "${CUDA_VISIBLE_DEVICES:-cgroup}" "${SLURM_JOB_GPUS:-unknown}"
 du -sh "$root/cache/pace-handover"
 df -h "$(dirname "$run")"
 resume=()

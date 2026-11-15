@@ -8,6 +8,7 @@ import os
 from pathlib import Path
 import shutil
 import signal
+import time
 
 import flax.nnx as nnx
 import jax
@@ -93,7 +94,24 @@ def fitted_state(train, opt):
     return {"lora": train.to_pure_dict(), "optimizer": jax.tree.leaves(opt)}
 
 
+def complete_checkpoint(path):
+    if not path.is_dir() or not (path / "_METADATA").is_file() or not ocp.utils.is_checkpoint_finalized(path):
+        return False
+    try:
+        metadata = json.loads((path / "_CHECKPOINT_METADATA").read_text())
+    except (FileNotFoundError, json.JSONDecodeError):
+        return False
+    return bool(metadata.get("commit_timestamp_nsecs"))
+
+
+def latest_checkpoint(directory):
+    paths = sorted(directory.glob("step-[0-9][0-9][0-9][0-9]"), reverse=True)
+    return next((path for path in paths if complete_checkpoint(path)), None)
+
+
 def restore(path, train, opt):
+    if not complete_checkpoint(path):
+        raise ValueError(f"Checkpoint was not committed: {path}")
     target = fitted_state(train, opt)
     with ocp.StandardCheckpointer() as store:
         saved = store.restore(path, target=target, strict=True)
@@ -102,15 +120,23 @@ def restore(path, train, opt):
             raise ValueError(f"Saved state shape or dtype mismatch at {path}")
     graph_opt = jax.tree.structure(opt)
     opt = jax.tree.unflatten(graph_opt, saved["optimizer"])
+    if int(opt[1][0].count) != int(path.name.split("-")[-1]):
+        raise ValueError(f"AdamW update count disagrees with checkpoint step: {path}")
     train = jax.tree.map(lambda value: value, train)
     train.replace_by_pure_dict(saved["lora"])
     return train, opt
 
 
 def save(path, train, opt):
+    if path.exists():
+        if complete_checkpoint(path):
+            raise FileExistsError(f"Refusing to replace committed checkpoint: {path}")
+        path.rename(path.with_name(f".incomplete-{path.name}-{time.time_ns()}"))
     with ocp.StandardCheckpointer() as store:
         store.save(path, fitted_state(train, opt))
         store.wait_until_finished()
+    if not complete_checkpoint(path):
+        raise RuntimeError(f"Orbax checkpoint did not finalize: {path}")
 
 
 def evaluate(dataset, split, policy, predict, loss_fn, state, *, stopped=lambda: False):
@@ -142,7 +168,8 @@ def evaluate(dataset, split, policy, predict, loss_fn, state, *, stopped=lambda:
 
 def versions():
     return {p: importlib.metadata.version(p) for p in
-            ("jax", "jaxlib", "flax", "optax", "orbax-checkpoint", "h5py", "numpy", "pillow")}
+            ("jax", "jaxlib", "jax-cuda12-plugin", "jax-cuda12-pjrt", "flax", "optax",
+             "orbax-checkpoint", "h5py", "numpy", "pillow")}
 
 
 def audit_cpu(args):
@@ -150,6 +177,7 @@ def audit_cpu(args):
         raise RuntimeError("CPU receipt requires a CPU-only JAX device")
     if args.cpu_receipt.exists():
         raise FileExistsError(args.cpu_receipt)
+    snapshot = model.checkpoint_snapshot(args.project_root)
     params = model.validate_install(args.project_root, full_hash=True)
     identity = fingerprint(args)
     print("CPU manifest and dataset verified", flush=True)
@@ -176,27 +204,41 @@ def audit_cpu(args):
     # Exercise the same serializer and restore tree used by interrupted formal training.
     import tempfile
     with tempfile.TemporaryDirectory(dir=args.cpu_receipt.parent) as temp:
-        test = Path(temp) / "adapter"
+        directory = Path(temp)
+        (directory / "step-0000").mkdir()  # An interrupted numeric directory is quarantined before saving.
+        test = directory / "step-0000"
         save(test, train, opt)
+        (directory / "step-0001").mkdir()
+        (directory / "step-0002.orbax-checkpoint-tmp-0").mkdir()
+        if latest_checkpoint(directory) != test:
+            raise RuntimeError("Checkpoint recovery did not skip interrupted writes")
         reloaded = restore(test, train, opt)
         if not all(np.array_equal(a, b) for a, b in zip(jax.tree.leaves((train, opt)),
                                                         jax.tree.leaves(reloaded), strict=True)):
             raise RuntimeError("Orbax adapter/optimizer round trip changed values")
+    if snapshot != model.checkpoint_snapshot(args.project_root):
+        raise RuntimeError("Model files changed during CPU audit")
+    print("Committed checkpoint restored; incomplete paths skipped", flush=True)
     write_json(args.cpu_receipt, dict(status="cpu_pass", identity=identity, graph=report, versions=versions(),
+                                     checkpoint_snapshot=snapshot, checkpoint_recovery_checked=True,
                                      model_input_shape=list(target.shape), abstract_update_traced=True,
                                      token_count=int(obs.tokenized_prompt_mask.sum())))
 
 
 def admit_gpu(args):
-    device = platform()
-    if device.platform != "gpu":
-        raise RuntimeError(f"Expected one CUDA device, found {device}")
     if shutil.disk_usage(args.run.parent).free < MIN_DISK_BYTES:
         raise RuntimeError("Need 16 GiB free on the run filesystem")
     approved = json.loads(args.cpu_receipt.read_text())
     identity = fingerprint(args)
     if approved["status"] != "cpu_pass" or approved["identity"] != identity or approved["versions"] != versions():
         raise RuntimeError("CPU receipt is missing or stale for this code, dataset or runtime")
+    if approved["checkpoint_snapshot"] != model.checkpoint_snapshot(args.project_root):
+        raise RuntimeError("Model file snapshot differs from the CPU-verified files")
+    cuda = model.cuda_identity()
+    print(json.dumps(dict(stage="cuda_device", **cuda)), flush=True)
+    device = platform()
+    if device.platform != "gpu" or "RTX 4090" not in device.device_kind.upper():
+        raise RuntimeError(f"Expected one allocated RTX 4090, found {device.device_kind}")
     print(json.dumps(dict(gpu_device=str(device), gpu_model=device.device_kind,
                           memory=device.memory_stats())), flush=True)
     return identity
@@ -252,7 +294,7 @@ def run_fit(args, identity):
                 raise RuntimeError("Nonfinite frozen/LoRA initialization loss")
             np.testing.assert_allclose(first_val, ref, rtol=1e-3, atol=1e-5)
             print("GPU single-step update", flush=True)
-            _, _, smoke_result = update(step, initial, frozen, initial_opt, rng, obs, target)
+            smoke_result = update(step, initial, frozen, initial_opt, rng, obs, target)[2]
             smoke_result["memory"] = gpu.memory_stats()
             print(json.dumps(dict(stage="gpu_single_step_passed", **smoke_result)), flush=True)
             fitted, opt = initial, initial_opt
@@ -270,6 +312,7 @@ def run_fit(args, identity):
                 write_json(run / "gpu_gates_failed.json", gates)
                 raise RuntimeError(f"20-step overfit gate failed: relative reduction {relative:.4g}")
             write_json(smoke, dict(status="passed", **gates))
+            del fitted, opt
         else:
             if json.loads(smoke.read_text())["status"] != "passed":
                 raise RuntimeError("GPU gate receipt is invalid")
@@ -279,9 +322,9 @@ def run_fit(args, identity):
         if not val_baseline.exists():
             write_json(val_baseline, evaluate(dataset, "val", policy, model.sampler(base_graph, adapted=False),
                                              flow_loss(base_graph, adapted=False), base_state, stopped=stopped))
-        checkpoints = sorted(p for p in dir_ckpt.glob("step-[0-9][0-9][0-9][0-9]") if p.is_dir())
-        start = int(checkpoints[-1].name.split("-")[-1]) if checkpoints else 0
-        fitted, opt = restore(checkpoints[-1], initial, initial_opt) if checkpoints else (initial, initial_opt)
+        last = latest_checkpoint(dir_ckpt)
+        start = int(last.name.split("-")[-1]) if last else 0
+        fitted, opt = restore(last, initial, initial_opt) if last else (initial, initial_opt)
         for i in range(start, SETTINGS.train_steps + 1):
             if i > start:
                 index = np.random.default_rng(np.random.SeedSequence([SETTINGS.seed, i])).integers(len(indices))
@@ -290,7 +333,7 @@ def run_fit(args, identity):
                 print(json.dumps(dict(step=i, **metrics)), flush=True)
             if i and (i % SETTINGS.checkpoint_interval == 0 or stopped() or i == SETTINGS.train_steps):
                 checkpoint = dir_ckpt / f"step-{i:04d}"
-                if not checkpoint.exists():
+                if not complete_checkpoint(checkpoint):
                     save(checkpoint, fitted, opt)
             if stopped():
                 return 75
@@ -355,6 +398,10 @@ def main():
                     raise SystemExit(run_fit(args, identity))
                 except InterruptedError:
                     raise SystemExit(75) from None
+                except Exception as error:
+                    print(json.dumps(dict(stage="gpu_fit_failed", error=str(error),
+                                          memory=platform().memory_stats())), flush=True)
+                    raise
 
 
 if __name__ == "__main__":

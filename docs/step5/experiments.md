@@ -39,6 +39,6 @@ bash "$release/scripts/step5_arx/env.sh" cpu "$root" -m scripts.step5_arx.train 
   --project-root "$root" --dataset "$dataset" --data-audit "$data_audit" --cpu-receipt "$cpu_receipt"
 ```
 
-单作业脚本接收 `<root> <release> <dataset> <data-audit> <cpu-receipt> <new-run-dir> [--resume]`。未来提交时由获批的提交端设置选定的单卡分区和 GPU 类型、显式 Slurm 日志路径及硬时限。脚本不调用调度提交或自动重排。GPU 用当前分配内的显式 CUDA 设备，先校验运行录、安装与数据，再串行完成门禁。执行入口查磁盘和项目根，日志记录 JAX 设备信息和运行卷余量。
+单作业脚本接收 `<root> <release> <dataset> <data-audit> <cpu-receipt> <new-run-dir> [--resume]`。未来提交时由获批的提交端设置选定的单卡分区和 GPU 类型、显式 Slurm 日志路径及硬时限。脚本不调用调度提交或自动重排。GPU 用当前分配内的显式 CUDA 设备，先校验运行录、安装与数据，再串行完成门禁。执行入口查磁盘和项目根。日志记录 Slurm 可见设备、CUDA UUID/PCI、物理显存、JAX allocator 统计和运行卷余量。Slurm 的物理 GPU 编号和作业内部的 CUDA 索引可以不同。
 
-训练运行目录有排他文件锁。Orbax 保存 adapter、优化器状态，不重复写 PACE 底座。稳定的步数化 RNG 和窗采样保证从已完成步继续时使用下一步同一批次。Slurm 在硬时限前 300 秒请求停止，Python 在更新或验证窗口的边界处理；退出码 75 表示协作停止。每 25 步先提交一个完整 checkpoint。硬中止后忽略未完成的临时目录，以最大已完成步恢复。续跑要求相同源码、配置、数据和权重身份，指向原运行目录并传入 `--resume`；已通过且已写出的 GPU 门禁在同一运行目录内复用。在门禁未通过、文件缺失、损失不有限或梯度无更新时诊断相应错误。GPU 节点的 Slurm 信号转发、峰显存、续跑和 6 小时时限均待实测。
+训练运行目录有排他文件锁。Orbax 保存 adapter、优化器状态，不重复写 PACE 底座。稳定的步数化 RNG 和窗采样保证从已完成步继续时使用下一步同一批次。Slurm 在硬时限前 300 秒请求停止，Python 在更新或验证窗口的边界处理；退出码 75 表示协作停止。每 25 步先提交一个完整 checkpoint。硬中止后跳过未提交的目录，以带 Orbax commit 时间戳的最大已完成步恢复，并核对 AdamW 计数。再次保存同一步时，遗留的未提交目录移到隐藏保留位置；已提交目录禁止覆盖。续跑要求相同源码、配置、数据和权重身份，指向原运行目录并传入 `--resume`；已通过且已写出的 GPU 门禁在同一运行目录内复用。在门禁未通过、文件缺失、损失不有限或梯度无更新时诊断相应错误。GPU 节点的 Slurm 信号转发、峰显存、续跑和 6 小时时限均待实测。

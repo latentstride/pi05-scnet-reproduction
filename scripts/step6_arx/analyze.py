@@ -89,6 +89,10 @@ def summarize(root):
                         f"{tag}_failure": r["failure"]["status"] if r and r["failure"] else None})
             for label, metric in STAGES.items():
                 row[f"{tag}_{label}"] = r["analysis"]["metrics"][metric]["status"] if r else "unavailable"
+            row[f"{tag}_first_stage_not_observed"] = (
+                next((label for label, metric in STAGES.items()
+                      if r["analysis"]["metrics"][metric]["status"] != "observed"), None)
+                if r and r["outcome"] in SCORED_OUTCOMES and r["task_success"] is False else None)
             for metric in ("left_bilateral", "left_grasp", "left_lift", "shared_hold", "right_takeover", "drop"):
                 datum = r["analysis"]["metrics"][metric] if r else {"first": None, "status": "unavailable"}
                 row[f"{tag}_{metric}_status"] = datum["status"]
@@ -117,7 +121,7 @@ def main():
     args.output.mkdir(parents=True)
     (args.output / "summary.json").write_text(json.dumps(summary, indent=2) + "\n")
     with (args.output / "pairs.csv").open("w", newline="") as stream:
-        writer = csv.DictWriter(stream, fieldnames=list(summary["pairs"][0]))
+        writer = csv.DictWriter(stream, fieldnames=list(summary["pairs"][0]), lineterminator="\n")
         writer.writeheader()
         writer.writerows(summary["pairs"])
 

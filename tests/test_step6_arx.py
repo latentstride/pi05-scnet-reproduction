@@ -110,3 +110,26 @@ class SummaryTest(unittest.TestCase):
                 self.assertIsNone(result["formal_groups"]["frozen"]["success_rate"])
                 self.assertEqual(result["pairs"][0]["excluded"],
                                  "PROTOCOL_FIXTURE" if fixture else "UNSCORED_TERMINATION")
+
+    def test_formal_denominator_and_paired_improvement(self):
+        with tempfile.TemporaryDirectory() as root:
+            root = Path(root)
+            (root / "campaign.json").write_text(json.dumps({
+                "plan": {"protocol": "test"}, "seeds": [0, 1], "fixture": False}))
+            for variant in ("frozen", "lora"):
+                path = root / f"seed-00-{variant}"
+                path.mkdir()
+                row = physics(0, native_success=(variant == "lora"))
+                stages = Stages()
+                stages.step(row)
+                (path / "trajectory.jsonl").write_text(json.dumps(row) + "\n")
+                (path / "receipt.json").write_text(json.dumps(dict(
+                    schema="test", scene_seed=0, variant=variant, source="step5_model",
+                    pair_match=True, outcome="ACTION_LIMIT" if variant == "frozen" else "TASK_SUCCESS",
+                    task_success=(variant == "lora"), analysis=stages.summary(),
+                    physics_ticks=0, failure=None, rgb_status="OBSERVED", video="head.mp4")))
+            summary = summarize(root)
+            self.assertEqual(summary["formal_groups"]["frozen"]["success_rate"], 0.)
+            self.assertEqual(summary["formal_groups"]["lora"]["success_rate"], 1.)
+            self.assertEqual(summary["pairs"][0]["delta_success_L_minus_F"], 1)
+            self.assertEqual(summary["pairs"][1]["excluded"], "MISSING_RECEIPT")

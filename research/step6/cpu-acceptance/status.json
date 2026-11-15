@@ -1,0 +1,77 @@
+{
+  "status": "STEP6_PARTIAL_READY",
+  "fixture": "protocol_fixture",
+  "formal_pairs": 0,
+  "matched_cpu_pairs": 5,
+  "seed_initials": [
+    {
+      "seed": 0,
+      "exact_numeric_readback": true,
+      "block_position_m": [
+        -0.10696279257535934,
+        0.15068937838077545,
+        0.8400006890296936
+      ]
+    },
+    {
+      "seed": 1,
+      "exact_numeric_readback": true,
+      "block_position_m": [
+        -0.10593590140342712,
+        2.8259455575607717e-05,
+        0.8400000929832458
+      ]
+    },
+    {
+      "seed": 2,
+      "exact_numeric_readback": true,
+      "block_position_m": [
+        -0.24481558799743652,
+        0.1374143809080124,
+        0.840000569820404
+      ]
+    },
+    {
+      "seed": 3,
+      "exact_numeric_readback": true,
+      "block_position_m": [
+        -0.1083712950348854,
+        0.07272486388683319,
+        0.840000569820404
+      ]
+    },
+    {
+      "seed": 4,
+      "exact_numeric_readback": true,
+      "block_position_m": [
+        -0.14055439829826355,
+        0.24317105114459991,
+        0.840000331401825
+      ]
+    }
+  ],
+  "accepted_native_rows": 60,
+  "actual_physx_ticks": 2400,
+  "policy_queries": 20,
+  "invalid_rows_rejected_before_physics": 5,
+  "restored_real_checkpoint": false,
+  "camera_runtime": "GPU_UNVERIFIED",
+  "video_runtime": "GPU_UNVERIFIED",
+  "cpu_renderer_probe": {
+    "sapien": "3.0.0b1",
+    "mplib": "0.2.1",
+    "timeout_s": 80,
+    "exit_code": 124,
+    "evidence": "No rendered frame; render material probe also reported failed to find a rendering device."
+  },
+  "archive_sha256": "4475a5e2f2de0c6517e09ea48b8549d0a85afedca040f81c249fa51ca6eba36d",
+  "runtime_file_sha256": {
+    "scripts/step6_arx/__init__.py": "fb1b6249929cef3579f4aad3458a8201514d560cc45a07ac57ef27abbf43882f",
+    "scripts/step6_arx/evaluate.py": "58d2660c3187c5262de47111b3871fb6ec1f241a5782408e12d4b56eeea59f1c",
+    "scripts/step6_arx/fixture.py": "8d683517f2e41c1e6f89c6511bdaf33a89bd6906b21f59bb1ba7cc07fce36c41",
+    "scripts/step6_arx/headless.py": "8b3937f9b455a50dd452ecfb1fdc9e5ee150e858e8c3857ca29fe1a65ecaab9e",
+    "scripts/step6_arx/metrics.py": "d83247de3bc836f715888281756c47f321651bbf2e1c01e9e53cd983f7aa4cfd",
+    "scripts/step6_arx/protocol.py": "fe5efc24b5c811d04ca8756e9aff6a37cfddc2c5a84ba7f75a39582bd4735b51",
+    "scripts/step6_arx/scene.py": "47619af0df50874141fd9d3f03762ddac939b9af74733a50ae09fbcbfb79e68f"
+  }
+}

@@ -10,7 +10,7 @@
 | PR #6 `native_observation`、`NativeAdapter`、`NativePolicy`、`Session`、`Dataset` | 使用其 HWC RGB、命令状态、归一化、采样和逆变换。评测端按原 WebSocket 契约收发；服务包装层只补充 checkpoint 身份。CPU 替身使用同一 wire codec 和真实 ARX norm stats。 |
 | PR #5 视频和 JSON 写入 | 沿用头相机 MP4（按查询采样的回放视图）。新增逐物理步轨迹、二进制 WebSocket 请求与响应和各试次回执。 |
 
-PR 以 #6 的 `3ff31cb` 为基线；安全运行模块从 #5 的 `3f95695` 单独部署，通过 [文件哈希](pr5_runtime_sha256.json) 限定运行代码。两份依赖无需合并。ARX 标定、控制和接触参数逐项取自既有 [原生 ARX 验收配置](https://github.com/latentstride/pi05-scnet-reproduction/blob/64e92b46d5e9b6eebdf4e6de7deb79ac3eeb2756/research/g2/arx-direct-online-20261114/evidence/127999421/release/configs/unified-seed1-arx-full-w4.json)，摘录见 [本轮固定安全配置](arx_safety_profile.json)。块质量必须与该配置已经验证的 10 g 一致；本入口不改质量或门禁。碰撞阈值和跟踪容差不因 F/L 或 CPU 改变。
+PR 以 #6 为基线（开发时 `3ff31cb`，已跟入文档更新 `32714a1`）；安全运行模块从 #5 的 `3f95695` 单独部署，通过 [文件哈希](pr5_runtime_sha256.json) 限定运行代码。两份依赖均无需合并到 main。ARX 标定、控制和接触参数逐项取自既有 [原生 ARX 验收配置](https://github.com/latentstride/pi05-scnet-reproduction/blob/64e92b46d5e9b6eebdf4e6de7deb79ac3eeb2756/research/g2/arx-direct-online-20261114/evidence/127999421/release/configs/unified-seed1-arx-full-w4.json)，摘录见 [本轮固定安全配置](arx_safety_profile.json)。块质量必须与该配置已经验证的 10 g 一致；本入口不改质量或门禁。碰撞阈值和跟踪容差不因 F/L 或 CPU 改变。
 
 ### 数据流与配对
 
@@ -39,7 +39,7 @@ PYTHONPATH="$step6" python -m scripts.step6_arx.analyze "$results" --output "$ne
 
 ### CPU 验收与正式 checkpoint 接入
 
-CPU 在已有 SCNet RoboTwin 容器启动，`ROBOTWIN_GPU=0` 与空 `CUDA_VISIBLE_DEVICES`。下例需要原 PACE checkout、OpenPI client、第五步数据和 PR #5 文件快照。建议把上述变量设置成项目根内的绝对路径：
+CPU 在已有 SCNet RoboTwin 容器启动，`ROBOTWIN_GPU=0` 与空 `CUDA_VISIBLE_DEVICES`。下例需要原 PACE checkout、OpenPI client、第五步数据和 PR #5 文件快照。建议把下述变量设置成项目根内的绝对路径。PR #5 运行快照可由已有仓库 `git worktree add --detach "$pr5" 3f95695d3c8bd9aabf9a626373032547c205bdb7` 建立：
 
 ```bash
 export ROBOTWIN_GPU=0
@@ -70,3 +70,5 @@ PYTHONPATH="$step6:$root/tools/pace-smoke-deps:$openpi/packages/openpi-client/sr
 服务启动仍走第五步 GPU 与发布哈希准入；包装层核对 `identity.json`、`selected.json` 与已提交的 Orbax checkpoint，回显底座、norm stats、训练身份及选中 checkpoint 内容哈希。它不写训练目录。冻结策略仍加载原始 PACE 权重；两个服务都读取同一第五步统计。没有有效 LoRA 时只可使用标明的 CPU fixture，或等待正式模型。
 
 预计正式资源：一张第五步现有入口支持的 RTX 4090（24 GiB）串行服务、4–8 CPU、32–64 GiB RAM。现有 PACE 参考推理峰值约 14 GiB，仅供预估；L 的真实 GPU 恢复、编译与显存须先短窗验证。十试次每场 2,550 秒，整矩阵试次墙钟上限约 7 小时 5 分钟，另留容器、模型加载和清理时间。最大 2,000 次三相机请求约 1.3 GiB 原始 RGB，加上轨迹、FCL 审计和 MP4，建议独立结果卷预留至少 10 GiB，并满足第五步服务原有 16 GiB 余量门槛。未启动或提交任何 GPU 作业。
+
+本轮 [CPU 验收、轨迹和配对统计](../../research/step6/cpu-acceptance/README.md) 已归档。正式评测剩余门槛是三相机真实采样和视频、冻结/LoRA 权重恢复及首轮模型推理、再运行完整配对。CPU 接线结果不回答研究问题。

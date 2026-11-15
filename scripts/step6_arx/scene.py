@@ -21,7 +21,7 @@ from g2_robotwin_backend import ARXBackend, arx_settings, joint_space_setup
 from g2_task_runtime import pace_context
 from pace_client_smoke import Video, load_native_task
 from pace_diagnostics import Diagnostics
-from pace_runtime import PACE_REVISION, require_checkout
+from pace_runtime import PACE_REVISION
 from robotwin_control_geometry import Status
 
 from .protocol import CAMERAS, PROMPT, SHAPE, request_from
@@ -195,7 +195,6 @@ def open_scene(args, campaign, safety, seed, out, episode):
     import sapien
     from mplib.sapien_utils.conversion import convert_object_name
 
-    require_checkout(args.pace_root, PACE_REVISION)
     assets = args.pace_root / "assets"
     audit = json.loads(args.asset_audit.read_text())
     row, = [x for x in audit["robots"] if x["robot"] == "ARX-X5"]
@@ -229,7 +228,8 @@ def open_scene(args, campaign, safety, seed, out, episode):
                 raise ValueError("paired protocol requires RoboTwin clean scene settings")
             if args.headless:
                 from .headless import presentation_off
-                presentation = presentation_off(env)
+                presentation = presentation_off(env, assets / row["urdf_member"], row["urdf_sha256"],
+                                                out / "arx-collision-only.urdf")
             else:
                 presentation = nullcontext()
             random.seed(seed)

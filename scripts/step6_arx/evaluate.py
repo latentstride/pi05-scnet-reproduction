@@ -67,7 +67,7 @@ def trial(args, plan, safety, seed, variant, out, uri, reference, model_referenc
     from .scene import CamerasUnavailable, open_scene
 
     start = monotonic()
-    deadline = start + (300 if args.cpu_fixture else plan["timeout_s"])
+    deadline = start + (600 if args.cpu_fixture else plan["timeout_s"])
     budget = 8 if args.cpu_fixture else plan["max_actions"]
 
     def remaining():
@@ -270,6 +270,9 @@ def main():
     install_safety(args.pr5_root)
     if sha256(args.asset_audit.read_bytes()).hexdigest() != "5ebfc07c82814757168bdb3f2b7ad4a9bec18f58afc28318f49e61af117122f2":
         parser.error("ARX asset audit must match the pinned PR 5 manifest")
+    from pace_runtime import PACE_REVISION, require_checkout
+
+    require_checkout(args.pace_root, PACE_REVISION)
     plan = json.loads((DOCS / "pairs.json").read_text())
     safety = json.loads((DOCS / "arx_safety_profile.json").read_text())
     seeds = plan["scene_seeds"] if args.seed is None else args.seed
@@ -299,7 +302,8 @@ def main():
             return receipt
 
         def stop(receipt):
-            return bool(receipt["cleanup_errors"]) or receipt["outcome"] == "RESOURCE_CENSORED"
+            return bool(receipt["cleanup_errors"]) or (receipt["outcome"] == "RESOURCE_CENSORED"
+                and receipt["failure"]["detail"].startswith("received signal"))
 
         for seed in seeds:
             if args.variant == "lora":

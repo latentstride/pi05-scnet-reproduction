@@ -1,0 +1,30 @@
+{
+  "protocol": "step6-arx-native-v1",
+  "task": "handover_block",
+  "embodiment": "ARX-X5",
+  "scene_seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "variants": [
+    "frozen",
+    "lora"
+  ],
+  "policy_seed": 42,
+  "horizon": 50,
+  "execute_cap": 4,
+  "max_actions": 800,
+  "timeout_s": 2550,
+  "prompt": "Pick up the red block with the left arm, hand it to the right arm, and place it on the target.",
+  "image_shape_hwc": [
+    240,
+    320,
+    3
+  ],
+  "checkpoint_revision": "17ef545270cf26ed81169893b60f845f80ce6557",
+  "dataset_sha256": "19da908478bd36cbf3e2c0b507479d53db6c178bfd07d16cff7a04ee07fd72ca",
+  "safety_revision": "3f95695d3c8bd9aabf9a626373032547c205bdb7"
+}

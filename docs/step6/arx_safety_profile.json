@@ -1,0 +1,263 @@
+{
+  "arx_base_distance_m": 0.6,
+  "world_task": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0
+  ],
+  "control_period_s": 0.02,
+  "collision_joint_step_rad": 0.02,
+  "collision_finger_step_m": 0.001,
+  "max_plan_ticks": 2000,
+  "control_limits": {
+    "source": "G2 experiment-imposed simulation command bounds v1; not manufacturer ratings",
+    "arm_velocity_rad_s": [
+      [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5
+      ],
+      [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5
+      ]
+    ],
+    "arm_acceleration_rad_s2": [
+      [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    ],
+    "finger_velocity_m_s": [
+      [
+        0.03,
+        0.03
+      ],
+      [
+        0.03,
+        0.03
+      ]
+    ],
+    "finger_acceleration_m_s2": [
+      [
+        0.1,
+        0.1
+      ],
+      [
+        0.1,
+        0.1
+      ]
+    ]
+  },
+  "tracking_position_limit_m": 0.03,
+  "tracking_angle_limit_deg": 10,
+  "contact_mode": "bounded_force_contact_diagnostic_v1",
+  "contact_profile": {
+    "status": "cpu_diagnostic_only",
+    "giver": "left",
+    "validated_block_mass_kg": 0.01,
+    "source": "original10g ARX expert CPU replays0/1/2; task/hold/continuous contact guard passed",
+    "limits": {
+      "penetration_m": 0.002,
+      "closure_penetration_m": 0.0005,
+      "scan_step_m": 0.001,
+      "position_slip_m": 0.005,
+      "angle_slip_deg": 5.0,
+      "closed_chain_position_m": 0.002,
+      "closed_chain_angle_deg": 2.0,
+      "stable_steps": 3,
+      "minimum_impulse": 1e-08,
+      "contact_cap": 256
+    },
+    "drive": {
+      "stiffness": 1000.0,
+      "damping": 200.0,
+      "force_limit_n": [
+        2.0,
+        2.0
+      ],
+      "mode": "bounded_aperture_center_force_v1",
+      "source": "bounded aperture/center effort allocation; control effort excludes separate passive compensation"
+    },
+    "acceptance_sha256": "70d649f0afab9dea1a57617ec312052beffb05b312012fcfc729069c44c04298",
+    "physical_trace_sha256": [
+      "c0dcc14dac4e94c6364fe6a3e374c246c4a8dff4d6a6e60d9569235d20830881",
+      "3d64833d1e2d8ed093d15654c6bc281717c5ae087ad4d46aaa5a05d14a5b3e13",
+      "5b3efda4bdc13bf53c105830d607579ca46dd8ec320c7fa6aa1bb0b761d0cad0"
+    ],
+    "formal_release_ready": false,
+    "production_collision_gate_verified": false
+  },
+  "embodiment": "ARX-X5",
+  "calibration": {
+    "left": {
+      "finger_names": [
+        "joint7",
+        "joint8"
+      ],
+      "closed_m": [
+        0.0,
+        0.0
+      ],
+      "opened_m": [
+        0.044,
+        0.044
+      ],
+      "grip_source": "g2_URDF_endpoint_intersection_v1:8756caa09448b92e2d21e22e6ceb3b7a3eddff918d699ed5e331172bebc89ba8",
+      "instance": "bound_to_actual_articulation_after_setup",
+      "child_joint": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "tcp_tool": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "id": "nominal_RoboTwin_TCP_v1:7aaa308a1a5b6a213d914db86ba09ddd6252f25cb498ac9a148bfa6c7166a423",
+      "geometry_only": true,
+      "contact_dynamics_verified": false,
+      "grip_state_mode": "independent_aperture_v1",
+      "grip_state_source": "ARX X5A SHA 7aaa308a1a5b6a213d914db86ba09ddd6252f25cb498ac9a148bfa6c7166a423: independent opposed axes, common link6; aperture sum v1"
+    },
+    "right": {
+      "finger_names": [
+        "joint7",
+        "joint8"
+      ],
+      "closed_m": [
+        0.0,
+        0.0
+      ],
+      "opened_m": [
+        0.044,
+        0.044
+      ],
+      "grip_source": "g2_URDF_endpoint_intersection_v1:8756caa09448b92e2d21e22e6ceb3b7a3eddff918d699ed5e331172bebc89ba8",
+      "instance": "bound_to_actual_articulation_after_setup",
+      "child_joint": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "tcp_tool": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "id": "nominal_RoboTwin_TCP_v1:7aaa308a1a5b6a213d914db86ba09ddd6252f25cb498ac9a148bfa6c7166a423",
+      "geometry_only": true,
+      "contact_dynamics_verified": false,
+      "grip_state_mode": "independent_aperture_v1",
+      "grip_state_source": "ARX X5A SHA 7aaa308a1a5b6a213d914db86ba09ddd6252f25cb498ac9a148bfa6c7166a423: independent opposed axes, common link6; aperture sum v1"
+    }
+  }
+}

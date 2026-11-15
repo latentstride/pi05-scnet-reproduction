@@ -18,7 +18,7 @@
 
 底座 BF16、LoRA FP32。A 用固定 seed 的 N(0,0.01) 初始化，B 置零，使初始残差为零。优化器采用常数 3e-5、全局梯度裁剪 1.0、weight decay 0，无 EMA，batch 1。主模型继续预测 50×32，官方 flow loss 同时约束补零的 18 个动作维度。训练前比对 Orbax 与无 LoRA / 有 LoRA 模型的底座路径和形状，拒绝不匹配的结构。SCNet CPU 实测依赖为 JAX 0.5.3、Flax 0.10.2、Optax 0.2.4、Orbax 0.11.13 与 h5py 3.13.0。
 
-11 月 15 日的收据与已验收发布保存在项目根下的 `results/step5-cpu-admission.rJvqzB/`，其中 `cpu-receipt.json` 是训练准入输入，`cpu.log` 保存该次 CPU 过程。收据仅代表 CPU 通过；CPU 抽象追踪未执行全量模型计算核。
+11 月 15 日的收据与已验收发布保存在项目根下的 `results/step5-cpu-admission.rJvqzB/`，其中 `cpu-receipt.json` 是训练准入输入，`cpu.log` 保存该次 CPU 过程。收据 SHA-256 为 `8cca28981e2db38f6f43ca6b31531fe3f7ed0b7f9899f73432ae0cfc62e623cb`，代码指纹与 PR 文件一致。实测的冻结 Orbax 元数据含 51 个 FP32 张量，训练以 BF16 恢复底座。CPU 批次形状为 `[1,50,32]`，提示及状态合计 72 个有效 token，AdamW 有 41 个状态数组（40 个矩张量与 1 个计数器）。收据仅代表 CPU 通过；CPU 抽象追踪未执行全量模型计算核。
 
 ## GPU 串行门禁
 

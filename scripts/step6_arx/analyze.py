@@ -68,6 +68,8 @@ def summarize(root):
         reason = None
         if campaign["fixture"]:
             reason = "PROTOCOL_FIXTURE"
+        elif campaign.get("acceptance_only"):
+            reason = "GPU_SHORT_ACCEPTANCE"
         elif f is None or l is None:
             reason = "MISSING_RECEIPT"
         elif l["pair_match"] is not True:

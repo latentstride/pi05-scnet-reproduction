@@ -67,8 +67,8 @@ def trial(args, plan, safety, seed, variant, out, uri, reference, model_referenc
     from .scene import CamerasUnavailable, open_scene
 
     start = monotonic()
-    deadline = start + (600 if args.cpu_fixture else plan["timeout_s"])
-    budget = 8 if args.cpu_fixture else plan["max_actions"]
+    deadline = start + (600 if args.cpu_fixture or args.gpu_short else plan["timeout_s"])
+    budget = 8 if args.cpu_fixture else plan["execute_cap"] if args.gpu_short else plan["max_actions"]
 
     def remaining():
         left = deadline - monotonic()
@@ -92,6 +92,8 @@ def trial(args, plan, safety, seed, variant, out, uri, reference, model_referenc
                   task_success=None, native_success_at_stop=None, outcome="INFRASTRUCTURE_ERROR",
                   failure=None, cleanup_errors=[], initial=None, pair_match=None, video=None,
                   start_unix_ns=time_ns())
+    if args.gpu_short:
+        record["acceptance_only"] = True
     query = None
     phase = "scene_setup"
     scene = None
@@ -164,7 +166,7 @@ def trial(args, plan, safety, seed, variant, out, uri, reference, model_referenc
                 phase = "policy_response"
                 socket.send(packed)
                 record["queries"] += 1
-                frame = socket.recv(timeout=min(remaining(), 180))
+                frame = socket.recv(timeout=min(remaining(), 380 if args.gpu_short else 180))
                 emit(dict(kind="policy_response", stamp=stamp, payload=record_wire(wire, query, "response", frame)))
                 chunk = actions_from(decode(frame))
                 if scene.tick != stamp["tick"]:
@@ -186,6 +188,8 @@ def trial(args, plan, safety, seed, variant, out, uri, reference, model_referenc
                         break
                 emit(dict(kind="window_end", consumed_rows=row_i + 1,
                           discarded_rows=plan["horizon"] - row_i - 1, tick=scene.tick))
+                if args.gpu_short:
+                    break
             record["task_success"] = scene.success()
             record["outcome"] = "TASK_SUCCESS" if record["task_success"] else "ACTION_LIMIT"
         except (Exception, KeyboardInterrupt) as error:
@@ -255,11 +259,15 @@ def main():
                         help="use two passes if only one model service fits")
     parser.add_argument("--frozen-url")
     parser.add_argument("--lora-url")
+    parser.add_argument("--gpu-short", action="store_true",
+                        help="one real H50 query per variant, followed by up to K4 guarded actions")
     parser.add_argument("--cpu-fixture", action="store_true")
     parser.add_argument("--headless", action="store_true", help="CPU fixture only; keeps native PhysX without RGB")
     parser.add_argument("--invalid-variant", choices=("frozen", "lora"), help="CPU fixture: reject at query 1")
     parser.add_argument("--dataset", type=lambda p: Path(p).resolve(), help="CPU fixture: use real Step 5 norm stats")
     args = parser.parse_args()
+    if args.gpu_short and (args.cpu_fixture or args.seed != [0] or args.variant == "both"):
+        parser.error("GPU short acceptance requires --seed 0 and one variant per service process")
     if args.cpu_fixture:
         if args.frozen_url or args.lora_url or args.dataset is None or args.variant != "both":
             parser.error("CPU fixture needs --dataset; it owns both loopback endpoints")
@@ -278,13 +286,15 @@ def main():
     seeds = plan["scene_seeds"] if args.seed is None else args.seed
     if not set(seeds) <= set(plan["scene_seeds"]) or len(seeds) != len(set(seeds)):
         parser.error("select distinct seeds from 0–4")
+    campaign = dict(plan=plan, seeds=seeds, fixture=args.cpu_fixture)
+    if args.gpu_short:
+        campaign["acceptance_only"] = True
     if args.variant == "lora":
-        if json.loads((args.output / "campaign.json").read_text()) != dict(plan=plan, seeds=seeds, fixture=False):
+        if json.loads((args.output / "campaign.json").read_text()) != campaign:
             parser.error("LoRA pass must use the same frozen campaign directory and seeds")
     else:
         args.output.mkdir(parents=True)
-        (args.output / "campaign.json").write_text(json.dumps(dict(plan=plan, seeds=seeds, fixture=args.cpu_fixture),
-                                                               indent=2) + "\n")
+        (args.output / "campaign.json").write_text(json.dumps(campaign, indent=2) + "\n")
     signal.signal(signal.SIGTERM, interrupt)
     signal.signal(signal.SIGINT, interrupt)
     with ExitStack() as stack:

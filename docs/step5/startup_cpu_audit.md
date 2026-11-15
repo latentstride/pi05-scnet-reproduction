@@ -1,5 +1,7 @@
 # ARX LoRA 启动链路审查
 
+最后一次单叶诊断、第三次 GPU 验证的资源预算和准入结论见[部分 CPU 验收及提交评审](gpu_submission_review.md)。
+
 ## 两次实跑失败
 
 两次提交都使用 `ksagnormal01`、一张 `RTX4090-PCIE-24GB-LS`、8 CPU、64 GiB 主存、6 小时时限和显式 `code_cpf/pi05` 工作目录。历史提交命令、调度器回执、完整 stdout 和 Python traceback 位于项目根的 `logs/step5-arx-20261115/` 和 `logs/step5-arx-20261115-r1/`。`submission-intent.txt` 与各自历史验收的 `tested-command.txt` 逐字节相同。两个发布目录的 `train.py`、`model.py`、`env.sh`、`train.slurm` 均与各自归档相符。

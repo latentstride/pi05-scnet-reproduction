@@ -28,7 +28,7 @@
       "status": "SUBMITTED",
       "reason": "Priority",
       "job_id": "128047752",
-      "slurm_state": "PENDING",
+      "slurm_state": "COMPLETED",
       "dependency": null,
       "submission_attempts": 1,
       "episode": "unified-seed1-arx-full-w4",
@@ -51,13 +51,23 @@
         "MinMemoryNode": "32G",
         "WorkDir": "<PROJECT_ROOT>",
         "TresPerNode": "gres:gpu:1"
+      },
+      "scheduler_terminal": {
+        "state": "COMPLETED",
+        "exit_code": "0:0",
+        "submit": "2026-11-15T00:35:53",
+        "eligible": "2026-11-15T00:35:55",
+        "start": "2026-11-15T02:52:40",
+        "end": "2026-11-15T03:13:58",
+        "elapsed": "00:21:18",
+        "allocated_tres": "billing=4,cpu=4,gres/gpu=1,mem=32G,node=1"
       }
     },
     "G2": {
       "status": "SUBMITTED",
       "reason": "Priority",
       "job_id": "128047778",
-      "slurm_state": "PENDING",
+      "slurm_state": "COMPLETED",
       "dependency": null,
       "submission_attempts": 1,
       "episode": "unified-seed1-arx-full-w4",
@@ -80,13 +90,23 @@
         "MinMemoryNode": "32G",
         "WorkDir": "<PROJECT_ROOT>",
         "TresPerNode": "gres:gpu:1"
+      },
+      "scheduler_terminal": {
+        "state": "COMPLETED",
+        "exit_code": "0:0",
+        "submit": "2026-11-15T00:36:01",
+        "eligible": "2026-11-15T00:36:04",
+        "start": "2026-11-15T03:16:20",
+        "end": "2026-11-15T03:28:20",
+        "elapsed": "00:12:00",
+        "allocated_tres": "billing=4,cpu=4,gres/gpu=1,mem=32G,node=1"
       }
     },
     "G3": {
       "status": "SUBMITTED",
       "reason": "Priority",
       "job_id": "128047805",
-      "slurm_state": "PENDING",
+      "slurm_state": "COMPLETED",
       "dependency": null,
       "submission_attempts": 1,
       "episode": "unified-seed0-arx-full-w4",
@@ -109,13 +129,23 @@
         "MinMemoryNode": "32G",
         "WorkDir": "<PROJECT_ROOT>",
         "TresPerNode": "gres:gpu:1"
+      },
+      "scheduler_terminal": {
+        "state": "COMPLETED",
+        "exit_code": "0:0",
+        "submit": "2026-11-15T00:36:10",
+        "eligible": "2026-11-15T00:36:11",
+        "start": "2026-11-15T03:29:52",
+        "end": "2026-11-15T03:41:26",
+        "elapsed": "00:11:34",
+        "allocated_tres": "billing=4,cpu=4,gres/gpu=1,mem=32G,node=1"
       }
     },
     "G4": {
       "status": "SUBMITTED",
       "reason": "None",
       "job_id": "128047813",
-      "slurm_state": "PENDING",
+      "slurm_state": "COMPLETED",
       "dependency": null,
       "submission_attempts": 1,
       "episode": "unified-seed2-arx-full-w4",
@@ -138,6 +168,16 @@
         "MinMemoryNode": "32G",
         "WorkDir": "<PROJECT_ROOT>",
         "TresPerNode": "gres:gpu:1"
+      },
+      "scheduler_terminal": {
+        "state": "COMPLETED",
+        "exit_code": "0:0",
+        "submit": "2026-11-15T00:36:17",
+        "eligible": "2026-11-15T00:36:20",
+        "start": "2026-11-15T03:45:58",
+        "end": "2026-11-15T03:56:18",
+        "elapsed": "00:10:20",
+        "allocated_tres": "billing=4,cpu=4,gres/gpu=1,mem=32G,node=1"
       }
     }
   },

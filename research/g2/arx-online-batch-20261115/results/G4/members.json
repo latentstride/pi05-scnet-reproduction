@@ -1,0 +1,21 @@
+{
+  "pace-g2-standalone-arx-128047813/standalone-result.json": "09c7f32611a31f3df5dc0f12312a019df4de0d982f07d11e80f40438ab7a9ac8",
+  "pace-g2-standalone-arx-128047813/authorization-receipt.json": "2e907c090e0c537b72c82eaf0e430e16935759e96ee6b8224dc6b13e7cf4bcb9",
+  "pace-g2-standalone-arx-128047813/allocation-receipt.json": "deee6ba72b80c50434eddaf776c8391920d599ba8131f1188635ead2164e26a5",
+  "pace-g2-standalone-arx-128047813/model/startup.json": "d92a0a8119285d9d6b0a02453a08f05e7eb9f3539eaf8552bcbd2c29e1ce31f0",
+  "pace-g2-standalone-arx-128047813/model/phases.jsonl": "dab850a5ca6f1d72b76af27cc075d5916a7c3a44539ef4cede62cfba002f32c7",
+  "pace-g2-standalone-arx-128047813/trials/unified-seed2-arx-full-w4/receipt.json": "906076bcaadb996e60c9e21ebcdfe7928c59e78e8e2109060b9cf8381c4d1525",
+  "pace-g2-standalone-arx-128047813/trials/unified-seed2-arx-full-w4/rng-reset.json": "c250bb3f335c000388905bcc74c697aad9201ce484112c35fbe3f875777915d3",
+  "pace-g2-standalone-arx-128047813/startup/unified-seed2-arx-full-w4/receipt.json": "fc5a9a7e6096a0982ec18d0787f974589b2763ed03089cd55e6aac40d41038a7",
+  "pace-g2-standalone-arx-128047813/startup/unified-seed2-arx-full-w4/rng-reset.json": "c250bb3f335c000388905bcc74c697aad9201ce484112c35fbe3f875777915d3",
+  "pace-g2-standalone-arx-128047813/trials/unified-seed2-arx-full-w4/episode/action-00001.npy": "6a12ede8394fbf261641348942e0cd4cd15da13af60c9748dd4d5438b3fbbfe0",
+  "pace-g2-standalone-arx-128047813/trials/unified-seed2-arx-full-w4/episode/collision-checks.jsonl": "d6d74968b9d96d5d5e7b983808936b255c30445e8a327bd90b15bbc9dd93d0f8",
+  "pace-g2-standalone-arx-128047813/trials/unified-seed2-arx-full-w4/episode/events.jsonl": "b98b771f1bd5d44cfd258644c08a53f96633e437b0503df76430c0e206b5872f",
+  "pace-g2-standalone-arx-128047813/trials/unified-seed2-arx-full-w4/episode/head.mp4": "532e5907d3e80488d0017eaff280630eb518de529b3e0cc03c4fb629c4f0bf36",
+  "pace-g2-standalone-arx-128047813/trials/unified-seed2-arx-full-w4/episode/initial-readback.json": "e56f40e223087b6a26d7001dfea21acdb390e994af186e64b7b6d0bccc168a7f",
+  "pace-g2-standalone-arx-128047813/trials/unified-seed2-arx-full-w4/episode/initial-rgb.npz": "313132e2e71c23033298da577c06bb9c723fd6b2f87070c2af29b0d63102eecc",
+  "pace-g2-standalone-arx-128047813/trials/unified-seed2-arx-full-w4/episode/initial-verification.json": "c14d62c0634543a4b6186262f3b07b15ff30c59e8da05bf2aafc6212abe9648d",
+  "pace-g2-standalone-arx-128047813/trials/unified-seed2-arx-full-w4/episode/observation-00001.npz": "313132e2e71c23033298da577c06bb9c723fd6b2f87070c2af29b0d63102eecc",
+  "pace-g2-standalone-arx-128047813/trials/unified-seed2-arx-full-w4/episode/result.json": "784bf5724487c1b958c0e04c68b9ab53a4d5fd9b648ca033318437159db9e735",
+  "pace-g2-standalone-arx-128047813/trials/unified-seed2-arx-full-w4/episode/setup.json": "8aada04d8c26dd92b710fcbbe0a7796451c6d8e4012ffc6486dac14cd9aa9b1b"
+}

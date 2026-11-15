@@ -1,6 +1,7 @@
 """Score original ARX online receipts and report evidence coverage per trial."""
 
 import argparse
+from collections import Counter
 from hashlib import sha256
 import json
 from pathlib import Path
@@ -53,12 +54,22 @@ def trial_metrics(run, episode_id, scheduler_state=None, *, hash_files=False):
     peak_lift = None
     previously_held_left = shared = False
     first_target_contact_after_handover = None
+    query_ticks, prefix_boundaries = [], []
+    contact_steps, max_fingers = Counter(), Counter()
+    row_in_prefix = None
     for event in rows:
         if event.get("kind") == "policy_request":
             query_count += 1
+            query_ticks.append(event["stamp"]["tick"])
             if initial_z is None and event["stamp"]["tick"] == 0:
                 block = (event.get("objects_task") or {}).get("block")
                 initial_z = z(block) if block is not None else None
+        if event.get("kind") == "direct_row_planning":
+            row_in_prefix = event["row_in_prefix"]
+        if event.get("kind") == "direct_prefix_complete":
+            prefix_boundaries.append(dict(query=query_count, **{
+                key: event[key] for key in ("executed_actions", "discarded_rows", "stamp", "reason")
+            }))
         if not event.get("physics_step_count"):
             continue
         tick = event["tick"]
@@ -70,6 +81,9 @@ def trial_metrics(run, episode_id, scheduler_state=None, *, hash_files=False):
         steps += event["physics_step_count"]
         contact = event.get("contact_state") or {}
         fingers = contact.get("contact_fingers", {})
+        for side, ids in fingers.items():
+            contact_steps[side] += event["physics_step_count"] if ids else 0
+            max_fingers[side] = max(max_fingers[side], len(ids))
         holders = set(contact.get("holders", ()))
         previously_held_left |= holders == {"left"}
         shared |= previously_held_left and holders == {"left", "right"}
@@ -87,7 +101,8 @@ def trial_metrics(run, episode_id, scheduler_state=None, *, hash_files=False):
                 first_target_contact_after_handover = tick
         for name, present in zip(stage_names, reached):
             if present and stages[name] is None:
-                stages[name] = dict(tick=tick, holders=sorted(holders), fingers=fingers)
+                stages[name] = dict(tick=tick, query=query_count, row_in_prefix=row_in_prefix,
+                                    holders=sorted(holders), fingers=fingers)
     if full and "queries" in result and query_count != result["queries"]:
         raise ValueError(f"query count disagrees with original receipt in {run}")
     reached_control = receipt.get("fresh_reset_verified") is True and result.get("queries", 0) > 0
@@ -120,10 +135,14 @@ def trial_metrics(run, episode_id, scheduler_state=None, *, hash_files=False):
         peak_held_lift_mm=None if peak_lift is None else 1000 * peak_lift,
         first_target_contact_after_handover_tick=first_target_contact_after_handover,
         original_queries=result.get("queries"), original_executed_policy_actions=result.get("policy_actions"),
+        query_ticks=query_ticks, prefix_boundaries=prefix_boundaries,
+        contact_steps=contact_steps, max_fingers=max_fingers,
+        last_planned_row=row_in_prefix, application_outcome=result.get("outcome"),
+        application_receipt_category=receipt.get("category"),
         termination=result.get("failure") or crash or standalone.get("stop_reason") or receipt.get("category"),
         rgb_files=sum(path.name.startswith("observation-") for path in run_files),
         action_chunks=sum(path.name.startswith("action-") for path in run_files),
-        videos=[str(path.relative_to(run)) for path in run_files if path.suffix == ".mp4"],
+        videos=[str(path.relative_to(run)) for path in run_files if path.suffix == ".mp4" and trial in path.parents],
         sha256=hashes,
     )
 

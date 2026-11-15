@@ -1,0 +1,182 @@
+{
+  "G1": {
+    "label": "G1",
+    "job_id": "128047752",
+    "queries": [
+      0,
+      5767,
+      12392,
+      19507,
+      23687,
+      28962
+    ],
+    "first_contact": [
+      5767,
+      1,
+      36
+    ],
+    "query_prefixes": [
+      [
+        1,
+        36,
+        "measured_first_contact"
+      ],
+      [
+        2,
+        50,
+        "prefix_complete"
+      ],
+      [
+        3,
+        50,
+        "prefix_complete"
+      ],
+      [
+        4,
+        50,
+        "prefix_complete"
+      ],
+      [
+        5,
+        50,
+        "prefix_complete"
+      ]
+    ],
+    "terminal_query": 6,
+    "terminal_row": 2,
+    "contact_counts": {
+      "left_max": 1,
+      "right_max": 0,
+      "left_contact": 999
+    },
+    "first_action_sha256": "748a5ec8ff936ef117b54c63c66e743b590cd2e3c41bb1013cf998d8912339ad",
+    "terminal_code": "collision",
+    "terminal_phase": "planning",
+    "terminal_detail": "all temporally admissible IK pairs collide",
+    "collision_geometry": "candidate",
+    "collision_world": "target_collision",
+    "finger": null,
+    "side": null,
+    "depth_mm": null,
+    "limit_mm": null,
+    "recorded_candidate_pairs": {
+      "link6 / box_35": 16,
+      "link2 / table_6": 4,
+      "link3 / table_6": 4
+    },
+    "max_pair_depth_mm": {},
+    "rejected_pair_count": 16,
+    "historical_first_action_sha256": "eb9d0efc6a649aca72e5f6c01d3be677ca47373aa34416dd63e73aa57f8f378e",
+    "first_action_matches_historical": false
+  },
+  "G2": {
+    "label": "G2",
+    "job_id": "128047778",
+    "queries": [
+      0,
+      5784
+    ],
+    "first_contact": [
+      5784,
+      1,
+      36
+    ],
+    "query_prefixes": [
+      [
+        1,
+        36,
+        "measured_first_contact"
+      ]
+    ],
+    "terminal_query": 2,
+    "terminal_row": 9,
+    "contact_counts": {
+      "left_max": 1,
+      "right_max": 0,
+      "left_contact": 432
+    },
+    "first_action_sha256": "4b49955299b066d0c0bc875046abe841b3f4810ac0fba54c8de4c5047513f2cb",
+    "terminal_code": "collision",
+    "terminal_phase": "planning",
+    "terminal_detail": "predicted finger start intersects task block",
+    "collision_geometry": "candidate",
+    "collision_world": "target_collision",
+    "finger": 1,
+    "side": "left",
+    "depth_mm": 2.0801338832825422,
+    "limit_mm": 2.0,
+    "recorded_candidate_pairs": {},
+    "max_pair_depth_mm": {},
+    "rejected_pair_count": null,
+    "historical_first_action_sha256": "5b201b33ff9afa7c311f336b4a1a39ef582639730f5929bf803fd3de7cb4403b",
+    "first_action_matches_historical": false
+  },
+  "G3": {
+    "label": "G3",
+    "job_id": "128047805",
+    "queries": [
+      0,
+      4855
+    ],
+    "first_contact": [
+      4855,
+      1,
+      25
+    ],
+    "query_prefixes": [
+      [
+        1,
+        25,
+        "measured_first_contact"
+      ]
+    ],
+    "terminal_query": 2,
+    "terminal_row": 1,
+    "contact_counts": {
+      "left_max": 1,
+      "right_max": 0,
+      "left_contact": 2901
+    },
+    "first_action_sha256": "45f036add146d0ec540e03e938246d6b4b55920554aed61e761e313cfe663c26",
+    "terminal_code": "collision",
+    "terminal_phase": "control",
+    "terminal_detail": "predicted finger start intersects task block",
+    "collision_geometry": "candidate",
+    "collision_world": null,
+    "finger": 1,
+    "side": "left",
+    "depth_mm": 2.0001220982521772,
+    "limit_mm": 2.0,
+    "recorded_candidate_pairs": {},
+    "max_pair_depth_mm": {},
+    "rejected_pair_count": null
+  },
+  "G4": {
+    "label": "G4",
+    "job_id": "128047813",
+    "queries": [
+      0
+    ],
+    "first_contact": null,
+    "query_prefixes": [],
+    "terminal_query": 1,
+    "terminal_row": 1,
+    "contact_counts": {},
+    "first_action_sha256": "6a12ede8394fbf261641348942e0cd4cd15da13af60c9748dd4d5438b3fbbfe0",
+    "terminal_code": "collision",
+    "terminal_phase": "planning",
+    "terminal_detail": "all temporally admissible IK pairs collide",
+    "collision_geometry": "candidate",
+    "collision_world": "target_collision",
+    "finger": null,
+    "side": null,
+    "depth_mm": null,
+    "limit_mm": null,
+    "recorded_candidate_pairs": {
+      "link2 / link5": 20,
+      "link2 / link6": 8
+    },
+    "max_pair_depth_mm": {},
+    "rejected_pair_count": 16
+  }
+}

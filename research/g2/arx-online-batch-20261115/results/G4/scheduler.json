@@ -1,0 +1,10 @@
+{
+  "state": "COMPLETED",
+  "exit_code": "0:0",
+  "submit": "2026-11-15T00:36:17",
+  "eligible": "2026-11-15T00:36:20",
+  "start": "2026-11-15T03:45:58",
+  "end": "2026-11-15T03:56:18",
+  "elapsed": "00:10:20",
+  "allocated_tres": "billing=4,cpu=4,gres/gpu=1,mem=32G,node=1"
+}

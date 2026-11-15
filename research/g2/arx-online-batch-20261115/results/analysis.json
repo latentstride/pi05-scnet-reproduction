@@ -1,0 +1,2499 @@
+{
+  "trials": {
+    "G1": {
+      "outcome": "FAILED",
+      "scheduler_state": "COMPLETED",
+      "original_task_success": false,
+      "stages": {
+        "FIRST_CONTACT": {
+          "tick": 5767,
+          "query": 1,
+          "row_in_prefix": 36,
+          "holders": [],
+          "fingers": {
+            "left": [
+              17
+            ],
+            "right": []
+          }
+        },
+        "BILATERAL_CONTACT": null,
+        "STABLE_GRASP": null,
+        "LIFT_50MM": null,
+        "HANDOVER": null
+      },
+      "full_physical_log": true,
+      "logged_physics_steps": 29167,
+      "peak_held_lift_mm": null,
+      "first_target_contact_after_handover_tick": null,
+      "original_queries": 6,
+      "original_executed_policy_actions": 237,
+      "query_ticks": [
+        0,
+        5767,
+        12392,
+        19507,
+        23687,
+        28962
+      ],
+      "prefix_boundaries": [
+        {
+          "query": 1,
+          "executed_actions": 36,
+          "discarded_rows": 14,
+          "stamp": {
+            "episode": "unified-seed1-arx-full-w4",
+            "tick": 5767,
+            "sim_s": 23.068001095671207
+          },
+          "reason": "measured_first_contact"
+        },
+        {
+          "query": 2,
+          "executed_actions": 50,
+          "discarded_rows": 0,
+          "stamp": {
+            "episode": "unified-seed1-arx-full-w4",
+            "tick": 12392,
+            "sim_s": 49.568002354353666
+          },
+          "reason": "prefix_complete"
+        },
+        {
+          "query": 3,
+          "executed_actions": 50,
+          "discarded_rows": 0,
+          "stamp": {
+            "episode": "unified-seed1-arx-full-w4",
+            "tick": 19507,
+            "sim_s": 78.02800370613113
+          },
+          "reason": "prefix_complete"
+        },
+        {
+          "query": 4,
+          "executed_actions": 50,
+          "discarded_rows": 0,
+          "stamp": {
+            "episode": "unified-seed1-arx-full-w4",
+            "tick": 23687,
+            "sim_s": 94.74800450028852
+          },
+          "reason": "prefix_complete"
+        },
+        {
+          "query": 5,
+          "executed_actions": 50,
+          "discarded_rows": 0,
+          "stamp": {
+            "episode": "unified-seed1-arx-full-w4",
+            "tick": 28962,
+            "sim_s": 115.84800550248474
+          },
+          "reason": "prefix_complete"
+        }
+      ],
+      "contact_steps": {
+        "left": 999,
+        "right": 0
+      },
+      "max_fingers": {
+        "left": 1,
+        "right": 0
+      },
+      "last_planned_row": 2,
+      "application_outcome": "planning_failed",
+      "application_receipt_category": "controlled_candidate_stop",
+      "termination": {
+        "phase": "planning",
+        "code": "collision",
+        "detail": "all temporally admissible IK pairs collide",
+        "diagnostic": {
+          "geometry": "candidate",
+          "phase": "action",
+          "stamp": {
+            "episode": "unified-seed1-arx-full-w4",
+            "tick": 29167,
+            "sim_s": 116.66800554143265
+          },
+          "ik_backend": "g2_urdf_damped_jacobian_v1",
+          "collision_world": "target_collision",
+          "measured_start_q": [
+            [
+              -0.18052278459072113,
+              0.17831574380397797,
+              0.36477136611938477,
+              -0.284288227558136,
+              0.19123585522174835,
+              -0.07687864452600479
+            ],
+            [
+              0.6134715676307678,
+              2.402548313140869,
+              1.0915212631225586,
+              1.3016444444656372,
+              0.4941946864128113,
+              -0.0116000110283494
+            ]
+          ],
+          "measured_start_fingers": [
+            [
+              0.04366496205329895,
+              0.04399996995925903
+            ],
+            [
+              7.501105574192479e-05,
+              0.0002053030184470117
+            ]
+          ],
+          "grippers": [
+            {
+              "row": 0,
+              "side": "left",
+              "raw": 1.0014185865139962,
+              "rule": "clip",
+              "normalized": 1.0,
+              "native": [
+                0.044,
+                0.044
+              ]
+            },
+            {
+              "row": 0,
+              "side": "right",
+              "raw": 7.320973446965218e-05,
+              "rule": "clip",
+              "normalized": 7.320973446965218e-05,
+              "native": [
+                3.221228316664696e-06,
+                3.221228316664696e-06
+              ]
+            }
+          ],
+          "requests": [
+            {
+              "row": 0,
+              "task_tools": [
+                [
+                  [
+                    0.30293486153710114,
+                    0.95166949555084,
+                    0.05055334710487847,
+                    -0.24569200288363469
+                  ],
+                  [
+                    0.9485066524492313,
+                    -0.2959269928446647,
+                    -0.11297054999187096,
+                    -0.16406512953025498
+                  ],
+                  [
+                    -0.0925505263358856,
+                    0.08217290395210997,
+                    -0.9923114500654661,
+                    0.9979605861494568
+                  ],
+                  [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                  ]
+                ],
+                [
+                  [
+                    -0.0955837405452786,
+                    0.9952440222767207,
+                    0.018790547246600214,
+                    0.06359563486442389
+                  ],
+                  [
+                    0.995338876894029,
+                    0.09580184090843427,
+                    -0.011069210535852879,
+                    0.13568665660540224
+                  ],
+                  [
+                    -0.01281673463503144,
+                    0.01764492564475532,
+                    -0.9997621656735597,
+                    0.8286546494167326
+                  ],
+                  [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                  ]
+                ]
+              ],
+              "ik_start": [
+                [
+                  -0.18052278459072113,
+                  0.17831574380397797,
+                  0.36477136611938477,
+                  -0.284288227558136,
+                  0.19123585522174835,
+                  -0.07687864452600479
+                ],
+                [
+                  0.6134715676307678,
+                  2.402548313140869,
+                  1.0915212631225586,
+                  1.3016444444656372,
+                  0.4941946864128113,
+                  -0.0116000110283494
+                ]
+              ],
+              "fingers": [
+                [
+                  0.044,
+                  0.044
+                ],
+                [
+                  3.221228316664696e-06,
+                  3.221228316664696e-06
+                ]
+              ]
+            }
+          ],
+          "rejected_pairs": 16,
+          "collision_examples": [
+            {
+              "candidate_q": [
+                [
+                  -0.19141251266662845,
+                  0.05751287717386601,
+                  0.3232570757233575,
+                  -0.35905753699566856,
+                  0.1172325140839973,
+                  -0.07171490375724562
+                ],
+                [
+                  0.5835062370144883,
+                  2.4389093879427266,
+                  1.1177757630346312,
+                  1.3066220458153752,
+                  0.48771998142110834,
+                  -0.010834277872669234
+                ]
+              ],
+              "collisions": [
+                {
+                  "collision_type": "self_sceneobject",
+                  "object_name1": "_18",
+                  "link_name1": "link6",
+                  "object_name2": "box_35",
+                  "link_name2": "box_35",
+                  "max_penetration_m": 0.0005155263934284449
+                }
+              ]
+            },
+            {
+              "candidate_q": [
+                [
+                  -0.19141251266662845,
+                  0.05751287717386601,
+                  0.3232570757233575,
+                  -0.35905753699566856,
+                  0.1172325140839973,
+                  -0.07171490375724562
+                ],
+                [
+                  0.583506038945094,
+                  2.4389097421903756,
+                  1.1177758026185145,
+                  1.3066222486192465,
+                  0.48771983147283277,
+                  -0.010834255229378352
+                ]
+              ],
+              "collisions": [
+                {
+                  "collision_type": "self_sceneobject",
+                  "object_name1": "_18",
+                  "link_name1": "link6",
+                  "object_name2": "box_35",
+                  "link_name2": "box_35",
+                  "max_penetration_m": 0.0005156475235708058
+                }
+              ]
+            },
+            {
+              "candidate_q": [
+                [
+                  -0.19179693996888225,
+                  0.05751128382864138,
+                  0.32326365962390907,
+                  -0.35907115510573456,
+                  0.11683962243276866,
+                  -0.07171167311606694
+                ],
+                [
+                  0.5835062370144883,
+                  2.4389093879427266,
+                  1.1177757630346312,
+                  1.3066220458153752,
+                  0.48771998142110834,
+                  -0.010834277872669234
+                ]
+              ],
+              "collisions": [
+                {
+                  "collision_type": "self_sceneobject",
+                  "object_name1": "_18",
+                  "link_name1": "link6",
+                  "object_name2": "box_35",
+                  "link_name2": "box_35",
+                  "max_penetration_m": 0.0005155263934284449
+                }
+              ]
+            },
+            {
+              "candidate_q": [
+                [
+                  -0.19179693996888225,
+                  0.05751128382864138,
+                  0.32326365962390907,
+                  -0.35907115510573456,
+                  0.11683962243276866,
+                  -0.07171167311606694
+                ],
+                [
+                  0.583506038945094,
+                  2.4389097421903756,
+                  1.1177758026185145,
+                  1.3066222486192465,
+                  0.48771983147283277,
+                  -0.010834255229378352
+                ]
+              ],
+              "collisions": [
+                {
+                  "collision_type": "self_sceneobject",
+                  "object_name1": "_18",
+                  "link_name1": "link6",
+                  "object_name2": "box_35",
+                  "link_name2": "box_35",
+                  "max_penetration_m": 0.0005156475235708058
+                }
+              ]
+            },
+            {
+              "candidate_q": [
+                [
+                  -0.19141251266662845,
+                  0.05751287717386601,
+                  0.3232570757233575,
+                  -0.35905753699566856,
+                  0.1172325140839973,
+                  -0.07171490375724562
+                ],
+                [
+                  6.866797803601321,
+                  4.176327639901901,
+                  4.7169458526825,
+                  5.728354199317142,
+                  6.7710276558554465,
+                  -0.01096308529348354
+                ]
+              ],
+              "collisions": [
+                {
+                  "collision_type": "self_sceneobject",
+                  "object_name1": "_18",
+                  "link_name1": "link2",
+                  "object_name2": "table_6",
+                  "link_name2": "table_6",
+                  "max_penetration_m": 0.17210429906845093
+                },
+                {
+                  "collision_type": "self_sceneobject",
+                  "object_name1": "_18",
+                  "link_name1": "link3",
+                  "object_name2": "table_6",
+                  "link_name2": "table_6",
+                  "max_penetration_m": 0.18547944724559784
+                },
+                {
+                  "collision_type": "self_sceneobject",
+                  "object_name1": "_18",
+                  "link_name1": "link6",
+                  "object_name2": "box_35",
+                  "link_name2": "box_35",
+                  "max_penetration_m": 0.0003855550312437117
+                }
+              ]
+            },
+            {
+              "candidate_q": [
+                [
+                  -0.19179693996888225,
+                  0.05751128382864138,
+                  0.32326365962390907,
+                  -0.35907115510573456,
+                  0.11683962243276866,
+                  -0.07171167311606694
+                ],
+                [
+                  6.866797803601321,
+                  4.176327639901901,
+                  4.7169458526825,
+                  5.728354199317142,
+                  6.7710276558554465,
+                  -0.01096308529348354
+                ]
+              ],
+              "collisions": [
+                {
+                  "collision_type": "self_sceneobject",
+                  "object_name1": "_18",
+                  "link_name1": "link2",
+                  "object_name2": "table_6",
+                  "link_name2": "table_6",
+                  "max_penetration_m": 0.17210429906845093
+                },
+                {
+                  "collision_type": "self_sceneobject",
+                  "object_name1": "_18",
+                  "link_name1": "link3",
+                  "object_name2": "table_6",
+                  "link_name2": "table_6",
+                  "max_penetration_m": 0.18547944724559784
+                },
+                {
+                  "collision_type": "self_sceneobject",
+                  "object_name1": "_18",
+                  "link_name1": "link6",
+                  "object_name2": "box_35",
+                  "link_name2": "box_35",
+                  "max_penetration_m": 0.0003855550312437117
+                }
+              ]
+            },
+            {
+              "candidate_q": [
+                [
+                  6.091249397056881,
+                  6.3407282517434815,
+                  6.606462815386888,
+                  5.924135796746682,
+                  6.399882406034682,
+                  -0.07173409735420574
+                ],
+                [
+                  0.5835062370144883,
+                  2.4389093879427266,
+                  1.1177757630346312,
+                  1.3066220458153752,
+                  0.48771998142110834,
+                  -0.010834277872669234
+                ]
+              ],
+              "collisions": [
+                {
+                  "collision_type": "self_sceneobject",
+                  "object_name1": "_18",
+                  "link_name1": "link6",
+                  "object_name2": "box_35",
+                  "link_name2": "box_35",
+                  "max_penetration_m": 0.0005155263934284449
+                }
+              ]
+            },
+            {
+              "candidate_q": [
+                [
+                  6.091249397056881,
+                  6.3407282517434815,
+                  6.606462815386888,
+                  5.924135796746682,
+                  6.399882406034682,
+                  -0.07173409735420574
+                ],
+                [
+                  0.583506038945094,
+                  2.4389097421903756,
+                  1.1177758026185145,
+                  1.3066222486192465,
+                  0.48771983147283277,
+                  -0.010834255229378352
+                ]
+              ],
+              "collisions": [
+                {
+                  "collision_type": "self_sceneobject",
+                  "object_name1": "_18",
+                  "link_name1": "link6",
+                  "object_name2": "box_35",
+                  "link_name2": "box_35",
+                  "max_penetration_m": 0.0005156475235708058
+                }
+              ]
+            }
+          ],
+          "candidate_verdicts": [
+            {
+              "candidate_q": [
+                [
+                  -0.19141251266662845,
+                  0.05751287717386601,
+                  0.3232570757233575,
+                  -0.35905753699566856,
+                  0.1172325140839973,
+                  -0.07171490375724562
+                ],
+                [
+                  0.5835062370144883,
+                  2.4389093879427266,
+                  1.1177757630346312,
+                  1.3066220458153752,
+                  0.48771998142110834,
+                  -0.010834277872669234
+                ]
+              ],
+              "reason": "collision",
+              "collisions": [
+                {
+                  "collision_type": "self_sceneobject",
+                  "object_name1": "_18",
+                  "link_name1": "link6",
+                  "object_name2": "box_35",
+                  "link_name2": "box_35",
+                  "max_penetration_m": 0.0005155263934284449
+                }
+              ]
+            },
+            {
+              "candidate_q": [
+                [
+                  -0.19141251266662845,
+                  0.05751287717386601,
+                  0.3232570757233575,
+                  -0.35905753699566856,
+                  0.1172325140839973,
+                  -0.07171490375724562
+                ],
+                [
+                  0.583506038945094,
+                  2.4389097421903756,
+                  1.1177758026185145,
+                  1.3066222486192465,
+                  0.48771983147283277,
+                  -0.010834255229378352
+                ]
+              ],
+              "reason": "collision",
+              "collisions": [
+                {
+                  "collision_type": "self_sceneobject",
+                  "object_name1": "_18",
+                  "link_name1": "link6",
+                  "object_name2": "box_35",
+                  "link_name2": "box_35",
+                  "max_penetration_m": 0.0005156475235708058
+                }
+              ]
+            },
+            {
+              "candidate_q": [
+                [
+                  -0.19179693996888225,
+                  0.05751128382864138,
+                  0.32326365962390907,
+                  -0.35907115510573456,
+                  0.11683962243276866,
+                  -0.07171167311606694
+                ],
+                [
+                  0.5835062370144883,
+                  2.4389093879427266,
+                  1.1177757630346312,
+                  1.3066220458153752,
+                  0.48771998142110834,
+                  -0.010834277872669234
+                ]
+              ],
+              "reason": "collision",
+              "collisions": [
+                {
+                  "collision_type": "self_sceneobject",
+                  "object_name1": "_18",
+                  "link_name1": "link6",
+                  "object_name2": "box_35",
+                  "link_name2": "box_35",
+                  "max_penetration_m": 0.0005155263934284449
+                }
+              ]
+            },
+            {
+              "candidate_q": [
+                [
+                  -0.19179693996888225,
+                  0.05751128382864138,
+                  0.32326365962390907,
+                  -0.35907115510573456,
+                  0.11683962243276866,
+                  -0.07171167311606694
+                ],
+                [
+                  0.583506038945094,
+                  2.4389097421903756,
+                  1.1177758026185145,
+                  1.3066222486192465,
+                  0.48771983147283277,
+                  -0.010834255229378352
+                ]
+              ],
+              "reason": "collision",
+              "collisions": [
+                {
+                  "collision_type": "self_sceneobject",
+                  "object_name1": "_18",
+                  "link_name1": "link6",
+                  "object_name2": "box_35",
+                  "link_name2": "box_35",
+                  "max_penetration_m": 0.0005156475235708058
+                }
+              ]
+            },
+            {
+              "candidate_q": [
+                [
+                  -0.19141251266662845,
+                  0.05751287717386601,
+                  0.3232570757233575,
+                  -0.35905753699566856,
+                  0.1172325140839973,
+                  -0.07171490375724562
+                ],
+                [
+                  6.866797803601321,
+                  4.176327639901901,
+                  4.7169458526825,
+                  5.728354199317142,
+                  6.7710276558554465,
+                  -0.01096308529348354
+                ]
+              ],
+              "reason": "collision",
+              "collisions": [
+                {
+                  "collision_type": "self_sceneobject",
+                  "object_name1": "_18",
+                  "link_name1": "link2",
+                  "object_name2": "table_6",
+                  "link_name2": "table_6",
+                  "max_penetration_m": 0.17210429906845093
+                },
+                {
+                  "collision_type": "self_sceneobject",
+                  "object_name1": "_18",
+                  "link_name1": "link3",
+                  "object_name2": "table_6",
+                  "link_name2": "table_6",
+                  "max_penetration_m": 0.18547944724559784
+                },
+                {
+                  "collision_type": "self_sceneobject",
+                  "object_name1": "_18",
+                  "link_name1": "link6",
+                  "object_name2": "box_35",
+                  "link_name2": "box_35",
+                  "max_penetration_m": 0.0003855550312437117
+                }
+              ]
+            },
+            {
+              "candidate_q": [
+                [
+                  -0.19179693996888225,
+                  0.05751128382864138,
+                  0.32326365962390907,
+                  -0.35907115510573456,
+                  0.11683962243276866,
+                  -0.07171167311606694
+                ],
+                [
+                  6.866797803601321,
+                  4.176327639901901,
+                  4.7169458526825,
+                  5.728354199317142,
+                  6.7710276558554465,
+                  -0.01096308529348354
+                ]
+              ],
+              "reason": "collision",
+              "collisions": [
+                {
+                  "collision_type": "self_sceneobject",
+                  "object_name1": "_18",
+                  "link_name1": "link2",
+                  "object_name2": "table_6",
+                  "link_name2": "table_6",
+                  "max_penetration_m": 0.17210429906845093
+                },
+                {
+                  "collision_type": "self_sceneobject",
+                  "object_name1": "_18",
+                  "link_name1": "link3",
+                  "object_name2": "table_6",
+                  "link_name2": "table_6",
+                  "max_penetration_m": 0.18547944724559784
+                },
+                {
+                  "collision_type": "self_sceneobject",
+                  "object_name1": "_18",
+                  "link_name1": "link6",
+                  "object_name2": "box_35",
+                  "link_name2": "box_35",
+                  "max_penetration_m": 0.0003855550312437117
+                }
+              ]
+            },
+            {
+              "candidate_q": [
+                [
+                  6.091249397056881,
+                  6.3407282517434815,
+                  6.606462815386888,
+                  5.924135796746682,
+                  6.399882406034682,
+                  -0.07173409735420574
+                ],
+                [
+                  0.5835062370144883,
+                  2.4389093879427266,
+                  1.1177757630346312,
+                  1.3066220458153752,
+                  0.48771998142110834,
+                  -0.010834277872669234
+                ]
+              ],
+              "reason": "collision",
+              "collisions": [
+                {
+                  "collision_type": "self_sceneobject",
+                  "object_name1": "_18",
+                  "link_name1": "link6",
+                  "object_name2": "box_35",
+                  "link_name2": "box_35",
+                  "max_penetration_m": 0.0005155263934284449
+                }
+              ]
+            },
+            {
+              "candidate_q": [
+                [
+                  6.091249397056881,
+                  6.3407282517434815,
+                  6.606462815386888,
+                  5.924135796746682,
+                  6.399882406034682,
+                  -0.07173409735420574
+                ],
+                [
+                  0.583506038945094,
+                  2.4389097421903756,
+                  1.1177758026185145,
+                  1.3066222486192465,
+                  0.48771983147283277,
+                  -0.010834255229378352
+                ]
+              ],
+              "reason": "collision",
+              "collisions": [
+                {
+                  "collision_type": "self_sceneobject",
+                  "object_name1": "_18",
+                  "link_name1": "link6",
+                  "object_name2": "box_35",
+                  "link_name2": "box_35",
+                  "max_penetration_m": 0.0005156475235708058
+                }
+              ]
+            },
+            {
+              "candidate_q": [
+                [
+                  -0.19141251266662845,
+                  0.05751287717386601,
+                  0.3232570757233575,
+                  -0.35905753699566856,
+                  0.1172325140839973,
+                  -0.07171490375724562
+                ],
+                [
+                  -5.699665125524163,
+                  -3.844416984086194,
+                  -5.165537369604852,
+                  -4.976573135843943,
+                  -5.795451689609381,
+                  -0.010834454862208383
+                ]
+              ],
+              "reason": "collision",
+              "collisions": [
+                {
+                  "collision_type": "self_sceneobject",
+                  "object_name1": "_18",
+                  "link_name1": "link6",
+                  "object_name2": "box_35",
+                  "link_name2": "box_35",
+                  "max_penetration_m": 0.0004859337932430208
+                }
+              ]
+            },
+            {
+              "candidate_q": [
+                [
+                  -0.19179693996888225,
+                  0.05751128382864138,
+                  0.32326365962390907,
+                  -0.35907115510573456,
+                  0.11683962243276866,
+                  -0.07171167311606694
+                ],
+                [
+                  -5.699665125524163,
+                  -3.844416984086194,
+                  -5.165537369604852,
+                  -4.976573135843943,
+                  -5.795451689609381,
+                  -0.010834454862208383
+                ]
+              ],
+              "reason": "collision",
+              "collisions": [
+                {
+                  "collision_type": "self_sceneobject",
+                  "object_name1": "_18",
+                  "link_name1": "link6",
+                  "object_name2": "box_35",
+                  "link_name2": "box_35",
+                  "max_penetration_m": 0.0004859337932430208
+                }
+              ]
+            },
+            {
+              "candidate_q": [
+                [
+                  -6.475097913054934,
+                  -6.225639837916022,
+                  -5.959907782990813,
+                  -6.642235397129522,
+                  -6.166463552066289,
+                  -0.07172356699191926
+                ],
+                [
+                  0.5835062370144883,
+                  2.4389093879427266,
+                  1.1177757630346312,
+                  1.3066220458153752,
+                  0.48771998142110834,
+                  -0.010834277872669234
+                ]
+              ],
+              "reason": "collision",
+              "collisions": [
+                {
+                  "collision_type": "self_sceneobject",
+                  "object_name1": "_18",
+                  "link_name1": "link6",
+                  "object_name2": "box_35",
+                  "link_name2": "box_35",
+                  "max_penetration_m": 0.0005155263934284449
+                }
+              ]
+            },
+            {
+              "candidate_q": [
+                [
+                  -6.475097913054934,
+                  -6.225639837916022,
+                  -5.959907782990813,
+                  -6.642235397129522,
+                  -6.166463552066289,
+                  -0.07172356699191926
+                ],
+                [
+                  0.583506038945094,
+                  2.4389097421903756,
+                  1.1177758026185145,
+                  1.3066222486192465,
+                  0.48771983147283277,
+                  -0.010834255229378352
+                ]
+              ],
+              "reason": "collision",
+              "collisions": [
+                {
+                  "collision_type": "self_sceneobject",
+                  "object_name1": "_18",
+                  "link_name1": "link6",
+                  "object_name2": "box_35",
+                  "link_name2": "box_35",
+                  "max_penetration_m": 0.0005156475235708058
+                }
+              ]
+            },
+            {
+              "candidate_q": [
+                [
+                  6.091249397056881,
+                  6.3407282517434815,
+                  6.606462815386888,
+                  5.924135796746682,
+                  6.399882406034682,
+                  -0.07173409735420574
+                ],
+                [
+                  6.866797803601321,
+                  4.176327639901901,
+                  4.7169458526825,
+                  5.728354199317142,
+                  6.7710276558554465,
+                  -0.01096308529348354
+                ]
+              ],
+              "reason": "collision",
+              "collisions": [
+                {
+                  "collision_type": "self_sceneobject",
+                  "object_name1": "_18",
+                  "link_name1": "link2",
+                  "object_name2": "table_6",
+                  "link_name2": "table_6",
+                  "max_penetration_m": 0.17210429906845093
+                },
+                {
+                  "collision_type": "self_sceneobject",
+                  "object_name1": "_18",
+                  "link_name1": "link3",
+                  "object_name2": "table_6",
+                  "link_name2": "table_6",
+                  "max_penetration_m": 0.18547944724559784
+                },
+                {
+                  "collision_type": "self_sceneobject",
+                  "object_name1": "_18",
+                  "link_name1": "link6",
+                  "object_name2": "box_35",
+                  "link_name2": "box_35",
+                  "max_penetration_m": 0.0003855550312437117
+                }
+              ]
+            },
+            {
+              "candidate_q": [
+                [
+                  -6.475097913054934,
+                  -6.225639837916022,
+                  -5.959907782990813,
+                  -6.642235397129522,
+                  -6.166463552066289,
+                  -0.07172356699191926
+                ],
+                [
+                  6.866797803601321,
+                  4.176327639901901,
+                  4.7169458526825,
+                  5.728354199317142,
+                  6.7710276558554465,
+                  -0.01096308529348354
+                ]
+              ],
+              "reason": "collision",
+              "collisions": [
+                {
+                  "collision_type": "self_sceneobject",
+                  "object_name1": "_18",
+                  "link_name1": "link2",
+                  "object_name2": "table_6",
+                  "link_name2": "table_6",
+                  "max_penetration_m": 0.17210429906845093
+                },
+                {
+                  "collision_type": "self_sceneobject",
+                  "object_name1": "_18",
+                  "link_name1": "link3",
+                  "object_name2": "table_6",
+                  "link_name2": "table_6",
+                  "max_penetration_m": 0.18547944724559784
+                },
+                {
+                  "collision_type": "self_sceneobject",
+                  "object_name1": "_18",
+                  "link_name1": "link6",
+                  "object_name2": "box_35",
+                  "link_name2": "box_35",
+                  "max_penetration_m": 0.0003855550312437117
+                }
+              ]
+            },
+            {
+              "candidate_q": [
+                [
+                  6.091249397056881,
+                  6.3407282517434815,
+                  6.606462815386888,
+                  5.924135796746682,
+                  6.399882406034682,
+                  -0.07173409735420574
+                ],
+                [
+                  -5.699665125524163,
+                  -3.844416984086194,
+                  -5.165537369604852,
+                  -4.976573135843943,
+                  -5.795451689609381,
+                  -0.010834454862208383
+                ]
+              ],
+              "reason": "collision",
+              "collisions": [
+                {
+                  "collision_type": "self_sceneobject",
+                  "object_name1": "_18",
+                  "link_name1": "link6",
+                  "object_name2": "box_35",
+                  "link_name2": "box_35",
+                  "max_penetration_m": 0.0004859337932430208
+                }
+              ]
+            },
+            {
+              "candidate_q": [
+                [
+                  -6.475097913054934,
+                  -6.225639837916022,
+                  -5.959907782990813,
+                  -6.642235397129522,
+                  -6.166463552066289,
+                  -0.07172356699191926
+                ],
+                [
+                  -5.699665125524163,
+                  -3.844416984086194,
+                  -5.165537369604852,
+                  -4.976573135843943,
+                  -5.795451689609381,
+                  -0.010834454862208383
+                ]
+              ],
+              "reason": "collision",
+              "collisions": [
+                {
+                  "collision_type": "self_sceneobject",
+                  "object_name1": "_18",
+                  "link_name1": "link6",
+                  "object_name2": "box_35",
+                  "link_name2": "box_35",
+                  "max_penetration_m": 0.0004859337932430208
+                }
+              ]
+            }
+          ],
+          "continuity_rejected": 0,
+          "ik_solutions_per_side": [
+            4,
+            4
+          ],
+          "wall_s": 0.05922345072031021
+        }
+      },
+      "rgb_files": 6,
+      "action_chunks": 6,
+      "videos": [
+        "trials/unified-seed1-arx-full-w4/episode/head.mp4"
+      ],
+      "sha256": null
+    },
+    "G2": {
+      "outcome": "FAILED",
+      "scheduler_state": "COMPLETED",
+      "original_task_success": false,
+      "stages": {
+        "FIRST_CONTACT": {
+          "tick": 5784,
+          "query": 1,
+          "row_in_prefix": 36,
+          "holders": [],
+          "fingers": {
+            "left": [
+              17
+            ],
+            "right": []
+          }
+        },
+        "BILATERAL_CONTACT": null,
+        "STABLE_GRASP": null,
+        "LIFT_50MM": null,
+        "HANDOVER": null
+      },
+      "full_physical_log": true,
+      "logged_physics_steps": 6729,
+      "peak_held_lift_mm": null,
+      "first_target_contact_after_handover_tick": null,
+      "original_queries": 2,
+      "original_executed_policy_actions": 45,
+      "query_ticks": [
+        0,
+        5784
+      ],
+      "prefix_boundaries": [
+        {
+          "query": 1,
+          "executed_actions": 36,
+          "discarded_rows": 14,
+          "stamp": {
+            "episode": "unified-seed1-arx-full-w4",
+            "tick": 5784,
+            "sim_s": 23.136001098901033
+          },
+          "reason": "measured_first_contact"
+        }
+      ],
+      "contact_steps": {
+        "left": 432,
+        "right": 0
+      },
+      "max_fingers": {
+        "left": 1,
+        "right": 0
+      },
+      "last_planned_row": 9,
+      "application_outcome": "planning_failed",
+      "application_receipt_category": "controlled_candidate_stop",
+      "termination": {
+        "phase": "planning",
+        "code": "collision",
+        "detail": "predicted finger start intersects task block",
+        "diagnostic": {
+          "geometry": "candidate",
+          "phase": "action",
+          "stamp": {
+            "episode": "unified-seed1-arx-full-w4",
+            "tick": 6729,
+            "sim_s": 26.9160012784414
+          },
+          "ik_backend": "g2_urdf_damped_jacobian_v1",
+          "collision_world": "target_collision",
+          "measured_start_q": [
+            [
+              -0.05731352046132088,
+              1.982990026473999,
+              0.7177485227584839,
+              1.2601885795593262,
+              1.2115427255630493,
+              -0.0003056321293115616
+            ],
+            [
+              -0.6200310587882996,
+              -0.6172754168510437,
+              0.1465858519077301,
+              -0.7611101269721985,
+              -0.6301512718200684,
+              0.001649996149353683
+            ]
+          ],
+          "measured_start_fingers": [
+            [
+              0.043865419924259186,
+              0.04399998486042023
+            ],
+            [
+              0.04393106698989868,
+              0.04394427314400673
+            ]
+          ],
+          "grippers": [
+            {
+              "row": 0,
+              "side": "left",
+              "raw": 1.0006429268445969,
+              "rule": "clip",
+              "normalized": 1.0,
+              "native": [
+                0.044,
+                0.044
+              ]
+            },
+            {
+              "row": 0,
+              "side": "right",
+              "raw": 0.9990590698460341,
+              "rule": "clip",
+              "normalized": 0.9990590698460341,
+              "native": [
+                0.043958599073225496,
+                0.043958599073225496
+              ]
+            }
+          ],
+          "requests": [
+            {
+              "row": 0,
+              "task_tools": [
+                [
+                  [
+                    0.956492487127049,
+                    0.2917569343499371,
+                    -0.00011544798687520286,
+                    -0.13642361613500958
+                  ],
+                  [
+                    0.29175532386577874,
+                    -0.9564883816228793,
+                    -0.0029676280796632616,
+                    0.014441053421757173
+                  ],
+                  [
+                    -0.0009762507289412493,
+                    0.002804831397984807,
+                    -0.999995589917947,
+                    0.9094465401568714
+                  ],
+                  [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                  ]
+                ],
+                [
+                  [
+                    -0.010512654680742554,
+                    0.9999447367384475,
+                    -8.695193958588226e-05,
+                    0.30504130008000496
+                  ],
+                  [
+                    0.999943687240958,
+                    0.01051276977993295,
+                    0.0014505235298168844,
+                    -0.19256917618830094
+                  ],
+                  [
+                    0.001451357474878455,
+                    -7.169819010700348e-05,
+                    -0.9999989442098676,
+                    0.9419428903835111
+                  ],
+                  [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                  ]
+                ]
+              ],
+              "ik_start": [
+                [
+                  -0.05731352046132088,
+                  1.982990026473999,
+                  0.7177485227584839,
+                  1.2601885795593262,
+                  1.2115427255630493,
+                  -0.0003056321293115616
+                ],
+                [
+                  -0.6200310587882996,
+                  -0.6172754168510437,
+                  0.1465858519077301,
+                  -0.7611101269721985,
+                  -0.6301512718200684,
+                  0.001649996149353683
+                ]
+              ],
+              "fingers": [
+                [
+                  0.044,
+                  0.044
+                ],
+                [
+                  0.043958599073225496,
+                  0.043958599073225496
+                ]
+              ],
+              "ik_target": [
+                [
+                  -6.347199533130993,
+                  -4.299350074966596,
+                  -5.561503228584431,
+                  -5.023439255177698,
+                  -5.072434940751908,
+                  -0.0005833856271820065
+                ],
+                [
+                  -0.6200310587882996,
+                  -0.6172754168510437,
+                  0.1465858519077301,
+                  -0.7611101269721985,
+                  -0.6301512718200684,
+                  0.001649996149353683
+                ]
+              ],
+              "residual": [
+                {
+                  "seed": 2,
+                  "position_m": 0.00024251308154769132,
+                  "angle_deg": 0.008129774181642565,
+                  "sigma_min": 0.05082573284596309,
+                  "terminal_link_residual": {
+                    "seed": 2,
+                    "position_m": 0.00022983172512123243,
+                    "angle_deg": 0.008129774181642504,
+                    "sigma_min": 0.05082573284596309
+                  }
+                },
+                {
+                  "seed": 0,
+                  "position_m": 0.00021266948893629325,
+                  "angle_deg": 0.049688766031517555,
+                  "sigma_min": 0.007491483923640932,
+                  "terminal_link_residual": {
+                    "seed": 0,
+                    "position_m": 0.00013288308726608724,
+                    "angle_deg": 0.04968876603151757,
+                    "sigma_min": 0.007491483923640932
+                  }
+                }
+              ]
+            }
+          ],
+          "motion": {
+            "method": "g2_quintic_stop_at_waypoints_v1",
+            "limits_source": "G2 experiment-imposed simulation command bounds v1; not manufacturer ratings",
+            "collision_id": "sapien3.0.0b1_mplib0.2.1_real_scene_FCL",
+            "control_period_s": 0.02
+          },
+          "side": "left",
+          "finger": 1,
+          "depth_m": 0.0020801338832825422,
+          "allowed_penetration_m": 0.002,
+          "start_native_m": 0.04399999976193154,
+          "requested_native_m": 0.043999999761947725,
+          "wall_s": 0.1118142381310463
+        }
+      },
+      "rgb_files": 2,
+      "action_chunks": 2,
+      "videos": [
+        "trials/unified-seed1-arx-full-w4/episode/head.mp4"
+      ],
+      "sha256": null
+    },
+    "G3": {
+      "outcome": "FAILED",
+      "scheduler_state": "COMPLETED",
+      "original_task_success": false,
+      "stages": {
+        "FIRST_CONTACT": {
+          "tick": 4855,
+          "query": 1,
+          "row_in_prefix": 25,
+          "holders": [],
+          "fingers": {
+            "left": [
+              17
+            ],
+            "right": []
+          }
+        },
+        "BILATERAL_CONTACT": null,
+        "STABLE_GRASP": null,
+        "LIFT_50MM": null,
+        "HANDOVER": null
+      },
+      "full_physical_log": true,
+      "logged_physics_steps": 7755,
+      "peak_held_lift_mm": null,
+      "first_target_contact_after_handover_tick": null,
+      "original_queries": 2,
+      "original_executed_policy_actions": 26,
+      "query_ticks": [
+        0,
+        4855
+      ],
+      "prefix_boundaries": [
+        {
+          "query": 1,
+          "executed_actions": 25,
+          "discarded_rows": 25,
+          "stamp": {
+            "episode": "unified-seed0-arx-full-w4",
+            "tick": 4855,
+            "sim_s": 19.420000922400504
+          },
+          "reason": "measured_first_contact"
+        }
+      ],
+      "contact_steps": {
+        "left": 2901,
+        "right": 0
+      },
+      "max_fingers": {
+        "left": 1,
+        "right": 0
+      },
+      "last_planned_row": 1,
+      "application_outcome": "control_error",
+      "application_receipt_category": "controlled_candidate_stop",
+      "termination": {
+        "phase": "control",
+        "code": "collision",
+        "detail": "predicted finger start intersects task block",
+        "diagnostic": {
+          "geometry": "candidate",
+          "side": "left",
+          "finger": 1,
+          "depth_m": 0.0020001220982521772,
+          "allowed_penetration_m": 0.002,
+          "start_native_m": 0.043363768607378006,
+          "requested_native_m": 0.04399009208716159
+        }
+      },
+      "rgb_files": 2,
+      "action_chunks": 2,
+      "videos": [
+        "trials/unified-seed0-arx-full-w4/episode/head.mp4"
+      ],
+      "sha256": null
+    },
+    "G4": {
+      "outcome": "FAILED",
+      "scheduler_state": "COMPLETED",
+      "original_task_success": false,
+      "stages": {
+        "FIRST_CONTACT": null,
+        "BILATERAL_CONTACT": null,
+        "STABLE_GRASP": null,
+        "LIFT_50MM": null,
+        "HANDOVER": null
+      },
+      "full_physical_log": true,
+      "logged_physics_steps": 0,
+      "peak_held_lift_mm": null,
+      "first_target_contact_after_handover_tick": null,
+      "original_queries": 1,
+      "original_executed_policy_actions": 0,
+      "query_ticks": [
+        0
+      ],
+      "prefix_boundaries": [],
+      "contact_steps": {},
+      "max_fingers": {},
+      "last_planned_row": 1,
+      "application_outcome": "planning_failed",
+      "application_receipt_category": "controlled_candidate_stop",
+      "termination": {
+        "phase": "planning",
+        "code": "collision",
+        "detail": "all temporally admissible IK pairs collide",
+        "diagnostic": {
+          "geometry": "candidate",
+          "phase": "action",
+          "stamp": {
+            "episode": "unified-seed2-arx-full-w4",
+            "tick": 0,
+            "sim_s": 0.0
+          },
+          "ik_backend": "g2_urdf_damped_jacobian_v1",
+          "collision_world": "target_collision",
+          "measured_start_q": [
+            [
+              -0.26346591114997864,
+              -0.6305378675460815,
+              0.1571831852197647,
+              -0.7877228260040283,
+              -0.28336942195892334,
+              -1.3242606655694544e-05
+            ],
+            [
+              -0.6324052214622498,
+              -0.6228002905845642,
+              0.1452883630990982,
+              -0.7680932283401489,
+              -0.6423773765563965,
+              -1.4833736713626422e-05
+            ]
+          ],
+          "measured_start_fingers": [
+            [
+              0.04399999976158142,
+              0.04399999976158142
+            ],
+            [
+              0.04399999976158142,
+              0.04399999976158142
+            ]
+          ],
+          "grippers": [
+            {
+              "row": 0,
+              "side": "left",
+              "raw": 0.9981725675994159,
+              "rule": "clip",
+              "normalized": 0.9981725675994159,
+              "native": [
+                0.0439195929743743,
+                0.0439195929743743
+              ]
+            },
+            {
+              "row": 0,
+              "side": "right",
+              "raw": 0.9992233075572253,
+              "rule": "clip",
+              "normalized": 0.9992233075572253,
+              "native": [
+                0.04396582553251791,
+                0.04396582553251791
+              ]
+            }
+          ],
+          "requests": [
+            {
+              "row": 0,
+              "task_tools": [
+                [
+                  [
+                    -0.003896738706224883,
+                    0.9999917127445198,
+                    -0.0011789273669659318,
+                    -0.2980179100387739
+                  ],
+                  [
+                    0.99999066218432,
+                    0.003898931954477039,
+                    0.0018638330878684131,
+                    -0.19360412770947533
+                  ],
+                  [
+                    0.001868414199390513,
+                    -0.0011716534878240396,
+                    -0.9999975681252848,
+                    0.9480688871450105
+                  ],
+                  [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                  ]
+                ],
+                [
+                  [
+                    -0.011839034823164703,
+                    0.9999299161540693,
+                    5.879743628876692e-06,
+                    0.3048058249977392
+                  ],
+                  [
+                    0.9999290614653346,
+                    0.011839032391603572,
+                    -0.0013074207759649656,
+                    -0.1926618910394886
+                  ],
+                  [
+                    -0.0013073987573640135,
+                    -9.599273566698793e-06,
+                    -0.9999991453078064,
+                    0.9405429981958937
+                  ],
+                  [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                  ]
+                ]
+              ],
+              "ik_start": [
+                [
+                  -0.26346591114997864,
+                  -0.6305378675460815,
+                  0.1571831852197647,
+                  -0.7877228260040283,
+                  -0.28336942195892334,
+                  -1.3242606655694544e-05
+                ],
+                [
+                  -0.6324052214622498,
+                  -0.6228002905845642,
+                  0.1452883630990982,
+                  -0.7680932283401489,
+                  -0.6423773765563965,
+                  -1.4833736713626422e-05
+                ]
+              ],
+              "fingers": [
+                [
+                  0.0439195929743743,
+                  0.0439195929743743
+                ],
+                [
+                  0.04396582553251791,
+                  0.04396582553251791
+                ]
+              ]
+            }
+          ],
+          "rejected_pairs": 16,
+          "collision_examples": [
+            {
+              "candidate_q": [
+                [
+                  -0.26890439536689953,
+                  -0.5808164248551119,
+                  0.16971295930799324,
+                  -0.7485704347193435,
+                  -0.2728020126316276,
+                  0.001705547193005775
+                ],
+                [
+                  -0.6190217758537582,
+                  -0.6239656320918372,
+                  0.14484483922393515,
+                  -0.7704475940049158,
+                  -0.6308673886864022,
+                  -0.0009696931556167438
+                ]
+              ],
+              "collisions": [
+                {
+                  "collision_type": "self",
+                  "object_name1": "_18",
+                  "link_name1": "link2",
+                  "object_name2": "_18",
+                  "link_name2": "link5",
+                  "max_penetration_m": 7.107199780875817e-05
+                }
+              ]
+            },
+            {
+              "candidate_q": [
+                [
+                  -0.26890439536689953,
+                  -0.5808164248551119,
+                  0.16971295930799324,
+                  -0.7485704347193435,
+                  -0.2728020126316276,
+                  0.001705547193005775
+                ],
+                [
+                  -0.6130387337009744,
+                  -0.6240248033775542,
+                  0.1448610244990342,
+                  -0.7705005425085838,
+                  -0.6248521240696315,
+                  -0.0009314315578370302
+                ]
+              ],
+              "collisions": [
+                {
+                  "collision_type": "self",
+                  "object_name1": "_18",
+                  "link_name1": "link2",
+                  "object_name2": "_18",
+                  "link_name2": "link5",
+                  "max_penetration_m": 7.12598193786107e-05
+                }
+              ]
+            },
+            {
+              "candidate_q": [
+                [
+                  -0.23727905446473496,
+                  -0.5824065013863061,
+                  0.17010307431882288,
+                  -0.7506088812779959,
+                  -0.24087807381902482,
+                  0.0016220436637359198
+                ],
+                [
+                  -0.6190217758537582,
+                  -0.6239656320918372,
+                  0.14484483922393515,
+                  -0.7704475940049158,
+                  -0.6308673886864022,
+                  -0.0009696931556167438
+                ]
+              ],
+              "collisions": [
+                {
+                  "collision_type": "self",
+                  "object_name1": "_18",
+                  "link_name1": "link2",
+                  "object_name2": "_18",
+                  "link_name2": "link5",
+                  "max_penetration_m": 7.107199780875817e-05
+                }
+              ]
+            },
+            {
+              "candidate_q": [
+                [
+                  -0.23727905446473496,
+                  -0.5824065013863061,
+                  0.17010307431882288,
+                  -0.7506088812779959,
+                  -0.24087807381902482,
+                  0.0016220436637359198
+                ],
+                [
+                  -0.6130387337009744,
+                  -0.6240248033775542,
+                  0.1448610244990342,
+                  -0.7705005425085838,
+                  -0.6248521240696315,
+                  -0.0009314315578370302
+                ]
+              ],
+              "collisions": [
+                {
+                  "collision_type": "self",
+                  "object_name1": "_18",
+                  "link_name1": "link2",
+                  "object_name2": "_18",
+                  "link_name2": "link5",
+                  "max_penetration_m": 7.12598193786107e-05
+                }
+              ]
+            },
+            {
+              "candidate_q": [
+                [
+                  -6.536745850855286,
+                  -6.865305256069797,
+                  -6.112969263891563,
+                  -7.03359385833409,
+                  -6.540572674304295,
+                  0.001660797841174421
+                ],
+                [
+                  -0.6190217758537582,
+                  -0.6239656320918372,
+                  0.14484483922393515,
+                  -0.7704475940049158,
+                  -0.6308673886864022,
+                  -0.0009696931556167438
+                ]
+              ],
+              "collisions": [
+                {
+                  "collision_type": "self",
+                  "object_name1": "_18",
+                  "link_name1": "link2",
+                  "object_name2": "_18",
+                  "link_name2": "link5",
+                  "max_penetration_m": 7.107199780875817e-05
+                }
+              ]
+            },
+            {
+              "candidate_q": [
+                [
+                  -6.536745850855286,
+                  -6.865305256069797,
+                  -6.112969263891563,
+                  -7.03359385833409,
+                  -6.540572674304295,
+                  0.001660797841174421
+                ],
+                [
+                  -0.6130387337009744,
+                  -0.6240248033775542,
+                  0.1448610244990342,
+                  -0.7705005425085838,
+                  -0.6248521240696315,
+                  -0.0009314315578370302
+                ]
+              ],
+              "collisions": [
+                {
+                  "collision_type": "self",
+                  "object_name1": "_18",
+                  "link_name1": "link2",
+                  "object_name2": "_18",
+                  "link_name2": "link5",
+                  "max_penetration_m": 7.12598193786107e-05
+                }
+              ]
+            },
+            {
+              "candidate_q": [
+                [
+                  -0.26890439536689953,
+                  -0.5808164248551119,
+                  0.16971295930799324,
+                  -0.7485704347193435,
+                  -0.2728020126316276,
+                  0.001705547193005775
+                ],
+                [
+                  -6.890902334958867,
+                  -6.90772660290716,
+                  -6.138087957488316,
+                  -7.054407805399749,
+                  -6.902622575720054,
+                  -0.0008878094224626563
+                ]
+              ],
+              "collisions": [
+                {
+                  "collision_type": "self",
+                  "object_name1": "_18",
+                  "link_name1": "link2",
+                  "object_name2": "_18",
+                  "link_name2": "link5",
+                  "max_penetration_m": 7.480380008928478e-05
+                }
+              ]
+            },
+            {
+              "candidate_q": [
+                [
+                  -0.23727905446473496,
+                  -0.5824065013863061,
+                  0.17010307431882288,
+                  -0.7506088812779959,
+                  -0.24087807381902482,
+                  0.0016220436637359198
+                ],
+                [
+                  -6.890902334958867,
+                  -6.90772660290716,
+                  -6.138087957488316,
+                  -7.054407805399749,
+                  -6.902622575720054,
+                  -0.0008878094224626563
+                ]
+              ],
+              "collisions": [
+                {
+                  "collision_type": "self",
+                  "object_name1": "_18",
+                  "link_name1": "link2",
+                  "object_name2": "_18",
+                  "link_name2": "link5",
+                  "max_penetration_m": 7.480380008928478e-05
+                }
+              ]
+            }
+          ],
+          "candidate_verdicts": [
+            {
+              "candidate_q": [
+                [
+                  -0.26890439536689953,
+                  -0.5808164248551119,
+                  0.16971295930799324,
+                  -0.7485704347193435,
+                  -0.2728020126316276,
+                  0.001705547193005775
+                ],
+                [
+                  -0.6190217758537582,
+                  -0.6239656320918372,
+                  0.14484483922393515,
+                  -0.7704475940049158,
+                  -0.6308673886864022,
+                  -0.0009696931556167438
+                ]
+              ],
+              "reason": "collision",
+              "collisions": [
+                {
+                  "collision_type": "self",
+                  "object_name1": "_18",
+                  "link_name1": "link2",
+                  "object_name2": "_18",
+                  "link_name2": "link5",
+                  "max_penetration_m": 7.107199780875817e-05
+                }
+              ]
+            },
+            {
+              "candidate_q": [
+                [
+                  -0.26890439536689953,
+                  -0.5808164248551119,
+                  0.16971295930799324,
+                  -0.7485704347193435,
+                  -0.2728020126316276,
+                  0.001705547193005775
+                ],
+                [
+                  -0.6130387337009744,
+                  -0.6240248033775542,
+                  0.1448610244990342,
+                  -0.7705005425085838,
+                  -0.6248521240696315,
+                  -0.0009314315578370302
+                ]
+              ],
+              "reason": "collision",
+              "collisions": [
+                {
+                  "collision_type": "self",
+                  "object_name1": "_18",
+                  "link_name1": "link2",
+                  "object_name2": "_18",
+                  "link_name2": "link5",
+                  "max_penetration_m": 7.12598193786107e-05
+                }
+              ]
+            },
+            {
+              "candidate_q": [
+                [
+                  -0.23727905446473496,
+                  -0.5824065013863061,
+                  0.17010307431882288,
+                  -0.7506088812779959,
+                  -0.24087807381902482,
+                  0.0016220436637359198
+                ],
+                [
+                  -0.6190217758537582,
+                  -0.6239656320918372,
+                  0.14484483922393515,
+                  -0.7704475940049158,
+                  -0.6308673886864022,
+                  -0.0009696931556167438
+                ]
+              ],
+              "reason": "collision",
+              "collisions": [
+                {
+                  "collision_type": "self",
+                  "object_name1": "_18",
+                  "link_name1": "link2",
+                  "object_name2": "_18",
+                  "link_name2": "link5",
+                  "max_penetration_m": 7.107199780875817e-05
+                }
+              ]
+            },
+            {
+              "candidate_q": [
+                [
+                  -0.23727905446473496,
+                  -0.5824065013863061,
+                  0.17010307431882288,
+                  -0.7506088812779959,
+                  -0.24087807381902482,
+                  0.0016220436637359198
+                ],
+                [
+                  -0.6130387337009744,
+                  -0.6240248033775542,
+                  0.1448610244990342,
+                  -0.7705005425085838,
+                  -0.6248521240696315,
+                  -0.0009314315578370302
+                ]
+              ],
+              "reason": "collision",
+              "collisions": [
+                {
+                  "collision_type": "self",
+                  "object_name1": "_18",
+                  "link_name1": "link2",
+                  "object_name2": "_18",
+                  "link_name2": "link5",
+                  "max_penetration_m": 7.12598193786107e-05
+                }
+              ]
+            },
+            {
+              "candidate_q": [
+                [
+                  -6.536745850855286,
+                  -6.865305256069797,
+                  -6.112969263891563,
+                  -7.03359385833409,
+                  -6.540572674304295,
+                  0.001660797841174421
+                ],
+                [
+                  -0.6190217758537582,
+                  -0.6239656320918372,
+                  0.14484483922393515,
+                  -0.7704475940049158,
+                  -0.6308673886864022,
+                  -0.0009696931556167438
+                ]
+              ],
+              "reason": "collision",
+              "collisions": [
+                {
+                  "collision_type": "self",
+                  "object_name1": "_18",
+                  "link_name1": "link2",
+                  "object_name2": "_18",
+                  "link_name2": "link5",
+                  "max_penetration_m": 7.107199780875817e-05
+                }
+              ]
+            },
+            {
+              "candidate_q": [
+                [
+                  -6.536745850855286,
+                  -6.865305256069797,
+                  -6.112969263891563,
+                  -7.03359385833409,
+                  -6.540572674304295,
+                  0.001660797841174421
+                ],
+                [
+                  -0.6130387337009744,
+                  -0.6240248033775542,
+                  0.1448610244990342,
+                  -0.7705005425085838,
+                  -0.6248521240696315,
+                  -0.0009314315578370302
+                ]
+              ],
+              "reason": "collision",
+              "collisions": [
+                {
+                  "collision_type": "self",
+                  "object_name1": "_18",
+                  "link_name1": "link2",
+                  "object_name2": "_18",
+                  "link_name2": "link5",
+                  "max_penetration_m": 7.12598193786107e-05
+                }
+              ]
+            },
+            {
+              "candidate_q": [
+                [
+                  -0.26890439536689953,
+                  -0.5808164248551119,
+                  0.16971295930799324,
+                  -0.7485704347193435,
+                  -0.2728020126316276,
+                  0.001705547193005775
+                ],
+                [
+                  -6.890902334958867,
+                  -6.90772660290716,
+                  -6.138087957488316,
+                  -7.054407805399749,
+                  -6.902622575720054,
+                  -0.0008878094224626563
+                ]
+              ],
+              "reason": "collision",
+              "collisions": [
+                {
+                  "collision_type": "self",
+                  "object_name1": "_18",
+                  "link_name1": "link2",
+                  "object_name2": "_18",
+                  "link_name2": "link5",
+                  "max_penetration_m": 7.480380008928478e-05
+                }
+              ]
+            },
+            {
+              "candidate_q": [
+                [
+                  -0.23727905446473496,
+                  -0.5824065013863061,
+                  0.17010307431882288,
+                  -0.7506088812779959,
+                  -0.24087807381902482,
+                  0.0016220436637359198
+                ],
+                [
+                  -6.890902334958867,
+                  -6.90772660290716,
+                  -6.138087957488316,
+                  -7.054407805399749,
+                  -6.902622575720054,
+                  -0.0008878094224626563
+                ]
+              ],
+              "reason": "collision",
+              "collisions": [
+                {
+                  "collision_type": "self",
+                  "object_name1": "_18",
+                  "link_name1": "link2",
+                  "object_name2": "_18",
+                  "link_name2": "link5",
+                  "max_penetration_m": 7.480380008928478e-05
+                }
+              ]
+            },
+            {
+              "candidate_q": [
+                [
+                  -0.26890439536689953,
+                  -0.5808164248551119,
+                  0.16971295930799324,
+                  -0.7485704347193435,
+                  -0.2728020126316276,
+                  0.001705547193005775
+                ],
+                [
+                  5.653776980484699,
+                  8.168902779009482,
+                  5.688831376196658,
+                  8.762026400503517,
+                  5.641847390444641,
+                  -0.00036557122587942224
+                ]
+              ],
+              "reason": "collision",
+              "collisions": [
+                {
+                  "collision_type": "self",
+                  "object_name1": "_18",
+                  "link_name1": "link2",
+                  "object_name2": "_18",
+                  "link_name2": "link5",
+                  "max_penetration_m": 0.041175104677677155
+                },
+                {
+                  "collision_type": "self",
+                  "object_name1": "_18",
+                  "link_name1": "link2",
+                  "object_name2": "_18",
+                  "link_name2": "link6",
+                  "max_penetration_m": 0.03669329732656479
+                }
+              ]
+            },
+            {
+              "candidate_q": [
+                [
+                  -0.23727905446473496,
+                  -0.5824065013863061,
+                  0.17010307431882288,
+                  -0.7506088812779959,
+                  -0.24087807381902482,
+                  0.0016220436637359198
+                ],
+                [
+                  5.653776980484699,
+                  8.168902779009482,
+                  5.688831376196658,
+                  8.762026400503517,
+                  5.641847390444641,
+                  -0.00036557122587942224
+                ]
+              ],
+              "reason": "collision",
+              "collisions": [
+                {
+                  "collision_type": "self",
+                  "object_name1": "_18",
+                  "link_name1": "link2",
+                  "object_name2": "_18",
+                  "link_name2": "link5",
+                  "max_penetration_m": 0.041175104677677155
+                },
+                {
+                  "collision_type": "self",
+                  "object_name1": "_18",
+                  "link_name1": "link2",
+                  "object_name2": "_18",
+                  "link_name2": "link6",
+                  "max_penetration_m": 0.03669329732656479
+                }
+              ]
+            },
+            {
+              "candidate_q": [
+                [
+                  6.002750251042356,
+                  8.203079618317853,
+                  5.663607142967203,
+                  8.824603754910235,
+                  5.998794604721663,
+                  0.0017281456897497425
+                ],
+                [
+                  -0.6190217758537582,
+                  -0.6239656320918372,
+                  0.14484483922393515,
+                  -0.7704475940049158,
+                  -0.6308673886864022,
+                  -0.0009696931556167438
+                ]
+              ],
+              "reason": "collision",
+              "collisions": [
+                {
+                  "collision_type": "self",
+                  "object_name1": "_18",
+                  "link_name1": "link2",
+                  "object_name2": "_18",
+                  "link_name2": "link5",
+                  "max_penetration_m": 7.107199780875817e-05
+                },
+                {
+                  "collision_type": "self",
+                  "object_name1": "_7",
+                  "link_name1": "link2",
+                  "object_name2": "_7",
+                  "link_name2": "link5",
+                  "max_penetration_m": 0.03213624656200409
+                },
+                {
+                  "collision_type": "self",
+                  "object_name1": "_7",
+                  "link_name1": "link2",
+                  "object_name2": "_7",
+                  "link_name2": "link6",
+                  "max_penetration_m": 0.04724353179335594
+                }
+              ]
+            },
+            {
+              "candidate_q": [
+                [
+                  6.002750251042356,
+                  8.203079618317853,
+                  5.663607142967203,
+                  8.824603754910235,
+                  5.998794604721663,
+                  0.0017281456897497425
+                ],
+                [
+                  -0.6130387337009744,
+                  -0.6240248033775542,
+                  0.1448610244990342,
+                  -0.7705005425085838,
+                  -0.6248521240696315,
+                  -0.0009314315578370302
+                ]
+              ],
+              "reason": "collision",
+              "collisions": [
+                {
+                  "collision_type": "self",
+                  "object_name1": "_18",
+                  "link_name1": "link2",
+                  "object_name2": "_18",
+                  "link_name2": "link5",
+                  "max_penetration_m": 7.12598193786107e-05
+                },
+                {
+                  "collision_type": "self",
+                  "object_name1": "_7",
+                  "link_name1": "link2",
+                  "object_name2": "_7",
+                  "link_name2": "link5",
+                  "max_penetration_m": 0.03213624656200409
+                },
+                {
+                  "collision_type": "self",
+                  "object_name1": "_7",
+                  "link_name1": "link2",
+                  "object_name2": "_7",
+                  "link_name2": "link6",
+                  "max_penetration_m": 0.04724353179335594
+                }
+              ]
+            },
+            {
+              "candidate_q": [
+                [
+                  -6.536745850855286,
+                  -6.865305256069797,
+                  -6.112969263891563,
+                  -7.03359385833409,
+                  -6.540572674304295,
+                  0.001660797841174421
+                ],
+                [
+                  -6.890902334958867,
+                  -6.90772660290716,
+                  -6.138087957488316,
+                  -7.054407805399749,
+                  -6.902622575720054,
+                  -0.0008878094224626563
+                ]
+              ],
+              "reason": "collision",
+              "collisions": [
+                {
+                  "collision_type": "self",
+                  "object_name1": "_18",
+                  "link_name1": "link2",
+                  "object_name2": "_18",
+                  "link_name2": "link5",
+                  "max_penetration_m": 7.480380008928478e-05
+                }
+              ]
+            },
+            {
+              "candidate_q": [
+                [
+                  -6.536745850855286,
+                  -6.865305256069797,
+                  -6.112969263891563,
+                  -7.03359385833409,
+                  -6.540572674304295,
+                  0.001660797841174421
+                ],
+                [
+                  5.653776980484699,
+                  8.168902779009482,
+                  5.688831376196658,
+                  8.762026400503517,
+                  5.641847390444641,
+                  -0.00036557122587942224
+                ]
+              ],
+              "reason": "collision",
+              "collisions": [
+                {
+                  "collision_type": "self",
+                  "object_name1": "_18",
+                  "link_name1": "link2",
+                  "object_name2": "_18",
+                  "link_name2": "link5",
+                  "max_penetration_m": 0.041175104677677155
+                },
+                {
+                  "collision_type": "self",
+                  "object_name1": "_18",
+                  "link_name1": "link2",
+                  "object_name2": "_18",
+                  "link_name2": "link6",
+                  "max_penetration_m": 0.03669329732656479
+                }
+              ]
+            },
+            {
+              "candidate_q": [
+                [
+                  6.002750251042356,
+                  8.203079618317853,
+                  5.663607142967203,
+                  8.824603754910235,
+                  5.998794604721663,
+                  0.0017281456897497425
+                ],
+                [
+                  -6.890902334958867,
+                  -6.90772660290716,
+                  -6.138087957488316,
+                  -7.054407805399749,
+                  -6.902622575720054,
+                  -0.0008878094224626563
+                ]
+              ],
+              "reason": "collision",
+              "collisions": [
+                {
+                  "collision_type": "self",
+                  "object_name1": "_18",
+                  "link_name1": "link2",
+                  "object_name2": "_18",
+                  "link_name2": "link5",
+                  "max_penetration_m": 7.480380008928478e-05
+                },
+                {
+                  "collision_type": "self",
+                  "object_name1": "_7",
+                  "link_name1": "link2",
+                  "object_name2": "_7",
+                  "link_name2": "link5",
+                  "max_penetration_m": 0.03213624656200409
+                },
+                {
+                  "collision_type": "self",
+                  "object_name1": "_7",
+                  "link_name1": "link2",
+                  "object_name2": "_7",
+                  "link_name2": "link6",
+                  "max_penetration_m": 0.04724353179335594
+                }
+              ]
+            },
+            {
+              "candidate_q": [
+                [
+                  6.002750251042356,
+                  8.203079618317853,
+                  5.663607142967203,
+                  8.824603754910235,
+                  5.998794604721663,
+                  0.0017281456897497425
+                ],
+                [
+                  5.653776980484699,
+                  8.168902779009482,
+                  5.688831376196658,
+                  8.762026400503517,
+                  5.641847390444641,
+                  -0.00036557122587942224
+                ]
+              ],
+              "reason": "collision",
+              "collisions": [
+                {
+                  "collision_type": "self",
+                  "object_name1": "_18",
+                  "link_name1": "link2",
+                  "object_name2": "_18",
+                  "link_name2": "link5",
+                  "max_penetration_m": 0.041175104677677155
+                },
+                {
+                  "collision_type": "self",
+                  "object_name1": "_18",
+                  "link_name1": "link2",
+                  "object_name2": "_18",
+                  "link_name2": "link6",
+                  "max_penetration_m": 0.03669329732656479
+                },
+                {
+                  "collision_type": "self",
+                  "object_name1": "_7",
+                  "link_name1": "link2",
+                  "object_name2": "_7",
+                  "link_name2": "link5",
+                  "max_penetration_m": 0.03213624656200409
+                },
+                {
+                  "collision_type": "self",
+                  "object_name1": "_7",
+                  "link_name1": "link2",
+                  "object_name2": "_7",
+                  "link_name2": "link6",
+                  "max_penetration_m": 0.04724353179335594
+                }
+              ]
+            }
+          ],
+          "continuity_rejected": 0,
+          "ik_solutions_per_side": [
+            4,
+            4
+          ],
+          "wall_s": 0.11828188598155975
+        }
+      },
+      "rgb_files": 1,
+      "action_chunks": 1,
+      "videos": [
+        "trials/unified-seed2-arx-full-w4/episode/head.mp4"
+      ],
+      "sha256": null
+    }
+  },
+  "observed_task_successes": 0,
+  "scored_trials": 4,
+  "observed_success_rate": 0.0
+}

@@ -18,6 +18,7 @@ import optax
 import orbax.checkpoint as ocp
 
 from . import model
+from .adapter import MODEL_CAMERAS
 from .config import CODE_ROOT, MANIFEST, OPENPI, PACE_MODEL, SETTINGS, write_json
 from .data import ARM, GRIP, Dataset, digest, partitions
 
@@ -82,25 +83,51 @@ def flow_loss(graph, *, adapted):
     return loss
 
 
+def lower_initial_loss(loss, initial, frozen, rng, observation, target):
+    # JAX's AOT metadata reconstructs argument trees with ArgInfo leaves.
+    # Pass flat arrays at that boundary and rebuild the typed Observation in tracing.
+    leaves, structure = jax.tree.flatten(observation)
+
+    @jax.jit
+    def invoke(state, key, obs_leaves, actions):
+        return loss(state, key, jax.tree.unflatten(structure, obs_leaves), actions)
+
+    return invoke.lower((initial, frozen), rng, leaves, target), leaves
+
+
 def check_initial_loss(loss, vanilla_loss, initial, frozen, base_state, rng, observation, target, path):
-    """Gate zero residual on one executable and record the vanilla comparison."""
-    # A and B values are dynamic arguments. Both evaluations use the exact
-    # executable used by the LoRA graph, including its BF16 rounding boundaries.
-    compiled = loss.lower((initial, frozen), rng, observation, target).compile()
-    neutral = jax.tree.map(jnp.zeros_like, initial)
-    seeded = float(compiled((initial, frozen), rng, observation, target))
-    zeroed = float(compiled((neutral, frozen), rng, observation, target))
-    del neutral
+    """Gate zero residual and return an evaluator for the same batch and executable."""
+    lowered, leaves = lower_initial_loss(loss, initial, frozen, rng, observation, target)
+    compiled = lowered.compile()
+
+    def evaluate_adapters(adapters):
+        return float(compiled((adapters, frozen), rng, leaves, target))
+
+    seeded = evaluate_adapters(initial)
+    zeroed = evaluate_adapters(jax.tree.map(jnp.zeros_like, initial))
     vanilla = float(vanilla_loss(base_state, rng, observation, target))
-    if not np.isfinite([seeded, zeroed, vanilla]).all():
+    rtol, atol = 1e-3, 1e-5
+    finite = bool(np.isfinite([seeded, zeroed, vanilla]).all())
+    same_diff = abs(seeded - zeroed)
+    limit = atol + rtol * abs(zeroed)
+    passed = finite and same_diff <= limit
+
+    def json_number(value):
+        return value if np.isfinite(value) else str(value)
+
+    write_json(path, dict(method="same_compiled_lora_executable_with_dynamic_seeded_vs_zero_adapters",
+                          status="passed" if passed else "failed",
+                          seeded_lora=json_number(seeded), zero_lora=json_number(zeroed),
+                          vanilla_frozen=json_number(vanilla), vanilla_role="diagnostic_only",
+                          same_graph_abs_diff=json_number(same_diff),
+                          same_graph_rel_diff=json_number(same_diff / max(abs(zeroed), 1e-12)),
+                          vanilla_abs_diff=json_number(abs(seeded - vanilla)),
+                          vanilla_rel_diff=json_number(abs(seeded - vanilla) / max(abs(vanilla), 1e-12)),
+                          all_losses_finite=finite, rtol=rtol, atol=atol, same_graph_abs_limit=json_number(limit)))
+    if not finite:
         raise RuntimeError(f"Nonfinite initialization losses: seeded={seeded}, zero={zeroed}, vanilla={vanilla}")
-    write_json(path, dict(seeded_lora=seeded, zero_lora=zeroed, vanilla_frozen=vanilla,
-                          same_graph_abs_diff=abs(seeded-zeroed),
-                          vanilla_abs_diff=abs(seeded-vanilla),
-                          vanilla_rel_diff=abs(seeded-vanilla) / max(abs(vanilla), 1e-12),
-                          rtol=1e-3, atol=1e-5))
-    np.testing.assert_allclose(seeded, zeroed, rtol=1e-3, atol=1e-5)
-    return seeded
+    np.testing.assert_allclose(seeded, zeroed, rtol=rtol, atol=atol)
+    return seeded, evaluate_adapters
 
 
 def update(step, train, frozen, optimizer_state, key, observation, target):
@@ -193,6 +220,36 @@ def versions():
              "orbax-checkpoint", "h5py", "numpy", "pillow")}
 
 
+def arx_input_contract(obs, target, key):
+    expected_cameras = set(MODEL_CAMERAS)
+    if type(obs) is not model.openpi_model.Observation:
+        raise TypeError(f"Expected OpenPI Observation, got {type(obs)}")
+    if set(obs.images) != expected_cameras or set(obs.image_masks) != expected_cameras:
+        raise ValueError("Unexpected ARX camera keys")
+    expected = [(image, (1, 224, 224, 3), np.float32) for image in obs.images.values()]
+    expected += [(mask, (1,), np.bool_) for mask in obs.image_masks.values()]
+    expected += [(obs.state, (1, 32), np.float32), (obs.tokenized_prompt, (1, 200), np.int32),
+                 (obs.tokenized_prompt_mask, (1, 200), np.bool_), (target, (1, 50, 32), np.float32)]
+    for array, shape, dtype in expected:
+        if (array is None or array.shape != shape or jax.dtypes.canonicalize_dtype(array.dtype) != dtype
+                or not np.isfinite(array).all()):
+            actual = None if array is None else (array.shape, array.dtype)
+            raise ValueError(f"Unexpected ARX input {actual}; expected {shape}, JAX {dtype}")
+    count = int(obs.tokenized_prompt_mask.sum())
+    if (obs.token_ar_mask is not None or obs.token_loss_mask is not None or np.any(target[..., 14:])
+            or not all(np.all(mask) for mask in obs.image_masks.values()) or not 0 < count < 200
+            or key.shape != () or not jax.dtypes.issubdtype(key.dtype, jax.dtypes.prng_key)):
+        raise ValueError("Unexpected ARX masking, action padding or PRNG key")
+    leaves, structure = jax.tree_util.tree_flatten_with_path(obs)
+    return dict(observation=f"{type(obs).__module__}.{type(obs).__qualname__}",
+                pytree=str(structure), leaves=[dict(path=jax.tree_util.keystr(path), shape=list(value.shape),
+                dtype=str(value.dtype), jax_dtype=str(jax.dtypes.canonicalize_dtype(value.dtype)))
+                                               for path, value in leaves],
+                actions=dict(shape=list(target.shape), dtype=str(target.dtype)),
+                prng=dict(shape=list(key.shape), dtype=str(key.dtype), data=jax.random.key_data(key).tolist()),
+                valid_prompt_tokens=count)
+
+
 def audit_cpu(args):
     if platform().platform != "cpu":
         raise RuntimeError("CPU receipt requires a CPU-only JAX device")
@@ -202,26 +259,43 @@ def audit_cpu(args):
     params = model.validate_install(args.project_root, full_hash=True)
     identity = fingerprint(args)
     print("CPU manifest and dataset verified", flush=True)
-    graph, train, frozen, optimizer, opt, report = model.cpu_checkpoint_check(params, platform())
+    graph, train, frozen, optimizer, opt, baseline, report = model.cpu_checkpoint_check(params, platform())
     jax.block_until_ready((train, opt))
     print("CPU graph, 5 Orbax tensor reads and optimizer initialized", flush=True)
     with Dataset(args.dataset) as dataset:
         policy = model.NativePolicy(dataset.norm_stats)
-        sample = dataset.read("train", *next(dataset.indices("train")))
+        indices = tuple(dataset.indices("train"))
+        episode, row = indices[len(indices) // 2]
+        sample = dataset.read("train", episode, row)
         obs, target = policy.batch([sample])
-        if obs.tokenized_prompt.shape != (1, 200) or not 0 < obs.tokenized_prompt_mask.sum() < 200:
-            raise RuntimeError("Unexpected token shape, truncation, or empty prompt")
-        if target.shape != (1, 50, 32) or np.any(target[..., 14:]):
-            raise RuntimeError("Wrong model action padding")
-        if not all(img.shape == (1, 224, 224, 3) for img in obs.images.values()):
-            raise RuntimeError("Wrong resized image shape")
+        key = jax.random.key(SETTINGS.seed)
+        input_report = arx_input_contract(obs, target, key)
+        input_report.update(episode=episode, row=row)
+        write_json(args.cpu_receipt.with_name("arx-input-contract.json"), input_report)
         np.testing.assert_allclose(policy.adapter.outputs(sample["state"], target[0]), sample["actions"],
                                    rtol=0, atol=5e-7)
-        traced = jax.eval_shape(optimizer_step(graph, optimizer), train, frozen, opt,
-                                jax.random.key(SETTINGS.seed), obs, target)
-        if jax.tree.structure(traced[:2]) != jax.tree.structure((train, opt)):
-            raise RuntimeError("Abstract optimizer step changed its state structure")
-        print("Production gradient/update traced on CPU without executing model kernels", flush=True)
+        lowered, _ = lower_initial_loss(flow_loss(graph, adapted=True), train, frozen, key, obs, target)
+        expected_loss = ((), jnp.float32)
+        if (lowered.out_info.shape, lowered.out_info.dtype) != expected_loss:
+            raise RuntimeError("Unexpected abstract LoRA evaluation loss")
+        del lowered
+        print("Full adapted initialization loss lowered on the real ARX Observation (no executable run)", flush=True)
+        base_graph, base_state = baseline
+        base_loss = jax.eval_shape(flow_loss(base_graph, adapted=False), base_state, key, obs, target)
+        prediction = jax.eval_shape(model.sampler(graph, adapted=True), (train, frozen), key, obs)
+        base_prediction = jax.eval_shape(model.sampler(base_graph, adapted=False), base_state, key, obs)
+        if (base_loss.shape, base_loss.dtype) != expected_loss or any(
+                (value.shape, value.dtype) != (target.shape, target.dtype)
+                for value in (prediction, base_prediction)):
+            raise RuntimeError("Unexpected abstract frozen loss or sampler output")
+        traced = jax.eval_shape(optimizer_step(graph, optimizer), train, frozen, opt, key, obs, target)
+        expected = (train, opt)
+        if (jax.tree.structure(traced[:2]) != jax.tree.structure(expected)
+                or any((actual.shape, actual.dtype) != (prior.shape, prior.dtype)
+                       for actual, prior in zip(jax.tree.leaves(traced[:2]), jax.tree.leaves(expected), strict=True))
+                or any((value.shape, value.dtype) != expected_loss for value in traced[2])):
+            raise RuntimeError("Abstract optimizer step changed its state contract")
+        print("Full train=True gradient/Optax and eval/sampling contracts traced (no model kernels executed)", flush=True)
     # Exercise the same serializer and restore tree used by interrupted formal training.
     import tempfile
     with tempfile.TemporaryDirectory(dir=args.cpu_receipt.parent) as temp:
@@ -243,7 +317,8 @@ def audit_cpu(args):
     write_json(args.cpu_receipt, dict(status="cpu_pass", identity=identity, graph=report, versions=versions(),
                                      checkpoint_snapshot=snapshot, checkpoint_recovery_checked=True,
                                      model_input_shape=list(target.shape), abstract_update_traced=True,
-                                     token_count=int(obs.tokenized_prompt_mask.sum())))
+                                     token_count=input_report["valid_prompt_tokens"], input_contract=input_report,
+                                     full_initial_eval_lowered=True, full_eval_and_sampling_traced=True))
 
 
 def admit_gpu(args):
@@ -309,13 +384,18 @@ def run_fit(args, identity):
         smoke = run / "gpu_gates.json"
         if not smoke.exists():
             print("GPU initial LoRA zero-residual check and frozen reference", flush=True)
-            first_val = check_initial_loss(
+            first_val, fixed_eval = check_initial_loss(
                 loss, flow_loss(base_graph, adapted=False), initial, frozen, base_state, rng, obs, target,
                 run / "initial_loss.json")
+            if stopped():
+                return 75
             print("GPU single-step update", flush=True)
             smoke_result = update(step, initial, frozen, initial_opt, rng, obs, target)[2]
             smoke_result["memory"] = gpu.memory_stats()
             print(json.dumps(dict(stage="gpu_single_step_passed", **smoke_result)), flush=True)
+            if stopped():
+                return 75
+            print("GPU 20-step overfit gate", flush=True)
             fitted, opt = initial, initial_opt
             overfit_log = []
             for i in range(SETTINGS.overfit_steps):
@@ -323,11 +403,14 @@ def run_fit(args, identity):
                 overfit_log.append(metrics)
                 if stopped():
                     return 75
-            last_val = float(loss((fitted, frozen), rng, obs, target))
+            last_val = fixed_eval(fitted)
+            del fixed_eval
             relative = (first_val - last_val) / max(first_val, 1e-12)
             gates = dict(smoke=smoke_result, overfit=overfit_log, initial_eval_loss=first_val,
                          final_eval_loss=last_val, relative_improvement=relative, memory=gpu.memory_stats())
             if not np.isfinite(last_val) or relative < SETTINGS.overfit_min_relative_improvement:
+                if not np.isfinite(last_val):
+                    gates.update(final_eval_loss=str(last_val), relative_improvement=str(relative))
                 write_json(run / "gpu_gates_failed.json", gates)
                 raise RuntimeError(f"20-step overfit gate failed: relative reduction {relative:.4g}")
             write_json(smoke, dict(status="passed", **gates))

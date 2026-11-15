@@ -237,7 +237,7 @@ def load_models(params_path):
 
 
 def cpu_checkpoint_check(params_path, cpu):
-    (graph, state, flat, train_paths, predicate), (_, base_state), metadata, report = checkpoint_layout(params_path)
+    (graph, state, flat, train_paths, predicate), (base_graph, base_state), metadata, report = checkpoint_layout(params_path)
     # Match the 0.11.13 restore API. An explicit transform tree limits
     # deserialization to the item paths instead of materializing all weights.
     probes = (("action_in_proj", "kernel"), ("action_out_proj", "kernel"),
@@ -266,12 +266,16 @@ def cpu_checkpoint_check(params_path, cpu):
         partial[view] = arrays[path]
     frozen = bind_frozen_weights(state, base_state, unflatten_dict(partial), predicate)
     trained, optimizer, opt_state = initialize_adapters(state, flat, train_paths, predicate)
-    frozen = jax.tree.map(lambda x: jax.ShapeDtypeStruct(x.shape, jnp.bfloat16), frozen)
+    def abstract_bfloat16(state):
+        return jax.tree.map(lambda x: jax.ShapeDtypeStruct(x.shape, jnp.bfloat16), state)
+
+    frozen = abstract_bfloat16(frozen)
+    baseline = base_graph, abstract_bfloat16(base_state)
     report["cpu_restored_bfloat16_sha256"] = digests
     report["base_binding"] = {"shared_tensors": len(partial), "materialized_tensors": len(probes)}
     report["lora_initialization"] = check_adapter_initialization(trained)
     report["optimizer_leaves"] = len(jax.tree.leaves(opt_state))
-    return graph, trained, frozen, optimizer, opt_state, report
+    return graph, trained, frozen, optimizer, opt_state, baseline, report
 
 
 class NativePolicy:

@@ -19,11 +19,11 @@ P 的投影开启三试次在该批次均未获得可执行的投影动作。与
 
 | 项目 | 第一轮预算 / 硬条件 |
 | --- | --- |
-| GPU | 优先验证单张 RTX 4090（24 GiB），batch 1。以完整权重加载、真实单步和 20 步过拟合的实测显存与结果决定是否进入正式训练 |
+| GPU | 优先验证单张 RTX 4090（24 GiB），batch 1。以完整权重加载、真实连续两步和 20 步过拟合的实测显存与结果决定是否进入正式训练 |
 | CPU / 内存 | 8 CPU、64 GiB RAM，批量 1 |
-| 时间 | 6 h 硬上限。包括初始化、单步、20 步、400 步和四轮验证。预计步骤吞吐、峰显存和总历时待实测 |
+| 时间 | 6 h 硬上限。包括初始化、两步、20 步、400 步和离线验证。预计步骤吞吐、峰显存和总历时待实测 |
 | 磁盘 | 运行卷开工前至少 16 GiB 空闲。既有底座约 11.6 GiB，转换数据约 363 MiB。每个训练 checkpoint 写 adapter 与 Adam 矩，每份约 572 MiB 张量载荷，400 步常规 16 份约 8.9 GiB，再预留中断保存点、临时文件和日志 |
-| 费用 | 本轮新增 GPU 费用为 0。现有 `ksagnormal01` RTX 4090 是首选候选。未来费用上限按获批分区的实时单价与硬时限计算 |
+| 费用 | 本轮新增 GPU 费用为 0。现有 `ksagnormal01` RTX 4090 是首选候选。本次核价和六小时费用上限见[提交前回执](gpu_preflight_release.md) |
 
 OpenPI 上游单卡 LoRA 的参考值为 >22.5 GB，并列出 RTX 4090。这是上游估算。仓库既有 PACE 推理峰值为 14,382 MiB。ARX H50 的训练峰值还受反向激活、XLA 工作区和编译影响，需实测。作业记录 JAX allocator 上限及单步、20 步与正式训练结束时的 allocator 统计。如果加载或更新显存不足，作业在相应门禁退出。 [OpenPI 硬件参考](https://github.com/Physical-Intelligence/openpi#requirements) [既有推理回执](../g2e_run_127081074.md)
 
@@ -31,7 +31,7 @@ OpenPI 上游单卡 LoRA 的参考值为 >22.5 GB，并列出 RTX 4090。这是�
 
 项目根取 `cd ~/code_cpf/pi05 && pwd -P`。已有底座在 `$root/cache/pace-handover`，tokenizer 在 `$root/cache/openpi-pace`，OpenPI 源码在 `$root/source`，模型 Python 为 `$root/tools/pace-model-venv/bin/python`，容器为 `$root/containers/openpi-ubuntu`。新的源码发布、缓存、报告、数据和训练输出均在该根下。当前转换文件位于 `$root/data/step5-arx/arx-drive-target-v1.h5`。不得用 git checkout、staging 或 Slurm 提交目录代替项目根。
 
-在 CPU 和未来 GPU 阶段使用同一份发布代码。示例只执行 CPU，路径应先定义为根下已存在的绝对路径。
+在 CPU 和未来 GPU 阶段使用同一份发布代码。示例仅生成 CPU 结构证据。路径先定义为根下的绝对路径。完整数值准入及例外流程见[准入说明](admission.md#cpu-准入状态)。
 
 ```bash
 cd "$root"
@@ -41,4 +41,4 @@ bash "$release/scripts/step5_arx/env.sh" cpu "$root" -m scripts.step5_arx.train 
 
 单作业脚本接收 `<root> <release> <dataset> <data-audit> <cpu-receipt> <new-run-dir> [--resume]`。未来提交时由获批的提交端设置选定的单卡分区和 GPU 类型、显式 Slurm 日志路径及硬时限。脚本不调用调度提交或自动重排。GPU 用当前分配内的显式 CUDA 设备，先校验运行录、安装与数据，再串行完成门禁。执行入口查磁盘和项目根。日志记录 Slurm 可见设备、CUDA UUID/PCI、物理显存、JAX allocator 统计和运行卷余量。Slurm 的物理 GPU 编号和作业内部的 CUDA 索引可以不同。
 
-训练运行目录有排他文件锁。Orbax 保存 adapter、优化器状态，不重复写 PACE 底座。稳定的步数化 RNG 和窗采样保证从已完成步继续时使用下一步同一批次。Slurm 在硬时限前 300 秒请求停止，Python 在更新或验证窗口的边界处理；退出码 75 表示协作停止。每 25 步先提交一个完整 checkpoint。硬中止后跳过未提交的目录，以带 Orbax commit 时间戳的最大已完成步恢复，并核对 AdamW 计数。再次保存同一步时，遗留的未提交目录移到隐藏保留位置；已提交目录禁止覆盖。续跑要求相同源码、配置、数据和权重身份，指向原运行目录并传入 `--resume`；已通过且已写出的 GPU 门禁在同一运行目录内复用。在门禁未通过、文件缺失、损失不有限或梯度无更新时诊断相应错误。GPU 节点的 Slurm 信号转发、峰显存、续跑和 6 小时时限均待实测。
+训练运行目录有排他文件锁。Orbax 保存 adapter、优化器状态，不重复写 PACE 底座。稳定的步数化 RNG 和窗采样保证从已完成步继续时使用下一步同一批次。Slurm 在硬时限前 300 秒请求停止，Python 在更新或验证窗口的边界处理；退出码 75 表示协作停止。每 25 步先提交一个完整 checkpoint。硬中止后跳过未提交的目录，以带 Orbax commit 时间戳的最大已完成步恢复，并核对 AdamW 计数。再次保存同一步时，遗留的未提交目录移到隐藏保留位置；已提交目录禁止覆盖。续跑要求相同源码、配置、数据和权重身份，指向原运行目录并传入 `--resume`。一次性例外续跑需要为新的分配重新签署。已通过且已写出的 GPU 门禁在同一运行目录内复用。在门禁未通过、文件缺失、损失不有限或梯度无更新时诊断相应错误。GPU 节点的 Slurm 信号转发、峰显存、续跑和 6 小时时限均待实测。

@@ -1,12 +1,16 @@
 """Control-flow regression independent of model and simulator resources."""
 
 from dataclasses import dataclass
+import json
+from pathlib import Path
 from types import SimpleNamespace as NS
 import unittest
 from unittest.mock import Mock, patch
 
-from g2_adapter import G2Error, Stamp
-from g2_arx_direct import execute_prefix,UnexecutedContactProposal
+import numpy as np
+
+from g2_adapter import G2Error, Result, Stamp
+from g2_arx_direct import DirectAdapter, UnexecutedContactProposal, execute_prefix
 from robotwin_control_geometry import Status
 
 
@@ -28,6 +32,29 @@ class ContactProposalTest(unittest.TestCase):
         self.assertFalse(future.allows(dict(row,object_name1='table')))
         self.assertFalse(future.allows(dict(row,max_penetration_m=None)))
         self.assertNotEqual(future.profile_id,world.profile_id)
+
+    def test_archived_retime_rejection_reaches_guarded_segment_but_self_collision_does_not(self):
+        results = (Path(__file__).resolve().parents[1]
+                   / "research/g2/arx-online-batch-20261115/results")
+        adapter = DirectAdapter.__new__(DirectAdapter)
+        adapter.target_collision = NS(base=object(), last_collisions=[],
+            tracker=NS(snapshot=lambda: dict(phase="approach", holders=[], releasing=[])))
+        for candidate, expect_segmentation in (("G2", True), ("G4", False)):
+            with self.subTest(candidate=candidate):
+                receipt = json.loads((results / candidate / "trial-receipt.json").read_text())
+                failure = receipt["result"]["failure"]
+                original = Result(Status.COLLISION, failure["detail"], failure["diagnostic"])
+                adapter._actions = Mock(return_value=original)
+                adapter._contact_segment = Mock(side_effect=G2Error(
+                    Status.COLLISION, "no safe progress on original contact segment"))
+                snapshot = NS(stamp=Stamp(**failure["diagnostic"]["stamp"]))
+                result = adapter.policy_row(np.zeros(14), snapshot, lambda: 1)
+                self.assertEqual(result.status, Status.COLLISION)
+                self.assertEqual(adapter._contact_segment.called, expect_segmentation)
+                if expect_segmentation:
+                    self.assertEqual(result.detail, "no safe progress on original contact segment")
+                else:
+                    self.assertIs(result, original)
 
 
 class DirectPrefixTest(unittest.TestCase):

@@ -69,7 +69,15 @@ class DirectAdapter(Adapter):
         rejected=[c for verdict in original.diagnostic.get('candidate_verdicts',[])
                   for c in (verdict.get('collisions') or [])]
         rejected+=world.last_collisions
-        if not any(c.get('reason')=='predicted finger start intersects task block' for c in rejected):
+        # Retiming can raise this rejection directly, without a rejected IK
+        # verdict or an entry in the last successful collision evaluation.
+        reason = 'predicted finger start intersects task block'
+        post_ik_rejection = (
+            original.detail == reason
+            and original.diagnostic.get('geometry') == 'candidate'
+            and any('ik_target' in request for request in original.diagnostic.get('requests', ()))
+        )
+        if not post_ik_rejection and not any(c.get('reason') == reason for c in rejected):
             return original
         return guarded('action',snapshot.stamp,
             lambda log:self._contact_segment(original,snapshot,remaining,log))

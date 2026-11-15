@@ -171,6 +171,38 @@ def checkpoint_layout(params_path):
     return (graph, state, flat, train_paths, predicate), (frozen_graph, frozen_state), raw_metadata, report
 
 
+def bind_frozen_weights(state, base_state, restored, predicate):
+    """Bind both graphs to the same checkpoint arrays, without copying the base."""
+    reference = flatten_dict(restored)
+    check_shapes(flatten_dict(base_state.to_pure_dict()), reference)
+    base_state.replace_by_pure_dict(restored)
+    state.replace_by_pure_dict(restored)
+    _, frozen = state.split(predicate, ...)
+    for bound in (base_state, frozen):
+        actual = flatten_dict(bound.to_pure_dict())
+        if actual.keys() != reference.keys() or any(actual[p] is not v for p, v in reference.items()):
+            raise ValueError("The frozen graphs do not share the exact checkpoint array at every path")
+    return frozen
+
+
+def check_adapter_initialization(train):
+    a_count = b_count = 0
+    for path, value in flatten_dict(train.to_pure_dict()).items():
+        if path[-1].endswith("_a"):
+            if not bool(jnp.all(jnp.isfinite(value)) & jnp.any(value != 0)):
+                raise ValueError(f"LoRA A must be finite and nonzero at {path}")
+            a_count += 1
+        elif path[-1].endswith("_b"):
+            if not bool(jnp.all(value == 0)):
+                raise ValueError(f"LoRA B must be zero at {path}")
+            b_count += 1
+        else:
+            raise ValueError(f"Unexpected trainable tensor at {path}")
+    if a_count != b_count or not a_count:
+        raise ValueError("Expected paired LoRA A and B tensors")
+    return {"finite_nonzero_a_tensors": a_count, "exact_zero_b_tensors": b_count}
+
+
 def initialize_adapters(state, flat, train_paths, predicate):
     random_keys = jax.random.split(jax.random.key(SETTINGS.seed), len(train_paths))
     adapters = {}
@@ -195,17 +227,17 @@ def initialize_adapters(state, flat, train_paths, predicate):
 def load_models(params_path):
     (graph, state, flat, train_paths, predicate), (base_graph, base_state), _, report = checkpoint_layout(params_path)
     restored = openpi_model.restore_params(params_path, dtype=jnp.bfloat16)
-    check_shapes(flatten_dict(base_state.to_pure_dict()), flatten_dict(restored))
-    base_state.replace_by_pure_dict(restored)
-    state.replace_by_pure_dict(restored)
-    _, frozen = state.split(predicate, ...)
+    frozen = bind_frozen_weights(state, base_state, restored, predicate)
     train, optimizer, opt_state = initialize_adapters(state, flat, train_paths, predicate)
+    report["base_binding"] = {"shared_tensors": len(flatten_dict(restored)),
+                              "materialized_tensors": len(flatten_dict(restored))}
+    report["lora_initialization"] = check_adapter_initialization(train)
     report["optimizer_leaves"] = len(jax.tree.leaves(opt_state))
     return (graph, train, frozen, optimizer, opt_state), (base_graph, base_state), report
 
 
 def cpu_checkpoint_check(params_path, cpu):
-    (graph, state, flat, train_paths, predicate), _, metadata, report = checkpoint_layout(params_path)
+    (graph, state, flat, train_paths, predicate), (_, base_state), metadata, report = checkpoint_layout(params_path)
     # Match the 0.11.13 restore API. An explicit transform tree limits
     # deserialization to the item paths instead of materializing all weights.
     probes = (("action_in_proj", "kernel"), ("action_out_proj", "kernel"),
@@ -222,16 +254,22 @@ def cpu_checkpoint_check(params_path, cpu):
                 sharding=sharding, restore_type=jax.Array, dtype=jnp.bfloat16), item)))
     arrays = flatten_dict(result["params"])
     check_shapes({p: metadata[p] for p in where.values()}, arrays)
-    restored = {}
+    digests = {}
+    # Reuse production binding with actual Orbax probe arrays and shape-only placeholders
+    # for the rest of the checkpoint to stay within the CPU memory limit.
+    partial = flatten_dict(base_state.to_pure_dict())
     for view, path in where.items():
         arr = np.asarray(arrays[path])
         if arr.dtype != jnp.bfloat16 or not np.isfinite(arr).all():
             raise ValueError(f"Invalid restored CPU leaf {view}")
-        restored["/".join(view)] = hashlib.sha256(arr.tobytes()).hexdigest()
+        digests["/".join(view)] = hashlib.sha256(arr.tobytes()).hexdigest()
+        partial[view] = arrays[path]
+    frozen = bind_frozen_weights(state, base_state, unflatten_dict(partial), predicate)
     trained, optimizer, opt_state = initialize_adapters(state, flat, train_paths, predicate)
-    _, frozen = state.split(predicate, ...)
     frozen = jax.tree.map(lambda x: jax.ShapeDtypeStruct(x.shape, jnp.bfloat16), frozen)
-    report["cpu_restored_bfloat16_sha256"] = restored
+    report["cpu_restored_bfloat16_sha256"] = digests
+    report["base_binding"] = {"shared_tensors": len(partial), "materialized_tensors": len(probes)}
+    report["lora_initialization"] = check_adapter_initialization(trained)
     report["optimizer_leaves"] = len(jax.tree.leaves(opt_state))
     return graph, trained, frozen, optimizer, opt_state, report
 

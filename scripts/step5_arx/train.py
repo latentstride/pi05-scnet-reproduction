@@ -82,6 +82,27 @@ def flow_loss(graph, *, adapted):
     return loss
 
 
+def check_initial_loss(loss, vanilla_loss, initial, frozen, base_state, rng, observation, target, path):
+    """Gate zero residual on one executable and record the vanilla comparison."""
+    # A and B values are dynamic arguments. Both evaluations use the exact
+    # executable used by the LoRA graph, including its BF16 rounding boundaries.
+    compiled = loss.lower((initial, frozen), rng, observation, target).compile()
+    neutral = jax.tree.map(jnp.zeros_like, initial)
+    seeded = float(compiled((initial, frozen), rng, observation, target))
+    zeroed = float(compiled((neutral, frozen), rng, observation, target))
+    del neutral
+    vanilla = float(vanilla_loss(base_state, rng, observation, target))
+    if not np.isfinite([seeded, zeroed, vanilla]).all():
+        raise RuntimeError(f"Nonfinite initialization losses: seeded={seeded}, zero={zeroed}, vanilla={vanilla}")
+    write_json(path, dict(seeded_lora=seeded, zero_lora=zeroed, vanilla_frozen=vanilla,
+                          same_graph_abs_diff=abs(seeded-zeroed),
+                          vanilla_abs_diff=abs(seeded-vanilla),
+                          vanilla_rel_diff=abs(seeded-vanilla) / max(abs(vanilla), 1e-12),
+                          rtol=1e-3, atol=1e-5))
+    np.testing.assert_allclose(seeded, zeroed, rtol=1e-3, atol=1e-5)
+    return seeded
+
+
 def update(step, train, frozen, optimizer_state, key, observation, target):
     fitted, optimizer_state, values = step(train, frozen, optimizer_state, key, observation, target)
     loss, grad, change = map(float, values)
@@ -287,12 +308,10 @@ def run_fit(args, identity):
         obs, target = policy.batch(overfit)
         smoke = run / "gpu_gates.json"
         if not smoke.exists():
-            print("GPU initial frozen/LoRA comparison", flush=True)
-            first_val = float(loss((initial, frozen), rng, obs, target))
-            ref = np.asarray(flow_loss(base_graph, adapted=False)(base_state, rng, obs, target))
-            if not np.isfinite([first_val, ref.item()]).all():
-                raise RuntimeError("Nonfinite frozen/LoRA initialization loss")
-            np.testing.assert_allclose(first_val, ref, rtol=1e-3, atol=1e-5)
+            print("GPU initial LoRA zero-residual check and frozen reference", flush=True)
+            first_val = check_initial_loss(
+                loss, flow_loss(base_graph, adapted=False), initial, frozen, base_state, rng, obs, target,
+                run / "initial_loss.json")
             print("GPU single-step update", flush=True)
             smoke_result = update(step, initial, frozen, initial_opt, rng, obs, target)[2]
             smoke_result["memory"] = gpu.memory_stats()

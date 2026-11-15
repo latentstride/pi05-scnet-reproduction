@@ -30,21 +30,25 @@ printf 'job=%s cwd=%s release=%s visible=%s allocated=%s\n' \
     "$SLURM_JOB_ID" "$PWD" "$code" "${CUDA_VISIBLE_DEVICES:-cgroup}" "${SLURM_JOB_GPUS:-unknown}"
 du -sh "$root/cache/pace-handover"
 df -h "$(dirname "$run")"
-resume=()
-[[ "$#" == 6 ]] || resume=(--resume)
 stop=$(mktemp "$(dirname "$run")/.step5-stop-${SLURM_JOB_ID}.XXXXXX")
-flush_stop() { printf 'stop\n' > "$stop"; }
+wait_signaled=0
+flush_stop() {
+    wait_signaled=1
+    printf 'stop\n' > "$stop"
+}
 trap flush_stop USR1 TERM
-trap 'unlink "$stop"' EXIT
-bash "$code/scripts/step5_arx/env.sh" gpu "$root" -m scripts.step5_arx.train fit \
-    --project-root "$root" --dataset "$dataset" --data-audit "$audit" --cpu-receipt "$receipt" \
-    --run "$run" --stop-file "$stop" "${resume[@]}" &
+trap 'if [[ -e "$stop" ]]; then unlink "$stop"; fi' EXIT
+train_args=(--project-root "$root" --dataset "$dataset" --data-audit "$audit" --cpu-receipt "$receipt"
+            --run "$run" --stop-file "$stop")
+if [[ "$#" == 7 ]]; then train_args+=(--resume); fi
+bash "$code/scripts/step5_arx/env.sh" gpu "$root" -m scripts.step5_arx.train fit "${train_args[@]}" &
 child=$!
-# A signal interrupts wait even while Python is flushing Orbax. Reap the child afterwards.
+# A trapped signal can interrupt wait before the child finishes saving.
 while true; do
+    wait_signaled=0
     status=0
     wait "$child" || status=$?
-    if ((status <= 128)) || ! kill -0 "$child" 2>/dev/null; then
+    if ((status <= 128 || !wait_signaled)); then
         break
     fi
 done

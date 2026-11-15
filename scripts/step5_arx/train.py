@@ -6,8 +6,10 @@ import importlib.metadata
 import json
 import os
 from pathlib import Path
+import secrets
 import shutil
 import signal
+import sys
 import time
 
 import flax.nnx as nnx
@@ -17,7 +19,7 @@ import numpy as np
 import optax
 import orbax.checkpoint as ocp
 
-from . import model
+from . import admission, model
 from .adapter import MODEL_CAMERAS
 from .config import CODE_ROOT, MANIFEST, OPENPI, PACE_MODEL, SETTINGS, write_json
 from .data import ARM, GRIP, Dataset, digest, partitions
@@ -37,9 +39,9 @@ def ensure_paths(args):
         raise ValueError("Start in the explicit canonical project root")
     if root.parts[-2:] != ("code_cpf", "pi05") or not CODE_ROOT.is_relative_to(root):
         raise ValueError("Expected code_cpf/pi05 with the release below it")
-    for name in ("dataset", "data_audit", "cpu_receipt", "run", "stop_file"):
+    for name in ("dataset", "data_audit", "cpu_receipt", "run", "stop_file", "job_record", "evidence"):
         path = getattr(args, name, None)
-        if path is not None and (not path.is_absolute() or not path.resolve().is_relative_to(root)):
+        if path is not None and (not path.is_absolute() or path.resolve() != path or not path.is_relative_to(root)):
             raise ValueError(f"--{name.replace('_', '-')} must be an absolute path under the project root")
 
 
@@ -220,6 +222,13 @@ def versions():
              "orbax-checkpoint", "h5py", "numpy", "pillow")}
 
 
+def runtime_identity():
+    return dict(python=sys.version, executable=str(Path(sys.executable).resolve()),
+                libc=os.confstr("CS_GNU_LIBC_VERSION"),
+                container_os_sha256=digest(Path("/etc/os-release")),
+                apptainer=os.environ.get("STEP5_APPTAINER_VERSION", ""))
+
+
 def arx_input_contract(obs, target, key):
     expected_cameras = set(MODEL_CAMERAS)
     if type(obs) is not model.openpi_model.Observation:
@@ -314,22 +323,112 @@ def audit_cpu(args):
     if snapshot != model.checkpoint_snapshot(args.project_root):
         raise RuntimeError("Model files changed during CPU audit")
     print("Committed checkpoint restored; incomplete paths skipped", flush=True)
-    write_json(args.cpu_receipt, dict(status="cpu_pass", identity=identity, graph=report, versions=versions(),
+    write_json(args.cpu_receipt, dict(status=admission.CPU_STRUCTURAL_ONLY, identity=identity, graph=report, versions=versions(),
                                      checkpoint_snapshot=snapshot, checkpoint_recovery_checked=True,
                                      model_input_shape=list(target.shape), abstract_update_traced=True,
                                      token_count=input_report["valid_prompt_tokens"], input_contract=input_report,
                                      full_initial_eval_lowered=True, full_eval_and_sampling_traced=True))
 
 
-def admit_gpu(args):
-    if shutil.disk_usage(args.run.parent).free < MIN_DISK_BYTES:
-        raise RuntimeError("Need 16 GiB free on the run filesystem")
-    approved = json.loads(args.cpu_receipt.read_text())
+def validate_admission_evidence(args, packet, identity):
+    status = packet["status"]
+    structural = admission.verify_evidence(args.project_root, packet["evidence"], status)
+    structural_identity = structural["identity"]
+    if status == admission.CPU_NUMERIC_EXCEPTION:
+        # Reuse recorded structure only when the upstream model, data and settings match.
+        # The exception packet itself binds the new runtime code fingerprint exactly.
+        structural_identity = {**structural_identity, "code_sha256": identity["code_sha256"]}
+    if (structural_identity != identity or structural["versions"] != packet["versions"]
+            or structural["checkpoint_snapshot"] != packet["checkpoint_snapshot"]):
+        raise ValueError("Structural evidence does not match the admitted model, data or environment")
+    if status == admission.CPU_VERIFIED:
+        record = json.loads(Path(packet["evidence"]["cpu_verified_numeric"]["path"]).read_text())
+        steps = record.get("steps", [])
+        if (record.get("identity") != identity or record.get("status") != "passed"
+                or record.get("resumed_matches_uninterrupted") is not True
+                or record.get("frozen_unchanged") is not True
+                or record.get("model_input_shape") != [1, 50, 32] or len(steps) != 2):
+            raise ValueError("Missing complete CPU numerical verification")
+        for i, row in enumerate(steps, 1):
+            values = [row[k] for k in ("loss", "grad_norm", "adapter_delta_norm")]
+            if not np.isfinite(values).all() or min(values[1:]) <= 0 or row.get("adamw_count") != i:
+                raise ValueError("Invalid CPU numerical update evidence")
+
+
+def inspect_admission(args):
+    if not args.run.parent.is_dir() or shutil.disk_usage(args.run.parent).free < MIN_DISK_BYTES:
+        raise RuntimeError("Need an existing run parent with 16 GiB free")
+    receipt = admission.canonical_under(args.project_root, args.cpu_receipt)
+    raw = receipt.read_bytes()
+    packet = json.loads(raw)
+    status = packet.get("status")
+    if status not in {admission.CPU_VERIFIED, admission.CPU_NUMERIC_EXCEPTION}:
+        raise PermissionError("A complete CPU verification or approved numerical exception is required")
+    if status == admission.CPU_NUMERIC_EXCEPTION:
+        if args.command not in {"fit", "preflight"}:
+            raise PermissionError("The numerical exception is limited to one fit job")
+        admission.verify_approval(args.project_root, packet, receipt, raw)
+        if packet.get("unresolved") != "CPU_NUMERIC_UNRESOLVED":
+            raise ValueError("CPU numerical exception must identify the unresolved result")
+        scope = packet["scope"]
+        admission.verify_scope(args, scope)
+        if admission.claim_path(args.project_root, scope["token"]).exists():
+            raise PermissionError("CPU numerical exception has already been consumed")
+        if args.command == "preflight" and admission.reservation_path(args.project_root, scope["token"]).exists():
+            raise PermissionError("CPU numerical exception has already reserved its sole submission")
     identity = fingerprint(args)
-    if approved["status"] != "cpu_pass" or approved["identity"] != identity or approved["versions"] != versions():
-        raise RuntimeError("CPU receipt is missing or stale for this code, dataset or runtime")
-    if approved["checkpoint_snapshot"] != model.checkpoint_snapshot(args.project_root):
+    if (packet.get("identity") != identity or packet.get("versions") != versions()
+            or packet.get("runtime") != runtime_identity()
+            or packet.get("release") != admission.release_identity(args.project_root, CODE_ROOT)):
+        raise RuntimeError("Admission receipt is missing or stale for this release, dataset or runtime")
+    model.validate_install(args.project_root)
+    if packet["checkpoint_snapshot"] != model.checkpoint_snapshot(args.project_root):
         raise RuntimeError("Model file snapshot differs from the CPU-verified files")
+    validate_admission_evidence(args, packet, identity)
+    if args.command in {"fit", "preflight"}:
+        if args.resume:
+            if json.loads((args.run / "identity.json").read_text()) != identity:
+                raise RuntimeError("Cannot resume with a different dataset, code or config")
+        elif args.run.exists():
+            raise FileExistsError(args.run)
+    return identity, packet, hashlib.sha256(raw).hexdigest()
+
+
+def prepare_exception(args):
+    if platform().platform != "cpu":
+        raise RuntimeError("Prepare the review in the CPU container")
+    if args.cpu_receipt.exists() or (args.run.exists() and not args.resume):
+        raise FileExistsError("The review requires a new packet and an unused run unless resuming")
+    if not args.run.parent.is_dir() or shutil.disk_usage(args.run.parent).free < MIN_DISK_BYTES:
+        raise RuntimeError("Need an existing run parent with 16 GiB free")
+    model.validate_install(args.project_root)
+    identity = fingerprint(args)
+    if args.resume and json.loads((args.run / "identity.json").read_text()) != identity:
+        raise RuntimeError("Cannot resume with a different dataset, code or config")
+    packet = dict(status=admission.CPU_NUMERIC_EXCEPTION, unresolved="CPU_NUMERIC_UNRESOLVED",
+                  authorization=dict(state=admission.PENDING), identity=identity, versions=versions(),
+                  runtime=runtime_identity(),
+                  release=admission.release_identity(args.project_root, CODE_ROOT),
+                  checkpoint_snapshot=model.checkpoint_snapshot(args.project_root),
+                  scope=admission.make_scope(args, secrets.token_hex(16), args.job_account, args.slurm_log),
+                  evidence=json.loads(args.evidence.read_text()))
+    validate_admission_evidence(args, packet, identity)
+    write_json(args.cpu_receipt, packet)
+    print(json.dumps(dict(status="PENDING_USER_APPROVAL", release=packet["release"],
+                          receipt=str(args.cpu_receipt), code_sha256=identity["code_sha256"])), flush=True)
+    # This is a review artifact. Only preflight on a signed approval returns the runnable command.
+    print(admission.submission_command(args, CODE_ROOT, packet["scope"]), flush=True)
+
+
+def admit_gpu(args):
+    identity, approved, receipt_sha = inspect_admission(args)
+    exception = approved["status"] == admission.CPU_NUMERIC_EXCEPTION
+    if exception:
+        job_id = os.environ.get("STEP5_SLURM_JOB_ID")
+        if args.job_record is None:
+            raise PermissionError("The CPU exception requires the actual Slurm allocation record")
+        admission.verify_reservation(args.project_root, approved["scope"], receipt_sha)
+        admission.validate_slurm_record(args.job_record.read_text(), job_id, approved["scope"], CODE_ROOT)
     cuda = model.cuda_identity()
     print(json.dumps(dict(stage="cuda_device", **cuda)), flush=True)
     device = platform()
@@ -337,11 +436,61 @@ def admit_gpu(args):
         raise RuntimeError(f"Expected one allocated RTX 4090, found {device.device_kind}")
     print(json.dumps(dict(gpu_device=str(device), gpu_model=device.device_kind,
                           memory=device.memory_stats())), flush=True)
+    if exception:
+        admission.consume(args.project_root, approved["scope"], job_id, receipt_sha)
+        print(json.dumps(dict(stage="cpu_numerical_exception_consumed", job_id=job_id,
+                              token=approved["scope"]["token"], receipt_sha256=receipt_sha)), flush=True)
     return identity
 
 
 def stop_requested(args):
     return args.stop_file is not None and args.stop_file.stat().st_size > 0
+
+
+def record_gpu_progress(run, stage, **details):
+    event = dict(stage=stage, **details)
+    write_json(run / "gpu_progress.json", event)
+    print(json.dumps(event), flush=True)
+
+
+def frozen_digests(frozen):
+    # Transfer one tensor at a time. This allocates no second frozen tree on CUDA.
+    leaves, _ = jax.tree_util.tree_flatten_with_path(frozen)
+    digests = {}
+    for path, value in leaves:
+        host = np.ascontiguousarray(jax.device_get(value))
+        digests[jax.tree_util.keystr(path)] = hashlib.sha256(memoryview(host.view(np.uint8))).hexdigest()
+        del host
+    return digests
+
+
+def gate_update(run, stage, index, step, train, frozen, opt, key, obs, target, gpu):
+    record_gpu_progress(run, stage, step=index, status="running")
+    fitted, opt, metrics = update(step, train, frozen, opt, key, obs, target)
+    count = int(opt[1][0].count)
+    if count != index:
+        raise RuntimeError(f"{stage} AdamW count {count} does not match step {index}")
+    row = dict(step=index, adamw_count=count, memory=gpu.memory_stats(), **metrics)
+    write_json(run / f"{stage}_{index:04d}.json", row)
+    record_gpu_progress(run, stage, status="passed", **row)
+    return fitted, opt, row
+
+
+def write_gpu_failure(run, error):
+    failure = dict(stage="gpu_fit_failed", error_type=type(error).__name__, error=str(error))
+    try:
+        failure["memory"] = platform().memory_stats()
+    except Exception as diagnostic:
+        failure["memory_error"] = str(diagnostic)
+    try:
+        progress = run / "gpu_progress.json"
+        failure["last_progress"] = json.loads(progress.read_text()) if progress.exists() else None
+        checkpoint = latest_checkpoint(run / "checkpoints")
+        failure["last_committed_checkpoint"] = str(checkpoint) if checkpoint else None
+        write_json(run / "gpu_failure.json", failure)
+    except Exception as diagnostic:
+        failure["record_error"] = str(diagnostic)
+    print(json.dumps(failure), flush=True)
 
 
 def run_fit(args, identity):
@@ -366,7 +515,7 @@ def run_fit(args, identity):
     if stopped():
         return 75
     gpu = platform()
-    print("GPU checkpoint restore", flush=True)
+    record_gpu_progress(run, "gpu_checkpoint_restore", status="running")
     params = model.validate_install(args.project_root)
     parts, baseline, report = model.load_models(params)
     graph, initial, frozen, optimizer, initial_opt = parts
@@ -376,6 +525,7 @@ def run_fit(args, identity):
     pred = model.sampler(graph, adapted=True)
     rng = jax.random.key(SETTINGS.seed)
     write_json(run / "parameter_layout.json", report)
+    record_gpu_progress(run, "gpu_checkpoint_restore", status="passed", memory=gpu.memory_stats())
     with Dataset(args.dataset) as dataset:
         policy = model.NativePolicy(dataset.norm_stats)
         indices = tuple(dataset.indices("train"))
@@ -383,30 +533,43 @@ def run_fit(args, identity):
         obs, target = policy.batch(overfit)
         smoke = run / "gpu_gates.json"
         if not smoke.exists():
-            print("GPU initial LoRA zero-residual check and frozen reference", flush=True)
+            record_gpu_progress(run, "gpu_initial_loss", status="running")
             first_val, fixed_eval = check_initial_loss(
                 loss, flow_loss(base_graph, adapted=False), initial, frozen, base_state, rng, obs, target,
                 run / "initial_loss.json")
             if stopped():
                 return 75
-            print("GPU single-step update", flush=True)
-            smoke_result = update(step, initial, frozen, initial_opt, rng, obs, target)[2]
-            smoke_result["memory"] = gpu.memory_stats()
-            print(json.dumps(dict(stage="gpu_single_step_passed", **smoke_result)), flush=True)
+            record_gpu_progress(run, "gpu_frozen_check_before", status="running")
+            initial_frozen = frozen_digests(frozen)
+            fitted, opt = initial, initial_opt
+            validation_keys = (rng, jax.random.fold_in(rng, 2))
+            stage_a = []
+            for i, key in enumerate(validation_keys, 1):
+                if stopped():
+                    return 75
+                fitted, opt, row = gate_update(run, "gpu_stage_a", i, step, fitted, frozen, opt,
+                                               key, obs, target, gpu)
+                stage_a.append(row)
+            record_gpu_progress(run, "gpu_frozen_check_after", status="running")
+            if frozen_digests(frozen) != initial_frozen:
+                raise RuntimeError("Frozen base changed during GPU validation")
+            write_json(run / "gpu_frozen_unchanged.json", dict(leaves=len(initial_frozen), sha256=initial_frozen))
             if stopped():
                 return 75
-            print("GPU 20-step overfit gate", flush=True)
+            # Both experimental gates leave the formal initial optimizer state untouched.
             fitted, opt = initial, initial_opt
             overfit_log = []
             for i in range(SETTINGS.overfit_steps):
-                fitted, opt, metrics = update(step, fitted, frozen, opt, jax.random.fold_in(rng, i), obs, target)
-                overfit_log.append(metrics)
+                fitted, opt, row = gate_update(run, "gpu_overfit", i + 1, step, fitted, frozen, opt,
+                                               jax.random.fold_in(rng, i), obs, target, gpu)
+                overfit_log.append(row)
                 if stopped():
                     return 75
+            record_gpu_progress(run, "gpu_overfit_eval", status="running")
             last_val = fixed_eval(fitted)
             del fixed_eval
             relative = (first_val - last_val) / max(first_val, 1e-12)
-            gates = dict(smoke=smoke_result, overfit=overfit_log, initial_eval_loss=first_val,
+            gates = dict(stage_a=stage_a, frozen_unchanged=True, overfit=overfit_log, initial_eval_loss=first_val,
                          final_eval_loss=last_val, relative_improvement=relative, memory=gpu.memory_stats())
             if not np.isfinite(last_val) or relative < SETTINGS.overfit_min_relative_improvement:
                 if not np.isfinite(last_val):
@@ -414,14 +577,19 @@ def run_fit(args, identity):
                 write_json(run / "gpu_gates_failed.json", gates)
                 raise RuntimeError(f"20-step overfit gate failed: relative reduction {relative:.4g}")
             write_json(smoke, dict(status="passed", **gates))
+            record_gpu_progress(run, "gpu_gates_passed", memory=gpu.memory_stats())
             del fitted, opt
         else:
-            if json.loads(smoke.read_text())["status"] != "passed":
+            receipt = json.loads(smoke.read_text())
+            if (receipt.get("status") != "passed" or receipt.get("frozen_unchanged") is not True
+                    or [step["adamw_count"] for step in receipt.get("stage_a", [])] != [1, 2]
+                    or len(receipt.get("overfit", [])) != SETTINGS.overfit_steps):
                 raise RuntimeError("GPU gate receipt is invalid")
         if stopped():
             return 75
         val_baseline = run / "val-frozen.json"
         if not val_baseline.exists():
+            record_gpu_progress(run, "gpu_frozen_validation", status="running")
             write_json(val_baseline, evaluate(dataset, "val", policy, model.sampler(base_graph, adapted=False),
                                              flow_loss(base_graph, adapted=False), base_state, stopped=stopped))
         last = latest_checkpoint(dir_ckpt)
@@ -429,19 +597,25 @@ def run_fit(args, identity):
         fitted, opt = restore(last, initial, initial_opt) if last else (initial, initial_opt)
         for i in range(start, SETTINGS.train_steps + 1):
             if i > start:
+                record_gpu_progress(run, "gpu_formal_train", step=i, status="running")
                 index = np.random.default_rng(np.random.SeedSequence([SETTINGS.seed, i])).integers(len(indices))
                 obs, target = policy.batch([dataset.read("train", *indices[index])])
                 fitted, opt, metrics = update(step, fitted, frozen, opt, jax.random.fold_in(rng, i), obs, target)
-                print(json.dumps(dict(step=i, **metrics)), flush=True)
+                count = int(opt[1][0].count)
+                if count != i:
+                    raise RuntimeError(f"Formal AdamW count {count} does not match step {i}")
+                print(json.dumps(dict(step=i, adamw_count=count, **metrics)), flush=True)
             if i and (i % SETTINGS.checkpoint_interval == 0 or stopped() or i == SETTINGS.train_steps):
                 checkpoint = dir_ckpt / f"step-{i:04d}"
                 if not complete_checkpoint(checkpoint):
+                    record_gpu_progress(run, "gpu_checkpoint_save", step=i, status="running")
                     save(checkpoint, fitted, opt)
             if stopped():
                 return 75
             if i and (i % SETTINGS.validation_interval == 0 or i == SETTINGS.train_steps):
                 out = run / f"val-{i:04d}.json"
                 if not out.exists():
+                    record_gpu_progress(run, "gpu_validation", step=i, status="running")
                     write_json(out, evaluate(dataset, "val", policy, pred, loss, (fitted, frozen), stopped=stopped))
         reports = [(int(path.stem.split("-")[-1]), json.loads(path.read_text())["episode_mean"])
                    for path in run.glob("val-[0-9][0-9][0-9][0-9].json")]
@@ -449,6 +623,7 @@ def run_fit(args, identity):
                                                       row[1]["gripper_mae"], row[0]))
         write_json(run / "selected.json", dict(step=best, metrics=metrics, last_step=SETTINGS.train_steps,
                                                memory=gpu.memory_stats()))
+        record_gpu_progress(run, "gpu_fit_complete", step=SETTINGS.train_steps, memory=gpu.memory_stats())
     return 0
 
 
@@ -475,19 +650,41 @@ def test_selected(args, identity):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("command", choices=("audit-cpu", "fit", "test"))
+    parser.add_argument("command", choices=("audit-cpu", "prepare-exception", "preflight", "fit", "test"))
     for name in ("project-root", "dataset", "data-audit", "cpu-receipt"):
         parser.add_argument(f"--{name}", required=True, type=Path)
     parser.add_argument("--run", type=Path)
     parser.add_argument("--resume", action="store_true")
     parser.add_argument("--stop-file", type=Path)
+    parser.add_argument("--job-record", type=Path)
+    parser.add_argument("--evidence", type=Path)
+    parser.add_argument("--job-account")
+    parser.add_argument("--slurm-log", type=Path)
+    parser.add_argument("--reserve-submission", action="store_true")
     args = parser.parse_args()
     ensure_paths(args)
+    if args.reserve_submission and args.command != "preflight":
+        parser.error("--reserve-submission is only accepted by preflight")
     if args.command == "audit-cpu":
         audit_cpu(args)
+    elif args.command == "prepare-exception":
+        if not all((args.run, args.evidence, args.job_account, args.slurm_log)):
+            parser.error("prepare-exception requires --run, --evidence, --job-account and --slurm-log")
+        prepare_exception(args)
+    elif args.command == "preflight":
+        if args.run is None:
+            parser.error("preflight requires --run")
+        _, approved, receipt_sha = inspect_admission(args)
+        if approved["status"] == admission.CPU_NUMERIC_EXCEPTION:
+            if args.reserve_submission:
+                admission.reserve_submission(args.project_root, approved["scope"], receipt_sha)
+            print(admission.submission_command(args, CODE_ROOT, approved["scope"]))
+        elif args.reserve_submission:
+            parser.error("Only an approved numerical exception uses a submission reservation")
     else:
         if args.run is None:
             parser.error("GPU commands require --run")
+        print(json.dumps(dict(stage="gpu_preflight", status="running")), flush=True)
         identity = admit_gpu(args)
         if args.command == "fit" and not args.resume:
             args.run.mkdir()
@@ -501,8 +698,7 @@ def main():
                 except InterruptedError:
                     raise SystemExit(75) from None
                 except Exception as error:
-                    print(json.dumps(dict(stage="gpu_fit_failed", error=str(error),
-                                          memory=platform().memory_stats())), flush=True)
+                    write_gpu_failure(args.run, error)
                     raise
 
 

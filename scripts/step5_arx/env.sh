@@ -14,6 +14,7 @@ python="$root/tools/pace-model-venv/bin/python"
 [[ -x "$a" && -x "$python" && -d "$image" && -r "$src/src/openpi/models/model.py" ]]
 [[ -r "$root/cache/pace-handover/handover_block/params/manifest.ocdbt" ]]
 cd "$root"
+version=$("$a" --version)
 args=(--writable --cleanenv --bind /public:/public --pwd "$root")
 case "$mode" in
     cpu) platform=cpu; device_env=(CUDA_VISIBLE_DEVICES=) ;;
@@ -28,7 +29,7 @@ case "$mode" in
         platform=cuda; args+=(--nv)
         # Numeric visibility is relative to the job cgroup. Preserve CUDA ordering and
         # let the driver check the visible count if Slurm leaves the mask unset.
-        device_env=("STEP5_SLURM_GPU=$assigned")
+        device_env=("STEP5_SLURM_GPU=$assigned" "STEP5_SLURM_JOB_ID=$SLURM_JOB_ID")
         if [[ -n "$visible" ]]; then device_env+=("CUDA_VISIBLE_DEVICES=$visible"); fi
         if [[ -n "${CUDA_DEVICE_ORDER:-}" ]]; then device_env+=("CUDA_DEVICE_ORDER=$CUDA_DEVICE_ORDER"); fi
         ;;
@@ -41,7 +42,7 @@ exec "$a" exec "${args[@]}" "$image" env \
     "OPENPI_DATA_HOME=$root/cache/openpi-pace" "XDG_CACHE_HOME=$root/cache/step5-arx/xdg" \
     "HF_HOME=$root/cache/step5-arx/hf" "CUDA_CACHE_PATH=$root/cache/step5-arx/cuda" \
     "JAX_COMPILATION_CACHE_DIR=$root/cache/step5-arx/jax" \
-    HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 WANDB_MODE=disabled \
+    HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 WANDB_MODE=disabled "STEP5_APPTAINER_VERSION=$version" \
     OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 PYTHONUNBUFFERED=1 PYTHONFAULTHANDLER=1 \
     PYTHONDONTWRITEBYTECODE=1 XLA_PYTHON_CLIENT_PREALLOCATE=false XLA_PYTHON_CLIENT_MEM_FRACTION=0.95 \
     "JAX_PLATFORMS=$platform" "${device_env[@]}" "$python" "$@"

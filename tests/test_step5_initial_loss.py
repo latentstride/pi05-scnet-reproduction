@@ -201,7 +201,7 @@ class TrainingLaunchTest(unittest.TestCase):
             def stop_after_first_formal(*args_updates):
                 fitted, opt, metrics = first_step(*args_updates)
                 updates.append(int(opt[1][0].count))
-                if len(updates) == 22:
+                if len(updates) == 23:
                     args.stop_file.write_text("stop\n")
                 return fitted, opt, metrics
 
@@ -242,21 +242,21 @@ class TrainingLaunchTest(unittest.TestCase):
                 args.stop_file.write_text("")
                 with self.assertRaisesRegex(RuntimeError, "20-step overfit gate failed"):
                     train.run_fit(args, identity)
-                self.assertEqual(updates, [1, *range(1, 21)])
+                self.assertEqual(updates, [1, 2, *range(1, 21)])
                 self.assertFalse((root / "gpu_gates.json").exists())
                 self.assertFalse((root / "val-frozen.json").exists())
                 self.assertIsNone(train.latest_checkpoint(root / "checkpoints"))
                 updates.clear()
                 args.resume = True
                 self.assertEqual(train.run_fit(args, identity), 75)
-                self.assertEqual(updates, [1, *range(1, 21), 1])
+                self.assertEqual(updates, [1, 2, *range(1, 21), 1])
                 committed = train.latest_checkpoint(root / "checkpoints")
                 self.assertEqual(committed.name, "step-0001")
                 (root / "checkpoints/step-0002").mkdir()
                 args.stop_file.write_text("")
                 self.assertEqual(train.run_fit(args, identity), 0)
                 self.assertEqual(updates[-2:], [1, 2])
-                self.assertEqual(len(updates), 23)
+                self.assertEqual(len(updates), 24)
                 self.assertEqual(len(final_results), 2)
                 self.assertTrue(self.np.isfinite(final_results).all())
             self.assertEqual(len(json.loads((root / "gpu_gates.json").read_text())["overfit"]), 20)

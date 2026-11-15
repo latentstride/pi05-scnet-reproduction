@@ -11,6 +11,7 @@
 # Arguments are project root, release root, converted H5, data audit, CPU receipt, run directory,
 # and the optional literal --resume. Each path must be absolute.
 set -euo pipefail
+umask 077
 [[ "$#" == 6 || ( "$#" == 7 && "$7" == --resume ) ]]
 root=$1
 code=$2
@@ -37,9 +38,14 @@ flush_stop() {
     printf 'stop\n' > "$stop"
 }
 trap flush_stop USR1 TERM
-trap 'if [[ -e "$stop" ]]; then unlink "$stop"; fi' EXIT
+job_record=
+trap 'if [[ -e "$stop" ]]; then unlink "$stop"; fi
+      if [[ -n "$job_record" && -e "$job_record" ]]; then unlink "$job_record"; fi' EXIT
+job_record=$(mktemp "$(dirname "$run")/.step5-allocation-${SLURM_JOB_ID}.XXXXXX")
+scontrol_bin=$(command -v scontrol || printf '%s' /opt/gridview/slurm/bin/scontrol)
+"$scontrol_bin" -o show job "$SLURM_JOB_ID" > "$job_record"
 train_args=(--project-root "$root" --dataset "$dataset" --data-audit "$audit" --cpu-receipt "$receipt"
-            --run "$run" --stop-file "$stop")
+            --run "$run" --stop-file "$stop" --job-record "$job_record")
 if [[ "$#" == 7 ]]; then train_args+=(--resume); fi
 bash "$code/scripts/step5_arx/env.sh" gpu "$root" -m scripts.step5_arx.train fit "${train_args[@]}" &
 child=$!

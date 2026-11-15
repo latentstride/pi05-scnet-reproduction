@@ -1,0 +1,302 @@
+[
+  {
+    "member": "arx-x5_clean_50/data/episode0.hdf5",
+    "bytes": 10591772,
+    "compressed": 6599136,
+    "crc32": "6c5157d7"
+  },
+  {
+    "member": "arx-x5_clean_50/data/episode1.hdf5",
+    "bytes": 10747592,
+    "compressed": 6452067,
+    "crc32": "ddeebbb3"
+  },
+  {
+    "member": "arx-x5_clean_50/data/episode2.hdf5",
+    "bytes": 10356340,
+    "compressed": 6494547,
+    "crc32": "a0ac0a5f"
+  },
+  {
+    "member": "arx-x5_clean_50/data/episode3.hdf5",
+    "bytes": 10884214,
+    "compressed": 6544594,
+    "crc32": "4ee77f5d"
+  },
+  {
+    "member": "arx-x5_clean_50/data/episode4.hdf5",
+    "bytes": 10595720,
+    "compressed": 6535027,
+    "crc32": "3f18fb5b"
+  },
+  {
+    "member": "arx-x5_clean_50/data/episode5.hdf5",
+    "bytes": 10330830,
+    "compressed": 6491538,
+    "crc32": "38cb705b"
+  },
+  {
+    "member": "arx-x5_clean_50/data/episode6.hdf5",
+    "bytes": 10852895,
+    "compressed": 6517154,
+    "crc32": "81ad7c8c"
+  },
+  {
+    "member": "arx-x5_clean_50/data/episode7.hdf5",
+    "bytes": 10906100,
+    "compressed": 6524371,
+    "crc32": "57eb810d"
+  },
+  {
+    "member": "arx-x5_clean_50/data/episode8.hdf5",
+    "bytes": 10513544,
+    "compressed": 6430876,
+    "crc32": "36bef855"
+  },
+  {
+    "member": "arx-x5_clean_50/data/episode9.hdf5",
+    "bytes": 10259534,
+    "compressed": 6456404,
+    "crc32": "c863476d"
+  },
+  {
+    "member": "arx-x5_clean_50/data/episode10.hdf5",
+    "bytes": 10496495,
+    "compressed": 6464801,
+    "crc32": "7e6060e5"
+  },
+  {
+    "member": "arx-x5_clean_50/data/episode11.hdf5",
+    "bytes": 10315390,
+    "compressed": 6451364,
+    "crc32": "7b9a0cba"
+  },
+  {
+    "member": "arx-x5_clean_50/data/episode12.hdf5",
+    "bytes": 10528418,
+    "compressed": 6454463,
+    "crc32": "ac908549"
+  },
+  {
+    "member": "arx-x5_clean_50/data/episode13.hdf5",
+    "bytes": 10595819,
+    "compressed": 6500709,
+    "crc32": "1cc0d648"
+  },
+  {
+    "member": "arx-x5_clean_50/data/episode14.hdf5",
+    "bytes": 10310079,
+    "compressed": 6515616,
+    "crc32": "ac63df43"
+  },
+  {
+    "member": "arx-x5_clean_50/data/episode15.hdf5",
+    "bytes": 10650248,
+    "compressed": 6459915,
+    "crc32": "015281f5"
+  },
+  {
+    "member": "arx-x5_clean_50/data/episode16.hdf5",
+    "bytes": 10362200,
+    "compressed": 6561401,
+    "crc32": "5c5a8f6b"
+  },
+  {
+    "member": "arx-x5_clean_50/data/episode17.hdf5",
+    "bytes": 10635228,
+    "compressed": 6543874,
+    "crc32": "5f59884a"
+  },
+  {
+    "member": "arx-x5_clean_50/data/episode18.hdf5",
+    "bytes": 10959874,
+    "compressed": 6507742,
+    "crc32": "ae766f3d"
+  },
+  {
+    "member": "arx-x5_clean_50/data/episode19.hdf5",
+    "bytes": 10771888,
+    "compressed": 6521307,
+    "crc32": "5c8a2f25"
+  },
+  {
+    "member": "arx-x5_clean_50/data/episode20.hdf5",
+    "bytes": 10997898,
+    "compressed": 6574488,
+    "crc32": "f27a1ba8"
+  },
+  {
+    "member": "arx-x5_clean_50/data/episode21.hdf5",
+    "bytes": 10640840,
+    "compressed": 6569317,
+    "crc32": "a8a99373"
+  },
+  {
+    "member": "arx-x5_clean_50/data/episode22.hdf5",
+    "bytes": 10524988,
+    "compressed": 6517887,
+    "crc32": "2dc55c41"
+  },
+  {
+    "member": "arx-x5_clean_50/data/episode23.hdf5",
+    "bytes": 10582472,
+    "compressed": 6435971,
+    "crc32": "c492eb48"
+  },
+  {
+    "member": "arx-x5_clean_50/data/episode24.hdf5",
+    "bytes": 10924884,
+    "compressed": 6509291,
+    "crc32": "8b3b73e8"
+  },
+  {
+    "member": "arx-x5_clean_50/data/episode25.hdf5",
+    "bytes": 10136544,
+    "compressed": 6397860,
+    "crc32": "3589c14d"
+  },
+  {
+    "member": "arx-x5_clean_50/data/episode26.hdf5",
+    "bytes": 10337882,
+    "compressed": 6453430,
+    "crc32": "d00b646d"
+  },
+  {
+    "member": "arx-x5_clean_50/data/episode27.hdf5",
+    "bytes": 10437660,
+    "compressed": 6511211,
+    "crc32": "a1f7959f"
+  },
+  {
+    "member": "arx-x5_clean_50/data/episode28.hdf5",
+    "bytes": 11112962,
+    "compressed": 6824762,
+    "crc32": "ba12031e"
+  },
+  {
+    "member": "arx-x5_clean_50/data/episode29.hdf5",
+    "bytes": 10576519,
+    "compressed": 6398216,
+    "crc32": "360122ff"
+  },
+  {
+    "member": "arx-x5_clean_50/data/episode30.hdf5",
+    "bytes": 10328132,
+    "compressed": 6548134,
+    "crc32": "b93ee26a"
+  },
+  {
+    "member": "arx-x5_clean_50/data/episode31.hdf5",
+    "bytes": 11336265,
+    "compressed": 6683720,
+    "crc32": "c24345a2"
+  },
+  {
+    "member": "arx-x5_clean_50/data/episode32.hdf5",
+    "bytes": 10879880,
+    "compressed": 6534303,
+    "crc32": "128c236d"
+  },
+  {
+    "member": "arx-x5_clean_50/data/episode33.hdf5",
+    "bytes": 10318856,
+    "compressed": 6492060,
+    "crc32": "4b05ba94"
+  },
+  {
+    "member": "arx-x5_clean_50/data/episode34.hdf5",
+    "bytes": 10562312,
+    "compressed": 6437569,
+    "crc32": "3f6a4c5f"
+  },
+  {
+    "member": "arx-x5_clean_50/data/episode35.hdf5",
+    "bytes": 10598198,
+    "compressed": 6489282,
+    "crc32": "4102e555"
+  },
+  {
+    "member": "arx-x5_clean_50/data/episode36.hdf5",
+    "bytes": 10405579,
+    "compressed": 6424374,
+    "crc32": "177b193c"
+  },
+  {
+    "member": "arx-x5_clean_50/data/episode37.hdf5",
+    "bytes": 10431383,
+    "compressed": 6515380,
+    "crc32": "9f4ef224"
+  },
+  {
+    "member": "arx-x5_clean_50/data/episode38.hdf5",
+    "bytes": 10674949,
+    "compressed": 6455449,
+    "crc32": "ab655c4f"
+  },
+  {
+    "member": "arx-x5_clean_50/data/episode39.hdf5",
+    "bytes": 10403287,
+    "compressed": 6458796,
+    "crc32": "58aa5420"
+  },
+  {
+    "member": "arx-x5_clean_50/data/episode40.hdf5",
+    "bytes": 11118081,
+    "compressed": 6481651,
+    "crc32": "0dfa03c3"
+  },
+  {
+    "member": "arx-x5_clean_50/data/episode41.hdf5",
+    "bytes": 10210184,
+    "compressed": 6342791,
+    "crc32": "6766633b"
+  },
+  {
+    "member": "arx-x5_clean_50/data/episode42.hdf5",
+    "bytes": 10711496,
+    "compressed": 6464775,
+    "crc32": "c9f94d29"
+  },
+  {
+    "member": "arx-x5_clean_50/data/episode43.hdf5",
+    "bytes": 10959299,
+    "compressed": 6554463,
+    "crc32": "4efccd23"
+  },
+  {
+    "member": "arx-x5_clean_50/data/episode44.hdf5",
+    "bytes": 10213293,
+    "compressed": 6582644,
+    "crc32": "cd360c81"
+  },
+  {
+    "member": "arx-x5_clean_50/data/episode45.hdf5",
+    "bytes": 10472934,
+    "compressed": 6481308,
+    "crc32": "d75620d9"
+  },
+  {
+    "member": "arx-x5_clean_50/data/episode46.hdf5",
+    "bytes": 10617780,
+    "compressed": 6498129,
+    "crc32": "67547ae5"
+  },
+  {
+    "member": "arx-x5_clean_50/data/episode47.hdf5",
+    "bytes": 11207744,
+    "compressed": 6627804,
+    "crc32": "538f7d49"
+  },
+  {
+    "member": "arx-x5_clean_50/data/episode48.hdf5",
+    "bytes": 10729637,
+    "compressed": 6610773,
+    "crc32": "c3cf132c"
+  },
+  {
+    "member": "arx-x5_clean_50/data/episode49.hdf5",
+    "bytes": 10455176,
+    "compressed": 6409467,
+    "crc32": "ad3bac1d"
+  }
+]

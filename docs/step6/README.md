@@ -51,13 +51,13 @@ bash "$root/scripts/run_robotwin_env.sh" env CUDA_VISIBLE_DEVICES= \
   --output "$results" --cpu-fixture --headless --dataset "$dataset" --invalid-variant lora
 ```
 
-在第五步训练完成后，使用有效的第五步发布 `$release`、该发布对应的 `$cpu_receipt`、已锁定数据/审计和完整训练运行 `$run`。同一已获授权的分配内，推荐先做真实三相机与模型短窗核验，再按 F/L 配对跑正式矩阵。单台单卡无法同时容纳两服务时，先运行 F 的全部 seed 并结束 F 服务，然后从同一结果目录启动 L；仿真仍按 seed 比较独立重置。若显存已验证充足，可用两个 URL 执行默认交替顺序。以下只是已有分配内的进程入口：
+在第五步训练完成后，使用有效的第五步发布 `$release`、已锁定数据/审计和完整训练运行 `$run`。同一已获授权的分配内，推荐先做真实三相机与模型短窗核验，再按 F/L 配对跑正式矩阵。单台单卡无法同时容纳两服务时，先运行 F 的全部 seed 并结束 F 服务，然后从同一结果目录启动 L；仿真仍按 seed 比较独立重置。若显存已验证充足，可用两个 URL 执行默认交替顺序。以下只是已有分配内的进程入口：
 
 ```bash
 # 每轮取 variant=frozen 或 lora；单个服务独占 GPU。
 bash "$release/scripts/step5_arx/env.sh" gpu "$root" "$step6/scripts/step6_arx/serve.py" "$variant" \
   --project-root "$root" --dataset "$dataset" --data-audit "$data_audit" \
-  --cpu-receipt "$cpu_receipt" --run "$run" --seed 42 --port 8000
+  --run "$run" --seed 42 --port 8000
 
 # 在同一节点的 RoboTwin 仿真容器中执行；先 F 后 L，URL 选相应参数。
 PYTHONPATH="$step6:$root/tools/pace-smoke-deps:$openpi/packages/openpi-client/src" \
@@ -67,7 +67,7 @@ PYTHONPATH="$step6:$root/tools/pace-smoke-deps:$openpi/packages/openpi-client/sr
   --output "$results" --variant "$variant" "--${variant}-url" ws://127.0.0.1:8000
 ```
 
-服务启动仍走第五步 GPU 与发布哈希准入；包装层核对 `identity.json`、`selected.json` 与已提交的 Orbax checkpoint，回显底座、norm stats、训练身份及选中 checkpoint 内容哈希。它不写训练目录。冻结策略仍加载原始 PACE 权重；两个服务都读取同一第五步统计。没有有效 LoRA 时只可使用标明的 CPU fixture，或等待正式模型。
+服务核验实际 CUDA 分配、第五步发布指纹、`identity.json`、通过的训练门禁和正式训练选定的 Orbax checkpoint。冻结和 LoRA 从同一份 PACE 底座及 ARX 归一化统计启动。作业短窗入口及缺 checkpoint 时的预检行为见[GPU 短窗验收](gpu_short.md)。
 
 预计正式资源：一张第五步现有入口支持的 RTX 4090（24 GiB）串行服务、4–8 CPU、32–64 GiB RAM。现有 PACE 参考推理峰值约 14 GiB，仅供预估；L 的真实 GPU 恢复、编译与显存须先短窗验证。十试次每场 2,550 秒，整矩阵试次墙钟上限约 7 小时 5 分钟，另留容器、模型加载和清理时间。最大 2,000 次三相机请求约 1.3 GiB 原始 RGB，加上轨迹、FCL 审计和 MP4，建议独立结果卷预留至少 10 GiB，并满足第五步服务原有 16 GiB 余量门槛。未启动或提交任何 GPU 作业。
 

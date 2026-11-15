@@ -21,7 +21,6 @@ from .config import CODE_ROOT, MANIFEST, OPENPI, PACE_MODEL, SETTINGS, write_jso
 from .data import ARM, GRIP, Dataset, digest, partitions
 
 MIN_DISK_BYTES = 16 * 2**30
-MIN_VRAM_BYTES = 44 * 2**30
 
 
 def release_digest():
@@ -190,17 +189,16 @@ def audit_cpu(args):
 
 def admit_gpu(args):
     device = platform()
-    memory = device.memory_stats() or {}
-    supported = memory.get("bytes_limit", 0)
-    if device.platform != "gpu" or supported < MIN_VRAM_BYTES:
-        raise RuntimeError(f"Expected one CUDA device with at least {MIN_VRAM_BYTES} usable bytes; {memory}")
+    if device.platform != "gpu":
+        raise RuntimeError(f"Expected one CUDA device, found {device}")
     if shutil.disk_usage(args.run.parent).free < MIN_DISK_BYTES:
         raise RuntimeError("Need 16 GiB free on the run filesystem")
     approved = json.loads(args.cpu_receipt.read_text())
     identity = fingerprint(args)
     if approved["status"] != "cpu_pass" or approved["identity"] != identity or approved["versions"] != versions():
         raise RuntimeError("CPU receipt is missing or stale for this code, dataset or runtime")
-    print(json.dumps(dict(gpu_device=str(device), gpu_model=device.device_kind, memory=memory)), flush=True)
+    print(json.dumps(dict(gpu_device=str(device), gpu_model=device.device_kind,
+                          memory=device.memory_stats())), flush=True)
     return identity
 
 
@@ -229,6 +227,8 @@ def run_fit(args, identity):
     dir_ckpt.mkdir(exist_ok=True)
     if stopped():
         return 75
+    gpu = platform()
+    print("GPU checkpoint restore", flush=True)
     params = model.validate_install(args.project_root)
     parts, baseline, report = model.load_models(params)
     graph, initial, frozen, optimizer, initial_opt = parts
@@ -245,12 +245,16 @@ def run_fit(args, identity):
         obs, target = policy.batch(overfit)
         smoke = run / "gpu_gates.json"
         if not smoke.exists():
+            print("GPU initial frozen/LoRA comparison", flush=True)
             first_val = float(loss((initial, frozen), rng, obs, target))
             ref = np.asarray(flow_loss(base_graph, adapted=False)(base_state, rng, obs, target))
             if not np.isfinite([first_val, ref.item()]).all():
                 raise RuntimeError("Nonfinite frozen/LoRA initialization loss")
             np.testing.assert_allclose(first_val, ref, rtol=1e-3, atol=1e-5)
+            print("GPU single-step update", flush=True)
             _, _, smoke_result = update(step, initial, frozen, initial_opt, rng, obs, target)
+            smoke_result["memory"] = gpu.memory_stats()
+            print(json.dumps(dict(stage="gpu_single_step_passed", **smoke_result)), flush=True)
             fitted, opt = initial, initial_opt
             overfit_log = []
             for i in range(SETTINGS.overfit_steps):
@@ -261,7 +265,7 @@ def run_fit(args, identity):
             last_val = float(loss((fitted, frozen), rng, obs, target))
             relative = (first_val - last_val) / max(first_val, 1e-12)
             gates = dict(smoke=smoke_result, overfit=overfit_log, initial_eval_loss=first_val,
-                         final_eval_loss=last_val, relative_improvement=relative)
+                         final_eval_loss=last_val, relative_improvement=relative, memory=gpu.memory_stats())
             if not np.isfinite(last_val) or relative < SETTINGS.overfit_min_relative_improvement:
                 write_json(run / "gpu_gates_failed.json", gates)
                 raise RuntimeError(f"20-step overfit gate failed: relative reduction {relative:.4g}")
@@ -298,7 +302,8 @@ def run_fit(args, identity):
                    for path in run.glob("val-[0-9][0-9][0-9][0-9].json")]
         best, metrics = min(reports, key=lambda row: (row[1]["flow_loss"], row[1]["arm_mae_rad"],
                                                       row[1]["gripper_mae"], row[0]))
-        write_json(run / "selected.json", dict(step=best, metrics=metrics, last_step=SETTINGS.train_steps))
+        write_json(run / "selected.json", dict(step=best, metrics=metrics, last_step=SETTINGS.train_steps,
+                                               memory=gpu.memory_stats()))
     return 0
 
 

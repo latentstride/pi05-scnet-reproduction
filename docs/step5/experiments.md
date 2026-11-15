@@ -19,11 +19,13 @@ P 的投影开启三试次在该批次均未获得可执行的投影动作。与
 
 | 项目 | 第一轮预算 / 硬条件 |
 | --- | --- |
-| GPU | 单卡，计划 ≥48 GiB 物理显存，并由 JAX 在作业内检查 ≥44 GiB allocator 上限 |
+| GPU | 优先验证单张 RTX 4090（24 GiB），batch 1。以完整权重加载、真实单步和 20 步过拟合的实测显存与结果决定是否进入正式训练 |
 | CPU / 内存 | 8 CPU、64 GiB RAM，批量 1 |
 | 时间 | 6 h 硬上限。包括初始化、单步、20 步、400 步和四轮验证。预计步骤吞吐、峰显存和总历时待实测 |
 | 磁盘 | 运行卷开工前至少 16 GiB 空闲。既有底座约 11.6 GiB，转换数据约 363 MiB。每个训练 checkpoint 写 adapter 与 Adam 矩，每份约 572 MiB 张量载荷，400 步常规 16 份约 8.9 GiB，再预留中断保存点、临时文件和日志 |
-| 费用 | 本轮新增 GPU 费用为 0。未来费用上限 = 符合显存档位的有效报价 × 6 卡时。登录节点当前可见的 `ksagnormal01` 为 RTX 4090 24 GiB，不能用于该准入配置。48 GiB 档位及费率待核实 |
+| 费用 | 本轮新增 GPU 费用为 0。现有 `ksagnormal01` RTX 4090 是首选候选。未来费用上限按获批分区的实时单价与硬时限计算 |
+
+OpenPI 上游单卡 LoRA 的参考值为 >22.5 GB，并列出 RTX 4090。这是上游估算。仓库既有 PACE 推理峰值为 14,382 MiB。ARX H50 的训练峰值还受反向激活、XLA 工作区和编译影响，需实测。作业记录 JAX allocator 上限及单步、20 步与正式训练结束时的 allocator 统计。如果加载或更新显存不足，作业在相应门禁退出。 [OpenPI 硬件参考](https://github.com/Physical-Intelligence/openpi#requirements) [既有推理回执](../g2e_run_127081074.md)
 
 ## SCNet 路径与恢复
 
@@ -37,6 +39,6 @@ bash "$release/scripts/step5_arx/env.sh" cpu "$root" -m scripts.step5_arx.train 
   --project-root "$root" --dataset "$dataset" --data-audit "$data_audit" --cpu-receipt "$cpu_receipt"
 ```
 
-单作业脚本接收 `<root> <release> <dataset> <data-audit> <cpu-receipt> <new-run-dir> [--resume]`。未来提交时由获批的提交端设置满足显存要求的分区和 GPU 类型、显式 Slurm 日志路径及硬时限。脚本不调用调度提交或自动重排。GPU 用当前分配内的显式 CUDA 设备，先校验运行录、安装与数据，再串行完成门禁。执行入口查磁盘和项目根，日志记录 JAX 设备信息和运行卷余量。
+单作业脚本接收 `<root> <release> <dataset> <data-audit> <cpu-receipt> <new-run-dir> [--resume]`。未来提交时由获批的提交端设置选定的单卡分区和 GPU 类型、显式 Slurm 日志路径及硬时限。脚本不调用调度提交或自动重排。GPU 用当前分配内的显式 CUDA 设备，先校验运行录、安装与数据，再串行完成门禁。执行入口查磁盘和项目根，日志记录 JAX 设备信息和运行卷余量。
 
 训练运行目录有排他文件锁。Orbax 保存 adapter、优化器状态，不重复写 PACE 底座。稳定的步数化 RNG 和窗采样保证从已完成步继续时使用下一步同一批次。Slurm 在硬时限前 300 秒请求停止，Python 在更新或验证窗口的边界处理；退出码 75 表示协作停止。每 25 步先提交一个完整 checkpoint。硬中止后忽略未完成的临时目录，以最大已完成步恢复。续跑要求相同源码、配置、数据和权重身份，指向原运行目录并传入 `--resume`；已通过且已写出的 GPU 门禁在同一运行目录内复用。在门禁未通过、文件缺失、损失不有限或梯度无更新时诊断相应错误。GPU 节点的 Slurm 信号转发、峰显存、续跑和 6 小时时限均待实测。

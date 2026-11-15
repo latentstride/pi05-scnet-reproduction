@@ -7,7 +7,7 @@
 #SBATCH --signal=B:USR1@300
 #SBATCH --no-requeue
 
-# Supply an authorized >=48 GiB GPU partition/type and an absolute Slurm log path at submission.
+# Supply an authorized single-GPU partition/type and an absolute Slurm log path at submission.
 # Arguments are project root, release root, converted H5, data audit, CPU receipt, run directory,
 # and the optional literal --resume. Each path must be absolute.
 set -euo pipefail

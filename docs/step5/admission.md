@@ -18,11 +18,11 @@
 
 底座 BF16、LoRA FP32。A 用固定 seed 的 N(0,0.01) 初始化，B 置零，使初始残差为零。优化器采用常数 3e-5、全局梯度裁剪 1.0、weight decay 0，无 EMA，batch 1。主模型继续预测 50×32，官方 flow loss 同时约束补零的 18 个动作维度。训练前比对 Orbax 与无 LoRA / 有 LoRA 模型的底座路径和形状，拒绝不匹配的结构。SCNet CPU 实测依赖为 JAX 0.5.3、Flax 0.10.2、Optax 0.2.4、Orbax 0.11.13 与 h5py 3.13.0。
 
-11 月 15 日的收据与已验收发布保存在项目根下的 `results/step5-cpu-admission.rJvqzB/`，其中 `cpu-receipt.json` 是训练准入输入，`cpu.log` 保存该次 CPU 过程。收据 SHA-256 为 `8cca28981e2db38f6f43ca6b31531fe3f7ed0b7f9899f73432ae0cfc62e623cb`，代码指纹与 PR 文件一致。实测的冻结 Orbax 元数据含 51 个 FP32 张量，训练以 BF16 恢复底座。CPU 批次形状为 `[1,50,32]`，提示及状态合计 72 个有效 token，AdamW 有 41 个状态数组（40 个矩张量与 1 个计数器）。收据仅代表 CPU 通过；CPU 抽象追踪未执行全量模型计算核。
+11 月 15 日的收据与已验收发布保存在项目根下的 `results/step5-cpu-admission.rJvqzB/`，其中 `cpu-receipt.json` 是训练准入输入，`cpu.log` 保存该次 CPU 过程。收据 SHA-256 为 `8cca28981e2db38f6f43ca6b31531fe3f7ed0b7f9899f73432ae0cfc62e623cb`，对应 PR 的 `a24c5c1`。实测的冻结 Orbax 元数据含 51 个 FP32 张量，训练以 BF16 恢复底座。CPU 批次形状为 `[1,50,32]`，提示及状态合计 72 个有效 token，AdamW 有 41 个状态数组（40 个矩张量与 1 个计数器）。收据仅代表 CPU 通过；CPU 抽象追踪未执行全量模型计算核。
 
 ## GPU 串行门禁
 
-1. 校验 CPU 收据、代码与数据哈希、容器依赖、绝对路径、磁盘及实际 JAX 设备内存，恢复冻结底座。对同一固定样本、flow 噪声和 token 条件，比较初始 LoRA 与冻结模型损失。运行一轮真正前反向，要求 loss 有限、LoRA 梯度与更新范数非零。
+1. 校验 CPU 收据、代码与数据哈希、容器依赖、绝对路径、磁盘及单个 CUDA 设备，记录 JAX allocator 容量后恢复冻结底座。对同一固定样本、flow 噪声和 token 条件，比较初始 LoRA 与冻结模型损失。运行一轮真正前反向，要求 loss 有限、LoRA 梯度与更新范数非零，并记录 allocator 峰值。RTX 4090 24 GiB 可进入这项实测门禁。
 2. 从原初始化重启，固定一个 train 窗口做 20 步过拟合。使用同一评测噪声和无增强输入比较前后 loss，要求 loss 有限且相对下降至少 1%。阈值是提前设定的诊断门槛，训练脚本遇失败退出并记录数据。
 3. 从原初始化启动正式 400 步。固定 seed 派生窗口和 flow RNG，每 25 步保存，每 100 步离线验证。由验证 loss 与动作误差审阅下一轮是否调参。
 4. 选定训练方案后运行独立的 `test` 命令，对同一测试集同时输出冻结与 LoRA 成对指标。HDF5 模式检查曾覆盖测试集边界，训练与 checkpoint 选择均只使用 Train/Validation。

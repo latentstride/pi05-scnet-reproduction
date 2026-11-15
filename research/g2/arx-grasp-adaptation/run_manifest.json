@@ -1,0 +1,134 @@
+{
+  "base_commit": "acd8568830188576f912c2ae83c28ea3013c951d",
+  "sapien": "3.0.0b1",
+  "physics_engine": "PhysX CPU",
+  "physics_dt_s": 0.004,
+  "gpu_jobs": 0,
+  "executed_sources": {
+    "A:g2_arx_direct.py": {
+      "cpu_sha256": "59d4a3609b70ad1e495f4838466ebdc0f75145eb125cb6546215a85efb23c3d7",
+      "repository_file": "scripts/g2_arx_direct.py",
+      "repository_sha256": "59d4a3609b70ad1e495f4838466ebdc0f75145eb125cb6546215a85efb23c3d7",
+      "matches": true
+    },
+    "A:g1-q2.json": {
+      "cpu_sha256": "ac975fac7b05e018246b9d2927ce30afe1e11eba70dfd0f5b23848f506450fbb",
+      "repository_file": "research/g2/arx-grasp-adaptation/g1-q2.json",
+      "repository_sha256": "ac975fac7b05e018246b9d2927ce30afe1e11eba70dfd0f5b23848f506450fbb",
+      "matches": true
+    },
+    "BC:g2_arx_direct.py": {
+      "cpu_sha256": "59d4a3609b70ad1e495f4838466ebdc0f75145eb125cb6546215a85efb23c3d7",
+      "repository_file": "scripts/g2_arx_direct.py",
+      "repository_sha256": "59d4a3609b70ad1e495f4838466ebdc0f75145eb125cb6546215a85efb23c3d7",
+      "matches": true
+    },
+    "BC:g1-q2.json": {
+      "cpu_sha256": "ac975fac7b05e018246b9d2927ce30afe1e11eba70dfd0f5b23848f506450fbb",
+      "repository_file": "research/g2/arx-grasp-adaptation/g1-q2.json",
+      "repository_sha256": "ac975fac7b05e018246b9d2927ce30afe1e11eba70dfd0f5b23848f506450fbb",
+      "matches": true
+    },
+    "BC:run.py": {
+      "cpu_sha256": "b548dfe99f7c599ed12727418b6a25fb17ccd049884bd16b35b715be503de9b9",
+      "repository_file": "research/g2/arx-grasp-adaptation/run.py",
+      "repository_sha256": "b548dfe99f7c599ed12727418b6a25fb17ccd049884bd16b35b715be503de9b9",
+      "matches": true
+    },
+    "BC:g2_arx_grasp_adaptation.py": {
+      "cpu_sha256": "96540618e52f20f1e066e804593392ea8547661ff91c5d457d418b924296bae5",
+      "repository_file": "scripts/g2_arx_grasp_adaptation.py",
+      "repository_sha256": "96540618e52f20f1e066e804593392ea8547661ff91c5d457d418b924296bae5",
+      "matches": true
+    },
+    "expert:replay.py": {
+      "cpu_sha256": "da6e0afc96e5ee3a6320b93185342b4d65f0e380a15e2a54fa0affa4bc53df3e",
+      "repository_file": "research/g2/arx-native-grasp-control/replay.py",
+      "repository_sha256": "da6e0afc96e5ee3a6320b93185342b4d65f0e380a15e2a54fa0affa4bc53df3e",
+      "matches": true
+    },
+    "expert:episode01.json": {
+      "cpu_sha256": "da4a8d08a96d11c34a5552d641de5d53ac0cf05b4006e7348b84640840a4e629",
+      "repository_file": "research/g2/arx-native-grasp-control/inputs/episode01.json",
+      "repository_sha256": "da4a8d08a96d11c34a5552d641de5d53ac0cf05b4006e7348b84640840a4e629",
+      "matches": true
+    },
+    "asset:asset-audit.json": {
+      "cpu_sha256": "5ebfc07c82814757168bdb3f2b7ad4a9bec18f58afc28318f49e61af117122f2",
+      "repository_file": "research/g2/arx-stage6-concentrated-20261114/gpu-candidates/G1/g2-standalone-arx.tar.gz#g2-standalone-arx/asset-audit.json",
+      "repository_sha256": "5ebfc07c82814757168bdb3f2b7ad4a9bec18f58afc28318f49e61af117122f2",
+      "matches": true
+    },
+    "shared:g2_adapter.py": {
+      "cpu_sha256": "4197ad48de53552a425582d9dd8e527a62912d357ca0eced015ee2497b975d82",
+      "repository_file": "scripts/g2_adapter.py",
+      "repository_sha256": "4197ad48de53552a425582d9dd8e527a62912d357ca0eced015ee2497b975d82",
+      "matches": true
+    },
+    "shared:g2_contact.py": {
+      "cpu_sha256": "8369b9b25e760fb272fbf945220864432ec4f537e03c564d79605e7262ff3ffa",
+      "repository_file": "scripts/g2_contact.py",
+      "repository_sha256": "8369b9b25e760fb272fbf945220864432ec4f537e03c564d79605e7262ff3ffa",
+      "matches": true
+    },
+    "shared:g2_robotwin_backend.py": {
+      "cpu_sha256": "424b0c77df39363e60b5eda6a2d9a7d242739135bb33e6fba86f422bcc69a57e",
+      "repository_file": "scripts/g2_robotwin_backend.py",
+      "repository_sha256": "424b0c77df39363e60b5eda6a2d9a7d242739135bb33e6fba86f422bcc69a57e",
+      "matches": true
+    },
+    "shared:g2_motion.py": {
+      "cpu_sha256": "aaa3f36cb8b44479006da2adb210e2437548a659a564b64ac949549ea531121c",
+      "repository_file": "scripts/g2_motion.py",
+      "repository_sha256": "aaa3f36cb8b44479006da2adb210e2437548a659a564b64ac949549ea531121c",
+      "matches": true
+    },
+    "shared:g2_collision.py": {
+      "cpu_sha256": "3047aec1d3c0c4cd221a2bc860aada89cb91de151d6abc8eb155186010d2ec0e",
+      "repository_file": "scripts/g2_collision.py",
+      "repository_sha256": "3047aec1d3c0c4cd221a2bc860aada89cb91de151d6abc8eb155186010d2ec0e",
+      "matches": true
+    },
+    "shared:g2_arx_transfer_probe_cpu.py": {
+      "cpu_sha256": "d6bbafbccc40f9ce4fbbaa040660558a96dbdd8b0a40817cee3846d1cc3992ce",
+      "repository_file": "scripts/g2_arx_transfer_probe_cpu.py",
+      "repository_sha256": "d6bbafbccc40f9ce4fbbaa040660558a96dbdd8b0a40817cee3846d1cc3992ce",
+      "matches": true
+    },
+    "shared:g2_arx_endpoint_cpu.py": {
+      "cpu_sha256": "f3eb0a0ac56aea1a4b13ef1949d6d366ab2b538ef35bbe9daf25bb69d642bd4b",
+      "repository_file": "scripts/g2_arx_endpoint_cpu.py",
+      "repository_sha256": "f3eb0a0ac56aea1a4b13ef1949d6d366ab2b538ef35bbe9daf25bb69d642bd4b",
+      "matches": true
+    },
+    "shared:g2_static_failure_replay.py": {
+      "cpu_sha256": "7cad4c6209ed4c9c4f8625bd6939d83f5493b14cb25609063a72ce720970e4c8",
+      "repository_file": "scripts/g2_static_failure_replay.py",
+      "repository_sha256": "7cad4c6209ed4c9c4f8625bd6939d83f5493b14cb25609063a72ce720970e4c8",
+      "matches": true
+    },
+    "shared:g2_arx_direct_profile.py": {
+      "cpu_sha256": "e846c4cb0a32ca9355fa0b72d3e1996f574b0aa3e857e2a86d0cdef52d45dded",
+      "repository_file": "scripts/g2_arx_direct_profile.py",
+      "repository_sha256": "e846c4cb0a32ca9355fa0b72d3e1996f574b0aa3e857e2a86d0cdef52d45dded",
+      "matches": true
+    },
+    "shared:arx_replay.py": {
+      "cpu_sha256": "79b9cfa367ed31331d8c549c61a8f50f6153c2d687d74a25c0c9f6be1b06d24b",
+      "repository_file": "research/g2/final-system-review/arx_replay.py",
+      "repository_sha256": "79b9cfa367ed31331d8c549c61a8f50f6153c2d687d74a25c0c9f6be1b06d24b",
+      "matches": true
+    },
+    "shared:production_cpu.py": {
+      "cpu_sha256": "847bd8bfe0a5a149d75321e713361ad68d97a5beaca7ef6ee0efc05053872ba5",
+      "repository_file": "research/g2/arx-stage6-concentrated-20261114/production_cpu.py",
+      "repository_sha256": "847bd8bfe0a5a149d75321e713361ad68d97a5beaca7ef6ee0efc05053872ba5",
+      "matches": true
+    }
+  },
+  "oracle_image_camera_intrinsics": {
+    "source": "https://raw.githubusercontent.com/niejunnan25/PACE/fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/task_config/_camera_config.yml",
+    "sha256": "dc80a40552e0fad25d58cf0141302ceba66d22409b5091bed235ad2f10cbce7f"
+  },
+  "cpu_transport_tar_sha256": "2b736aefafa5d4cfc302ae1b75e51fd314d4f1d7fcb13010242c5b9d21bef42a"
+}

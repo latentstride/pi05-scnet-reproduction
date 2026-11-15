@@ -1,0 +1,3 @@
+bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+WARNING: Skipping mount /etc/localtime [binds]: /etc/localtime doesn't exist in container
+PRODUCTION_CPU 128047752 archived_tail 3530 13 predicted finger start intersects task block

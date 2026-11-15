@@ -1,0 +1,196 @@
+{
+  "runs": {
+    "A": {
+      "physical_steps": 3530,
+      "before_close_max_xy_mm": 38.02719671706964,
+      "bilateral_steps": 0,
+      "single_finger_steps": 1185,
+      "maximum_simultaneous_left_fingers": 1,
+      "stable_hold_s": 0.0,
+      "peak_held_lift_mm": 0.0,
+      "first_close_tick": null,
+      "first_holder_tick": null,
+      "local_grasp_pass": false,
+      "pose_source": null,
+      "input_sha256": "ac975fac7b05e018246b9d2927ce30afe1e11eba70dfd0f5b23848f506450fbb",
+      "source_action_sha256": "75a202211a64ef701077cc1109fa9a024615d52bd7c0affcf0e2840b7c37e5e0",
+      "threshold_m": 0.002,
+      "failure": {
+        "detail": "predicted finger start intersects task block",
+        "row": 14
+      }
+    },
+    "B": {
+      "physical_steps": 2812,
+      "before_close_max_xy_mm": 0.002964006667215992,
+      "bilateral_steps": 963,
+      "single_finger_steps": 21,
+      "maximum_simultaneous_left_fingers": 2,
+      "stable_hold_s": 3.844,
+      "peak_held_lift_mm": 1.056969165802002,
+      "first_close_tick": 7221,
+      "first_holder_tick": 7619,
+      "local_grasp_pass": false,
+      "pose_source": "oracle_object_pose",
+      "input_sha256": "ac975fac7b05e018246b9d2927ce30afe1e11eba70dfd0f5b23848f506450fbb",
+      "source_action_sha256": "75a202211a64ef701077cc1109fa9a024615d52bd7c0affcf0e2840b7c37e5e0",
+      "threshold_m": 0.002,
+      "failure": {
+        "phase": "frozen_counterfactual",
+        "row": 35,
+        "code": "backend_error",
+        "detail": "donor opening before receiver contact confirmation",
+        "diagnostic": {
+          "contact_state": {
+            "phase": "left_holding",
+            "holders": [
+              "left"
+            ],
+            "contact_fingers": {
+              "left": [
+                13,
+                14
+              ],
+              "right": []
+            },
+            "stable_counts": {
+              "left": 3,
+              "right": 0
+            },
+            "saw_shared_hold": false,
+            "releasing": [],
+            "block_pose_task": [
+              [
+                0.9563234394440707,
+                -0.2923094798296576,
+                -0.0008044697494537697,
+                -0.07103771716356277
+              ],
+              [
+                0.2923085647317083,
+                0.9563234389895395,
+                -0.001087668933619352,
+                0.010254116728901863
+              ],
+              [
+                0.0010872692175738336,
+                0.0008050098977424147,
+                0.9999990849019378,
+                0.8405935168266296
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "tool_block": {
+              "left": [
+                [
+                  0.9989454448220083,
+                  0.04590342845397932,
+                  0.0009346258770291507,
+                  0.030211357241651013
+                ],
+                [
+                  0.045904830776483295,
+                  -0.9989446325198852,
+                  -0.0015387238523483391,
+                  0.00010776956332272589
+                ],
+                [
+                  0.0008630068030057603,
+                  0.001580005025866709,
+                  -0.9999983794003751,
+                  0.0740422773690288
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ]
+            },
+            "tool_block_measured": {
+              "left": [
+                [
+                  0.9999994492087166,
+                  -0.0008154370537755769,
+                  -0.0006607909461576636,
+                  0.0313311807872588
+                ],
+                [
+                  -0.0008148989950611572,
+                  -0.9999993365696648,
+                  0.000814125210224311,
+                  2.6418612368975247e-05
+                ],
+                [
+                  -0.0006614543756317012,
+                  -0.0008135862839332346,
+                  -0.9999994502775827,
+                  0.07357741929451134
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ]
+            }
+          }
+        }
+      }
+    },
+    "C": {
+      "physical_steps": 1247,
+      "before_close_max_xy_mm": 0.003419735870988826,
+      "bilateral_steps": 483,
+      "single_finger_steps": 5,
+      "maximum_simultaneous_left_fingers": 2,
+      "stable_hold_s": 1.924,
+      "peak_held_lift_mm": 76.9919753074646,
+      "first_close_tick": 6404,
+      "first_holder_tick": 6534,
+      "local_grasp_pass": true,
+      "pose_source": "oracle_object_pose",
+      "input_sha256": "ac975fac7b05e018246b9d2927ce30afe1e11eba70dfd0f5b23848f506450fbb",
+      "source_action_sha256": "75a202211a64ef701077cc1109fa9a024615d52bd7c0affcf0e2840b7c37e5e0",
+      "threshold_m": 0.002,
+      "failure": null
+    }
+  },
+  "native_positive": {
+    "same_initial_scene": false,
+    "both_left_steps": 1448,
+    "first_holder": {
+      "row": 383,
+      "tick": 885,
+      "block_shift_mm": [
+        -0.15622377395629883,
+        0.23223459720611572,
+        0.034928321838378906
+      ]
+    },
+    "max_block_rise_mm": 40.29494524002075,
+    "physical_steps": 2023,
+    "error": null
+  },
+  "files_sha256": {
+    "A/A.log": "e4a96e400f7de29b6056ca13487d93a7ca073959c115c2068bf1a2faf87e9788",
+    "A/events.jsonl.gz": "1417ffe5e14c0665f2c8f36c85b8cbcb4c7ca2925a9afeb758fc39709970608f",
+    "A/receipt.json": "794550c9776cab4d4640ed34f3ca1369c271ff8ae77402737258270027109e78",
+    "B/B.log": "f2dd3208e7afd8cf2fca4e79b68f76e6ab745cc4ea4a086e7d13420e9a682b1d",
+    "B/events.jsonl.gz": "88c5ada3763d163c01203f3f86c644c72d01b9a81e1bb1688cfbb97f3036818a",
+    "B/receipt.json": "f8adb606db4ca4d416e254fc73efb3aae7b978c971c09a4cb336911199f21ce7",
+    "C/C.log": "0bb239f6ed73d1c978809b102469312e123997b5995a9a6bb33ca4ec47e93952",
+    "C/events.jsonl.gz": "f4ed7adfcd7e64ed2350c70ff7f6e03318fc36caba96c7221a3435a450c7d719",
+    "C/receipt.json": "f47a8e98482ce1c77983f088b3b036ea0b3cd83ba846345c12ec8b7bfd0e283e",
+    "expert/events.jsonl.gz": "fae753efbf3565d27a1b40b3cf94d175844d74843f65e7f4bbd6e2acdb3914de",
+    "expert/expert.log": "46b02bd3874015a7795d159f6d228f86d3a942ede2ac2bd4fd06865c8ee3201e",
+    "expert/receipt.json": "c2ffd803a58a7f697ceaa4dead9316c3566225c91080daad0c80a76c2c28638f"
+  }
+}

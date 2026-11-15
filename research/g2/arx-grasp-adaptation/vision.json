@@ -1,0 +1,26 @@
+{
+  "job": "128047752",
+  "query": 2,
+  "image_sha256": "4322d7353f5fae3cd8a575a786511625828379de9e07f8d870b8228cf3b207da",
+  "source": "archived_head_rgb_and_known_upright_box_on_table",
+  "estimate_xyz_world_m": [
+    -0.07466604107340202,
+    0.006765568387982996,
+    0.8400000095367431
+  ],
+  "fitted_yaw_deg": 13.106613645698568,
+  "comparison_oracle_xyz_world_m": [
+    -0.07435979694128036,
+    0.006855729501694441,
+    0.839999794960022
+  ],
+  "xy_error_mm": 0.3192404969370829,
+  "tcp_lateral_error_mm": -0.0024383207919665534,
+  "red_bounds_xyxy": [
+    114,
+    35,
+    157,
+    134
+  ],
+  "maximum_fit_error_px": 0.24242468040606013
+}

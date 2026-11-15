@@ -124,6 +124,67 @@ timeout -k 10s 570s bash "$release/scripts/step5_arx/env.sh" cpu "$root" "$out/c
 
 本轮没有进入同进程的 XNNPACK 数值对照、真实 ARX 前反向、Optax 更新、更新后 Orbax 恢复与第二次更新。90 秒的可选 20 步阶段也未启动。留存的完整模型结构记录和之前通过的独立 XNNPACK 矩阵算例仍只覆盖各自范围。本轮没有生成有效的新 CPU 准入收据，也没有提交 GPU 作业。可查阅同次运行的 `worker.json`、`run.log` 和 `exit.txt`。
 
+### 依赖导入与 CPU 计算节点复查
+
+运行源码仍为 `7da802f33d63cf2324a2137b29afb77f3682d776`，生产 `env.sh` 的 SHA-256 为 `75a74390b71db0826e044e385e9224987ecdf721b8917586dbf9d6e526b2e268`。依赖版本、容器、模型、数据和 LoRA 配置均沿用该发布。登录探针从 canonical `code_cpf/pi05` 调用生产入口，每一项使用独立进程和 90 秒限时。
+
+| 探针 | 宿主 | Python PID | 端到端秒数 | Python 内部导入秒数 | 退出码 |
+| --- | --- | ---: | ---: | ---: | ---: |
+| 解释器 | `login09` | 27094 | 3 | 0.000 | 0 |
+| `ml_dtypes` | `login09` | 30971 | 8 | 4.996 | 0 |
+| `jax` | `login09` | 33937 | 22 | 16.004 | 0 |
+| `flax.nnx` | `login09` | 42383 | 15 | 13.239 | 0 |
+| `optax` | `login09` | 44991 | 7 | 3.941 | 0 |
+| `orbax.checkpoint` | `login09` | 48624 | 9 | 7.306 | 0 |
+
+命令按模块逐条调用 `timeout -k 5s 90s bash "$release/scripts/step5_arx/env.sh" cpu "$root" -X importtime "$out/probe.py" "$module" "$out/$module/python.pid"`。SCNet 原始记录在 `results/step5-arx-imports.MBfNyX/`。该目录为每个模块单独保留 `stdout`、`stderr`、`process.log`、`python.pid`、`timeout.pid` 和 `exit.txt`。
+
+实际加载的是 `tools/pace-model-venv/lib/python3.11/site-packages/ml_dtypes/_ml_dtypes_ext.cpython-311-x86_64-linux-gnu.so`，大小 10,362,368 字节，SHA-256 为 `646b7b22bb1321c0319a6717b75636cbce083f7b29cefb109620cc2f451a4105`。扩展、解释器、Apptainer 目录和 sysroot 都在 `/public` 的 `ks_p300s_public`（Parastor）。`login09` 本次读取并计算该扩展的 SHA-256 在同一秒内完成。`login03` 通过生产容器运行 `/usr/bin/ldd`，PID `27585`，外层退出 0，约 3 秒。`libstdc++`、`libm`、`libgcc_s`、`libpthread`、`libc` 和动态解释器均解析到容器内路径，没有缺库。详细记录见 `results/step5-arx-storage-inspect.QDxErq/filesystem.log` 和 `container-ldd.{stdout,stderr}`。镜像内相应库文件在宿主也映射到 Parastor，见 `linked-library-fs.log`。
+
+对照上一次 `login04` 的长时间 `lock_blkgrp_sync` 等待，这次同一二进制与镜像的导入正常。现象指向当时节点读取共享存储路径时的 I/O 延迟。现有证据无法区分节点的 I/O cgroup 等待与共享后端瞬时拥塞。当前没有发现容器依赖损坏，也没有确认共享存储持续故障。旧任务的远端监督器已写入退出 137，本次未手动终止进程。
+
+CPU 计算通过 SCNet 文档支持的 `srun` 交互分配进入 `Agent0`。该分区报告无 GPU GRES，账号允许使用。选择该方式绕开登录节点的长计算和当时的 I/O 等待。 [SCNet 计算与登录节点说明](https://www.scnet.cn/help/docs/mainsite/hpc/noun-explanation/common-noun/index.html) [交互式 CPU 资源使用](https://www.scnet.cn/help/docs/mainsite/hpc/cmd/skills/)
+
+首次 CPU 请求 `128120575` 在 `Agent0` 申请 4 核和 8 GiB，`srun` 以资源忙退出 1，`sacct` 显示已取消且无资源分配。确认没有该任务的待处理请求后，改为 2 核和 6 GiB，最多等待 90 秒，获得 CPU 作业 `128120742` 和节点 `i03r4n02`。该节点报告的 GPU 分配和 CUDA 可见列表均为空。
+
+```bash
+srun --immediate=90 --job-name=cpf-step5-arx-cpu --partition=Agent0 --account="$USER" \
+  --nodes=1 --ntasks=1 --cpus-per-task=2 --mem=6G --gres=none --time=00:15:00 --chdir="$root" \
+  bash "$out/node.sh" "$root" "$release" "$out"
+```
+
+其中 `out` 为 SCNet 项目根下的 `results/step5-arx-agent0-cpu-r1.nvCeTL/`。该节点重新运行六项独立导入探针，依次用时 2、3、5、10、1、6 秒，均退出 0。随后生产 `env.sh cpu` 执行 `matmul.py`，脚本在容器内首次导入 JAX 前设置并打印 `XLA_FLAGS=--xla_cpu_use_xnnpack=true`、`JAX_ENABLE_COMPILATION_CACHE=false` 和 `JAX_PLATFORMS=cpu`。节点在 JAX 0.5.3 上完成五组 FP32 矩阵乘法，与独立 FP64 归约参考最大绝对误差约 `6.676e-6`，退出 0。`login07` 上的独立矩阵探针也退出 0，得到相同误差。没有重装依赖或使用节点本地暂存。
+
+两项检查通过后，节点在同一次 CPU 分配中执行：
+
+```bash
+timeout -k 5s 90s bash "$release/scripts/step5_arx/env.sh" cpu "$root" "$out/matmul.py"
+timeout -k 10s 440s bash "$release/scripts/step5_arx/env.sh" cpu "$root" "$out/core.py" "$root" "$release" "$out"
+```
+
+`core.py` SHA-256 为 `186d0a9f66b6815dd4cc3ef6343fe7513b76daf31aeee199f4fd5aaa9b7e85ec`。OpenPI 约 157 秒完成导入，随后用训练集真实样本 `(episode=24, row=3)` 与该发布已有的小型 FP32 OpenPI 测试配置运行生产函数。未重复完整模型结构级审计。
+
+| 阶段 | 实测结果 |
+| --- | --- |
+| `forward_backward_optax_pass` | 第一步 loss `2.478221893310547`，梯度范数 `148.33737182617188`，LoRA 更新范数 `0.0010519410716369748`，均有限且更新非零。 |
+| `frozen_base_pass` | 51 个冻结张量逐值相等。 |
+| `orbax_save_pass`、`orbax_restore_pass` | `step-0001` 完整保存并恢复，LoRA、优化器状态逐值相等，41 个优化器叶子，计数为 1。 |
+| `forward_backward_update_step_2` | 在未从磁盘恢复的连续更新对照先触发 `train.py:137` 的保护，loss `2.520490884780884`、梯度范数 `inf`、更新范数 `0.0007046995451673865`。恢复分支的第二步尚未执行。 |
+
+`core.exit` 和 `allocation.exit` 均记为退出 1。`sacct` 显示 `128120742` 为 `FAILED 1:0`，耗时 4 分 24 秒，分配 2 CPU 与 6 GiB 内存，无 GPU。原始阶段日志和 traceback 在 `core.stdout` 与 `core.stderr`，由 `worker.json` 记录核心进程 PID `10777`。可选 20 步未运行。
+
+针对第二步做了一次限时诊断。在同一台 CPU 节点 `i03r4n02` 上，CPU 作业 `128121104` 用相同发布包、实际 ARX 输入、`step-0001` 的 LoRA 与优化器状态和下一步随机 key `[2465931498,255383827]`。诊断按两条路径运行。返回梯度叶子的独立 JIT 计算与正式 `optimizer_step` 使用相同的 OpenPI loss 及微分定义，但编译输出不同。另一次调用直接使用本次发布的 `optimizer_step`。
+
+| 同一输入和第二步 loss | 梯度结果 |
+| --- | --- |
+| 原连续训练分支，loss `2.520490884780884` | `grad_norm=inf`，生产保护拒绝。 |
+| 独立 JIT，loss `2.520490884780884` | 梯度叶子无 NaN 或 Inf，Optax 范数 `1264.08251953125`，主机 FP64 范数 `1264.0825343409579`。 |
+| 恢复后直接调用生产 `optimizer_step`，loss `2.520490884780884` | 本次范数 `151.89605712890625`，更新范数 `0.0011666452046483755`，AdamW 计数到 2。 |
+
+CPU 诊断以退出 0 完成，耗时 2 分 38 秒，日志在 `results/step5-arx-agent0-grad.HLq7h9/grad.{stdout,stderr,exit}`。`raw-gradient.json` SHA-256 为 `612f7bf13cfd58bfe8804bb6bf7c7e6a304abac8e7eab92627aff3b92d7b5312`。实际执行命令为 `timeout -k 10s 360s bash "$release/scripts/step5_arx/env.sh" cpu "$root" "$out/grad.py" "$root" "$release" "$out"`，其中 `out` 是上述诊断目录。该诊断的有限梯度与原来的 `inf` 不一致，尚未证明原调用是某个叶子非有限还是范数计算异常。恢复分支能走到计数 2，但没有与成功的未中断分支复现一致的参数与优化器结果。
+
+**当前判定为 `CPU_NOT_READY`。** 依赖导入和独立 CPU 矩阵乘法通过。现在阻塞在真实训练第二步的 CPU 反向/梯度范数数值不一致。现有证据未定位到具体 CPU 编译内核，也未证明 LoRA 训练源码或 Orbax 恢复本身存在错误。首轮登录节点读取延迟已由正式 CPU 计算节点绕开。本轮没有生成新 CPU 准入收据，没有执行 `sbatch`，没有分配 GPU。模型、数据、依赖和科学阈值沿用原发布。
+
 ## CUDA 尚待验收
 
 `GPU_UNVERIFIED` 涵盖当前发布上完整模型的 CUDA 同图初始数值、`train=True` 首次真实前反向、实际梯度和更新、4090 峰值、1% 过拟合门槛、400 步正式训练及 GPU 上的保存恢复。

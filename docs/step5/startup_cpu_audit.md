@@ -77,10 +77,14 @@ timeout 850 bash "$release/scripts/step5_arx/env.sh" cpu "$root" -m scripts.step
 
 ### SCNet CPU 数值诊断
 
-在同一个容器、venv 和 `env.sh cpu` 入口，用独立算式 `sum(A[:, :, None] * B[None, :, :], dtype=float64)` 检查 JAX 的小矩阵乘法。输入从 JAX 拷回逐值相同，NumPy BLAS 和 JAX 逐元素乘加在正常 FP32 误差内。`[347,32] @ [32,16]` 的参考输出最大绝对值为 23.589134；默认 JAX CPU `matmul` 此次最大值为 0，eager 与 JIT 的最大绝对误差都为 23.589134。另一些形状出现异常大值。关闭持久编译缓存仍复现。独立固定 OpenPI Q/KV/out 和 MLP 的算子对照在 BF16 与 FP32 都出现异常，故小模型切换到 FP32 无法证明结果可靠。
+在同一个容器、venv 和 `env.sh cpu` 入口，用独立算式 `sum(A[:, :, None] * B[None, :, :], dtype=float64)` 检查 JAX 的小矩阵乘法。输入从 JAX 拷回逐值相同，NumPy BLAS 和 JAX 逐元素乘加在正常 FP32 误差内。`[347,32] @ [32,16]` 的参考输出最大绝对值为 23.589134；默认 JAX CPU `matmul` 此次最大值为 0，eager 与 JIT 的最大绝对误差都为 23.589134。另一些形状出现异常大值。关闭持久编译缓存仍复现。独立验证关闭 fast math、Eigen 多线程、MKL-DNN 或 CPU thunk 各选项，均未修复。独立固定 OpenPI Q/KV/out 和 MLP 的算子对照在 BF16 与 FP32 都出现异常，故小模型切换到 FP32 无法证明结果可靠。
 
 可查阅 `results/step5-arx-cpu-xla-check.ZciNRg/check.log`（SHA-256 `77116529f91b9d15c1919142ce265d8409d4487d3a75226a1abe768cd8935ca4`）、`results/step5-arx-cpu-dot-triage.2PtI5E/default.log` 和 `results/step5-arx-cpu-op-microprobe.7mBW7V/probe.log`（SHA-256 `8be1466076545572206d2c75cc068b62a8067e5fa03e463f12c6cbf7ddc28ff5`）。这些数值定位到该运行环境的 JAX CPU 点积执行，尚未定位到具体库或指令。该诊断独立于 π₀.₅、LoRA 和 Orbax。 [OpenXLA CPU 后端调试选项](https://github.com/openxla/xla/blob/df971129bd82e381954da0185b534220e21798a4/xla/debug_options_flags.cc#L880-L945)
 
+
+同一批矩阵在 SCNet 以仅进程生效的 `XLA_FLAGS=--xla_cpu_use_xnnpack=true` 串行重跑后，5 个形状与独立参考相符，最大误差 6.676e-6。该次退出 0，日志 `results/step5-arx-cpu-dot-triage.2PtI5E/xnnpack-serial.log` 的 SHA-256 为 `402d9fbeb8e51b9716c1e1bb977c29f822f6ca7938019fb63dbe8caeb9e0e294`。这验证了所测的 CPU 点积路径。GPU 发布未加入此设置。
+
+最终源码的默认 FP32 回归和 XNNPACK 回归均启动了容器 Python，但 SSH 客户端在 1200 秒限时内未取到测试结果。XNNPACK 的实际回归执行脚本为 `results/step5-arx-startup-xnnpack.ojUrw5/cpu-xnnpack-review.sh`，日志为同目录 `cpu-validation.log`。脚本在调用生产模块前设置 `XLA_FLAGS=--xla_cpu_use_xnnpack=true`、`JAX_ENABLE_COMPILATION_CACHE=false`，仅在 CPU 进程内生效。最后可见的完整回归日志停在解释器和环境初始化输出，尚无本轮真实更新及恢复结果。
 
 ### 准入判定
 
@@ -104,4 +108,3 @@ SCNet 运行源码固定 `7da802f33d63cf2324a2137b29afb77f3682d776`，位于项�
 `GPU_UNVERIFIED` 涵盖当前发布上完整模型的 CUDA 同图初始数值、`train=True` 首次真实前反向、实际梯度和更新、4090 峰值、1% 过拟合门槛、400 步正式训练及 GPU 上的保存恢复。
 
 现有 Slurm 串行入口在同一分配恢复完整权重、计算初始 loss、执行单步前反向及 AdamW 更新、记录显存、做 20 步小样本过拟合。前述门禁通过后才开始冻结验证和 400 步正式训练。异常会停止，日志会记录 JAX allocator。环境保持 `XLA_PYTHON_CLIENT_PREALLOCATE=false` 和 `XLA_PYTHON_CLIENT_MEM_FRACTION=0.95`。RTX 4090 首次梯度编译的临时 buffer、碎片、CUDA scratch/上下文开销及编译时长仍未知。若遇 OOM，应保留 stdout、阶段、JAX allocator、编译缓存和 Slurm 退出记录，判断失败发生于编译、前反向或之后的分配。若 20 步 loss 未降至少 1%，脚本记录固定评测 loss 与更新指标并停止。正式训练从最近完整 checkpoint 恢复，同时核对 AdamW 计数和保存步数。
-

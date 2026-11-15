@@ -7,7 +7,7 @@
 | F 原生冻结 | 原始 PACE / 同一套 ARX Train 统计 | Validation 与 Test；相同 ARX 输入、50×14 原生目标、固定噪声 | 已实现离线，对照待 GPU |
 | L 原生 LoRA | PACE + 第五步 LoRA / 同一套 ARX Train 统计 | 第 100/200/300/400 步跑 Validation，锁定后跑 Test | 已实现离线，对照待 GPU |
 | P 历史投影 | 归档冻结 PACE 与旧 Aloha→ARX 投影及安全配置 | 11 月 14 日诊断组 0/4，含三组投影开启和一组关闭 | 已有历史结果 |
-| 历史冻结 ARX | 旧作业 128103655 的既有策略与执行设置 | 原结果 0/2，未形成稳定双指抓持 | 已有历史结果 |
+| 历史冻结 ARX | 旧作业 128103655 的原生直接路径与原提示对照 | baseline 237 个策略动作、success_prompt 0 个，两条件均未成功 | 已有历史结果 |
 
 P 的投影开启三试次在该批次均未获得可执行的投影动作。与运行设置有差异的历史条件均单独呈现，不合并到 F/L 成对计数。 [历史投影与消融回执](https://github.com/latentstride/pi05-scnet-reproduction/blob/3f95695d3c8bd9aabf9a626373032547c205bdb7/research/g2/arx-stage6-20261114/README.md)
 

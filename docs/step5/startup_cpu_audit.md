@@ -86,7 +86,7 @@ timeout 850 bash "$release/scripts/step5_arx/env.sh" cpu "$root" -m scripts.step
 
 最终源码的默认 FP32 回归和 XNNPACK 回归均启动了容器 Python，但 SSH 客户端在 1200 秒限时内未取到测试结果。XNNPACK 的实际回归执行脚本为 `results/step5-arx-startup-xnnpack.ojUrw5/cpu-xnnpack-review.sh`，日志为同目录 `cpu-validation.log`。脚本在调用生产模块前设置 `XLA_FLAGS=--xla_cpu_use_xnnpack=true`、`JAX_ENABLE_COMPILATION_CACHE=false`，仅在 CPU 进程内生效。最后可见的完整回归日志停在解释器和环境初始化输出，尚无本轮真实更新及恢复结果。
 
-### 准入判定
+### 首轮准入判定
 
 **`CPU_NOT_READY`。** 真实输入的 AOT 问题已修复，完整模型结构审计通过。本轮尚无可信的小模型实际前反向、AdamW 更新和更新后 Orbax 恢复的完整往返，第三次 GPU 作业不进入最终提交审核。
 
@@ -102,6 +102,27 @@ SCNet 运行源码固定 `7da802f33d63cf2324a2137b29afb77f3682d776`，位于项�
 
 旧收据 `69c89c7b93216414dd2adc1347242d61fa1380a2579c5b547656636323c272cf` 的代码指纹与新发布不符。新结构级记录已保存，发布目录尚无可用于 GPU 准入的 `cpu-receipt.json`。完整数值验证须由同一真实 ARX 批次和可靠的 SCNet CPU 后端重新运行，包括生产 `run_fit` 的训练和恢复路径。省略数值验收或使用旧收据会丢失这部分证据。
 
+
+### 核心数值验收复跑
+
+复查上次 XNNPACK 运行 `results/step5-arx-startup-xnnpack.ojUrw5`。SSH 客户端耗尽 1200 秒限时是可确认的事件。共享日志 393 字节，最后写入于 22:59:59，只有解释器启动与环境输出。没有保存 worker PID、实际宿主或退出码。在后续登录的 `login07`、`login09` 未见对应的旧 worker，无法追溯旧进程的 CPU 占用，也无法断定超时当时远端进程是否卡死。未终止任何进程。
+
+在同一 `7da802f` 发布的 `env.sh cpu` 中启动独立、可脱离 SSH 的复跑，目录为 `results/step5-arx-priority-core.UGBFZ0/`。核对发布包 SHA-256 后，实际命令为下列形式。运行脚本记录宿主、进程号、阶段、CPU 时间、90 秒 Python 栈采样及最终退出码。
+
+```bash
+root=$(cd ~/code_cpf/pi05 && pwd -P)
+release="$root/tools/step5-arx-release-7da802f33d63cf2324a2137b29afb77f3682d776"
+out="$root/results/step5-arx-priority-core.UGBFZ0"
+nohup setsid bash "$out/launch.sh" "$root" "$release" "$out" > "$out/run.log" 2>&1 < /dev/null &
+# launch.sh 内实际执行的命令
+timeout -k 10s 570s bash "$release/scripts/step5_arx/env.sh" cpu "$root" "$out/core.py" "$root" "$release" "$out"
+```
+
+`core.py` SHA-256 为 `1f3636c62a7cc95c79831527b199ad99e0abbcfd758d76c8e74d595151e328bc`，`launch.sh` 为 `a8c81724a03586ff26b8bb430bf3914d35328a5b2e23450a473c7e363dafce87`。复跑先在进程内以独立 FP64 归约参考校验 XNNPACK，再走真实 ARX 批次、生产 `optimizer_step/update`、冻结权重逐值对照、生产 Orbax 往返与续训一致性。核心证据通过后才尝试可选的 20 步，后者单独上限 90 秒并逐步写日志。
+
+本轮判定为 **`CPU_NOT_READY`**。记录显示 runner 于 23:27:09 启动，`login04` 上的 supervisor PID 为 `12937`，worker PID 为 `13926`。23:29:55 的进程树采样中，worker 累计 CPU 时间约 2 秒（1.3%），处于 `lock_blkgrp_sync` 等待。90 秒的多次 Python 栈采样显示 JAX 导入还在加载 `ml_dtypes` 本地扩展。脱离 SSH 的远端任务在自己的 570 秒上限及 10 秒终止宽限后，于 23:36:49 写入 `code=137`。末尾只记录了本次 `timeout` 的 SIGKILL，没有发生 OOM 的证据。这次结果可区分为远端依赖加载在期限内未完成。首轮的远端挂起状态仍无法回溯。
+
+本轮没有进入同进程的 XNNPACK 数值对照、真实 ARX 前反向、Optax 更新、更新后 Orbax 恢复与第二次更新。90 秒的可选 20 步阶段也未启动。留存的完整模型结构记录和之前通过的独立 XNNPACK 矩阵算例仍只覆盖各自范围。本轮没有生成有效的新 CPU 准入收据，也没有提交 GPU 作业。可查阅同次运行的 `worker.json`、`run.log` 和 `exit.txt`。
 
 ## CUDA 尚待验收
 

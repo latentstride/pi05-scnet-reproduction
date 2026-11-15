@@ -1,0 +1,4 @@
+PASS: 200 raw ARX rows, 3 pre-contact offsets, 16 G4 rejections, 3 Aloha successes, 50 expert resets, and archived camera clipping regression
+PASS: 17 requests, 100 geometry rows, complete array hashes, Q2 measured contact/reobservation
+....................................................                     [100%]
+52 passed in 1.50s

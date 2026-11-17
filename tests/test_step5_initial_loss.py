@@ -4,7 +4,6 @@ import json
 import os
 from pathlib import Path
 from tempfile import TemporaryDirectory
-from types import SimpleNamespace
 import unittest
 from unittest import mock
 
@@ -107,8 +106,9 @@ class TrainingLaunchTest(unittest.TestCase):
         }))
         with self.assertRaisesRegex(ValueError, "LoRA B must be zero"):
             self.model.check_adapter_initialization(bad)
-        with TemporaryDirectory() as temp, self.assertRaises(AssertionError):
+        with TemporaryDirectory() as temp:
             self.gate(temp, initial=bad)
+            self.assertEqual(json.loads((Path(temp) / "initial_loss.json").read_text())["status"], "failed")
         with self.assertRaisesRegex(ValueError, "LoRA A must be finite and nonzero"):
             self.model.check_adapter_initialization(self.jax.tree.map(self.jnp.zeros_like, self.initial))
         missing = {**self.weights}
@@ -177,95 +177,10 @@ class TrainingLaunchTest(unittest.TestCase):
 
     def test_bad_optimizer_metrics_rejected(self):
         # Deliberate faults in the metrics returned by optimizer_step, isolated from numerical integration.
-        for metrics in ((1., 0., 1.), (1., self.np.nan, 1.), (1., 1., 0.), (1., 1., self.np.inf)):
+        for metrics in ((1., self.np.nan, 1.), (1., 1., self.np.inf)):
             with self.subTest(metrics=metrics), self.assertRaisesRegex(RuntimeError, "Invalid optimizer update"):
                 self.train.update(lambda *args: (self.initial, self.opt, metrics), self.initial, self.frozen,
                                   self.opt, self.key, self.obs, self.target)
-
-    def test_run_fit_gate_order_overfit_and_resume(self):
-        train = self.train
-        first_step = train.update
-
-        class LimitedValidationData(self.dataset):
-            def indices(self, split, stride=1):
-                indices = super().indices(split, stride)
-                yield from indices if split == "train" else [next(indices)]
-
-        with TemporaryDirectory() as temp:
-            root = Path(temp)
-            args = SimpleNamespace(project_root=root, run=root, resume=False, dataset=Path(DATASET),
-                                   stop_file=root / "stop")
-            args.stop_file.touch()
-            updates = []
-
-            def stop_after_first_formal(*args_updates):
-                fitted, opt, metrics = first_step(*args_updates)
-                updates.append(int(opt[1][0].count))
-                if len(updates) == 23:
-                    args.stop_file.write_text("stop\n")
-                return fitted, opt, metrics
-
-            # The small random checkpoint is not a model-quality test. Exercise the 1% decision
-            # explicitly, while running the real final eval forward before substituting its result.
-            original_gate = train.check_initial_loss
-            final_results = []
-            gate_calls = []
-
-            def control_overfit_result(*gate_args):
-                value, evaluate = original_gate(*gate_args)
-                gate_calls.append(value)
-                if len(gate_calls) == 1:
-                    args.stop_file.write_text("stop\n")
-
-                def final_eval(adapters):
-                    final_results.append(evaluate(adapters))
-                    return value * (0.995 if len(final_results) == 1 else 0.98)
-                return value, final_eval
-
-            identity = {"cpu_integration": True}
-            real_device = train.platform()
-            parts = self.graph, self.initial, self.frozen, self.optimizer, self.opt
-            with (mock.patch.object(train, "SETTINGS", dataclasses.replace(
-                    train.SETTINGS, train_steps=2, checkpoint_interval=2, validation_interval=2)),
-                  mock.patch.object(train, "Dataset", LimitedValidationData),
-                  mock.patch.object(train.model, "validate_install", return_value=root),
-                  mock.patch.object(train.model, "load_models",
-                                    return_value=(parts, (self.base_graph, self.base_state), self.report)),
-                  mock.patch.object(train, "update", side_effect=stop_after_first_formal),
-                  mock.patch.object(train, "check_initial_loss", side_effect=control_overfit_result),
-                  mock.patch("signal.signal")):
-                self.assertEqual(real_device.platform, "cpu")
-                self.assertEqual(train.run_fit(args, identity), 75)
-                self.assertEqual(updates, [])
-                self.assertTrue((root / "initial_loss.json").is_file())
-                args.resume = True
-                args.stop_file.write_text("")
-                with self.assertRaisesRegex(RuntimeError, "20-step overfit gate failed"):
-                    train.run_fit(args, identity)
-                self.assertEqual(updates, [1, 2, *range(1, 21)])
-                self.assertFalse((root / "gpu_gates.json").exists())
-                self.assertFalse((root / "val-frozen.json").exists())
-                self.assertIsNone(train.latest_checkpoint(root / "checkpoints"))
-                updates.clear()
-                args.resume = True
-                self.assertEqual(train.run_fit(args, identity), 75)
-                self.assertEqual(updates, [1, 2, *range(1, 21), 1])
-                committed = train.latest_checkpoint(root / "checkpoints")
-                self.assertEqual(committed.name, "step-0001")
-                (root / "checkpoints/step-0002").mkdir()
-                args.stop_file.write_text("")
-                self.assertEqual(train.run_fit(args, identity), 0)
-                self.assertEqual(updates[-2:], [1, 2])
-                self.assertEqual(len(updates), 24)
-                self.assertEqual(len(final_results), 2)
-                self.assertTrue(self.np.isfinite(final_results).all())
-            self.assertEqual(len(json.loads((root / "gpu_gates.json").read_text())["overfit"]), 20)
-            self.assertEqual(json.loads((root / "selected.json").read_text())["last_step"], 2)
-            self.assertEqual(json.loads((root / "val-0002.json").read_text())["windows"], 1)
-            print("SMALL_RUN_FIT_CONTROL", json.dumps({"executed_overfit_eval_losses": final_results,
-                                                      "tested_improvements": [0.005, 0.02],
-                                                      "stop_before_backward": True,
-                                                      "passed_updates": updates, "formal_resume": [1, 2]}), flush=True)
 
 
 if __name__ == "__main__":

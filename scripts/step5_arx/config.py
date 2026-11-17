@@ -24,8 +24,6 @@ class Settings:
     validation_interval: int = 100
     evaluation_stride: int = 25
     denoise_steps: int = 10
-    overfit_steps: int = 20
-    overfit_min_relative_improvement: float = 0.01
     ema: bool = False
 
     def as_dict(self):

@@ -7,30 +7,27 @@
 #SBATCH --signal=B:USR1@300
 #SBATCH --no-requeue
 
-# Supply an authorized single-GPU partition/type and an absolute Slurm log path at submission.
-# Arguments are project root, release root, converted H5, data audit, CPU receipt, run directory,
+# Supply a single-GPU partition/type and an absolute Slurm log path at submission.
+# Arguments are project root, release root, converted H5, data audit, run directory,
 # and the optional literal --resume. Each path must be absolute.
 set -euo pipefail
 umask 077
-[[ "$#" == 6 || ( "$#" == 7 && "$7" == --resume ) ]]
+[[ "$#" == 5 || ( "$#" == 6 && "$6" == --resume ) ]]
 root=$1
 code=$2
 dataset=$3
 audit=$4
-receipt=$5
-run=$6
+run=$5
 [[ -n "${SLURM_JOB_ID:-}" && "$root" == /* && "$root" == "$(cd "$root" && pwd -P)" && "$root" == */code_cpf/pi05 ]]
 [[ "$code" == "$root/"* && "$code" == "$(cd "$code" && pwd -P)" ]]
-for path in "$dataset" "$audit" "$receipt" "$run"; do
+for path in "$dataset" "$audit" "$run"; do
     [[ "$path" == "$root/"* && "$(realpath -m "$path")" == "$path" ]]
 done
-[[ -r "$code/scripts/step5_arx/env.sh" && -r "$dataset" && -r "$audit" && -r "$receipt" ]]
+[[ -r "$code/scripts/step5_arx/env.sh" && -r "$dataset" && -r "$audit" ]]
 [[ -d "$(dirname "$run")" ]]
 cd "$root"
 printf 'job=%s cwd=%s release=%s visible=%s allocated=%s\n' \
     "$SLURM_JOB_ID" "$PWD" "$code" "${CUDA_VISIBLE_DEVICES:-cgroup}" "${SLURM_JOB_GPUS:-unknown}"
-du -sh "$root/cache/pace-handover"
-df -h "$(dirname "$run")"
 stop=$(mktemp "$(dirname "$run")/.step5-stop-${SLURM_JOB_ID}.XXXXXX")
 wait_signaled=0
 flush_stop() {
@@ -38,15 +35,10 @@ flush_stop() {
     printf 'stop\n' > "$stop"
 }
 trap flush_stop USR1 TERM
-job_record=
-trap 'if [[ -e "$stop" ]]; then unlink "$stop"; fi
-      if [[ -n "$job_record" && -e "$job_record" ]]; then unlink "$job_record"; fi' EXIT
-job_record=$(mktemp "$(dirname "$run")/.step5-allocation-${SLURM_JOB_ID}.XXXXXX")
-scontrol_bin=$(command -v scontrol || printf '%s' /opt/gridview/slurm/bin/scontrol)
-"$scontrol_bin" -o show job "$SLURM_JOB_ID" > "$job_record"
-train_args=(--project-root "$root" --dataset "$dataset" --data-audit "$audit" --cpu-receipt "$receipt"
-            --run "$run" --stop-file "$stop" --job-record "$job_record")
-if [[ "$#" == 7 ]]; then train_args+=(--resume); fi
+trap 'if [[ -e "$stop" ]]; then unlink "$stop"; fi' EXIT
+train_args=(--project-root "$root" --dataset "$dataset" --data-audit "$audit"
+            --run "$run" --stop-file "$stop")
+if [[ "$#" == 6 ]]; then train_args+=(--resume); fi
 bash "$code/scripts/step5_arx/env.sh" gpu "$root" -m scripts.step5_arx.train fit "${train_args[@]}" &
 child=$!
 # A trapped signal can interrupt wait before the child finishes saving.

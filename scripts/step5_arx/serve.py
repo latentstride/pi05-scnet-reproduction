@@ -9,7 +9,7 @@ from openpi.serving import websocket_policy_server
 from . import model
 from .config import SETTINGS
 from .data import Dataset
-from .train import admit_gpu, ensure_paths, restore
+from .train import ensure_paths, fingerprint, gpu_device, restore
 
 
 class Session:
@@ -31,19 +31,18 @@ class Session:
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("variant", choices=("frozen", "lora"))
-    for name in ("project-root", "dataset", "data-audit", "cpu-receipt", "run"):
+    for name in ("project-root", "dataset", "data-audit", "run"):
         parser.add_argument(f"--{name}", required=name != "run", type=Path)
+    parser.add_argument("--cpu-receipt", type=Path, help=argparse.SUPPRESS)
     parser.add_argument("--port", type=int, default=8000)
     parser.add_argument("--seed", type=int, default=SETTINGS.seed)
     args = parser.parse_args()
     if args.variant == "lora" and args.run is None:
         parser.error("Pass the completed training --run for the lora policy")
-    # The frozen arm can use the same completed run or an unused path for the disk check.
-    if args.run is None:
-        args.run = args.dataset.parent / "frozen-server"
     ensure_paths(args)
-    identity = admit_gpu(args)
-    parts, baseline, _ = model.load_models(model.validate_install(args.project_root))
+    identity = fingerprint(args)
+    gpu_device()
+    parts, baseline, _ = model.load_models(model.validate_install(args.project_root, full_hash=True))
     graph, initial, frozen, _, opt = parts
     adapted = args.variant == "lora"
     selected = None

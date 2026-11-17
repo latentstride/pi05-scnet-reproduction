@@ -1,0 +1,245 @@
+# ARX LoRA 启动链路审查
+
+最后一次单叶诊断、第三次 GPU 验证的资源预算和准入结论见[部分 CPU 验收及提交评审](gpu_submission_review.md)。
+
+## 两次实跑失败
+
+两次提交都使用 `ksagnormal01`、一张 `RTX4090-PCIE-24GB-LS`、8 CPU、64 GiB 主存、6 小时时限和显式 `code_cpf/pi05` 工作目录。历史提交命令、调度器回执、完整 stdout 和 Python traceback 位于项目根的 `logs/step5-arx-20261115/` 和 `logs/step5-arx-20261115-r1/`。`submission-intent.txt` 与各自历史验收的 `tested-command.txt` 逐字节相同。两个发布目录的 `train.py`、`model.py`、`env.sh`、`train.slurm` 均与各自归档相符。
+
+| 作业 | 发布和退出位置 | Slurm 结果与进度 |
+| --- | --- | --- |
+| `128113950` | `4ea21ee` 的 `run_fit` 第 291–295 行。两个独立 JIT 的输出在第 295 行进入 `assert_allclose`。左值为 LoRA loss，右值为原生冻结 loss。两个调用使用同一个 `Observation`、FP32 `[1,50,32]` 动作目标及 PRNG key。 | `FAILED 1:0`，5 分 32 秒。LoRA/冻结 loss 约 0.11087/0.11028，相对差 0.535%，超过原容差。JAX allocator 达 7.24 GiB，尚无反向。 |
+| `128115085` | `2ebd1e7` 的 `main:417 → run_fit:312 → check_initial_loss:89 → loss.lower → jax._src.stages.make_args_info → OpenPI 类型检查`。JAX 用 `ArgInfo` 叶子重建 `Observation`，Jaxtyping/Beartype 在 `images` 上拒绝该类型。 | `FAILED 1:0`，4 分 24 秒。51 个底座数组同源，10 个 A 有限且非零、10 个 B 全零。JAX allocator 达 7.05 GiB，尚无初始 loss、反向或 checkpoint。 |
+
+第一作业的两个 JAX CUDA 编译缓存分别写于 21:23:52（LoRA）和 21:24:17（冻结）。解码后的 BF16 HLO 中，冻结 Q/KV/out 投影使用 Triton，LoRA 对应 GEMM 使用 cuBLAS，包含底座和 A 的拼接权重。两图的底座算子形状、归约与舍入路径不同。逐层数值贡献仍未实测。第二作业在 JAX AOT 参数元数据阶段退出，没有找到该次门禁落盘的 CUDA executable。 [128113950 的断言](https://github.com/latentstride/pi05-scnet-reproduction/blob/4ea21eead9ecabfd13fcdce0f9a62d82b1145103/scripts/step5_arx/train.py#L288-L297) [128115085 的 AOT 调用](https://github.com/latentstride/pi05-scnet-reproduction/blob/2ebd1e70eebdd3c45f4fbc54ac8c11cf92a4e1ce/scripts/step5_arx/train.py#L85-L103) [CUDA HLO 对照](admission.md#作业-128113950-的初始化损失)
+
+| 原始证据 | SHA-256 |
+| --- | --- |
+| 作业 `128113950` stdout | `23a17f4e0511f017221a298597ad532acd68e33ae0422802d5d8c58d48711861` |
+| 作业 `128115085` stdout | `6bb71cc74eef481fed93dfdc53a98bd5dce9b54581702c81c0af1ed4504bc711` |
+| 作业 `128113950` 发布包 | `cb088097280218bf59adac728f5efb918cc92c3c2c239604ead063e02c051e85` |
+| 作业 `128115085` 发布包 | `26b9db4a2c51985c802e75daae85b5145e5eeb4521159e22fe59e8f36427bf43` |
+| 作业 `128113950` 提交命令 | `5649eddf39f99d2b41abcafeeba2ae70eb32b7be4a92e6a60eccc3b7eb986468` |
+| 作业 `128115085` 提交命令 | `2c1fb5e3b3c776ceacaa3e234916518cc8fef74ea26272df748750d440fc9359` |
+| SCNet CPU 原问题复现 `results/step5-arginfo-repro.wOARR4/reproduce.log` | `ee9a9467fe686c8ca45006b87f4444ac2fc80f4887d2e9c7ffc480237f5c621e` |
+
+SCNet CPU 原问题复现用历史发布的 `env.sh cpu` 及 `2ebd1e7` 的生产 `check_initial_loss(flow_loss(...))`，以 `Dataset.read("train", 24, 3)` 和 `NativePolicy.batch()` 构造实际 `Observation`。模型使用全参数树和 5 项 Orbax BF16 恢复探针，其余以 shape/dtype 占位。`.lower()` 复现同一 `images`/`ArgInfo` 异常，复现脚本核对错误签名后退出 0。
+
+## 修复与训练语义
+
+AOT 对照把 `Observation` 的 PyTree 叶子作为外层编译输入，并在 `jit` 内按原 PyTree 重建 OpenPI `Observation`。`flow_loss` 仍执行原 `nnx.merge`、`pi.eval()` 及 `compute_loss(..., train=False)`。`optimizer_step` 仍执行 `pi.train()`、真实图像增强、`jax.value_and_grad`、Optax 裁剪与 AdamW。A/B、冻结权重、观测、动作和随机 key 仍为动态输入。全量加载检查两个图共用的 51 个底座数组及 10 对 A/B 的初始化值。
+
+门禁用同一已编译 LoRA 图评估种子初始化和参数全零对照，也用这张图及同一评测噪声计算 20 步后的 loss。初始记录含两种 LoRA loss、冻结 loss、绝对与相对差异、容差、阈值、有限性和判定。保留 `rtol=1e-3`、`atol=1e-5` 和 20 步相对下降 1% 的阈值。冻结 loss 差异用于诊断，任一 loss 非有限仍停止。若在初始评估或单步结束时已收到停止请求，入口返回 75。非有限过拟合结果也会写入失败产物。
+
+## SCNet CPU 验收方法
+
+固定栈为 OpenPI-PACE `f4e52e6de4cc487a11585a3a7414d610b2883dae`，checkpoint 仓库版本 `17ef545270cf26ed81169893b60f845f80ce6557`，Apptainer 1.3.4 和 Python 3.11.18。实际项目根为 `/public/home/acvkpnrzir/code_cpf/pi05`，容器为其下的 `containers/openpi-ubuntu`，CPU 和 GPU 使用同一 venv、固定代码树和资产缓存。CPU 启动器强制 `JAX_PLATFORMS=cpu`；未调用调度器提交接口。
+
+| 身份 | SHA-256 |
+| --- | --- |
+| 转换后的 HDF5 | `19da908478bd36cbf3e2c0b507479d53db6c178bfd07d16cff7a04ee07fd72ca` |
+| 数据审计 JSON | `2282b0f6fe09d9fa4861fa3d875edc28def2d5c33a6a4746463e93c1cd1d8936` |
+| 28 文件 checkpoint 清单 | `835d60676236e69276032f7bc1ea4837eb6fcda6d4f3dbab2043965063a3d97b` |
+| Orbax 根 `manifest.ocdbt` | `585e745b3c42a97e11cf797f4a6c2af39e0bfc8a7f208ab8aa969110b88aef4f` |
+| PaliGemma tokenizer | `8986bb4f423f07f8c7f70d0dbe3526fb2316056c17bae71b1ea975e77a168fc6` |
+
+首次修订的 CPU 回归（`results/step5-arx-startup-cpu.YyJBDj/cpu-validation.log`）退出 1。数据的 5 项测试通过，新增验收错误地要求宿主侧 token 数组为 `int32`。固定 tokenizer 用 `np.asarray(tokens)` 得到宿主侧 `int64`，JAX 关闭 x64 时按 `int32` 进入模型。修复后的验收记录两种 dtype，保留既有数据转换和训练输入。该轮没有生成 CPU 收据。
+
+第二次候选的 BF16 小模型回归退出 1，记录位于 `results/step5-arx-startup-cpu.cU7lh1/cpu-validation.log`。同图门禁和正常 JIT 都执行到了实际模型，观察到 LoRA loss 约 1.57e18、冻结 loss 约 1.30，随后也出现非有限 loss 和梯度。保留这些失败记录。小模型改用 FP32 计算来验证实际更新及恢复机制，完整模型的 BF16 配置保持原样。
+
+完整模型使用参数树和 dtype 约束、代表 Orbax 张量与真实 ARX 样本。它覆盖 AOT `.lower()`、冻结和 LoRA 评测、两种采样图、`train=True` 梯度及更新树，不实体化 3B 级底座或执行其模型计算。数值验收用小型 OpenPI `Pi0` 的同一 `pi05` 路径，保留 257,152 词表、三路 224×224 图、200 token、真实增强、50×32 目标、生产优化器与 loss。测试构造器将 Gemma 两分支缩为宽 32、1 层、MLP 64、2 个 query head、1 个 KV head、head dim 16、LoRA rank 2，视觉采用 SigLIP `mu/32`，底座为随机初始化后转 BF16，执行机制验收使用 FP32 计算，LoRA 保持 FP32。真实图像和动作来自同一批次。20 步循环两次执行实际梯度更新，并对测试中的最终比较值分别注入 0.5% 与 2% 来覆盖拒绝、放行和恢复分支。这个控制测试不能用于评定完整模型的过拟合表现。
+
+
+### 完整模型结构级结果
+
+`7da802f` 对应的 SCNet 运行完成，退出 0。校验了全部 28 个 checkpoint 文件和 tokenizer 的长度与 SHA-256。生产加载器对上 51 个冻结张量和 20 个 LoRA 张量，CPU 实际恢复其中 5 个 BF16 张量。LoRA 全树使用 FP32，AdamW 状态有 40 个 moments 和 1 个计数器。用同一真实输入完成生产 AOT `.lower()`、冻结评测、两种采样抽象输出及 `train=True` 的梯度与 Optax 更新追踪。训练返回的 LoRA 和 Optax 叶子类型、形状及 dtype 均与初始化一致。完整 LoRA 和初始优化器状态的 Orbax 保存、恢复和跳过部分写入通过。此运行不调用完整模型的前反向数值内核。
+
+| 实际 ARX 样本 `(episode=24, row=3)` | 形状 | dtype |
+| --- | --- | --- |
+| `Observation.images` 的三路 RGB | 各 `[1,224,224,3]` | `float32` |
+| 三路 `image_masks`，均为真 | 各 `[1]` | `bool` |
+| `state` | `[1,32]` | `float32` |
+| `tokenized_prompt` | `[1,200]` | 宿主 `int64`，JAX `int32` |
+| `tokenized_prompt_mask`，有效 74 个 token | `[1,200]` | `bool` |
+| 动作目标，后 18 维为零 | `[1,50,32]` | `float32` |
+| PRNG key，底层数据 `[0,42]` | 标量 | `key<fry>` |
+
+OpenPI 类型为 `openpi.models.model.Observation`，Flax PyTree 为 9 个数组叶子，FAST 专用的两个字段均为 `None`。完整树和各字段是由 `Dataset.read → NativePolicy.batch → Observation.from_dict` 生成的，记录在 `results/step5-arx-full-abstract.crfvHw/arx-input-contract.json`，SHA-256 为 `6a899712467854d886db9a65d9bab8d429e65f0920a36d9810e857a039301141`。同目录 `audit.log` SHA-256 为 `72f542e83cc469df81618160cd2a610a46f76d5b054f1bfc53d48ff7e3bb4c3b`，`cpu-full-only.json` SHA-256 为 `4b2a1941702339b6b1b2bcb35b2d1d93647fa8321e8c369d36cc8d376beed9cb`。后者只记录结构验收范围。
+
+```bash
+root=$(cd ~/code_cpf/pi05 && pwd -P)
+release="$root/tools/step5-arx-release-7da802f33d63cf2324a2137b29afb77f3682d776"
+out="$root/results/step5-arx-full-abstract.crfvHw"
+cd "$root"
+timeout 850 bash "$release/scripts/step5_arx/env.sh" cpu "$root" -m scripts.step5_arx.train audit-cpu \
+  --project-root "$root" --dataset "$root/data/step5-arx/arx-drive-target-v1.h5" \
+  --data-audit "$release/docs/step5/data_audit.json" --cpu-receipt "$out/cpu-full-only.json"
+```
+
+
+### SCNet CPU 数值诊断
+
+在同一个容器、venv 和 `env.sh cpu` 入口，用独立算式 `sum(A[:, :, None] * B[None, :, :], dtype=float64)` 检查 JAX 的小矩阵乘法。输入从 JAX 拷回逐值相同，NumPy BLAS 和 JAX 逐元素乘加在正常 FP32 误差内。`[347,32] @ [32,16]` 的参考输出最大绝对值为 23.589134；默认 JAX CPU `matmul` 此次最大值为 0，eager 与 JIT 的最大绝对误差都为 23.589134。另一些形状出现异常大值。关闭持久编译缓存仍复现。独立验证关闭 fast math、Eigen 多线程、MKL-DNN 或 CPU thunk 各选项，均未修复。独立固定 OpenPI Q/KV/out 和 MLP 的算子对照在 BF16 与 FP32 都出现异常，故小模型切换到 FP32 无法证明结果可靠。
+
+可查阅 `results/step5-arx-cpu-xla-check.ZciNRg/check.log`（SHA-256 `77116529f91b9d15c1919142ce265d8409d4487d3a75226a1abe768cd8935ca4`）、`results/step5-arx-cpu-dot-triage.2PtI5E/default.log` 和 `results/step5-arx-cpu-op-microprobe.7mBW7V/probe.log`（SHA-256 `8be1466076545572206d2c75cc068b62a8067e5fa03e463f12c6cbf7ddc28ff5`）。这些数值定位到该运行环境的 JAX CPU 点积执行，尚未定位到具体库或指令。该诊断独立于 π₀.₅、LoRA 和 Orbax。 [OpenXLA CPU 后端调试选项](https://github.com/openxla/xla/blob/df971129bd82e381954da0185b534220e21798a4/xla/debug_options_flags.cc#L880-L945)
+
+
+同一批矩阵在 SCNet 以仅进程生效的 `XLA_FLAGS=--xla_cpu_use_xnnpack=true` 串行重跑后，5 个形状与独立参考相符，最大误差 6.676e-6。该次退出 0，日志 `results/step5-arx-cpu-dot-triage.2PtI5E/xnnpack-serial.log` 的 SHA-256 为 `402d9fbeb8e51b9716c1e1bb977c29f822f6ca7938019fb63dbe8caeb9e0e294`。这验证了所测的 CPU 点积路径。GPU 发布未加入此设置。
+
+最终源码的默认 FP32 回归和 XNNPACK 回归均启动了容器 Python，但 SSH 客户端在 1200 秒限时内未取到测试结果。XNNPACK 的实际回归执行脚本为 `results/step5-arx-startup-xnnpack.ojUrw5/cpu-xnnpack-review.sh`，日志为同目录 `cpu-validation.log`。脚本在调用生产模块前设置 `XLA_FLAGS=--xla_cpu_use_xnnpack=true`、`JAX_ENABLE_COMPILATION_CACHE=false`，仅在 CPU 进程内生效。最后可见的完整回归日志停在解释器和环境初始化输出，尚无本轮真实更新及恢复结果。
+
+### 首轮准入判定
+
+**`CPU_NOT_READY`。** 真实输入的 AOT 问题已修复，完整模型结构审计通过。本轮尚无可信的小模型实际前反向、AdamW 更新和更新后 Orbax 恢复的完整往返，第三次 GPU 作业不进入最终提交审核。
+
+| 结果 | SCNet 命令与证据 |
+| --- | --- |
+| 原始失败复现通过，退出 0 | 从真实项目根用历史 `2ebd1e7` 发布的 `env.sh cpu` 执行 `results/step5-arginfo-repro.wOARR4/reproduce.py` 的代码。日志保留旧的 `check_initial_loss` 完整 traceback。 |
+| 发布包和 Bash 路径检查通过，退出 0 | `bash -n` 分别检查 `env.sh` 和 `train.slurm`。用 `bash "$out/step5-arx-startup-shell-review.sh" "$out" "$release"` 执行登录节点 Bash 4.2 回归。测试替身验证单卡和无显式掩码启动、拒绝多卡掩码、拒绝 staging 项目根，以及新任务和恢复路径收到 USR1 后退出 75。没有启动实际 CUDA 容器。 |
+| 完整模型结构、恢复样本及初始状态 Orbax 通过，退出 0 | 上节 `audit-cpu` 命令及 `results/step5-arx-full-abstract.crfvHw/audit.log`。 |
+| 缩小模型实际数值验收未通过 | 首个 BF16 小模型运行退出 1，11 项中 3 项报错。真实训练更新出现 `loss=15.075986862182617, grad=inf, change=nan`。无法完成更新后 Orbax 往返、20 步到正式训练的数值入口。拒绝非有限 loss 和非法更新指标的检查已实际触发。 |
+| CPU 数学诊断完成 | `results/step5-arx-cpu-dot-triage.2PtI5E/probe.py` 用同一 `env.sh cpu` 执行，并输出每个矩阵形状的独立参考误差。诊断程序完成退出 0，各矩阵乘法的正确性由记录的差值判定。 |
+
+SCNet 运行源码固定 `7da802f33d63cf2324a2137b29afb77f3682d776`，位于项目根的 `tools/step5-arx-release-7da802f33d63cf2324a2137b29afb77f3682d776/`。训练代码指纹 `76af52b077c5f2824965504c377f554001b9fec2f4d501236dd81c2d13857e50`，发布包 SHA-256 `6a821b30a1d4aca001b245b03c2f9bd5c14287b9b7d185c5961e7940cb5c6be4`。最终发布的 Bash 回归日志位于 `results/step5-arx-startup-cpu.HvMrwc/shell-review.log`，SHA-256 `73978c7005fe97c7772b0e1bcabcea9a017fb364d8212dd4b51fae07111bf8cf`。Bash 审计实际调用的 `train.slurm` 与发布归档一致，也已核对脚本委托到该发布的 `env.sh … -m scripts.step5_arx.train fit`。
+
+旧收据 `69c89c7b93216414dd2adc1347242d61fa1380a2579c5b547656636323c272cf` 的代码指纹与新发布不符。新结构级记录已保存，发布目录尚无可用于 GPU 准入的 `cpu-receipt.json`。完整数值验证须由同一真实 ARX 批次和可靠的 SCNet CPU 后端重新运行，包括生产 `run_fit` 的训练和恢复路径。省略数值验收或使用旧收据会丢失这部分证据。
+
+
+### 核心数值验收复跑
+
+复查上次 XNNPACK 运行 `results/step5-arx-startup-xnnpack.ojUrw5`。SSH 客户端耗尽 1200 秒限时是可确认的事件。共享日志 393 字节，最后写入于 22:59:59，只有解释器启动与环境输出。没有保存 worker PID、实际宿主或退出码。在后续登录的 `login07`、`login09` 未见对应的旧 worker，无法追溯旧进程的 CPU 占用，也无法断定超时当时远端进程是否卡死。未终止任何进程。
+
+在同一 `7da802f` 发布的 `env.sh cpu` 中启动独立、可脱离 SSH 的复跑，目录为 `results/step5-arx-priority-core.UGBFZ0/`。核对发布包 SHA-256 后，实际命令为下列形式。运行脚本记录宿主、进程号、阶段、CPU 时间、90 秒 Python 栈采样及最终退出码。
+
+```bash
+root=$(cd ~/code_cpf/pi05 && pwd -P)
+release="$root/tools/step5-arx-release-7da802f33d63cf2324a2137b29afb77f3682d776"
+out="$root/results/step5-arx-priority-core.UGBFZ0"
+nohup setsid bash "$out/launch.sh" "$root" "$release" "$out" > "$out/run.log" 2>&1 < /dev/null &
+# launch.sh 内实际执行的命令
+timeout -k 10s 570s bash "$release/scripts/step5_arx/env.sh" cpu "$root" "$out/core.py" "$root" "$release" "$out"
+```
+
+`core.py` SHA-256 为 `1f3636c62a7cc95c79831527b199ad99e0abbcfd758d76c8e74d595151e328bc`，`launch.sh` 为 `a8c81724a03586ff26b8bb430bf3914d35328a5b2e23450a473c7e363dafce87`。复跑先在进程内以独立 FP64 归约参考校验 XNNPACK，再走真实 ARX 批次、生产 `optimizer_step/update`、冻结权重逐值对照、生产 Orbax 往返与续训一致性。核心证据通过后才尝试可选的 20 步，后者单独上限 90 秒并逐步写日志。
+
+本轮判定为 **`CPU_NOT_READY`**。记录显示 runner 于 23:27:09 启动，`login04` 上的 supervisor PID 为 `12937`，worker PID 为 `13926`。23:29:55 的进程树采样中，worker 累计 CPU 时间约 2 秒（1.3%），处于 `lock_blkgrp_sync` 等待。90 秒的多次 Python 栈采样显示 JAX 导入还在加载 `ml_dtypes` 本地扩展。脱离 SSH 的远端任务在自己的 570 秒上限及 10 秒终止宽限后，于 23:36:49 写入 `code=137`。末尾只记录了本次 `timeout` 的 SIGKILL，没有发生 OOM 的证据。这次结果可区分为远端依赖加载在期限内未完成。首轮的远端挂起状态仍无法回溯。
+
+本轮没有进入同进程的 XNNPACK 数值对照、真实 ARX 前反向、Optax 更新、更新后 Orbax 恢复与第二次更新。90 秒的可选 20 步阶段也未启动。留存的完整模型结构记录和之前通过的独立 XNNPACK 矩阵算例仍只覆盖各自范围。本轮没有生成有效的新 CPU 准入收据，也没有提交 GPU 作业。可查阅同次运行的 `worker.json`、`run.log` 和 `exit.txt`。
+
+### 依赖导入与 CPU 计算节点复查
+
+运行源码仍为 `7da802f33d63cf2324a2137b29afb77f3682d776`，生产 `env.sh` 的 SHA-256 为 `75a74390b71db0826e044e385e9224987ecdf721b8917586dbf9d6e526b2e268`。依赖版本、容器、模型、数据和 LoRA 配置均沿用该发布。登录探针从 canonical `code_cpf/pi05` 调用生产入口，每一项使用独立进程和 90 秒限时。
+
+| 探针 | 宿主 | Python PID | 端到端秒数 | Python 内部导入秒数 | 退出码 |
+| --- | --- | ---: | ---: | ---: | ---: |
+| 解释器 | `login09` | 27094 | 3 | 0.000 | 0 |
+| `ml_dtypes` | `login09` | 30971 | 8 | 4.996 | 0 |
+| `jax` | `login09` | 33937 | 22 | 16.004 | 0 |
+| `flax.nnx` | `login09` | 42383 | 15 | 13.239 | 0 |
+| `optax` | `login09` | 44991 | 7 | 3.941 | 0 |
+| `orbax.checkpoint` | `login09` | 48624 | 9 | 7.306 | 0 |
+
+命令按模块逐条调用 `timeout -k 5s 90s bash "$release/scripts/step5_arx/env.sh" cpu "$root" -X importtime "$out/probe.py" "$module" "$out/$module/python.pid"`。SCNet 原始记录在 `results/step5-arx-imports.MBfNyX/`。该目录为每个模块单独保留 `stdout`、`stderr`、`process.log`、`python.pid`、`timeout.pid` 和 `exit.txt`。
+
+实际加载的是 `tools/pace-model-venv/lib/python3.11/site-packages/ml_dtypes/_ml_dtypes_ext.cpython-311-x86_64-linux-gnu.so`，大小 10,362,368 字节，SHA-256 为 `646b7b22bb1321c0319a6717b75636cbce083f7b29cefb109620cc2f451a4105`。扩展、解释器、Apptainer 目录和 sysroot 都在 `/public` 的 `ks_p300s_public`（Parastor）。`login09` 本次读取并计算该扩展的 SHA-256 在同一秒内完成。`login03` 通过生产容器运行 `/usr/bin/ldd`，PID `27585`，外层退出 0，约 3 秒。`libstdc++`、`libm`、`libgcc_s`、`libpthread`、`libc` 和动态解释器均解析到容器内路径，没有缺库。详细记录见 `results/step5-arx-storage-inspect.QDxErq/filesystem.log` 和 `container-ldd.{stdout,stderr}`。镜像内相应库文件在宿主也映射到 Parastor，见 `linked-library-fs.log`。
+
+对照上一次 `login04` 的长时间 `lock_blkgrp_sync` 等待，这次同一二进制与镜像的导入正常。现象指向当时节点读取共享存储路径时的 I/O 延迟。现有证据无法区分节点的 I/O cgroup 等待与共享后端瞬时拥塞。当前没有发现容器依赖损坏，也没有确认共享存储持续故障。旧任务的远端监督器已写入退出 137，本次未手动终止进程。
+
+CPU 计算通过 SCNet 文档支持的 `srun` 交互分配进入 `Agent0`。该分区报告无 GPU GRES，账号允许使用。选择该方式绕开登录节点的长计算和当时的 I/O 等待。 [SCNet 计算与登录节点说明](https://www.scnet.cn/help/docs/mainsite/hpc/noun-explanation/common-noun/index.html) [交互式 CPU 资源使用](https://www.scnet.cn/help/docs/mainsite/hpc/cmd/skills/)
+
+首次 CPU 请求 `128120575` 在 `Agent0` 申请 4 核和 8 GiB，`srun` 以资源忙退出 1，`sacct` 显示已取消且无资源分配。确认没有该任务的待处理请求后，改为 2 核和 6 GiB，最多等待 90 秒，获得 CPU 作业 `128120742` 和节点 `i03r4n02`。该节点报告的 GPU 分配和 CUDA 可见列表均为空。
+
+```bash
+srun --immediate=90 --job-name=cpf-step5-arx-cpu --partition=Agent0 --account="$USER" \
+  --nodes=1 --ntasks=1 --cpus-per-task=2 --mem=6G --gres=none --time=00:15:00 --chdir="$root" \
+  bash "$out/node.sh" "$root" "$release" "$out"
+```
+
+其中 `out` 为 SCNet 项目根下的 `results/step5-arx-agent0-cpu-r1.nvCeTL/`。该节点重新运行六项独立导入探针，依次用时 2、3、5、10、1、6 秒，均退出 0。随后生产 `env.sh cpu` 执行 `matmul.py`，脚本在容器内首次导入 JAX 前设置并打印 `XLA_FLAGS=--xla_cpu_use_xnnpack=true`、`JAX_ENABLE_COMPILATION_CACHE=false` 和 `JAX_PLATFORMS=cpu`。节点在 JAX 0.5.3 上完成五组 FP32 矩阵乘法，与独立 FP64 归约参考最大绝对误差约 `6.676e-6`，退出 0。`login07` 上的独立矩阵探针也退出 0，得到相同误差。没有重装依赖或使用节点本地暂存。
+
+两项检查通过后，节点在同一次 CPU 分配中执行：
+
+```bash
+timeout -k 5s 90s bash "$release/scripts/step5_arx/env.sh" cpu "$root" "$out/matmul.py"
+timeout -k 10s 440s bash "$release/scripts/step5_arx/env.sh" cpu "$root" "$out/core.py" "$root" "$release" "$out"
+```
+
+`core.py` SHA-256 为 `186d0a9f66b6815dd4cc3ef6343fe7513b76daf31aeee199f4fd5aaa9b7e85ec`。OpenPI 约 157 秒完成导入，随后用训练集真实样本 `(episode=24, row=3)` 与该发布已有的小型 FP32 OpenPI 测试配置运行生产函数。未重复完整模型结构级审计。
+
+| 阶段 | 实测结果 |
+| --- | --- |
+| `forward_backward_optax_pass` | 第一步 loss `2.478221893310547`，梯度范数 `148.33737182617188`，LoRA 更新范数 `0.0010519410716369748`，均有限且更新非零。 |
+| `frozen_base_pass` | 51 个冻结张量逐值相等。 |
+| `orbax_save_pass`、`orbax_restore_pass` | `step-0001` 完整保存并恢复，LoRA、优化器状态逐值相等，41 个优化器叶子，计数为 1。 |
+| `forward_backward_update_step_2` | 在未从磁盘恢复的连续更新对照先触发 `train.py:137` 的保护，loss `2.520490884780884`、梯度范数 `inf`、更新范数 `0.0007046995451673865`。恢复分支的第二步尚未执行。 |
+
+`core.exit` 和 `allocation.exit` 均记为退出 1。`sacct` 显示 `128120742` 为 `FAILED 1:0`，耗时 4 分 24 秒，分配 2 CPU 与 6 GiB 内存，无 GPU。原始阶段日志和 traceback 在 `core.stdout` 与 `core.stderr`，由 `worker.json` 记录核心进程 PID `10777`。可选 20 步未运行。
+
+针对第二步做了一次限时诊断。在同一台 CPU 节点 `i03r4n02` 上，CPU 作业 `128121104` 用相同发布包、实际 ARX 输入、`step-0001` 的 LoRA 与优化器状态和下一步随机 key `[2465931498,255383827]`。诊断按两条路径运行。返回梯度叶子的独立 JIT 计算与正式 `optimizer_step` 使用相同的 OpenPI loss 及微分定义，但编译输出不同。另一次调用直接使用本次发布的 `optimizer_step`。
+
+| 同一输入和第二步 loss | 梯度结果 |
+| --- | --- |
+| 原连续训练分支，loss `2.520490884780884` | `grad_norm=inf`，生产保护拒绝。 |
+| 独立 JIT，loss `2.520490884780884` | 梯度叶子无 NaN 或 Inf，Optax 范数 `1264.08251953125`，主机 FP64 范数 `1264.0825343409579`。 |
+| 恢复后直接调用生产 `optimizer_step`，loss `2.520490884780884` | 本次范数 `151.89605712890625`，更新范数 `0.0011666452046483755`，AdamW 计数到 2。 |
+
+CPU 诊断以退出 0 完成，耗时 2 分 38 秒，日志在 `results/step5-arx-agent0-grad.HLq7h9/grad.{stdout,stderr,exit}`。`raw-gradient.json` SHA-256 为 `612f7bf13cfd58bfe8804bb6bf7c7e6a304abac8e7eab92627aff3b92d7b5312`。实际执行命令为 `timeout -k 10s 360s bash "$release/scripts/step5_arx/env.sh" cpu "$root" "$out/grad.py" "$root" "$release" "$out"`，其中 `out` 是上述诊断目录。该诊断的有限梯度与原来的 `inf` 不一致，尚未证明原调用是某个叶子非有限还是范数计算异常。恢复分支能走到计数 2，但没有与成功的未中断分支复现一致的参数与优化器结果。
+
+**当前判定为 `CPU_NOT_READY`。** 依赖导入和独立 CPU 矩阵乘法通过。现在阻塞在真实训练第二步的 CPU 反向/梯度范数数值不一致。现有证据未定位到具体 CPU 编译内核，也未证明 LoRA 训练源码或 Orbax 恢复本身存在错误。首轮登录节点读取延迟已由正式 CPU 计算节点绕开。本轮没有生成新 CPU 准入收据，没有执行 `sbatch`，没有分配 GPU。模型、数据、依赖和科学阈值沿用原发布。
+
+### 固定输入的第二步梯度诊断
+
+沿用 `7da802f` 及现有小型 FP32 OpenPI 验收配置，在同一 CPU 节点 `i03r4n02` 运行。生产 `env.sh cpu` 在容器中以 XNNPACK 运行，持久 JAX 编译缓存禁用。作业仅申请 2 个 CPU、6 GiB，Slurm 时限 9 分钟，单进程超时 430 秒。两次启动均不分配 GPU。未重复数据和权重审计或完整模型结构回归。
+
+首次启动 `128121771` 在预热正式 JIT 时重做了必要的第一步。loss `2.478221893310547` 与此前成功作业相同，但本次梯度范数 `inf`、LoRA 更新范数 `0.0`，在生产 `train.py:137` 退出 1。日志为 `results/step5-fixed-grad.zR3Sjq/diagnose.{stdout,stderr,exit}`。为完成同一项第二步诊断，后续启动以此前实际成功的 `step-0001` 为固定输入。若预热的第一步结果有效并且逐值匹配该快照，则用同进程连续产生的状态。如不匹配，丢弃预热输出并单独标注固定状态的来源，仍可比较预热 JIT 与新的 JIT。
+
+执行命令为 `timeout -k 10s 430s bash "$release/scripts/step5_arx/env.sh" cpu "$root" "$out/diagnose.py" "$root" "$release" "$out"`，其中 `out` 为 `results/step5-fixed-grad-r1.qkqDsi/`。诊断脚本 SHA-256 为 `c5ff5c9d1728c2e34657d46bf22e4c2049eeb56133a58e4f78d94c1094b31723`。
+
+生产 JIT 保持原样，只承诺其实际返回的 loss、梯度范数和更新。为查看梯度叶子，诊断另将同一生产 Python 函数中传入 Optax 的梯度加入 JIT 返回值，并用独立 `value_and_grad` 作对照。加入返回值会改变编译输出，因此只有诊断图的叶子可直接检查，不能据此给未插桩执行的内部梯度下结论。
+
+后续 CPU 作业 `128122116` 运行 3 分 53 秒并退出 0。其预热第一步通过数值检查，但有 45 个状态叶子与历史 `step-0001` 的字节不同。本次实际使用了历史固定输入。`continuous` 表示沿用同一个预热 JIT 对象，并不代表现场重建了历史未中断的参数链。该 JIT 第一次执行固定第二步时新增一个缓存条目。后续重复使用该条目。
+
+`fixed-input.npz` 保存第一步的 LoRA、AdamW（计数 1）、51 个冻结张量、实际 ARX `Observation`、动作和第二步的 typed key。`fixed-input-manifest.json` 记录原状态和再次 Orbax 往返状态的逐叶路径、dtype、shape 和字节 SHA-256。固定输入与往返输入的 PyTree 相等。第二步 key 的底层值为 `[2465931498,255383827]`。每次生产调用前后的参数、AdamW、冻结张量、输入和 key 一致。两类输入均未观察到叶间 Python 对象或底层 buffer 的别名分组。两类状态合并后的训练图哈希相同，`deterministic` 从 `true` 切换到 `false`，`compute_loss` 用 `train=True`。NNX 变量树有 71 个参数叶子，非参数叶子数为 0。
+
+### 未插桩生产执行
+
+各行两次调用的 loss 均为 `2.520490884780884`，AdamW 计数均到 2。
+
+| 生产路径 | 返回的梯度范数，两次 | LoRA 更新范数，两次 | JIT 缓存条目 |
+| --- | --- | --- | --- |
+| 预热 JIT / 历史固定状态 | 151.323166 / 151.614975 | 0.001157525 / 0.001142533 | 1→2、2→2 |
+| 预热 JIT / 再次 Orbax 往返状态 | 151.699966 / 151.363403 | 0.001142737 / 0.001120529 | 2→2、2→2 |
+| 重建 JIT / 历史固定状态 | 151.303940 / 151.303925 | 0.001124438 / 0.001120334 | 0→1、1→1 |
+| 重建 JIT / 再次 Orbax 往返状态 | 151.303925 / 151.303925 | 0.001142442 / 0.001116498 | 1→1、1→1 |
+
+首行第二次比第一次有 57 个 LoRA/AdamW 输出叶子的字节 SHA-256 不同。末行两次都命中同一缓存，梯度范数虽相同，更新范数仍变动。该差异在固定同一输入的重复生产调用中已经出现，输入的 Orbax 往返、NNX 非参数状态差异或重新编译均不是必要条件。
+
+### 梯度叶子与范数交叉验证
+
+四个诊断输出各记录 20 个梯度叶子的 dtype、shape、字节 SHA-256、NaN/Inf 个数、最大绝对值及主机 FP32/FP64 范数。四组的所有元素均有限，最大绝对值均为 `63.51479721069336`。
+
+| 诊断图 | 主机 FP32 范数 | 主机 FP64 范数 | 对同一梯度重算的 Optax `global_norm` | 与第一行 SHA-256 不同的梯度叶子 |
+| --- | ---: | ---: | ---: | ---: |
+| 预热生产伴随图 | 175.565094 | 175.565091 | 175.565094 | 0 |
+| 同伴随图 / Orbax 往返 | 175.565094 | 175.565091 | 175.565094 | 4 |
+| 重建生产伴随图 | 175.565094 | 175.565091 | 175.565094 | 0 |
+| 独立 `value_and_grad` | 178.321304 | 178.321315 | 178.321289 | 19 |
+
+这次实测的图间梯度差异在范数归约前已存在。取到的梯度叶子和三种归约都有限，未观察到只在归约中出现 Inf 的现象。历史第二步的 Inf 在这次固定输入复测中未重现。未插桩生产函数没有返回历史 Inf 那次的梯度，因此仍不能判断该次 Inf 源于梯度叶子还是归约。
+
+**当前判定 `CPU_NOT_READY`。** 在这台 CPU 的 JAX/XNNPACK 环境中，固定输入、相同训练模式以及命中同一 JIT 缓存都无法复现相同的更新。已观察到 CPU 执行的数值不确定性，具体算子及历史 Inf 的触发点待定位。未发现可据此修复的 LoRA 或 Orbax 源码错误。本轮结束于固定输入诊断，没有发行 CPU 收据。最小后续实验是用已保存状态选取一个差异梯度叶子，把对应反向算子从训练图缩减为相同 CPU 后端上的重复执行测试。
+
+| SCNet 产物（均在 `results/step5-fixed-grad-r1.qkqDsi/`） | SHA-256 |
+| --- | --- |
+| `fixed-input.npz` | `b542bd41d86760076ab4f9b66d4feaacd36de17c0bcec30ef4142c826bf6b77a` |
+| `fixed-input-manifest.json` | `11282082f0e9606846463538bc6653372e1eaadf34ac3fd5b439a23cb6e40e0a` |
+| `production-comparison.json` | `3bddbff69b5b793e3466226330bd2f70eca9c74dc171ec61b63642322bf9e92d` |
+| `continuous_grad.json`、`rebuilt_grad.json` | `53584d41e74123c9548d90e7e2193c2f02436cd83dc1aa8cfcbb1218eb57475e` |
+| `restored_grad.json` | `20a95c295a57a3e594ea8dde8d14a995054d3a8266f988a6eb26e555e1ee8b1a` |
+| `independent_grad.json` | `328d47fcedb35aa49f1dd615d5f7fd36afe320c5ad29d557ebd7b099093fb093` |
+
+## CUDA 尚待验收
+
+`GPU_UNVERIFIED` 涵盖当前发布上完整模型的 CUDA 同图初始数值、`train=True` 首次真实前反向、实际梯度和更新、4090 峰值、1% 过拟合门槛、400 步正式训练及 GPU 上的保存恢复。
+
+现有 Slurm 串行入口在同一分配恢复完整权重、计算初始 loss、执行单步前反向及 AdamW 更新、记录显存、做 20 步小样本过拟合。前述门禁通过后才开始冻结验证和 400 步正式训练。异常会停止，日志会记录 JAX allocator。环境保持 `XLA_PYTHON_CLIENT_PREALLOCATE=false` 和 `XLA_PYTHON_CLIENT_MEM_FRACTION=0.95`。RTX 4090 首次梯度编译的临时 buffer、碎片、CUDA scratch/上下文开销及编译时长仍未知。若遇 OOM，应保留 stdout、阶段、JAX allocator、编译缓存和 Slurm 退出记录，判断失败发生于编译、前反向或之后的分配。若 20 步 loss 未降至少 1%，脚本记录固定评测 loss 与更新指标并停止。正式训练从最近完整 checkpoint 恢复，同时核对 AdamW 计数和保存步数。

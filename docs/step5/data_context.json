@@ -1,0 +1,841 @@
+{
+  "arm_columns": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13
+  ],
+  "arm_gap_rad": {
+    "max": 0.14918214082717896,
+    "median": 0.0005713701248168945,
+    "p95": 0.0047586417756974595,
+    "p99": 0.05387851119041444
+  },
+  "arm_gap_rms_rad": 0.009533960643366193,
+  "finger_gap_m": {
+    "max": 0.04212200082838535,
+    "median": 0.004448235034942627,
+    "p95": 0.04005042146891356
+  },
+  "language": {
+    "absent_episodes": [],
+    "fixed_task_prompt": "Pick up the red block with the left arm, hand it to the right arm, and place it on the target.",
+    "sidecar_count": 50,
+    "sidecars": [
+      {
+        "episode": 0,
+        "seen": 100,
+        "seen_example": "With the left arm, grab the red block, pass it to the right, and set it on the blue pad.",
+        "selected_prompt_is_exact_match": false,
+        "sha256": "23d95af75851342c9f274ca1d89e30b878e1551a3c6e221cef9cc47de0553b6e",
+        "unseen": 100
+      },
+      {
+        "episode": 1,
+        "seen": 100,
+        "seen_example": "Pick up the red block using your left arm, pass it to the right arm, and place it on the blue pad.",
+        "selected_prompt_is_exact_match": false,
+        "sha256": "82dcc4cdc4e6402aedce3fccd8a2b612a4373e1993c0114a365167452b6af575",
+        "unseen": 100
+      },
+      {
+        "episode": 10,
+        "seen": 100,
+        "seen_example": "Use the left arm to grasp the red block, transfer it to the right arm, and set it down on the blue pad.",
+        "selected_prompt_is_exact_match": false,
+        "sha256": "e645ac3fee66601e869063cb3774900be94b7d05ba3efa44d68f45006a05f2bc",
+        "unseen": 100
+      },
+      {
+        "episode": 11,
+        "seen": 100,
+        "seen_example": "Pick the red block up with the left arm, hand it to the right arm, and set it on the blue pad.",
+        "selected_prompt_is_exact_match": false,
+        "sha256": "a52e2f4f20220575c39337fd927453f79533b11f1a00b9197701696bd8796f7b",
+        "unseen": 100
+      },
+      {
+        "episode": 12,
+        "seen": 100,
+        "seen_example": "Pick the red block from the table, switch it from the left arm to the right, and place it down on the blue pad.",
+        "selected_prompt_is_exact_match": false,
+        "sha256": "f66aa69da1dd2ba5267faaf5a354bd4eea895b03053a217501357768f2f4cce8",
+        "unseen": 100
+      },
+      {
+        "episode": 13,
+        "seen": 100,
+        "seen_example": "Hand over the red block to the right arm.",
+        "selected_prompt_is_exact_match": false,
+        "sha256": "62aa81d791476b9fca6ad467239a81ad38a227227fae1aaf49fb0b7bcfb8f073",
+        "unseen": 100
+      },
+      {
+        "episode": 14,
+        "seen": 100,
+        "seen_example": "Lift, switch arms, and place the red block.",
+        "selected_prompt_is_exact_match": false,
+        "sha256": "bc01a25d752511eca87335daff2158f3f15dacd530e84081fe566f67b90c5ff4",
+        "unseen": 100
+      },
+      {
+        "episode": 15,
+        "seen": 100,
+        "seen_example": "Hand the red block to the right arm.",
+        "selected_prompt_is_exact_match": false,
+        "sha256": "fc621c089763791aa956d3e2626d51df5dacd4519282f4bbe76f3badc58be0b4",
+        "unseen": 100
+      },
+      {
+        "episode": 16,
+        "seen": 100,
+        "seen_example": "The left arm should grab the red block, hand it to the right, and put it on the blue pad.",
+        "selected_prompt_is_exact_match": false,
+        "sha256": "fa79d8522076ac033e399ec6778992830e8a0ada9e599febec2d8931ec52c584",
+        "unseen": 100
+      },
+      {
+        "episode": 17,
+        "seen": 100,
+        "seen_example": "Take the red block and move it to the pad.",
+        "selected_prompt_is_exact_match": false,
+        "sha256": "f6656d9c29db3e696b4702ac6b95a1f74a8bc4a81c8c5b877b7a503d66083c85",
+        "unseen": 100
+      },
+      {
+        "episode": 18,
+        "seen": 100,
+        "seen_example": "Use the left arm to grab the red block.",
+        "selected_prompt_is_exact_match": false,
+        "sha256": "ad1e7e5775d68ae5f8b482476918256b64de1ea06398f89f526ca109a720229a",
+        "unseen": 100
+      },
+      {
+        "episode": 19,
+        "seen": 100,
+        "seen_example": "Grip the red block with the left arm and transfer it.",
+        "selected_prompt_is_exact_match": false,
+        "sha256": "d65698547db4dd35d9049ae4a85a377211ab0445aedc95176803ab15b35a7d4f",
+        "unseen": 100
+      },
+      {
+        "episode": 2,
+        "seen": 100,
+        "seen_example": "Lift the red block, hand it over, and place it properly.",
+        "selected_prompt_is_exact_match": false,
+        "sha256": "dfe4a1f1f81f73110278415c05477d7f15e53b394e23c0de420ee5d7a8f12845",
+        "unseen": 100
+      },
+      {
+        "episode": 20,
+        "seen": 100,
+        "seen_example": "Take the red block from the table using your left arm, hand it off to the right one, and rest it on the blue pad.",
+        "selected_prompt_is_exact_match": false,
+        "sha256": "c05031c853b49f7a36dafe3148ca923e6f12bc1df69e1d344c6de1e9726faeda",
+        "unseen": 100
+      },
+      {
+        "episode": 21,
+        "seen": 100,
+        "seen_example": "Pass the red block from the left to the right.",
+        "selected_prompt_is_exact_match": false,
+        "sha256": "8f59a89b62615a84845dd0f722f0161e629b471039258338e342afb0f6e49be3",
+        "unseen": 100
+      },
+      {
+        "episode": 22,
+        "seen": 100,
+        "seen_example": "Take the red block from the table using your left arm, hand it off to the right one, and rest it on the blue pad.",
+        "selected_prompt_is_exact_match": false,
+        "sha256": "e3b2465282db6f5ac82212f14816ce7a8c0d47cf737a8ffbfb06eacaf4a2acc2",
+        "unseen": 100
+      },
+      {
+        "episode": 23,
+        "seen": 100,
+        "seen_example": "Take the red block using the left arm and hand it over.",
+        "selected_prompt_is_exact_match": false,
+        "sha256": "b6c9d1b6db8e1d2183b7367622d25048d8704a1e2b43f723ce28844e7e0e5ef9",
+        "unseen": 100
+      },
+      {
+        "episode": 24,
+        "seen": 100,
+        "seen_example": "Pick up and handover the red block.",
+        "selected_prompt_is_exact_match": false,
+        "sha256": "56cdf45d3022eb378d14e108ce7b9d1ffd5b33f551ff71c4e4e48e5be5548bcc",
+        "unseen": 100
+      },
+      {
+        "episode": 25,
+        "seen": 100,
+        "seen_example": "Grab the red block and transfer to the right.",
+        "selected_prompt_is_exact_match": false,
+        "sha256": "e2b8d52b7709ee9264fc5be31bd7410cd35fa11d83ea36cf8561c5f82cd321a9",
+        "unseen": 100
+      },
+      {
+        "episode": 26,
+        "seen": 100,
+        "seen_example": "Use the left arm to grab the red block, hand it to the right arm, and place it on the blue pad.",
+        "selected_prompt_is_exact_match": false,
+        "sha256": "e63eede3aa22535645c1ad09c734f17ab0b46afbdfd94ed7b69a26ba90944b32",
+        "unseen": 100
+      },
+      {
+        "episode": 27,
+        "seen": 100,
+        "seen_example": "Use the left arm to grasp the red block, transfer it to the right arm, and set it down on the blue pad.",
+        "selected_prompt_is_exact_match": false,
+        "sha256": "db150fb625ec957f1dae266f45a5b4f3ad1549cc6b06cf6ae2a48bfa527a776d",
+        "unseen": 100
+      },
+      {
+        "episode": 28,
+        "seen": 100,
+        "seen_example": "Lift the red block with the left arm, move it to the right, and place it onto the blue pad.",
+        "selected_prompt_is_exact_match": false,
+        "sha256": "17af905847fa037218375ee08cbf75e8fb46094eb902c51bbfb2c05cd1e59720",
+        "unseen": 100
+      },
+      {
+        "episode": 29,
+        "seen": 100,
+        "seen_example": "Take the red block from the table using your left arm, hand it off to the right one, and rest it on the blue pad.",
+        "selected_prompt_is_exact_match": false,
+        "sha256": "1d70533a2200e4df89f25d3222ab3991702baff148c81e69a1c6d4a438991bb4",
+        "unseen": 100
+      },
+      {
+        "episode": 3,
+        "seen": 100,
+        "seen_example": "Pick the red block up with the left arm, hand it to the right arm, and set it on the blue pad.",
+        "selected_prompt_is_exact_match": false,
+        "sha256": "63df6263bd08c71b60ddad93339f535b4ac7e1bc4bc9533132b34998f6edb61f",
+        "unseen": 100
+      },
+      {
+        "episode": 30,
+        "seen": 100,
+        "seen_example": "Pick the red block with the left hand and pass it.",
+        "selected_prompt_is_exact_match": false,
+        "sha256": "11ea227d95caa071c1b23c059262b5aeaa1e9269a9d29c2898fdca66a2cf1ebe",
+        "unseen": 100
+      },
+      {
+        "episode": 31,
+        "seen": 100,
+        "seen_example": "Take the red block from the table using your left arm, hand it off to the right one, and rest it on the blue pad.",
+        "selected_prompt_is_exact_match": false,
+        "sha256": "435e0e21890ac8efa0fe350e56cff1a0bece1647c072f1d3f0136eb5f9fe6d05",
+        "unseen": 100
+      },
+      {
+        "episode": 32,
+        "seen": 100,
+        "seen_example": "Set the red block on the blue pad gently.",
+        "selected_prompt_is_exact_match": false,
+        "sha256": "cd3af46b6c3d36ca4b27333ad923a24ce00cf350b33524c9d99d01bdbc7f2237",
+        "unseen": 100
+      },
+      {
+        "episode": 33,
+        "seen": 100,
+        "seen_example": "Pick the red block with the left arm and transfer to the right.",
+        "selected_prompt_is_exact_match": false,
+        "sha256": "f2715c2c25b60e0f42af48c0d2313cd7e1e84c22eafddaa3ea8d6e8a5552ce75",
+        "unseen": 100
+      },
+      {
+        "episode": 34,
+        "seen": 100,
+        "seen_example": "Use left arm to grab the block and hand it to the right.",
+        "selected_prompt_is_exact_match": false,
+        "sha256": "e5f2c2a727e836742569a3cb40c5185b8ba5e4d23b639d977c8923b0a0555d52",
+        "unseen": 100
+      },
+      {
+        "episode": 35,
+        "seen": 100,
+        "seen_example": "Hold the red block with the left arm and place it on the pad.",
+        "selected_prompt_is_exact_match": false,
+        "sha256": "5a44dc290af7e9fc7dc06a3f584167b04755fdee4eb23df53e4d0b614c26c744",
+        "unseen": 100
+      },
+      {
+        "episode": 36,
+        "seen": 100,
+        "seen_example": "Pick the red block with the left hand and pass it.",
+        "selected_prompt_is_exact_match": false,
+        "sha256": "0f73686cacb4238b357ef1cd13b2b13d8a4c25d6c7bc6d3c688f0c2beddbdebc",
+        "unseen": 100
+      },
+      {
+        "episode": 37,
+        "seen": 100,
+        "seen_example": "Use left arm to grab the block and hand it to the right.",
+        "selected_prompt_is_exact_match": false,
+        "sha256": "96992e2f9b467344d3b6241b564a1ee196ba9580d683c137b31baf021a6404e7",
+        "unseen": 100
+      },
+      {
+        "episode": 38,
+        "seen": 100,
+        "seen_example": "Pick the red block with the left hand and pass it.",
+        "selected_prompt_is_exact_match": false,
+        "sha256": "9f19a8057b8401f8571d167ad3876ede5f7d50db915e20b3c59ab0be100a15ba",
+        "unseen": 100
+      },
+      {
+        "episode": 39,
+        "seen": 100,
+        "seen_example": "Grab the red block on the table with the left arm, switch to the right arm, and drop it on the blue pad.",
+        "selected_prompt_is_exact_match": false,
+        "sha256": "84df041da58d7470dda19df5da704c4da933308e6424f5be64841d065aa8ba33",
+        "unseen": 100
+      },
+      {
+        "episode": 4,
+        "seen": 100,
+        "seen_example": "Take the red block from the table using your left arm, hand it off to the right one, and rest it on the blue pad.",
+        "selected_prompt_is_exact_match": false,
+        "sha256": "5fee6e6051facae513bab28c753420147493cdfbff604ae33a26b4ac8f7795a2",
+        "unseen": 100
+      },
+      {
+        "episode": 40,
+        "seen": 100,
+        "seen_example": "Take the red block and move it to the pad.",
+        "selected_prompt_is_exact_match": false,
+        "sha256": "3948fff43174aeb9f80a246f56a416bafc735f2bf1b017bbd3934e8878841892",
+        "unseen": 100
+      },
+      {
+        "episode": 41,
+        "seen": 100,
+        "seen_example": "Take the red block using the left arm and hand it over.",
+        "selected_prompt_is_exact_match": false,
+        "sha256": "66ab9fd6fd79b01b08070478fc762832aa36856d8ed0c61344c9dd2124fafdb3",
+        "unseen": 100
+      },
+      {
+        "episode": 42,
+        "seen": 100,
+        "seen_example": "Use left arm to grab the block and hand it to the right.",
+        "selected_prompt_is_exact_match": false,
+        "sha256": "afd3da1047eb6961e2824501c996147ca3b21662ee66223d49c5615e8aa9b50d",
+        "unseen": 100
+      },
+      {
+        "episode": 43,
+        "seen": 100,
+        "seen_example": "Pick up the red block using the left arm, give it to the right arm, and place it on the blue pad.",
+        "selected_prompt_is_exact_match": false,
+        "sha256": "d04ca1313b68cdea46751de9c86c91604d4ca9b5900a830b6b429ed873110df2",
+        "unseen": 100
+      },
+      {
+        "episode": 44,
+        "seen": 100,
+        "seen_example": "Pick the red block up with the left arm, hand it to the right arm, and set it on the blue pad.",
+        "selected_prompt_is_exact_match": false,
+        "sha256": "4f7b3aa27bafe493fee82585b6c667156df252d5e8c37f6c428b89bcadb88c6a",
+        "unseen": 100
+      },
+      {
+        "episode": 45,
+        "seen": 100,
+        "seen_example": "Lift the red block with the left arm, pass it to the right arm, and place it on the blue pad.",
+        "selected_prompt_is_exact_match": false,
+        "sha256": "8815cfaceeefb720f00c956d9601cec16b440713ef2d921d67a69bab7f51e6d9",
+        "unseen": 100
+      },
+      {
+        "episode": 46,
+        "seen": 100,
+        "seen_example": "Take the red block from the table using your left arm, hand it off to the right one, and rest it on the blue pad.",
+        "selected_prompt_is_exact_match": false,
+        "sha256": "6c95e0ed5f31e0eceecff1ef71ba0e396a4170bfdce8df14ae0cea485d2c0237",
+        "unseen": 100
+      },
+      {
+        "episode": 47,
+        "seen": 100,
+        "seen_example": "Pick the red block with the left hand and pass it.",
+        "selected_prompt_is_exact_match": false,
+        "sha256": "91b3c02116a8bf318cd309e5ad194809bafce541decc2539261bad14a9c66d00",
+        "unseen": 100
+      },
+      {
+        "episode": 48,
+        "seen": 100,
+        "seen_example": "With the left arm, grab the red block, pass it to the right, and set it on the blue pad.",
+        "selected_prompt_is_exact_match": false,
+        "sha256": "3f0883f846666cc7cfce8edfba23c360c1f9050289a998aa5e211baf7867751c",
+        "unseen": 100
+      },
+      {
+        "episode": 49,
+        "seen": 100,
+        "seen_example": "Lift the red block, hand it over, and place it properly.",
+        "selected_prompt_is_exact_match": false,
+        "sha256": "318876240bc575596b688411cc5f01b5559f29b49bdd15e732c653261fc4868e",
+        "unseen": 100
+      },
+      {
+        "episode": 5,
+        "seen": 100,
+        "seen_example": "Pass the red block from the left to the right.",
+        "selected_prompt_is_exact_match": false,
+        "sha256": "e7387a136208e9851ca8fb1ad25ba4b431b180fa98f09f04fcfb468dfe566522",
+        "unseen": 100
+      },
+      {
+        "episode": 6,
+        "seen": 100,
+        "seen_example": "Grab the red block and transfer to the right.",
+        "selected_prompt_is_exact_match": false,
+        "sha256": "b44cf201eb67532c937382f02453de78990cfaca5d4000616032a4f41f68eb30",
+        "unseen": 100
+      },
+      {
+        "episode": 7,
+        "seen": 100,
+        "seen_example": "Lift the red block with the left arm, pass it to the right arm, and place it on the blue pad.",
+        "selected_prompt_is_exact_match": false,
+        "sha256": "5a7389a703aa99f8546481df3f6889471b75bfd161e143f023527d29510dd070",
+        "unseen": 100
+      },
+      {
+        "episode": 8,
+        "seen": 100,
+        "seen_example": "Grip the red block with the left arm and transfer it.",
+        "selected_prompt_is_exact_match": false,
+        "sha256": "ac9edcacd34626dc870cd5987df0d9f467fe25237bf1057c30f1ddce351c1c1e",
+        "unseen": 100
+      },
+      {
+        "episode": 9,
+        "seen": 100,
+        "seen_example": "Use the left arm to grab the red block.",
+        "selected_prompt_is_exact_match": false,
+        "sha256": "e395e7e1e73c0e1ebae1a3b6ef50c1428c27923ff35b6a46234c149097e760ca",
+        "unseen": 100
+      }
+    ]
+  },
+  "matched_saved_rows": 9680,
+  "reference_decoder_sha256": "90df99c52d3f127a09f5960680113f17e8b3e25b2e3cb9117abdeb249d7a337e",
+  "replay_provenance": "native CPU expert replay, evidence commit b560854",
+  "replay_samples": [
+    {
+      "arm_gap_max_rad": 0.12219981849193573,
+      "arm_gap_rms_rad": 0.010700491287119454,
+      "episode": 0,
+      "finger_gap_max_m": 0.041755059733986855,
+      "matched_saved_rows": 195,
+      "replay_sha256": "8e89ef7f78c55ca122a736fb042696714f2582228b8afa2f3ba0dbca94223d5c"
+    },
+    {
+      "arm_gap_max_rad": 0.11946725845336914,
+      "arm_gap_rms_rad": 0.009523555344621732,
+      "episode": 1,
+      "finger_gap_max_m": 0.0418886486440897,
+      "matched_saved_rows": 192,
+      "replay_sha256": "74e014aa90765cb4febb52f75a1f04c7952cc0e9908b5b4f1fb89afc218f0e53"
+    },
+    {
+      "arm_gap_max_rad": 0.13302206993103027,
+      "arm_gap_rms_rad": 0.010723827790902874,
+      "episode": 2,
+      "finger_gap_max_m": 0.0416912529617548,
+      "matched_saved_rows": 194,
+      "replay_sha256": "7461045ff43a0d1b8e1cb73f504689ca19d9b74c3aba5dc4466f78740a56406b"
+    },
+    {
+      "arm_gap_max_rad": 0.10385666787624359,
+      "arm_gap_rms_rad": 0.00798052809183004,
+      "episode": 3,
+      "finger_gap_max_m": 0.04158296622335911,
+      "matched_saved_rows": 194,
+      "replay_sha256": "fd10dc80ebda75c9112b46df8c4a4d4739162eea831329031b6df69f4e6aad33"
+    },
+    {
+      "arm_gap_max_rad": 0.06319962441921234,
+      "arm_gap_rms_rad": 0.005266542718220343,
+      "episode": 4,
+      "finger_gap_max_m": 0.041128987446427345,
+      "matched_saved_rows": 192,
+      "replay_sha256": "eb11b3666bc30830906ceb191b66e55f01e966e9dca98a2445bd2bed84fa6ced"
+    },
+    {
+      "arm_gap_max_rad": 0.10718965530395508,
+      "arm_gap_rms_rad": 0.008583904182865172,
+      "episode": 5,
+      "finger_gap_max_m": 0.04154028184711933,
+      "matched_saved_rows": 193,
+      "replay_sha256": "f2f54bb8cc7278701de07d10d8c851275446ba745e4fa5e7e46a2d9a505fd8b6"
+    },
+    {
+      "arm_gap_max_rad": 0.11790922284126282,
+      "arm_gap_rms_rad": 0.009636228319171844,
+      "episode": 6,
+      "finger_gap_max_m": 0.04164933227002621,
+      "matched_saved_rows": 193,
+      "replay_sha256": "e2dded364c1333649b4644b6e6f480d131c374951ef63218298916bd9c71ee19"
+    },
+    {
+      "arm_gap_max_rad": 0.1253139078617096,
+      "arm_gap_rms_rad": 0.011146132638311265,
+      "episode": 7,
+      "finger_gap_max_m": 0.04096314497292042,
+      "matched_saved_rows": 196,
+      "replay_sha256": "7d6b88ff689518f3ea2763dc5cd1a7a17d6c5436b9f8e2087d2c80d48a32b1a5"
+    },
+    {
+      "arm_gap_max_rad": 0.12899309396743774,
+      "arm_gap_rms_rad": 0.010119968294790093,
+      "episode": 8,
+      "finger_gap_max_m": 0.04145395942032337,
+      "matched_saved_rows": 192,
+      "replay_sha256": "2e24dd17fb7dbfe2be3578cafbf780b36fff513ac42cce2c6e9f98794f1bbbe3"
+    },
+    {
+      "arm_gap_max_rad": 0.12312102317810059,
+      "arm_gap_rms_rad": 0.009432937844986587,
+      "episode": 9,
+      "finger_gap_max_m": 0.04212200082838535,
+      "matched_saved_rows": 194,
+      "replay_sha256": "5210e75317c63ec8f867e558012e28158e4670c180df069c9a679750681cb574"
+    },
+    {
+      "arm_gap_max_rad": 0.11062568426132202,
+      "arm_gap_rms_rad": 0.00781094292810252,
+      "episode": 10,
+      "finger_gap_max_m": 0.042034005746245384,
+      "matched_saved_rows": 191,
+      "replay_sha256": "4a5bdad51f440b92bf768cc02b94650b224dd6bfd37b640959946e37397a336f"
+    },
+    {
+      "arm_gap_max_rad": 0.1089789867401123,
+      "arm_gap_rms_rad": 0.008457720895193668,
+      "episode": 11,
+      "finger_gap_max_m": 0.041996484622359276,
+      "matched_saved_rows": 193,
+      "replay_sha256": "059e02553ab62129d4d95696eace6ae4bac740e37aadf93656639ad18fec02f3"
+    },
+    {
+      "arm_gap_max_rad": 0.10919025540351868,
+      "arm_gap_rms_rad": 0.00839079772719495,
+      "episode": 12,
+      "finger_gap_max_m": 0.0410795584321022,
+      "matched_saved_rows": 194,
+      "replay_sha256": "653a25ccb8259f1e9fec0d064aaee364ec949bffd2166376297d985757310d4f"
+    },
+    {
+      "arm_gap_max_rad": 0.11834874749183655,
+      "arm_gap_rms_rad": 0.009103706698728339,
+      "episode": 13,
+      "finger_gap_max_m": 0.04181082360446453,
+      "matched_saved_rows": 193,
+      "replay_sha256": "7c8902e199f0be84850948495b8aa371263fbd3888ede483d0c72a568a1c8284"
+    },
+    {
+      "arm_gap_max_rad": 0.06775721907615662,
+      "arm_gap_rms_rad": 0.0053417903013274655,
+      "episode": 14,
+      "finger_gap_max_m": 0.04102347604930401,
+      "matched_saved_rows": 191,
+      "replay_sha256": "3ce46c5462e9f265d9373f27ff670ddf70d322c2c3c4b80d305abe7228ddd616"
+    },
+    {
+      "arm_gap_max_rad": 0.10190153121948242,
+      "arm_gap_rms_rad": 0.0077766818814276545,
+      "episode": 15,
+      "finger_gap_max_m": 0.04103905148804188,
+      "matched_saved_rows": 192,
+      "replay_sha256": "7a8282b6e0d49b68ac2f03bc970f57b5b3339de31c48021490ad559488c5324c"
+    },
+    {
+      "arm_gap_max_rad": 0.13729488849639893,
+      "arm_gap_rms_rad": 0.010383899043957673,
+      "episode": 16,
+      "finger_gap_max_m": 0.041742099449038506,
+      "matched_saved_rows": 196,
+      "replay_sha256": "4b67881f474012730dca108cb049a91d6acb03015e3d95fef59837c7b1e60a3a"
+    },
+    {
+      "arm_gap_max_rad": 0.1453711986541748,
+      "arm_gap_rms_rad": 0.011577357480259778,
+      "episode": 17,
+      "finger_gap_max_m": 0.041655758395791054,
+      "matched_saved_rows": 196,
+      "replay_sha256": "f3e80be71f9985e7a9b74394b8b65b56c19c5fd7e0cf794537f69790346194f5"
+    },
+    {
+      "arm_gap_max_rad": 0.13786959648132324,
+      "arm_gap_rms_rad": 0.011546893559068502,
+      "episode": 18,
+      "finger_gap_max_m": 0.0415061991661787,
+      "matched_saved_rows": 194,
+      "replay_sha256": "ef910ed4339fe930f6adc8fefc3620fd543a038cefb29021ad0cf3cfddd059ce"
+    },
+    {
+      "arm_gap_max_rad": 0.13775086402893066,
+      "arm_gap_rms_rad": 0.011448878541484266,
+      "episode": 19,
+      "finger_gap_max_m": 0.04141010530292988,
+      "matched_saved_rows": 194,
+      "replay_sha256": "fa94da2d805832ce2421820cea156e89271401ba43c93782345c53dfa389d0fd"
+    },
+    {
+      "arm_gap_max_rad": 0.0819469541311264,
+      "arm_gap_rms_rad": 0.006315468240564818,
+      "episode": 20,
+      "finger_gap_max_m": 0.04177612625062466,
+      "matched_saved_rows": 194,
+      "replay_sha256": "4a5823a6013f37e8677e1dbcb3d12b34b1f46bd9568a0c534eb3048ec98edc43"
+    },
+    {
+      "arm_gap_max_rad": 0.1283147633075714,
+      "arm_gap_rms_rad": 0.010307444228848824,
+      "episode": 21,
+      "finger_gap_max_m": 0.04130719415843487,
+      "matched_saved_rows": 192,
+      "replay_sha256": "0140cda47712546c0c95a2174eb2c724126e2d6c6b47829fa3365c181973a199"
+    },
+    {
+      "arm_gap_max_rad": 0.12421733140945435,
+      "arm_gap_rms_rad": 0.009308274305647603,
+      "episode": 22,
+      "finger_gap_max_m": 0.04125932790338993,
+      "matched_saved_rows": 193,
+      "replay_sha256": "5e33d7c45237a06ef0dd47dadc9e8d5f39ab11be8b19dc04badd41029db854e2"
+    },
+    {
+      "arm_gap_max_rad": 0.1341017186641693,
+      "arm_gap_rms_rad": 0.01101869908393039,
+      "episode": 23,
+      "finger_gap_max_m": 0.041264357045292854,
+      "matched_saved_rows": 192,
+      "replay_sha256": "c9f9ba34bdc3fb657ae5ce1e8dbedda6d4057a5216c06e827f89f631a8fbe0e8"
+    },
+    {
+      "arm_gap_max_rad": 0.09793305397033691,
+      "arm_gap_rms_rad": 0.007906891812682986,
+      "episode": 24,
+      "finger_gap_max_m": 0.041499486193060875,
+      "matched_saved_rows": 193,
+      "replay_sha256": "5f198a274ffebbf02b7e04ea04295e6a97bcb78f807497f3a65c6dc2c7e53480"
+    },
+    {
+      "arm_gap_max_rad": 0.1098087728023529,
+      "arm_gap_rms_rad": 0.009036802025656848,
+      "episode": 25,
+      "finger_gap_max_m": 0.04173619486391544,
+      "matched_saved_rows": 188,
+      "replay_sha256": "ed558ccfdb344ebfd5674cd23bbd92819a947b0b1d9e77a9a00e4c8d3c06686f"
+    },
+    {
+      "arm_gap_max_rad": 0.11528921127319336,
+      "arm_gap_rms_rad": 0.008993310434189095,
+      "episode": 26,
+      "finger_gap_max_m": 0.0420935470610857,
+      "matched_saved_rows": 195,
+      "replay_sha256": "872350f67948289673d49f0d1602330a12eacb8a4ba3bb44f88e55231d304223"
+    },
+    {
+      "arm_gap_max_rad": 0.12122654914855957,
+      "arm_gap_rms_rad": 0.009374428298024649,
+      "episode": 27,
+      "finger_gap_max_m": 0.041669437661767006,
+      "matched_saved_rows": 196,
+      "replay_sha256": "efa7baab868cc05fde23a4ec44d716d7834900d9e2b4dca7a75c19fa42e6b884"
+    },
+    {
+      "arm_gap_max_rad": 0.1333608627319336,
+      "arm_gap_rms_rad": 0.013453331736440656,
+      "episode": 28,
+      "finger_gap_max_m": 0.04084520600736141,
+      "matched_saved_rows": 201,
+      "replay_sha256": "e0704d254c5b142ae4ad80a6725135bff115266992c91fcc2b8d03d69333c0cc"
+    },
+    {
+      "arm_gap_max_rad": 0.10537481307983398,
+      "arm_gap_rms_rad": 0.007823104624128415,
+      "episode": 29,
+      "finger_gap_max_m": 0.04120035283267498,
+      "matched_saved_rows": 193,
+      "replay_sha256": "4fa2d4e6e1735623f9783d689abf2784d89e0f7ef610298d0d7284e1c1eb45c4"
+    },
+    {
+      "arm_gap_max_rad": 0.1464207023382187,
+      "arm_gap_rms_rad": 0.011672349341193398,
+      "episode": 30,
+      "finger_gap_max_m": 0.041392555460333824,
+      "matched_saved_rows": 195,
+      "replay_sha256": "f334bc76536f0d8c1c30b5da863a870dcad249d10a8588b662c608473864aded"
+    },
+    {
+      "arm_gap_max_rad": 0.11832094192504883,
+      "arm_gap_rms_rad": 0.009270823929456613,
+      "episode": 31,
+      "finger_gap_max_m": 0.0414020661264658,
+      "matched_saved_rows": 199,
+      "replay_sha256": "49d5e20def140f42f889b0d3ee035dd6f08269e1d1bab9f70633879804da113e"
+    },
+    {
+      "arm_gap_max_rad": 0.10589517652988434,
+      "arm_gap_rms_rad": 0.008077093621167245,
+      "episode": 32,
+      "finger_gap_max_m": 0.04139849357306957,
+      "matched_saved_rows": 192,
+      "replay_sha256": "d510dfbb468b1849168bd6e433fc777909bee06e410468cf50795fb35c60c35f"
+    },
+    {
+      "arm_gap_max_rad": 0.11592957377433777,
+      "arm_gap_rms_rad": 0.008846970506372554,
+      "episode": 33,
+      "finger_gap_max_m": 0.04128188453614712,
+      "matched_saved_rows": 192,
+      "replay_sha256": "8556b0f93bebef535262ff4207b88afa0108ac06450e5daf7e56fc098a5e17a7"
+    },
+    {
+      "arm_gap_max_rad": 0.10286426544189453,
+      "arm_gap_rms_rad": 0.008302182815637686,
+      "episode": 34,
+      "finger_gap_max_m": 0.04137231595814228,
+      "matched_saved_rows": 192,
+      "replay_sha256": "47801eda2b41c2f16851eba25905d9a504b3453b98433c26621a4d25829e3c94"
+    },
+    {
+      "arm_gap_max_rad": 0.14598417282104492,
+      "arm_gap_rms_rad": 0.012634491775505066,
+      "episode": 35,
+      "finger_gap_max_m": 0.04179823584854603,
+      "matched_saved_rows": 197,
+      "replay_sha256": "160e21cda88b055a5ac4baeb3457e1f36a05b758b5e92e49737a11c39fef5ee6"
+    },
+    {
+      "arm_gap_max_rad": 0.11025595664978027,
+      "arm_gap_rms_rad": 0.008564845105556053,
+      "episode": 36,
+      "finger_gap_max_m": 0.04139594919979572,
+      "matched_saved_rows": 191,
+      "replay_sha256": "68a2f525c1c994136d620fe83d62124f9813a368f18644a2d6a970b90029624d"
+    },
+    {
+      "arm_gap_max_rad": 0.13459935784339905,
+      "arm_gap_rms_rad": 0.009686863694258837,
+      "episode": 37,
+      "finger_gap_max_m": 0.04209539107978344,
+      "matched_saved_rows": 193,
+      "replay_sha256": "ce62c9308aee7694d60cf8a140e3de066b13e65a2a2421209a43e9426e9d5131"
+    },
+    {
+      "arm_gap_max_rad": 0.09150576591491699,
+      "arm_gap_rms_rad": 0.00736500303760094,
+      "episode": 38,
+      "finger_gap_max_m": 0.04160193167626858,
+      "matched_saved_rows": 193,
+      "replay_sha256": "48514abf87e64c0e6bd730b24720842de263b1ccbcd635606cae7bcdba31d086"
+    },
+    {
+      "arm_gap_max_rad": 0.1277981996536255,
+      "arm_gap_rms_rad": 0.010319693968233885,
+      "episode": 39,
+      "finger_gap_max_m": 0.041231922805309296,
+      "matched_saved_rows": 191,
+      "replay_sha256": "fe7301e7492d57f8015c0938de16095ad1fb554d0a3ca06ad54228c2b55d6e8c"
+    },
+    {
+      "arm_gap_max_rad": 0.10473442077636719,
+      "arm_gap_rms_rad": 0.009364766967630025,
+      "episode": 40,
+      "finger_gap_max_m": 0.041118139401078224,
+      "matched_saved_rows": 197,
+      "replay_sha256": "55623bb999fb119cbefac35ce514bfbdc365f733f86f84b658da1c9706368f75"
+    },
+    {
+      "arm_gap_max_rad": 0.11535978317260742,
+      "arm_gap_rms_rad": 0.008852429015153797,
+      "episode": 41,
+      "finger_gap_max_m": 0.041722649708390236,
+      "matched_saved_rows": 192,
+      "replay_sha256": "a75263f1a3e1c20231b76c4b5d30f1af899923611fd98080e9fa8559add776d9"
+    },
+    {
+      "arm_gap_max_rad": 0.12383151054382324,
+      "arm_gap_rms_rad": 0.010014173632508125,
+      "episode": 42,
+      "finger_gap_max_m": 0.04115141183137894,
+      "matched_saved_rows": 192,
+      "replay_sha256": "2bedc7ffeda8f9833ed9fd7f56497d4de2409d5c751d21960bc7152033ec1a3d"
+    },
+    {
+      "arm_gap_max_rad": 0.12669667601585388,
+      "arm_gap_rms_rad": 0.010306114827910025,
+      "episode": 43,
+      "finger_gap_max_m": 0.04090404324233532,
+      "matched_saved_rows": 197,
+      "replay_sha256": "d81e3baa778dffae0b9f454f00c3cd344ad0f01e6d5d2d5d73a0e9a0c00914fc"
+    },
+    {
+      "arm_gap_max_rad": 0.14918214082717896,
+      "arm_gap_rms_rad": 0.01145346298003637,
+      "episode": 44,
+      "finger_gap_max_m": 0.04123512841761112,
+      "matched_saved_rows": 193,
+      "replay_sha256": "a89f5742622393fe266437405d4c012edc18b2895d27955978b482b661176ba8"
+    },
+    {
+      "arm_gap_max_rad": 0.12451070547103882,
+      "arm_gap_rms_rad": 0.010059941335504296,
+      "episode": 45,
+      "finger_gap_max_m": 0.041178034618496895,
+      "matched_saved_rows": 194,
+      "replay_sha256": "67bc894caf3eac396eff92cf63eb56abfff6a7e9da20bc4ecbcf5d9dfe3e12b8"
+    },
+    {
+      "arm_gap_max_rad": 0.10415291786193848,
+      "arm_gap_rms_rad": 0.008878386909813352,
+      "episode": 46,
+      "finger_gap_max_m": 0.041108911857008934,
+      "matched_saved_rows": 191,
+      "replay_sha256": "eadb2942325dcc755dc85d89ab176bf03c396ee71a684dcd0366f07629d3eef4"
+    },
+    {
+      "arm_gap_max_rad": 0.10989594459533691,
+      "arm_gap_rms_rad": 0.008815354468026807,
+      "episode": 47,
+      "finger_gap_max_m": 0.041509298607707024,
+      "matched_saved_rows": 196,
+      "replay_sha256": "c83c0a555c0061e1fe7747142b8fbb32c7f194521e80fd6597c53821b7faf67a"
+    },
+    {
+      "arm_gap_max_rad": 0.12380288541316986,
+      "arm_gap_rms_rad": 0.009253315516519936,
+      "episode": 48,
+      "finger_gap_max_m": 0.04151519574224949,
+      "matched_saved_rows": 195,
+      "replay_sha256": "958b2c2ebf51164c36801f9fed5c6eb3a633f361de2b6f302e2d6522c268b5e7"
+    },
+    {
+      "arm_gap_max_rad": 0.1175985336303711,
+      "arm_gap_rms_rad": 0.009072107762088645,
+      "episode": 49,
+      "finger_gap_max_m": 0.04073241539299488,
+      "matched_saved_rows": 192,
+      "replay_sha256": "6a05673cc37cc5e795289288b1bf3f7e04a186e7d9480a9dacbddc1e619a1366"
+    }
+  ],
+  "rgb_exact_comparisons": 29040
+}

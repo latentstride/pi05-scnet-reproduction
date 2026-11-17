@@ -410,7 +410,8 @@ def prepare_exception(args):
                   runtime=runtime_identity(),
                   release=admission.release_identity(args.project_root, CODE_ROOT),
                   checkpoint_snapshot=model.checkpoint_snapshot(args.project_root),
-                  scope=admission.make_scope(args, secrets.token_hex(16), args.job_account, args.slurm_log),
+                  scope=admission.make_scope(args, secrets.token_hex(16), args.job_account, args.slurm_log,
+                                             args.walltime),
                   evidence=json.loads(args.evidence.read_text()))
     validate_admission_evidence(args, packet, identity)
     write_json(args.cpu_receipt, packet)
@@ -485,7 +486,7 @@ def write_gpu_failure(run, error):
     try:
         progress = run / "gpu_progress.json"
         failure["last_progress"] = json.loads(progress.read_text()) if progress.exists() else None
-        checkpoint = latest_checkpoint(run / "checkpoints")
+        checkpoint = latest_checkpoint(run / "checkpoints") or latest_checkpoint(run / "validation-checkpoints")
         failure["last_committed_checkpoint"] = str(checkpoint) if checkpoint else None
         write_json(run / "gpu_failure.json", failure)
     except Exception as diagnostic:
@@ -554,6 +555,14 @@ def run_fit(args, identity):
             if frozen_digests(frozen) != initial_frozen:
                 raise RuntimeError("Frozen base changed during GPU validation")
             write_json(run / "gpu_frozen_unchanged.json", dict(leaves=len(initial_frozen), sha256=initial_frozen))
+            # Keep the fixed-sample probe separate from the formal training checkpoint sequence.
+            probe_checkpoint = run / "validation-checkpoints" / "step-0002"
+            probe_checkpoint.parent.mkdir(exist_ok=True)
+            if not complete_checkpoint(probe_checkpoint):
+                record_gpu_progress(run, "gpu_stage_a_checkpoint", step=2, status="running")
+                save(probe_checkpoint, fitted, opt)
+            record_gpu_progress(run, "gpu_stage_a_checkpoint", step=2, status="passed",
+                                checkpoint=str(probe_checkpoint), memory=gpu.memory_stats())
             if stopped():
                 return 75
             # Both experimental gates leave the formal initial optimizer state untouched.
@@ -660,6 +669,8 @@ def main():
     parser.add_argument("--evidence", type=Path)
     parser.add_argument("--job-account")
     parser.add_argument("--slurm-log", type=Path)
+    parser.add_argument("--walltime", choices=(admission.WALLTIME, admission.SHORT_WALLTIME),
+                        default=admission.WALLTIME)
     parser.add_argument("--reserve-submission", action="store_true")
     args = parser.parse_args()
     ensure_paths(args)

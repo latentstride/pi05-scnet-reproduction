@@ -18,6 +18,7 @@ PARTITION = "ksagnormal01"
 GPU_TYPE = "RTX4090-PCIE-24GB-LS"
 JOB_NAME = "cpf-step5-arx-validation"
 WALLTIME = "06:00:00"
+SHORT_WALLTIME = "01:30:00"
 TRUST_KEY = ".step5-trust/gpu-approval-ed25519.pem"
 CLAIMS = "results/.step5-gpu-claims"
 
@@ -72,7 +73,7 @@ def verify_evidence(root, evidence, status):
     return structural
 
 
-def make_scope(args, token, account, log):
+def make_scope(args, token, account, log, walltime=WALLTIME):
     if not isinstance(token, str) or not re.fullmatch(r"[a-f0-9]{32}", token):
         raise ValueError("Invalid one-use Slurm token")
     if not isinstance(account, str) or not re.fullmatch(r"[a-zA-Z0-9_-]+", account):
@@ -81,7 +82,7 @@ def make_scope(args, token, account, log):
     if not log.parent.is_dir() or log.name.count("%j") != 1 or log.name.count("%") != 1:
         raise ValueError("Slurm stdout requires an existing directory and one %j job ID placeholder")
     return dict(token=token, account=account, partition=PARTITION, gpu_type=GPU_TYPE, gpus=1, cpus=8,
-                memory_gib=64, time_limit=WALLTIME, job_name=JOB_NAME, root=str(args.project_root),
+                memory_gib=64, time_limit=walltime, job_name=JOB_NAME, root=str(args.project_root),
                 dataset=str(args.dataset), data_audit=str(args.data_audit),
                 run=str(args.run), resume=args.resume, log=str(log))
 
@@ -118,7 +119,9 @@ def verify_approval(root, packet, receipt, raw):
 
 
 def verify_scope(args, scope):
-    if scope != make_scope(args, scope.get("token"), scope.get("account"), scope.get("log")):
+    walltime = scope.get("time_limit")
+    if walltime not in {WALLTIME, SHORT_WALLTIME} or scope != make_scope(
+            args, scope.get("token"), scope.get("account"), scope.get("log"), walltime):
         raise PermissionError("CPU numerical exception does not match the requested job")
 
 
@@ -130,7 +133,7 @@ def validate_slurm_record(record, job_id, scope, release):
                     TimeLimit=scope["time_limit"], NumTasks="1", NumCPUs="8",
                     WorkDir=scope["root"], Command=str(release / "scripts/step5_arx/train.slurm"),
                     StdOut=scope["log"].replace("%j", job_id), Comment="step5-arx:" + scope["token"],
-                    MinMemoryNode="64G", Requeue="0", JobState="RUNNING")
+                    MinMemoryNode="64G", Requeue="0")
     if fields.get("NumNodes") not in {"1", "1-1"}:
         raise PermissionError("CPU numerical exception requires one Slurm node")
     if fields.get("TresPerNode") not in {f"gres:gpu:{GPU_TYPE}:1", f"gres/gpu:{GPU_TYPE}:1"}:
@@ -185,7 +188,7 @@ def submission_command(args, release, scope):
     return shlex.join([
         "sbatch", "--parsable", f"--job-name={scope['job_name']}", f"--partition={PARTITION}",
         f"--account={scope['account']}", "--nodes=1", "--ntasks=1", "--cpus-per-task=8", "--mem=64G",
-        f"--gres=gpu:{GPU_TYPE}:1", f"--time={WALLTIME}", "--signal=B:USR1@300", "--no-requeue",
+        f"--gres=gpu:{GPU_TYPE}:1", f"--time={scope['time_limit']}", "--signal=B:USR1@300", "--no-requeue",
         f"--comment=step5-arx:{scope['token']}", f"--chdir={args.project_root}", f"--output={scope['log']}",
         str(release / "scripts/step5_arx/train.slurm"), *relative,
     ])

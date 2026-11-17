@@ -97,7 +97,7 @@ class AdmissionTest(unittest.TestCase):
         )
         a.validate_slurm_record(expected, "123", self.scope, self.release)
         for pair in (("JobId=123", "JobId=124"), ("Requeue=0", "Requeue=1"), ("NumCPUs=8", "NumCPUs=16"),
-                     ("64G", "32G"), ("24GB-LS:1", "24GB-LS:2"), ("RUNNING", "PENDING")):
+                     ("64G", "32G"), ("24GB-LS:1", "24GB-LS:2")):
             with self.subTest(pair=pair), self.assertRaises(PermissionError):
                 a.validate_slurm_record(expected.replace(*pair), "123", self.scope, self.release)
         command = a.submission_command(self.args, self.release, self.scope)

@@ -1,6 +1,6 @@
 # PR #7 单次 GPU 短窗验收
 
-2026-11-16，北京时间。当前状态为 **`CHECKPOINT_UNAVAILABLE`**。SCNet 上的历史训练作业 `128113950` 和 `128115085` 均为 `FAILED (1:0)`，各自检查点目录没有 `step-*`。新发布 `642e196` 对应的正式训练目录尚未创建，项目当前队列未见 Step 5 或 Step 6 作业。第五步训练发布与准入记录见 [PR #6 提交前回执](https://github.com/latentstride/pi05-scnet-reproduction/blob/2d2f74b4523317e1b22e6db6aeec8d1c81227012/docs/step5/gpu_preflight_release.md)。
+2026-11-18，北京时间。Step 5 作业 `128249645` 已完成 400 步，选定 `results/step5-arx-c21eec7/checkpoints/step-0400`。本短程入口现在绑定实际训练发布 `c21eec7` 及代码指纹 `1c81c04e06d86428b9a72fd9c435e7c5498e6b7cc6c5890ef1a666271be4ba27`。
 
 ## 短窗内容
 
@@ -8,22 +8,22 @@
 
 入口为 `gpu_short.slurm`。每个阶段保存日志，`results/step6-gpu-short-<job-id>/acceptance.json` 记录结果和失败阶段。另有每组的模型身份、RGB 哈希、原始 WebSocket 消息、视频、物理轨迹、首轮请求耗时和已执行动作数。短窗结果在正式成功率之外。
 
-调用期间核验训练发布指纹、固定数据、通过的第五步训练门禁、正式训练完成步及所选 Orbax checkpoint。策略服务复用第五步的权重恢复和采样。第五步的一次性训练授权限定于训练作业，推理入口直接校验训练产物和本次 CUDA 分配。
+调用期间核验训练发布指纹、固定数据、`gpu_progress.json` 的 `gpu_fit_complete` 与第 400 步、`selected.json`、所选及最终 Orbax checkpoint 的提交元数据。实际训练没有生成旧版 `gpu_gates.json`；本入口不要求或合成该文件。策略服务复用第五步的权重恢复和采样。
 
 ## 提交前检查
 
-SCNet 已部署 `tools/step6-gpu-short-pr7-0498785`。运行代码提交为 `0498785f008737b167ecf5fe766166e0ca369edf`，包内包含固定 PR #5 运行文件。部署时 `sha256sum -c` 通过。清单 SHA-256 为 `533b44d00ca98605a03e7d7705c4593c2d79202769aa4450f9c72b7cca9bc23a`。发布归档 SHA-256 为 `58b1ffe613178a1fa8b391691aafcfcffc9eb8a8524c32050158f604cc67366e`。
+SCNet 已部署 `tools/step6-gpu-short-pr7-3b03054`，包含 PR #7 的兼容修复和固定 PR #5 运行文件。发布归档 SHA-256 为 `b7b4ab1869f34fbc738b13186581275a6f41b18dcec6daeec607cd4b3d203215`，清单 SHA-256 为 `fccc80bc73ed22bd990f1581cd22bd464ec0dcf1ddb2cd37eab50d957efd848f`；远端 `sha256sum -c`、Slurm 脚本 Bash 语法检查均通过。
 
-9 项本地定向检查通过。SCNet 上的 Slurm 外壳和图形入口通过 Bash 语法检查，Vulkan 宿主工具通过 help 启动检查。PACE 固定 checkout 干净，D435 配置为 320×240。现有 RoboTwin CPU 容器用两帧测试图通过 MP4 编码及解码检查。已核验运行文件、现有容器路径、第五步发布指纹和 ARX 数据哈希。查询确认 `gnode39` 属于 `ksagnormal01` 并提供指定 GPU GRES。真实提交前命令因缺 `selected.json` 返回退出码 2，回执位于 `results/step6-gpu-short-preflight-0498785/preflight.json`。checkpoint 恢复、真实 RGB 和 GPU 首轮推理等待现场验收。
+本地 `py_compile`、checkpoint 定向测试、Slurm Bash 语法和 `git diff --check` 退出 0。SCNet 从真实项目根运行发布包 `preflight` 退出 0，返回 `CHECKPOINT_METADATA_VERIFIED`、`selected_step=400`、真实 checkpoint 路径、训练发布路径和训练身份 SHA-256 `4799f70b2e198674e3bd0e17444c8c078f7323f22f8e7b3eb65134fd515628ab`。真实 CUDA 权重恢复、三路 RGB 与首轮推理仍需在短程作业内验收。
 
 ## 启动命令和预算
 
-以下命令用于第五步产出有效选择和 checkpoint 后提交。当前执行到预检即结束。作业脚本已经固定队列、节点和资源。
+以下命令先复核已完成的训练结果，再提交一个短程作业。作业脚本已经固定队列、节点和资源。本轮没有执行此命令中的 `sbatch`。
 
 ```bash
 step6_root=$(cd "$HOME/code_cpf/pi05" && pwd -P) || exit 1
-step6_bundle="$step6_root/tools/step6-gpu-short-pr7-0498785"
-step5_run="$step6_root/results/step5-arx-4090-validation-642e196"
+step6_bundle="$step6_root/tools/step6-gpu-short-pr7-3b03054"
+step5_run="$step6_root/results/step5-arx-c21eec7"
 cd "$step6_root" || exit 1
 
 PYTHONPATH="$step6_bundle/suite" python3 -B -m scripts.step6_arx.gpu_short \

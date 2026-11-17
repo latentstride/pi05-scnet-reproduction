@@ -34,9 +34,12 @@ def inspect_checkpoint(run, plan):
     if (type(last_step) is not int or selected.get("last_step") != last_step
             or type(step) is not int or not 0 < step <= last_step):
         raise CheckpointUnavailable("training selection is incomplete or invalid")
-    gates = read_json(run / "gpu_gates.json")
-    if gates.get("status") != "passed" or gates.get("frozen_unchanged") is not True:
-        raise CheckpointUnavailable("missing passed Step 5 GPU training gates")
+    progress_path = run / "gpu_progress.json"
+    if not progress_path.is_file():
+        raise CheckpointUnavailable(f"missing Step 5 completion record: {progress_path}")
+    progress = read_json(progress_path)
+    if progress.get("stage") != "gpu_fit_complete" or progress.get("step") != last_step:
+        raise CheckpointUnavailable("Step 5 training did not complete the configured steps")
     checkpoint = run / "checkpoints" / f"step-{step:04d}"
     for candidate in (checkpoint, run / "checkpoints" / f"step-{last_step:04d}"):
         if not (candidate / "_METADATA").is_file():

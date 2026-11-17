@@ -25,7 +25,9 @@ class CheckpointTest(unittest.TestCase):
             with self.assertRaisesRegex(CheckpointUnavailable, "incomplete"):
                 inspect_checkpoint(run, PLAN)
             (run / "selected.json").write_text(json.dumps(dict(step=100, last_step=400)))
-            (run / "gpu_gates.json").write_text(json.dumps(dict(status="passed", frozen_unchanged=True)))
+            with self.assertRaisesRegex(CheckpointUnavailable, "missing Step 5 completion record"):
+                inspect_checkpoint(run, PLAN)
+            (run / "gpu_progress.json").write_text(json.dumps(dict(stage="gpu_fit_complete", step=400)))
             for step in (100, 400):
                 checkpoint = run / "checkpoints" / f"step-{step:04d}"
                 checkpoint.mkdir(parents=True)

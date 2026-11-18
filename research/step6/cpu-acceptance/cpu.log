@@ -1,0 +1,58 @@
+bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+WARNING: Skipping mount /etc/localtime [binds]: /etc/localtime doesn't exist in container
+Step 6 verifying the existing dataset and loading normalization
+Step 6 reset seed=0 variant=frozen
+[2026-11-15T16:56:44.024+00:00] start load_environment
+[planner.py]: Something wrong happened when importing CuroboPlanner! Please check if Curobo is installed correctly. If the problem still exists, you can install Curobo from https://github.com/NVlabs/curobo manually.
+Exception traceback:
+Traceback (most recent call last):
+  File "<project-root>/source/PACE-fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/envs/robot/planner.py", line 18, in <module>
+    from curobo.wrap.reacher.motion_gen import (
+  File "/opt/robotwin/venv/lib/python3.10/site-packages/curobo/wrap/reacher/motion_gen.py", line 1425, in <module>
+    class MotionGen(MotionGenConfig):
+  File "/opt/robotwin/venv/lib/python3.10/site-packages/curobo/wrap/reacher/motion_gen.py", line 4203, in MotionGen
+    grasp_approach_offset: Pose = Pose.from_list([0, 0, -0.15, 1, 0, 0, 0]),
+  File "/opt/robotwin/venv/lib/python3.10/site-packages/curobo/types/math.py", line 215, in from_list
+    position = torch.as_tensor(
+  File "/opt/robotwin/venv/lib/python3.10/site-packages/torch/cuda/__init__.py", line 314, in _lazy_init
+    torch._C._cuda_init()
+RuntimeError: Found no NVIDIA driver on your system. Please check that you have an NVIDIA GPU and installed a driver from http://www.nvidia.com/Download/index.aspx
+[2026-11-15T16:58:52.735+00:00] deferred_to_gpu load_environment
+[2026-11-15T16:58:55.941+00:00] end load_environment
+{"episode": "seed-00-frozen", "outcome": "ACTION_LIMIT", "physics_ticks": 270, "queries": 2}
+Step 6 reset seed=0 variant=lora
+[2026-11-15T16:59:07.949+00:00] start load_environment
+[2026-11-15T16:59:08.945+00:00] end load_environment
+{"episode": "seed-00-lora", "outcome": "SAFETY_STOP", "physics_ticks": 210, "queries": 2}
+Step 6 reset seed=1 variant=frozen
+[2026-11-15T16:59:15.320+00:00] start load_environment
+[2026-11-15T16:59:15.377+00:00] end load_environment
+{"episode": "seed-01-frozen", "outcome": "ACTION_LIMIT", "physics_ticks": 270, "queries": 2}
+Step 6 reset seed=1 variant=lora
+[2026-11-15T16:59:21.709+00:00] start load_environment
+[2026-11-15T16:59:21.743+00:00] end load_environment
+{"episode": "seed-01-lora", "outcome": "SAFETY_STOP", "physics_ticks": 210, "queries": 2}
+Step 6 reset seed=2 variant=frozen
+[2026-11-15T16:59:27.604+00:00] start load_environment
+[2026-11-15T16:59:27.650+00:00] end load_environment
+{"episode": "seed-02-frozen", "outcome": "ACTION_LIMIT", "physics_ticks": 270, "queries": 2}
+Step 6 reset seed=2 variant=lora
+[2026-11-15T16:59:35.359+00:00] start load_environment
+[2026-11-15T16:59:35.383+00:00] end load_environment
+{"episode": "seed-02-lora", "outcome": "SAFETY_STOP", "physics_ticks": 210, "queries": 2}
+Step 6 reset seed=3 variant=frozen
+[2026-11-15T16:59:40.776+00:00] start load_environment
+[2026-11-15T16:59:40.815+00:00] end load_environment
+{"episode": "seed-03-frozen", "outcome": "ACTION_LIMIT", "physics_ticks": 270, "queries": 2}
+Step 6 reset seed=3 variant=lora
+[2026-11-15T16:59:47.713+00:00] start load_environment
+[2026-11-15T16:59:47.736+00:00] end load_environment
+{"episode": "seed-03-lora", "outcome": "SAFETY_STOP", "physics_ticks": 210, "queries": 2}
+Step 6 reset seed=4 variant=frozen
+[2026-11-15T16:59:52.674+00:00] start load_environment
+[2026-11-15T16:59:52.700+00:00] end load_environment
+{"episode": "seed-04-frozen", "outcome": "ACTION_LIMIT", "physics_ticks": 270, "queries": 2}
+Step 6 reset seed=4 variant=lora
+[2026-11-15T17:00:00.954+00:00] start load_environment
+[2026-11-15T17:00:01.017+00:00] end load_environment
+{"episode": "seed-04-lora", "outcome": "SAFETY_STOP", "physics_ticks": 210, "queries": 2}

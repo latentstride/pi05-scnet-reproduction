@@ -1,0 +1,86 @@
+{
+  "trials": [
+    {
+      "episode": "seed-00-frozen",
+      "queries": 2,
+      "ticks": 270,
+      "rows": 8,
+      "outcome": "ACTION_LIMIT",
+      "rgb_status": "GPU_UNVERIFIED"
+    },
+    {
+      "episode": "seed-00-lora",
+      "queries": 2,
+      "ticks": 210,
+      "rows": 4,
+      "outcome": "SAFETY_STOP",
+      "rgb_status": "GPU_UNVERIFIED"
+    },
+    {
+      "episode": "seed-01-frozen",
+      "queries": 2,
+      "ticks": 270,
+      "rows": 8,
+      "outcome": "ACTION_LIMIT",
+      "rgb_status": "GPU_UNVERIFIED"
+    },
+    {
+      "episode": "seed-01-lora",
+      "queries": 2,
+      "ticks": 210,
+      "rows": 4,
+      "outcome": "SAFETY_STOP",
+      "rgb_status": "GPU_UNVERIFIED"
+    },
+    {
+      "episode": "seed-02-frozen",
+      "queries": 2,
+      "ticks": 270,
+      "rows": 8,
+      "outcome": "ACTION_LIMIT",
+      "rgb_status": "GPU_UNVERIFIED"
+    },
+    {
+      "episode": "seed-02-lora",
+      "queries": 2,
+      "ticks": 210,
+      "rows": 4,
+      "outcome": "SAFETY_STOP",
+      "rgb_status": "GPU_UNVERIFIED"
+    },
+    {
+      "episode": "seed-03-frozen",
+      "queries": 2,
+      "ticks": 270,
+      "rows": 8,
+      "outcome": "ACTION_LIMIT",
+      "rgb_status": "GPU_UNVERIFIED"
+    },
+    {
+      "episode": "seed-03-lora",
+      "queries": 2,
+      "ticks": 210,
+      "rows": 4,
+      "outcome": "SAFETY_STOP",
+      "rgb_status": "GPU_UNVERIFIED"
+    },
+    {
+      "episode": "seed-04-frozen",
+      "queries": 2,
+      "ticks": 270,
+      "rows": 8,
+      "outcome": "ACTION_LIMIT",
+      "rgb_status": "GPU_UNVERIFIED"
+    },
+    {
+      "episode": "seed-04-lora",
+      "queries": 2,
+      "ticks": 210,
+      "rows": 4,
+      "outcome": "SAFETY_STOP",
+      "rgb_status": "GPU_UNVERIFIED"
+    }
+  ],
+  "formal_denominator": 0,
+  "matched_pairs": 5
+}

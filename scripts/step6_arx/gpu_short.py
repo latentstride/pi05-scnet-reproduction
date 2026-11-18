@@ -75,9 +75,9 @@ def preflight(root, run):
 
 
 @contextmanager
-def process(cmd, output, env=None):
+def process(cmd, output, env=None, *, stderr=subprocess.STDOUT):
     with output.open("wb") as log:
-        child = subprocess.Popen(cmd, stdout=log, stderr=subprocess.STDOUT, env=env, start_new_session=True)
+        child = subprocess.Popen(cmd, stdout=log, stderr=stderr, env=env, start_new_session=True)
         try:
             yield child
         finally:
@@ -95,8 +95,8 @@ def process(cmd, output, env=None):
             child.wait(timeout=5)
 
 
-def run_step(cmd, timeout, output, env=None):
-    with process(cmd, output, env) as child:
+def run_step(cmd, timeout, output, env=None, *, stderr=subprocess.STDOUT):
+    with process(cmd, output, env, stderr=stderr) as child:
         if child.wait(timeout=timeout) != 0:
             raise RuntimeError(f"exit {child.returncode}: {output.name}")
 
@@ -168,8 +168,9 @@ def launch(root, run):
                          TRIAL_TIMEOUT, out / f"{variant}-sim.log")
             result["phase"] = f"{variant}_verify"
             verification = out / f"{variant}-verification.json"
-            run_step([*sim, "-m", "scripts.step6_arx.verify_gpu_short", str(out / "pair" / f"seed-00-{variant}")],
-                     60, verification)
+            with verification.with_suffix(".log").open("wb") as log:
+                run_step([*sim, "-m", "scripts.step6_arx.verify_gpu_short",
+                          str(out / "pair" / f"seed-00-{variant}")], 60, verification, stderr=log)
             result["variants"][variant] = read_json(verification)
         result.update(status="PASS", phase="complete")
     except (Exception, KeyboardInterrupt) as error:

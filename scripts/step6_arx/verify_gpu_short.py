@@ -68,7 +68,8 @@ def verify(trial):
         meta = next(frames)
         if tuple(meta["size"]) != (SHAPE[1], SHAPE[0]):
             raise ValueError("video dimensions differ from camera")
-        count = sum(len(frame) == np.prod(SHAPE) for frame in frames)
+        frame_bytes = int(np.prod(SHAPE))
+        count = sum(len(frame) == frame_bytes for frame in frames)
         if count < 2:
             raise ValueError("video needs at least two decodable frames")
     finally:

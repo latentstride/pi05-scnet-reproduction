@@ -137,3 +137,10 @@
 | mixed/visual-grasp-results.json | `e3099832cad726427ce198a45565b23589887c7375a460281340f82870901351` |
 
 仓库相关实现与早期 Step 6 评测见 [PR #7](https://github.com/latentstride/pi05-scnet-reproduction/pull/7)。本报告为状态同步，不将正在运行的实验改写为已结束结果。
+
+
+## 后续：回到微调主线的训练对照与初始化修复
+
+本页上文为早期快照。最新已提交的操作、代码与证据见 [LoRA 主线快照](../research/step6/lora-mainline-20261123/README.md) 和[完整记录](../research/step6/lora-mainline-20261123/lora_mainline_status_20261123.md)。
+
+截至该快照：两组 K4 学习对照、梯度核验、重复标签修复对照和原始初态物理验证已完成。发现并修复初始化遗漏的两臂重力补偿，初始 TCP 偏差从 23.69 mm 降至 0.0094 mm；修复后的模型仍未自主双指抓住，持物抬升 0 mm。实际采样监督与失败状态局部恢复仍待验证，不能当作成功结果。

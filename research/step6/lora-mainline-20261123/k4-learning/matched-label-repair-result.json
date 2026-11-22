@@ -1,0 +1,176 @@
+{
+  "originalRun": "step6-k4-raw-val-noise-20261122T192138Z",
+  "repairRun": "step6-k4-unique-val-noise-20261122T192807Z",
+  "original": {
+    "n": 20,
+    "closureMean": 4,
+    "closeWithinK4": 9,
+    "tcpMeanMm": 9.169175770900328,
+    "tcpMaxMm": 14.71433495805734,
+    "gripMae": 0.13848742693662644,
+    "closureRows": [
+      6,
+      5,
+      3,
+      1,
+      7,
+      6,
+      4,
+      3,
+      6,
+      5,
+      3,
+      1,
+      6,
+      5,
+      3,
+      1,
+      6,
+      5,
+      3,
+      1
+    ]
+  },
+  "repair": {
+    "n": 20,
+    "closureMean": 3.5,
+    "closeWithinK4": 10,
+    "tcpMeanMm": 9.117430033485658,
+    "tcpMaxMm": 14.089049109514542,
+    "gripMae": 0.12899264991283416,
+    "closureRows": [
+      6,
+      5,
+      2,
+      1,
+      6,
+      5,
+      3,
+      2,
+      6,
+      5,
+      2,
+      1,
+      6,
+      5,
+      2,
+      1,
+      5,
+      5,
+      2,
+      0
+    ]
+  },
+  "paired": [
+    {
+      "name": "val-ep07-pregrasp-q1",
+      "originalClosure": 6,
+      "repairClosure": 6
+    },
+    {
+      "name": "val-ep07-pregrasp-q2",
+      "originalClosure": 5,
+      "repairClosure": 5
+    },
+    {
+      "name": "val-ep07-pregrasp-q3",
+      "originalClosure": 3,
+      "repairClosure": 2
+    },
+    {
+      "name": "val-ep07-pregrasp-q4",
+      "originalClosure": 1,
+      "repairClosure": 1
+    },
+    {
+      "name": "val-ep18-pregrasp-q1",
+      "originalClosure": 7,
+      "repairClosure": 6
+    },
+    {
+      "name": "val-ep18-pregrasp-q2",
+      "originalClosure": 6,
+      "repairClosure": 5
+    },
+    {
+      "name": "val-ep18-pregrasp-q3",
+      "originalClosure": 4,
+      "repairClosure": 3
+    },
+    {
+      "name": "val-ep18-pregrasp-q4",
+      "originalClosure": 3,
+      "repairClosure": 2
+    },
+    {
+      "name": "val-ep23-pregrasp-q1",
+      "originalClosure": 6,
+      "repairClosure": 6
+    },
+    {
+      "name": "val-ep23-pregrasp-q2",
+      "originalClosure": 5,
+      "repairClosure": 5
+    },
+    {
+      "name": "val-ep23-pregrasp-q3",
+      "originalClosure": 3,
+      "repairClosure": 2
+    },
+    {
+      "name": "val-ep23-pregrasp-q4",
+      "originalClosure": 1,
+      "repairClosure": 1
+    },
+    {
+      "name": "val-ep31-pregrasp-q1",
+      "originalClosure": 6,
+      "repairClosure": 6
+    },
+    {
+      "name": "val-ep31-pregrasp-q2",
+      "originalClosure": 5,
+      "repairClosure": 5
+    },
+    {
+      "name": "val-ep31-pregrasp-q3",
+      "originalClosure": 3,
+      "repairClosure": 2
+    },
+    {
+      "name": "val-ep31-pregrasp-q4",
+      "originalClosure": 1,
+      "repairClosure": 1
+    },
+    {
+      "name": "val-ep43-pregrasp-q1",
+      "originalClosure": 6,
+      "repairClosure": 5
+    },
+    {
+      "name": "val-ep43-pregrasp-q2",
+      "originalClosure": 5,
+      "repairClosure": 5
+    },
+    {
+      "name": "val-ep43-pregrasp-q3",
+      "originalClosure": 3,
+      "repairClosure": 2
+    },
+    {
+      "name": "val-ep43-pregrasp-q4",
+      "originalClosure": 1,
+      "repairClosure": 0
+    }
+  ],
+  "matchedTraining": {
+    "originalUpdates": 100,
+    "repairedUpdates": 100,
+    "sameDraws": true,
+    "bodyCounts": {
+      "0": 50,
+      "1": 50
+    },
+    "lastStep": 100
+  }
+}

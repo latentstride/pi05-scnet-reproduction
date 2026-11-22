@@ -1,0 +1,285 @@
+{
+  "snapshot_utc": "2026-11-22T19:59:39.619977+00:00",
+  "source": "local copies of Notebook experiment code and evidence; source files unchanged",
+  "files": [
+    {
+      "path": "compare_existing_mixed.py",
+      "bytes": 3931,
+      "sha256": "16938c5b024e6a90f5e439a8b72aac151f5e9a3f8571095ae58931c99a11bcb2"
+    },
+    {
+      "path": "k4-learning/align_pure_failure.py",
+      "bytes": 3869,
+      "sha256": "8b252af8db335186579507c3f4c498d181ae3f40c42d54187fecb1488710a9ef"
+    },
+    {
+      "path": "k4-learning/audit_applied_targets.py",
+      "bytes": 1689,
+      "sha256": "55cd66c5f1d8a4fb1898da6ab1c38c35b5dd3e640b78cac91d7b3a04aacda6b1"
+    },
+    {
+      "path": "k4-learning/audit_grip_gradient.py",
+      "bytes": 4586,
+      "sha256": "a8fadde955261ce559fcaf5c2c34a5ea19ec13b01dffa99200d38e854178f869"
+    },
+    {
+      "path": "k4-learning/audit_pregrasp_labels.py",
+      "bytes": 2447,
+      "sha256": "6a6d806517b213dabcbe39f455d17941ce8e432db4bdb23f6c3a89bc7d0eb6b7"
+    },
+    {
+      "path": "k4-learning/check_fk.py",
+      "bytes": 572,
+      "sha256": "a3e98368d63e3b6e9491512641a18e116aa8f0cf0c3776696fb479c2a26a8eed"
+    },
+    {
+      "path": "k4-learning/check_unique_labels.py",
+      "bytes": 1678,
+      "sha256": "5231814dd4afd1346a430854712574eb4320742b8953380da2a091e083efee2e"
+    },
+    {
+      "path": "k4-learning/compare_saved_input.py",
+      "bytes": 3082,
+      "sha256": "079df1beb79c0f32403cdf0961c6aca39afd8e6f9330a9be450c07e9aa70043e"
+    },
+    {
+      "path": "k4-learning/completed-comparison.json",
+      "bytes": 74938,
+      "sha256": "fe25159dae0ada5ab30b29823d0fd4f21cfcb06bf32084f64908ff3c89e82115"
+    },
+    {
+      "path": "k4-learning/config.py",
+      "bytes": 1150,
+      "sha256": "37d7e684eb325542440662ff11397e8537814e6a7dd9d67e97ecfb0043211b56"
+    },
+    {
+      "path": "k4-learning/evaluate-warm-model.sh",
+      "bytes": 2923,
+      "sha256": "5b5e48ae24048648078999da5074398da5e3c3aeb1aa2707c9d9e2c42eb36bab"
+    },
+    {
+      "path": "k4-learning/evaluate_pure.py",
+      "bytes": 423,
+      "sha256": "2775dc610e536ee34483bac24ca30c122d34d90c428f289164e36dcc05ed21e9"
+    },
+    {
+      "path": "k4-learning/exact-input-label-aliasing.json",
+      "bytes": 117758,
+      "sha256": "4cf917c2db1f9eb43c42c4110cb0b92f44675c8b5a8829dfb360f5c9078d959a"
+    },
+    {
+      "path": "k4-learning/grip-gradient-audit.json",
+      "bytes": 14881,
+      "sha256": "30ba21e07efa6557a05fb4379a2f201e9d4ba018e3586bee377dcd15a9c98bd9"
+    },
+    {
+      "path": "k4-learning/initial-expert-path-distance.json",
+      "bytes": 2323,
+      "sha256": "4086cf0b44e3de6df530ada4bfd03e88918b859e95f5346bf030a9e0af99d250"
+    },
+    {
+      "path": "k4-learning/initial-gravity-counterfactual.json",
+      "bytes": 3336,
+      "sha256": "92c816babef4b2c5c3cff61636cebb10cad1f123fdbb6fba3a78ca691a09cd4a"
+    },
+    {
+      "path": "k4-learning/initial-gravity-physical-result.json",
+      "bytes": 3432,
+      "sha256": "a91f5fa0ae1a41ae66a6d2669efe575affdfaf5c20ccbcad49f1d1898edab743"
+    },
+    {
+      "path": "k4-learning/initial-k4-targets.json",
+      "bytes": 3250,
+      "sha256": "dc912e7913a74743c4ebbbcc918cac6d5420f6de426167a14132b3da573e5ca1"
+    },
+    {
+      "path": "k4-learning/k4_fk.py",
+      "bytes": 2078,
+      "sha256": "dd08bafea17f688769062665575ae41e3fe58d2d4cbc0b5893a33ad8f43db44a"
+    },
+    {
+      "path": "k4-learning/k4_objective.py",
+      "bytes": 2847,
+      "sha256": "c86bf61986631ad99e128435a0061fa00fc4ee41bcb24809cbaa92d068229648"
+    },
+    {
+      "path": "k4-learning/matched-label-repair-result.json",
+      "bytes": 3193,
+      "sha256": "465be95fd855d09d12b909cc7172a3a83e89d1297c290b12c1a013809fc744da"
+    },
+    {
+      "path": "k4-learning/physical-results.json",
+      "bytes": 204061,
+      "sha256": "180eda139ae357d1e5a31c6e1dc05a9334b8448a74bcaa6b2a22c1257e58dfba"
+    },
+    {
+      "path": "k4-learning/pregrasp-noise-metrics.json",
+      "bytes": 15168,
+      "sha256": "3fb2a568392a2287aeebdb3c07aa7758b61cc40d1b9c2d8322b8794222bf2478"
+    },
+    {
+      "path": "k4-learning/pregrasp_noise_probe.py",
+      "bytes": 1698,
+      "sha256": "634173f7bc45f28053fc1257214df3c18ac0327cbd4dbbc97f69dd9e05c23fa3"
+    },
+    {
+      "path": "k4-learning/prepare_val_noise.py",
+      "bytes": 1203,
+      "sha256": "52d224561220735a71057fa9ed9c1d0fd54bf5da7c91e2b1bd1922eaf8a3a804"
+    },
+    {
+      "path": "k4-learning/probe_corrected_init.py",
+      "bytes": 6931,
+      "sha256": "cec06903cb4ebfc1f8195bada3b6b00ff228ec7e3abf7850f4a378a1b83c8614"
+    },
+    {
+      "path": "k4-learning/pure_scene.py",
+      "bytes": 17192,
+      "sha256": "06a9e7f247001029db58c5d00e2de190181aa916c37b8a871945f861342a9bd3"
+    },
+    {
+      "path": "k4-learning/raw-val-noise-metrics.json",
+      "bytes": 50617,
+      "sha256": "bdf795f1c6de3757d9d8c8192bbecd10bebeac17cc51b18e7b045be06a455846"
+    },
+    {
+      "path": "k4-learning/repair-check.json",
+      "bytes": 12135,
+      "sha256": "d8f7c8d2084e7c821b41164114e2f98306c39f1590e864e904cbac6d190d081c"
+    },
+    {
+      "path": "k4-learning/run_k4_learning.py",
+      "bytes": 11766,
+      "sha256": "157e5dba8040670bb3c2aeec8b241a5647515bf372dfa505aada4294a6f2ab10"
+    },
+    {
+      "path": "k4-learning/run_sampled_comparison.py",
+      "bytes": 6224,
+      "sha256": "05b2c7eac8b0d3873992543ebe06f92802dd728b06936e4b74523071fafc8e84"
+    },
+    {
+      "path": "k4-learning/run_sampled_k4.py",
+      "bytes": 1286,
+      "sha256": "8f778f7b386fd5b27331dbad624e81fd02476cd4cbd4786e46a7b50a0960be9c"
+    },
+    {
+      "path": "k4-learning/run_unique_observations.py",
+      "bytes": 5186,
+      "sha256": "82a74c75e08bf59bcb620719dab750f37af6e36c5e44b34d9aed7bf8bd3029ca"
+    },
+    {
+      "path": "k4-learning/sampled_actions.py",
+      "bytes": 1444,
+      "sha256": "ea61d094146a7a9ac603bc2536ca2e7a66eeb67c89381027bedb19fc8d0b437a"
+    },
+    {
+      "path": "k4-learning/sampling.py",
+      "bytes": 2876,
+      "sha256": "314e3a3979fddaed05ac4ee1260cbf67fed96b382bdc7cc1751175e2fb308b9f"
+    },
+    {
+      "path": "k4-learning/seed1-prediction-execution-alignment.json",
+      "bytes": 33790,
+      "sha256": "4825dd761becf3ad175e2d31ed1f47e2e5c163cd19e1586346d7bccb82cfd9c9"
+    },
+    {
+      "path": "k4-learning/seed1-saved-input-comparison.json",
+      "bytes": 6315,
+      "sha256": "37674227d3dcb09663eaf1e38b025dfbe4481098771045e841159c35f85de0d0"
+    },
+    {
+      "path": "k4-learning/serve_k4_learning.py",
+      "bytes": 2399,
+      "sha256": "e8af41646d7a173c7ea3a408f4b77730d092683e4b23f647df08d1f8e1cfe71f"
+    },
+    {
+      "path": "k4-learning/test-anchors-metrics.json",
+      "bytes": 49345,
+      "sha256": "e8ef73f60520aec889684f98741025801fd0dbd18489e88c984838a7b40e7087"
+    },
+    {
+      "path": "k4-learning/train.py",
+      "bytes": 32633,
+      "sha256": "23fe7d6ebc1583137b2a3825f11c8859d100011e8dab906f81e33b2e20169d1f"
+    },
+    {
+      "path": "k4-learning/unique-completed-comparison.json",
+      "bytes": 29875,
+      "sha256": "dc788e009c833552e31dce43f22fe9730ec8496ddba6e2df2e1fd9b2580c626c"
+    },
+    {
+      "path": "k4-learning/unique-val-noise-metrics.json",
+      "bytes": 50646,
+      "sha256": "85c6a80ef3945ed6359ebb0357990a2f945770b9e554149992a74b51f6af3d82"
+    },
+    {
+      "path": "k4-learning/unique_observations.py",
+      "bytes": 2955,
+      "sha256": "25c8c7aa64fd46150ad489f32edae6d63c51b23a798a86453993fc2042947c9f"
+    },
+    {
+      "path": "lora_mainline_status_20261123.md",
+      "bytes": 20054,
+      "sha256": "799a1fbf089f419c70ef159a5eb8e9ae65d71e40fa86525613a1d4f8ed9553cf"
+    },
+    {
+      "path": "mixed-0400-test-metrics.json",
+      "bytes": 49988,
+      "sha256": "87ca0bcd8c1d13287e39977417bcee8fc8494babc9382fef52f9e928547b0d15"
+    },
+    {
+      "path": "mixed-0400-train-metrics.json",
+      "bytes": 25185,
+      "sha256": "49bbef863cc07b13ed20091e44b6de61e6600848f04435e04c178ff72afdd181"
+    },
+    {
+      "path": "mixed-0600-test-metrics.json",
+      "bytes": 48974,
+      "sha256": "7e7c9a4224258fa3a8f912d318f6233e0652644b43926b782eda982cccee683b"
+    },
+    {
+      "path": "mixed-0600-train-metrics.json",
+      "bytes": 24614,
+      "sha256": "7eb56576de260c15cb09401287d7f992cf00486722085ba9e0561b18c787030a"
+    },
+    {
+      "path": "step5_arx/adapter.py",
+      "bytes": 3712,
+      "sha256": "06a5392fad3ec33d489256ba4e5b41c8cf7c32264504a9dafd600393441c61d2"
+    },
+    {
+      "path": "step5_arx/config.py",
+      "bytes": 1150,
+      "sha256": "37d7e684eb325542440662ff11397e8537814e6a7dd9d67e97ecfb0043211b56"
+    },
+    {
+      "path": "step5_arx/data.py",
+      "bytes": 10056,
+      "sha256": "025f6993f1a3ec24669cee21f839a6414ca16d407f25d850960e7061b71c6c0c"
+    },
+    {
+      "path": "step5_arx/model.py",
+      "bytes": 15365,
+      "sha256": "b66440eaeac13b9aeb423bbf4afc392b535cef72f509a52a4fc282cb51d886fe"
+    },
+    {
+      "path": "step5_arx/serve.py",
+      "bytes": 2964,
+      "sha256": "1df696a60ae38586492994387640b5a4cd5d9fae5e73a8f4ee423d9bfed7275b"
+    },
+    {
+      "path": "step6_arx/protocol.py",
+      "bytes": 5173,
+      "sha256": "fe5efc24b5c811d04ca8756e9aff6a37cfddc2c5a84ba7f75a39582bd4735b51"
+    },
+    {
+      "path": "step6_arx/scene.py",
+      "bytes": 17846,
+      "sha256": "0b996ea1b8fce566729a9e0def7c506550a040e8c70bc5424160ef9b0f482b25"
+    }
+  ],
+  "gravity_patch_sha256": "bfedd90f7b97ea5bbabe982dd95842007b4e52a010eb4c27634eda37c6ce0b3e",
+  "excluded": "checkpoints, HDF5/image datasets, environment packages, pickle physics states, credentials, caches",
+  "physical_result": "no autonomous bilateral grasp or held lift in the recorded trials",
+  "in_progress": "actual sampled-action supervision and failure-state restoration are not validated by this snapshot"
+}

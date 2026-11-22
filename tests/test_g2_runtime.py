@@ -73,11 +73,16 @@ class RuntimeTests(unittest.TestCase):
     def test_bootstrap_gripper_path_uses_declared_native_endpoints(self):
         adapter,qa,qr,bases=fixture()
         values={}
+        compensated=[]
         def joint(name):
             return NS(get_name=lambda:name,set_drive_target=lambda value:values.__setitem__(name,value),
                       set_drive_velocity_target=lambda value:None)
         class Robot:
             is_dual_arm=False
+            left_entity=object()
+            right_entity=object()
+            def _entity_qf(self,entity):
+                compensated.append(entity)
             def set_planner(self,scene=None):
                 pass
             def set_gripper(self,*args):
@@ -92,6 +97,9 @@ class RuntimeTests(unittest.TestCase):
             self.assertEqual(profile["num_step"],200)
             robot.set_gripper(1.,"left")
             self.assertTrue(all(value==.04 for value in values.values()))
+            self.assertEqual(compensated,[robot.left_entity,robot.right_entity])
+            robot.set_gripper(0.,"right")
+            self.assertEqual(compensated,[robot.left_entity,robot.right_entity]*2)
         self.assertIs(Robot.set_gripper,original)
 
     def test_shared_collision_model_is_updated_atomically_and_restored(self):

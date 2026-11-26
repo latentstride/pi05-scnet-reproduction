@@ -1,0 +1,31 @@
+π₀.₅ ARX200 主线 step1500 结果与用户请求暂停
+日期：2026-11-24 Australia/Sydney
+训练目录：<PROJECT_ROOT>/results/step5-arx200-main-20261124
+step1500 checkpoint已保存，包含模型和Adam。离线clean Val ×4固定推理噪声与seed1/0原始初态纯模型实测已完成。
+用户要求在此暂停；没有自动续训到2000，也没有启动clean40精调。没有额外seed测试。
+
+clean Val，5专家预抓取锚点×4噪声，共20组；TCP统计为前K4左TCP相对专家未来动作的位置误差。
+step1000：TCP均值3.470982mm，最大9.636428mm。
+step1000首次闭爪行号分布（1-based，<=0.9）：{"2":5,"3":6,"4":6,"5":3}
+step1500：TCP均值6.486125mm，最大11.117735mm。
+step1500首次闭爪行号分布（1-based，<=0.9）：{"1":2,"2":4,"3":4,"4":9,"5":1}
+step1500比step1000的clean Val位置误差变差；单靠此结果不能因果确认过拟合或随机化数据分布差异。此处不擅自选择新训练路线。
+
+step1500 seed0: 双指稳定持物=false，持物净抬升=0mm，原RoboTwin完整任务成功=false。
+首次停止action_index=29 / query_index=7，retimed segment collides。
+碰撞诊断：{"row":0,"tick":15,"sample":1,"samples":1,"collisions":[{"collision_type":"self_sceneobject","object_name1":"_7","link_name1":"link6","object_name2":"box_35","link_name2":"box_35","max_penetration_m":0.0006344414432533085}]}
+停止前真实物理帧方块在左TCP坐标系相对坐标（mm）：[6.27021211792747,6.244171493215461,64.36557244057562]
+该次H50左夹爪首次<=0.9：0-based 6 / 1-based 7。
+
+step1500 seed1: 双指稳定持物=false，持物净抬升=0mm，原RoboTwin完整任务成功=false。
+首次停止action_index=23 / query_index=5，predicted finger start intersects task block。
+碰撞诊断：{"geometry":"candidate","side":"left","finger":1,"depth_m":0.008161834441125393,"allowed_penetration_m":0.002,"start_native_m":0.04386371746659279,"requested_native_m":0.043725832939147946}
+停止前真实物理帧方块在左TCP坐标系相对坐标（mm）：[75.6303369902697,20.600209083609816,57.06351372897256]
+该次H50左夹爪首次<=0.9：0-based 11 / 1-based 12。
+
+执行条件：新guard_opening的1mm近闭抖动修复已使用；未覆盖或钳制策略输出；K4、重力补偿、碰撞/穿透与滑移阈值保持。各模型与初始seed实际对应；不使用专家接管。
+最终运行状态：{"step":1500,"coordinator_pid":10681,"coordinator_state":"State:\tT (stopped)","gpu":"0 MiB, 0 %","compute_processes":"","step1500_exists":true,"step2000_exists":false,"train2000_log_exists":false,"time_unix":1795479193.4974024}
+协调进程10681已SIGSTOP，当前无训练/推理GPU进程。完整模型与Adam状态在step1500 checkpoint落盘。原协调器的进程内下一步仍是2000段，因此未经用户指示不得SIGCONT；若选择clean40收口，应保持它停止并使用独立新目录。
+Notebook仍开机，仍按实例计费；释放推理显存不等于关机。
+
+后续两选项均未执行：继续该实验至2000，或以step1500作为预热权重切回clean40做500步精调。等待用户决定。

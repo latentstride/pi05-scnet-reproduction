@@ -1,0 +1,2334 @@
+[
+  {
+    "seed": 0,
+    "frames": 46051,
+    "tcp_convention": "RoboTwin get_*_tcp_pose: joint6 + global_trans_matrix*delta_matrix and 0.12m bias",
+    "relative_coordinates": "block center minus TCP; both world-axis delta and TCP-axis delta reported",
+    "qpos_order_basis": "serial URDF non-fixed order joint1..joint8; setup initial_qpos has 8 entries; archive lacks explicit joint name field",
+    "left_suspended_frames": 13551,
+    "source_physics_sha256": "1ef11c94d8eb4216fe4b8c943dbf145e736fec773d7c870af3b3f70456c8b708",
+    "right_nearest_suspended": {
+      "tick": 14474,
+      "sim_s": 57.89600274991244,
+      "action_index": 195,
+      "query_index": 48,
+      "prediction_row_0_based": 3,
+      "distance_mm": 157.89506342520482,
+      "block_minus_tcp_world_mm": [
+        -81.01912313491677,
+        53.05234477919263,
+        124.70846584706396
+      ],
+      "block_in_tcp_mm": [
+        93.86912401763136,
+        -51.553219210887,
+        -116.02458446039023
+      ],
+      "tcp_world_m": [
+        0.04909191006213997,
+        -0.07505537145835084,
+        0.9444931227836123
+      ],
+      "block_world_m": [
+        -0.031927213072776794,
+        -0.02200302667915821,
+        1.0692015886306763
+      ],
+      "model_grip_target": 1,
+      "current_interpolated_grip": 0.999912790954113,
+      "actual_finger_qpos_mm": [
+        43.99999976158142,
+        43.99999976158142
+      ],
+      "actual_total_outward_travel_mm": 87.99999952316284,
+      "bilateral": [
+        true,
+        false
+      ],
+      "support_contact": false,
+      "lift_mm": 229.20089960098267,
+      "contacts": [
+        {
+          "ids": [
+            16,
+            35
+          ],
+          "role": [
+            "left",
+            "link7"
+          ],
+          "impulse": 0.104105643928051
+        },
+        {
+          "ids": [
+            17,
+            35
+          ],
+          "role": [
+            "left",
+            "link8"
+          ],
+          "impulse": 0.12330710887908936
+        }
+      ]
+    },
+    "right_grip_while_left_suspended": {
+      "executed_model_target_min": [
+        0,
+        60,
+        0
+      ],
+      "executed_model_target_max": [
+        1,
+        54,
+        3
+      ],
+      "h50_min": [
+        0,
+        32,
+        44
+      ],
+      "interpolated_drive_min": 0,
+      "interpolated_drive_max": 1,
+      "actual_each_prismatic_min_mm": [
+        0,
+        0
+      ],
+      "actual_outward_travel_sum_min_mm": 0,
+      "actual_finger_link_origin_separation_min_mm": 49.796000000036145,
+      "executed_rows_le_0p9": 49,
+      "executed_rows": 190,
+      "h50_only_suffix_closures": 1212
+    },
+    "left_grip_while_left_suspended": {
+      "executed_model_target_min": [
+        0,
+        21,
+        1
+      ],
+      "executed_model_target_max": [
+        0.7888200879096985,
+        67,
+        3
+      ],
+      "h50_min": [
+        0,
+        19,
+        1
+      ],
+      "interpolated_drive_min": 0,
+      "interpolated_drive_max": 0.7289435092140647,
+      "actual_each_prismatic_min_mm": [
+        29.6273585408926,
+        28.09511311352253
+      ],
+      "actual_outward_travel_sum_min_mm": 58.379827067255974,
+      "actual_finger_link_origin_separation_min_mm": 108.17582706727262,
+      "executed_rows_le_0p9": 190,
+      "executed_rows": 190,
+      "h50_only_suffix_closures": 1817
+    },
+    "right_nearest_any_airborne": {
+      "tick": 14474,
+      "sim_s": 57.89600274991244,
+      "action_index": 195,
+      "query_index": 48,
+      "prediction_row_0_based": 3,
+      "distance_mm": 157.89506342520482,
+      "block_minus_tcp_world_mm": [
+        -81.01912313491677,
+        53.05234477919263,
+        124.70846584706396
+      ],
+      "block_in_tcp_mm": [
+        93.86912401763136,
+        -51.553219210887,
+        -116.02458446039023
+      ],
+      "tcp_world_m": [
+        0.04909191006213997,
+        -0.07505537145835084,
+        0.9444931227836123
+      ],
+      "block_world_m": [
+        -0.031927213072776794,
+        -0.02200302667915821,
+        1.0692015886306763
+      ],
+      "model_grip_target": 1,
+      "current_interpolated_grip": 0.999912790954113,
+      "actual_finger_qpos_mm": [
+        43.99999976158142,
+        43.99999976158142
+      ],
+      "actual_total_outward_travel_mm": 87.99999952316284,
+      "bilateral": [
+        true,
+        false
+      ],
+      "support_contact": false,
+      "lift_mm": 229.20089960098267,
+      "contacts": [
+        {
+          "ids": [
+            16,
+            35
+          ],
+          "role": [
+            "left",
+            "link7"
+          ],
+          "impulse": 0.104105643928051
+        },
+        {
+          "ids": [
+            17,
+            35
+          ],
+          "role": [
+            "left",
+            "link8"
+          ],
+          "impulse": 0.12330710887908936
+        }
+      ]
+    },
+    "right_grip_any_airborne": {
+      "executed_model_target_min": [
+        0,
+        60,
+        0
+      ],
+      "executed_model_target_max": [
+        1,
+        54,
+        3
+      ],
+      "h50_min": [
+        0,
+        32,
+        44
+      ],
+      "interpolated_drive_min": 0,
+      "interpolated_drive_max": 1,
+      "actual_each_prismatic_min_mm": [
+        0,
+        0
+      ],
+      "actual_outward_travel_sum_min_mm": 0,
+      "actual_finger_link_origin_separation_min_mm": 49.796000000036145,
+      "executed_rows_le_0p9": 49,
+      "executed_rows": 190,
+      "h50_only_suffix_closures": 1212
+    },
+    "left_grip_any_airborne": {
+      "executed_model_target_min": [
+        0,
+        21,
+        1
+      ],
+      "executed_model_target_max": [
+        0.7888200879096985,
+        67,
+        3
+      ],
+      "h50_min": [
+        0,
+        19,
+        1
+      ],
+      "interpolated_drive_min": 0,
+      "interpolated_drive_max": 0.7601467967033386,
+      "actual_each_prismatic_min_mm": [
+        29.6273585408926,
+        28.09511311352253
+      ],
+      "actual_outward_travel_sum_min_mm": 58.379827067255974,
+      "actual_finger_link_origin_separation_min_mm": 108.17582706727262,
+      "executed_rows_le_0p9": 190,
+      "executed_rows": 190,
+      "h50_only_suffix_closures": 1817
+    },
+    "first_right_closing_suspended": {
+      "tick": 16403,
+      "sim_s": 65.61200311640278,
+      "action_index": 223,
+      "query_index": 55,
+      "prediction_row_0_based": 3,
+      "distance_mm": 202.55862495649197,
+      "block_minus_tcp_world_mm": [
+        -27.805215038489774,
+        -50.705922685869304,
+        194.12824618149403
+      ],
+      "block_in_tcp_mm": [
+        -13.637060951531065,
+        -53.71459056991868,
+        -194.83010515003832
+      ],
+      "tcp_world_m": [
+        -0.0161927134616857,
+        0.021133502863653272,
+        0.9074795533485353
+      ],
+      "block_world_m": [
+        -0.043997928500175476,
+        -0.029572419822216034,
+        1.1016077995300293
+      ],
+      "model_grip_target": 0.8335166573524475,
+      "current_interpolated_grip": 0.9052216265259719,
+      "actual_finger_qpos_mm": [
+        43.00299659371376,
+        43.07670146226883
+      ],
+      "actual_total_outward_travel_mm": 86.07969805598259,
+      "bilateral": [
+        true,
+        false
+      ],
+      "support_contact": false,
+      "lift_mm": 261.6071105003357,
+      "contacts": [
+        {
+          "ids": [
+            16,
+            35
+          ],
+          "role": [
+            "left",
+            "link7"
+          ],
+          "impulse": 0.10260896384716034
+        },
+        {
+          "ids": [
+            17,
+            35
+          ],
+          "role": [
+            "left",
+            "link8"
+          ],
+          "impulse": 0.12175212055444717
+        }
+      ]
+    },
+    "first_right_tight_suspended": {
+      "tick": 16964,
+      "sim_s": 67.85600322298706,
+      "action_index": 235,
+      "query_index": 58,
+      "prediction_row_0_based": 3,
+      "distance_mm": 208.98542125501302,
+      "block_minus_tcp_world_mm": [
+        -41.5631204879246,
+        -70.50718987584905,
+        192.29183416945318
+      ],
+      "block_in_tcp_mm": [
+        -25.05795582139974,
+        -75.40486274134246,
+        -193.29022691835027
+      ],
+      "tcp_world_m": [
+        -0.009142841395143486,
+        0.04013361098469094,
+        0.9040223576487841
+      ],
+      "block_world_m": [
+        -0.050705961883068085,
+        -0.030373578891158104,
+        1.0963141918182373
+      ],
+      "model_grip_target": 0.18349626660346985,
+      "current_interpolated_grip": 0.22997961876293024,
+      "actual_finger_qpos_mm": [
+        7.314513437449932,
+        7.324994541704655
+      ],
+      "actual_total_outward_travel_mm": 14.639507979154587,
+      "bilateral": [
+        true,
+        false
+      ],
+      "support_contact": false,
+      "lift_mm": 256.3135027885437,
+      "contacts": [
+        {
+          "ids": [
+            16,
+            35
+          ],
+          "role": [
+            "left",
+            "link7"
+          ],
+          "impulse": 0.10275455564260483
+        },
+        {
+          "ids": [
+            17,
+            35
+          ],
+          "role": [
+            "left",
+            "link8"
+          ],
+          "impulse": 0.12193366140127182
+        }
+      ]
+    },
+    "first_left_reopening_suspended": {
+      "tick": 18736,
+      "sim_s": 74.94400355964899,
+      "action_index": 265,
+      "query_index": 66,
+      "prediction_row_0_based": 1,
+      "distance_mm": 48.851084555408725,
+      "block_minus_tcp_world_mm": [
+        -0.9388324894362143,
+        5.839396795941434,
+        -48.49173641823956
+      ],
+      "block_in_tcp_mm": [
+        -3.405703364902149,
+        -1.0305664701529826,
+        48.72132571657491
+      ],
+      "tcp_world_m": [
+        -0.17339004603248304,
+        -0.10438688524694546,
+        1.1065072021546287
+      ],
+      "block_world_m": [
+        -0.17432887852191925,
+        -0.09854748845100403,
+        1.0580154657363892
+      ],
+      "model_grip_target": 0.227398082613945,
+      "current_interpolated_grip": 0.12352532334625721,
+      "actual_finger_qpos_mm": [
+        29.943428933620453,
+        28.59901636838913
+      ],
+      "actual_total_outward_travel_mm": 58.54244530200958,
+      "bilateral": [
+        true,
+        false
+      ],
+      "support_contact": false,
+      "lift_mm": 218.01477670669556,
+      "contacts": [
+        {
+          "ids": [
+            16,
+            35
+          ],
+          "role": [
+            "left",
+            "link7"
+          ],
+          "impulse": 0.08079928159713745
+        },
+        {
+          "ids": [
+            17,
+            35
+          ],
+          "role": [
+            "left",
+            "link8"
+          ],
+          "impulse": 0.09897217899560928
+        }
+      ]
+    },
+    "right_nearest_target_le_0.9": {
+      "tick": 17660,
+      "sim_s": 70.64000335521996,
+      "action_index": 254,
+      "query_index": 63,
+      "prediction_row_0_based": 2,
+      "distance_mm": 182.19797739307697,
+      "block_minus_tcp_world_mm": [
+        -46.907815855436155,
+        -73.99646617825576,
+        159.75068942239633
+      ],
+      "block_in_tcp_mm": [
+        -25.56033953790946,
+        -80.96291192051281,
+        -161.20725449614932
+      ],
+      "tcp_world_m": [
+        0.006547640782289338,
+        0.04471308976765223,
+        0.9204405651933874
+      ],
+      "block_world_m": [
+        -0.04036017507314682,
+        -0.029283376410603523,
+        1.0801912546157837
+      ],
+      "model_grip_target": 0,
+      "current_interpolated_grip": 0,
+      "actual_finger_qpos_mm": [
+        0,
+        0
+      ],
+      "actual_total_outward_travel_mm": 0,
+      "bilateral": [
+        true,
+        false
+      ],
+      "support_contact": false,
+      "lift_mm": 240.1905655860901,
+      "contacts": [
+        {
+          "ids": [
+            16,
+            35
+          ],
+          "role": [
+            "left",
+            "link7"
+          ],
+          "impulse": 0.10397490859031677
+        },
+        {
+          "ids": [
+            17,
+            35
+          ],
+          "role": [
+            "left",
+            "link8"
+          ],
+          "impulse": 0.12317463010549545
+        }
+      ]
+    },
+    "right_nearest_target_le_0.2": {
+      "tick": 17660,
+      "sim_s": 70.64000335521996,
+      "action_index": 254,
+      "query_index": 63,
+      "prediction_row_0_based": 2,
+      "distance_mm": 182.19797739307697,
+      "block_minus_tcp_world_mm": [
+        -46.907815855436155,
+        -73.99646617825576,
+        159.75068942239633
+      ],
+      "block_in_tcp_mm": [
+        -25.56033953790946,
+        -80.96291192051281,
+        -161.20725449614932
+      ],
+      "tcp_world_m": [
+        0.006547640782289338,
+        0.04471308976765223,
+        0.9204405651933874
+      ],
+      "block_world_m": [
+        -0.04036017507314682,
+        -0.029283376410603523,
+        1.0801912546157837
+      ],
+      "model_grip_target": 0,
+      "current_interpolated_grip": 0,
+      "actual_finger_qpos_mm": [
+        0,
+        0
+      ],
+      "actual_total_outward_travel_mm": 0,
+      "bilateral": [
+        true,
+        false
+      ],
+      "support_contact": false,
+      "lift_mm": 240.1905655860901,
+      "contacts": [
+        {
+          "ids": [
+            16,
+            35
+          ],
+          "role": [
+            "left",
+            "link7"
+          ],
+          "impulse": 0.10397490859031677
+        },
+        {
+          "ids": [
+            17,
+            35
+          ],
+          "role": [
+            "left",
+            "link8"
+          ],
+          "impulse": 0.12317463010549545
+        }
+      ]
+    },
+    "held_interval_s": [
+      23.748001127969474,
+      78.49600372835994
+    ]
+  },
+  {
+    "seed": 1,
+    "frames": 35539,
+    "tcp_convention": "RoboTwin get_*_tcp_pose: joint6 + global_trans_matrix*delta_matrix and 0.12m bias",
+    "relative_coordinates": "block center minus TCP; both world-axis delta and TCP-axis delta reported",
+    "qpos_order_basis": "serial URDF non-fixed order joint1..joint8; setup initial_qpos has 8 entries; archive lacks explicit joint name field",
+    "left_suspended_frames": 0,
+    "source_physics_sha256": "1e80a697173839f0e96ce0a238a08ea0ec06e9a4a36caa210d8c15d49e7250ad",
+    "left_nearest_executed": {
+      "tick": 3811,
+      "sim_s": 15.244000724051148,
+      "action_index": 31,
+      "query_index": 7,
+      "prediction_row_0_based": 3,
+      "distance_mm": 52.53467497945274,
+      "block_minus_tcp_world_mm": [
+        9.900449726299499,
+        -0.3621998846290164,
+        -51.59207285676093
+      ],
+      "block_in_tcp_mm": [
+        10.182893312829677,
+        1.7254703843442716,
+        51.5094506952755
+      ],
+      "tcp_world_m": [
+        -0.17606267235012457,
+        0.17166800532934642,
+        0.8915927022818098
+      ],
+      "block_world_m": [
+        -0.16616222262382507,
+        0.1713058054447174,
+        0.8400006294250488
+      ],
+      "model_grip_target": 1,
+      "current_interpolated_grip": 1,
+      "actual_finger_qpos_mm": [
+        43.99999976158142,
+        43.99999976158142
+      ],
+      "actual_total_outward_travel_mm": 87.99999952316284,
+      "bilateral": [
+        false,
+        false
+      ],
+      "support_contact": true,
+      "lift_mm": 0,
+      "contacts": [
+        {
+          "ids": [
+            35,
+            6
+          ],
+          "role": null,
+          "impulse": 0.00023737986339256167
+        }
+      ]
+    },
+    "first_executed_close": [
+      51,
+      12,
+      3,
+      0.8915311098098755
+    ],
+    "first_close_start": {
+      "tick": 4840,
+      "sim_s": 19.360000919550657,
+      "action_index": 51,
+      "query_index": 12,
+      "prediction_row_0_based": 3,
+      "distance_mm": 82.3547959681236,
+      "block_minus_tcp_world_mm": [
+        28.530175338755708,
+        -1.498366910979959,
+        -77.24051016591748
+      ],
+      "block_in_tcp_mm": [
+        25.845811908696227,
+        13.070589107257392,
+        77.09387865531743
+      ],
+      "tcp_world_m": [
+        -0.11702224100686179,
+        0.21189312191681645,
+        0.9094386531712886
+      ],
+      "block_world_m": [
+        -0.08849206566810608,
+        0.2103947550058365,
+        0.8321981430053711
+      ],
+      "model_grip_target": 0.8915311098098755,
+      "current_interpolated_grip": 0.9565880315171348,
+      "actual_finger_qpos_mm": [
+        43.918441981077194,
+        43.92671585083008
+      ],
+      "actual_total_outward_travel_mm": 87.84515783190727,
+      "bilateral": [
+        false,
+        false
+      ],
+      "support_contact": true,
+      "lift_mm": -7.802486419677734,
+      "contacts": [
+        {
+          "ids": [
+            35,
+            6
+          ],
+          "role": null,
+          "impulse": 0.00038396031595766544
+        }
+      ]
+    },
+    "left_nearest_before_first_close": {
+      "tick": 3811,
+      "sim_s": 15.244000724051148,
+      "action_index": 31,
+      "query_index": 7,
+      "prediction_row_0_based": 3,
+      "distance_mm": 52.53467497945274,
+      "block_minus_tcp_world_mm": [
+        9.900449726299499,
+        -0.3621998846290164,
+        -51.59207285676093
+      ],
+      "block_in_tcp_mm": [
+        10.182893312829677,
+        1.7254703843442716,
+        51.5094506952755
+      ],
+      "tcp_world_m": [
+        -0.17606267235012457,
+        0.17166800532934642,
+        0.8915927022818098
+      ],
+      "block_world_m": [
+        -0.16616222262382507,
+        0.1713058054447174,
+        0.8400006294250488
+      ],
+      "model_grip_target": 1,
+      "current_interpolated_grip": 1,
+      "actual_finger_qpos_mm": [
+        43.99999976158142,
+        43.99999976158142
+      ],
+      "actual_total_outward_travel_mm": 87.99999952316284,
+      "bilateral": [
+        false,
+        false
+      ],
+      "support_contact": true,
+      "lift_mm": 0,
+      "contacts": [
+        {
+          "ids": [
+            35,
+            6
+          ],
+          "role": null,
+          "impulse": 0.00023737986339256167
+        }
+      ]
+    },
+    "left_grip_entire_episode": {
+      "executed_model_target_min": [
+        0,
+        18,
+        0
+      ],
+      "executed_model_target_max": [
+        1,
+        11,
+        2
+      ],
+      "h50_min": [
+        0,
+        2,
+        34
+      ],
+      "interpolated_drive_min": 0,
+      "interpolated_drive_max": 1,
+      "actual_each_prismatic_min_mm": [
+        0,
+        0
+      ],
+      "actual_outward_travel_sum_min_mm": 0,
+      "actual_finger_link_origin_separation_min_mm": 49.796000000036145,
+      "executed_rows_le_0p9": 749,
+      "executed_rows": 800,
+      "h50_only_suffix_closures": 9072
+    },
+    "first_left_nonfinger_block_contact": {
+      "tick": 3927,
+      "sim_s": 15.708000746089965,
+      "action_index": 32,
+      "query_index": 8,
+      "prediction_row_0_based": 0,
+      "distance_mm": 55.25511879795959,
+      "block_minus_tcp_world_mm": [
+        -1.4834215731050204,
+        -9.085214562277816,
+        -54.482900897166346
+      ],
+      "block_in_tcp_mm": [
+        -4.017370699391567,
+        4.350896156214548,
+        54.93686001837141
+      ],
+      "tcp_world_m": [
+        -0.164445955505905,
+        0.18052690369592192,
+        0.8944865701590987
+      ],
+      "block_world_m": [
+        -0.16592937707901,
+        0.1714416891336441,
+        0.8400036692619324
+      ],
+      "model_grip_target": 1,
+      "current_interpolated_grip": 1,
+      "actual_finger_qpos_mm": [
+        43.99999976158142,
+        43.99999976158142
+      ],
+      "actual_total_outward_travel_mm": 87.99999952316284,
+      "bilateral": [
+        false,
+        false
+      ],
+      "support_contact": true,
+      "lift_mm": 0.003039836883544922,
+      "contacts": [
+        {
+          "ids": [
+            13,
+            35
+          ],
+          "role": [
+            "left",
+            "link6"
+          ],
+          "impulse": 0.0005961647839285433
+        },
+        {
+          "ids": [
+            35,
+            6
+          ],
+          "role": null,
+          "impulse": 0.00016707467148080468
+        }
+      ]
+    }
+  },
+  {
+    "seed": 2,
+    "frames": 45761,
+    "tcp_convention": "RoboTwin get_*_tcp_pose: joint6 + global_trans_matrix*delta_matrix and 0.12m bias",
+    "relative_coordinates": "block center minus TCP; both world-axis delta and TCP-axis delta reported",
+    "qpos_order_basis": "serial URDF non-fixed order joint1..joint8; setup initial_qpos has 8 entries; archive lacks explicit joint name field",
+    "left_suspended_frames": 7978,
+    "source_physics_sha256": "1cdc861c16f28a2d00132f43de78db6a3bcf151e1006245168f3a9b6cecb2d55",
+    "right_nearest_suspended": {
+      "tick": 13069,
+      "sim_s": 52.276002482976764,
+      "action_index": 180,
+      "query_index": 45,
+      "prediction_row_0_based": 0,
+      "distance_mm": 137.3919866953183,
+      "block_minus_tcp_world_mm": [
+        -27.790514942115678,
+        -26.192128895869555,
+        131.97809542208404
+      ],
+      "block_in_tcp_mm": [
+        -5.029069121433739,
+        -39.1451221851232,
+        -131.60139011792444
+      ],
+      "tcp_world_m": [
+        0.004803622331327334,
+        -0.010571866989979445,
+        0.9466401926180771
+      ],
+      "block_world_m": [
+        -0.022986892610788345,
+        -0.036763995885849,
+        1.0786182880401611
+      ],
+      "model_grip_target": 0.0018197315512225032,
+      "current_interpolated_grip": 0.0004411470427206068,
+      "actual_finger_qpos_mm": [
+        0,
+        0
+      ],
+      "actual_total_outward_travel_mm": 0,
+      "bilateral": [
+        true,
+        false
+      ],
+      "support_contact": false,
+      "lift_mm": 238.61759901046753,
+      "contacts": [
+        {
+          "ids": [
+            16,
+            35
+          ],
+          "role": [
+            "left",
+            "link7"
+          ],
+          "impulse": 0.0626257061958313
+        },
+        {
+          "ids": [
+            17,
+            35
+          ],
+          "role": [
+            "left",
+            "link8"
+          ],
+          "impulse": 0.06275133043527603
+        }
+      ]
+    },
+    "right_grip_while_left_suspended": {
+      "executed_model_target_min": [
+        0,
+        39,
+        0
+      ],
+      "executed_model_target_max": [
+        1,
+        34,
+        3
+      ],
+      "h50_min": [
+        0,
+        21,
+        44
+      ],
+      "interpolated_drive_min": 0,
+      "interpolated_drive_max": 1,
+      "actual_each_prismatic_min_mm": [
+        0,
+        0
+      ],
+      "actual_outward_travel_sum_min_mm": 0,
+      "actual_finger_link_origin_separation_min_mm": 49.796000000036145,
+      "executed_rows_le_0p9": 42,
+      "executed_rows": 119,
+      "h50_only_suffix_closures": 940
+    },
+    "left_grip_while_left_suspended": {
+      "executed_model_target_min": [
+        0,
+        21,
+        3
+      ],
+      "executed_model_target_max": [
+        0.7781603336334229,
+        45,
+        3
+      ],
+      "h50_min": [
+        0,
+        16,
+        30
+      ],
+      "interpolated_drive_min": 0,
+      "interpolated_drive_max": 0.7290688612881828,
+      "actual_each_prismatic_min_mm": [
+        29.6265110373497,
+        28.095053508877754
+      ],
+      "actual_outward_travel_sum_min_mm": 58.238862082362175,
+      "actual_finger_link_origin_separation_min_mm": 108.03486208237884,
+      "executed_rows_le_0p9": 119,
+      "executed_rows": 119,
+      "h50_only_suffix_closures": 1017
+    },
+    "right_nearest_any_airborne": {
+      "tick": 14319,
+      "sim_s": 57.27600272046402,
+      "action_index": 201,
+      "query_index": 50,
+      "prediction_row_0_based": 1,
+      "distance_mm": 77.55630020087501,
+      "block_minus_tcp_world_mm": [
+        -75.3597568539303,
+        -18.26520592076479,
+        1.5063201641122292
+      ],
+      "block_in_tcp_mm": [
+        13.273295272043436,
+        -76.30726078960102,
+        4.000160528931496
+      ],
+      "tcp_world_m": [
+        0.008268917706362552,
+        -0.004794147311618938,
+        0.967808314635845
+      ],
+      "block_world_m": [
+        -0.06709083914756775,
+        -0.023059353232383728,
+        0.9693146347999573
+      ],
+      "model_grip_target": 0.005867606028914452,
+      "current_interpolated_grip": 0.006835286330897361,
+      "actual_finger_qpos_mm": [
+        0,
+        0
+      ],
+      "actual_total_outward_travel_mm": 0,
+      "bilateral": [
+        false,
+        false
+      ],
+      "support_contact": false,
+      "lift_mm": 129.31394577026367,
+      "contacts": []
+    },
+    "right_grip_any_airborne": {
+      "executed_model_target_min": [
+        0,
+        39,
+        0
+      ],
+      "executed_model_target_max": [
+        1,
+        34,
+        3
+      ],
+      "h50_min": [
+        0,
+        21,
+        44
+      ],
+      "interpolated_drive_min": 0,
+      "interpolated_drive_max": 1,
+      "actual_each_prismatic_min_mm": [
+        0,
+        0
+      ],
+      "actual_outward_travel_sum_min_mm": 0,
+      "actual_finger_link_origin_separation_min_mm": 49.796000000036145,
+      "executed_rows_le_0p9": 60,
+      "executed_rows": 137,
+      "h50_only_suffix_closures": 1125
+    },
+    "left_grip_any_airborne": {
+      "executed_model_target_min": [
+        0,
+        21,
+        3
+      ],
+      "executed_model_target_max": [
+        1,
+        50,
+        1
+      ],
+      "h50_min": [
+        0,
+        16,
+        30
+      ],
+      "interpolated_drive_min": 0,
+      "interpolated_drive_max": 1,
+      "actual_each_prismatic_min_mm": [
+        29.6265110373497,
+        28.095053508877754
+      ],
+      "actual_outward_travel_sum_min_mm": 58.238862082362175,
+      "actual_finger_link_origin_separation_min_mm": 108.03486208237884,
+      "executed_rows_le_0p9": 120,
+      "executed_rows": 137,
+      "h50_only_suffix_closures": 1017
+    },
+    "first_right_closing_suspended": {
+      "tick": 11695,
+      "sim_s": 46.78000222193077,
+      "action_index": 142,
+      "query_index": 35,
+      "prediction_row_0_based": 2,
+      "distance_mm": 174.26578028196195,
+      "block_minus_tcp_world_mm": [
+        -33.91573873139151,
+        -23.116365164301683,
+        169.36327377910388
+      ],
+      "block_in_tcp_mm": [
+        -9.082348147955374,
+        -39.253402347652795,
+        -169.5442229435543
+      ],
+      "tcp_world_m": [
+        0.001940342753894403,
+        -0.016841847360350798,
+        0.9137384756410621
+      ],
+      "block_world_m": [
+        -0.0319753959774971,
+        -0.03995821252465248,
+        1.083101749420166
+      ],
+      "model_grip_target": 0.8308709263801575,
+      "current_interpolated_grip": 0.9149806520768574,
+      "actual_finger_qpos_mm": [
+        43.45293715596199,
+        43.42665523290634
+      ],
+      "actual_total_outward_travel_mm": 86.87959238886833,
+      "bilateral": [
+        true,
+        false
+      ],
+      "support_contact": false,
+      "lift_mm": 243.1010603904724,
+      "contacts": [
+        {
+          "ids": [
+            16,
+            35
+          ],
+          "role": [
+            "left",
+            "link7"
+          ],
+          "impulse": 0.15371286869049072
+        },
+        {
+          "ids": [
+            17,
+            35
+          ],
+          "role": [
+            "left",
+            "link8"
+          ],
+          "impulse": 0.15405307710170746
+        }
+      ]
+    },
+    "first_right_tight_suspended": {
+      "tick": 12036,
+      "sim_s": 48.144002286717296,
+      "action_index": 152,
+      "query_index": 38,
+      "prediction_row_0_based": 0,
+      "distance_mm": 175.0049034191504,
+      "block_minus_tcp_world_mm": [
+        -36.83953045663062,
+        -28.56348458773164,
+        168.68222361792473
+      ],
+      "block_in_tcp_mm": [
+        -13.454135220641884,
+        -44.39012856175504,
+        -168.74601907150793
+      ],
+      "tcp_world_m": [
+        0.0056909384464901985,
+        -0.011609408966240603,
+        0.9183132588268385
+      ],
+      "block_world_m": [
+        -0.03114859201014042,
+        -0.040172893553972244,
+        1.0869954824447632
+      ],
+      "model_grip_target": 0.1664494127035141,
+      "current_interpolated_grip": 0.21528093930747774,
+      "actual_finger_qpos_mm": [
+        9.256375953555107,
+        9.27249900996685
+      ],
+      "actual_total_outward_travel_mm": 18.528874963521957,
+      "bilateral": [
+        true,
+        false
+      ],
+      "support_contact": false,
+      "lift_mm": 246.99479341506958,
+      "contacts": [
+        {
+          "ids": [
+            16,
+            35
+          ],
+          "role": [
+            "left",
+            "link7"
+          ],
+          "impulse": 0.15496571362018585
+        },
+        {
+          "ids": [
+            17,
+            35
+          ],
+          "role": [
+            "left",
+            "link8"
+          ],
+          "impulse": 0.1552400290966034
+        }
+      ]
+    },
+    "first_left_reopening_suspended": {
+      "tick": 12931,
+      "sim_s": 51.72400245675817,
+      "action_index": 177,
+      "query_index": 44,
+      "prediction_row_0_based": 1,
+      "distance_mm": 61.15832131707208,
+      "block_minus_tcp_world_mm": [
+        -1.6443179006307567,
+        7.080237994847444,
+        -60.72484429704383
+      ],
+      "block_in_tcp_mm": [
+        -7.446149668309909,
+        -1.3343871931964668,
+        60.68866889509106
+      ],
+      "tcp_world_m": [
+        -0.02330998247316189,
+        -0.0452675294679977,
+        1.1411011117302103
+      ],
+      "block_world_m": [
+        -0.02495430037379265,
+        -0.03818729147315025,
+        1.0803762674331665
+      ],
+      "model_grip_target": 0.2555760145187378,
+      "current_interpolated_grip": 0.18406031070611414,
+      "actual_finger_qpos_mm": [
+        29.893837869167328,
+        28.606053441762924
+      ],
+      "actual_total_outward_travel_mm": 58.49989131093025,
+      "bilateral": [
+        true,
+        false
+      ],
+      "support_contact": false,
+      "lift_mm": 240.3755784034729,
+      "contacts": [
+        {
+          "ids": [
+            16,
+            35
+          ],
+          "role": [
+            "left",
+            "link7"
+          ],
+          "impulse": 0.1163090169429779
+        },
+        {
+          "ids": [
+            17,
+            35
+          ],
+          "role": [
+            "left",
+            "link8"
+          ],
+          "impulse": 0.11650972813367844
+        }
+      ]
+    },
+    "right_nearest_target_le_0.9": {
+      "tick": 13069,
+      "sim_s": 52.276002482976764,
+      "action_index": 180,
+      "query_index": 45,
+      "prediction_row_0_based": 0,
+      "distance_mm": 137.3919866953183,
+      "block_minus_tcp_world_mm": [
+        -27.790514942115678,
+        -26.192128895869555,
+        131.97809542208404
+      ],
+      "block_in_tcp_mm": [
+        -5.029069121433739,
+        -39.1451221851232,
+        -131.60139011792444
+      ],
+      "tcp_world_m": [
+        0.004803622331327334,
+        -0.010571866989979445,
+        0.9466401926180771
+      ],
+      "block_world_m": [
+        -0.022986892610788345,
+        -0.036763995885849,
+        1.0786182880401611
+      ],
+      "model_grip_target": 0.0018197315512225032,
+      "current_interpolated_grip": 0.0004411470427206068,
+      "actual_finger_qpos_mm": [
+        0,
+        0
+      ],
+      "actual_total_outward_travel_mm": 0,
+      "bilateral": [
+        true,
+        false
+      ],
+      "support_contact": false,
+      "lift_mm": 238.61759901046753,
+      "contacts": [
+        {
+          "ids": [
+            16,
+            35
+          ],
+          "role": [
+            "left",
+            "link7"
+          ],
+          "impulse": 0.0626257061958313
+        },
+        {
+          "ids": [
+            17,
+            35
+          ],
+          "role": [
+            "left",
+            "link8"
+          ],
+          "impulse": 0.06275133043527603
+        }
+      ]
+    },
+    "right_nearest_target_le_0.2": {
+      "tick": 13069,
+      "sim_s": 52.276002482976764,
+      "action_index": 180,
+      "query_index": 45,
+      "prediction_row_0_based": 0,
+      "distance_mm": 137.3919866953183,
+      "block_minus_tcp_world_mm": [
+        -27.790514942115678,
+        -26.192128895869555,
+        131.97809542208404
+      ],
+      "block_in_tcp_mm": [
+        -5.029069121433739,
+        -39.1451221851232,
+        -131.60139011792444
+      ],
+      "tcp_world_m": [
+        0.004803622331327334,
+        -0.010571866989979445,
+        0.9466401926180771
+      ],
+      "block_world_m": [
+        -0.022986892610788345,
+        -0.036763995885849,
+        1.0786182880401611
+      ],
+      "model_grip_target": 0.0018197315512225032,
+      "current_interpolated_grip": 0.0004411470427206068,
+      "actual_finger_qpos_mm": [
+        0,
+        0
+      ],
+      "actual_total_outward_travel_mm": 0,
+      "bilateral": [
+        true,
+        false
+      ],
+      "support_contact": false,
+      "lift_mm": 238.61759901046753,
+      "contacts": [
+        {
+          "ids": [
+            16,
+            35
+          ],
+          "role": [
+            "left",
+            "link7"
+          ],
+          "impulse": 0.0626257061958313
+        },
+        {
+          "ids": [
+            17,
+            35
+          ],
+          "role": [
+            "left",
+            "link8"
+          ],
+          "impulse": 0.06275133043527603
+        }
+      ]
+    },
+    "held_interval_s": [
+      20.880000991746783,
+      52.78800250729546
+    ]
+  },
+  {
+    "seed": 3,
+    "frames": 36854,
+    "tcp_convention": "RoboTwin get_*_tcp_pose: joint6 + global_trans_matrix*delta_matrix and 0.12m bias",
+    "relative_coordinates": "block center minus TCP; both world-axis delta and TCP-axis delta reported",
+    "qpos_order_basis": "serial URDF non-fixed order joint1..joint8; setup initial_qpos has 8 entries; archive lacks explicit joint name field",
+    "left_suspended_frames": 0,
+    "source_physics_sha256": "2ffbc5f9d92550d2739adf9ef83b1a5d29f5f62bf66ec370c7d63a3d1feef4f9",
+    "left_nearest_executed": {
+      "tick": 3691,
+      "sim_s": 14.764000701252371,
+      "action_index": 31,
+      "query_index": 7,
+      "prediction_row_0_based": 3,
+      "distance_mm": 54.99539451919374,
+      "block_minus_tcp_world_mm": [
+        -8.600310518700361,
+        -1.543565175809447,
+        -54.29682756710308
+      ],
+      "block_in_tcp_mm": [
+        -6.809940314447632,
+        -6.941180200773566,
+        54.12890308010883
+      ],
+      "tcp_world_m": [
+        -0.20478601650957418,
+        0.061714305064954345,
+        0.8963272931699778
+      ],
+      "block_world_m": [
+        -0.21338632702827454,
+        0.0601707398891449,
+        0.8420304656028748
+      ],
+      "model_grip_target": 1,
+      "current_interpolated_grip": 1,
+      "actual_finger_qpos_mm": [
+        43.99999976158142,
+        43.99999976158142
+      ],
+      "actual_total_outward_travel_mm": 87.99999952316284,
+      "bilateral": [
+        false,
+        false
+      ],
+      "support_contact": true,
+      "lift_mm": 2.029895782470703,
+      "contacts": [
+        {
+          "ids": [
+            35,
+            6
+          ],
+          "role": null,
+          "impulse": 0.0003903863253071904
+        }
+      ]
+    },
+    "first_executed_close": [
+      55,
+      13,
+      3,
+      0.8603745102882385
+    ],
+    "first_close_start": {
+      "tick": 4985,
+      "sim_s": 19.94000094709918,
+      "action_index": 55,
+      "query_index": 13,
+      "prediction_row_0_based": 3,
+      "distance_mm": 91.17564090488446,
+      "block_minus_tcp_world_mm": [
+        42.3822171609817,
+        11.918111197293356,
+        -79.84174214297168
+      ],
+      "block_in_tcp_mm": [
+        46.39986851691344,
+        -0.4108470996520138,
+        78.48490874486825
+      ],
+      "tcp_world_m": [
+        -0.14807870905808787,
+        0.09310587639397327,
+        0.8786098452656829
+      ],
+      "block_world_m": [
+        -0.10569649189710617,
+        0.10502398759126663,
+        0.7987681031227112
+      ],
+      "model_grip_target": 0.8603745102882385,
+      "current_interpolated_grip": 0.9325603632365956,
+      "actual_finger_qpos_mm": [
+        43.65061596035957,
+        43.671369552612305
+      ],
+      "actual_total_outward_travel_mm": 87.32198551297188,
+      "bilateral": [
+        false,
+        false
+      ],
+      "support_contact": true,
+      "lift_mm": -41.23246669769287,
+      "contacts": [
+        {
+          "ids": [
+            35,
+            6
+          ],
+          "role": null,
+          "impulse": 0.00018962712783832103
+        }
+      ]
+    },
+    "left_nearest_before_first_close": {
+      "tick": 3691,
+      "sim_s": 14.764000701252371,
+      "action_index": 31,
+      "query_index": 7,
+      "prediction_row_0_based": 3,
+      "distance_mm": 54.99539451919374,
+      "block_minus_tcp_world_mm": [
+        -8.600310518700361,
+        -1.543565175809447,
+        -54.29682756710308
+      ],
+      "block_in_tcp_mm": [
+        -6.809940314447632,
+        -6.941180200773566,
+        54.12890308010883
+      ],
+      "tcp_world_m": [
+        -0.20478601650957418,
+        0.061714305064954345,
+        0.8963272931699778
+      ],
+      "block_world_m": [
+        -0.21338632702827454,
+        0.0601707398891449,
+        0.8420304656028748
+      ],
+      "model_grip_target": 1,
+      "current_interpolated_grip": 1,
+      "actual_finger_qpos_mm": [
+        43.99999976158142,
+        43.99999976158142
+      ],
+      "actual_total_outward_travel_mm": 87.99999952316284,
+      "bilateral": [
+        false,
+        false
+      ],
+      "support_contact": true,
+      "lift_mm": 2.029895782470703,
+      "contacts": [
+        {
+          "ids": [
+            35,
+            6
+          ],
+          "role": null,
+          "impulse": 0.0003903863253071904
+        }
+      ]
+    },
+    "left_grip_entire_episode": {
+      "executed_model_target_min": [
+        0,
+        20,
+        1
+      ],
+      "executed_model_target_max": [
+        1,
+        13,
+        1
+      ],
+      "h50_min": [
+        0,
+        2,
+        32
+      ],
+      "interpolated_drive_min": 0,
+      "interpolated_drive_max": 1,
+      "actual_each_prismatic_min_mm": [
+        0,
+        0
+      ],
+      "actual_outward_travel_sum_min_mm": 0,
+      "actual_finger_link_origin_separation_min_mm": 49.796000000036145,
+      "executed_rows_le_0p9": 745,
+      "executed_rows": 800,
+      "h50_only_suffix_closures": 9092
+    },
+    "first_left_nonfinger_block_contact": {
+      "tick": 3532,
+      "sim_s": 14.128000671043992,
+      "action_index": 28,
+      "query_index": 7,
+      "prediction_row_0_based": 0,
+      "distance_mm": 56.27853271103784,
+      "block_minus_tcp_world_mm": [
+        -6.707517474063756,
+        1.7912020094406136,
+        -55.848670967211575
+      ],
+      "block_in_tcp_mm": [
+        -3.824059752690944,
+        -9.287209947473121,
+        55.375062460522436
+      ],
+      "tcp_world_m": [
+        -0.21735923174106228,
+        0.05544382286000137,
+        0.8969872722703122
+      ],
+      "block_world_m": [
+        -0.22406674921512604,
+        0.057235024869441986,
+        0.8411386013031006
+      ],
+      "model_grip_target": 1,
+      "current_interpolated_grip": 1,
+      "actual_finger_qpos_mm": [
+        43.99999976158142,
+        43.99999976158142
+      ],
+      "actual_total_outward_travel_mm": 87.99999952316284,
+      "bilateral": [
+        false,
+        false
+      ],
+      "support_contact": true,
+      "lift_mm": 1.1380314826965332,
+      "contacts": [
+        {
+          "ids": [
+            13,
+            35
+          ],
+          "role": [
+            "left",
+            "link6"
+          ],
+          "impulse": 0.0006910645170137286
+        },
+        {
+          "ids": [
+            35,
+            6
+          ],
+          "role": null,
+          "impulse": 0.00016989813593681902
+        }
+      ]
+    }
+  },
+  {
+    "seed": 4,
+    "frames": 47630,
+    "tcp_convention": "RoboTwin get_*_tcp_pose: joint6 + global_trans_matrix*delta_matrix and 0.12m bias",
+    "relative_coordinates": "block center minus TCP; both world-axis delta and TCP-axis delta reported",
+    "qpos_order_basis": "serial URDF non-fixed order joint1..joint8; setup initial_qpos has 8 entries; archive lacks explicit joint name field",
+    "left_suspended_frames": 9099,
+    "source_physics_sha256": "95a0108b2394ad5ad70f68da3dfd210158ac0341e6b8a902680961415f36a45f",
+    "right_nearest_suspended": {
+      "tick": 8959,
+      "sim_s": 35.836001702118665,
+      "action_index": 100,
+      "query_index": 25,
+      "prediction_row_0_based": 0,
+      "distance_mm": 128.47672641844215,
+      "block_minus_tcp_world_mm": [
+        -75.76862928016378,
+        27.51413387733588,
+        100.04177370071154
+      ],
+      "block_in_tcp_mm": [
+        45.662700624334704,
+        -67.44103576796802,
+        -99.36243604821331
+      ],
+      "tcp_world_m": [
+        0.052638355833723095,
+        -0.05989503515440116,
+        0.9422965975761439
+      ],
+      "block_world_m": [
+        -0.023130273446440697,
+        -0.03238090127706528,
+        1.0423383712768555
+      ],
+      "model_grip_target": 0.9957519173622131,
+      "current_interpolated_grip": 0.994592547416687,
+      "actual_finger_qpos_mm": [
+        40.05860909819603,
+        43.99999976158142
+      ],
+      "actual_total_outward_travel_mm": 84.05860885977745,
+      "bilateral": [
+        true,
+        false
+      ],
+      "support_contact": false,
+      "lift_mm": 202.33768224716187,
+      "contacts": [
+        {
+          "ids": [
+            13,
+            35
+          ],
+          "role": [
+            "left",
+            "link6"
+          ],
+          "impulse": 0.056731559336185455
+        },
+        {
+          "ids": [
+            16,
+            35
+          ],
+          "role": [
+            "left",
+            "link7"
+          ],
+          "impulse": 0.10800150036811829
+        },
+        {
+          "ids": [
+            17,
+            35
+          ],
+          "role": [
+            "left",
+            "link8"
+          ],
+          "impulse": 0.16044645011425018
+        },
+        {
+          "ids": [
+            27,
+            35
+          ],
+          "role": [
+            "right",
+            "link7"
+          ],
+          "impulse": 0.035699281841516495
+        }
+      ]
+    },
+    "right_grip_while_left_suspended": {
+      "executed_model_target_min": [
+        0,
+        35,
+        1
+      ],
+      "executed_model_target_max": [
+        1,
+        30,
+        1
+      ],
+      "h50_min": [
+        0,
+        22,
+        43
+      ],
+      "interpolated_drive_min": 0,
+      "interpolated_drive_max": 1,
+      "actual_each_prismatic_min_mm": [
+        0,
+        0
+      ],
+      "actual_outward_travel_sum_min_mm": 0,
+      "actual_finger_link_origin_separation_min_mm": 49.796000000036145,
+      "executed_rows_le_0p9": 91,
+      "executed_rows": 156,
+      "h50_only_suffix_closures": 1509
+    },
+    "left_grip_while_left_suspended": {
+      "executed_model_target_min": [
+        0,
+        15,
+        3
+      ],
+      "executed_model_target_max": [
+        0.7421090602874756,
+        54,
+        0
+      ],
+      "h50_min": [
+        0,
+        15,
+        3
+      ],
+      "interpolated_drive_min": 0,
+      "interpolated_drive_max": 0.7299547672271729,
+      "actual_each_prismatic_min_mm": [
+        27.64025516808033,
+        27.371292933821678
+      ],
+      "actual_outward_travel_sum_min_mm": 58.15584771335125,
+      "actual_finger_link_origin_separation_min_mm": 107.95184771336794,
+      "executed_rows_le_0p9": 156,
+      "executed_rows": 156,
+      "h50_only_suffix_closures": 1035
+    },
+    "right_nearest_any_airborne": {
+      "tick": 8959,
+      "sim_s": 35.836001702118665,
+      "action_index": 100,
+      "query_index": 25,
+      "prediction_row_0_based": 0,
+      "distance_mm": 128.47672641844215,
+      "block_minus_tcp_world_mm": [
+        -75.76862928016378,
+        27.51413387733588,
+        100.04177370071154
+      ],
+      "block_in_tcp_mm": [
+        45.662700624334704,
+        -67.44103576796802,
+        -99.36243604821331
+      ],
+      "tcp_world_m": [
+        0.052638355833723095,
+        -0.05989503515440116,
+        0.9422965975761439
+      ],
+      "block_world_m": [
+        -0.023130273446440697,
+        -0.03238090127706528,
+        1.0423383712768555
+      ],
+      "model_grip_target": 0.9957519173622131,
+      "current_interpolated_grip": 0.994592547416687,
+      "actual_finger_qpos_mm": [
+        40.05860909819603,
+        43.99999976158142
+      ],
+      "actual_total_outward_travel_mm": 84.05860885977745,
+      "bilateral": [
+        true,
+        false
+      ],
+      "support_contact": false,
+      "lift_mm": 202.33768224716187,
+      "contacts": [
+        {
+          "ids": [
+            13,
+            35
+          ],
+          "role": [
+            "left",
+            "link6"
+          ],
+          "impulse": 0.056731559336185455
+        },
+        {
+          "ids": [
+            16,
+            35
+          ],
+          "role": [
+            "left",
+            "link7"
+          ],
+          "impulse": 0.10800150036811829
+        },
+        {
+          "ids": [
+            17,
+            35
+          ],
+          "role": [
+            "left",
+            "link8"
+          ],
+          "impulse": 0.16044645011425018
+        },
+        {
+          "ids": [
+            27,
+            35
+          ],
+          "role": [
+            "right",
+            "link7"
+          ],
+          "impulse": 0.035699281841516495
+        }
+      ]
+    },
+    "right_grip_any_airborne": {
+      "executed_model_target_min": [
+        0,
+        35,
+        1
+      ],
+      "executed_model_target_max": [
+        1,
+        30,
+        1
+      ],
+      "h50_min": [
+        0,
+        22,
+        43
+      ],
+      "interpolated_drive_min": 0,
+      "interpolated_drive_max": 1,
+      "actual_each_prismatic_min_mm": [
+        0,
+        0
+      ],
+      "actual_outward_travel_sum_min_mm": 0,
+      "actual_finger_link_origin_separation_min_mm": 49.796000000036145,
+      "executed_rows_le_0p9": 108,
+      "executed_rows": 173,
+      "h50_only_suffix_closures": 1634
+    },
+    "left_grip_any_airborne": {
+      "executed_model_target_min": [
+        0,
+        15,
+        3
+      ],
+      "executed_model_target_max": [
+        1,
+        58,
+        1
+      ],
+      "h50_min": [
+        0,
+        15,
+        3
+      ],
+      "interpolated_drive_min": 0,
+      "interpolated_drive_max": 1,
+      "actual_each_prismatic_min_mm": [
+        27.64025516808033,
+        27.371292933821678
+      ],
+      "actual_outward_travel_sum_min_mm": 58.15584771335125,
+      "actual_finger_link_origin_separation_min_mm": 107.95184771336794,
+      "executed_rows_le_0p9": 158,
+      "executed_rows": 173,
+      "h50_only_suffix_closures": 1035
+    },
+    "first_right_closing_suspended": {
+      "tick": 10651,
+      "sim_s": 42.604002023581415,
+      "action_index": 126,
+      "query_index": 31,
+      "prediction_row_0_based": 2,
+      "distance_mm": 139.93317525850986,
+      "block_minus_tcp_world_mm": [
+        -3.410236430045531,
+        -15.046984900800947,
+        139.0800203868805
+      ],
+      "block_in_tcp_mm": [
+        -10.287172561435497,
+        -10.22087550176645,
+        -139.1797446563166
+      ],
+      "tcp_world_m": [
+        -0.035135845202330186,
+        -0.021409603754909273,
+        0.907647040884787
+      ],
+      "block_world_m": [
+        -0.03854608163237572,
+        -0.03645658865571022,
+        1.0467270612716675
+      ],
+      "model_grip_target": 0.8307302594184875,
+      "current_interpolated_grip": 0.9117176413536072,
+      "actual_finger_qpos_mm": [
+        43.25459152460098,
+        43.26386749744415
+      ],
+      "actual_total_outward_travel_mm": 86.51845902204514,
+      "bilateral": [
+        true,
+        false
+      ],
+      "support_contact": false,
+      "lift_mm": 206.72637224197388,
+      "contacts": [
+        {
+          "ids": [
+            13,
+            35
+          ],
+          "role": [
+            "left",
+            "link6"
+          ],
+          "impulse": 0.006562278140336275
+        },
+        {
+          "ids": [
+            16,
+            35
+          ],
+          "role": [
+            "left",
+            "link7"
+          ],
+          "impulse": 0.09023167192935944
+        },
+        {
+          "ids": [
+            17,
+            35
+          ],
+          "role": [
+            "left",
+            "link8"
+          ],
+          "impulse": 0.10395079851150513
+        }
+      ]
+    },
+    "first_right_tight_suspended": {
+      "tick": 11051,
+      "sim_s": 44.20400209957734,
+      "action_index": 136,
+      "query_index": 34,
+      "prediction_row_0_based": 0,
+      "distance_mm": 134.45059740153962,
+      "block_minus_tcp_world_mm": [
+        -6.544941884539648,
+        -19.58347165176458,
+        132.8556152950391
+      ],
+      "block_in_tcp_mm": [
+        -12.40930702028157,
+        -16.33171114271522,
+        -132.87681307157465
+      ],
+      "tcp_world_m": [
+        -0.02940191157434173,
+        -0.016244090561179453,
+        0.9148488429416552
+      ],
+      "block_world_m": [
+        -0.03594685345888138,
+        -0.03582756221294403,
+        1.0477044582366943
+      ],
+      "model_grip_target": 0.14769242703914642,
+      "current_interpolated_grip": 0.20040891159858024,
+      "actual_finger_qpos_mm": [
+        8.282945491373539,
+        6.054811645299196
+      ],
+      "actual_total_outward_travel_mm": 14.337757136672735,
+      "bilateral": [
+        true,
+        false
+      ],
+      "support_contact": false,
+      "lift_mm": 207.70376920700073,
+      "contacts": [
+        {
+          "ids": [
+            16,
+            35
+          ],
+          "role": [
+            "left",
+            "link7"
+          ],
+          "impulse": 0.15349771082401276
+        },
+        {
+          "ids": [
+            17,
+            35
+          ],
+          "role": [
+            "left",
+            "link8"
+          ],
+          "impulse": 0.10548080503940582
+        },
+        {
+          "ids": [
+            27,
+            35
+          ],
+          "role": [
+            "right",
+            "link7"
+          ],
+          "impulse": 0.03502735123038292
+        }
+      ]
+    },
+    "first_left_reopening_suspended": {
+      "tick": 13809,
+      "sim_s": 55.23600262356922,
+      "action_index": 210,
+      "query_index": 52,
+      "prediction_row_0_based": 2,
+      "distance_mm": 10.336602513894022,
+      "block_minus_tcp_world_mm": [
+        2.680837522390289,
+        2.1395120604519176,
+        -9.750946100351765
+      ],
+      "block_in_tcp_mm": [
+        2.16181902255868,
+        -0.5381699660177677,
+        10.093674411809609
+      ],
+      "tcp_world_m": [
+        -0.02093967364275734,
+        -0.05088746136264842,
+        1.1216345863896584
+      ],
+      "block_world_m": [
+        -0.01825883612036705,
+        -0.0487479493021965,
+        1.1118836402893066
+      ],
+      "model_grip_target": 0.27799877524375916,
+      "current_interpolated_grip": 0.19761789564428658,
+      "actual_finger_qpos_mm": [
+        30.086815357208252,
+        28.505299240350723
+      ],
+      "actual_total_outward_travel_mm": 58.592114597558975,
+      "bilateral": [
+        true,
+        false
+      ],
+      "support_contact": false,
+      "lift_mm": 271.88295125961304,
+      "contacts": [
+        {
+          "ids": [
+            16,
+            35
+          ],
+          "role": [
+            "left",
+            "link7"
+          ],
+          "impulse": 0.0779288187623024
+        },
+        {
+          "ids": [
+            17,
+            35
+          ],
+          "role": [
+            "left",
+            "link8"
+          ],
+          "impulse": 0.08924056589603424
+        },
+        {
+          "ids": [
+            27,
+            35
+          ],
+          "role": [
+            "right",
+            "link7"
+          ],
+          "impulse": 0.03493818640708923
+        }
+      ]
+    },
+    "right_nearest_target_le_0.9": {
+      "tick": 12879,
+      "sim_s": 51.5160024468787,
+      "action_index": 184,
+      "query_index": 46,
+      "prediction_row_0_based": 0,
+      "distance_mm": 130.67613687577426,
+      "block_minus_tcp_world_mm": [
+        -0.5398207329493226,
+        -24.6122677152754,
+        128.33626775102968
+      ],
+      "block_in_tcp_mm": [
+        -5.237155998208023,
+        -20.004750326542023,
+        -129.02958928168084
+      ],
+      "tcp_world_m": [
+        -0.018268482667924815,
+        -0.018577567088067418,
+        0.9650818535868609
+      ],
+      "block_world_m": [
+        -0.018808303400874138,
+        -0.04318983480334282,
+        1.0934181213378906
+      ],
+      "model_grip_target": 0,
+      "current_interpolated_grip": 0,
+      "actual_finger_qpos_mm": [
+        0,
+        0
+      ],
+      "actual_total_outward_travel_mm": 0,
+      "bilateral": [
+        true,
+        false
+      ],
+      "support_contact": false,
+      "lift_mm": 253.41743230819702,
+      "contacts": [
+        {
+          "ids": [
+            16,
+            35
+          ],
+          "role": [
+            "left",
+            "link7"
+          ],
+          "impulse": 0.15282607078552246
+        },
+        {
+          "ids": [
+            17,
+            35
+          ],
+          "role": [
+            "left",
+            "link8"
+          ],
+          "impulse": 0.14069658517837524
+        },
+        {
+          "ids": [
+            27,
+            35
+          ],
+          "role": [
+            "right",
+            "link7"
+          ],
+          "impulse": 0.04278818145394325
+        }
+      ]
+    },
+    "right_nearest_target_le_0.2": {
+      "tick": 12879,
+      "sim_s": 51.5160024468787,
+      "action_index": 184,
+      "query_index": 46,
+      "prediction_row_0_based": 0,
+      "distance_mm": 130.67613687577426,
+      "block_minus_tcp_world_mm": [
+        -0.5398207329493226,
+        -24.6122677152754,
+        128.33626775102968
+      ],
+      "block_in_tcp_mm": [
+        -5.237155998208023,
+        -20.004750326542023,
+        -129.02958928168084
+      ],
+      "tcp_world_m": [
+        -0.018268482667924815,
+        -0.018577567088067418,
+        0.9650818535868609
+      ],
+      "block_world_m": [
+        -0.018808303400874138,
+        -0.04318983480334282,
+        1.0934181213378906
+      ],
+      "model_grip_target": 0,
+      "current_interpolated_grip": 0,
+      "actual_finger_qpos_mm": [
+        0,
+        0
+      ],
+      "actual_total_outward_travel_mm": 0,
+      "bilateral": [
+        true,
+        false
+      ],
+      "support_contact": false,
+      "lift_mm": 253.41743230819702,
+      "contacts": [
+        {
+          "ids": [
+            16,
+            35
+          ],
+          "role": [
+            "left",
+            "link7"
+          ],
+          "impulse": 0.15282607078552246
+        },
+        {
+          "ids": [
+            17,
+            35
+          ],
+          "role": [
+            "left",
+            "link8"
+          ],
+          "impulse": 0.14069658517837524
+        },
+        {
+          "ids": [
+            27,
+            35
+          ],
+          "role": [
+            "right",
+            "link7"
+          ],
+          "impulse": 0.04278818145394325
+        }
+      ]
+    },
+    "held_interval_s": [
+      19.860000943299383,
+      56.27600267296657
+    ]
+  }
+]

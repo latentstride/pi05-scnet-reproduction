@@ -1,0 +1,43 @@
+{
+  "complete.json": {
+    "status": "finished",
+    "K": 15,
+    "training_started": true,
+    "checkpoint_api_recovery": true
+  },
+  "early-stop.json": {
+    "step": 2000,
+    "reason": "native official success >=3/5"
+  },
+  "gpu-released.json": {
+    "memory_used_mib": "0",
+    "zero_mib": true,
+    "cuda_processes": ""
+  },
+  "shutdown-accepted.json": {
+    "notebook_id": "2123408832426430466",
+    "requested": true
+  },
+  "shutdown-response.json": {
+    "code": "0",
+    "message": "success",
+    "attempt": 0
+  },
+  "stage2-complete.json": {
+    "best_step": 2000,
+    "best_K": 15,
+    "evaluated_nodes": 4
+  },
+  "best-ema.json": {
+    "step": 2000,
+    "K": 15,
+    "rank": [
+      3,
+      5,
+      4,
+      78.06000370765105,
+      842.0950174331665,
+      -1e+30
+    ]
+  }
+}

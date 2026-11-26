@@ -1,0 +1,1637 @@
+{
+  "nodes": [
+    {
+      "step": 2000,
+      "chunk_length": 15,
+      "episodes": [
+        {
+          "model": "native",
+          "seed": 0,
+          "status": "finished",
+          "stop_reason": "official_success",
+          "actions": 288,
+          "queries": 20,
+          "grasped": true,
+          "max_lift_mm": 171.74726724624634,
+          "max_bilateral_lift_mm": 171.74726724624634,
+          "stable_bilateral_max_lift_mm": 171.74726724624634,
+          "longest_bilateral_s": [
+            36.40000172890723,
+            25.216001197695732
+          ],
+          "transferred_to_right": true,
+          "longest_right_independent_s": 20.012000950518996,
+          "official_check_success": true,
+          "placed_observed": true,
+          "video": "<PROJECT_ROOT>/results/step5-openpi-clean150-20261126-v1/EMA2000-K15/physical-2000/native/seed-0/head.mp4",
+          "final_target_delta_mm": [
+            -2.8888583183288574,
+            3.7562400102615356,
+            0.25206804275512695
+          ],
+          "final_horizontal_mm": 4.738653964795004,
+          "final_vertical_mm": 0.25206804275512695,
+          "final_right_grip": 0.800727324353324,
+          "final_bilateral": [
+            false,
+            false
+          ],
+          "final_support": true
+        },
+        {
+          "model": "native",
+          "seed": 1,
+          "status": "finished",
+          "stop_reason": "official_success",
+          "actions": 283,
+          "queries": 19,
+          "grasped": true,
+          "max_lift_mm": 171.11682891845703,
+          "max_bilateral_lift_mm": 171.11682891845703,
+          "stable_bilateral_max_lift_mm": 171.11682891845703,
+          "longest_bilateral_s": [
+            35.404001681599766,
+            24.572001167107373
+          ],
+          "transferred_to_right": true,
+          "longest_right_independent_s": 20.984000996686518,
+          "official_check_success": true,
+          "placed_observed": true,
+          "video": "<PROJECT_ROOT>/results/step5-openpi-clean150-20261126-v1/EMA2000-K15/physical-2000/native/seed-1/head.mp4",
+          "final_target_delta_mm": [
+            -19.50642466545105,
+            -7.789447903633118,
+            0.6071925163269043
+          ],
+          "final_horizontal_mm": 21.004192483224188,
+          "final_vertical_mm": 0.6071925163269043,
+          "final_right_grip": 0.8020245640174202,
+          "final_bilateral": [
+            false,
+            false
+          ],
+          "final_support": true
+        },
+        {
+          "model": "native",
+          "seed": 2,
+          "status": "finished",
+          "stop_reason": "official_success",
+          "actions": 291,
+          "queries": 20,
+          "grasped": true,
+          "max_lift_mm": 172.51485586166382,
+          "max_bilateral_lift_mm": 172.51485586166382,
+          "stable_bilateral_max_lift_mm": 172.51485586166382,
+          "longest_bilateral_s": [
+            37.272001770325005,
+            22.960001090541482
+          ],
+          "transferred_to_right": true,
+          "longest_right_independent_s": 18.616000884212554,
+          "official_check_success": true,
+          "placed_observed": true,
+          "video": "<PROJECT_ROOT>/results/step5-openpi-clean150-20261126-v1/EMA2000-K15/physical-2000/native/seed-2/head.mp4",
+          "final_target_delta_mm": [
+            -11.603124439716339,
+            4.160329699516296,
+            0.34505128860473633
+          ],
+          "final_horizontal_mm": 12.32642851649333,
+          "final_vertical_mm": 0.34505128860473633,
+          "final_right_grip": 0.8032030463218689,
+          "final_bilateral": [
+            false,
+            false
+          ],
+          "final_support": true
+        },
+        {
+          "model": "native",
+          "seed": 3,
+          "status": "finished",
+          "stop_reason": "native_step_limit",
+          "actions": 600,
+          "queries": 40,
+          "grasped": true,
+          "max_lift_mm": 161.08065843582153,
+          "max_bilateral_lift_mm": 161.08065843582153,
+          "stable_bilateral_max_lift_mm": 161.08065843582153,
+          "longest_bilateral_s": [
+            36.456001731567085,
+            24.348001156467944
+          ],
+          "transferred_to_right": true,
+          "longest_right_independent_s": 18.44800087623298,
+          "official_check_success": false,
+          "placed_observed": false,
+          "video": "<PROJECT_ROOT>/results/step5-openpi-clean150-20261126-v1/EMA2000-K15/physical-2000/native/seed-3/head.mp4",
+          "final_target_delta_mm": [
+            -35.712361335754395,
+            15.799283981323242,
+            0.000476837158203125
+          ],
+          "final_horizontal_mm": 39.05112196208942,
+          "final_vertical_mm": 0.000476837158203125,
+          "final_right_grip": 0.9963327646255493,
+          "final_bilateral": [
+            false,
+            false
+          ],
+          "final_support": true
+        },
+        {
+          "model": "native",
+          "seed": 4,
+          "status": "finished",
+          "stop_reason": "native_step_limit",
+          "actions": 600,
+          "queries": 40,
+          "grasped": true,
+          "max_lift_mm": 165.63540697097778,
+          "max_bilateral_lift_mm": 165.63540697097778,
+          "stable_bilateral_max_lift_mm": 165.63540697097778,
+          "longest_bilateral_s": [
+            34.90000165766105,
+            0
+          ],
+          "transferred_to_right": false,
+          "longest_right_independent_s": 0,
+          "official_check_success": false,
+          "placed_observed": false,
+          "video": "<PROJECT_ROOT>/results/step5-openpi-clean150-20261126-v1/EMA2000-K15/physical-2000/native/seed-4/head.mp4",
+          "final_target_delta_mm": [
+            -432.18377232551575,
+            87.08588778972626,
+            24.001002311706543
+          ],
+          "final_horizontal_mm": 440.87046273666147,
+          "final_vertical_mm": 24.001002311706543,
+          "final_right_grip": 0.9953601360321045,
+          "final_bilateral": [
+            false,
+            false
+          ],
+          "final_support": true
+        }
+      ],
+      "grasp_count": 5,
+      "official_success_count": 3,
+      "right_transfer_count": 4,
+      "placed_count": 3,
+      "evaluated_seeds": 5,
+      "val": {
+        "val": {
+          "left_tcp_max_mm": null,
+          "flow_mse": 0.03032728428952396,
+          "joint_mae_rad": 0.002360171981854364,
+          "closure_rows": [
+            1,
+            2,
+            3,
+            5,
+            3,
+            4,
+            5,
+            3,
+            3,
+            3,
+            3,
+            3,
+            1,
+            3,
+            4,
+            4,
+            2,
+            6,
+            4,
+            4
+          ]
+        },
+        "weights": "EMA",
+        "usage": "descriptive old clean Val; never controls early stop; TCP not measured"
+      },
+      "rank": [
+        3,
+        5,
+        4,
+        78.06000370765105,
+        842.0950174331665,
+        -1e+30
+      ],
+      "videos": {
+        "0": {
+          "frames": 289,
+          "fps": 10,
+          "size": [
+            320,
+            240
+          ],
+          "bytes": 756974
+        },
+        "1": {
+          "frames": 284,
+          "fps": 10,
+          "size": [
+            320,
+            240
+          ],
+          "bytes": 765424
+        },
+        "2": {
+          "frames": 292,
+          "fps": 10,
+          "size": [
+            320,
+            240
+          ],
+          "bytes": 761664
+        },
+        "3": {
+          "frames": 601,
+          "fps": 10,
+          "size": [
+            320,
+            240
+          ],
+          "bytes": 1207718
+        },
+        "4": {
+          "frames": 601,
+          "fps": 10,
+          "size": [
+            320,
+            240
+          ],
+          "bytes": 1289095
+        }
+      },
+      "source": "EMA2000-K15/physical-2000/node-summary.json"
+    },
+    {
+      "step": 2500,
+      "chunk_length": 15,
+      "episodes": [
+        {
+          "model": "native",
+          "seed": 0,
+          "status": "finished",
+          "stop_reason": "native_step_limit",
+          "actions": 600,
+          "queries": 40,
+          "grasped": true,
+          "max_lift_mm": 173.44850301742554,
+          "max_bilateral_lift_mm": 173.44850301742554,
+          "stable_bilateral_max_lift_mm": 173.44850301742554,
+          "longest_bilateral_s": [
+            40.152001907117665,
+            23.372001110110432
+          ],
+          "transferred_to_right": true,
+          "longest_right_independent_s": 16.568000786937773,
+          "official_check_success": false,
+          "placed_observed": false,
+          "video": "<PROJECT_ROOT>/results/step5-openpi-clean150-20261126-v1/K15/physical-2500/native/seed-0/head.mp4",
+          "final_target_delta_mm": [
+            -43.453872203826904,
+            -6.700307130813599,
+            0.000476837158203125
+          ],
+          "final_horizontal_mm": 43.967409807194144,
+          "final_vertical_mm": 0.000476837158203125,
+          "final_right_grip": 1,
+          "final_bilateral": [
+            false,
+            false
+          ],
+          "final_support": true
+        },
+        {
+          "model": "native",
+          "seed": 1,
+          "status": "finished",
+          "stop_reason": "native_step_limit",
+          "actions": 600,
+          "queries": 40,
+          "grasped": false,
+          "max_lift_mm": 4.402816295623779,
+          "max_bilateral_lift_mm": 0,
+          "stable_bilateral_max_lift_mm": 0,
+          "longest_bilateral_s": [
+            0,
+            0
+          ],
+          "transferred_to_right": false,
+          "longest_right_independent_s": 0,
+          "official_check_success": false,
+          "placed_observed": false,
+          "video": "<PROJECT_ROOT>/results/step5-openpi-clean150-20261126-v1/K15/physical-2500/native/seed-1/head.mp4",
+          "final_target_delta_mm": [
+            -294.4599539041519,
+            13.231739401817322,
+            24.000585079193115
+          ],
+          "final_horizontal_mm": 294.7570921637559,
+          "final_vertical_mm": 24.000585079193115,
+          "final_right_grip": 0.9999092221260071,
+          "final_bilateral": [
+            false,
+            false
+          ],
+          "final_support": true
+        },
+        {
+          "model": "native",
+          "seed": 2,
+          "status": "finished",
+          "stop_reason": "official_success",
+          "actions": 270,
+          "queries": 18,
+          "grasped": true,
+          "max_lift_mm": 190.59652090072632,
+          "max_bilateral_lift_mm": 190.59652090072632,
+          "stable_bilateral_max_lift_mm": 190.59652090072632,
+          "longest_bilateral_s": [
+            35.3920016810298,
+            24.86800118116662
+          ],
+          "transferred_to_right": true,
+          "longest_right_independent_s": 21.76400103373453,
+          "official_check_success": true,
+          "placed_observed": true,
+          "video": "<PROJECT_ROOT>/results/step5-openpi-clean150-20261126-v1/K15/physical-2500/native/seed-2/head.mp4",
+          "final_target_delta_mm": [
+            13.751976191997528,
+            16.48959517478943,
+            0.9387731552124023
+          ],
+          "final_horizontal_mm": 21.471460085744184,
+          "final_vertical_mm": 0.9387731552124023,
+          "final_right_grip": 0.8011740893125534,
+          "final_bilateral": [
+            false,
+            false
+          ],
+          "final_support": true
+        },
+        {
+          "model": "native",
+          "seed": 3,
+          "status": "finished",
+          "stop_reason": "official_success",
+          "actions": 264,
+          "queries": 18,
+          "grasped": true,
+          "max_lift_mm": 176.14799737930298,
+          "max_bilateral_lift_mm": 176.14799737930298,
+          "stable_bilateral_max_lift_mm": 176.14799737930298,
+          "longest_bilateral_s": [
+            36.79200174752623,
+            24.380001157987863
+          ],
+          "transferred_to_right": true,
+          "longest_right_independent_s": 19.380000920500606,
+          "official_check_success": true,
+          "placed_observed": true,
+          "video": "<PROJECT_ROOT>/results/step5-openpi-clean150-20261126-v1/K15/physical-2500/native/seed-3/head.mp4",
+          "final_target_delta_mm": [
+            -23.746132850646973,
+            21.352618932724,
+            0.975191593170166
+          ],
+          "final_horizontal_mm": 31.93451362784,
+          "final_vertical_mm": 0.975191593170166,
+          "final_right_grip": 0.8007604718208313,
+          "final_bilateral": [
+            false,
+            false
+          ],
+          "final_support": true
+        },
+        {
+          "model": "native",
+          "seed": 4,
+          "status": "finished",
+          "stop_reason": "native_step_limit",
+          "actions": 600,
+          "queries": 40,
+          "grasped": false,
+          "max_lift_mm": 4.402756690979004,
+          "max_bilateral_lift_mm": 0,
+          "stable_bilateral_max_lift_mm": 0,
+          "longest_bilateral_s": [
+            0,
+            0
+          ],
+          "transferred_to_right": false,
+          "longest_right_independent_s": 0,
+          "official_check_success": false,
+          "placed_observed": false,
+          "video": "<PROJECT_ROOT>/results/step5-openpi-clean150-20261126-v1/K15/physical-2500/native/seed-4/head.mp4",
+          "final_target_delta_mm": [
+            -287.2212827205658,
+            -207.3489222675562,
+            24.00052547454834
+          ],
+          "final_horizontal_mm": 354.2451704867185,
+          "final_vertical_mm": 24.00052547454834,
+          "final_right_grip": 0.002529772464185953,
+          "final_bilateral": [
+            false,
+            false
+          ],
+          "final_support": true
+        }
+      ],
+      "grasp_count": 3,
+      "official_success_count": 2,
+      "right_transfer_count": 3,
+      "placed_count": 2,
+      "evaluated_seeds": 5,
+      "val": {
+        "physical_trigger": "unconditional_at_1000_1500_2000_2500; offline statistics do not gate physical trials",
+        "row_numbering": "1-based; threshold <=0.9; all episodes x all 4 fixed noises, K4 left TCP max",
+        "val": {
+          "closure_delay_rows": [
+            -1,
+            -1,
+            0,
+            1,
+            0,
+            1,
+            2,
+            0,
+            1,
+            0,
+            1,
+            0,
+            -1,
+            1,
+            1,
+            2,
+            -1,
+            4,
+            2,
+            1
+          ],
+          "closure_rows": [
+            2,
+            2,
+            3,
+            4,
+            3,
+            4,
+            5,
+            3,
+            4,
+            3,
+            4,
+            3,
+            2,
+            4,
+            4,
+            5,
+            2,
+            7,
+            5,
+            4
+          ],
+          "closure_within_one_row_of_expert": false,
+          "left_tcp_max_mm": 7.449617279867076,
+          "left_tcp_mean_mm": 2.885008534106677,
+          "passed": false,
+          "predictions": 20
+        }
+      },
+      "rank": [
+        2,
+        3,
+        3,
+        57.71200274117291,
+        540.1930212974548,
+        -7.449617279867076
+      ],
+      "videos": {
+        "0": {
+          "frames": 601,
+          "fps": 10,
+          "size": [
+            320,
+            240
+          ],
+          "bytes": 1299305
+        },
+        "1": {
+          "frames": 601,
+          "fps": 10,
+          "size": [
+            320,
+            240
+          ],
+          "bytes": 1533592
+        },
+        "2": {
+          "frames": 271,
+          "fps": 10,
+          "size": [
+            320,
+            240
+          ],
+          "bytes": 738522
+        },
+        "3": {
+          "frames": 265,
+          "fps": 10,
+          "size": [
+            320,
+            240
+          ],
+          "bytes": 729106
+        },
+        "4": {
+          "frames": 601,
+          "fps": 10,
+          "size": [
+            320,
+            240
+          ],
+          "bytes": 1484407
+        }
+      },
+      "source": "K15/physical-2500/node-summary.json"
+    },
+    {
+      "step": 2500,
+      "chunk_length": 25,
+      "episodes": [
+        {
+          "model": "native",
+          "seed": 0,
+          "status": "finished",
+          "stop_reason": "native_step_limit",
+          "actions": 600,
+          "queries": 24,
+          "grasped": true,
+          "max_lift_mm": 159.34544801712036,
+          "max_bilateral_lift_mm": 159.34544801712036,
+          "stable_bilateral_max_lift_mm": 159.34544801712036,
+          "longest_bilateral_s": [
+            37.040001759305596,
+            1.4120000670664012
+          ],
+          "transferred_to_right": false,
+          "longest_right_independent_s": 0.1480000070296228,
+          "official_check_success": false,
+          "placed_observed": false,
+          "video": "<PROJECT_ROOT>/results/step5-openpi-clean150-20261126-v1/K25/physical-2500/native/seed-0/head.mp4",
+          "final_target_delta_mm": [
+            -294.80571299791336,
+            -123.36060404777527,
+            24.001002311706543
+          ],
+          "final_horizontal_mm": 319.5751039227556,
+          "final_vertical_mm": 24.001002311706543,
+          "final_right_grip": 1,
+          "final_bilateral": [
+            false,
+            false
+          ],
+          "final_support": true
+        },
+        {
+          "model": "native",
+          "seed": 1,
+          "status": "finished",
+          "stop_reason": "native_step_limit",
+          "actions": 600,
+          "queries": 24,
+          "grasped": true,
+          "max_lift_mm": 162.5584363937378,
+          "max_bilateral_lift_mm": 162.5584363937378,
+          "stable_bilateral_max_lift_mm": 162.5584363937378,
+          "longest_bilateral_s": [
+            35.52400168729946,
+            0
+          ],
+          "transferred_to_right": false,
+          "longest_right_independent_s": 0,
+          "official_check_success": false,
+          "placed_observed": false,
+          "video": "<PROJECT_ROOT>/results/step5-openpi-clean150-20261126-v1/K25/physical-2500/native/seed-1/head.mp4",
+          "final_target_delta_mm": [
+            -311.4535063505173,
+            8.828967809677124,
+            24.001002311706543
+          ],
+          "final_horizontal_mm": 311.57862136323797,
+          "final_vertical_mm": 24.001002311706543,
+          "final_right_grip": 1,
+          "final_bilateral": [
+            false,
+            false
+          ],
+          "final_support": true
+        },
+        {
+          "model": "native",
+          "seed": 2,
+          "status": "finished",
+          "stop_reason": "official_success",
+          "actions": 271,
+          "queries": 11,
+          "grasped": true,
+          "max_lift_mm": 167.51331090927124,
+          "max_bilateral_lift_mm": 167.51331090927124,
+          "stable_bilateral_max_lift_mm": 167.51331090927124,
+          "longest_bilateral_s": [
+            33.51600159192458,
+            24.344001156277955
+          ],
+          "transferred_to_right": true,
+          "longest_right_independent_s": 21.396001016255468,
+          "official_check_success": true,
+          "placed_observed": true,
+          "video": "<PROJECT_ROOT>/results/step5-openpi-clean150-20261126-v1/K25/physical-2500/native/seed-2/head.mp4",
+          "final_target_delta_mm": [
+            7.365725934505463,
+            -2.6445984840393066,
+            0.5124211311340332
+          ],
+          "final_horizontal_mm": 7.826098624731825,
+          "final_vertical_mm": 0.5124211311340332,
+          "final_right_grip": 0.8025952643818326,
+          "final_bilateral": [
+            false,
+            false
+          ],
+          "final_support": true
+        },
+        {
+          "model": "native",
+          "seed": 3,
+          "status": "finished",
+          "stop_reason": "native_step_limit",
+          "actions": 600,
+          "queries": 24,
+          "grasped": true,
+          "max_lift_mm": 153.2403826713562,
+          "max_bilateral_lift_mm": 153.2403826713562,
+          "stable_bilateral_max_lift_mm": 153.2403826713562,
+          "longest_bilateral_s": [
+            34.820001653861254,
+            0
+          ],
+          "transferred_to_right": false,
+          "longest_right_independent_s": 0,
+          "official_check_success": false,
+          "placed_observed": false,
+          "video": "<PROJECT_ROOT>/results/step5-openpi-clean150-20261126-v1/K25/physical-2500/native/seed-3/head.mp4",
+          "final_target_delta_mm": [
+            -373.65077435970306,
+            185.24503707885742,
+            24.000227451324463
+          ],
+          "final_horizontal_mm": 417.0499070158786,
+          "final_vertical_mm": 24.000227451324463,
+          "final_right_grip": 1,
+          "final_bilateral": [
+            false,
+            false
+          ],
+          "final_support": true
+        },
+        {
+          "model": "native",
+          "seed": 4,
+          "status": "finished",
+          "stop_reason": "native_step_limit",
+          "actions": 600,
+          "queries": 24,
+          "grasped": false,
+          "max_lift_mm": 4.402756690979004,
+          "max_bilateral_lift_mm": 0,
+          "stable_bilateral_max_lift_mm": 0,
+          "longest_bilateral_s": [
+            0,
+            0
+          ],
+          "transferred_to_right": false,
+          "longest_right_independent_s": 0,
+          "official_check_success": false,
+          "placed_observed": false,
+          "video": "<PROJECT_ROOT>/results/step5-openpi-clean150-20261126-v1/K25/physical-2500/native/seed-4/head.mp4",
+          "final_target_delta_mm": [
+            -270.7567811012268,
+            -193.6740749515593,
+            24.001002311706543
+          ],
+          "final_horizontal_mm": 332.89470079987734,
+          "final_vertical_mm": 24.001002311706543,
+          "final_right_grip": 0.9992384910583496,
+          "final_bilateral": [
+            false,
+            false
+          ],
+          "final_support": true
+        }
+      ],
+      "grasp_count": 4,
+      "official_success_count": 1,
+      "right_transfer_count": 1,
+      "placed_count": 1,
+      "evaluated_seeds": 5,
+      "val": {
+        "physical_trigger": "unconditional_at_1000_1500_2000_2500; offline statistics do not gate physical trials",
+        "row_numbering": "1-based; threshold <=0.9; all episodes x all 4 fixed noises, K4 left TCP max",
+        "val": {
+          "closure_delay_rows": [
+            -1,
+            -1,
+            0,
+            1,
+            0,
+            1,
+            2,
+            0,
+            1,
+            0,
+            1,
+            0,
+            -1,
+            1,
+            1,
+            2,
+            -1,
+            4,
+            2,
+            1
+          ],
+          "closure_rows": [
+            2,
+            2,
+            3,
+            4,
+            3,
+            4,
+            5,
+            3,
+            4,
+            3,
+            4,
+            3,
+            2,
+            4,
+            4,
+            5,
+            2,
+            7,
+            5,
+            4
+          ],
+          "closure_within_one_row_of_expert": false,
+          "left_tcp_max_mm": 7.449617279867076,
+          "left_tcp_mean_mm": 2.885008534106677,
+          "passed": false,
+          "predictions": 20
+        }
+      },
+      "rank": [
+        1,
+        4,
+        1,
+        21.54400102328509,
+        642.6575779914856,
+        -7.449617279867076
+      ],
+      "videos": {
+        "0": {
+          "frames": 601,
+          "fps": 10,
+          "size": [
+            320,
+            240
+          ],
+          "bytes": 1487318
+        },
+        "1": {
+          "frames": 601,
+          "fps": 10,
+          "size": [
+            320,
+            240
+          ],
+          "bytes": 1601680
+        },
+        "2": {
+          "frames": 272,
+          "fps": 10,
+          "size": [
+            320,
+            240
+          ],
+          "bytes": 741359
+        },
+        "3": {
+          "frames": 601,
+          "fps": 10,
+          "size": [
+            320,
+            240
+          ],
+          "bytes": 1208937
+        },
+        "4": {
+          "frames": 601,
+          "fps": 10,
+          "size": [
+            320,
+            240
+          ],
+          "bytes": 1419213
+        }
+      },
+      "source": "K25/physical-2500/node-summary.json"
+    },
+    {
+      "step": 2000,
+      "chunk_length": 15,
+      "episodes": [
+        {
+          "model": "native",
+          "seed": 5,
+          "status": "finished",
+          "stop_reason": "official_success",
+          "actions": 275,
+          "queries": 19,
+          "grasped": true,
+          "max_lift_mm": 171.1685061454773,
+          "max_bilateral_lift_mm": 171.1685061454773,
+          "stable_bilateral_max_lift_mm": 171.1685061454773,
+          "longest_bilateral_s": [
+            33.4280015877448,
+            24.02400114107877
+          ],
+          "transferred_to_right": true,
+          "longest_right_independent_s": 19.50400092639029,
+          "official_check_success": true,
+          "placed_observed": true,
+          "video": "<PROJECT_ROOT>/results/step5-openpi-clean150-20261126-v1/best-EMA-extra5/physical-2000/native/seed-5/head.mp4",
+          "final_target_delta_mm": [
+            -15.683740377426147,
+            6.101101636886597,
+            0.09340047836303711
+          ],
+          "final_horizontal_mm": 16.828640866395823,
+          "final_vertical_mm": 0.09340047836303711,
+          "final_right_grip": 0.8009868830442428,
+          "final_bilateral": [
+            false,
+            false
+          ],
+          "final_support": true
+        },
+        {
+          "model": "native",
+          "seed": 6,
+          "status": "finished",
+          "stop_reason": "native_step_limit",
+          "actions": 600,
+          "queries": 40,
+          "grasped": true,
+          "max_lift_mm": 212.79603242874146,
+          "max_bilateral_lift_mm": 212.79603242874146,
+          "stable_bilateral_max_lift_mm": 212.79603242874146,
+          "longest_bilateral_s": [
+            48.84000231977552,
+            0
+          ],
+          "transferred_to_right": false,
+          "longest_right_independent_s": 0,
+          "official_check_success": false,
+          "placed_observed": false,
+          "video": "<PROJECT_ROOT>/results/step5-openpi-clean150-20261126-v1/best-EMA-extra5/physical-2000/native/seed-6/head.mp4",
+          "final_target_delta_mm": [
+            -290.5506119132042,
+            -291.6645333170891,
+            362.13475465774536
+          ],
+          "final_horizontal_mm": 411.68903079656224,
+          "final_vertical_mm": 362.13475465774536,
+          "final_right_grip": 0.9962528944015503,
+          "final_bilateral": [
+            true,
+            false
+          ],
+          "final_support": false
+        },
+        {
+          "model": "native",
+          "seed": 7,
+          "status": "finished",
+          "stop_reason": "official_success",
+          "actions": 289,
+          "queries": 20,
+          "grasped": true,
+          "max_lift_mm": 166.50551557540894,
+          "max_bilateral_lift_mm": 166.50551557540894,
+          "stable_bilateral_max_lift_mm": 166.50551557540894,
+          "longest_bilateral_s": [
+            35.96800170838833,
+            24.496001163497567
+          ],
+          "transferred_to_right": true,
+          "longest_right_independent_s": 19.196000911761075,
+          "official_check_success": true,
+          "placed_observed": true,
+          "video": "<PROJECT_ROOT>/results/step5-openpi-clean150-20261126-v1/best-EMA-extra5/physical-2000/native/seed-7/head.mp4",
+          "final_target_delta_mm": [
+            -17.659679055213928,
+            1.567155122756958,
+            0.005245208740234375
+          ],
+          "final_horizontal_mm": 17.729078924522415,
+          "final_vertical_mm": 0.005245208740234375,
+          "final_right_grip": 0.801830068230629,
+          "final_bilateral": [
+            false,
+            false
+          ],
+          "final_support": true
+        },
+        {
+          "model": "native",
+          "seed": 8,
+          "status": "finished",
+          "stop_reason": "official_success",
+          "actions": 273,
+          "queries": 19,
+          "grasped": true,
+          "max_lift_mm": 168.94948482513428,
+          "max_bilateral_lift_mm": 168.94948482513428,
+          "stable_bilateral_max_lift_mm": 168.94948482513428,
+          "longest_bilateral_s": [
+            33.09200157178566,
+            23.276001105550677
+          ],
+          "transferred_to_right": true,
+          "longest_right_independent_s": 19.436000923160464,
+          "official_check_success": true,
+          "placed_observed": true,
+          "video": "<PROJECT_ROOT>/results/step5-openpi-clean150-20261126-v1/best-EMA-extra5/physical-2000/native/seed-8/head.mp4",
+          "final_target_delta_mm": [
+            -8.456975221633911,
+            11.737719178199768,
+            0.0005960464477539062
+          ],
+          "final_horizontal_mm": 14.46701356208698,
+          "final_vertical_mm": 0.0005960464477539062,
+          "final_right_grip": 0.8007327318191528,
+          "final_bilateral": [
+            false,
+            false
+          ],
+          "final_support": true
+        },
+        {
+          "model": "native",
+          "seed": 9,
+          "status": "finished",
+          "stop_reason": "official_success",
+          "actions": 287,
+          "queries": 20,
+          "grasped": true,
+          "max_lift_mm": 164.70909118652344,
+          "max_bilateral_lift_mm": 164.70909118652344,
+          "stable_bilateral_max_lift_mm": 164.70909118652344,
+          "longest_bilateral_s": [
+            36.5680017368868,
+            24.82800117926672
+          ],
+          "transferred_to_right": true,
+          "longest_right_independent_s": 19.556000928860158,
+          "official_check_success": true,
+          "placed_observed": true,
+          "video": "<PROJECT_ROOT>/results/step5-openpi-clean150-20261126-v1/best-EMA-extra5/physical-2000/native/seed-9/head.mp4",
+          "final_target_delta_mm": [
+            0.392034649848938,
+            10.961025953292847,
+            0.02658367156982422
+          ],
+          "final_horizontal_mm": 10.968034514690476,
+          "final_vertical_mm": 0.02658367156982422,
+          "final_right_grip": 0.8022315683572189,
+          "final_bilateral": [
+            false,
+            false
+          ],
+          "final_support": true
+        }
+      ],
+      "grasp_count": 5,
+      "official_success_count": 4,
+      "right_transfer_count": 4,
+      "placed_count": 4,
+      "evaluated_seeds": 5,
+      "val": {
+        "val": {
+          "left_tcp_max_mm": null,
+          "flow_mse": 0.03032728428952396,
+          "joint_mae_rad": 0.002360171981854364,
+          "closure_rows": [
+            1,
+            2,
+            3,
+            5,
+            3,
+            4,
+            5,
+            3,
+            3,
+            3,
+            3,
+            3,
+            1,
+            3,
+            4,
+            4,
+            2,
+            6,
+            4,
+            4
+          ]
+        },
+        "weights": "EMA",
+        "usage": "descriptive old clean Val; never controls early stop; TCP not measured"
+      },
+      "rank": [
+        4,
+        5,
+        4,
+        77.69200369017199,
+        884.1286301612854,
+        -1e+30
+      ],
+      "videos": {
+        "5": {
+          "frames": 276,
+          "fps": 10,
+          "size": [
+            320,
+            240
+          ],
+          "bytes": 769269
+        },
+        "6": {
+          "frames": 601,
+          "fps": 10,
+          "size": [
+            320,
+            240
+          ],
+          "bytes": 1793947
+        },
+        "7": {
+          "frames": 290,
+          "fps": 10,
+          "size": [
+            320,
+            240
+          ],
+          "bytes": 759880
+        },
+        "8": {
+          "frames": 274,
+          "fps": 10,
+          "size": [
+            320,
+            240
+          ],
+          "bytes": 746164
+        },
+        "9": {
+          "frames": 288,
+          "fps": 10,
+          "size": [
+            320,
+            240
+          ],
+          "bytes": 756135
+        }
+      },
+      "source": "best-EMA-extra5/physical-2000/node-summary.json"
+    },
+    {
+      "step": 600,
+      "chunk_length": 15,
+      "episodes": [
+        {
+          "model": "native",
+          "seed": 0,
+          "status": "finished",
+          "stop_reason": "native_step_limit",
+          "actions": 600,
+          "queries": 40,
+          "grasped": true,
+          "max_lift_mm": 194.74166631698608,
+          "max_bilateral_lift_mm": 194.74166631698608,
+          "stable_bilateral_max_lift_mm": 194.74166631698608,
+          "longest_bilateral_s": [
+            33.6640015989542,
+            0.004000000189989805
+          ],
+          "transferred_to_right": false,
+          "longest_right_independent_s": 0,
+          "official_check_success": false,
+          "placed_observed": false,
+          "video": "<PROJECT_ROOT>/results/step5-openpi-clean150-20261126-v1/mixed0600-baseline/physical-0600/native/seed-0/head.mp4",
+          "final_target_delta_mm": [
+            -268.95303279161453,
+            -391.09037816524506,
+            24.00052547454834
+          ],
+          "final_horizontal_mm": 474.6445172349952,
+          "final_vertical_mm": 24.00052547454834,
+          "final_right_grip": 0.004368458408862352,
+          "final_bilateral": [
+            false,
+            false
+          ],
+          "final_support": true
+        },
+        {
+          "model": "native",
+          "seed": 1,
+          "status": "finished",
+          "stop_reason": "native_step_limit",
+          "actions": 600,
+          "queries": 40,
+          "grasped": true,
+          "max_lift_mm": 199.52452182769775,
+          "max_bilateral_lift_mm": 199.52452182769775,
+          "stable_bilateral_max_lift_mm": 199.52452182769775,
+          "longest_bilateral_s": [
+            34.216001625172794,
+            11.800000560469925
+          ],
+          "transferred_to_right": false,
+          "longest_right_independent_s": 0.004000000189989805,
+          "official_check_success": false,
+          "placed_observed": false,
+          "video": "<PROJECT_ROOT>/results/step5-openpi-clean150-20261126-v1/mixed0600-baseline/physical-0600/native/seed-1/head.mp4",
+          "final_target_delta_mm": [
+            73.29459488391876,
+            -962.1839821338654,
+            -716.0001304000616
+          ],
+          "final_horizontal_mm": 964.9715607799953,
+          "final_vertical_mm": -716.0001304000616,
+          "final_right_grip": 0.0036360358353704214,
+          "final_bilateral": [
+            false,
+            false
+          ],
+          "final_support": true
+        },
+        {
+          "model": "native",
+          "seed": 2,
+          "status": "finished",
+          "stop_reason": "native_step_limit",
+          "actions": 600,
+          "queries": 40,
+          "grasped": true,
+          "max_lift_mm": 173.56592416763306,
+          "max_bilateral_lift_mm": 173.56592416763306,
+          "stable_bilateral_max_lift_mm": 173.56592416763306,
+          "longest_bilateral_s": [
+            32.58400154765695,
+            0
+          ],
+          "transferred_to_right": false,
+          "longest_right_independent_s": 0,
+          "official_check_success": false,
+          "placed_observed": false,
+          "video": "<PROJECT_ROOT>/results/step5-openpi-clean150-20261126-v1/mixed0600-baseline/physical-0600/native/seed-2/head.mp4",
+          "final_target_delta_mm": [
+            -192.65470653772354,
+            85.66087484359741,
+            24.73771572113037
+          ],
+          "final_horizontal_mm": 210.84027468704085,
+          "final_vertical_mm": 24.73771572113037,
+          "final_right_grip": 0.004612599033862352,
+          "final_bilateral": [
+            false,
+            false
+          ],
+          "final_support": true
+        },
+        {
+          "model": "native",
+          "seed": 3,
+          "status": "finished",
+          "stop_reason": "native_step_limit",
+          "actions": 600,
+          "queries": 40,
+          "grasped": true,
+          "max_lift_mm": 169.2069172859192,
+          "max_bilateral_lift_mm": 169.2069172859192,
+          "stable_bilateral_max_lift_mm": 169.2069172859192,
+          "longest_bilateral_s": [
+            34.28800162859261,
+            0.04400000208988786
+          ],
+          "transferred_to_right": false,
+          "longest_right_independent_s": 0,
+          "official_check_success": false,
+          "placed_observed": false,
+          "video": "<PROJECT_ROOT>/results/step5-openpi-clean150-20261126-v1/mixed0600-baseline/physical-0600/native/seed-3/head.mp4",
+          "final_target_delta_mm": [
+            -236.15263774991035,
+            -199.8913250863552,
+            24.001002311706543
+          ],
+          "final_horizontal_mm": 309.3939400845132,
+          "final_vertical_mm": 24.001002311706543,
+          "final_right_grip": 0.004124317318201065,
+          "final_bilateral": [
+            false,
+            false
+          ],
+          "final_support": true
+        },
+        {
+          "model": "native",
+          "seed": 4,
+          "status": "finished",
+          "stop_reason": "native_step_limit",
+          "actions": 600,
+          "queries": 40,
+          "grasped": true,
+          "max_lift_mm": 107.79249668121338,
+          "max_bilateral_lift_mm": 107.79249668121338,
+          "stable_bilateral_max_lift_mm": 107.15866088867188,
+          "longest_bilateral_s": [
+            25.48800121061504,
+            7.616000361740589
+          ],
+          "transferred_to_right": false,
+          "longest_right_independent_s": 0,
+          "official_check_success": false,
+          "placed_observed": false,
+          "video": "<PROJECT_ROOT>/results/step5-openpi-clean150-20261126-v1/mixed0600-baseline/physical-0600/native/seed-4/head.mp4",
+          "final_target_delta_mm": [
+            -330.3113430738449,
+            -310.59546023607254,
+            24.000585079193115
+          ],
+          "final_horizontal_mm": 453.4039294961006,
+          "final_vertical_mm": 24.000585079193115,
+          "final_right_grip": 0.004124317318201065,
+          "final_bilateral": [
+            false,
+            false
+          ],
+          "final_support": true
+        }
+      ],
+      "grasp_count": 5,
+      "official_success_count": 0,
+      "right_transfer_count": 0,
+      "placed_count": 0,
+      "evaluated_seeds": 5,
+      "val": {
+        "val": {
+          "left_tcp_max_mm": null
+        },
+        "note": "offline Val not measured"
+      },
+      "rank": [
+        0,
+        5,
+        0,
+        0.004000000189989805,
+        844.197690486908,
+        -1e+30
+      ],
+      "videos": {
+        "0": {
+          "frames": 601,
+          "fps": 10,
+          "size": [
+            320,
+            240
+          ],
+          "bytes": 1765680
+        },
+        "1": {
+          "frames": 601,
+          "fps": 10,
+          "size": [
+            320,
+            240
+          ],
+          "bytes": 1745544
+        },
+        "2": {
+          "frames": 601,
+          "fps": 10,
+          "size": [
+            320,
+            240
+          ],
+          "bytes": 1730988
+        },
+        "3": {
+          "frames": 601,
+          "fps": 10,
+          "size": [
+            320,
+            240
+          ],
+          "bytes": 1706760
+        },
+        "4": {
+          "frames": 601,
+          "fps": 10,
+          "size": [
+            320,
+            240
+          ],
+          "bytes": 1758629
+        }
+      },
+      "source": "mixed0600-baseline/physical-0600/node-summary.json"
+    },
+    {
+      "step": 2500,
+      "chunk_length": 4,
+      "episodes": [
+        {
+          "model": "native",
+          "seed": 0,
+          "status": "finished",
+          "stop_reason": "native_step_limit",
+          "actions": 600,
+          "queries": 150,
+          "grasped": true,
+          "max_lift_mm": 280.69573640823364,
+          "max_bilateral_lift_mm": 280.69573640823364,
+          "stable_bilateral_max_lift_mm": 280.69573640823364,
+          "longest_bilateral_s": [
+            82.56800392176956,
+            38.56400183169171
+          ],
+          "transferred_to_right": true,
+          "longest_right_independent_s": 24.948001184966415,
+          "official_check_success": false,
+          "placed_observed": false,
+          "video": "<PROJECT_ROOT>/results/step5-openpi-clean150-20261126-v1/old2500-K4-600/physical-2500/native/seed-0/head.mp4",
+          "final_target_delta_mm": [
+            -95.11382132768631,
+            46.89784348011017,
+            102.00995206832886
+          ],
+          "final_horizontal_mm": 106.04737965004108,
+          "final_vertical_mm": 102.00995206832886,
+          "final_right_grip": 0.0013276053359732032,
+          "final_bilateral": [
+            false,
+            true
+          ],
+          "final_support": false
+        },
+        {
+          "model": "native",
+          "seed": 1,
+          "status": "finished",
+          "stop_reason": "native_step_limit",
+          "actions": 600,
+          "queries": 150,
+          "grasped": true,
+          "max_lift_mm": 256.02519512176514,
+          "max_bilateral_lift_mm": 256.02519512176514,
+          "stable_bilateral_max_lift_mm": 256.02519512176514,
+          "longest_bilateral_s": [
+            67.0120031828992,
+            71.53600339777768
+          ],
+          "transferred_to_right": true,
+          "longest_right_independent_s": 62.91200298815966,
+          "official_check_success": false,
+          "placed_observed": false,
+          "video": "<PROJECT_ROOT>/results/step5-openpi-clean150-20261126-v1/old2500-K4-600/physical-2500/native/seed-1/head.mp4",
+          "final_target_delta_mm": [
+            -58.835968375205994,
+            78.19542288780212,
+            171.84501886367798
+          ],
+          "final_horizontal_mm": 97.85803664109784,
+          "final_vertical_mm": 171.84501886367798,
+          "final_right_grip": 0.0032568902242928743,
+          "final_bilateral": [
+            false,
+            true
+          ],
+          "final_support": false
+        },
+        {
+          "model": "native",
+          "seed": 2,
+          "status": "finished",
+          "stop_reason": "native_step_limit",
+          "actions": 600,
+          "queries": 150,
+          "grasped": true,
+          "max_lift_mm": 255.89972734451294,
+          "max_bilateral_lift_mm": 255.8872103691101,
+          "stable_bilateral_max_lift_mm": 253.74335050582886,
+          "longest_bilateral_s": [
+            41.28000196069479,
+            2.216000105254352
+          ],
+          "transferred_to_right": false,
+          "longest_right_independent_s": 0.05600000265985727,
+          "official_check_success": false,
+          "placed_observed": false,
+          "video": "<PROJECT_ROOT>/results/step5-openpi-clean150-20261126-v1/old2500-K4-600/physical-2500/native/seed-2/head.mp4",
+          "final_target_delta_mm": [
+            -289.73398357629776,
+            110.05741357803345,
+            24.00106191635132
+          ],
+          "final_horizontal_mm": 309.93292100465334,
+          "final_vertical_mm": 24.00106191635132,
+          "final_right_grip": 0.0039337314665317535,
+          "final_bilateral": [
+            false,
+            false
+          ],
+          "final_support": true
+        },
+        {
+          "model": "native",
+          "seed": 3,
+          "status": "finished",
+          "stop_reason": "native_step_limit",
+          "actions": 600,
+          "queries": 150,
+          "grasped": true,
+          "max_lift_mm": 243.88545751571655,
+          "max_bilateral_lift_mm": 243.88545751571655,
+          "stable_bilateral_max_lift_mm": 243.88545751571655,
+          "longest_bilateral_s": [
+            57.676002739463,
+            32.524001544807106
+          ],
+          "transferred_to_right": true,
+          "longest_right_independent_s": 26.89600127749145,
+          "official_check_success": false,
+          "placed_observed": false,
+          "video": "<PROJECT_ROOT>/results/step5-openpi-clean150-20261126-v1/old2500-K4-600/physical-2500/native/seed-3/head.mp4",
+          "final_target_delta_mm": [
+            -47.00006544589996,
+            25.74889361858368,
+            31.09920024871826
+          ],
+          "final_horizontal_mm": 53.591152949904135,
+          "final_vertical_mm": 31.09920024871826,
+          "final_right_grip": 1,
+          "final_bilateral": [
+            false,
+            false
+          ],
+          "final_support": true
+        },
+        {
+          "model": "native",
+          "seed": 4,
+          "status": "finished",
+          "stop_reason": "native_step_limit",
+          "actions": 600,
+          "queries": 150,
+          "grasped": true,
+          "max_lift_mm": 219.0062403678894,
+          "max_bilateral_lift_mm": 219.0062403678894,
+          "stable_bilateral_max_lift_mm": 219.0062403678894,
+          "longest_bilateral_s": [
+            43.852002082858235,
+            23.01600109320134
+          ],
+          "transferred_to_right": true,
+          "longest_right_independent_s": 19.236000913660973,
+          "official_check_success": false,
+          "placed_observed": false,
+          "video": "<PROJECT_ROOT>/results/step5-openpi-clean150-20261126-v1/old2500-K4-600/physical-2500/native/seed-4/head.mp4",
+          "final_target_delta_mm": [
+            -98.26482832431793,
+            14.045491814613342,
+            65.61833620071411
+          ],
+          "final_horizontal_mm": 99.26354983538543,
+          "final_vertical_mm": 65.61833620071411,
+          "final_right_grip": 1,
+          "final_bilateral": [
+            false,
+            false
+          ],
+          "final_support": true
+        }
+      ],
+      "grasp_count": 5,
+      "official_success_count": 0,
+      "right_transfer_count": 4,
+      "placed_count": 0,
+      "evaluated_seeds": 5,
+      "val": {
+        "val": {
+          "left_tcp_max_mm": null
+        },
+        "note": "offline Val not measured"
+      },
+      "rank": [
+        0,
+        5,
+        4,
+        134.04800636693835,
+        1253.3559799194336,
+        -1e+30
+      ],
+      "videos": {
+        "0": {
+          "frames": 601,
+          "fps": 10,
+          "size": [
+            320,
+            240
+          ],
+          "bytes": 1506782
+        },
+        "1": {
+          "frames": 601,
+          "fps": 10,
+          "size": [
+            320,
+            240
+          ],
+          "bytes": 1517625
+        },
+        "2": {
+          "frames": 601,
+          "fps": 10,
+          "size": [
+            320,
+            240
+          ],
+          "bytes": 1754574
+        },
+        "3": {
+          "frames": 601,
+          "fps": 10,
+          "size": [
+            320,
+            240
+          ],
+          "bytes": 1495611
+        },
+        "4": {
+          "frames": 601,
+          "fps": 10,
+          "size": [
+            320,
+            240
+          ],
+          "bytes": 1574027
+        }
+      },
+      "source": "old2500-K4-600/physical-2500/node-summary.json"
+    }
+  ],
+  "protocol": {
+    "task": "handover_block",
+    "executor": "native qpos/TOPP/check_success",
+    "max_actions": 600,
+    "no_g2": true
+  },
+  "note": "Mixed baseline uses original norm/LoRA partition; old2500 uses original ARX norm; new150 uses new Train-only norm and EMA. K25/K8 results separately labeled. Old400-step scores are not merged.",
+  "best_ema_combined_seeds": {
+    "step": 2000,
+    "K": 15,
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "count": 10,
+    "official_success_count": 7,
+    "grasp_count": 10,
+    "right_transfer_count": 8
+  }
+}

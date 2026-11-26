@@ -1,0 +1,58 @@
+[
+  {
+    "file": "ema2000-k15-seed-0-success.mp4",
+    "seed": 0,
+    "sha256": "ae2a067537f2db6454df87ea978bbc6bcc3959170c5eca76a1205754a944404f",
+    "bytes": 756974,
+    "frames": 289,
+    "fps": 10,
+    "width": 320,
+    "height": 240,
+    "full_decode_verified": true,
+    "official_success": true,
+    "source": "EMA2000-K15/physical-2000/native/seed-0/head.mp4",
+    "timing": "One frame per executed action plus initial frame; 10fps presentation is not physical-time playback."
+  },
+  {
+    "file": "ema2000-k15-seed-3-failure.mp4",
+    "seed": 3,
+    "sha256": "bdf902cb9187a57c33f3f5d18ec66dadd3b94259e4c762687f8951cd98023c8d",
+    "bytes": 1207718,
+    "frames": 601,
+    "fps": 10,
+    "width": 320,
+    "height": 240,
+    "full_decode_verified": true,
+    "official_success": false,
+    "source": "EMA2000-K15/physical-2000/native/seed-3/head.mp4",
+    "timing": "One frame per executed action plus initial frame; 10fps presentation is not physical-time playback."
+  },
+  {
+    "file": "ema2000-k15-seed-5-success.mp4",
+    "seed": 5,
+    "sha256": "d1602328174f0fd1ae483d6846275756fadde60fb66bbd0297f2a5f2fd671651",
+    "bytes": 769269,
+    "frames": 276,
+    "fps": 10,
+    "width": 320,
+    "height": 240,
+    "full_decode_verified": true,
+    "official_success": true,
+    "source": "best-EMA-extra5/physical-2000/native/seed-5/head.mp4",
+    "timing": "One frame per executed action plus initial frame; 10fps presentation is not physical-time playback."
+  },
+  {
+    "file": "ema2000-k15-seed-9-success.mp4",
+    "seed": 9,
+    "sha256": "dc8e6978060164258c2b183f27eb7f1fa62a17e1a2b202fcc80474ed066bc2d1",
+    "bytes": 756135,
+    "frames": 288,
+    "fps": 10,
+    "width": 320,
+    "height": 240,
+    "full_decode_verified": true,
+    "official_success": true,
+    "source": "best-EMA-extra5/physical-2000/native/seed-9/head.mp4",
+    "timing": "One frame per executed action plus initial frame; 10fps presentation is not physical-time playback."
+  }
+]

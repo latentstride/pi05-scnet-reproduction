@@ -1,0 +1,66 @@
+{
+  "new_seed1000": {
+    "red_block": {
+      "roi_xyxy": [
+        66,
+        10,
+        80,
+        40
+      ],
+      "mean_rgb": [
+        226.1095238095238,
+        3.0880952380952382,
+        3.2452380952380953
+      ],
+      "passed": true
+    },
+    "blue_pad": {
+      "roi_xyxy": [
+        255,
+        48,
+        281,
+        63
+      ],
+      "mean_rgb": [
+        0.9615384615384616,
+        1.2307692307692308,
+        254.08205128205128
+      ],
+      "passed": true
+    }
+  },
+  "original_train0": {
+    "red_block": {
+      "roi_xyxy": [
+        92,
+        10,
+        108,
+        40
+      ],
+      "mean_rgb": [
+        233.03958333333333,
+        0.65625,
+        0.32916666666666666
+      ],
+      "passed": true
+    },
+    "blue_pad": {
+      "roi_xyxy": [
+        236,
+        48,
+        260,
+        64
+      ],
+      "mean_rgb": [
+        0.4505208333333333,
+        1.0807291666666667,
+        252.9296875
+      ],
+      "passed": true
+    }
+  },
+  "roi_selection": "fixed interior object ROIs selected from visually inspected decoded first frames; not selected using channel thresholds",
+  "channel_correction": "none",
+  "passed": true,
+  "roi_check_seconds": 0.0008455105125904083
+}

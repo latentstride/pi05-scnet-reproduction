@@ -1,0 +1,56 @@
+π₀.₅ 阶段二：从arx200 step1000出发的clean40低学习率精调
+日期：2026-11-24 Australia/Sydney
+实验目录：<PROJECT_ROOT>/results/step5-arx-clean-stage2-20261124
+源权重：<PROJECT_ROOT>/results/step5-arx200-main-20261124/checkpoints/step-1000
+500步训练、step250/step500 clean Val与各节点seed1/0共4场纯模型原始初态实测全部完成。
+两个节点均没有>=30mm稳定抬升或进入交接，因此没有补测seed2/3/4。
+
+配置与状态
+原clean Train40，原clean Val5/Test5未改变。原GraspSampler、原始标签、同一归一化、batch4×accum4=16。
+可训练参数480086048：全动作专家/动作投影侧+VLM LoRA。仅12臂关节state加N(0,0.005rad)，夹爪不加噪；绝对目标不变，NativeAdapter增量标签与辅助解码使用同一noisy_state。
+新AdamW weight_decay0.01，源arx200 Adam count1000被丢弃；阶段二初始count0，mu/nu范数均0。阶段二在250节点实测后恢复本轮Adam count250，没有再次重置。
+25更新warmup到2e-5，随后余弦降到500时5e-6；12行辅助监督，位置尺度0.02m，双夹爪各/0.15平方，coefficient0.1；其余Flow目标不变。
+执行采用已修复1mm guard_opening，未改碰撞/滑移阈值，未覆盖模型动作、夹爪、腕姿或加入专家接管。
+旧arx200协调器仍处于T(stopped)，旧2000段没有启动。旧模型和checkpoint均保留，新实验独立目录。
+
+离线clean Val（5专家预抓取锚点×4固定推理噪声，前K4左TCP）
+起点arx200 step1000：均值3.470982487870mm，最大9.636427708206mm。
+阶段二step250：均值3.759851796134mm，最大7.035434114830mm；首次闭爪1-based分布{"2":3,"3":4,"4":8,"5":4,"6":1}。
+阶段二step500：均值2.676008197033mm，最大6.156176758496mm；首次闭爪1-based分布{"2":3,"3":6,"4":8,"5":3}。
+闭爪统一阈值<=0.9；专家锚点首次闭爪第3行。验证和推理无状态微扰。
+
+原始初态纯模型实测
+step250/seed1: 双指稳定持物=false，持物净抬升=0mm，任务成功=false。
+首次停止action_index=12 / query_index=3，predicted finger start intersects task block。
+碰撞诊断：{"geometry":"candidate","side":"left","finger":1,"depth_m":0.002893529599532485,"allowed_penetration_m":0.002,"start_native_m":0.04379113391041756,"requested_native_m":0.04389971685409546}
+停止前真实物理帧，方块在左TCP坐标系相对坐标（mm）：[70.01577460297112,22.77911726905162,115.89835523129244]
+停止所用H50首次左夹爪<=0.9：0-based 21 / 1-based 22。
+
+step250/seed0: 双指稳定持物=false，持物净抬升=0mm，任务成功=false。
+首次停止action_index=21 / query_index=5，predicted finger start intersects task block。
+碰撞诊断：{"geometry":"candidate","side":"left","finger":1,"depth_m":0.0029133507050573826,"allowed_penetration_m":0.002,"start_native_m":0.04399999603629112,"requested_native_m":0.043855358123779296}
+停止前真实物理帧，方块在左TCP坐标系相对坐标（mm）：[69.50958721307143,19.496429224700726,77.37492936260615]
+停止所用H50首次左夹爪<=0.9：0-based 9 / 1-based 10。
+
+step500/seed1: 双指稳定持物=false，持物净抬升=0mm，任务成功=false。
+首次停止action_index=23 / query_index=5，predicted finger start intersects task block。
+碰撞诊断：{"geometry":"candidate","side":"left","finger":1,"depth_m":0.004502305295318365,"allowed_penetration_m":0.002,"start_native_m":0.04399998486042023,"requested_native_m":0.0439275689125061}
+停止前真实物理帧，方块在左TCP坐标系相对坐标（mm）：[78.06158802352003,14.960455821100108,59.61504546290075]
+停止所用H50首次左夹爪<=0.9：0-based 12 / 1-based 13。
+
+step500/seed0: 双指稳定持物=false，持物净抬升=0mm，任务成功=false。
+首次停止action_index=30 / query_index=7，retimed segment collides。
+碰撞诊断：{"row":0,"tick":9,"sample":1,"samples":1,"collisions":[{"collision_type":"self_sceneobject","object_name1":"_7","link_name1":"link6","object_name2":"box_35","link_name2":"box_35","max_penetration_m":0.0004733912937808782}]}
+停止前真实物理帧，方块在左TCP坐标系相对坐标（mm）：[0.13043640568666248,0.5920744107946602,53.81330331987033]
+停止所用H50首次左夹爪<=0.9：0-based 6 / 1-based 7。
+
+结果判断
+低学习率clean收口降低了离线专家状态的TCP误差，但4场闭环均未形成双指持物，自主抓取尚未通过。
+step500 seed0横向相对坐标x=0.1304mm、y=0.5921mm，但停止所用H50闭爪第7行，link6目标段预测穿透方块0.4734mm；不能把横向对准或离线误差下降算作抓取成功。
+seed1仍在接近阶段预测手指与方块相交。是否由正常初态后的早期闭环分布偏移、动作时序或抓取几何学习造成，尚未做本轮因果对照，不能仅凭这些指标确认桌面/相机已完全对齐或将失败归于保护错误。
+旧statejitter step1000加guard修复曾实现seed0 227.08mm持物抬升；该结果属于另一个checkpoint。本轮arx200预热+clean精调不能借用该成绩。
+
+最终资源
+{"gpu":"0 MiB, 0 %","compute_processes":"","old_arx200_coordinator_state":"State:\tT (stopped)","old_arx200_2000_started":false,"new_training_after500":false,"free_bytes":20861972480,"checkpoints_present":{"step-0250":true,"step-0500":true},"time_unix":1795482117.3843539}
+两个阶段二checkpoint step0250、step0500均在，新训练/推理GPU进程为零；未追加训练或全量评测。Notebook仍开机计费，释放显存不等于关机。
+本报告及完整JSON保留，未进行新的文件清理。

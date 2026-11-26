@@ -1,0 +1,149 @@
+{
+  "outcome": "SAFETY_STOP",
+  "task_success": false,
+  "failure": {
+    "phase": "safe_execution",
+    "status": "collision",
+    "detail": "retimed segment collides",
+    "diagnostic": {
+      "row": 0,
+      "tick": 16,
+      "sample": 1,
+      "samples": 1,
+      "collisions": [
+        {
+          "collision_type": "self_sceneobject",
+          "object_name1": "_7",
+          "link_name1": "link6",
+          "object_name2": "box_35",
+          "link_name2": "box_35",
+          "max_penetration_m": 0.0002548598567955196
+        }
+      ]
+    }
+  },
+  "actions": 35,
+  "analysis": {
+    "metrics": {
+      "left_approach": {
+        "status": "observed",
+        "first": {
+          "tick": 3801,
+          "sim_s": 15.20400072215125,
+          "action_index": 17,
+          "query_index": 4,
+          "unix_ns": 1795377002384533500
+        }
+      },
+      "left_contact": {
+        "status": "observed",
+        "first": {
+          "tick": 4700,
+          "sim_s": 18.800000892952085,
+          "action_index": 26,
+          "query_index": 6,
+          "unix_ns": 1795377019903649000
+        }
+      },
+      "left_bilateral": {
+        "status": "not_observed",
+        "first": null
+      },
+      "left_grasp": {
+        "status": "not_observed",
+        "first": null
+      },
+      "left_lift": {
+        "status": "not_observed",
+        "first": null
+      },
+      "sideways_push": {
+        "status": "not_observed",
+        "first": null
+      },
+      "unexpected_collision": {
+        "status": "not_observed",
+        "first": null
+      },
+      "ik_rejection": {
+        "status": "unavailable",
+        "first": null
+      },
+      "collision_rejection": {
+        "status": "observed",
+        "first": {
+          "tick": 5565,
+          "sim_s": 22.260001057293266,
+          "action_index": 35,
+          "query_index": 9,
+          "unix_ns": 1795377040539185700
+        }
+      },
+      "right_approach": {
+        "status": "not_observed",
+        "first": null
+      },
+      "right_contact": {
+        "status": "not_observed",
+        "first": null
+      },
+      "right_bilateral": {
+        "status": "not_observed",
+        "first": null
+      },
+      "shared_hold": {
+        "status": "not_observed",
+        "first": null
+      },
+      "right_takeover": {
+        "status": "not_observed",
+        "first": null
+      },
+      "drop": {
+        "status": "not_observed",
+        "first": null
+      },
+      "target_region": {
+        "status": "not_observed",
+        "first": null
+      },
+      "released_at_target": {
+        "status": "not_observed",
+        "first": null
+      },
+      "native_success": {
+        "status": "not_observed",
+        "first": null
+      }
+    },
+    "stages": {
+      "left_approach": {
+        "status": "observed",
+        "first": {
+          "tick": 3801,
+          "sim_s": 15.20400072215125,
+          "action_index": 17,
+          "query_index": 4,
+          "unix_ns": 1795377002384533500
+        }
+      },
+      "left_grasp_and_lift": {
+        "status": "not_observed",
+        "first": null
+      },
+      "handover": {
+        "status": "not_observed",
+        "first": null
+      },
+      "placement": {
+        "status": "not_observed",
+        "first": null
+      }
+    },
+    "min_tcp_to_center_m": {
+      "left": 0.0576682397775097,
+      "right": 0.5364496451456354
+    },
+    "peak_block_lift_m": 0.001158595085144043
+  }
+}

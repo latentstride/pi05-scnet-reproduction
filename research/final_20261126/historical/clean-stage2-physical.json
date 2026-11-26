@@ -1,0 +1,141 @@
+[
+  {
+    "step": 250,
+    "seed": 1,
+    "stable_bilateral_hold": false,
+    "peak_stably_held_mm": 0,
+    "task_success": false,
+    "action_index": 12,
+    "query_index": 3,
+    "stop": {
+      "phase": "safe_execution",
+      "status": "collision",
+      "detail": "predicted finger start intersects task block",
+      "diagnostic": {
+        "geometry": "candidate",
+        "side": "left",
+        "finger": 1,
+        "depth_m": 0.002893529599532485,
+        "allowed_penetration_m": 0.002,
+        "start_native_m": 0.04379113391041756,
+        "requested_native_m": 0.04389971685409546
+      }
+    },
+    "pre_stop_block_in_left_tcp_mm": [
+      70.01577460297112,
+      22.77911726905162,
+      115.89835523129244
+    ],
+    "first_close_0_based": 21,
+    "first_close_1_based": 22,
+    "physics_tick": 3010,
+    "prediction_scope": "decoded H50 response used by this attempt; request state distinguished from pre-stop physics",
+    "complete_actions": 12
+  },
+  {
+    "step": 250,
+    "seed": 0,
+    "stable_bilateral_hold": false,
+    "peak_stably_held_mm": 0,
+    "task_success": false,
+    "action_index": 21,
+    "query_index": 5,
+    "stop": {
+      "phase": "safe_execution",
+      "status": "collision",
+      "detail": "predicted finger start intersects task block",
+      "diagnostic": {
+        "geometry": "candidate",
+        "side": "left",
+        "finger": 1,
+        "depth_m": 0.0029133507050573826,
+        "allowed_penetration_m": 0.002,
+        "start_native_m": 0.04399999603629112,
+        "requested_native_m": 0.043855358123779296
+      }
+    },
+    "pre_stop_block_in_left_tcp_mm": [
+      69.50958721307143,
+      19.496429224700726,
+      77.37492936260615
+    ],
+    "first_close_0_based": 9,
+    "first_close_1_based": 10,
+    "physics_tick": 4000,
+    "prediction_scope": "decoded H50 response used by this attempt; request state distinguished from pre-stop physics",
+    "complete_actions": 21
+  },
+  {
+    "step": 500,
+    "seed": 1,
+    "stable_bilateral_hold": false,
+    "peak_stably_held_mm": 0,
+    "task_success": false,
+    "action_index": 23,
+    "query_index": 5,
+    "stop": {
+      "phase": "safe_execution",
+      "status": "collision",
+      "detail": "predicted finger start intersects task block",
+      "diagnostic": {
+        "geometry": "candidate",
+        "side": "left",
+        "finger": 1,
+        "depth_m": 0.004502305295318365,
+        "allowed_penetration_m": 0.002,
+        "start_native_m": 0.04399998486042023,
+        "requested_native_m": 0.0439275689125061
+      }
+    },
+    "pre_stop_block_in_left_tcp_mm": [
+      78.06158802352003,
+      14.960455821100108,
+      59.61504546290075
+    ],
+    "first_close_0_based": 12,
+    "first_close_1_based": 13,
+    "physics_tick": 3845,
+    "prediction_scope": "decoded H50 response used by this attempt; request state distinguished from pre-stop physics",
+    "complete_actions": 23
+  },
+  {
+    "step": 500,
+    "seed": 0,
+    "stable_bilateral_hold": false,
+    "peak_stably_held_mm": 0,
+    "task_success": false,
+    "action_index": 30,
+    "query_index": 7,
+    "stop": {
+      "phase": "safe_execution",
+      "status": "collision",
+      "detail": "retimed segment collides",
+      "diagnostic": {
+        "row": 0,
+        "tick": 9,
+        "sample": 1,
+        "samples": 1,
+        "collisions": [
+          {
+            "collision_type": "self_sceneobject",
+            "object_name1": "_7",
+            "link_name1": "link6",
+            "object_name2": "box_35",
+            "link_name2": "box_35",
+            "max_penetration_m": 0.0004733912937808782
+          }
+        ]
+      }
+    },
+    "pre_stop_block_in_left_tcp_mm": [
+      0.13043640568666248,
+      0.5920744107946602,
+      53.81330331987033
+    ],
+    "first_close_0_based": 6,
+    "first_close_1_based": 7,
+    "physics_tick": 4890,
+    "prediction_scope": "decoded H50 response used by this attempt; request state distinguished from pre-stop physics",
+    "complete_actions": 30
+  }
+]

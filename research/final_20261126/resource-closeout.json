@@ -1,0 +1,18 @@
+{
+  "gpu": {
+    "memory_used_mib": "0",
+    "zero_mib": true,
+    "cuda_processes": ""
+  },
+  "shutdown_response": {
+    "code": "0",
+    "message": "success",
+    "attempt": 0
+  },
+  "shutdown_accepted": true,
+  "platform_verified_status": "Terminated",
+  "verification": "Read-only SCNet console and file preview. No A800/no-card instance started for final archive.",
+  "accepted_file_modified_platform_time": "2026-11-26 05:21:38 Asia/Shanghai",
+  "accepted_file_modified_sydney_time": "2026-11-26 08:21:38 Australia/Sydney",
+  "time_note": "File timestamp is shutdown-request acceptance, not precise physical-stop or bill-settlement time."
+}

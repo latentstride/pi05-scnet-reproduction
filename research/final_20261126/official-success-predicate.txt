@@ -1,0 +1,9 @@
+Source: PACE-fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/envs/handover_block.py
+SHA256: 5439712296d7e143d41f8e78b4ab86cd4fad7fb98f40f5f5abb067a462d17650
+
+    def check_success(self):
+        box_pos = self.box.get_functional_point(0, "pose").p
+        target_pose = self.target_box.get_functional_point(1, "pose").p
+        eps = [0.03, 0.03]
+        return (np.all(np.abs(box_pos[:2] - target_pose[:2]) < eps) and abs(box_pos[2] - target_pose[2]) < 0.01
+                and self.is_right_gripper_open())

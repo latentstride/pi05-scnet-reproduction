@@ -1,0 +1,426 @@
+{
+  "settings": {
+    "render_freq": 0,
+    "episode_num": 50,
+    "use_seed": false,
+    "save_freq": 15,
+    "embodiment": [
+      "ARX-X5",
+      "ARX-X5"
+    ],
+    "language_num": 100,
+    "domain_randomization": {
+      "random_background": false,
+      "cluttered_table": false,
+      "clean_background_rate": 1,
+      "random_head_camera_dis": 0,
+      "random_table_height": 0,
+      "random_light": false,
+      "crazy_random_light_rate": 0
+    },
+    "camera": {
+      "head_camera_type": "D435",
+      "wrist_camera_type": "D435",
+      "collect_head_camera": true,
+      "collect_wrist_camera": true
+    },
+    "data_type": {
+      "rgb": true,
+      "third_view": false,
+      "depth": false,
+      "pointcloud": false,
+      "observer": false,
+      "endpose": false,
+      "qpos": true,
+      "mesh_segmentation": false,
+      "actor_segmentation": false
+    },
+    "pcd_down_sample_num": 1024,
+    "pcd_crop": true,
+    "save_path": "./data",
+    "clear_cache_freq": 5,
+    "collect_data": false,
+    "eval_video_log": false,
+    "task_name": "handover_block",
+    "task_config": "demo_clean",
+    "dual_arm_embodied": false,
+    "embodiment_dis": 0.6,
+    "left_robot_file": "<PROJECT_ROOT>/tools/a800-closed-loop/PACE-fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/assets/embodiments/ARX-X5",
+    "right_robot_file": "<PROJECT_ROOT>/tools/a800-closed-loop/PACE-fd2e624cc19325cc9b20a620c82d51c0d8e25cc1/assets/embodiments/ARX-X5",
+    "left_embodiment_config": {
+      "urdf_path": "./X5A.urdf",
+      "joint_stiffness": 1000,
+      "joint_damping": 200,
+      "gripper_stiffnes": 1000,
+      "gripper_damping": 200,
+      "move_group": [
+        "link6",
+        "link6"
+      ],
+      "ee_joints": [
+        "joint6",
+        "joint6"
+      ],
+      "arm_joints_name": [
+        [
+          "joint1",
+          "joint2",
+          "joint3",
+          "joint4",
+          "joint5",
+          "joint6"
+        ],
+        [
+          "joint1",
+          "joint2",
+          "joint3",
+          "joint4",
+          "joint5",
+          "joint6"
+        ]
+      ],
+      "gripper_name": [
+        {
+          "base": "joint7",
+          "mimic": [
+            [
+              "joint8",
+              1,
+              0
+            ]
+          ]
+        },
+        {
+          "base": "joint7",
+          "mimic": [
+            [
+              "joint8",
+              1,
+              0
+            ]
+          ]
+        }
+      ],
+      "gripper_bias": 0.12,
+      "gripper_scale": [
+        -0.01,
+        0.045
+      ],
+      "homestate": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "delta_matrix": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "global_trans_matrix": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          -1,
+          0
+        ],
+        [
+          0,
+          0,
+          -1
+        ]
+      ],
+      "robot_pose": [
+        [
+          0,
+          -0.35,
+          0.784,
+          0.707,
+          0,
+          0,
+          0.707
+        ]
+      ],
+      "planner": "curobo",
+      "dual_arm": false,
+      "grasp_perfect_direction": [
+        "front_right",
+        "front_left"
+      ],
+      "static_camera_list": [
+        {
+          "name": "head_camera",
+          "position": [
+            -0.032,
+            -0.45,
+            1.35
+          ],
+          "forward": [
+            0,
+            0.6,
+            -0.8
+          ],
+          "left": [
+            -1,
+            0,
+            0
+          ],
+          "type": "D435"
+        }
+      ]
+    },
+    "right_embodiment_config": {
+      "urdf_path": "./X5A.urdf",
+      "joint_stiffness": 1000,
+      "joint_damping": 200,
+      "gripper_stiffnes": 1000,
+      "gripper_damping": 200,
+      "move_group": [
+        "link6",
+        "link6"
+      ],
+      "ee_joints": [
+        "joint6",
+        "joint6"
+      ],
+      "arm_joints_name": [
+        [
+          "joint1",
+          "joint2",
+          "joint3",
+          "joint4",
+          "joint5",
+          "joint6"
+        ],
+        [
+          "joint1",
+          "joint2",
+          "joint3",
+          "joint4",
+          "joint5",
+          "joint6"
+        ]
+      ],
+      "gripper_name": [
+        {
+          "base": "joint7",
+          "mimic": [
+            [
+              "joint8",
+              1,
+              0
+            ]
+          ]
+        },
+        {
+          "base": "joint7",
+          "mimic": [
+            [
+              "joint8",
+              1,
+              0
+            ]
+          ]
+        }
+      ],
+      "gripper_bias": 0.12,
+      "gripper_scale": [
+        -0.01,
+        0.045
+      ],
+      "homestate": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "delta_matrix": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "global_trans_matrix": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          -1,
+          0
+        ],
+        [
+          0,
+          0,
+          -1
+        ]
+      ],
+      "robot_pose": [
+        [
+          0,
+          -0.35,
+          0.784,
+          0.707,
+          0,
+          0,
+          0.707
+        ]
+      ],
+      "planner": "curobo",
+      "dual_arm": false,
+      "grasp_perfect_direction": [
+        "front_right",
+        "front_left"
+      ],
+      "static_camera_list": [
+        {
+          "name": "head_camera",
+          "position": [
+            -0.032,
+            -0.45,
+            1.35
+          ],
+          "forward": [
+            0,
+            0.6,
+            -0.8
+          ],
+          "left": [
+            -1,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    "head_camera_h": 240,
+    "head_camera_w": 320,
+    "eval_mode": true,
+    "save_data": false
+  },
+  "initial_block_pose": [
+    -0.16248317062854767,
+    0.22294175624847412,
+    0.8400006890296936,
+    0.9796677231788635,
+    6.60852356304531e-06,
+    -4.3895865928789135e-06,
+    0.2006271481513977
+  ],
+  "initial_drive": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1
+  ],
+  "initial_qpos": [
+    [
+      7.374522681402595e-08,
+      -3.8104140003270004e-06,
+      8.351352335012052e-06,
+      1.4139925674783171e-08,
+      -9.254937936020724e-07,
+      -1.249525780622207e-07,
+      0.04399999976158142,
+      0.04399999976158142
+    ],
+    [
+      8.597078249295009e-08,
+      -3.8111199955892516e-06,
+      8.347183211299125e-06,
+      1.6219118492699636e-08,
+      -1.087417558665038e-06,
+      -3.3123590981176676e-08,
+      0.04399999976158142,
+      0.04399999976158142
+    ]
+  ],
+  "dt": 0.004000000189989805,
+  "native_step_limit": 600,
+  "finger_ids": [
+    [
+      16,
+      17
+    ],
+    [
+      27,
+      28
+    ]
+  ],
+  "gripper_scale": [
+    -0.01,
+    0.045
+  ],
+  "native_drive": "Robot.set_gripper; no force override",
+  "source_sha256": {
+    "envs/_base_task.py": "448f7152b65cb9102217cf5463aa821d72810ca56f63d5a797ec7bd43e23e101",
+    "envs/handover_block.py": "5439712296d7e143d41f8e78b4ab86cd4fad7fb98f40f5f5abb067a462d17650",
+    "envs/robot/robot.py": "3dcd80acc8cab489a4c5edb507cc460dab1724be0226b8d5c4c1b218dee605cb",
+    "envs/robot/planner.py": "f1012345542483f4cfbac64880a266b7ee0d4a64362d5ec6fd6985ed9c34b564",
+    "assets/embodiments/ARX-X5/config.yml": "0687270bb70652fb80072acbded5f134da4e930463024c856dd4f45aa5f35d03",
+    "assets/embodiments/ARX-X5/X5A.urdf": "7aaa308a1a5b6a213d914db86ba09ddd6252f25cb498ac9a148bfa6c7166a423"
+  }
+}

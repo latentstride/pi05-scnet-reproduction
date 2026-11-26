@@ -1,0 +1,7 @@
+{
+  "step": 2000,
+  "ema_decay": 0.99,
+  "evaluation_weights": "ema",
+  "online_and_adam_preserved": true,
+  "note": "Adopted synchronous completed save after unsupported post-save wait call; no optimizer updates repeated"
+}

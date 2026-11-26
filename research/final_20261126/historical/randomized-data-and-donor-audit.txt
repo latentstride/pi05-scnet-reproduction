@@ -1,0 +1,49 @@
+π₀.₅ ARX 200条训练集准备、批准清理与供体保护核查
+日期：2026-11-24 Australia/Sydney
+远端根目录：<PROJECT_ROOT>
+
+1. 批准清理
+仅删除用户明确批准的9个checkpoint，路径及实测占用见cleanup-complete.json；总计 21.624295 GiB。
+清理完成时剩余可用空间：43.821583 GiB。
+新增160条原H5与扩充H5构建完成后，当前可用空间：39.384323 GiB。
+新旧两版step-1000、step-0600、原H5与PACE基座均保留；删除范围内没有JSON/MD报告；没有删除任何PKL。
+
+2. action61/query16供体保护
+真实运行源码：<PROJECT_ROOT>/tools/a800-closed-loop/pr5/scripts/g2_contact.py，SHA256=8369b9b25e760fb272fbf945220864432ec4f537e03c564d79605e7262ff3ffa
+171:     def guard_opening(self,previous,target,arms,giver="left"):
+172:         receiver="right" if giver=="left" else "left"
+173:         if giver not in self.holders or receiver in self.holders:return
+174:         i=SIDES.index(giver)
+175:         direction=np.sign(np.asarray(arms[i].grip.opened)-np.asarray(arms[i].grip.closed))
+176:         if np.any((target[i]-previous[i])*direction>1e-9):
+177:             raise G2Error(Status.BACKEND_ERROR,"donor opening before receiver contact confirmation",
+178:                           contact_state=self.snapshot())
+调用链：pure_scene.NativeScene.execute_native_row -> ContactWorld.prepare_tools(g2_contact.py:430) -> ContactTracker.guard_opening；prepare_tools在该动作规划和执行前拒绝。
+previous为ContactWorld.initial_drive，由ARXBackend._contact_observation(g2_robotwin_backend.py:176)从实际joint.get_drive_target()记录。此次日志中它与上一条已接受的模型目标一致（仅float32舍入差）。
+action60/query16/row2：模型左夹爪=0.002130719134584069
+action61/query16/row3：模型左夹爪=0.002320768777281046
+归一化增量：0.0001900496426969767
+拒绝前每指drive target：0.09375164518132806 mm
+候选每指drive target：0.1021138262003660 mm
+每指张开方向增量：0.008362181019037960 mm = 8.362181019037960 μm
+原阈值1e-9m（1nm）；本次增量约8362.18倍阈值。
+现场实际两指qpos约29.6258/29.6364 mm，双指稳定持物，右手无接触。新目标仍近完全闭爪，但源码只判断张开方向增量，没有绝对开度或闭合余量判断。
+代入未经修改的原guard函数：真实数值拒绝；使用上一条模型目标作previous也拒绝；保持drive target不变不拒绝；要求完全闭爪不拒绝。
+结论：这次确定是微小回弹触发提前释放判据，不是0→0.002的跳变，也不是已观察到真实松手/滑移。action61未执行，放行后是否能稳定抬升>=30mm尚未做物理验证。阈值、控制器和生产保护源码未修改。
+
+3. 独立扩充数据集
+输出：<PROJECT_ROOT>/data/step5-arx-40clean-160randomized-v1/arx-drive-target-200train-40clean160randomized-v1.h5
+文件字节：2195965036；GiB=2.045152
+SHA256：9d56bb953cb4f3c53d296df60f5c9832f9547e7a86fa1c550308fec1a0dbbc93
+Train=40原clean+160官方randomized；Val=5原clean；Test=5原clean。不是200条clean数据。
+全部160个新增scene seed互异，且与原50条clean scene seed交集为空。
+原H5字节SHA256保持：19da908478bd36cbf3e2c0b507479d53db6c178bfd07d16cff7a04ee07fd72ca
+原40条Train复制内容一致；原Val/Test逐组数据/属性/形状/类型内容指纹完全相同；新编号50-209避免覆盖旧编号。
+保留原归一化统计，不在本轮悄悄改变旧checkpoint的输入尺度。原生产读取器未改，独立expanded_dataset.py从新manifest读取200/5/5，沿用原解码和H50后续保存帧标签语义。
+原始动作标签未改、未加噪、未去重。缺失物理时间戳仍标为未知。
+官方来源：TianxingChen/RoboTwin2.0，revision=3dc3b798668feb99ac61cc9086d84cbcc3d79186，dataset/handover_block/arx-x5_randomized_500.zip；仅按HTTP Range读取160个H5成员，各成员CRC32和SHA256写入dataset-manifest.json。
+原160条H5合计：2567851644字节（2.391498 GiB），已保留以便复用。
+读取验证：完整窗口与末端padding、三相机解码、原Val/Test解码结果一致均通过；38,599个Train候选窗口；原GraspSampler的400次采样中clean=75，randomized=325。
+完整210条episode/source_episode/scene_seed映射和原Val/Test指纹见dataset-manifest.json。
+所有工作仅为数据准备与数值诊断，没有新训练或模型推理。最终GPU：0 MiB, 0 %；CUDA计算进程：无。
+构建过程中发现的首轮rgb_shapes调用方初始化错误已修复，保留历史错误JSON；最终data-complete.json及data-reader-verification.json均成功。

@@ -1,0 +1,11 @@
+{
+  "stage": "training",
+  "step": 2000,
+  "adam_count": 2000,
+  "flow_loss": 0.004053296797792427,
+  "grad_norm": 0.0459391325712204,
+  "update_norm": 0.03630795702338219,
+  "learning_rate": 1.0176483556278981e-05,
+  "ema_decay": 0.99,
+  "elapsed_s": 6256.967287220061
+}

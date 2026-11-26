@@ -1,0 +1,27 @@
+{
+  "base": "original PACE handover_block",
+  "base_checkpoint": "<PROJECT_ROOT>/cache/pace-handover/handover_block/params",
+  "optimizer": "fresh AdamW decay0.01 clip1",
+  "ema_decay": 0.99,
+  "architecture": "full PaliGemma/img + full gemma300m action + action projections/time MLP + gemma2b LLM LoRA",
+  "batch": {
+    "micro": 4,
+    "accumulation": 4,
+    "effective": 16
+  },
+  "sampling": {
+    "uniform": 0.8,
+    "six_phase": 0.2
+  },
+  "state_noise_rad": 0.003,
+  "flow": "native OpenPI model.compute_loss mean, all H50 rows and all model dimensions equal; no auxiliary losses",
+  "lr": {
+    "warmup": 100,
+    "peak": 3e-05,
+    "end": 3e-06,
+    "steps": 3000
+  },
+  "physical_K": 15,
+  "old_val": "descriptive only",
+  "first_stage_selected_K": 15
+}

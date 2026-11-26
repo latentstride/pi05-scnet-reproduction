@@ -17,3 +17,18 @@ videos/
 .env
 .env.*
 __pycache__/
+
+# Final archive: retain compact reports/media, exclude raw training assets and sessions.
+*.h5
+*.hdf5
+*.ckpt
+*.pth
+*.bin
+*.pkl
+*.tfrecord*
+**/checkpoints/
+**/raw-clean/
+**/physics.jsonl
+**/private/
+**/platform-session.json
+.DS_Store

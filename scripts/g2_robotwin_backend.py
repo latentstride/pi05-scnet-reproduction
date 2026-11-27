@@ -74,6 +74,9 @@ def joint_space_setup(robot_class, grippers=None):
         value = finite_array(value, ()).item()
         if not 0 <= value <= 1:
             raise ValueError("bootstrap normalized gripper outside [0,1]")
+        # Preserve native set_gripper passive-force updates during initialization.
+        robot._entity_qf(robot.left_entity)
+        robot._entity_qf(robot.right_entity)
         calibration = grippers[SIDES.index(side)]
         expected = calibration.target(value)
         joints = {joint[0].get_name(): joint[0] for joint in getattr(robot, side + "_gripper")}

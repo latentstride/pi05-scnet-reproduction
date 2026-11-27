@@ -1,0 +1,62 @@
+{
+  "corrected_live_initial": [
+    {
+      "row": 0,
+      "nearest_native_approach_tick": 12,
+      "min_position_error_mm": 18.218051376525345,
+      "orientation_error_at_nearest_deg": 7.310445526850627,
+      "time_semantics": "nearest recorded dense native drive sample, not assumed saved-frame time"
+    },
+    {
+      "row": 1,
+      "nearest_native_approach_tick": 31,
+      "min_position_error_mm": 17.837243054060558,
+      "orientation_error_at_nearest_deg": 7.25515849094429,
+      "time_semantics": "nearest recorded dense native drive sample, not assumed saved-frame time"
+    },
+    {
+      "row": 2,
+      "nearest_native_approach_tick": 43,
+      "min_position_error_mm": 17.93020482555015,
+      "orientation_error_at_nearest_deg": 7.479989732950372,
+      "time_semantics": "nearest recorded dense native drive sample, not assumed saved-frame time"
+    },
+    {
+      "row": 3,
+      "nearest_native_approach_tick": 53,
+      "min_position_error_mm": 18.97131851695421,
+      "orientation_error_at_nearest_deg": 7.735340505991629,
+      "time_semantics": "nearest recorded dense native drive sample, not assumed saved-frame time"
+    }
+  ],
+  "same_seed_expert_initial": [
+    {
+      "row": 0,
+      "nearest_native_approach_tick": 12,
+      "min_position_error_mm": 18.333951282856646,
+      "orientation_error_at_nearest_deg": 7.347041507228653,
+      "time_semantics": "nearest recorded dense native drive sample, not assumed saved-frame time"
+    },
+    {
+      "row": 1,
+      "nearest_native_approach_tick": 31,
+      "min_position_error_mm": 18.1044414249362,
+      "orientation_error_at_nearest_deg": 7.332709861302569,
+      "time_semantics": "nearest recorded dense native drive sample, not assumed saved-frame time"
+    },
+    {
+      "row": 2,
+      "nearest_native_approach_tick": 42,
+      "min_position_error_mm": 18.47025332063141,
+      "orientation_error_at_nearest_deg": 7.795714745116944,
+      "time_semantics": "nearest recorded dense native drive sample, not assumed saved-frame time"
+    },
+    {
+      "row": 3,
+      "nearest_native_approach_tick": 53,
+      "min_position_error_mm": 19.100650257808983,
+      "orientation_error_at_nearest_deg": 7.821363154414376,
+      "time_semantics": "nearest recorded dense native drive sample, not assumed saved-frame time"
+    }
+  ]
+}

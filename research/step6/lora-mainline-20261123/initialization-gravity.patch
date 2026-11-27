@@ -1,0 +1,45 @@
+diff --git a/scripts/g2_robotwin_backend.py b/scripts/g2_robotwin_backend.py
+index 0bcc0d2..26c86f3 100644
+--- a/scripts/g2_robotwin_backend.py
++++ b/scripts/g2_robotwin_backend.py
+@@ -74,6 +74,9 @@ def joint_space_setup(robot_class, grippers=None):
+         value = finite_array(value, ()).item()
+         if not 0 <= value <= 1:
+             raise ValueError("bootstrap normalized gripper outside [0,1]")
++        # Preserve native set_gripper passive-force updates during initialization.
++        robot._entity_qf(robot.left_entity)
++        robot._entity_qf(robot.right_entity)
+         calibration = grippers[SIDES.index(side)]
+         expected = calibration.target(value)
+         joints = {joint[0].get_name(): joint[0] for joint in getattr(robot, side + "_gripper")}
+diff --git a/tests/test_g2_runtime.py b/tests/test_g2_runtime.py
+index eb53b9f..abd38ad 100644
+--- a/tests/test_g2_runtime.py
++++ b/tests/test_g2_runtime.py
+@@ -73,11 +73,16 @@ class RuntimeTests(unittest.TestCase):
+     def test_bootstrap_gripper_path_uses_declared_native_endpoints(self):
+         adapter,qa,qr,bases=fixture()
+         values={}
++        compensated=[]
+         def joint(name):
+             return NS(get_name=lambda:name,set_drive_target=lambda value:values.__setitem__(name,value),
+                       set_drive_velocity_target=lambda value:None)
+         class Robot:
+             is_dual_arm=False
++            left_entity=object()
++            right_entity=object()
++            def _entity_qf(self,entity):
++                compensated.append(entity)
+             def set_planner(self,scene=None):
+                 pass
+             def set_gripper(self,*args):
+@@ -92,6 +97,9 @@ class RuntimeTests(unittest.TestCase):
+             self.assertEqual(profile["num_step"],200)
+             robot.set_gripper(1.,"left")
+             self.assertTrue(all(value==.04 for value in values.values()))
++            self.assertEqual(compensated,[robot.left_entity,robot.right_entity])
++            robot.set_gripper(0.,"right")
++            self.assertEqual(compensated,[robot.left_entity,robot.right_entity]*2)
+         self.assertIs(Robot.set_gripper,original)
+ 
+     def test_shared_collision_model_is_updated_atomically_and_restored(self):
